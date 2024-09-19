@@ -10,9 +10,11 @@ func assertError(t *testing.T, err error, expectedErr error, testCase string) {
 	}
 }
 
-func assertLanguage(t *testing.T, language string, expectedLanguage string, testCase string) {
-	if language != expectedLanguage {
-		t.Errorf("Expected language: %s, got: %s for test case: %s ", expectedLanguage, language, testCase)
+func assertLanguage(t *testing.T, language string, expectedLanguage string, err error, testCase string) {
+	if err != nil {
+		t.Errorf("Unexpected error: %v for test case: %s", err, testCase)
+	} else if language != expectedLanguage {
+		t.Errorf("Expected language: %s, got: %s for test case: %s", expectedLanguage, language, testCase)
 	}
 }
 
