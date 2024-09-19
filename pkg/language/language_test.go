@@ -19,27 +19,45 @@ func assertLanguage(t *testing.T, language string, expectedLanguage string, err 
 }
 
 func TestGetLanguageForLanguageCode_Errors(t *testing.T) {
-	_, err := GetLanguageForLanguageCode("abcd")
-	assertError(t, err, ErrInvalidLength, "invalid length")
+	var tests = []struct {
+		name          string
+		expectedError error
+		languageCode  string
+	}{
+		{"invalid length", ErrInvalidLength, "abcd"},
+		{"empty string", ErrEmptyLanguageCode, ""},
+		{"internal whitespace", ErrInternalWhitespace, "a a"},
+		{"invalid language code with leading space", ErrLanguageNotFound, " aR"},
+		{"invalid language code with trailing space", ErrLanguageNotFound, "Ra "},
+		{"non-existing language code", ErrLanguageNotFound, "zpy"},
+		{"language code contains invalid characters", ErrInvalidCharacters, "en1"},
+		{"language code contains invalid characters", ErrInvalidCharacters, "e#}"},
+	}
 
-	_, err = GetLanguageForLanguageCode("")
-	assertError(t, err, ErrEmptyLanguageCode, "empty string")
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			_, err := GetLanguageForLanguageCode(test.languageCode)
+			assertError(t, err, test.expectedError, test.name)
+		})
+	}
+}
 
-	_, err = GetLanguageForLanguageCode("a a")
-	assertError(t, err, ErrInternalWhitespace, "internal whitespace")
+func TestGetLanguageForLanguageCode(t *testing.T) {
+	var tests = []struct {
+		name             string
+		expectedLanguage string
+		languageCode     string
+	}{
+		{"lowercase", "aar", "Afar"},
+		{"uppercase", "ABK", "Abkhazian"},
+		{"mixedcase", "aFr", "Afrikaans"},
+		{"lowercase with whitespace", " alb ", "Albanian"},
+	}
 
-	_, err = GetLanguageForLanguageCode(" aR")
-	assertError(t, err, ErrLanguageNotFound, "invalid language code with leading space")
-
-	_, err = GetLanguageForLanguageCode("Ra ")
-	assertError(t, err, ErrLanguageNotFound, "invalid language code with trailing space")
-
-	_, err = GetLanguageForLanguageCode("zpy")
-	assertError(t, err, ErrLanguageNotFound, "non-existing language code")
-
-	_, err = GetLanguageForLanguageCode("en1")
-	assertError(t, err, ErrInvalidCharacters, "language code contains invalid characters")
-
-	_, err = GetLanguageForLanguageCode("!es#")
-	assertError(t, err, ErrInvalidCharacters, "language code contains invalid characters")
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			result, err := GetLanguageForLanguageCode(test.languageCode)
+			assertLanguage(t, result, test.expectedLanguage, err, test.languageCode)
+		})
+	}
 }
