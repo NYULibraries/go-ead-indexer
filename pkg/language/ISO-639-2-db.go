@@ -16,7 +16,7 @@ var ISO639_2_DB = map[string]Language{
 	"ady":     {Codes: []string{"ady"}, Name: "Adyghe; Adygei"},
 	"afa":     {Codes: []string{"afa"}, Name: "Afro-Asiatic languages"},
 	"afh":     {Codes: []string{"afh"}, Name: "Afrihili"},
-	"af":      {Codes: []string{"afr", "af"}, Name: "Afrijan"},
+	"af":      {Codes: []string{"afr", "af"}, Name: "Afrikaans"},
 	"afr":     {Codes: []string{"afr", "af"}, Name: "Afrikaans"},
 	"ain":     {Codes: []string{"ain"}, Name: "Ainu"},
 	"ak":      {Codes: []string{"aka", "ak"}, Name: "Akan"},
