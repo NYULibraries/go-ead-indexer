@@ -1,6 +1,7 @@
 package language
 
 import (
+	"strings"
 	"testing"
 )
 
@@ -18,46 +19,79 @@ func assertLanguage(t *testing.T, language string, expectedLanguage string, err 
 	}
 }
 
+func TestGetLanguageForLanguageCode_StaticCases(t *testing.T) {
+	var staticErrorTests = []struct {
+		name          string
+		languageCode  string
+		expectedError error
+	}{
+		{"invalid length", "abcd", ErrInvalidLength},
+		{"empty string", "", ErrEmptyLanguageCode},
+		{"invalid language code with leading space", " qA", ErrLanguageNotFound},
+		{"invalid language code with trailing space", "Ra ", ErrLanguageNotFound},
+		{"non-existing language code", "zpy", ErrLanguageNotFound},
+		{"language code contains invalid characters", "en1", ErrInvalidCharacters},
+		{"language code contains invalid characters", "e#}", ErrInvalidCharacters},
+	}
+
+	for _, test := range staticErrorTests {
+		t.Run(test.name, func(t *testing.T) {
+			_, err := GetLanguageForLanguageCode(test.languageCode)
+			assertError(t, err, test.expectedError, test.name+" for "+test.languageCode)
+		})
+	}
+
+}
 func TestGetLanguageForLanguageCode_Errors(t *testing.T) {
 	var tests = []struct {
 		name          string
 		expectedError error
-		languageCode  string
+		inputModifier func(string) string
 	}{
-		{"invalid length", ErrInvalidLength, "abcd"},
-		{"empty string", ErrEmptyLanguageCode, ""},
-		{"internal whitespace", ErrInternalWhitespace, "a a"},
-		{"invalid language code with leading space", ErrLanguageNotFound, " aR"},
-		{"invalid language code with trailing space", ErrLanguageNotFound, "Ra "},
-		{"non-existing language code", ErrLanguageNotFound, "zpy"},
-		{"language code contains invalid characters", ErrInvalidCharacters, "en1"},
-		{"language code contains invalid characters", ErrInvalidCharacters, "e#}"},
+		{"internal whitespace", ErrInternalWhitespace, func(code string) string { return code[:1] + " " + code[1:] }},
+		{"carriage return character in between", ErrInternalWhitespace, func(code string) string { return code[:1] + "\r" + code[1:] }},
+		{"tab character in between", ErrInternalWhitespace, func(code string) string { return code[:1] + "\t" + code[1:] }},
+		{"new line in between", ErrInternalWhitespace, func(code string) string { return code[:1] + "\n" + code[1:] }},
 	}
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			_, err := GetLanguageForLanguageCode(test.languageCode)
-			assertError(t, err, test.expectedError, test.name)
+			for _, languageCode := range LanguageTestCodes {
+				modifiedCode := test.inputModifier(languageCode)
+				_, err := GetLanguageForLanguageCode(modifiedCode)
+				assertError(t, err, test.expectedError, test.name+" for "+languageCode)
+			}
 		})
 	}
 }
 
 func TestGetLanguageForLanguageCode(t *testing.T) {
 	var tests = []struct {
-		name             string
-		expectedLanguage string
-		languageCode     string
+		name          string
+		inputModifier func(string) string
 	}{
-		{"lowercase", "aar", "Afar"},
-		{"uppercase", "ABK", "Abkhazian"},
-		{"mixedcase", "aFr", "Afrikaans"},
-		{"lowercase with whitespace", " alb ", "Albanian"},
+		{"lowercase", func(code string) string { return code }},
+		{"uppercase", func(code string) string { return strings.ToUpper(code) }},
+		{"mixedcase", func(code string) string {
+			if len(code) > 1 {
+				return strings.ToLower(code[:1]) + strings.ToUpper(code[1:])
+			}
+			return strings.ToLower(code)
+		}},
+		{"lowercase with whitespace", func(code string) string { return " " + code + " " }},
+		{"valid code with new lines", func(code string) string { return code + "\n" }},
+		{"valid code with carriage return", func(code string) string { return code + "\r" }},
+		{"valid code with new lines", func(code string) string { return code + "\n\r" }},
+		{"valid code with tab", func(code string) string { return code + "\t" }},
 	}
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			result, err := GetLanguageForLanguageCode(test.languageCode)
-			assertLanguage(t, result, test.expectedLanguage, err, test.languageCode)
+			for code, expectedLanguage := range ExpectedTestLanguages {
+				modifiedCode := test.inputModifier(code)
+				result, err := GetLanguageForLanguageCode(modifiedCode)
+				assertLanguage(t, result, expectedLanguage, err, test.name+" for "+modifiedCode)
+			}
 		})
 	}
 }
