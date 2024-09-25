@@ -23,6 +23,15 @@ func isAlphabetic(s string) bool {
 	return true
 }
 
+func isSpace(s string) bool {
+	for _, r := range s {
+		if unicode.IsSpace(r) {
+			return true
+		}
+	}
+	return false
+}
+
 func GetLanguageForLanguageCode(languageCode string) (string, error) {
 
 	languageCode = strings.ToLower(strings.TrimSpace(languageCode))
@@ -31,7 +40,7 @@ func GetLanguageForLanguageCode(languageCode string) (string, error) {
 		return "", ErrEmptyLanguageCode
 	}
 
-	if strings.Contains(languageCode, " ") || strings.Contains(languageCode, "\t") {
+	if isSpace(languageCode) {
 		return "", ErrInternalWhitespace
 	}
 
