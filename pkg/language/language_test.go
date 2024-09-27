@@ -56,7 +56,7 @@ func TestGetLanguageForLanguageCode_Errors(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			for _, languageCode := range LanguageTestCodes {
+			for _, languageCode := range GetTestLanguageCodes() {
 				modifiedCode := test.inputModifier(languageCode)
 				_, err := GetLanguageForLanguageCode(modifiedCode)
 				assertError(t, err, test.expectedError, test.name+" for "+languageCode)
