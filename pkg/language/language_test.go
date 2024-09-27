@@ -76,7 +76,8 @@ func TestGetLanguageForLanguageCode_UntrimmableWhitespaceErrors(t *testing.T) {
 			for _, languageCode := range GetTestLanguageCodes() {
 				modifiedCode := test.inputModifier(languageCode)
 				_, err := GetLanguageForLanguageCode(modifiedCode)
-				assertError(t, err, test.expectedError, test.name+" for '"+escapeForReadability(languageCode)+"'")
+				assertError(t, err, test.expectedError, test.name+
+					" for '"+escapeForReadability(languageCode)+"'")
 			}
 		})
 	}
@@ -104,7 +105,8 @@ func TestGetLanguageForLanguageCode(t *testing.T) {
 			for code, expectedLanguage := range ExpectedTestLanguages {
 				modifiedCode := test.inputModifier(code)
 				result, err := GetLanguageForLanguageCode(modifiedCode)
-				assertLanguage(t, result, expectedLanguage, err, test.name+" for '"+escapeForReadability(modifiedCode)+"'")
+				assertLanguage(t, result, expectedLanguage, err, test.name+
+					" for '"+escapeForReadability(modifiedCode)+"'")
 			}
 		})
 	}
