@@ -87,7 +87,7 @@ func TestGetLanguageForLanguageCode(t *testing.T) {
 		name          string
 		inputModifier func(string) string
 	}{
-		{"lowercase", func(code string) string { return code }},
+		{"lowercase", func(code string) string { return strings.ToLower(code) }},
 		{"uppercase", func(code string) string { return strings.ToUpper(code) }},
 		{"mixedcase", func(code string) string {
 			if len(code) > 1 {
