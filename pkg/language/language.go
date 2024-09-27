@@ -14,24 +14,6 @@ var (
 	ErrLanguageNotFound   = errors.New("language code not found. Please refer to ISO-639-2 language code table")
 )
 
-func isAlphabetic(s string) bool {
-	for _, r := range s {
-		if !unicode.IsLetter(r) {
-			return false
-		}
-	}
-	return true
-}
-
-func containsWhitespace(s string) bool {
-	for _, r := range s {
-		if unicode.IsSpace(r) {
-			return true
-		}
-	}
-	return false
-}
-
 func GetLanguageForLanguageCode(languageCode string) (string, error) {
 
 	languageCode = strings.ToLower(strings.TrimSpace(languageCode))
@@ -57,4 +39,22 @@ func GetLanguageForLanguageCode(languageCode string) (string, error) {
 	}
 
 	return "", ErrLanguageNotFound
+}
+
+func containsWhitespace(s string) bool {
+	for _, r := range s {
+		if unicode.IsSpace(r) {
+			return true
+		}
+	}
+	return false
+}
+
+func isAlphabetic(s string) bool {
+	for _, r := range s {
+		if !unicode.IsLetter(r) {
+			return false
+		}
+	}
+	return true
 }
