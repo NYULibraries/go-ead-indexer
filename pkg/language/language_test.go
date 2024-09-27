@@ -90,10 +90,7 @@ func TestGetLanguageForLanguageCode(t *testing.T) {
 		{"lowercase", func(code string) string { return strings.ToLower(code) }},
 		{"uppercase", func(code string) string { return strings.ToUpper(code) }},
 		{"mixed-case", func(code string) string {
-			if len(code) > 1 {
-				return strings.ToLower(code[:1]) + strings.ToUpper(code[1:])
-			}
-			return strings.ToLower(code)
+			return strings.ToLower(code[:1]) + strings.ToUpper(code[1:])
 		}},
 		{"lowercase with whitespace", func(code string) string { return " " + code + " " }},
 		{"valid code with new lines", func(code string) string { return code + "\n" }},
