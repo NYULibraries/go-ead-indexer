@@ -36,7 +36,7 @@ func escapeForReadability(code string) string {
 	return code
 }
 
-func TestGetLanguageForLanguageCode_StaticCases(t *testing.T) {
+func TestGetLanguageForLanguageCode_InvalidLanguageCodeCases(t *testing.T) {
 	var staticErrorTests = []struct {
 		name          string
 		languageCode  string
@@ -54,7 +54,7 @@ func TestGetLanguageForLanguageCode_StaticCases(t *testing.T) {
 	for _, test := range staticErrorTests {
 		t.Run(test.name, func(t *testing.T) {
 			_, err := GetLanguageForLanguageCode(test.languageCode)
-			assertError(t, err, test.expectedError, test.name+" for "+test.languageCode)
+			assertError(t, err, test.expectedError, test.name+" for '"+test.languageCode+"'")
 		})
 	}
 
