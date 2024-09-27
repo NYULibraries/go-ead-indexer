@@ -1,10 +1,13 @@
 package language
 
 type Language struct {
+	// Full set of codes that are functionally equivalent according to the source
+	// data.
 	Codes []string
 	Name  string
 }
 
+// From https://github.com/xwmx/iso-639/blob/169e152b4af5ca4a7876a3c7e37fcd272c3e577f/lib/data/ISO-639-2_utf-8.txt
 var ISO639_2_DB = map[string]Language{
 	"aar":     {Codes: []string{"aar", "aa"}, Name: "Afar"},
 	"aa":      {Codes: []string{"aar", "aa"}, Name: "Afar"},
