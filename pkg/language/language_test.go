@@ -46,9 +46,9 @@ func TestGetLanguageForLanguageCode_StaticCases(t *testing.T) {
 		{"empty string", "", ErrEmptyLanguageCode},
 		{"invalid language code with leading space", " qA", ErrLanguageNotFound},
 		{"invalid language code with trailing space", "Ra ", ErrLanguageNotFound},
-		{"non-existing language code", "zpy", ErrLanguageNotFound},
-		{"language code contains invalid characters", "en1", ErrInvalidCharacters},
-		{"language code contains invalid characters", "e#}", ErrInvalidCharacters},
+		{"language code not found", "zpy", ErrLanguageNotFound},
+		{"language code contains invalid characters: number", "en1", ErrInvalidCharacters},
+		{"language code contains invalid characters: non-alphanumeric", "e#}", ErrInvalidCharacters},
 	}
 
 	for _, test := range staticErrorTests {
@@ -89,7 +89,7 @@ func TestGetLanguageForLanguageCode(t *testing.T) {
 	}{
 		{"lowercase", func(code string) string { return strings.ToLower(code) }},
 		{"uppercase", func(code string) string { return strings.ToUpper(code) }},
-		{"mixedcase", func(code string) string {
+		{"mixed-case", func(code string) string {
 			if len(code) > 1 {
 				return strings.ToLower(code[:1]) + strings.ToUpper(code[1:])
 			}
