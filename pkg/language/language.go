@@ -15,7 +15,6 @@ var (
 )
 
 func GetLanguageForLanguageCode(languageCode string) (string, error) {
-
 	languageCode = strings.ToLower(strings.TrimSpace(languageCode))
 
 	if languageCode == "" {
