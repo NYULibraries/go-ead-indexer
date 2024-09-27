@@ -7,15 +7,17 @@ import (
 
 func assertError(t *testing.T, err error, expectedErr error, testCase string) {
 	if err == nil || err.Error() != expectedErr.Error() {
-		t.Errorf("Expected error: %s, got: %s for test case: %s", expectedErr, err, testCase)
+		t.Errorf("Expected error for test case \"%s\": \"%s\", got: \"%s\"",
+			testCase, expectedErr, err)
 	}
 }
 
 func assertLanguage(t *testing.T, language string, expectedLanguage string, err error, testCase string) {
 	if err != nil {
-		t.Errorf("Unexpected error: %v for test case: %s", err, testCase)
+		t.Errorf("Unexpected error for test case \"%s\": \"%v\" ", testCase, err)
 	} else if language != expectedLanguage {
-		t.Errorf("Expected language: %s, got: %s for test case: %s", expectedLanguage, language, testCase)
+		t.Errorf("Expected language for test case \"%s\": \"%s\", got: \"%s\"",
+			testCase, expectedLanguage, language)
 	}
 }
 
