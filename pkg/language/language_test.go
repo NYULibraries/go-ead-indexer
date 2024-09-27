@@ -92,11 +92,11 @@ func TestGetLanguageForLanguageCode(t *testing.T) {
 		{"mixed-case", func(code string) string {
 			return strings.ToLower(code[:1]) + strings.ToUpper(code[1:])
 		}},
-		{"lowercase with whitespace", func(code string) string { return " " + code + " " }},
-		{"valid code with new lines", func(code string) string { return code + "\n" }},
-		{"valid code with carriage return", func(code string) string { return code + "\r" }},
-		{"valid code with new lines", func(code string) string { return code + "\n\r" }},
-		{"valid code with tab", func(code string) string { return code + "\t" }},
+		{"lowercase with trimmable whitespace", func(code string) string { return " " + code + " " }},
+		{"valid code with trimmable newline", func(code string) string { return code + "\n" }},
+		{"valid code with trimmable carriage return", func(code string) string { return code + "\r" }},
+		{"valid code with trimmable newline and carriage return", func(code string) string { return code + "\n\r" }},
+		{"valid code with trimmable tab", func(code string) string { return code + "\t" }},
 	}
 
 	for _, test := range tests {
