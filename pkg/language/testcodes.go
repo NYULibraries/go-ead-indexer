@@ -1,26 +1,37 @@
 package language
 
-var LanguageTestCodes = []string{
-	"en", "eng", "ger", "deu", "spa", "es", "fre", "fra", "fr", "ara", "ar",
-	"ukr", "uk", "rus", "ru", "por", "pt",
-}
+import (
+	"maps"
+	"slices"
+)
 
 var ExpectedTestLanguages = map[string]string{
 	"en":  "English",
 	"eng": "English",
-	"ger": "German",
+
 	"deu": "German",
-	"spa": "Spanish; Castilian",
+	"ger": "German",
+
 	"es":  "Spanish; Castilian",
-	"fre": "French",
-	"fra": "French",
+	"spa": "Spanish; Castilian",
+
 	"fr":  "French",
-	"ara": "Arabic",
+	"fra": "French",
+	"fre": "French",
+
 	"ar":  "Arabic",
-	"ukr": "Ukrainian",
+	"ara": "Arabic",
+
 	"uk":  "Ukrainian",
-	"rus": "Russian",
+	"ukr": "Ukrainian",
+
 	"ru":  "Russian",
+	"rus": "Russian",
+
 	"por": "Portuguese",
 	"pt":  "Portuguese",
+}
+
+func GetTestLanguageCodes() []string {
+	return slices.Sorted(maps.Keys(ExpectedTestLanguages))
 }
