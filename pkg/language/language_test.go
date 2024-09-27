@@ -59,16 +59,16 @@ func TestGetLanguageForLanguageCode_StaticCases(t *testing.T) {
 	}
 
 }
-func TestGetLanguageForLanguageCode_Errors(t *testing.T) {
+func TestGetLanguageForLanguageCode_UntrimmableWhitespaceErrors(t *testing.T) {
 	var tests = []struct {
 		name          string
 		expectedError error
 		inputModifier func(string) string
 	}{
-		{"internal whitespace", ErrInternalWhitespace, func(code string) string { return code[:1] + " " + code[1:] }},
-		{"carriage return character in between", ErrInternalWhitespace, func(code string) string { return code[:1] + "\r" + code[1:] }},
-		{"tab character in between", ErrInternalWhitespace, func(code string) string { return code[:1] + "\t" + code[1:] }},
-		{"new line in between", ErrInternalWhitespace, func(code string) string { return code[:1] + "\n" + code[1:] }},
+		{"contains untrimmable space", ErrInternalWhitespace, func(code string) string { return code[:1] + " " + code[1:] }},
+		{"contains untrimmable carriage return", ErrInternalWhitespace, func(code string) string { return code[:1] + "\r" + code[1:] }},
+		{"contains untrimmable tab", ErrInternalWhitespace, func(code string) string { return code[:1] + "\t" + code[1:] }},
+		{"contains untrimmable newline", ErrInternalWhitespace, func(code string) string { return code[:1] + "\n" + code[1:] }},
 	}
 
 	for _, test := range tests {
