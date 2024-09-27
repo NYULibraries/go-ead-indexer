@@ -8,6 +8,10 @@ type Language struct {
 }
 
 // From https://github.com/xwmx/iso-639/blob/169e152b4af5ca4a7876a3c7e37fcd272c3e577f/lib/data/ISO-639-2_utf-8.txt
+// NOTE: This map is out of date -- see this comment in Jira ticket DLFA-224:
+// https://jira.nyu.edu/browse/DLFA-224?focusedCommentId=9870333&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-9870333
+// We need to retain the obsolete data for now in order to exactly replicate
+// v1 indexer translation.
 var ISO639_2_DB = map[string]Language{
 	"aa":      {Codes: []string{"aa", "aar"}, Name: "Afar"},
 	"aar":     {Codes: []string{"aa", "aar"}, Name: "Afar"},
