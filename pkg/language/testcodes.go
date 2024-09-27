@@ -8,19 +8,26 @@ import (
 var ExpectedTestLanguages = map[string]string{
 	"en":  "English",
 	"eng": "English",
-	"ger": "German",
+
 	"deu": "German",
-	"spa": "Spanish; Castilian",
+	"ger": "German",
+
 	"es":  "Spanish; Castilian",
-	"fre": "French",
-	"fra": "French",
+	"spa": "Spanish; Castilian",
+
 	"fr":  "French",
-	"ara": "Arabic",
+	"fra": "French",
+	"fre": "French",
+
 	"ar":  "Arabic",
-	"ukr": "Ukrainian",
+	"ara": "Arabic",
+
 	"uk":  "Ukrainian",
-	"rus": "Russian",
+	"ukr": "Ukrainian",
+
 	"ru":  "Russian",
+	"rus": "Russian",
+
 	"por": "Portuguese",
 	"pt":  "Portuguese",
 }
