@@ -1,6 +1,7 @@
 package language
 
 import (
+	"regexp"
 	"strings"
 	"testing"
 )
@@ -19,6 +20,20 @@ func assertLanguage(t *testing.T, language string, expectedLanguage string, err 
 		t.Errorf("Expected language for test case \"%s\": \"%s\", got: \"%s\"",
 			testCase, expectedLanguage, language)
 	}
+}
+
+// Convert newlines, carriage returns, and tabs to escapes "\n", "\r", and "\t" for
+// safe and more readable printing in test results and logs.
+func escapeForReadability(code string) string {
+	carriageReturnRegexp := regexp.MustCompile(`\r`)
+	newlineRegexp := regexp.MustCompile(`\n`)
+	tabRegexp := regexp.MustCompile(`\t`)
+
+	code = carriageReturnRegexp.ReplaceAllString(code, "\\r")
+	code = newlineRegexp.ReplaceAllString(code, "\\n")
+	code = tabRegexp.ReplaceAllString(code, "\\t")
+
+	return code
 }
 
 func TestGetLanguageForLanguageCode_StaticCases(t *testing.T) {
@@ -61,7 +76,7 @@ func TestGetLanguageForLanguageCode_Errors(t *testing.T) {
 			for _, languageCode := range GetTestLanguageCodes() {
 				modifiedCode := test.inputModifier(languageCode)
 				_, err := GetLanguageForLanguageCode(modifiedCode)
-				assertError(t, err, test.expectedError, test.name+" for "+languageCode)
+				assertError(t, err, test.expectedError, test.name+" for '"+escapeForReadability(languageCode)+"'")
 			}
 		})
 	}
@@ -92,7 +107,7 @@ func TestGetLanguageForLanguageCode(t *testing.T) {
 			for code, expectedLanguage := range ExpectedTestLanguages {
 				modifiedCode := test.inputModifier(code)
 				result, err := GetLanguageForLanguageCode(modifiedCode)
-				assertLanguage(t, result, expectedLanguage, err, test.name+" for "+modifiedCode)
+				assertLanguage(t, result, expectedLanguage, err, test.name+" for '"+escapeForReadability(modifiedCode)+"'")
 			}
 		})
 	}
