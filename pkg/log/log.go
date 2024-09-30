@@ -3,8 +3,8 @@ package log
 import (
 	"errors"
 	"fmt"
-	"golang.org/x/exp/slog"
 	"io"
+	"log/slog"
 	"math"
 	"os"
 	"reflect"
@@ -123,7 +123,7 @@ func SetLevelByString(levelStringArg string) error {
 // Redirect output to another stream besides stdout, or to a bytes.Buffer for
 // testing.
 func SetOutput(logWriter io.Writer) {
-	handler := slog.HandlerOptions{Level: programLevel}.NewJSONHandler(logWriter)
+	handler := slog.NewJSONHandler(logWriter, &slog.HandlerOptions{Level: programLevel})
 	slogger = slog.New(handler)
 }
 
@@ -143,7 +143,7 @@ func getLevelOptionStringForSlogLevel(levelArg slog.Level) string {
 
 func newDefaultSlogger() *slog.Logger {
 	programLevel.Set(defaultSlogLevel)
-	handler := slog.HandlerOptions{Level: programLevel}.NewJSONHandler(os.Stdout)
+	handler := slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{Level: programLevel})
 
 	return slog.New(handler)
 }
