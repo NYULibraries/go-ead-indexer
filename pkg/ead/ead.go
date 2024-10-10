@@ -5,16 +5,21 @@ type SolrAddMessages struct {
 	Components *[]Component
 }
 
-type Component struct {
+type ComponentSolrAddMessage struct {
 	ID      string
 	Message string
+}
+
+type SolrAddMessages struct {
+	Collection string
+	Components *[]ComponentSolrAddMessage
 }
 
 func ParseSolrAddMessages(eadXML string) (SolrAddMessages, error) {
 	// TODO: Remove this fake data
 	return SolrAddMessages{
 		Collection: "",
-		Components: &[]Component{
+		Components: &[]ComponentSolrAddMessage{
 			{
 				ID:      "mos_2021additional-daos",
 				Message: "",
