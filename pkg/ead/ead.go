@@ -1,37 +1,29 @@
 package ead
 
-type SolrAddMessages struct {
-	Collection string
+type EAD struct {
+	Collection Collection
 	Components *[]Component
 }
 
-type ComponentSolrAddMessage struct {
-	ID      string
-	Message string
-}
+func New(eadXML string) (EAD, error) {
+	ead := EAD{}
 
-type SolrAddMessages struct {
-	Collection string
-	Components *[]ComponentSolrAddMessage
-}
-
-func ParseSolrAddMessages(eadXML string) (SolrAddMessages, error) {
 	// TODO: Remove this fake data
-	return SolrAddMessages{
-		Collection: "",
-		Components: &[]ComponentSolrAddMessage{
-			{
-				ID:      "mos_2021additional-daos",
-				Message: "",
-			},
-			{
-				ID:      "mos_2021dao1",
-				Message: "",
-			},
-			{
-				ID:      "mos_2021non-existent",
-				Message: "",
-			},
+	ead.Collection.SolrAddMessage = ""
+	ead.Components = &[]Component{
+		{
+			ID:             "mos_2021additional-daos",
+			SolrAddMessage: "",
 		},
-	}, nil
+		{
+			ID:             "mos_2021dao1",
+			SolrAddMessage: "",
+		},
+		{
+			ID:             "mos_2021dao1",
+			SolrAddMessage: "",
+		},
+	}
+
+	return ead, nil
 }

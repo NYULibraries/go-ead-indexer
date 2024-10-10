@@ -33,23 +33,25 @@ func TestParseSolrAddMessages(t *testing.T) {
 				t.Fatal(err)
 			}
 
-			solrAddMessages, err := ParseSolrAddMessages(eadXML)
+			eadToTest, err := New(eadXML)
 			if err != nil {
 				t.Fatal(err)
 			}
 
-			testSolrAddMessage(eadID, eadID, solrAddMessages.Collection, t)
+			testSolrAddMessage(eadID, eadID, eadToTest.Collection.SolrAddMessage, t)
 
-			for _, componentRequestBody := range *solrAddMessages.Components {
-				testSolrAddMessage(eadID, componentRequestBody.ID, componentRequestBody.Message, t)
+			componentIDs := []string{}
+			for _, component := range *eadToTest.Components {
+				componentIDs = append(componentIDs, component.ID)
+				testSolrAddMessage(eadID, component.ID, component.SolrAddMessage, t)
 			}
 
-			testNoMissingComponents(eadID, solrAddMessages, t)
+			testNoMissingComponents(eadID, componentIDs, t)
 		})
 	}
 }
 
-func testNoMissingComponents(eadID string, solrAddMessages SolrAddMessages, t *testing.T) {
+func testNoMissingComponents(eadID string, componentIDs []string, t *testing.T) {
 	missingComponents := []string{}
 
 	goldenFileIDs := testutils.GetGoldenFileIDs(eadID)
@@ -57,13 +59,8 @@ func testNoMissingComponents(eadID string, solrAddMessages SolrAddMessages, t *t
 		return goldenFileID == eadID
 	})
 
-	actualFileIDs := []string{}
-	for _, componentAddMessage := range *solrAddMessages.Components {
-		actualFileIDs = append(actualFileIDs, componentAddMessage.ID)
-	}
-
 	for _, goldenFileID := range goldenFileIDs {
-		if !slices.Contains(actualFileIDs, goldenFileID) {
+		if !slices.Contains(componentIDs, goldenFileID) {
 			missingComponents = append(missingComponents, goldenFileID)
 		}
 	}
@@ -72,7 +69,7 @@ func testNoMissingComponents(eadID string, solrAddMessages SolrAddMessages, t *t
 		slices.SortStableFunc(missingComponents, func(a string, b string) int {
 			return strings.Compare(a, b)
 		})
-		failMessage := fmt.Sprintf("`SolrAddMessages.Components` for eadID %s is missing messages for these fileIDs:\n%s",
+		failMessage := fmt.Sprintf("`EAD.Components` for eadID %s is missing the following component IDs:\n%s",
 			eadID, strings.Join(missingComponents, "\n"))
 		t.Errorf(failMessage)
 	}
