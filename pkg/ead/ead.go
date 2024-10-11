@@ -20,6 +20,13 @@ type EAD struct {
 	OriginalFileContents string
 }
 
+type XPathParts map[string]XPathPart
+
+type XPathPart struct {
+	Query  string
+	Values []string
+}
+
 func New(eadXML string) (EAD, error) {
 	ead := EAD{}
 
