@@ -86,10 +86,17 @@ func New(eadXML string) (EAD, error) {
 }
 
 func MakeCollection(node types.Node) (Collection, error) {
-	// TODO: remove this fake data
-	return Collection{
+	newCollection := Collection{
 		SolrAddMessage: "",
-	}, nil
+		XPathParts:     XPathParts{},
+	}
+
+	err := newCollection.populateXPathParts(node)
+	if err != nil {
+		return newCollection, err
+	}
+
+	return newCollection, nil
 }
 
 func MakeComponents(node types.Node) (*[]Component, error) {
