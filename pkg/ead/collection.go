@@ -10,7 +10,13 @@ type Collection struct {
 }
 
 type CollectionParts struct {
-	XPathSimple CollectionXPathSimpleParts
+	XPathComposite CollectionXPathCompositeParts
+	XPathSimple    CollectionXPathSimpleParts
+}
+
+type CollectionXPathCompositeParts struct {
+	Creator []string
+	Name    []string
 }
 
 type CollectionXPathSimpleParts struct {
@@ -23,6 +29,9 @@ type CollectionXPathSimpleParts struct {
 	Collection         CollectionXPathPart
 	CorpNameNotInDSC   CollectionXPathPart
 	Creator            CollectionXPathPart
+	CreatorCorpName    CollectionXPathPart
+	CreatorFamName     CollectionXPathPart
+	CreatorPersName    CollectionXPathPart
 	CustodHist         CollectionXPathPart
 	EADID              CollectionXPathPart
 	FamNameNotInDSC    CollectionXPathPart
@@ -55,6 +64,27 @@ type CollectionXPathSimpleParts struct {
 type CollectionXPathPart struct {
 	Query  string
 	Values []string
+}
+
+func (collection *Collection) populateParts(node types.Node) error {
+	err := collection.populateXPathSimpleParts(node)
+	if err != nil {
+		return err
+	}
+
+	collection.populateXPathCompositeParts()
+
+	return nil
+}
+
+func (collection *Collection) populateXPathCompositeParts() {
+	creator := []string{}
+
+	xpc := &collection.Parts.XPathComposite
+	xps := &collection.Parts.XPathSimple
+	xpc.Creator = append(creator, xps.CreatorCorpName.Values...)
+	xpc.Creator = append(creator, xps.CreatorFamName.Values...)
+	xpc.Creator = append(creator, xps.CreatorPersName.Values...)
 }
 
 func (collection *Collection) populateXPathSimpleParts(node types.Node) error {
@@ -106,6 +136,24 @@ func (collection *Collection) populateXPathSimpleParts(node types.Node) error {
 
 	xp.Creator.Query = "//archdesc[@level='collection']/did/origination[@label='creator']/*[name() = 'corpname' or name() = 'famname' or name() = 'persname']"
 	xp.Creator.Values, err = getValuesForXPathQuery(xp.Creator.Query, node)
+	if err != nil {
+		return err
+	}
+
+	xp.CreatorCorpName.Query = "//origination[@label='creator']/corpname"
+	xp.CreatorCorpName.Values, err = getValuesForXPathQuery(xp.CreatorCorpName.Query, node)
+	if err != nil {
+		return err
+	}
+
+	xp.CreatorFamName.Query = "//origination[@label='creator']/famname"
+	xp.CreatorFamName.Values, err = getValuesForXPathQuery(xp.CreatorFamName.Query, node)
+	if err != nil {
+		return err
+	}
+
+	xp.CreatorPersName.Query = "//origination[@label='creator']/persname"
+	xp.CreatorPersName.Values, err = getValuesForXPathQuery(xp.CreatorPersName.Query, node)
 	if err != nil {
 		return err
 	}

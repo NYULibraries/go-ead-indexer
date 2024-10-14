@@ -79,7 +79,7 @@ func MakeCollection(node types.Node) (Collection, error) {
 		Parts:          CollectionParts{},
 	}
 
-	err := newCollection.populateXPathSimpleParts(node)
+	err := newCollection.populateParts(node)
 	if err != nil {
 		return newCollection, err
 	}
