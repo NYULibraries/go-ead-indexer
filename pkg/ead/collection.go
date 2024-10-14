@@ -11,41 +11,41 @@ type Collection struct {
 
 type CollectionXPathParts struct {
 	Abstract           CollectionXPathPart
-	Acqinfo            CollectionXPathPart
+	AcqInfo            CollectionXPathPart
 	Appraisal          CollectionXPathPart
 	Author             CollectionXPathPart
-	Bioghist           CollectionXPathPart
-	Chronlist          CollectionXPathPart
+	BiogHist           CollectionXPathPart
+	ChronList          CollectionXPathPart
 	Collection         CollectionXPathPart
-	Corpname           CollectionXPathPart
+	CorpNameNotInDSC   CollectionXPathPart
 	Creator            CollectionXPathPart
-	Custodhist         CollectionXPathPart
-	Ead                CollectionXPathPart
-	Famname            CollectionXPathPart
-	Function           CollectionXPathPart
-	Genreform          CollectionXPathPart
+	CustodHist         CollectionXPathPart
+	EADID              CollectionXPathPart
+	FamNameNotInDSC    CollectionXPathPart
+	FunctionNotInDSC   CollectionXPathPart
+	GenreForm          CollectionXPathPart
+	GenreFormNotInDSC  CollectionXPathPart
+	GeogNameNotInDSC   CollectionXPathPart
 	Geogname           CollectionXPathPart
 	Heading            CollectionXPathPart
-	Language           CollectionXPathPart
-	Material_type      CollectionXPathPart
-	Name               CollectionXPathPart
-	Note               CollectionXPathPart
-	Occupation         CollectionXPathPart
-	Persname           CollectionXPathPart
+	LangCode           CollectionXPathPart
+	NameNotInDSC       CollectionXPathPart
+	NoteNotInDSC       CollectionXPathPart
+	OccupationNotInDSC CollectionXPathPart
+	PersnameNotInDSC   CollectionXPathPart
 	Phystech           CollectionXPathPart
-	Place              CollectionXPathPart
-	Scopecontent       CollectionXPathPart
-	Subject            CollectionXPathPart
-	Subject_facets     CollectionXPathPart
-	Title              CollectionXPathPart
-	Unitdate           CollectionXPathPart
-	Unitdate_bulk      CollectionXPathPart
-	Unitdate_end       CollectionXPathPart
-	Unitdate_inclusive CollectionXPathPart
+	ScopeContent       CollectionXPathPart
+	SubjectForFacets   CollectionXPathPart
+	SubjectNotInDSC    CollectionXPathPart
+	TitleNotInDSC      CollectionXPathPart
+	UnitDateBulk       CollectionXPathPart
+	UnitDateInclusive  CollectionXPathPart
+	UnitDateNormal     CollectionXPathPart
+	UnitDateNotType    CollectionXPathPart
+	UnitID             CollectionXPathPart
+	UnitTitle          CollectionXPathPart
 	Unitdate_normal    CollectionXPathPart
 	Unitdate_start     CollectionXPathPart
-	Unitid             CollectionXPathPart
-	Unittitle          CollectionXPathPart
 }
 
 type CollectionXPathPart struct {
@@ -59,217 +59,193 @@ func (collection *Collection) populateXPathParts(node types.Node) error {
 	xp := &collection.XPathParts
 
 	xp.Abstract.Query = "//archdesc[@level='collection']/did/abstract"
-	xp.Abstract.Values, err = parseValues(xp.Abstract.Query, node)
+	xp.Abstract.Values, err = getValuesForXPathQuery(xp.Abstract.Query, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Acqinfo.Query = "//archdesc[@level='collection']/acqinfo/p"
-	xp.Acqinfo.Values, err = parseValues(xp.Acqinfo.Query, node)
+	xp.AcqInfo.Query = "//archdesc[@level='collection']/acqinfo/p"
+	xp.AcqInfo.Values, err = getValuesForXPathQuery(xp.AcqInfo.Query, node)
 	if err != nil {
 		return err
 	}
 
 	xp.Appraisal.Query = "//archdesc[@level='collection']/appraisal/p"
-	xp.Appraisal.Values, err = parseValues(xp.Appraisal.Query, node)
+	xp.Appraisal.Values, err = getValuesForXPathQuery(xp.Appraisal.Query, node)
 	if err != nil {
 		return err
 	}
 
 	xp.Author.Query = "//filedesc/titlestmt/author"
-	xp.Author.Values, err = parseValues(xp.Author.Query, node)
+	xp.Author.Values, err = getValuesForXPathQuery(xp.Author.Query, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Bioghist.Query = "//archdesc[@level='collection']/bioghist/p"
-	xp.Bioghist.Values, err = parseValues(xp.Bioghist.Query, node)
+	xp.BiogHist.Query = "//archdesc[@level='collection']/bioghist/p"
+	xp.BiogHist.Values, err = getValuesForXPathQuery(xp.BiogHist.Query, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Chronlist.Query = "//archdesc[@level='collection']/*[name() != 'dsc']//chronlist/chronitem//text()"
-	xp.Chronlist.Values, err = parseValues(xp.Chronlist.Query, node)
+	xp.ChronList.Query = "//archdesc[@level='collection']/*[name() != 'dsc']//chronlist/chronitem//text()"
+	xp.ChronList.Values, err = getValuesForXPathQuery(xp.ChronList.Query, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Collection.Query = "//archdesc[@level='collection']/did/unittitle"
-	xp.Collection.Values, err = parseValues(xp.Collection.Query, node)
+	xp.CorpNameNotInDSC.Query = "//archdesc[@level='collection']/*[name() != 'dsc']//corpname"
+	xp.CorpNameNotInDSC.Values, err = getValuesForXPathQuery(xp.CorpNameNotInDSC.Query, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Corpname.Query = "//archdesc[@level='collection']/*[name() != 'dsc']//corpname"
-	xp.Corpname.Values, err = parseValues(xp.Corpname.Query, node)
+	xp.Creator.Query = "//archdesc[@level='collection']/did/origination[@label='creator']/*[name() = 'corpname' or name() = 'famname' or name() = 'persname']"
+	xp.Creator.Values, err = getValuesForXPathQuery(xp.Creator.Query, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Creator.Query = "//archdesc[@level='collection']/did/origination[@label='creator']/*[#{creator_fields_to_xpath}]"
-	xp.Creator.Values, err = parseValues(xp.Creator.Query, node)
+	xp.CustodHist.Query = "//archdesc[@level='collection']/custodhist/p"
+	xp.CustodHist.Values, err = getValuesForXPathQuery(xp.CustodHist.Query, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Custodhist.Query = "//archdesc[@level='collection']/custodhist/p"
-	xp.Custodhist.Values, err = parseValues(xp.Custodhist.Query, node)
+	xp.EADID.Query = "//eadid"
+	xp.EADID.Values, err = getValuesForXPathQuery(xp.EADID.Query, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Ead.Query = "//eadid"
-	xp.Ead.Values, err = parseValues(xp.Ead.Query, node)
+	xp.FamNameNotInDSC.Query = "//archdesc[@level='collection']/*[name() != 'dsc']//famname"
+	xp.FamNameNotInDSC.Values, err = getValuesForXPathQuery(xp.FamNameNotInDSC.Query, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Famname.Query = "//archdesc[@level='collection']/*[name() != 'dsc']//famname"
-	xp.Famname.Values, err = parseValues(xp.Famname.Query, node)
+	xp.FunctionNotInDSC.Query = "//archdesc[@level='collection']/*[name() != 'dsc']//function"
+	xp.FunctionNotInDSC.Values, err = getValuesForXPathQuery(xp.FunctionNotInDSC.Query, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Function.Query = "//archdesc[@level='collection']/*[name() != 'dsc']//function"
-	xp.Function.Values, err = parseValues(xp.Function.Query, node)
+	xp.GenreForm.Query = "//genreform"
+	xp.GenreForm.Values, err = getValuesForXPathQuery(xp.GenreForm.Query, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Genreform.Query = "//archdesc[@level='collection']/*[name() != 'dsc']//genreform"
-	xp.Genreform.Values, err = parseValues(xp.Genreform.Query, node)
+	xp.GenreFormNotInDSC.Query = "//archdesc[@level='collection']/*[name() != 'dsc']//genreform"
+	xp.GenreFormNotInDSC.Values, err = getValuesForXPathQuery(xp.GenreFormNotInDSC.Query, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Geogname.Query = "//archdesc[@level='collection']/*[name() != 'dsc']//geogname"
-	xp.Geogname.Values, err = parseValues(xp.Geogname.Query, node)
+	xp.Geogname.Query = "//geogname"
+	xp.Geogname.Values, err = getValuesForXPathQuery(xp.Geogname.Query, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Heading.Query = "//archdesc[@level='collection']/did/unittitle"
-	xp.Heading.Values, err = parseValues(xp.Heading.Query, node)
+	xp.GeogNameNotInDSC.Query = "//archdesc[@level='collection']/*[name() != 'dsc']//geogname"
+	xp.GeogNameNotInDSC.Values, err = getValuesForXPathQuery(xp.GeogNameNotInDSC.Query, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Language.Query = "//archdesc[@level='collection']/did/langmaterial/language/@langcode"
-	xp.Language.Values, err = parseValues(xp.Language.Query, node)
+	xp.LangCode.Query = "//archdesc[@level='collection']/did/langmaterial/language/@langcode"
+	xp.LangCode.Values, err = getValuesForXPathQuery(xp.LangCode.Query, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Material_type.Query = "//genreform"
-	xp.Material_type.Values, err = parseValues(xp.Material_type.Query, node)
+	xp.NameNotInDSC.Query = "//archdesc[@level='collection']/*[name() != 'dsc']//name"
+	xp.NameNotInDSC.Values, err = getValuesForXPathQuery(xp.NameNotInDSC.Query, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Name.Query = "//archdesc[@level='collection']/*[name() != 'dsc']//name"
-	xp.Name.Values, err = parseValues(xp.Name.Query, node)
+	xp.NoteNotInDSC.Query = "//archdesc[@level='collection']/*[name() != 'dsc']//note"
+	xp.NoteNotInDSC.Values, err = getValuesForXPathQuery(xp.NoteNotInDSC.Query, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Note.Query = "//archdesc[@level='collection']/*[name() != 'dsc']//note"
-	xp.Note.Values, err = parseValues(xp.Note.Query, node)
+	xp.OccupationNotInDSC.Query = "//archdesc[@level='collection']/*[name() != 'dsc']//occupation"
+	xp.OccupationNotInDSC.Values, err = getValuesForXPathQuery(xp.OccupationNotInDSC.Query, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Occupation.Query = "//archdesc[@level='collection']/*[name() != 'dsc']//occupation"
-	xp.Occupation.Values, err = parseValues(xp.Occupation.Query, node)
-	if err != nil {
-		return err
-	}
-
-	xp.Persname.Query = "//archdesc[@level='collection']/*[name() != 'dsc']//persname"
-	xp.Persname.Values, err = parseValues(xp.Persname.Query, node)
+	xp.PersnameNotInDSC.Query = "//archdesc[@level='collection']/*[name() != 'dsc']//persname"
+	xp.PersnameNotInDSC.Values, err = getValuesForXPathQuery(xp.PersnameNotInDSC.Query, node)
 	if err != nil {
 		return err
 	}
 
 	xp.Phystech.Query = "//archdesc[@level='collection']/phystech/p"
-	xp.Phystech.Values, err = parseValues(xp.Phystech.Query, node)
+	xp.Phystech.Values, err = getValuesForXPathQuery(xp.Phystech.Query, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Place.Query = "//geogname"
-	xp.Place.Values, err = parseValues(xp.Place.Query, node)
+	xp.ScopeContent.Query = "//archdesc[@level='collection']/scopecontent/p"
+	xp.ScopeContent.Values, err = getValuesForXPathQuery(xp.ScopeContent.Query, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Scopecontent.Query = "//archdesc[@level='collection']/scopecontent/p"
-	xp.Scopecontent.Values, err = parseValues(xp.Scopecontent.Query, node)
+	xp.SubjectForFacets.Query = "//*[local-name()='subject' or local-name()='function' or local-name() = 'occupation']"
+	xp.SubjectForFacets.Values, err = getValuesForXPathQuery(xp.SubjectForFacets.Query, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Subject.Query = "//[archdesc[@level='collection']/*[name() != 'dsc']//subject"
-	xp.Subject.Values, err = parseValues(xp.Subject.Query, node)
+	xp.SubjectNotInDSC.Query = "//archdesc[@level='collection']/*[name() != 'dsc']//subject"
+	xp.SubjectNotInDSC.Values, err = getValuesForXPathQuery(xp.SubjectNotInDSC.Query, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Subject_facets.Query = "//*[local-name()='subject' or local-name()='function' or local-name() = 'occupation']"
-	xp.Subject_facets.Values, err = parseValues(xp.Subject_facets.Query, node)
+	xp.TitleNotInDSC.Query = "//archdesc[@level='collection']/*[name() != 'dsc']//title"
+	xp.TitleNotInDSC.Values, err = getValuesForXPathQuery(xp.TitleNotInDSC.Query, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Title.Query = "//archdesc[@level='collection']/*[name() != 'dsc']//title"
-	xp.Title.Values, err = parseValues(xp.Title.Query, node)
+	xp.UnitDateBulk.Query = "//archdesc[@level='collection']/did/unitdate[@type='bulk']"
+	xp.UnitDateBulk.Values, err = getValuesForXPathQuery(xp.UnitDateBulk.Query, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Unitdate.Query = "//archdesc[@level='collection']/did/unitdate[not(@type)]"
-	xp.Unitdate.Values, err = parseValues(xp.Unitdate.Query, node)
+	xp.UnitDateInclusive.Query = "//archdesc[@level='collection']/did/unitdate[@type='inclusive']"
+	xp.UnitDateInclusive.Values, err = getValuesForXPathQuery(xp.UnitDateInclusive.Query, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Unitdate_bulk.Query = "//archdesc[@level='collection']/did/unitdate[@type='bulk']"
-	xp.Unitdate_bulk.Values, err = parseValues(xp.Unitdate_bulk.Query, node)
+	xp.UnitDateNormal.Query = "//archdesc[@level='collection']/did/unitdate/@normal"
+	xp.UnitDateNormal.Values, err = getValuesForXPathQuery(xp.UnitDateNormal.Query, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Unitdate_end.Query = "//archdesc[@level='collection']/did/unitdate/@normal"
-	xp.Unitdate_end.Values, err = parseValues(xp.Unitdate_end.Query, node)
+	xp.UnitDateNotType.Query = "//archdesc[@level='collection']/did/unitdate[not(@type)]"
+	xp.UnitDateNotType.Values, err = getValuesForXPathQuery(xp.UnitDateNotType.Query, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Unitdate_inclusive.Query = "//archdesc[@level='collection']/did/unitdate[@type='inclusive']"
-	xp.Unitdate_inclusive.Values, err = parseValues(xp.Unitdate_inclusive.Query, node)
+	xp.UnitID.Query = "//archdesc[@level='collection']/did/unitid"
+	xp.UnitID.Values, err = getValuesForXPathQuery(xp.UnitID.Query, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Unitdate_normal.Query = "//archdesc[@level='collection']/did/unitdate/@normal"
-	xp.Unitdate_normal.Values, err = parseValues(xp.Unitdate_normal.Query, node)
-	if err != nil {
-		return err
-	}
-
-	xp.Unitdate_start.Query = "//archdesc[@level='collection']/did/unitdate/@normal"
-	xp.Unitdate_start.Values, err = parseValues(xp.Unitdate_start.Query, node)
-	if err != nil {
-		return err
-	}
-
-	xp.Unitid.Query = "//archdesc[@level='collection']/did/unitid"
-	xp.Unitid.Values, err = parseValues(xp.Unitid.Query, node)
-	if err != nil {
-		return err
-	}
-
-	xp.Unittitle.Query = "//archdesc[@level='collection']/did/unittitle"
-	xp.Unittitle.Values, err = parseValues(xp.Unittitle.Query, node)
+	xp.UnitTitle.Query = "//archdesc[@level='collection']/did/unittitle"
+	xp.UnitTitle.Values, err = getValuesForXPathQuery(xp.UnitTitle.Query, node)
 	if err != nil {
 		return err
 	}
@@ -277,6 +253,17 @@ func (collection *Collection) populateXPathParts(node types.Node) error {
 	return nil
 }
 
-func parseValues(query string, node types.Node) ([]string, error) {
-	return []string{}, nil
+func getValuesForXPathQuery(query string, node types.Node) ([]string, error) {
+	var values []string
+
+	xpathResult, err := node.Find(query)
+	if err != nil {
+		return nil, err
+	}
+
+	for _, node = range xpathResult.NodeList() {
+		values = append(values, node.NodeValue())
+	}
+
+	return values, nil
 }
