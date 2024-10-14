@@ -4,11 +4,15 @@ import "github.com/lestrrat-go/libxml2/types"
 
 type Component struct {
 	ID             string
+	Parts          ComponentParts
 	SolrAddMessage string
-	XPathParts     ComponentXPathParts
 }
 
-type ComponentXPathParts struct {
+type ComponentParts struct {
+	XPathSimple ComponentXPathSimpleParts
+}
+
+type ComponentXPathSimpleParts struct {
 	Address                       ComponentXPathPart
 	Appraisal                     ComponentXPathPart
 	BiogHist                      ComponentXPathPart
@@ -49,10 +53,10 @@ type ComponentXPathPart struct {
 	Values []string
 }
 
-func (component *Component) populateXPathParts(node types.Node) error {
+func (component *Component) populateXPathSimpleParts(node types.Node) error {
 	var err error
 
-	xp := &component.XPathParts
+	xp := &component.Parts.XPathSimple
 
 	xp.Address.Query = "//address/p"
 	xp.Address.Values, err = getValuesForXPathQuery(xp.Address.Query, node)

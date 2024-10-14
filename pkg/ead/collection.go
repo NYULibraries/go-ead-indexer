@@ -6,10 +6,14 @@ import (
 
 type Collection struct {
 	SolrAddMessage string
-	XPathParts     CollectionXPathParts
+	Parts          CollectionParts
 }
 
-type CollectionXPathParts struct {
+type CollectionParts struct {
+	XPathSimple CollectionXPathSimpleParts
+}
+
+type CollectionXPathSimpleParts struct {
 	Abstract           CollectionXPathPart
 	AcqInfo            CollectionXPathPart
 	Appraisal          CollectionXPathPart
@@ -53,10 +57,10 @@ type CollectionXPathPart struct {
 	Values []string
 }
 
-func (collection *Collection) populateXPathParts(node types.Node) error {
+func (collection *Collection) populateXPathSimpleParts(node types.Node) error {
 	var err error
 
-	xp := &collection.XPathParts
+	xp := &collection.Parts.XPathSimple
 
 	xp.Abstract.Query = "//archdesc[@level='collection']/did/abstract"
 	xp.Abstract.Values, err = getValuesForXPathQuery(xp.Abstract.Query, node)

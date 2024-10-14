@@ -76,10 +76,10 @@ func New(eadXML string) (EAD, error) {
 func MakeCollection(node types.Node) (Collection, error) {
 	newCollection := Collection{
 		SolrAddMessage: "",
-		XPathParts:     CollectionXPathParts{},
+		Parts:          CollectionParts{},
 	}
 
-	err := newCollection.populateXPathParts(node)
+	err := newCollection.populateXPathSimpleParts(node)
 	if err != nil {
 		return newCollection, err
 	}
@@ -90,12 +90,13 @@ func MakeCollection(node types.Node) (Collection, error) {
 func MakeComponent(node types.Node) (Component, error) {
 	component := Component{}
 
-	err := component.populateXPathParts(node)
+	err := component.populateXPathSimpleParts(node)
 	if err != nil {
 		return component, err
 	}
 
-	component.ID = component.XPathParts.EADID.Values[0] + component.XPathParts.Ref.Values[0]
+	component.ID = component.Parts.XPathSimple.EADID.Values[0] +
+		component.Parts.XPathSimple.Ref.Values[0]
 
 	return component, nil
 }
