@@ -32,7 +32,7 @@ type CollectionXPathParts struct {
 	NameNotInDSC       CollectionXPathPart
 	NoteNotInDSC       CollectionXPathPart
 	OccupationNotInDSC CollectionXPathPart
-	PersnameNotInDSC   CollectionXPathPart
+	PersNameNotInDSC   CollectionXPathPart
 	Phystech           CollectionXPathPart
 	ScopeContent       CollectionXPathPart
 	SubjectForFacets   CollectionXPathPart
@@ -178,8 +178,8 @@ func (collection *Collection) populateXPathParts(node types.Node) error {
 		return err
 	}
 
-	xp.PersnameNotInDSC.Query = "//archdesc[@level='collection']/*[name() != 'dsc']//persname"
-	xp.PersnameNotInDSC.Values, err = getValuesForXPathQuery(xp.PersnameNotInDSC.Query, node)
+	xp.PersNameNotInDSC.Query = "//archdesc[@level='collection']/*[name() != 'dsc']//persname"
+	xp.PersNameNotInDSC.Values, err = getValuesForXPathQuery(xp.PersNameNotInDSC.Query, node)
 	if err != nil {
 		return err
 	}
