@@ -87,22 +87,45 @@ func MakeCollection(node types.Node) (Collection, error) {
 	return newCollection, nil
 }
 
+func MakeComponent(node types.Node) (Component, error) {
+	component := Component{}
+
+	err := component.populateXPathParts(node)
+	if err != nil {
+		return component, err
+	}
+
+	component.ID = component.XPathParts.EADID.Values[0] + component.XPathParts.Ref.Values[0]
+
+	return component, nil
+}
+
 func MakeComponents(node types.Node) (*[]Component, error) {
-	// TODO: remove this fake data
-	return &[]Component{
-		{
-			ID:             "mos_2021additional-daos",
-			SolrAddMessage: "",
-		},
-		{
-			ID:             "mos_2021dao1",
-			SolrAddMessage: "",
-		},
-		{
-			ID:             "mos_2021dao1",
-			SolrAddMessage: "",
-		},
-	}, nil
+	xpathResult, err := node.Find("//c")
+	if err != nil {
+		return nil, err
+	}
+
+	// Note: can't do `&xpathResult.NodeList()`
+	// See https://groups.google.com/g/golang-nuts/c/reaIlFdibWU
+	cNodes := xpathResult.NodeList()
+
+	// Early exit
+	if len(cNodes) == 0 {
+		return nil, nil
+	}
+
+	components := []Component{}
+	for _, cNode := range cNodes {
+		newComponent, err := MakeComponent(cNode)
+		if err != nil {
+			return &components, err
+		}
+
+		components = append(components, newComponent)
+	}
+
+	return &components, nil
 }
 
 func MakeXMLDoc(eadXML string) (types.Document, error) {
