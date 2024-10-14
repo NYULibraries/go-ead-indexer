@@ -20,13 +20,6 @@ type EAD struct {
 	OriginalFileContents string
 }
 
-type XPathParts map[string]XPathPart
-
-type XPathPart struct {
-	Query  string
-	Values []string
-}
-
 func New(eadXML string) (EAD, error) {
 	ead := EAD{}
 
@@ -88,7 +81,7 @@ func New(eadXML string) (EAD, error) {
 func MakeCollection(node types.Node) (Collection, error) {
 	newCollection := Collection{
 		SolrAddMessage: "",
-		XPathParts:     XPathParts{},
+		XPathParts:     CollectionXPathParts{},
 	}
 
 	err := newCollection.populateXPathParts(node)
