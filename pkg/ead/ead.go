@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"github.com/lestrrat-go/libxml2/parser"
 	"github.com/lestrrat-go/libxml2/types"
-	"github.com/lestrrat-go/libxml2/xpath"
 	"regexp"
 )
 
@@ -70,10 +69,6 @@ func New(eadXML string) (EAD, error) {
 	if err != nil {
 		return ead, err
 	}
-
-	// Test
-	unittitles := xpath.String(rootNode.Find("//archdesc[@level='collection']/did/unittitle"))
-	fmt.Println(unittitles)
 
 	return ead, nil
 }
