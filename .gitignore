@@ -9,6 +9,12 @@ pkg/ead/testdata/tmp/*
 pkg/ead/testdata/tmp/actual/*
 !pkg/ead/testdata/tmp/actual/.gitkeep
 
+# TODO: DELETE THESE RULES AFTER THE SAMPLE LIST IS FINALIZED
+pkg/ead/testutils/testdata/fixtures/ead-files/*
+!pkg/ead/testutils/testdata/fixtures/ead-files/mos_2021.xml
+pkg/ead/testutils/testdata/golden/*
+!pkg/ead/testutils/testdata/golden/mos_2021
+
 ### Patterns below are copied from https://github.com/github/gitignore/blob/e95aa3fbbd591f0486205cb8848d99e38bee5b35/Go.gitignore
 
 # If you prefer the allow list template instead of the deny list, see community template:
