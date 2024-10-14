@@ -114,3 +114,18 @@ func MakeXMLDoc(eadXML string) (types.Document, error) {
 
 	return xmlDoc, nil
 }
+
+func getValuesForXPathQuery(query string, node types.Node) ([]string, error) {
+	var values []string
+
+	xpathResult, err := node.Find(query)
+	if err != nil {
+		return nil, err
+	}
+
+	for _, node = range xpathResult.NodeList() {
+		values = append(values, node.NodeValue())
+	}
+
+	return values, nil
+}

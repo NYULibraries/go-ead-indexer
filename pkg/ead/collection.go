@@ -252,18 +252,3 @@ func (collection *Collection) populateXPathParts(node types.Node) error {
 
 	return nil
 }
-
-func getValuesForXPathQuery(query string, node types.Node) ([]string, error) {
-	var values []string
-
-	xpathResult, err := node.Find(query)
-	if err != nil {
-		return nil, err
-	}
-
-	for _, node = range xpathResult.NodeList() {
-		values = append(values, node.NodeValue())
-	}
-
-	return values, nil
-}
