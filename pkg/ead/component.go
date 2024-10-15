@@ -57,6 +57,34 @@ type ComponentXPathPart struct {
 	Values []string
 }
 
+func MakeComponents(node types.Node) (*[]Component, error) {
+	xpathResult, err := node.Find("//c")
+	if err != nil {
+		return nil, err
+	}
+
+	// Note: can't do `&xpathResult.NodeList()`
+	// See https://groups.google.com/g/golang-nuts/c/reaIlFdibWU
+	cNodes := xpathResult.NodeList()
+
+	// Early exit
+	if len(cNodes) == 0 {
+		return nil, nil
+	}
+
+	components := []Component{}
+	for _, cNode := range cNodes {
+		newComponent, err := MakeComponent(cNode)
+		if err != nil {
+			return &components, err
+		}
+
+		components = append(components, newComponent)
+	}
+
+	return &components, nil
+}
+
 func (component *Component) populateXPathSimpleParts(node types.Node) error {
 	var err error
 
@@ -275,32 +303,4 @@ func MakeComponent(node types.Node) (Component, error) {
 		component.Parts.XPath.Simple.Ref.Values[0]
 
 	return component, nil
-}
-
-func MakeComponents(node types.Node) (*[]Component, error) {
-	xpathResult, err := node.Find("//c")
-	if err != nil {
-		return nil, err
-	}
-
-	// Note: can't do `&xpathResult.NodeList()`
-	// See https://groups.google.com/g/golang-nuts/c/reaIlFdibWU
-	cNodes := xpathResult.NodeList()
-
-	// Early exit
-	if len(cNodes) == 0 {
-		return nil, nil
-	}
-
-	components := []Component{}
-	for _, cNode := range cNodes {
-		newComponent, err := MakeComponent(cNode)
-		if err != nil {
-			return &components, err
-		}
-
-		components = append(components, newComponent)
-	}
-
-	return &components, nil
 }
