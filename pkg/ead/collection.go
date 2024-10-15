@@ -24,45 +24,48 @@ type CollectionXPathCompositeParts struct {
 }
 
 type CollectionXPathSimpleParts struct {
-	Abstract           CollectionXPathPart
-	AcqInfo            CollectionXPathPart
-	Appraisal          CollectionXPathPart
-	Author             CollectionXPathPart
-	BiogHist           CollectionXPathPart
-	ChronList          CollectionXPathPart
-	Collection         CollectionXPathPart
-	CorpNameNotInDSC   CollectionXPathPart
-	Creator            CollectionXPathPart
-	CreatorCorpName    CollectionXPathPart
-	CreatorFamName     CollectionXPathPart
-	CreatorPersName    CollectionXPathPart
-	CustodHist         CollectionXPathPart
-	EADID              CollectionXPathPart
-	FamNameNotInDSC    CollectionXPathPart
-	FunctionNotInDSC   CollectionXPathPart
-	GenreForm          CollectionXPathPart
-	GenreFormNotInDSC  CollectionXPathPart
-	GeogNameNotInDSC   CollectionXPathPart
-	Geogname           CollectionXPathPart
-	Heading            CollectionXPathPart
-	LangCode           CollectionXPathPart
-	NameNotInDSC       CollectionXPathPart
-	NoteNotInDSC       CollectionXPathPart
-	OccupationNotInDSC CollectionXPathPart
-	PersNameNotInDSC   CollectionXPathPart
-	Phystech           CollectionXPathPart
-	ScopeContent       CollectionXPathPart
-	SubjectForFacets   CollectionXPathPart
-	SubjectNotInDSC    CollectionXPathPart
-	TitleNotInDSC      CollectionXPathPart
-	UnitDateBulk       CollectionXPathPart
-	UnitDateInclusive  CollectionXPathPart
-	UnitDateNormal     CollectionXPathPart
-	UnitDateNotType    CollectionXPathPart
-	UnitID             CollectionXPathPart
-	UnitTitle          CollectionXPathPart
-	Unitdate_normal    CollectionXPathPart
-	Unitdate_start     CollectionXPathPart
+	Abstract                CollectionXPathPart
+	AcqInfo                 CollectionXPathPart
+	Appraisal               CollectionXPathPart
+	Author                  CollectionXPathPart
+	BiogHist                CollectionXPathPart
+	ChronList               CollectionXPathPart
+	Collection              CollectionXPathPart
+	CorpNameNotInRepository CollectionXPathPart
+	CorpNameNotInDSC        CollectionXPathPart
+	Creator                 CollectionXPathPart
+	CreatorCorpName         CollectionXPathPart
+	CreatorFamName          CollectionXPathPart
+	CreatorPersName         CollectionXPathPart
+	CustodHist              CollectionXPathPart
+	EADID                   CollectionXPathPart
+	FamName                 CollectionXPathPart
+	FamNameNotInDSC         CollectionXPathPart
+	FunctionNotInDSC        CollectionXPathPart
+	GenreForm               CollectionXPathPart
+	GenreFormNotInDSC       CollectionXPathPart
+	GeogNameNotInDSC        CollectionXPathPart
+	Geogname                CollectionXPathPart
+	Heading                 CollectionXPathPart
+	LangCode                CollectionXPathPart
+	NameNotInDSC            CollectionXPathPart
+	NoteNotInDSC            CollectionXPathPart
+	OccupationNotInDSC      CollectionXPathPart
+	PersName                CollectionXPathPart
+	PersNameNotInDSC        CollectionXPathPart
+	Phystech                CollectionXPathPart
+	ScopeContent            CollectionXPathPart
+	SubjectForFacets        CollectionXPathPart
+	SubjectNotInDSC         CollectionXPathPart
+	TitleNotInDSC           CollectionXPathPart
+	UnitDateBulk            CollectionXPathPart
+	UnitDateInclusive       CollectionXPathPart
+	UnitDateNormal          CollectionXPathPart
+	UnitDateNotType         CollectionXPathPart
+	UnitID                  CollectionXPathPart
+	UnitTitle               CollectionXPathPart
+	Unitdate_normal         CollectionXPathPart
+	Unitdate_start          CollectionXPathPart
 }
 
 type CollectionXPathPart struct {
@@ -132,6 +135,12 @@ func (collection *Collection) populateXPathSimpleParts(node types.Node) error {
 		return err
 	}
 
+	xp.CorpNameNotInRepository.Query = "//*[local-name()!='repository']/corpname"
+	xp.CorpNameNotInRepository.Values, err = getValuesForXPathQuery(xp.CorpNameNotInRepository.Query, node)
+	if err != nil {
+		return err
+	}
+
 	xp.CorpNameNotInDSC.Query = "//archdesc[@level='collection']/*[name() != 'dsc']//corpname"
 	xp.CorpNameNotInDSC.Values, err = getValuesForXPathQuery(xp.CorpNameNotInDSC.Query, node)
 	if err != nil {
@@ -195,6 +204,12 @@ func (collection *Collection) populateXPathSimpleParts(node types.Node) error {
 		return err
 	}
 
+	xp.FamName.Query = "//famname"
+	xp.FamName.Values, err = getValuesForXPathQuery(xp.FamName.Query, node)
+	if err != nil {
+		return err
+	}
+
 	xp.FamNameNotInDSC.Query = "//archdesc[@level='collection']/*[name() != 'dsc']//famname"
 	xp.FamNameNotInDSC.Values, err = getValuesForXPathQuery(xp.FamNameNotInDSC.Query, node)
 	if err != nil {
@@ -251,6 +266,12 @@ func (collection *Collection) populateXPathSimpleParts(node types.Node) error {
 
 	xp.OccupationNotInDSC.Query = "//archdesc[@level='collection']/*[name() != 'dsc']//occupation"
 	xp.OccupationNotInDSC.Values, err = getValuesForXPathQuery(xp.OccupationNotInDSC.Query, node)
+	if err != nil {
+		return err
+	}
+
+	xp.PersName.Query = "//persname"
+	xp.PersName.Values, err = getValuesForXPathQuery(xp.PersName.Query, node)
 	if err != nil {
 		return err
 	}
