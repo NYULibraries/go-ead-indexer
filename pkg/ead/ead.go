@@ -7,6 +7,16 @@ import (
 	"regexp"
 )
 
+// TODO: fix the bug we've intentionally preserved in MARC subfield demarcation
+// replacement.  For details, see:
+//
+//   - https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10154897&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10154897
+//   - https://jira.nyu.edu/browse/DLFA-229?focusedCommentId=10153922&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10153922
+//
+// This is the buggy regular expression which replicates the v1 indexer code here:
+// https://github.com/NYULibraries/ead_indexer/blob/a367ab8cc791376f0d8a287cbcd5b6ee43d5c04f/lib/ead_indexer/behaviors.rb#L124
+var marcSubfieldDemarcator = regexp.MustCompile(`\|\w{1}`)
+
 // We need to set `xmlns=""` to get the xpath queries working.  See code comment
 // in `New()` for more details.  `xmlns=""` is valid according to this post:
 // https://stackoverflow.com/questions/1587891/is-xmlns-a-valid-xml-namespace
@@ -96,4 +106,20 @@ func getValuesForXPathQuery(query string, node types.Node) ([]string, error) {
 	}
 
 	return values, nil
+}
+
+func replaceMARCSubfieldDemarcatorsInSlice(stringSlice []string) []string {
+	newSlice := []string{}
+	for _, element := range stringSlice {
+		newSlice = append(newSlice, replaceMARCSubfieldDemarcators(element))
+	}
+
+	return newSlice
+}
+
+// TODO: fix the bug we've intentionally preserved here -- for details, see:
+// * https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10154897&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10154897
+// * https://jira.nyu.edu/browse/DLFA-229?focusedCommentId=10153922&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10153922
+func replaceMARCSubfieldDemarcators(str string) string {
+	return marcSubfieldDemarcator.ReplaceAllString(str, "--")
 }
