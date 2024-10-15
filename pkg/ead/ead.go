@@ -73,62 +73,6 @@ func New(eadXML string) (EAD, error) {
 	return ead, nil
 }
 
-func MakeCollection(node types.Node) (Collection, error) {
-	newCollection := Collection{
-		SolrAddMessage: "",
-		Parts:          CollectionParts{},
-	}
-
-	err := newCollection.populateParts(node)
-	if err != nil {
-		return newCollection, err
-	}
-
-	return newCollection, nil
-}
-
-func MakeComponent(node types.Node) (Component, error) {
-	component := Component{}
-
-	err := component.populateXPathSimpleParts(node)
-	if err != nil {
-		return component, err
-	}
-
-	component.ID = component.Parts.XPath.Simple.EADID.Values[0] +
-		component.Parts.XPath.Simple.Ref.Values[0]
-
-	return component, nil
-}
-
-func MakeComponents(node types.Node) (*[]Component, error) {
-	xpathResult, err := node.Find("//c")
-	if err != nil {
-		return nil, err
-	}
-
-	// Note: can't do `&xpathResult.NodeList()`
-	// See https://groups.google.com/g/golang-nuts/c/reaIlFdibWU
-	cNodes := xpathResult.NodeList()
-
-	// Early exit
-	if len(cNodes) == 0 {
-		return nil, nil
-	}
-
-	components := []Component{}
-	for _, cNode := range cNodes {
-		newComponent, err := MakeComponent(cNode)
-		if err != nil {
-			return &components, err
-		}
-
-		components = append(components, newComponent)
-	}
-
-	return &components, nil
-}
-
 func MakeXMLDoc(eadXML string) (types.Document, error) {
 	xmlParser := parser.New()
 	xmlDoc, err := xmlParser.ParseString(eadXML)

@@ -308,3 +308,17 @@ func (collection *Collection) populateXPathSimpleParts(node types.Node) error {
 
 	return nil
 }
+
+func MakeCollection(node types.Node) (Collection, error) {
+	newCollection := Collection{
+		SolrAddMessage: "",
+		Parts:          CollectionParts{},
+	}
+
+	err := newCollection.populateParts(node)
+	if err != nil {
+		return newCollection, err
+	}
+
+	return newCollection, nil
+}
