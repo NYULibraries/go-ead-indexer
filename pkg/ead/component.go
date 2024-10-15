@@ -9,7 +9,11 @@ type Component struct {
 }
 
 type ComponentParts struct {
-	XPathSimple ComponentXPathSimpleParts
+	XPath ComponentXPath
+}
+
+type ComponentXPath struct {
+	Simple ComponentXPathSimpleParts
 }
 
 type ComponentXPathSimpleParts struct {
@@ -56,7 +60,7 @@ type ComponentXPathPart struct {
 func (component *Component) populateXPathSimpleParts(node types.Node) error {
 	var err error
 
-	xp := &component.Parts.XPathSimple
+	xp := &component.Parts.XPath.Simple
 
 	xp.Address.Query = "//address/p"
 	xp.Address.Values, err = getValuesForXPathQuery(xp.Address.Query, node)

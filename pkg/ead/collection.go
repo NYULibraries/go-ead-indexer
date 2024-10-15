@@ -10,8 +10,12 @@ type Collection struct {
 }
 
 type CollectionParts struct {
-	XPathComposite CollectionXPathCompositeParts
-	XPathSimple    CollectionXPathSimpleParts
+	XPath CollectionXPath
+}
+
+type CollectionXPath struct {
+	Composite CollectionXPathCompositeParts
+	Simple    CollectionXPathSimpleParts
 }
 
 type CollectionXPathCompositeParts struct {
@@ -80,8 +84,8 @@ func (collection *Collection) populateParts(node types.Node) error {
 func (collection *Collection) populateXPathCompositeParts() {
 	creator := []string{}
 
-	xpc := &collection.Parts.XPathComposite
-	xps := &collection.Parts.XPathSimple
+	xpc := &collection.Parts.XPath.Composite
+	xps := &collection.Parts.XPath.Simple
 	xpc.Creator = append(creator, xps.CreatorCorpName.Values...)
 	xpc.Creator = append(creator, xps.CreatorFamName.Values...)
 	xpc.Creator = append(creator, xps.CreatorPersName.Values...)
@@ -90,7 +94,7 @@ func (collection *Collection) populateXPathCompositeParts() {
 func (collection *Collection) populateXPathSimpleParts(node types.Node) error {
 	var err error
 
-	xp := &collection.Parts.XPathSimple
+	xp := &collection.Parts.XPath.Simple
 
 	xp.Abstract.Query = "//archdesc[@level='collection']/did/abstract"
 	xp.Abstract.Values, err = getValuesForXPathQuery(xp.Abstract.Query, node)

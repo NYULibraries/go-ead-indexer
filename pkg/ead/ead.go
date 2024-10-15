@@ -95,8 +95,8 @@ func MakeComponent(node types.Node) (Component, error) {
 		return component, err
 	}
 
-	component.ID = component.Parts.XPathSimple.EADID.Values[0] +
-		component.Parts.XPathSimple.Ref.Values[0]
+	component.ID = component.Parts.XPath.Simple.EADID.Values[0] +
+		component.Parts.XPath.Simple.Ref.Values[0]
 
 	return component, nil
 }
