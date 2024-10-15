@@ -138,25 +138,46 @@ func (collection *Collection) populateXPathSimpleParts(node types.Node) error {
 		return err
 	}
 
-	xp.Creator.Query = "//archdesc[@level='collection']/did/origination[@label='creator']/*[name() = 'corpname' or name() = 'famname' or name() = 'persname']"
+	// We need to be able to find elements with `label="Creator"` and `label="creator"`.
+	// For details, see email thread starting with email sent by Joe on Mon, Aug 28, 2023, 12:56PM
+	// with subject:
+	// "FADESIGN: ead-publisher taken offline, full site rebuild in progress, missing creator facet"
+	// ...and Jira ticket: https: //jira.nyu.edu/browse/FADESIGN-843.
+	//
+	// Note that XPath 2.0 functions `matches` and `lower-case` don't work for
+	// here.  `matches(@label,'creator','i')` fails with compile errors:
+	//
+	//           xmlXPathCompOpEval: function matches not found
+	//           XPath error : Unregistered function
+	//
+	// ...`lower-case(@label)='creator'`, the same.  Presumably this is because
+	// the libxml2 package we are using doesn't support XPath 2.0.
+	//
+	// The `translate` solution we use below for the `Creator*` fields seems
+	// to be the common method for who don't have XPath 2.0 options:
+	// "Case insensitive xpaths"
+	// https://groups.google.com/g/selenium-users/c/Lcvbjisk4qE
+	// "case-insensitive matching in XPath?"
+	// https://stackoverflow.com/questions/2893551/case-insensitive-matching-in-xpath
+	xp.Creator.Query = "//archdesc[@level='collection']/did/origination[translate(@label, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='creator']/*[name() = 'corpname' or name() = 'famname' or name() = 'persname']"
 	xp.Creator.Values, err = getValuesForXPathQuery(xp.Creator.Query, node)
 	if err != nil {
 		return err
 	}
 
-	xp.CreatorCorpName.Query = "//origination[@label='creator']/corpname"
+	xp.CreatorCorpName.Query = "//origination[translate(@label, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='creator']/corpname"
 	xp.CreatorCorpName.Values, err = getValuesForXPathQuery(xp.CreatorCorpName.Query, node)
 	if err != nil {
 		return err
 	}
 
-	xp.CreatorFamName.Query = "//origination[@label='creator']/famname"
+	xp.CreatorFamName.Query = "//origination[translate(@label, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='creator']/famname"
 	xp.CreatorFamName.Values, err = getValuesForXPathQuery(xp.CreatorFamName.Query, node)
 	if err != nil {
 		return err
 	}
 
-	xp.CreatorPersName.Query = "//origination[@label='creator']/persname"
+	xp.CreatorPersName.Query = "//origination[translate(@label, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='creator']/persname"
 	xp.CreatorPersName.Values, err = getValuesForXPathQuery(xp.CreatorPersName.Query, node)
 	if err != nil {
 		return err
