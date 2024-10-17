@@ -11,20 +11,20 @@ type CollectionDoc struct {
 }
 
 type CollectionDocParts struct {
-	CollectionDocHardcodedParts
 	CollectionDocComplexParts
+	CollectionDocHardcodedParts
 	CollectionDocXPathParts
-}
-
-type CollectionDocHardcodedParts struct {
-	FormatForDisplay string
-	FormatForSort    int
 }
 
 type CollectionDocComplexParts struct {
 	CreatorComplex CollectionDocXPathPart
 	OnlineAccess   CollectionDocXPathPart
 	Name           CollectionDocXPathPart
+}
+
+type CollectionDocHardcodedParts struct {
+	FormatForDisplay string
+	FormatForSort    int
 }
 
 type CollectionDocXPathParts struct {
