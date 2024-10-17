@@ -9,11 +9,7 @@ type Component struct {
 }
 
 type ComponentParts struct {
-	XPath ComponentXPath
-}
-
-type ComponentXPath struct {
-	Simple ComponentXPathSimpleParts
+	ComponentXPathSimpleParts
 }
 
 type ComponentXPathSimpleParts struct {
@@ -53,7 +49,7 @@ type ComponentXPathSimpleParts struct {
 }
 
 type ComponentXPathPart struct {
-	Query  string
+	Source string
 	Values []string
 }
 
@@ -88,202 +84,202 @@ func MakeComponents(node types.Node) (*[]Component, error) {
 func (component *Component) populateXPathSimpleParts(node types.Node) error {
 	var err error
 
-	xp := &component.Parts.XPath.Simple
+	parts := &component.Parts
 
-	xp.Address.Query = "//address/p"
-	xp.Address.Values, err = getValuesForXPathQuery(xp.Address.Query, node)
+	parts.Address.Source = "//address/p"
+	parts.Address.Values, err = getValuesForXPathQuery(parts.Address.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Appraisal.Query = "//appraisal/p"
-	xp.Appraisal.Values, err = getValuesForXPathQuery(xp.Appraisal.Query, node)
+	parts.Appraisal.Source = "//appraisal/p"
+	parts.Appraisal.Values, err = getValuesForXPathQuery(parts.Appraisal.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.BiogHist.Query = "//bioghist/p"
-	xp.BiogHist.Values, err = getValuesForXPathQuery(xp.BiogHist.Query, node)
+	parts.BiogHist.Source = "//bioghist/p"
+	parts.BiogHist.Values, err = getValuesForXPathQuery(parts.BiogHist.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.ChronList.Query = "//chronlist/chronitem//text()"
-	xp.ChronList.Values, err = getValuesForXPathQuery(xp.ChronList.Query, node)
+	parts.ChronList.Source = "//chronlist/chronitem//text()"
+	parts.ChronList.Values, err = getValuesForXPathQuery(parts.ChronList.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Collection.Query = "//archdesc/did/unittitle"
-	xp.Collection.Values, err = getValuesForXPathQuery(xp.Collection.Query, node)
+	parts.Collection.Source = "//archdesc/did/unittitle"
+	parts.Collection.Values, err = getValuesForXPathQuery(parts.Collection.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.CollectionUnitID.Query = "//archdesc/did/unitid"
-	xp.CollectionUnitID.Values, err = getValuesForXPathQuery(xp.CollectionUnitID.Query, node)
+	parts.CollectionUnitID.Source = "//archdesc/did/unitid"
+	parts.CollectionUnitID.Values, err = getValuesForXPathQuery(parts.CollectionUnitID.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Corpname.Query = "//corpname"
-	xp.Corpname.Values, err = getValuesForXPathQuery(xp.Corpname.Query, node)
+	parts.Corpname.Source = "//corpname"
+	parts.Corpname.Values, err = getValuesForXPathQuery(parts.Corpname.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Creator.Query = "//archdesc[@level='collection']/did/origination[@label='creator']/*[name() = 'corpname' or name() = 'famname' or name() = 'persname']"
-	xp.Creator.Values, err = getValuesForXPathQuery(xp.Creator.Query, node)
+	parts.Creator.Source = "//archdesc[@level='collection']/did/origination[@label='creator']/*[name() = 'corpname' or name() = 'famname' or name() = 'persname']"
+	parts.Creator.Values, err = getValuesForXPathQuery(parts.Creator.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.DAO.Query = "//dao/daodesc/p"
-	xp.DAO.Values, err = getValuesForXPathQuery(xp.DAO.Query, node)
+	parts.DAO.Source = "//dao/daodesc/p"
+	parts.DAO.Values, err = getValuesForXPathQuery(parts.DAO.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.DIDUnitID.Query = "//did/unitid"
-	xp.DIDUnitID.Values, err = getValuesForXPathQuery(xp.DIDUnitID.Query, node)
+	parts.DIDUnitID.Source = "//did/unitid"
+	parts.DIDUnitID.Values, err = getValuesForXPathQuery(parts.DIDUnitID.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.DIDUnitTitle.Query = "//did/unittitle"
-	xp.DIDUnitTitle.Values, err = getValuesForXPathQuery(xp.DIDUnitTitle.Query, node)
+	parts.DIDUnitTitle.Source = "//did/unittitle"
+	parts.DIDUnitTitle.Values, err = getValuesForXPathQuery(parts.DIDUnitTitle.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.EADID.Query = "//eadid"
-	xp.EADID.Values, err = getValuesForXPathQuery(xp.EADID.Query, node)
+	parts.EADID.Source = "//eadid"
+	parts.EADID.Values, err = getValuesForXPathQuery(parts.EADID.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.FamName.Query = "//famname"
-	xp.FamName.Values, err = getValuesForXPathQuery(xp.FamName.Query, node)
+	parts.FamName.Source = "//famname"
+	parts.FamName.Values, err = getValuesForXPathQuery(parts.FamName.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Function.Query = "//function"
-	xp.Function.Values, err = getValuesForXPathQuery(xp.Function.Query, node)
+	parts.Function.Source = "//function"
+	parts.Function.Values, err = getValuesForXPathQuery(parts.Function.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.GenreForm.Query = "//genreform"
-	xp.GenreForm.Values, err = getValuesForXPathQuery(xp.GenreForm.Query, node)
+	parts.GenreForm.Source = "//genreform"
+	parts.GenreForm.Values, err = getValuesForXPathQuery(parts.GenreForm.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.GeogName.Query = "//geogname"
-	xp.GeogName.Values, err = getValuesForXPathQuery(xp.GeogName.Query, node)
+	parts.GeogName.Source = "//geogname"
+	parts.GeogName.Values, err = getValuesForXPathQuery(parts.GeogName.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Heading.Query = "//archdesc[@level='collection']/did/unittitle"
-	xp.Heading.Values, err = getValuesForXPathQuery(xp.Heading.Query, node)
+	parts.Heading.Source = "//archdesc[@level='collection']/did/unittitle"
+	parts.Heading.Values, err = getValuesForXPathQuery(parts.Heading.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Language.Query = "//did/langmaterial/language/@langcode"
-	xp.Language.Values, err = getValuesForXPathQuery(xp.Language.Query, node)
+	parts.Language.Source = "//did/langmaterial/language/@langcode"
+	parts.Language.Values, err = getValuesForXPathQuery(parts.Language.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Level.Query = "///c/@level"
-	xp.Level.Values, err = getValuesForXPathQuery(xp.Level.Query, node)
+	parts.Level.Source = "///c/@level"
+	parts.Level.Values, err = getValuesForXPathQuery(parts.Level.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Name.Query = "//name"
-	xp.Name.Values, err = getValuesForXPathQuery(xp.Name.Query, node)
+	parts.Name.Source = "//name"
+	parts.Name.Values, err = getValuesForXPathQuery(parts.Name.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Note.Query = "//note"
-	xp.Note.Values, err = getValuesForXPathQuery(xp.Note.Query, node)
+	parts.Note.Source = "//note"
+	parts.Note.Values, err = getValuesForXPathQuery(parts.Note.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Occupation.Query = "//occupation"
-	xp.Occupation.Values, err = getValuesForXPathQuery(xp.Occupation.Query, node)
+	parts.Occupation.Source = "//occupation"
+	parts.Occupation.Values, err = getValuesForXPathQuery(parts.Occupation.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.PersName.Query = "//persname"
-	xp.PersName.Values, err = getValuesForXPathQuery(xp.PersName.Query, node)
+	parts.PersName.Source = "//persname"
+	parts.PersName.Values, err = getValuesForXPathQuery(parts.PersName.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.PhysTech.Query = "//phystech/p"
-	xp.PhysTech.Values, err = getValuesForXPathQuery(xp.PhysTech.Query, node)
+	parts.PhysTech.Source = "//phystech/p"
+	parts.PhysTech.Values, err = getValuesForXPathQuery(parts.PhysTech.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Ref.Query = "///c/@id"
-	xp.Ref.Values, err = getValuesForXPathQuery(xp.Ref.Query, node)
+	parts.Ref.Source = "///c/@id"
+	parts.Ref.Values, err = getValuesForXPathQuery(parts.Ref.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.ScopeContent.Query = "//scopecontent/p"
-	xp.ScopeContent.Values, err = getValuesForXPathQuery(xp.ScopeContent.Query, node)
+	parts.ScopeContent.Source = "//scopecontent/p"
+	parts.ScopeContent.Values, err = getValuesForXPathQuery(parts.ScopeContent.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Subject.Query = "//subject"
-	xp.Subject.Values, err = getValuesForXPathQuery(xp.Subject.Query, node)
+	parts.Subject.Source = "//subject"
+	parts.Subject.Values, err = getValuesForXPathQuery(parts.Subject.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.SubjectOrFunctionOrOccupation.Query = "//*[local-name()='subject' or local-name()='function' or local-name() = 'occupation']"
-	xp.SubjectOrFunctionOrOccupation.Values, err = getValuesForXPathQuery(xp.SubjectOrFunctionOrOccupation.Query, node)
+	parts.SubjectOrFunctionOrOccupation.Source = "//*[local-name()='subject' or local-name()='function' or local-name() = 'occupation']"
+	parts.SubjectOrFunctionOrOccupation.Values, err = getValuesForXPathQuery(parts.SubjectOrFunctionOrOccupation.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.Title.Query = "//title"
-	xp.Title.Values, err = getValuesForXPathQuery(xp.Title.Query, node)
+	parts.Title.Source = "//title"
+	parts.Title.Values, err = getValuesForXPathQuery(parts.Title.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.UnitDateNotType.Query = "//did/unitdate[not(@type)]"
-	xp.UnitDateNotType.Values, err = getValuesForXPathQuery(xp.UnitDateNotType.Query, node)
+	parts.UnitDateNotType.Source = "//did/unitdate[not(@type)]"
+	parts.UnitDateNotType.Values, err = getValuesForXPathQuery(parts.UnitDateNotType.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.UnitDateBulk.Query = "//archdesc[@level='collection']/did/unitdate[@type='bulk']"
-	xp.UnitDateBulk.Values, err = getValuesForXPathQuery(xp.UnitDateBulk.Query, node)
+	parts.UnitDateBulk.Source = "//archdesc[@level='collection']/did/unitdate[@type='bulk']"
+	parts.UnitDateBulk.Values, err = getValuesForXPathQuery(parts.UnitDateBulk.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.UnitDateNormal.Query = "//did/unitdate/@normal"
-	xp.UnitDateNormal.Values, err = getValuesForXPathQuery(xp.UnitDateNormal.Query, node)
+	parts.UnitDateNormal.Source = "//did/unitdate/@normal"
+	parts.UnitDateNormal.Values, err = getValuesForXPathQuery(parts.UnitDateNormal.Source, node)
 	if err != nil {
 		return err
 	}
 
-	xp.UnitdateInclusive.Query = "//archdesc[@level='collection']/did/unitdate[@type='inclusive']"
-	xp.UnitdateInclusive.Values, err = getValuesForXPathQuery(xp.UnitdateInclusive.Query, node)
+	parts.UnitdateInclusive.Source = "//archdesc[@level='collection']/did/unitdate[@type='inclusive']"
+	parts.UnitdateInclusive.Values, err = getValuesForXPathQuery(parts.UnitdateInclusive.Source, node)
 	if err != nil {
 		return err
 	}
@@ -299,8 +295,8 @@ func MakeComponent(node types.Node) (Component, error) {
 		return component, err
 	}
 
-	component.ID = component.Parts.XPath.Simple.EADID.Values[0] +
-		component.Parts.XPath.Simple.Ref.Values[0]
+	component.ID = component.Parts.EADID.Values[0] +
+		component.Parts.Ref.Values[0]
 
 	return component, nil
 }
