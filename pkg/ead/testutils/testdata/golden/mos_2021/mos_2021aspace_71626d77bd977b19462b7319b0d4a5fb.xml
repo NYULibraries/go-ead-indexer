@@ -64,9 +64,9 @@
     <field name="unitdate_normal_sim">1981-08-31/1981-08-31</field>
     <field name="unitdate_teim">1981-08-31</field>
     <field name="ref_ssi">aspace_71626d77bd977b19462b7319b0d4a5fb</field>
-    <field name="repository_ssi">dlts</field>
-    <field name="repository_sim">dlts</field>
-    <field name="repository_ssm">dlts</field>
+    <field name="repository_ssi">appdev</field>
+    <field name="repository_sim">appdev</field>
+    <field name="repository_ssm">appdev</field>
     <field name="format_sim">Archival Object</field>
     <field name="format_ssm">Archival Object</field>
     <field name="collection_teim">Megan O'Shea's One Resource to Rule Them All</field>

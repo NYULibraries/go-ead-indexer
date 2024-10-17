@@ -128,9 +128,9 @@
     <field name="dao_teim">This is a digital object</field>
     <field name="dao_ssm">This is a digital object</field>
     <field name="ref_ssi">aspace_68fd22d28746c12f37e250728431c61d</field>
-    <field name="repository_ssi">dlts</field>
-    <field name="repository_sim">dlts</field>
-    <field name="repository_ssm">dlts</field>
+    <field name="repository_ssi">appdev</field>
+    <field name="repository_sim">appdev</field>
+    <field name="repository_ssm">appdev</field>
     <field name="format_sim">Archival Series</field>
     <field name="format_ssm">Archival Series</field>
     <field name="location_ssm">box: 1, folder: 1</field>
