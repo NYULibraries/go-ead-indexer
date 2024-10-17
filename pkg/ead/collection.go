@@ -7,85 +7,85 @@ import (
 
 type CollectionDoc struct {
 	SolrAddMessage string
-	Parts          CollectionParts
+	Parts          CollectionDocParts
 }
 
-type CollectionParts struct {
-	XPath CollectionXPath
+type CollectionDocParts struct {
+	XPath CollectionDocXPath
 }
 
-type CollectionXPath struct {
-	Composite CollectionXPathCompositeParts
-	Simple    CollectionXPathSimpleParts
+type CollectionDocXPath struct {
+	Composite CollectionDocXPathCompositeParts
+	Simple    CollectionDocXPathSimpleParts
 }
 
-type CollectionXPathCompositeParts struct {
+type CollectionDocXPathCompositeParts struct {
 	Creator []string
 	Name    []string
 }
 
-type CollectionXPathSimpleParts struct {
-	Abstract                CollectionXPathPart
-	AcqInfo                 CollectionXPathPart
-	Appraisal               CollectionXPathPart
-	Author                  CollectionXPathPart
-	BiogHist                CollectionXPathPart
-	ChronList               CollectionXPathPart
-	Collection              CollectionXPathPart
-	CorpNameNotInRepository CollectionXPathPart
-	CorpNameNotInDSC        CollectionXPathPart
-	Creator                 CollectionXPathPart
-	CreatorCorpName         CollectionXPathPart
-	CreatorFamName          CollectionXPathPart
-	CreatorPersName         CollectionXPathPart
-	CustodHist              CollectionXPathPart
-	EADID                   CollectionXPathPart
-	FamName                 CollectionXPathPart
-	FamNameNotInDSC         CollectionXPathPart
-	FunctionNotInDSC        CollectionXPathPart
-	GenreForm               CollectionXPathPart
-	GenreFormNotInDSC       CollectionXPathPart
-	GeogNameNotInDSC        CollectionXPathPart
-	Geogname                CollectionXPathPart
-	Heading                 CollectionXPathPart
-	LangCode                CollectionXPathPart
-	NameNotInDSC            CollectionXPathPart
-	NoteNotInDSC            CollectionXPathPart
-	OccupationNotInDSC      CollectionXPathPart
-	PersName                CollectionXPathPart
-	PersNameNotInDSC        CollectionXPathPart
-	Phystech                CollectionXPathPart
-	ScopeContent            CollectionXPathPart
-	SubjectForFacets        CollectionXPathPart
-	SubjectNotInDSC         CollectionXPathPart
-	TitleNotInDSC           CollectionXPathPart
-	UnitDateBulk            CollectionXPathPart
-	UnitDateInclusive       CollectionXPathPart
-	UnitDateNormal          CollectionXPathPart
-	UnitDateNotType         CollectionXPathPart
-	UnitID                  CollectionXPathPart
-	UnitTitle               CollectionXPathPart
-	Unitdate_normal         CollectionXPathPart
-	Unitdate_start          CollectionXPathPart
+type CollectionDocXPathSimpleParts struct {
+	Abstract                CollectionDocXPathPart
+	AcqInfo                 CollectionDocXPathPart
+	Appraisal               CollectionDocXPathPart
+	Author                  CollectionDocXPathPart
+	BiogHist                CollectionDocXPathPart
+	ChronList               CollectionDocXPathPart
+	Collection              CollectionDocXPathPart
+	CorpNameNotInRepository CollectionDocXPathPart
+	CorpNameNotInDSC        CollectionDocXPathPart
+	Creator                 CollectionDocXPathPart
+	CreatorCorpName         CollectionDocXPathPart
+	CreatorFamName          CollectionDocXPathPart
+	CreatorPersName         CollectionDocXPathPart
+	CustodHist              CollectionDocXPathPart
+	EADID                   CollectionDocXPathPart
+	FamName                 CollectionDocXPathPart
+	FamNameNotInDSC         CollectionDocXPathPart
+	FunctionNotInDSC        CollectionDocXPathPart
+	GenreForm               CollectionDocXPathPart
+	GenreFormNotInDSC       CollectionDocXPathPart
+	GeogNameNotInDSC        CollectionDocXPathPart
+	Geogname                CollectionDocXPathPart
+	Heading                 CollectionDocXPathPart
+	LangCode                CollectionDocXPathPart
+	NameNotInDSC            CollectionDocXPathPart
+	NoteNotInDSC            CollectionDocXPathPart
+	OccupationNotInDSC      CollectionDocXPathPart
+	PersName                CollectionDocXPathPart
+	PersNameNotInDSC        CollectionDocXPathPart
+	Phystech                CollectionDocXPathPart
+	ScopeContent            CollectionDocXPathPart
+	SubjectForFacets        CollectionDocXPathPart
+	SubjectNotInDSC         CollectionDocXPathPart
+	TitleNotInDSC           CollectionDocXPathPart
+	UnitDateBulk            CollectionDocXPathPart
+	UnitDateInclusive       CollectionDocXPathPart
+	UnitDateNormal          CollectionDocXPathPart
+	UnitDateNotType         CollectionDocXPathPart
+	UnitID                  CollectionDocXPathPart
+	UnitTitle               CollectionDocXPathPart
+	Unitdate_normal         CollectionDocXPathPart
+	Unitdate_start          CollectionDocXPathPart
 }
 
-type CollectionXPathPart struct {
+type CollectionDocXPathPart struct {
 	Query  string
 	Values []string
 }
 
-func MakeCollection(node types.Node) (CollectionDoc, error) {
-	newCollection := CollectionDoc{
+func MakeCollectionDoc(node types.Node) (CollectionDoc, error) {
+	newCollectionDoc := CollectionDoc{
 		SolrAddMessage: "",
-		Parts:          CollectionParts{},
+		Parts:          CollectionDocParts{},
 	}
 
-	err := newCollection.populateParts(node)
+	err := newCollectionDoc.populateParts(node)
 	if err != nil {
-		return newCollection, err
+		return newCollectionDoc, err
 	}
 
-	return newCollection, nil
+	return newCollectionDoc, nil
 }
 
 func (collectionDoc *CollectionDoc) populateParts(node types.Node) error {

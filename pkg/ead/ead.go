@@ -70,7 +70,7 @@ func New(eadXML string) (EAD, error) {
 		return ead, err
 	}
 
-	ead.CollectionDoc, err = MakeCollection(rootNode)
+	ead.CollectionDoc, err = MakeCollectionDoc(rootNode)
 	if err != nil {
 		return ead, err
 	}
