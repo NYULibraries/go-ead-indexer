@@ -11,8 +11,14 @@ type CollectionDoc struct {
 }
 
 type CollectionDocParts struct {
+	CollectionDocHardcodedParts
 	CollectionDocXPathCompositeParts
 	CollectionDocXPathSimpleParts
+}
+
+type CollectionDocHardcodedParts struct {
+	FormatForDisplay string
+	FormatForSort    int
 }
 
 type CollectionDocXPathCompositeParts struct {
@@ -91,6 +97,10 @@ func (collectionDoc *CollectionDoc) populateParts(node types.Node) error {
 	}
 
 	collectionDoc.populateXPathCompositeParts()
+
+	// Hardcoded parts
+	collectionDoc.Parts.FormatForDisplay = "Archival Collection"
+	collectionDoc.Parts.FormatForSort = 0
 
 	return nil
 }
