@@ -280,6 +280,19 @@
       <title source="local">New York Nichibei.</title>
       <persname role="dnr" source="naf">Debs, Eugene V. (Eugene Victor), 1855-1926</persname>
       <corpname role="dnr" source="naf">Tamiment Library</corpname>
+
+      <!-- To test MARC subfield demarcator replacement in names in collection doc -->
+      <!-- From archives/mc_168.xml, to test MARC subfield demarcator replacement in names -->
+      <corpname source="naf">United States. Congress. House. |b Committee on Education and Labor</corpname>
+      <corpname source="naf">United States. Congress. House. |b Committee on Education and Labor. |b Select Subcommittee on Education</corpname>
+      <corpname source="naf">United States. Congress. House. |x Leadership</corpname>
+      <!-- Name from archives/mc_11.xml, with added subfield $g - "Miscellaneous information (R)" -->
+      <famname rules="dacs" source="local">Tisch family |g [MISCELLANEOUS INFORMATION]</famname>
+      <!-- Name from archives/rg_35.xml, with added subfield $g - "Miscellaneous information (R)" -->
+      <famname rules="dacs" source="local">Tisch family |g [EVEN MORE MISCELLANEOUS INFORMATION]</famname>
+      <!-- From tamwag/tam_080.xml-->
+      <persname source="naf">Brophy, John, 1883-1963. -- |v Portraits</persname>
+      <persname source="naf">Carey, James B. -- |v Portraits</persname>
     </controlaccess>
     <dsc>
       <c id="aspace_499449c48c751a22b7c222d3ce2c2879" level="series">
