@@ -110,14 +110,14 @@ func (collectionDoc *CollectionDoc) populateComplexParts() {
 
 	parts := &collectionDoc.Parts
 
-	//  CreatorComplex
+	// CreatorComplex
 	creatorComplexValues := []string{}
 	creatorComplexValues = append(creatorComplexValues, parts.CreatorCorpName.Values...)
 	creatorComplexValues = append(creatorComplexValues, parts.CreatorFamName.Values...)
 	creatorComplexValues = append(creatorComplexValues, parts.CreatorPersName.Values...)
 	parts.CreatorComplex.Values = creatorComplexValues
 
-	//  Name
+	// Name
 	nameValues := []string{}
 	nameValues = append(nameValues, parts.FamName.Values...)
 	nameValues = append(nameValues, parts.PersName.Values...)
