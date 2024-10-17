@@ -38,7 +38,7 @@ func TestParseSolrAddMessages(t *testing.T) {
 				t.Fatal(err)
 			}
 
-			testSolrAddMessage(eadID, eadID, eadToTest.Collection.SolrAddMessage, t)
+			testSolrAddMessage(eadID, eadID, eadToTest.CollectionDoc.SolrAddMessage, t)
 
 			componentIDs := []string{}
 			for _, component := range *eadToTest.Components {

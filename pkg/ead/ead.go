@@ -23,7 +23,7 @@ var marcSubfieldDemarcator = regexp.MustCompile(`\|\w{1}`)
 var namespaceRegexp = regexp.MustCompile(`<((?s)\s*)ead((?s).*)xmlns="(?U).*"`)
 
 type EAD struct {
-	Collection           Collection
+	CollectionDoc        CollectionDoc
 	Components           *[]Component
 	ModifiedFileContents string
 	OriginalFileContents string
@@ -70,7 +70,7 @@ func New(eadXML string) (EAD, error) {
 		return ead, err
 	}
 
-	ead.Collection, err = MakeCollection(rootNode)
+	ead.CollectionDoc, err = MakeCollection(rootNode)
 	if err != nil {
 		return ead, err
 	}

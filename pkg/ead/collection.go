@@ -5,7 +5,7 @@ import (
 	"go-ead-indexer/pkg/util"
 )
 
-type Collection struct {
+type CollectionDoc struct {
 	SolrAddMessage string
 	Parts          CollectionParts
 }
@@ -74,8 +74,8 @@ type CollectionXPathPart struct {
 	Values []string
 }
 
-func MakeCollection(node types.Node) (Collection, error) {
-	newCollection := Collection{
+func MakeCollection(node types.Node) (CollectionDoc, error) {
+	newCollection := CollectionDoc{
 		SolrAddMessage: "",
 		Parts:          CollectionParts{},
 	}
@@ -88,20 +88,20 @@ func MakeCollection(node types.Node) (Collection, error) {
 	return newCollection, nil
 }
 
-func (collection *Collection) populateParts(node types.Node) error {
-	err := collection.populateXPathSimpleParts(node)
+func (collectionDoc *CollectionDoc) populateParts(node types.Node) error {
+	err := collectionDoc.populateXPathSimpleParts(node)
 	if err != nil {
 		return err
 	}
 
-	collection.populateXPathCompositeParts()
+	collectionDoc.populateXPathCompositeParts()
 
 	return nil
 }
 
-func (collection *Collection) populateXPathCompositeParts() {
-	xpc := &collection.Parts.XPath.Composite
-	xps := &collection.Parts.XPath.Simple
+func (collectionDoc *CollectionDoc) populateXPathCompositeParts() {
+	xpc := &collectionDoc.Parts.XPath.Composite
+	xps := &collectionDoc.Parts.XPath.Simple
 
 	//  Creator
 	creator := []string{}
@@ -120,10 +120,10 @@ func (collection *Collection) populateXPathCompositeParts() {
 	xpc.Name = name
 }
 
-func (collection *Collection) populateXPathSimpleParts(node types.Node) error {
+func (collectionDoc *CollectionDoc) populateXPathSimpleParts(node types.Node) error {
 	var err error
 
-	xp := &collection.Parts.XPath.Simple
+	xp := &collectionDoc.Parts.XPath.Simple
 
 	xp.Abstract.Query = "//archdesc[@level='collection']/did/abstract"
 	xp.Abstract.Values, err = getValuesForXPathQuery(xp.Abstract.Query, node)
