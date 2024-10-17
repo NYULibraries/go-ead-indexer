@@ -2,6 +2,7 @@ package ead
 
 import (
 	"github.com/lestrrat-go/libxml2/types"
+	"go-ead-indexer/pkg/util"
 )
 
 type Collection struct {
@@ -99,13 +100,24 @@ func (collection *Collection) populateParts(node types.Node) error {
 }
 
 func (collection *Collection) populateXPathCompositeParts() {
-	creator := []string{}
-
 	xpc := &collection.Parts.XPath.Composite
 	xps := &collection.Parts.XPath.Simple
-	xpc.Creator = append(creator, xps.CreatorCorpName.Values...)
-	xpc.Creator = append(creator, xps.CreatorFamName.Values...)
-	xpc.Creator = append(creator, xps.CreatorPersName.Values...)
+
+	//  Creator
+	creator := []string{}
+	creator = append(creator, xps.CreatorCorpName.Values...)
+	creator = append(creator, xps.CreatorFamName.Values...)
+	creator = append(creator, xps.CreatorPersName.Values...)
+	xpc.Creator = creator
+
+	//  Name
+	name := []string{}
+	name = append(name, xps.FamName.Values...)
+	name = append(name, xps.PersName.Values...)
+	name = append(name, xps.CorpNameNotInRepository.Values...)
+	name = replaceMARCSubfieldDemarcatorsInSlice(name)
+	name = util.CompactStringSlicePreserveOrder(name)
+	xpc.Name = name
 }
 
 func (collection *Collection) populateXPathSimpleParts(node types.Node) error {
