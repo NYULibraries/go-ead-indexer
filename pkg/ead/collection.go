@@ -12,8 +12,8 @@ type CollectionDoc struct {
 
 type CollectionDocParts struct {
 	CollectionDocHardcodedParts
-	CollectionDocXPathCompositeParts
-	CollectionDocXPathSimpleParts
+	CollectionDocComplexParts
+	CollectionDocXPathParts
 }
 
 type CollectionDocHardcodedParts struct {
@@ -21,12 +21,12 @@ type CollectionDocHardcodedParts struct {
 	FormatForSort    int
 }
 
-type CollectionDocXPathCompositeParts struct {
-	CreatorComposite CollectionDocXPathPart
-	Name             CollectionDocXPathPart
+type CollectionDocComplexParts struct {
+	CreatorComplex CollectionDocXPathPart
+	Name           CollectionDocXPathPart
 }
 
-type CollectionDocXPathSimpleParts struct {
+type CollectionDocXPathParts struct {
 	Abstract                CollectionDocXPathPart
 	AcqInfo                 CollectionDocXPathPart
 	Appraisal               CollectionDocXPathPart
@@ -96,7 +96,7 @@ func (collectionDoc *CollectionDoc) populateParts(node types.Node) error {
 		return err
 	}
 
-	collectionDoc.populateXPathCompositeParts()
+	collectionDoc.populateComplexParts()
 
 	// Hardcoded parts
 	collectionDoc.Parts.FormatForDisplay = "Archival Collection"
@@ -105,17 +105,17 @@ func (collectionDoc *CollectionDoc) populateParts(node types.Node) error {
 	return nil
 }
 
-func (collectionDoc *CollectionDoc) populateXPathCompositeParts() {
+func (collectionDoc *CollectionDoc) populateComplexParts() {
 	// TODO: Do we need to have anything in `CollectionDocXPathPart.Source`?
 
 	parts := &collectionDoc.Parts
 
-	//  CreatorComposite
-	creatorCompositeValues := []string{}
-	creatorCompositeValues = append(creatorCompositeValues, parts.CreatorCorpName.Values...)
-	creatorCompositeValues = append(creatorCompositeValues, parts.CreatorFamName.Values...)
-	creatorCompositeValues = append(creatorCompositeValues, parts.CreatorPersName.Values...)
-	parts.CreatorComposite.Values = creatorCompositeValues
+	//  CreatorComplex
+	creatorComplexValues := []string{}
+	creatorComplexValues = append(creatorComplexValues, parts.CreatorCorpName.Values...)
+	creatorComplexValues = append(creatorComplexValues, parts.CreatorFamName.Values...)
+	creatorComplexValues = append(creatorComplexValues, parts.CreatorPersName.Values...)
+	parts.CreatorComplex.Values = creatorComplexValues
 
 	//  Name
 	nameValues := []string{}

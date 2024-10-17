@@ -9,10 +9,10 @@ type Component struct {
 }
 
 type ComponentParts struct {
-	ComponentXPathSimpleParts
+	ComponentXPathDirectQueryParts
 }
 
-type ComponentXPathSimpleParts struct {
+type ComponentXPathDirectQueryParts struct {
 	Address                       ComponentXPathPart
 	Appraisal                     ComponentXPathPart
 	BiogHist                      ComponentXPathPart
@@ -81,7 +81,7 @@ func MakeComponents(node types.Node) (*[]Component, error) {
 	return &components, nil
 }
 
-func (component *Component) populateXPathSimpleParts(node types.Node) error {
+func (component *Component) populateXPathParts(node types.Node) error {
 	var err error
 
 	parts := &component.Parts
@@ -290,7 +290,7 @@ func (component *Component) populateXPathSimpleParts(node types.Node) error {
 func MakeComponent(node types.Node) (Component, error) {
 	component := Component{}
 
-	err := component.populateXPathSimpleParts(node)
+	err := component.populateXPathParts(node)
 	if err != nil {
 		return component, err
 	}
