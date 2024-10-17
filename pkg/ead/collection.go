@@ -23,6 +23,7 @@ type CollectionDocHardcodedParts struct {
 
 type CollectionDocComplexParts struct {
 	CreatorComplex CollectionDocXPathPart
+	OnlineAccess   CollectionDocXPathPart
 	Name           CollectionDocXPathPart
 }
 
@@ -41,6 +42,7 @@ type CollectionDocXPathParts struct {
 	CreatorFamName          CollectionDocXPathPart
 	CreatorPersName         CollectionDocXPathPart
 	CustodHist              CollectionDocXPathPart
+	DAO                     CollectionDocXPathPart
 	EADID                   CollectionDocXPathPart
 	FamName                 CollectionDocXPathPart
 	FamNameNotInDSC         CollectionDocXPathPart
@@ -116,6 +118,11 @@ func (collectionDoc *CollectionDoc) populateComplexParts() {
 	creatorComplexValues = append(creatorComplexValues, parts.CreatorFamName.Values...)
 	creatorComplexValues = append(creatorComplexValues, parts.CreatorPersName.Values...)
 	parts.CreatorComplex.Values = creatorComplexValues
+
+	// Online access
+	if len(parts.DAO.Values) > 0 {
+		parts.OnlineAccess.Values[0] = "Online Access"
+	}
 
 	// Name
 	nameValues := []string{}
@@ -227,6 +234,12 @@ func (collectionDoc *CollectionDoc) populateXPathSimpleParts(node types.Node) er
 
 	parts.CustodHist.Source = "//archdesc[@level='collection']/custodhist/p"
 	parts.CustodHist.Values, err = getValuesForXPathQuery(parts.CustodHist.Source, node)
+	if err != nil {
+		return err
+	}
+
+	parts.DAO.Source = "//dao"
+	parts.DAO.Values, err = getValuesForXPathQuery(parts.DAO.Source, node)
 	if err != nil {
 		return err
 	}
