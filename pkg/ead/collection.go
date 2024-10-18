@@ -121,7 +121,7 @@ func (collectionDoc *CollectionDoc) populateComplexParts() {
 
 	// Online access
 	if len(parts.DAO.Values) > 0 {
-		parts.OnlineAccess.Values[0] = "Online Access"
+		parts.OnlineAccess.Values = []string{"Online Access"}
 	}
 
 	// Name
