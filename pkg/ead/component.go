@@ -10,6 +10,7 @@ type Component struct {
 
 type ComponentParts struct {
 	ComponentXPathDirectQueryParts
+	RepositoryCode ComponentPart
 }
 
 type ComponentXPathDirectQueryParts struct {
@@ -53,7 +54,8 @@ type ComponentPart struct {
 	Values []string
 }
 
-func MakeComponents(node types.Node) (*[]Component, error) {
+// See `ead.new()` comment on why we have to pass in `repositoryCode` as an argument.
+func MakeComponents(repositoryCode string, node types.Node) (*[]Component, error) {
 	xpathResult, err := node.Find("//c")
 	if err != nil {
 		return nil, err
@@ -70,7 +72,7 @@ func MakeComponents(node types.Node) (*[]Component, error) {
 
 	components := []Component{}
 	for _, cNode := range cNodes {
-		newComponent, err := MakeComponent(cNode)
+		newComponent, err := MakeComponent(repositoryCode, cNode)
 		if err != nil {
 			return &components, err
 		}
@@ -287,8 +289,15 @@ func (component *Component) populateXPathParts(node types.Node) error {
 	return nil
 }
 
-func MakeComponent(node types.Node) (Component, error) {
-	component := Component{}
+// See `ead.new()` comment on why we have to pass in `repositoryCode` as an argument.
+func MakeComponent(repositoryCode string, node types.Node) (Component, error) {
+	component := Component{
+		Parts: ComponentParts{
+			RepositoryCode: ComponentPart{
+				Values: []string{repositoryCode},
+			},
+		},
+	}
 
 	err := component.populateXPathParts(node)
 	if err != nil {

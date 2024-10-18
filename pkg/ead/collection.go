@@ -14,6 +14,7 @@ type CollectionDocParts struct {
 	CollectionDocComplexParts
 	CollectionDocHardcodedParts
 	CollectionDocXPathParts
+	RepositoryCode CollectionDocPart
 }
 
 type CollectionDocComplexParts struct {
@@ -78,10 +79,15 @@ type CollectionDocPart struct {
 	Values []string
 }
 
-func MakeCollectionDoc(node types.Node) (CollectionDoc, error) {
+// See `ead.new()` comment on why we have to pass in `repositoryCode` as an argument.
+func MakeCollectionDoc(repositoryCode string, node types.Node) (CollectionDoc, error) {
 	newCollectionDoc := CollectionDoc{
 		SolrAddMessage: "",
-		Parts:          CollectionDocParts{},
+		Parts: CollectionDocParts{
+			RepositoryCode: CollectionDocPart{
+				Values: []string{repositoryCode},
+			},
+		},
 	}
 
 	err := newCollectionDoc.populateParts(node)

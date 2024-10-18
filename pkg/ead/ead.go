@@ -29,7 +29,11 @@ type EAD struct {
 	OriginalFileContents string
 }
 
-func New(eadXML string) (EAD, error) {
+// Note that the repository code historically is taken from the name of the
+// EAD file's parent directory, not from the anything in the contents of the file
+// itself.  For now we are keeping file handling out of this package, so it is
+// up to the client pass in the repository code.
+func New(repositoryCode string, eadXML string) (EAD, error) {
 	ead := EAD{}
 
 	// XPath queries fail if we don't set the namespace to empty string.
@@ -70,12 +74,12 @@ func New(eadXML string) (EAD, error) {
 		return ead, err
 	}
 
-	ead.CollectionDoc, err = MakeCollectionDoc(rootNode)
+	ead.CollectionDoc, err = MakeCollectionDoc(repositoryCode, rootNode)
 	if err != nil {
 		return ead, err
 	}
 
-	ead.Components, err = MakeComponents(rootNode)
+	ead.Components, err = MakeComponents(repositoryCode, rootNode)
 	if err != nil {
 		return ead, err
 	}
