@@ -13,6 +13,11 @@ func (collectionDoc *CollectionDoc) setCreator() {
 	parts.CreatorComplex.Values = creatorComplexValues
 }
 
+func (collectionDoc *CollectionDoc) setDateRange() {
+	collectionDoc.Parts.DateRange.Values =
+		getDateRange(collectionDoc.Parts.UnitDateNormal.Values)
+}
+
 func (collectionDoc *CollectionDoc) setName() {
 	parts := &collectionDoc.Parts
 

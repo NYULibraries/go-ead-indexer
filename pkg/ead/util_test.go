@@ -1,8 +1,186 @@
 package ead
 
 import (
+	"slices"
 	"testing"
 )
+
+func TestGetDateRange(t *testing.T) {
+	testCases := []struct {
+		name              string
+		unitDates         []string
+		expectedDateRange []string
+	}{
+		{
+			"Maps multiple in-range dates and returns date ranges in the right order",
+			[]string{
+				// Wholly within a single range
+				"2016/2020",
+				// Start date not in any range, but end date within a range
+				"0001/2100",
+				// Start date within a range, but end date not within any range
+				"1101/9999",
+				// Start date within one range and end date within another
+				"1201/1901",
+			},
+			[]string{
+				"1101-1200",
+				"1201-1300",
+				"1901-2000",
+				"2001-2100",
+			},
+		},
+		{
+			"Returns undated for one mappable date and one syntactically valid but unmappable date",
+			[]string{
+				"2016/2020",
+				"0001/0002",
+			},
+			[]string{
+				undated,
+			},
+		},
+		{
+			"Returns undated for one mappable date and one syntactically invalid date",
+			[]string{
+				"BAD DATES, INDY!",
+				"2016/2020",
+			},
+			[]string{
+				undated,
+			},
+		},
+		{
+			"Returns undated when no dates",
+			[]string{},
+			[]string{
+				undated,
+			},
+		},
+	}
+
+	for _, testCase := range testCases {
+		actual := getDateRange(testCase.unitDates)
+		if slices.Compare(actual, testCase.expectedDateRange) != 0 {
+			t.Errorf(`%s: expected dates "%v" to map to ranges %v, but got ranges %v`,
+				testCase.name, testCase.unitDates, testCase.expectedDateRange, actual)
+		}
+	}
+}
+
+func TestIsDateInRange(t *testing.T) {
+	testCases := []struct {
+		name       string
+		dateString string
+		dateRange  DateRange
+		expected   bool
+	}{
+		{
+			"Returns true for wholly in range date",
+			"2016/2020",
+			DateRange{Display: "2001-2100", StartDate: 2001, EndDate: 2100},
+			true,
+		},
+		{
+			"Returns true for start date in range but end date not in range",
+			"2016/9999",
+			DateRange{Display: "2001-2100", StartDate: 2001, EndDate: 2100},
+			true,
+		},
+		{
+			"Returns true for start date not in range but end date in range",
+			"0001/2020",
+			DateRange{Display: "2001-2100", StartDate: 2001, EndDate: 2100},
+			true,
+		},
+		{
+			"Returns true start and end date on exact borders",
+			"2001/2100",
+			DateRange{Display: "2001-2100", StartDate: 2001, EndDate: 2100},
+			true,
+		},
+		{
+			"Returns true for start date on border and end date out of range",
+			"2001/9999",
+			DateRange{Display: "2001-2100", StartDate: 2001, EndDate: 2100},
+			true,
+		},
+		{
+			"Returns true for start date out of range and end on border",
+			"0001/2100",
+			DateRange{Display: "2001-2100", StartDate: 2001, EndDate: 2100},
+			true,
+		},
+		{
+			"Returns true for start date in one range and end date in another",
+			"1200/1900",
+			DateRange{Display: "1101-1200", StartDate: 1101, EndDate: 1200},
+			true,
+		},
+		{
+			"Returns true for wholly in range, with allowable leading and trailing whitespace",
+			" 2016/2020\t\r\n",
+			DateRange{Display: "2001-2100", StartDate: 2001, EndDate: 2100},
+			true,
+		},
+		{
+			"Returns false for wholly out of range",
+			"0001/9999",
+			DateRange{Display: "2001-2100", StartDate: 2001, EndDate: 2100},
+			false,
+		},
+		{
+			"Returns false for empty string",
+			"",
+			DateRange{Display: "2001-2100", StartDate: 2001, EndDate: 2100},
+			false,
+		},
+		{
+			"Returns false for all whitespace",
+			"         ",
+			DateRange{Display: "2001-2100", StartDate: 2001, EndDate: 2100},
+			false,
+		},
+		{
+			"Returns false for hyphen instead of slash",
+			"2016-2020",
+			DateRange{Display: "2001-2100", StartDate: 2001, EndDate: 2100},
+			false,
+		},
+		{
+			"Returns false for single year instead of two years",
+			"2016",
+			DateRange{Display: "2001-2100", StartDate: 2001, EndDate: 2100},
+			false,
+		},
+		{
+			`Returns false for YYYY-MM-DD formats and " to " instead of slash`,
+			"2016-01-01 to 2020-12-31",
+			DateRange{Display: "2001-2100", StartDate: 2001, EndDate: 2100},
+			false,
+		},
+		{
+			"Returns false for too many date years",
+			"2016/2017/2018/2019/2020",
+			DateRange{Display: "2001-2100", StartDate: 2001, EndDate: 2100},
+			false,
+		},
+		{
+			"Returns false for not a date",
+			"BAD DATES, INDY!",
+			DateRange{Display: "2001-2100", StartDate: 2001, EndDate: 2100},
+			false,
+		},
+	}
+
+	for _, testCase := range testCases {
+		actual := isDateInRange(testCase.dateString, testCase.dateRange)
+		if actual != testCase.expected {
+			t.Errorf(`%s: expected "%s" in "%s" to return %t, got %t`,
+				testCase.name, testCase.dateString, testCase.dateRange.Display, testCase.expected, actual)
+		}
+	}
+}
 
 func TestReplaceMARCSubfieldDemarcators(t *testing.T) {
 	// To see where some of these real life examples came from:

@@ -18,6 +18,7 @@ type CollectionDocParts struct {
 
 type CollectionDocComplexParts struct {
 	CreatorComplex CollectionDocPart
+	DateRange      CollectionDocPart
 	OnlineAccess   CollectionDocPart
 	Name           CollectionDocPart
 }
@@ -115,6 +116,7 @@ func (collectionDoc *CollectionDoc) setParts(node types.Node) error {
 // TODO: Do we need to have anything in `CollectionDoc.Part.Source` for these?
 func (collectionDoc *CollectionDoc) setComplexParts() {
 	collectionDoc.setCreator()
+	collectionDoc.setDateRange()
 	collectionDoc.setName()
 	collectionDoc.setOnlineAccess()
 }
