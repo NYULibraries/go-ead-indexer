@@ -17,9 +17,9 @@ type CollectionDocParts struct {
 }
 
 type CollectionDocComplexParts struct {
-	CreatorComplex CollectionDocXPathPart
-	OnlineAccess   CollectionDocXPathPart
-	Name           CollectionDocXPathPart
+	CreatorComplex CollectionDocPart
+	OnlineAccess   CollectionDocPart
+	Name           CollectionDocPart
 }
 
 type CollectionDocHardcodedParts struct {
@@ -28,52 +28,52 @@ type CollectionDocHardcodedParts struct {
 }
 
 type CollectionDocXPathParts struct {
-	Abstract                CollectionDocXPathPart
-	AcqInfo                 CollectionDocXPathPart
-	Appraisal               CollectionDocXPathPart
-	Author                  CollectionDocXPathPart
-	BiogHist                CollectionDocXPathPart
-	ChronList               CollectionDocXPathPart
-	Collection              CollectionDocXPathPart
-	CorpNameNotInRepository CollectionDocXPathPart
-	CorpNameNotInDSC        CollectionDocXPathPart
-	Creator                 CollectionDocXPathPart
-	CreatorCorpName         CollectionDocXPathPart
-	CreatorFamName          CollectionDocXPathPart
-	CreatorPersName         CollectionDocXPathPart
-	CustodHist              CollectionDocXPathPart
-	DAO                     CollectionDocXPathPart
-	EADID                   CollectionDocXPathPart
-	FamName                 CollectionDocXPathPart
-	FamNameNotInDSC         CollectionDocXPathPart
-	FunctionNotInDSC        CollectionDocXPathPart
-	GenreForm               CollectionDocXPathPart
-	GenreFormNotInDSC       CollectionDocXPathPart
-	GeogNameNotInDSC        CollectionDocXPathPart
-	Geogname                CollectionDocXPathPart
-	Heading                 CollectionDocXPathPart
-	LangCode                CollectionDocXPathPart
-	NameNotInDSC            CollectionDocXPathPart
-	NoteNotInDSC            CollectionDocXPathPart
-	OccupationNotInDSC      CollectionDocXPathPart
-	PersName                CollectionDocXPathPart
-	PersNameNotInDSC        CollectionDocXPathPart
-	Phystech                CollectionDocXPathPart
-	ScopeContent            CollectionDocXPathPart
-	SubjectForFacets        CollectionDocXPathPart
-	SubjectNotInDSC         CollectionDocXPathPart
-	TitleNotInDSC           CollectionDocXPathPart
-	UnitDateBulk            CollectionDocXPathPart
-	UnitDateInclusive       CollectionDocXPathPart
-	UnitDateNormal          CollectionDocXPathPart
-	UnitDateNotType         CollectionDocXPathPart
-	UnitID                  CollectionDocXPathPart
-	UnitTitle               CollectionDocXPathPart
-	Unitdate_normal         CollectionDocXPathPart
-	Unitdate_start          CollectionDocXPathPart
+	Abstract                CollectionDocPart
+	AcqInfo                 CollectionDocPart
+	Appraisal               CollectionDocPart
+	Author                  CollectionDocPart
+	BiogHist                CollectionDocPart
+	ChronList               CollectionDocPart
+	Collection              CollectionDocPart
+	CorpNameNotInRepository CollectionDocPart
+	CorpNameNotInDSC        CollectionDocPart
+	Creator                 CollectionDocPart
+	CreatorCorpName         CollectionDocPart
+	CreatorFamName          CollectionDocPart
+	CreatorPersName         CollectionDocPart
+	CustodHist              CollectionDocPart
+	DAO                     CollectionDocPart
+	EADID                   CollectionDocPart
+	FamName                 CollectionDocPart
+	FamNameNotInDSC         CollectionDocPart
+	FunctionNotInDSC        CollectionDocPart
+	GenreForm               CollectionDocPart
+	GenreFormNotInDSC       CollectionDocPart
+	GeogNameNotInDSC        CollectionDocPart
+	Geogname                CollectionDocPart
+	Heading                 CollectionDocPart
+	LangCode                CollectionDocPart
+	NameNotInDSC            CollectionDocPart
+	NoteNotInDSC            CollectionDocPart
+	OccupationNotInDSC      CollectionDocPart
+	PersName                CollectionDocPart
+	PersNameNotInDSC        CollectionDocPart
+	Phystech                CollectionDocPart
+	ScopeContent            CollectionDocPart
+	SubjectForFacets        CollectionDocPart
+	SubjectNotInDSC         CollectionDocPart
+	TitleNotInDSC           CollectionDocPart
+	UnitDateBulk            CollectionDocPart
+	UnitDateInclusive       CollectionDocPart
+	UnitDateNormal          CollectionDocPart
+	UnitDateNotType         CollectionDocPart
+	UnitID                  CollectionDocPart
+	UnitTitle               CollectionDocPart
+	Unitdate_normal         CollectionDocPart
+	Unitdate_start          CollectionDocPart
 }
 
-type CollectionDocXPathPart struct {
+type CollectionDocPart struct {
 	Source string
 	Values []string
 }
@@ -108,7 +108,7 @@ func (collectionDoc *CollectionDoc) populateParts(node types.Node) error {
 }
 
 func (collectionDoc *CollectionDoc) populateComplexParts() {
-	// TODO: Do we need to have anything in `CollectionDocXPathPart.Source`?
+	// TODO: Do we need to have anything in `CollectionDocPart.Source`?
 
 	parts := &collectionDoc.Parts
 
