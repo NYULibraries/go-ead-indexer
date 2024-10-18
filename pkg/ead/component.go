@@ -83,7 +83,7 @@ func MakeComponents(repositoryCode string, node types.Node) (*[]Component, error
 	return &components, nil
 }
 
-func (component *Component) populateXPathParts(node types.Node) error {
+func (component *Component) setXPathDirectQueryParts(node types.Node) error {
 	var err error
 
 	parts := &component.Parts
@@ -299,7 +299,7 @@ func MakeComponent(repositoryCode string, node types.Node) (Component, error) {
 		},
 	}
 
-	err := component.populateXPathParts(node)
+	err := component.setXPathDirectQueryParts(node)
 	if err != nil {
 		return component, err
 	}
