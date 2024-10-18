@@ -90,7 +90,7 @@ func MakeCollectionDoc(repositoryCode string, node types.Node) (CollectionDoc, e
 		},
 	}
 
-	err := newCollectionDoc.populateParts(node)
+	err := newCollectionDoc.setParts(node)
 	if err != nil {
 		return newCollectionDoc, err
 	}
@@ -98,13 +98,13 @@ func MakeCollectionDoc(repositoryCode string, node types.Node) (CollectionDoc, e
 	return newCollectionDoc, nil
 }
 
-func (collectionDoc *CollectionDoc) populateParts(node types.Node) error {
-	err := collectionDoc.populateXPathSimpleParts(node)
+func (collectionDoc *CollectionDoc) setParts(node types.Node) error {
+	err := collectionDoc.setXPathSimpleParts(node)
 	if err != nil {
 		return err
 	}
 
-	collectionDoc.populateComplexParts()
+	collectionDoc.setComplexParts()
 
 	// Hardcoded parts
 	collectionDoc.Parts.FormatForDisplay = "Archival Collection"
@@ -113,7 +113,7 @@ func (collectionDoc *CollectionDoc) populateParts(node types.Node) error {
 	return nil
 }
 
-func (collectionDoc *CollectionDoc) populateComplexParts() {
+func (collectionDoc *CollectionDoc) setComplexParts() {
 	// TODO: Do we need to have anything in `CollectionDocPart.Source`?
 
 	parts := &collectionDoc.Parts
@@ -140,7 +140,7 @@ func (collectionDoc *CollectionDoc) populateComplexParts() {
 	parts.Name.Values = nameValues
 }
 
-func (collectionDoc *CollectionDoc) populateXPathSimpleParts(node types.Node) error {
+func (collectionDoc *CollectionDoc) setXPathSimpleParts(node types.Node) error {
 	var err error
 
 	parts := &collectionDoc.Parts
