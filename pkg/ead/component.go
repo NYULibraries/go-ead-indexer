@@ -13,42 +13,42 @@ type ComponentParts struct {
 }
 
 type ComponentXPathDirectQueryParts struct {
-	Address                       ComponentXPathPart
-	Appraisal                     ComponentXPathPart
-	BiogHist                      ComponentXPathPart
-	ChronList                     ComponentXPathPart
-	Collection                    ComponentXPathPart
-	CollectionUnitID              ComponentXPathPart
-	Corpname                      ComponentXPathPart
-	Creator                       ComponentXPathPart
-	DAO                           ComponentXPathPart
-	DIDUnitID                     ComponentXPathPart
-	DIDUnitTitle                  ComponentXPathPart
-	EADID                         ComponentXPathPart
-	FamName                       ComponentXPathPart
-	Function                      ComponentXPathPart
-	GenreForm                     ComponentXPathPart
-	GeogName                      ComponentXPathPart
-	Heading                       ComponentXPathPart
-	Language                      ComponentXPathPart
-	Level                         ComponentXPathPart
-	Name                          ComponentXPathPart
-	Note                          ComponentXPathPart
-	Occupation                    ComponentXPathPart
-	PersName                      ComponentXPathPart
-	PhysTech                      ComponentXPathPart
-	Ref                           ComponentXPathPart
-	ScopeContent                  ComponentXPathPart
-	Subject                       ComponentXPathPart
-	SubjectOrFunctionOrOccupation ComponentXPathPart
-	Title                         ComponentXPathPart
-	UnitDateNotType               ComponentXPathPart
-	UnitDateBulk                  ComponentXPathPart
-	UnitDateNormal                ComponentXPathPart
-	UnitdateInclusive             ComponentXPathPart
+	Address                       ComponentPart
+	Appraisal                     ComponentPart
+	BiogHist                      ComponentPart
+	ChronList                     ComponentPart
+	Collection                    ComponentPart
+	CollectionUnitID              ComponentPart
+	Corpname                      ComponentPart
+	Creator                       ComponentPart
+	DAO                           ComponentPart
+	DIDUnitID                     ComponentPart
+	DIDUnitTitle                  ComponentPart
+	EADID                         ComponentPart
+	FamName                       ComponentPart
+	Function                      ComponentPart
+	GenreForm                     ComponentPart
+	GeogName                      ComponentPart
+	Heading                       ComponentPart
+	Language                      ComponentPart
+	Level                         ComponentPart
+	Name                          ComponentPart
+	Note                          ComponentPart
+	Occupation                    ComponentPart
+	PersName                      ComponentPart
+	PhysTech                      ComponentPart
+	Ref                           ComponentPart
+	ScopeContent                  ComponentPart
+	Subject                       ComponentPart
+	SubjectOrFunctionOrOccupation ComponentPart
+	Title                         ComponentPart
+	UnitDateNotType               ComponentPart
+	UnitDateBulk                  ComponentPart
+	UnitDateNormal                ComponentPart
+	UnitdateInclusive             ComponentPart
 }
 
-type ComponentXPathPart struct {
+type ComponentPart struct {
 	Source string
 	Values []string
 }
