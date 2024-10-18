@@ -2,7 +2,6 @@ package ead
 
 import (
 	"github.com/lestrrat-go/libxml2/types"
-	"go-ead-indexer/pkg/util"
 )
 
 type CollectionDoc struct {
@@ -113,31 +112,11 @@ func (collectionDoc *CollectionDoc) setParts(node types.Node) error {
 	return nil
 }
 
+// TODO: Do we need to have anything in `CollectionDoc.Part.Source` for these?
 func (collectionDoc *CollectionDoc) setComplexParts() {
-	// TODO: Do we need to have anything in `CollectionDocPart.Source`?
-
-	parts := &collectionDoc.Parts
-
-	// CreatorComplex
-	creatorComplexValues := []string{}
-	creatorComplexValues = append(creatorComplexValues, parts.CreatorCorpName.Values...)
-	creatorComplexValues = append(creatorComplexValues, parts.CreatorFamName.Values...)
-	creatorComplexValues = append(creatorComplexValues, parts.CreatorPersName.Values...)
-	parts.CreatorComplex.Values = creatorComplexValues
-
-	// Online access
-	if len(parts.DAO.Values) > 0 {
-		parts.OnlineAccess.Values = []string{"Online Access"}
-	}
-
-	// Name
-	nameValues := []string{}
-	nameValues = append(nameValues, parts.FamName.Values...)
-	nameValues = append(nameValues, parts.PersName.Values...)
-	nameValues = append(nameValues, parts.CorpNameNotInRepository.Values...)
-	nameValues = replaceMARCSubfieldDemarcatorsInSlice(nameValues)
-	nameValues = util.CompactStringSlicePreserveOrder(nameValues)
-	parts.Name.Values = nameValues
+	collectionDoc.setCreator()
+	collectionDoc.setName()
+	collectionDoc.setOnlineAccess()
 }
 
 func (collectionDoc *CollectionDoc) setXPathSimpleParts(node types.Node) error {
