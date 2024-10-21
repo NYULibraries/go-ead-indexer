@@ -105,10 +105,7 @@ func (collectionDoc *CollectionDoc) setParts(node types.Node) error {
 	}
 
 	collectionDoc.setComplexParts()
-
-	// Hardcoded parts
-	collectionDoc.Parts.FormatForDisplay = "Archival Collection"
-	collectionDoc.Parts.FormatForSort = 0
+	collectionDoc.setHardcodedParts()
 
 	return nil
 }
@@ -119,6 +116,11 @@ func (collectionDoc *CollectionDoc) setComplexParts() {
 	collectionDoc.setDateRange()
 	collectionDoc.setName()
 	collectionDoc.setOnlineAccess()
+}
+
+func (collectionDoc *CollectionDoc) setHardcodedParts() {
+	collectionDoc.Parts.FormatForDisplay = "Archival Collection"
+	collectionDoc.Parts.FormatForSort = 0
 }
 
 func (collectionDoc *CollectionDoc) setXPathSimpleParts(node types.Node) error {
