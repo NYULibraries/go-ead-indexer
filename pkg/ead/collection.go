@@ -67,7 +67,7 @@ type CollectionDocXPathParts struct {
 	UnitDateBulk            CollectionDocPart
 	UnitDateInclusive       CollectionDocPart
 	UnitDateNormal          CollectionDocPart
-	UnitDateNotType         CollectionDocPart
+	UnitDateNoTypeAttribute CollectionDocPart
 	UnitID                  CollectionDocPart
 	UnitTitle               CollectionDocPart
 	Unitdate_normal         CollectionDocPart
@@ -365,8 +365,8 @@ func (collectionDoc *CollectionDoc) setXPathSimpleParts(node types.Node) error {
 		return err
 	}
 
-	parts.UnitDateNotType.Source = "//archdesc[@level='collection']/did/unitdate[not(@type)]"
-	parts.UnitDateNotType.Values, err = getValuesForXPathQuery(parts.UnitDateNotType.Source, node)
+	parts.UnitDateNoTypeAttribute.Source = "//archdesc[@level='collection']/did/unitdate[not(@type)]"
+	parts.UnitDateNoTypeAttribute.Values, err = getValuesForXPathQuery(parts.UnitDateNoTypeAttribute.Source, node)
 	if err != nil {
 		return err
 	}
