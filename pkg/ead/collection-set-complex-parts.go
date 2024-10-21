@@ -1,6 +1,8 @@
 package ead
 
-import "go-ead-indexer/pkg/util"
+import (
+	"go-ead-indexer/pkg/util"
+)
 
 func (collectionDoc *CollectionDoc) setCreator() {
 	parts := &collectionDoc.Parts
@@ -34,4 +36,11 @@ func (collectionDoc *CollectionDoc) setOnlineAccess() {
 	if len(collectionDoc.Parts.DAO.Values) > 0 {
 		collectionDoc.Parts.OnlineAccess.Values = []string{"Online Access"}
 	}
+}
+
+func (collectionDoc *CollectionDoc) setUnitDateDisplay() {
+	parts := &collectionDoc.Parts
+
+	parts.UnitDateDisplay.Values[0] = getUnitDateDisplay(parts.UnitDateNoTypeAttribute.Values,
+		parts.UnitDateInclusive.Values, parts.UnitDateBulk.Values)
 }

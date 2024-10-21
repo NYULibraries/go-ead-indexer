@@ -4,6 +4,7 @@ import (
 	"github.com/lestrrat-go/libxml2/types"
 	"regexp"
 	"strconv"
+	"strings"
 )
 
 type DateRange struct {
@@ -66,6 +67,29 @@ func getDateRange(unitDates []string) []string {
 	}
 
 	return dateRange
+}
+
+// TODO DLFA-238: This method preserves probable v1 indexer bug for the purposes of passing
+// the DLFA-201 transition acceptance test -- the bug:
+// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=8378822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-8378822
+// Fix this bug after we've completed the transition.
+func getUnitDateDisplay(unitDateNoTypeAttribute []string, unitDateInclusive []string,
+	unitDateBulk []string) string {
+	partsUnitDateDisplay := []string{}
+	if len(unitDateNoTypeAttribute) > 0 {
+		partsUnitDateDisplay = unitDateNoTypeAttribute
+	} else if len(unitDateInclusive) == 0 && len(unitDateBulk) == 0 {
+		// Do nothing
+	} else {
+		partsUnitDateDisplay = append(partsUnitDateDisplay, "Inclusive,")
+		partsUnitDateDisplay = append(partsUnitDateDisplay, unitDateInclusive...)
+		if len(unitDateBulk) > 0 {
+			partsUnitDateDisplay = append(partsUnitDateDisplay, ";")
+			partsUnitDateDisplay = append(partsUnitDateDisplay, unitDateBulk...)
+		}
+	}
+
+	return strings.Join(partsUnitDateDisplay, " ")
 }
 
 func getValuesForXPathQuery(query string, node types.Node) ([]string, error) {

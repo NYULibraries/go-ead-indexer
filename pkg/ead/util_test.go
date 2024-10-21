@@ -68,6 +68,64 @@ func TestGetDateRange(t *testing.T) {
 	}
 }
 
+func TestGetUnitDateDisplay(t *testing.T) {
+	testCases := []struct {
+		name                    string
+		unitDateNoTypeAttribute []string
+		unitDateInclusive       []string
+		unitDateBulk            []string
+		expected                string
+	}{
+		{
+			"`unitDateNoTypeAttribute`, `unitDateInclusive`, `unitDateBulk` all absent",
+			[]string{},
+			[]string{},
+			[]string{},
+			"",
+		},
+		{
+			"`unitDateNoTypeAttribute`, `unitDateInclusive`, `unitDateBulk` all present",
+			[]string{"29 November 1965"},
+			[]string{"1910 - 1990"},
+			[]string{"1930-1960"},
+			"29 November 1965",
+		},
+		{
+			"`unitDateNoTypeAttribute` absent; `unitDateInclusive`, `unitDateBulk` present",
+			[]string{},
+			[]string{"1910 - 1990"},
+			[]string{"1930-1960"},
+			"Inclusive, 1910 - 1990 ; 1930-1960",
+		},
+		{
+			"`unitDateNoTypeAttribute` absent; `unitDateInclusive` present and `unitDateBulk` absent, ",
+			[]string{},
+			[]string{"1910 - 1990"},
+			[]string{},
+			"Inclusive, 1910 - 1990",
+		},
+		// TODO DLFA-238
+		// For now, preserve v1 indexer bug https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=8378822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-8378822
+		{
+			"`unitDateNoTypeAttribute` absent; `unitDateInclusive` absent and `unitDateBulk` present",
+			[]string{},
+			[]string{},
+			[]string{"1930-1990"},
+			"Inclusive, ; 1930-1990",
+		},
+	}
+
+	for _, testCase := range testCases {
+		actual := getUnitDateDisplay(testCase.unitDateNoTypeAttribute, testCase.unitDateInclusive,
+			testCase.unitDateBulk)
+		if actual != testCase.expected {
+			t.Errorf(`%s: expected unitDateNoTypeAttribute=%v, unitDateInclusive=%v, unitDateBulk=%v to return "%s", got "%s"`,
+				testCase.name, testCase.unitDateNoTypeAttribute, testCase.unitDateInclusive,
+				testCase.unitDateBulk, testCase.expected, actual)
+		}
+	}
+}
+
 func TestIsDateInRange(t *testing.T) {
 	testCases := []struct {
 		name       string

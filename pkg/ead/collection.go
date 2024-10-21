@@ -64,6 +64,7 @@ type CollectionDocXPathParts struct {
 	SubjectForFacets        CollectionDocPart
 	SubjectNotInDSC         CollectionDocPart
 	TitleNotInDSC           CollectionDocPart
+	UnitDateDisplay         CollectionDocPart
 	UnitDateBulk            CollectionDocPart
 	UnitDateInclusive       CollectionDocPart
 	UnitDateNormal          CollectionDocPart
