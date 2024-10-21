@@ -7,7 +7,7 @@ import (
 	"regexp"
 )
 
-// TODO: fix the bug we've intentionally preserved in MARC subfield demarcation
+// TODO DLFA-238: fix the bug we've intentionally preserved in MARC subfield demarcation
 // replacement.  For details, see:
 //
 //   - https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10154897&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10154897
