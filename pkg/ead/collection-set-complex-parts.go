@@ -20,6 +20,17 @@ func (collectionDoc *CollectionDoc) setDateRange() {
 		getDateRange(collectionDoc.Parts.UnitDateNormal.Values)
 }
 
+func (collectionDoc *CollectionDoc) setLanguage() []error {
+	language, errs := getLanguage(collectionDoc.Parts.LangCode.Values)
+	if len(errs) > 0 {
+		return errs
+	}
+
+	collectionDoc.Parts.Language.Values = language
+
+	return nil
+}
+
 func (collectionDoc *CollectionDoc) setName() {
 	parts := &collectionDoc.Parts
 

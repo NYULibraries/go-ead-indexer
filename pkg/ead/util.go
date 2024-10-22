@@ -2,6 +2,7 @@ package ead
 
 import (
 	"github.com/lestrrat-go/libxml2/types"
+	languageLib "go-ead-indexer/pkg/language"
 	"regexp"
 	"strconv"
 	"strings"
@@ -67,6 +68,22 @@ func getDateRange(unitDates []string) []string {
 	}
 
 	return dateRange
+}
+
+func getLanguage(langCodes []string) ([]string, []error) {
+	language := []string{}
+	errs := []error{}
+
+	for _, langCode := range langCodes {
+		languageForLangCode, err := languageLib.GetLanguageForLanguageCode(langCode)
+		if err != nil {
+			errs = append(errs, err)
+			continue
+		}
+		language = append(language, languageForLangCode)
+	}
+
+	return language, errs
 }
 
 // TODO DLFA-238: This method preserves probable v1 indexer bug for the purposes of passing
