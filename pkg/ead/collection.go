@@ -52,7 +52,7 @@ type CollectionDocXPathParts struct {
 	GenreForm               CollectionDocPart
 	GenreFormNotInDSC       CollectionDocPart
 	GeogNameNotInDSC        CollectionDocPart
-	Geogname                CollectionDocPart
+	GeogName                CollectionDocPart
 	Heading                 CollectionDocPart
 	LangCode                CollectionDocPart
 	Language                CollectionDocPart
@@ -281,8 +281,8 @@ func (collectionDoc *CollectionDoc) setXPathSimpleParts(node types.Node) error {
 		return err
 	}
 
-	parts.Geogname.Source = "//geogname"
-	parts.Geogname.Values, err = getValuesForXPathQuery(parts.Geogname.Source, node)
+	parts.GeogName.Source = "//geogname"
+	parts.GeogName.Values, err = getValuesForXPathQuery(parts.GeogName.Source, node)
 	if err != nil {
 		return err
 	}
