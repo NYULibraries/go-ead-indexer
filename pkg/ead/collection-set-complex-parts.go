@@ -20,6 +20,16 @@ func (collectionDoc *CollectionDoc) setDateRange() {
 		getDateRange(collectionDoc.Parts.UnitDateNormal.Values)
 }
 
+func (collectionDoc *CollectionDoc) setMaterialType() {
+	parts := &collectionDoc.Parts
+
+	materialTypeValues := []string{}
+	materialTypeValues = replaceMARCSubfieldDemarcatorsInSlice(parts.GenreForm.Values)
+	materialTypeValues = util.CompactStringSlicePreserveOrder(materialTypeValues)
+
+	parts.MaterialType.Values = materialTypeValues
+}
+
 func (collectionDoc *CollectionDoc) setLanguage() []error {
 	language, errs := getLanguage(collectionDoc.Parts.LangCode.Values)
 	if len(errs) > 0 {

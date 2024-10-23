@@ -202,6 +202,17 @@
           </defitem>
         </list>
         <genreform source="aat">Oral histories (literary works)</genreform>
+
+        <!-- Test MARC subfield demarcator replacement -->
+        <genreform source="aat">Court records |z New York (State)</genreform>
+        <genreform source="lcsh">Motion pictures |x Production and direction.</genreform>
+        <genreform source="local">Court records |z New York (State) |z Kings County</genreform>
+        <genreform source="local">Court records |z New York (State) |z Queens County</genreform>
+        <genreform source="local">Land titles |z New York (State) |z Kings County</genreform>
+        <!-- ...and deduping after MARC subfield demarcator replacement -->
+        <genreform source="lcsh">Cooking |v Periodicals</genreform>
+        <genreform source="lcsh">Cooking -- Periodicals</genreform>
+
         <name>Rolodex</name>
         <num type="collection">MOS.2021</num>
         <occupation source="lcsh">Fulbright scholars.</occupation>

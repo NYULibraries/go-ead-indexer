@@ -19,6 +19,7 @@ type CollectionDocParts struct {
 type CollectionDocComplexParts struct {
 	CreatorComplex CollectionDocPart
 	DateRange      CollectionDocPart
+	MaterialType   CollectionDocPart
 	Name           CollectionDocPart
 	OnlineAccess   CollectionDocPart
 }
@@ -122,6 +123,7 @@ func (collectionDoc *CollectionDoc) setComplexParts() []error {
 	if len(languageErrors) > 0 {
 		errs = append(errs, languageErrors...)
 	}
+	collectionDoc.setMaterialType()
 	collectionDoc.setName()
 	collectionDoc.setOnlineAccess()
 
