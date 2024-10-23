@@ -19,8 +19,8 @@ type CollectionDocParts struct {
 type CollectionDocComplexParts struct {
 	CreatorComplex CollectionDocPart
 	DateRange      CollectionDocPart
-	OnlineAccess   CollectionDocPart
 	Name           CollectionDocPart
+	OnlineAccess   CollectionDocPart
 }
 
 type CollectionDocHardcodedParts struct {
