@@ -14,7 +14,10 @@ func TestConvertEADToHTML(t *testing.T) {
 		expectedHTMLString string
 	}
 
+	const invalidOSCCharacter = ``
 	const eadElementText = "EAD ELEMENT TEXT"
+	const eadElementTextWithInvalidOSCCharacters = invalidOSCCharacter +
+		"EAD ELEMENT TEXT" + invalidOSCCharacter
 	const textAfterEADTag = "AFTER EAD TAG"
 	const textBeforeEADTag = "BEFORE EAD TAG"
 
@@ -41,7 +44,7 @@ func TestConvertEADToHTML(t *testing.T) {
 					eadTagToTest, renderAttribute),
 				eadString: fmt.Sprintf(`%s<%s render=\"%s">%s</%s>%s`,
 					textBeforeEADTag,
-					eadTagToTest, renderAttribute, eadElementText, eadTagToTest,
+					eadTagToTest, renderAttribute, eadElementTextWithInvalidOSCCharacters, eadTagToTest,
 					textAfterEADTag),
 				expectedHTMLString: fmt.Sprintf("%s<%s>%s</%s>%s",
 					textBeforeEADTag,
