@@ -1,10 +1,65 @@
 package ead
 
 import (
+	"fmt"
 	languageLib "go-ead-indexer/pkg/language"
 	"slices"
 	"testing"
 )
+
+func TestConvertEADToHTML(t *testing.T) {
+	type testCase struct {
+		name               string
+		eadString          string
+		expectedHTMLString string
+	}
+
+	const eadElementText = "EAD ELEMENT TEXT"
+	const textAfterEADTag = "AFTER EAD TAG"
+	const textBeforeEADTag = "BEFORE EAD TAG"
+
+	// See "RENDER attribute" in this DLFA-229 comment:
+	// https://jira.nyu.edu/browse/DLFA-229?focusedCommentId=10283699&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10283699
+	eadTagsToTest := []string{
+		"emph",
+		"title",
+		"titleproper",
+	}
+
+	sortedRenderAttributes := []string{}
+	for renderAttribute, _ := range eadTagRenderAttributeToHTMLTagName {
+		sortedRenderAttributes = append(sortedRenderAttributes, renderAttribute)
+	}
+	slices.Sort(sortedRenderAttributes)
+
+	testCases := []testCase{}
+	for _, renderAttribute := range sortedRenderAttributes {
+		htmlTag := eadTagRenderAttributeToHTMLTagName[renderAttribute]
+		for _, eadTagToTest := range eadTagsToTest {
+			testCase := testCase{
+				name: fmt.Sprintf(`<%s render="%s">`,
+					eadTagToTest, renderAttribute),
+				eadString: fmt.Sprintf(`%s<%s render=\"%s">%s</%s>%s`,
+					textBeforeEADTag,
+					eadTagToTest, renderAttribute, eadElementText, eadTagToTest,
+					textAfterEADTag),
+				expectedHTMLString: fmt.Sprintf("%s<%s>%s</%s>%s",
+					textBeforeEADTag,
+					htmlTag, eadElementText, htmlTag,
+					textAfterEADTag),
+			}
+			testCases = append(testCases, testCase)
+		}
+	}
+
+	for _, testCase := range testCases {
+		actual := convertEADToHTML(testCase.eadString)
+		if actual != testCase.expectedHTMLString {
+			t.Errorf(`%s: expected EAD string "%s" to be converted to HTML string "%s", but got "%s"`,
+				testCase.name, testCase.eadString, testCase.expectedHTMLString, actual)
+		}
+	}
+}
 
 func TestGetDateParts(t *testing.T) {
 	testCases := []struct {

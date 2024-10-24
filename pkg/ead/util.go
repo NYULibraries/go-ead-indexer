@@ -38,6 +38,25 @@ var dateRangesCenturies = []DateRange{
 	{Display: "2001-2100", StartDate: 2001, EndDate: 2100},
 }
 
+var eadTagRenderAttributeToHTMLTagName = map[string]string{
+	"altrender":       "em",
+	"bold":            "strong",
+	"bolddoublequote": "strong",
+	"bolditalic":      "strong",
+	"boldsinglequote": "strong",
+	"boldsmcaps":      "strong",
+	"boldunderline":   "strong",
+	"doublequote":     "em",
+	"italic":          "em",
+	"italics":         "em",
+	"nonproport":      "em",
+	"singlequote":     "em",
+	"smcaps":          "em",
+	"sub":             "sub",
+	"super":           "sup",
+	"underline":       "em",
+}
+
 func convertToFacetSlice(rawSlice []string) []string {
 	return util.CompactStringSlicePreserveOrder(
 		replaceMARCSubfieldDemarcatorsInSlice(rawSlice))
