@@ -6,6 +6,52 @@ import (
 	"testing"
 )
 
+func TestGetDateParts(t *testing.T) {
+	testCases := []struct {
+		name              string
+		dateString        string
+		expectedDateParts DateParts
+	}{
+		{
+			"Gets start and end date for valid date string",
+			"2016/2020",
+			DateParts{
+				Start: "2016",
+				End:   "2020",
+			},
+		},
+		{
+			"Returns empty `DateParts` for ambiguous date string",
+			"2016/2020/2024",
+			DateParts{},
+		},
+		{
+			"Returns empty `DateParts` for date string with hypen",
+			"2016-2020",
+			DateParts{},
+		},
+		{
+			"Returns empty `DateParts` for invalid date string",
+			"BAD DATES, INDY!",
+			DateParts{},
+		},
+		{
+			"Returns empty `DateParts` for empty date string",
+			"",
+			DateParts{},
+		},
+	}
+
+	for _, testCase := range testCases {
+		actual := getDateParts(testCase.dateString)
+		if actual.Start != testCase.expectedDateParts.Start || actual.End != testCase.expectedDateParts.End {
+			t.Errorf(`%s: expected start="%s" and end="%s" for date string="%s", but got start="%s" and end="%s"`,
+				testCase.name, testCase.expectedDateParts.Start, testCase.expectedDateParts.End,
+				testCase.dateString, actual.Start, actual.End)
+		}
+	}
+}
+
 func TestGetDateRange(t *testing.T) {
 	testCases := []struct {
 		name              string

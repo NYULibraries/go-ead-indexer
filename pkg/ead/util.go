@@ -8,6 +8,11 @@ import (
 	"strings"
 )
 
+type DateParts struct {
+	Start string
+	End   string
+}
+
 type DateRange struct {
 	Display   string
 	StartDate int
@@ -109,6 +114,19 @@ func getUnitDateDisplay(unitDateNoTypeAttribute []string, unitDateInclusive []st
 	return strings.Join(partsUnitDateDisplay, " ")
 }
 
+func getDateParts(dateString string) DateParts {
+	dateParts := DateParts{}
+
+	matches := datePartsRegexp.FindStringSubmatch(dateString)
+
+	if len(matches) == 3 {
+		dateParts.Start = matches[1]
+		dateParts.End = matches[2]
+	}
+
+	return dateParts
+}
+
 func getValuesForXPathQuery(query string, node types.Node) ([]string, error) {
 	var values []string
 
@@ -127,27 +145,20 @@ func getValuesForXPathQuery(query string, node types.Node) ([]string, error) {
 // `dateString` should be of the form "YYYY/YYYY", where the left "YYYY" is the
 // start date and the right "YYYY" is the end date.
 func isDateInRange(dateString string, dateRange DateRange) bool {
-	matches := datePartsRegexp.FindStringSubmatch(dateString)
+	dateParts := getDateParts(dateString)
 
-	if len(matches) == 3 {
-		startDate := matches[1]
-		endDate := matches[2]
-
-		startDateInt, err := strconv.Atoi(startDate)
-		if err != nil {
-			return false
-		}
-
-		endDateInt, err := strconv.Atoi(endDate)
-		if err != nil {
-			return false
-		}
-
-		return (startDateInt >= dateRange.StartDate && startDateInt <= dateRange.EndDate) ||
-			(endDateInt >= dateRange.StartDate && endDateInt <= dateRange.EndDate)
-	} else {
+	startDateInt, err := strconv.Atoi(dateParts.Start)
+	if err != nil {
 		return false
 	}
+
+	endDateInt, err := strconv.Atoi(dateParts.End)
+	if err != nil {
+		return false
+	}
+
+	return (startDateInt >= dateRange.StartDate && startDateInt <= dateRange.EndDate) ||
+		(endDateInt >= dateRange.StartDate && endDateInt <= dateRange.EndDate)
 }
 
 func replaceMARCSubfieldDemarcatorsInSlice(stringSlice []string) []string {
