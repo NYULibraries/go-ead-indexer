@@ -20,6 +20,8 @@ type DateRange struct {
 	EndDate   int
 }
 
+const undated = "undated & other"
+
 var datePartsRegexp = regexp.MustCompile(`^\s*(\d{4})\/(\d{4})\s*$`)
 
 var dateRangesCenturies = []DateRange{
@@ -34,8 +36,6 @@ var dateRangesCenturies = []DateRange{
 	{Display: "1901-2000", StartDate: 1901, EndDate: 2000},
 	{Display: "2001-2100", StartDate: 2001, EndDate: 2100},
 }
-
-const undated = "undated & other"
 
 func convertToFacetSlice(rawSlice []string) []string {
 	return util.CompactStringSlicePreserveOrder(
