@@ -75,3 +75,31 @@ func (collectionDoc *CollectionDoc) setUnitDateDisplay() {
 	parts.UnitDateDisplay.Values[0] = getUnitDateDisplay(parts.UnitDateNoTypeAttribute.Values,
 		parts.UnitDateInclusive.Values, parts.UnitDateBulk.Values)
 }
+
+func (collectionDoc *CollectionDoc) setUnitDateEnd() {
+	parts := &collectionDoc.Parts
+
+	unitDateEndValues := []string{}
+	for _, unitDateNormal := range parts.UnitDateNormal.Values {
+		unitDateEnd := getDateParts(unitDateNormal).End
+		if unitDateEnd != "" {
+			unitDateEndValues = append(unitDateEndValues, unitDateEnd)
+		}
+	}
+
+	parts.UnitDateEnd.Values = unitDateEndValues
+}
+
+func (collectionDoc *CollectionDoc) setUnitDateStart() {
+	parts := &collectionDoc.Parts
+
+	unitDateStartValues := []string{}
+	for _, unitDateNormal := range parts.UnitDateNormal.Values {
+		unitDateStart := getDateParts(unitDateNormal).Start
+		if unitDateStart != "" {
+			unitDateStartValues = append(unitDateStartValues, unitDateStart)
+		}
+	}
+
+	parts.UnitDateStart.Values = unitDateStartValues
+}
