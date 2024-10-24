@@ -1,9 +1,5 @@
 package ead
 
-import (
-	"go-ead-indexer/pkg/util"
-)
-
 func (collectionDoc *CollectionDoc) setCreator() {
 	parts := &collectionDoc.Parts
 
@@ -21,13 +17,8 @@ func (collectionDoc *CollectionDoc) setDateRange() {
 }
 
 func (collectionDoc *CollectionDoc) setMaterialType() {
-	parts := &collectionDoc.Parts
-
-	materialTypeValues := []string{}
-	materialTypeValues = replaceMARCSubfieldDemarcatorsInSlice(parts.GenreForm.Values)
-	materialTypeValues = util.CompactStringSlicePreserveOrder(materialTypeValues)
-
-	parts.MaterialType.Values = materialTypeValues
+	collectionDoc.Parts.MaterialType.Values =
+		convertToFacetSlice(collectionDoc.Parts.GenreForm.Values)
 }
 
 func (collectionDoc *CollectionDoc) setLanguage() []error {
@@ -48,8 +39,9 @@ func (collectionDoc *CollectionDoc) setName() {
 	nameValues = append(nameValues, parts.FamName.Values...)
 	nameValues = append(nameValues, parts.PersName.Values...)
 	nameValues = append(nameValues, parts.CorpNameNotInRepository.Values...)
-	nameValues = replaceMARCSubfieldDemarcatorsInSlice(nameValues)
-	nameValues = util.CompactStringSlicePreserveOrder(nameValues)
+
+	nameValues = convertToFacetSlice(nameValues)
+
 	parts.Name.Values = nameValues
 }
 
@@ -60,11 +52,9 @@ func (collectionDoc *CollectionDoc) setOnlineAccess() {
 }
 
 func (collectionDoc *CollectionDoc) setPlace() {
-	parts := &collectionDoc.Parts
-
-	placeValues := []string{}
-	placeValues = replaceMARCSubfieldDemarcatorsInSlice(parts.GeogName.Values)
-	placeValues = util.CompactStringSlicePreserveOrder(placeValues)
+	collectionDoc.Parts.Place.Values =
+		convertToFacetSlice(collectionDoc.Parts.GeogName.Values)
+}
 
 	parts.Place.Values = placeValues
 }
