@@ -403,5 +403,19 @@ func (collectionDoc *CollectionDoc) setXPathSimpleParts(node types.Node) error {
 		return err
 	}
 
+	// Proxy for UnitTitle
+	parts.Collection.Source = parts.UnitTitle.Source
+	parts.Collection.Values, err = getValuesForXPathQuery(parts.Collection.Source, node)
+	if err != nil {
+		return err
+	}
+
+	// Proxy for UnitTitle
+	parts.Heading.Source = parts.UnitTitle.Source
+	parts.Heading.Values, err = getValuesForXPathQuery(parts.Heading.Source, node)
+	if err != nil {
+		return err
+	}
+
 	return nil
 }
