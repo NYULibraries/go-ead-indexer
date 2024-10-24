@@ -59,6 +59,16 @@ func (collectionDoc *CollectionDoc) setOnlineAccess() {
 	}
 }
 
+func (collectionDoc *CollectionDoc) setPlace() {
+	parts := &collectionDoc.Parts
+
+	placeValues := []string{}
+	placeValues = replaceMARCSubfieldDemarcatorsInSlice(parts.GeogName.Values)
+	placeValues = util.CompactStringSlicePreserveOrder(placeValues)
+
+	parts.Place.Values = placeValues
+}
+
 func (collectionDoc *CollectionDoc) setUnitDateDisplay() {
 	parts := &collectionDoc.Parts
 

@@ -21,6 +21,7 @@ type CollectionDocComplexParts struct {
 	DateRange      CollectionDocPart
 	MaterialType   CollectionDocPart
 	Name           CollectionDocPart
+	Place          CollectionDocPart
 	OnlineAccess   CollectionDocPart
 }
 
@@ -126,6 +127,7 @@ func (collectionDoc *CollectionDoc) setComplexParts() []error {
 	collectionDoc.setMaterialType()
 	collectionDoc.setName()
 	collectionDoc.setOnlineAccess()
+	collectionDoc.setPlace()
 
 	return errs
 }

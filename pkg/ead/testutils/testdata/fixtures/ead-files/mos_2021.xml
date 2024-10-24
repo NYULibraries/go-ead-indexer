@@ -284,6 +284,26 @@
     </bibliography>
     <controlaccess>
       <geogname source="lcsh">Boston (Mass.) -- Intellectual life -- 20th century.</geogname>
+
+      <!-- Test MARC subfield demarcator replacement -->
+      <geogname source="lcsh">New York (N.Y.) |x History</geogname>
+      <geogname source="lcsh">New York (N.Y.) |x Intellectual life |y 20th century</geogname>
+      <geogname source="lcsh">New York (N.Y.) |x Intellectual life</geogname>
+      <geogname source="lcsh">New York (N.Y.) |x Mass transit.</geogname>
+      <geogname source="lcsh">New York (N.Y.) |x Museums.</geogname>
+      <geogname source="lcsh">New York (N.Y.) |x Officials and employees |v Portraits.</geogname>
+      <geogname source="lcsh">New York (N.Y.) |x Officials and employees.</geogname>
+      <geogname source="lcsh">New York (N.Y.) |x Officials and employees</geogname>
+      <geogname source="lcsh">New York (N.Y.) |x Politics and government</geogname>
+      <geogname source="lcsh">New York (N.Y.) |x Religious life and customs</geogname>
+      <geogname source="lcsh">New York (N.Y.) |x Social conditions |y 20th century.</geogname>
+      <geogname source="lcsh">New York (N.Y.) |x Social conditions</geogname>
+      <geogname source="lcsh">New York (N.Y.) |x Social life and customs |x Pictorial works.</geogname>
+      <geogname source="lcsh">New York (N.Y.) |x Social life and customs |y 20th century.</geogname>
+      <!-- ...and deduping after MARC subfield demarcator replacement -->
+      <geogname source="lcsh">New York (N.Y.) |x Social life and customs</geogname>
+      <geogname source="lcsh">New York (N.Y.) -- Social life and customs</geogname>
+
       <subject source="lcsh">Irish American women -- History -- 19th century.</subject>
       <genreform source="aat">Oral histories (literary works)</genreform>
       <occupation source="lcsh">Fulbright scholars.</occupation>
