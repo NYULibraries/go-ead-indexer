@@ -23,6 +23,7 @@ type CollectionDocComplexParts struct {
 	Name           CollectionDocPart
 	Place          CollectionDocPart
 	OnlineAccess   CollectionDocPart
+	Subject        CollectionDocPart
 	UnitDateEnd    CollectionDocPart
 	UnitDateStart  CollectionDocPart
 }
@@ -130,6 +131,7 @@ func (collectionDoc *CollectionDoc) setComplexParts() []error {
 	collectionDoc.setName()
 	collectionDoc.setOnlineAccess()
 	collectionDoc.setPlace()
+	collectionDoc.setSubject()
 	collectionDoc.setUnitDateEnd()
 	collectionDoc.setUnitDateStart()
 

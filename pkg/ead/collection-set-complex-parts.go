@@ -56,7 +56,9 @@ func (collectionDoc *CollectionDoc) setPlace() {
 		convertToFacetSlice(collectionDoc.Parts.GeogName.Values)
 }
 
-	parts.Place.Values = placeValues
+func (collectionDoc *CollectionDoc) setSubject() {
+	collectionDoc.Parts.Subject.Values =
+		convertToFacetSlice(collectionDoc.Parts.SubjectForFacets.Values)
 }
 
 func (collectionDoc *CollectionDoc) setUnitDateDisplay() {
