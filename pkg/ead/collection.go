@@ -26,6 +26,7 @@ type CollectionDocComplexParts struct {
 	Subject        CollectionDocPart
 	UnitDateEnd    CollectionDocPart
 	UnitDateStart  CollectionDocPart
+	UnitTitleHTML  CollectionDocPart
 }
 
 type CollectionDocHardcodedParts struct {
@@ -134,6 +135,7 @@ func (collectionDoc *CollectionDoc) setComplexParts() []error {
 	collectionDoc.setSubject()
 	collectionDoc.setUnitDateEnd()
 	collectionDoc.setUnitDateStart()
+	collectionDoc.setUnitTitleHTML()
 
 	return errs
 }

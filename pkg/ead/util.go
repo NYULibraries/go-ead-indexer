@@ -3,6 +3,7 @@ package ead
 import (
 	"github.com/lestrrat-go/libxml2/types"
 	languageLib "go-ead-indexer/pkg/language"
+	"go-ead-indexer/pkg/sanitize"
 	"go-ead-indexer/pkg/util"
 	"regexp"
 	"strconv"
@@ -40,6 +41,10 @@ var dateRangesCenturies = []DateRange{
 func convertToFacetSlice(rawSlice []string) []string {
 	return util.CompactStringSlicePreserveOrder(
 		replaceMARCSubfieldDemarcatorsInSlice(rawSlice))
+}
+
+func convertEADToHTML(eadString string) string {
+	return sanitize.Clean(eadString)
 }
 
 func getDateRange(unitDates []string) []string {
