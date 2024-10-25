@@ -8,6 +8,52 @@ import (
 )
 
 func TestConvertEADToHTML(t *testing.T) {
+	testConvertEADToHTML_EveryCombinationOfTagAndRenderAttributeWithInvalidChars(t)
+	testConvertEADToHTML_NestedTags(t)
+}
+
+func testConvertEADToHTML_NestedTags(t *testing.T) {
+	testCases := []struct {
+		name               string
+		eadString          string
+		expectedHTMLString string
+	}{
+		{
+			// fales/mss_270.xml
+			`<title> with nested <emph> -- each has render="underline"`,
+			"<title render=\"underline\"><emph render=\"underline\">In Process</emph></title> Volume 12, No. 2, Summer 2005",
+			"<em><em>In Process<em></em> Volume 12, No. 2, Summer 2005",
+		},
+		{
+			// nyhs/pro056_victor_prevost.xml
+			`<title> with nested <emph> -- <emph> has render="italic"`,
+			"Statuary at Crystal Palace [<title><emph render=\"italic\">Eve</emph></title> by Hiram Powers]",
+			"Statuary at Crystal Palace [<title><em>Eve</em></title> by Hiram Powers]",
+		},
+		{
+			// Contrived example #1
+			`<titleproper> with nested <emph> -- <titleproper> has render="bolddoublequote"`,
+			`<titleproper render="bolddoublequote">This is a <emph>contrived</emph> example.</titleproper>`,
+			`<strong>This is a <emph>contrived</emph> example.</strong>`,
+		},
+		{
+			// Contrived example #2
+			`<titleproper> with nested <emph> -- neither has a render attribute`,
+			`<titleproper>This is a <emph>contrived</emph> example.</titleproper>`,
+			`<titleproper>This is a <emph>contrived</emph> example.</titleproper>`,
+		},
+	}
+
+	for _, testCase := range testCases {
+		actual := convertEADToHTML(testCase.eadString)
+		if actual != testCase.expectedHTMLString {
+			t.Errorf(`%s: expected EAD string "%s" to be converted to HTML string "%s", but got "%s"`,
+				testCase.name, testCase.eadString, testCase.expectedHTMLString, actual)
+		}
+	}
+}
+
+func testConvertEADToHTML_EveryCombinationOfTagAndRenderAttributeWithInvalidChars(t *testing.T) {
 	type testCase struct {
 		name               string
 		eadString          string
