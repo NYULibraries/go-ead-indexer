@@ -88,7 +88,7 @@ func testConvertEADToHTML_EveryCombinationOfTagAndRenderAttributeWithInvalidChar
 			testCase := testCase{
 				name: fmt.Sprintf(`<%s render="%s">`,
 					eadTagToTest, renderAttribute),
-				eadString: fmt.Sprintf(`%s<%s render=\"%s">%s</%s>%s`,
+				eadString: fmt.Sprintf(`%s<%s render="%s">%s</%s>%s`,
 					textBeforeEADTag,
 					eadTagToTest, renderAttribute, eadElementTextWithInvalidOSCCharacters, eadTagToTest,
 					textAfterEADTag),
