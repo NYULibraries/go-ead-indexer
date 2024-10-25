@@ -4,53 +4,14 @@ import (
 	"fmt"
 	languageLib "go-ead-indexer/pkg/language"
 	"slices"
+	"strings"
 	"testing"
 )
 
 func TestConvertEADToHTML(t *testing.T) {
 	testConvertEADToHTML_EveryCombinationOfTagAndRenderAttributeWithInvalidChars(t)
 	testConvertEADToHTML_NestedTags(t)
-}
-
-func testConvertEADToHTML_NestedTags(t *testing.T) {
-	testCases := []struct {
-		name               string
-		eadString          string
-		expectedHTMLString string
-	}{
-		{
-			// fales/mss_270.xml
-			`<title> with nested <emph> -- each has render="underline"`,
-			"<title render=\"underline\"><emph render=\"underline\">In Process</emph></title> Volume 12, No. 2, Summer 2005",
-			"<em><em>In Process<em></em> Volume 12, No. 2, Summer 2005",
-		},
-		{
-			// nyhs/pro056_victor_prevost.xml
-			`<title> with nested <emph> -- <emph> has render="italic"`,
-			"Statuary at Crystal Palace [<title><emph render=\"italic\">Eve</emph></title> by Hiram Powers]",
-			"Statuary at Crystal Palace [<title><em>Eve</em></title> by Hiram Powers]",
-		},
-		{
-			// Contrived example #1
-			`<titleproper> with nested <emph> -- <titleproper> has render="bolddoublequote"`,
-			`<titleproper render="bolddoublequote">This is a <emph>contrived</emph> example.</titleproper>`,
-			`<strong>This is a <emph>contrived</emph> example.</strong>`,
-		},
-		{
-			// Contrived example #2
-			`<titleproper> with nested <emph> -- neither has a render attribute`,
-			`<titleproper>This is a <emph>contrived</emph> example.</titleproper>`,
-			`<titleproper>This is a <emph>contrived</emph> example.</titleproper>`,
-		},
-	}
-
-	for _, testCase := range testCases {
-		actual := convertEADToHTML(testCase.eadString)
-		if actual != testCase.expectedHTMLString {
-			t.Errorf(`%s: expected EAD string "%s" to be converted to HTML string "%s", but got "%s"`,
-				testCase.name, testCase.eadString, testCase.expectedHTMLString, actual)
-		}
-	}
+	testConvertEADToHTML_Specifity(t)
 }
 
 func testConvertEADToHTML_EveryCombinationOfTagAndRenderAttributeWithInvalidChars(t *testing.T) {
@@ -102,7 +63,111 @@ func testConvertEADToHTML_EveryCombinationOfTagAndRenderAttributeWithInvalidChar
 	}
 
 	for _, testCase := range testCases {
-		actual := convertEADToHTML(testCase.eadString)
+		actual, err := convertEADToHTML(testCase.eadString)
+		if err != nil {
+			t.Errorf(`%s: expected no error, but got error: "%s"`, testCase.name,
+				err)
+		}
+
+		if actual != testCase.expectedHTMLString {
+			t.Errorf(`%s: expected EAD string "%s" to be converted to HTML string "%s", but got "%s"`,
+				testCase.name, testCase.eadString, testCase.expectedHTMLString, actual)
+		}
+	}
+}
+
+func testConvertEADToHTML_NestedTags(t *testing.T) {
+	testCases := []struct {
+		name               string
+		eadString          string
+		expectedHTMLString string
+	}{
+		{
+			// fales/mss_270.xml
+			`<title> with nested <emph> -- each has render="underline"`,
+			"<title render=\"underline\"><emph render=\"underline\">In Process</emph></title> Volume 12, No. 2, Summer 2005",
+			"<em><em>In Process<em></em> Volume 12, No. 2, Summer 2005",
+		},
+		{
+			// nyhs/pro056_victor_prevost.xml
+			`<title> with nested <emph> -- <emph> has render="italic"`,
+			"Statuary at Crystal Palace [<title><emph render=\"italic\">Eve</emph></title> by Hiram Powers]",
+			"Statuary at Crystal Palace [<title><em>Eve</em></title> by Hiram Powers]",
+		},
+		{
+			// Contrived example #1
+			`<titleproper> with nested <emph> -- <titleproper> has render="bolddoublequote"`,
+			`<titleproper render="bolddoublequote">This is a <emph>contrived</emph> example.</titleproper>`,
+			`<strong>This is a <emph>contrived</emph> example.</strong>`,
+		},
+		{
+			// Contrived example #2
+			`<titleproper> with nested <emph> -- neither has a render attribute`,
+			`<titleproper>This is a <emph>contrived</emph> example.</titleproper>`,
+			`<titleproper>This is a <emph>contrived</emph> example.</titleproper>`,
+		},
+	}
+
+	for _, testCase := range testCases {
+		actual, err := convertEADToHTML(testCase.eadString)
+		if err != nil {
+			t.Errorf(`%s: expected no error, but got error: "%s"`, testCase.name,
+				err)
+		}
+
+		if actual != testCase.expectedHTMLString {
+			t.Errorf(`%s: expected EAD string "%s" to be converted to HTML string "%s", but got "%s"`,
+				testCase.name, testCase.eadString, testCase.expectedHTMLString, actual)
+		}
+	}
+}
+
+func testConvertEADToHTML_Specifity(t *testing.T) {
+	eadStringTokens := []string{
+		"0",
+		`<date type="acquisition" normal="19880423">April 23, 1988.</date>`,
+		"1",
+		"<title>TITLE [no attributes]</title>",
+		"2",
+		`<emph render="underline">EMPH [render="underline"]</emph>`,
+		"3",
+		`<emph id="underline" altrender="bold">EMPH [id="underline" altrender="bold"]</emph>`,
+		"4",
+	}
+	eadString := strings.Join(eadStringTokens, "")
+
+	expectedHTMLStringTokens := []string{
+		"0",
+		`<date type="acquisition" normal="19880423">April 23, 1988.</date>`,
+		"1",
+		"<title>TITLE [no attributes]</title>",
+		"2",
+		`<em>EMPH [render="underline"]</em>`,
+		"3",
+		`<emph id="underline" altrender="bold">EMPH [id="underline" altrender="bold"]</emph>`,
+		"4",
+	}
+	expectedHTMLString := strings.Join(expectedHTMLStringTokens, "")
+
+	testCases := []struct {
+		name               string
+		eadString          string
+		expectedHTMLString string
+	}{
+		{
+			name:               "Only converts EAD tags with `render` attributes",
+			eadString:          eadString,
+			expectedHTMLString: expectedHTMLString,
+		},
+	}
+
+	for _, testCase := range testCases {
+		actual, err := convertEADToHTML(testCase.eadString)
+		if err != nil {
+			t.Errorf(`%s: expected no error, but got error: "%s"`, testCase.name,
+				err)
+		}
+
 		if actual != testCase.expectedHTMLString {
 			t.Errorf(`%s: expected EAD string "%s" to be converted to HTML string "%s", but got "%s"`,
 				testCase.name, testCase.eadString, testCase.expectedHTMLString, actual)
