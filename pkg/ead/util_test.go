@@ -86,7 +86,7 @@ func testConvertEADToHTML_NestedTags(t *testing.T) {
 			// fales/mss_270.xml
 			`<title> with nested <emph> -- each has render="underline"`,
 			"<title render=\"underline\"><emph render=\"underline\">In Process</emph></title> Volume 12, No. 2, Summer 2005",
-			"<em><em>In Process<em></em> Volume 12, No. 2, Summer 2005",
+			"<em><em>In Process</em></em> Volume 12, No. 2, Summer 2005",
 		},
 		{
 			// nyhs/pro056_victor_prevost.xml
