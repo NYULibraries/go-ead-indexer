@@ -95,13 +95,11 @@ func testConvertEADToHTML_NestedTags(t *testing.T) {
 			"Statuary at Crystal Palace [<title><em>Eve</em></title> by Hiram Powers]",
 		},
 		{
-			// Contrived example #1
 			`<titleproper> with nested <emph> -- <titleproper> has render="bolddoublequote"`,
 			`<titleproper render="bolddoublequote">This is a <emph>contrived</emph> example.</titleproper>`,
 			`<strong>This is a <emph>contrived</emph> example.</strong>`,
 		},
 		{
-			// Contrived example #2
 			`<titleproper> with nested <emph> -- neither has a render attribute`,
 			`<titleproper>This is a <emph>contrived</emph> example.</titleproper>`,
 			`<titleproper>This is a <emph>contrived</emph> example.</titleproper>`,
