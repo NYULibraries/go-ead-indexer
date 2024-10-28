@@ -53,8 +53,8 @@
                       title</field>
     <field name="component_level_isim">6</field>
     <field name="component_children_bsi">false</field>
-    <field name="collection_sim">Megan O'Shea's One Resource to Rule Them All</field>
-    <field name="collection_ssm">Megan O'Shea's One Resource to Rule Them All</field>
+    <field name="collection_sim">Megan O'Shea's One Resource to  Rule Them All</field>
+    <field name="collection_ssm">Megan O'Shea's One Resource to  Rule Them All</field>
     <field name="collection_unitid_ssm">MOS.2021</field>
     <field name="level_sim">file</field>
     <field name="unittitle_ssm">A File Nested Within a File, No Container</field>
@@ -69,7 +69,7 @@
     <field name="repository_ssm">appdev</field>
     <field name="format_sim">Archival Object</field>
     <field name="format_ssm">Archival Object</field>
-    <field name="collection_teim">Megan O'Shea's One Resource to Rule Them All</field>
+    <field name="collection_teim">Megan O'Shea's One Resource to  Rule Them All</field>
     <field name="collection_unitid_teim">MOS.2021</field>
     <field name="series_sim">Level 2 Series I. Megan
               O'Shea
