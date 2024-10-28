@@ -1,11 +1,15 @@
 package ead
 
 import (
+	"encoding/xml"
+	"fmt"
 	"github.com/lestrrat-go/libxml2/types"
 	languageLib "go-ead-indexer/pkg/language"
 	"go-ead-indexer/pkg/sanitize"
 	"go-ead-indexer/pkg/util"
+	"io"
 	"regexp"
+	"slices"
 	"strconv"
 	"strings"
 )
@@ -62,8 +66,72 @@ func convertToFacetSlice(rawSlice []string) []string {
 		replaceMARCSubfieldDemarcatorsInSlice(rawSlice))
 }
 
-func convertEADToHTML(eadString string) string {
-	return sanitize.Clean(eadString)
+func convertEADTagsWithRenderAttributesToHTML(eadString string) (string, error) {
+	var htmlString string
+
+	var startTagNames []string
+
+	decoder := xml.NewDecoder(strings.NewReader(eadString))
+
+	for {
+		token, err := decoder.Token()
+
+		if err == io.EOF {
+			break
+		} else if err != nil {
+			return htmlString, err
+		}
+
+		switch token := token.(type) {
+		case xml.StartElement:
+			var renderAttributeValue string
+			for i := range token.Attr {
+				if token.Attr[i].Name.Local == "render" {
+					renderAttributeValue = token.Attr[i].Value
+					break
+				}
+			}
+
+			if renderAttributeValue == "" {
+				startTagNames = append(startTagNames, token.Name.Local)
+
+				htmlString += stringifyStartElementToken(token)
+			} else {
+				if htmlTagName, ok := eadTagRenderAttributeToHTMLTagName[renderAttributeValue]; ok {
+					startTagNames = append(startTagNames, htmlTagName)
+
+					token.Name.Local = htmlTagName
+					token.Attr = slices.DeleteFunc(token.Attr, func(attribute xml.Attr) bool {
+						return attribute.Name.Local == "render"
+					})
+
+					htmlString += stringifyStartElementToken(token)
+				} else {
+					startTagNames = append(startTagNames, token.Name.Local)
+
+					htmlString += stringifyStartElementToken(token)
+				}
+			}
+
+		case xml.EndElement:
+			htmlString += fmt.Sprintf("</%s>", startTagNames[len(startTagNames)-1])
+			startTagNames = startTagNames[:len(startTagNames)-1]
+
+		case xml.CharData:
+			htmlString += string(token)
+		}
+	}
+
+	return htmlString, nil
+}
+
+func convertEADToHTML(eadString string) (string, error) {
+	htmlString, err := convertEADTagsWithRenderAttributesToHTML(eadString)
+	if err != nil {
+		return htmlString, err
+	}
+
+	return sanitize.Clean(htmlString), nil
 }
 
 func getDateRange(unitDates []string) []string {
@@ -205,4 +273,18 @@ func replaceMARCSubfieldDemarcatorsInSlice(stringSlice []string) []string {
 // * https://jira.nyu.edu/browse/DLFA-229?focusedCommentId=10153922&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10153922
 func replaceMARCSubfieldDemarcators(str string) string {
 	return marcSubfieldDemarcator.ReplaceAllString(str, "--")
+}
+
+func stringifyStartElementToken(token xml.StartElement) string {
+	startTag := "<" + token.Name.Local
+
+	// Note that `token.Attr` appears to preserve the order of the attributes as
+	// they appear in the XML.
+	for _, attribute := range token.Attr {
+		startTag += fmt.Sprintf(` %s="%s"`, attribute.Name.Local, attribute.Value)
+	}
+
+	startTag += ">"
+
+	return startTag
 }
