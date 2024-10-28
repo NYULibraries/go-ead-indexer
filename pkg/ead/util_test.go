@@ -104,6 +104,11 @@ func testConvertEADToHTML_NestedTags(t *testing.T) {
 			`<titleproper>This is a <emph>contrived</emph> example.</titleproper>`,
 			`<titleproper>This is a <emph>contrived</emph> example.</titleproper>`,
 		},
+		{
+			`<titleproper> with 2 layers of nested <emph> -- innermost <emph> has a render attribute`,
+			`<titleproper>This <emph>is <emph render="italic">a</emph> contrived</emph> example.</titleproper>`,
+			`<titleproper>This <emph>is <em>a</em> contrived</emph> example.</titleproper>`,
+		},
 	}
 
 	for _, testCase := range testCases {
