@@ -10,6 +10,7 @@ import (
 
 func TestConvertEADToHTML(t *testing.T) {
 	testConvertEADToHTML_EveryCombinationOfTagAndRenderAttributeWithInvalidChars(t)
+	testConvertEADToHTML_GraceHandlingOfInvalidXML(t)
 	testConvertEADToHTML_NestedTags(t)
 	testConvertEADToHTML_Specifity(t)
 }
@@ -73,6 +74,17 @@ func testConvertEADToHTML_EveryCombinationOfTagAndRenderAttributeWithInvalidChar
 			t.Errorf(`%s: expected EAD string "%s" to be converted to HTML string "%s", but got "%s"`,
 				testCase.name, testCase.eadString, testCase.expectedHTMLString, actual)
 		}
+	}
+}
+
+func testConvertEADToHTML_GraceHandlingOfInvalidXML(t *testing.T) {
+	invalidXML := `<titleproper>This is invalid EAD</emph>`
+	result, err := convertEADToHTML(invalidXML)
+	if err == nil {
+		t.Errorf(`Does not return an error for "%s"`, invalidXML)
+	}
+	if result != invalidXML {
+		t.Errorf(`Does not return the original string "%s" on error`, invalidXML)
 	}
 }
 
