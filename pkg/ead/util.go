@@ -79,7 +79,7 @@ func convertEADTagsWithRenderAttributesToHTML(eadString string) (string, error) 
 		if err == io.EOF {
 			break
 		} else if err != nil {
-			return htmlString, err
+			return eadString, err
 		}
 
 		switch token := token.(type) {
