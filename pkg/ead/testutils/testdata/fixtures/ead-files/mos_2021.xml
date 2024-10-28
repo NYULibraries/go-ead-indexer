@@ -58,7 +58,8 @@
       <repository>
         <corpname>Tamiment Library and Robert F. Wagner Labor Archives</corpname>
       </repository>
-      <unittitle>Megan O'Shea's One Resource to Rule Them All</unittitle>
+      <!-- Add <emph> and <lb/> from <eadheader><filedesc><titlestmt><titleproper> to test conversion-->
+      <unittitle>Megan O'Shea's <emph render="italic">One</emph> Resource to <lb/> Rule Them All</unittitle>
       <origination label="Creator">
         <persname role="dnr" rules="local" source="local"> Megan O'Shea</persname>
       </origination>
