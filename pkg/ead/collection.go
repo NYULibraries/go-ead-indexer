@@ -135,7 +135,10 @@ func (collectionDoc *CollectionDoc) setComplexParts() []error {
 	collectionDoc.setSubject()
 	collectionDoc.setUnitDateEnd()
 	collectionDoc.setUnitDateStart()
-	collectionDoc.setUnitTitleHTML()
+	unitTitleHTMLError := collectionDoc.setUnitTitleHTML()
+	if unitTitleHTMLError != nil {
+		errs = append(errs, unitTitleHTMLError)
+	}
 
 	return errs
 }

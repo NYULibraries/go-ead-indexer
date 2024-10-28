@@ -96,13 +96,19 @@ func (collectionDoc *CollectionDoc) setUnitDateStart() {
 	parts.UnitDateStart.Values = unitDateStartValues
 }
 
-func (collectionDoc *CollectionDoc) setUnitTitleHTML() {
+func (collectionDoc *CollectionDoc) setUnitTitleHTML() error {
 	parts := &collectionDoc.Parts
 
 	unitTitleHTMLValues := []string{}
 	for _, unitTitle := range parts.UnitTitle.Values {
-		unitTitleHTMLValues = append(unitTitleHTMLValues, convertEADToHTML(unitTitle))
+		unitTitleHTMLValue, err := convertEADToHTML(unitTitle)
+		if err != nil {
+			return err
+		}
+		unitTitleHTMLValues = append(unitTitleHTMLValues, unitTitleHTMLValue)
 	}
 
 	parts.UnitTitleHTML.Values = unitTitleHTMLValues
+
+	return nil
 }
