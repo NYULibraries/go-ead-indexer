@@ -12,7 +12,7 @@ func TestConvertEADToHTML(t *testing.T) {
 	testConvertEADToHTML_EveryCombinationOfTagAndRenderAttributeWithInvalidChars(t)
 	testConvertEADToHTML_GraceHandlingOfInvalidXML(t)
 	testConvertEADToHTML_NestedTags(t)
-	testConvertEADToHTML_Specifity(t)
+	testConvertEADToHTML_Specificity(t)
 }
 
 func testConvertEADToHTML_EveryCombinationOfTagAndRenderAttributeWithInvalidChars(t *testing.T) {
@@ -137,7 +137,7 @@ func testConvertEADToHTML_NestedTags(t *testing.T) {
 	}
 }
 
-func testConvertEADToHTML_Specifity(t *testing.T) {
+func testConvertEADToHTML_Specificity(t *testing.T) {
 	eadStringTokens := []string{
 		"0",
 		`<date type="acquisition" normal="19880423">April 23, 1988.</date>`,
