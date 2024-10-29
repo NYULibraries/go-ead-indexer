@@ -47,7 +47,7 @@ type ComponentXPathDirectQueryParts struct {
 	UnitDateNotType               ComponentPart `json:"unit_date_not_type"`
 	UnitDateBulk                  ComponentPart `json:"unit_date_bulk"`
 	UnitDateNormal                ComponentPart `json:"unit_date_normal"`
-	UnitdateInclusive             ComponentPart `json:"unitdate_inclusive"`
+	UnitDateInclusive             ComponentPart `json:"unit_date_inclusive"`
 }
 
 type ComponentPart struct {
@@ -281,8 +281,8 @@ func (component *Component) setXPathDirectQueryParts(node types.Node) error {
 		return err
 	}
 
-	parts.UnitdateInclusive.Source = "//archdesc[@level='collection']/did/unitdate[@type='inclusive']"
-	parts.UnitdateInclusive.Values, err = getValuesForXPathQuery(parts.UnitdateInclusive.Source, node)
+	parts.UnitDateInclusive.Source = "//archdesc[@level='collection']/did/unitdate[@type='inclusive']"
+	parts.UnitDateInclusive.Values, err = getValuesForXPathQuery(parts.UnitDateInclusive.Source, node)
 	if err != nil {
 		return err
 	}
