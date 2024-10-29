@@ -3,55 +3,56 @@ package ead
 import "github.com/lestrrat-go/libxml2/types"
 
 type Component struct {
-	ID             string
-	Parts          ComponentParts
-	SolrAddMessage string
+	ID             string         `json:"id"`
+	Parts          ComponentParts `json:"parts"`
+	SolrAddMessage string         `json:"solr_add_message"`
 }
 
+// For now, no struct tags for the `Component*` fields.  Keep it flat.
 type ComponentParts struct {
 	ComponentXPathDirectQueryParts
-	RepositoryCode ComponentPart
+	RepositoryCode ComponentPart `json:"repository_code"`
 }
 
 type ComponentXPathDirectQueryParts struct {
-	Address                       ComponentPart
-	Appraisal                     ComponentPart
-	BiogHist                      ComponentPart
-	ChronList                     ComponentPart
-	Collection                    ComponentPart
-	CollectionUnitID              ComponentPart
-	Corpname                      ComponentPart
-	Creator                       ComponentPart
-	DAO                           ComponentPart
-	DIDUnitID                     ComponentPart
-	DIDUnitTitle                  ComponentPart
-	EADID                         ComponentPart
-	FamName                       ComponentPart
-	Function                      ComponentPart
-	GenreForm                     ComponentPart
-	GeogName                      ComponentPart
-	Heading                       ComponentPart
-	Language                      ComponentPart
-	Level                         ComponentPart
-	Name                          ComponentPart
-	Note                          ComponentPart
-	Occupation                    ComponentPart
-	PersName                      ComponentPart
-	PhysTech                      ComponentPart
-	Ref                           ComponentPart
-	ScopeContent                  ComponentPart
-	Subject                       ComponentPart
-	SubjectOrFunctionOrOccupation ComponentPart
-	Title                         ComponentPart
-	UnitDateNotType               ComponentPart
-	UnitDateBulk                  ComponentPart
-	UnitDateNormal                ComponentPart
-	UnitdateInclusive             ComponentPart
+	Address                       ComponentPart `json:"address"`
+	Appraisal                     ComponentPart `json:"appraisal"`
+	BiogHist                      ComponentPart `json:"biog_hist"`
+	ChronList                     ComponentPart `json:"chron_list"`
+	Collection                    ComponentPart `json:"collection"`
+	CollectionUnitID              ComponentPart `json:"collection_unit_id"`
+	Corpname                      ComponentPart `json:"corpname"`
+	Creator                       ComponentPart `json:"creator"`
+	DAO                           ComponentPart `json:"dao"`
+	DIDUnitID                     ComponentPart `json:"did_unit_id"`
+	DIDUnitTitle                  ComponentPart `json:"did_unit_title"`
+	EADID                         ComponentPart `json:"eadid"`
+	FamName                       ComponentPart `json:"fam_name"`
+	Function                      ComponentPart `json:"function"`
+	GenreForm                     ComponentPart `json:"genre_form"`
+	GeogName                      ComponentPart `json:"geog_name"`
+	Heading                       ComponentPart `json:"heading"`
+	Language                      ComponentPart `json:"language"`
+	Level                         ComponentPart `json:"level"`
+	Name                          ComponentPart `json:"name"`
+	Note                          ComponentPart `json:"note"`
+	Occupation                    ComponentPart `json:"occupation"`
+	PersName                      ComponentPart `json:"pers_name"`
+	PhysTech                      ComponentPart `json:"phys_tech"`
+	Ref                           ComponentPart `json:"ref"`
+	ScopeContent                  ComponentPart `json:"scope_content"`
+	Subject                       ComponentPart `json:"subject"`
+	SubjectOrFunctionOrOccupation ComponentPart `json:"subject_or_function_or_occupation"`
+	Title                         ComponentPart `json:"title"`
+	UnitDateNotType               ComponentPart `json:"unit_date_not_type"`
+	UnitDateBulk                  ComponentPart `json:"unit_date_bulk"`
+	UnitDateNormal                ComponentPart `json:"unit_date_normal"`
+	UnitdateInclusive             ComponentPart `json:"unitdate_inclusive"`
 }
 
 type ComponentPart struct {
-	Source string
-	Values []string
+	Source string   `json:"source"`
+	Values []string `json:"values"`
 }
 
 // See `ead.new()` comment on why we have to pass in `repositoryCode` as an argument.

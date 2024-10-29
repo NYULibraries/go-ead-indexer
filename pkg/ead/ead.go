@@ -23,10 +23,10 @@ var marcSubfieldDemarcator = regexp.MustCompile(`\|\w{1}`)
 var namespaceRegexp = regexp.MustCompile(`<((?s)\s*)ead((?s).*)xmlns="(?U).*"`)
 
 type EAD struct {
-	CollectionDoc        CollectionDoc
-	Components           *[]Component
-	ModifiedFileContents string
-	OriginalFileContents string
+	CollectionDoc        CollectionDoc `json:"collection_doc"`
+	Components           *[]Component  `json:"components"`
+	ModifiedFileContents string        `json:"modified_file_contents"`
+	OriginalFileContents string        `json:"original_file_contents"`
 }
 
 // Note that the repository code historically is taken from the name of the
