@@ -84,6 +84,14 @@ func New(repositoryCode string, eadXML string) (EAD, error) {
 		return ead, err
 	}
 
+	// TODO: Remove this debug stuff after `debug` package is implemented with
+	// `ead.{CollectionDoc,Components}` dump functionality.
+	// eadJSON, err := json.MarshalIndent(ead.CollectionDoc, "", "    ")
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// fmt.Println(string(eadJSON))
+
 	return ead, nil
 }
 
