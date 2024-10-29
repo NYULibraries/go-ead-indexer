@@ -225,19 +225,21 @@ func getDateParts(dateString string) DateParts {
 	return dateParts
 }
 
-func getValuesForXPathQuery(query string, node types.Node) ([]string, error) {
+func getValuesForXPathQuery(query string, node types.Node) ([]string, []string, error) {
 	var values []string
+	var xmlStrings []string
 
 	xpathResult, err := node.Find(query)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	for _, node = range xpathResult.NodeList() {
 		values = append(values, node.NodeValue())
+		xmlStrings = append(xmlStrings, node.String())
 	}
 
-	return values, nil
+	return values, xmlStrings, nil
 }
 
 // `dateString` should be of the form "YYYY/YYYY", where the left "YYYY" is the
