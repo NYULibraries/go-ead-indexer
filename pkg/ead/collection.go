@@ -79,8 +79,6 @@ type CollectionDocXPathParts struct {
 	UnitDateNoTypeAttribute CollectionDocPart `json:"unit_date_no_type_attribute"`
 	UnitID                  CollectionDocPart `json:"unit_id"`
 	UnitTitle               CollectionDocPart `json:"unit_title"`
-	Unitdate_normal         CollectionDocPart `json:"unitdate_normal"`
-	Unitdate_start          CollectionDocPart `json:"unitdate_start"`
 }
 
 type CollectionDocPart struct {
