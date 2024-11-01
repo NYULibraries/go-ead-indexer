@@ -10,7 +10,7 @@ import (
 
 func TestConvertEADToHTML(t *testing.T) {
 	testConvertEADToHTML_EveryCombinationOfTagAndRenderAttributeWithInvalidChars(t)
-	testConvertEADToHTML_GraceHandlingOfInvalidXML(t)
+	testConvertEADToHTML_GracefulHandlingOfInvalidXML(t)
 	testConvertEADToHTML_NestedTags(t)
 	testConvertEADToHTML_Specificity(t)
 }
@@ -77,7 +77,7 @@ func testConvertEADToHTML_EveryCombinationOfTagAndRenderAttributeWithInvalidChar
 	}
 }
 
-func testConvertEADToHTML_GraceHandlingOfInvalidXML(t *testing.T) {
+func testConvertEADToHTML_GracefulHandlingOfInvalidXML(t *testing.T) {
 	invalidXML := `<titleproper>This is invalid EAD</emph>`
 	result, err := convertEADToHTML(invalidXML)
 	if err == nil {
