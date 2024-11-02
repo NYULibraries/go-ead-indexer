@@ -1,5 +1,7 @@
 package ead
 
+import "strings"
+
 func (collectionDoc *CollectionDoc) setCreator() {
 	parts := &collectionDoc.Parts
 
@@ -100,11 +102,20 @@ func (collectionDoc *CollectionDoc) setUnitTitleHTML() error {
 	parts := &collectionDoc.Parts
 
 	unitTitleHTMLValues := []string{}
-	for _, unitTitle := range parts.UnitTitle.Values {
-		unitTitleHTMLValue, err := convertEADToHTML(unitTitle)
+	for _, unitTitle := range parts.UnitTitle.XMLStrings {
+		unitTitleContents := strings.TrimSuffix(
+			strings.TrimPrefix(unitTitle, "<unittitle>"),
+			"</unittitle>")
+		converted, err := convertEADToHTML(unitTitleContents)
 		if err != nil {
 			return err
 		}
+
+		unitTitleHTMLValue, err := stripTags(converted)
+		if err != nil {
+			return err
+		}
+
 		unitTitleHTMLValues = append(unitTitleHTMLValues, unitTitleHTMLValue)
 	}
 
