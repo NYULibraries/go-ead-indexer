@@ -624,3 +624,106 @@ func TestReplaceMARCSubfieldDemarcators(t *testing.T) {
 		}
 	}
 }
+
+func TestStripTags(t *testing.T) {
+	testStripTags_EmptyElements(t)
+	testStripTags_Specificity(t)
+}
+
+func testStripTags_EmptyElements(t *testing.T) {
+	testCases := []struct {
+		name               string
+		eadString          string
+		expectedHTMLString string
+	}{
+		{
+			"Single empty self-closing tag",
+			`1<lb/>2`,
+			"12",
+		},
+		{
+			"Single empty element with both opening and closing tags",
+			`1<lb></lb>2`,
+			"12",
+		},
+		{
+			"Single empty self-closing tag with attributes",
+			`1<dimensions id="aspace_f01c5dcb7232080131a647dc8b66183b" label="21.1 x 29.7 cm"/>2`,
+			"12",
+		},
+	}
+
+	for _, testCase := range testCases {
+		actual, err := stripTags(testCase.eadString)
+		if err != nil {
+			t.Errorf(`%s: expected no error, but got error: "%s"`, testCase.name,
+				err)
+		}
+
+		if actual != testCase.expectedHTMLString {
+			t.Errorf(`%s: expected XML string "%s" to be converted to HTML string "%s", but got "%s"`,
+				testCase.name, testCase.eadString, testCase.expectedHTMLString, actual)
+		}
+	}
+}
+
+func testStripTags_Specificity(t *testing.T) {
+	eadStringTokens := []string{
+		"0",
+		"<title>TITLE</title>",
+		"1",
+		`<em>EM</em>`,
+		"2",
+		"<lb/>",
+		"3",
+		"<br></br>",
+		"4",
+		`<date type="acquisition" normal="19880423">April 23, 1988.</date>`,
+		"5",
+		`<strong>STRONG</strong>`,
+		"6",
+	}
+	xmlString := strings.Join(eadStringTokens, "")
+
+	expectedHTMLStringTokens := []string{
+		"0",
+		"TITLE",
+		"1",
+		`<em>EM</em>`,
+		"2",
+		"",
+		"3",
+		"",
+		"4",
+		`April 23, 1988.`,
+		"5",
+		`<strong>STRONG</strong>`,
+		"6",
+	}
+	expectedHTMLString := strings.Join(expectedHTMLStringTokens, "")
+
+	testCases := []struct {
+		name               string
+		xmlString          string
+		expectedHTMLString string
+	}{
+		{
+			name:               "Only strips disallowed XML tags",
+			xmlString:          xmlString,
+			expectedHTMLString: expectedHTMLString,
+		},
+	}
+
+	for _, testCase := range testCases {
+		actual, err := stripTags(testCase.xmlString)
+		if err != nil {
+			t.Errorf(`%s: expected no error, but got error: "%s"`, testCase.name,
+				err)
+		}
+
+		if actual != testCase.expectedHTMLString {
+			t.Errorf(`%s: expected XML string "%s" to be converted to HTML string "%s", but got "%s"`,
+				testCase.name, testCase.xmlString, testCase.expectedHTMLString, actual)
+		}
+	}
+}

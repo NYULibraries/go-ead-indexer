@@ -8,6 +8,7 @@ import (
 	"go-ead-indexer/pkg/sanitize"
 	"go-ead-indexer/pkg/util"
 	"io"
+	"maps"
 	"regexp"
 	"slices"
 	"strconv"
@@ -60,6 +61,9 @@ var eadTagRenderAttributeToHTMLTagName = map[string]string{
 	"super":           "sup",
 	"underline":       "em",
 }
+
+var allowedHTMLTags = util.CompactStringSlicePreserveOrder(
+	slices.Collect(maps.Values(eadTagRenderAttributeToHTMLTagName)))
 
 func convertToFacetSlice(rawSlice []string) []string {
 	return util.CompactStringSlicePreserveOrder(
@@ -289,4 +293,48 @@ func stringifyStartElementToken(token xml.StartElement) string {
 	startTag += ">"
 
 	return startTag
+}
+
+// TODO: If we end up keeping this instead of using a 3rd-party package, make it
+// general purpose by adding an `allowedHTMLTags` parameter instead of coupling
+// to the package-level `allowedHTMLTags` var.
+func stripTags(xmlString string) (string, error) {
+	var strippedString string
+
+	var startTagNames []string
+
+	decoder := xml.NewDecoder(strings.NewReader(xmlString))
+
+	for {
+		token, err := decoder.Token()
+
+		if err == io.EOF {
+			break
+		} else if err != nil {
+			return xmlString, err
+		}
+
+		switch token := token.(type) {
+		case xml.StartElement:
+			if !slices.Contains(allowedHTMLTags, token.Name.Local) {
+				continue
+			}
+
+			startTagNames = append(startTagNames, token.Name.Local)
+			strippedString += stringifyStartElementToken(token)
+
+		case xml.EndElement:
+			if !slices.Contains(allowedHTMLTags, token.Name.Local) {
+				continue
+			}
+
+			strippedString += fmt.Sprintf("</%s>", startTagNames[len(startTagNames)-1])
+			startTagNames = startTagNames[:len(startTagNames)-1]
+
+		case xml.CharData:
+			strippedString += string(token)
+		}
+	}
+
+	return strippedString, nil
 }
