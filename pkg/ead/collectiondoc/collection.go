@@ -1,4 +1,4 @@
-package collection
+package collectiondoc
 
 import (
 	"github.com/lestrrat-go/libxml2/types"

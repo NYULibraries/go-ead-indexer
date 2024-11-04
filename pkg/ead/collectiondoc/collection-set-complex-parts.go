@@ -1,4 +1,4 @@
-package collection
+package collectiondoc
 
 import (
 	"go-ead-indexer/pkg/ead/util"

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/lestrrat-go/libxml2/parser"
 	"github.com/lestrrat-go/libxml2/types"
-	"go-ead-indexer/pkg/ead/collection"
+	"go-ead-indexer/pkg/ead/collectiondoc"
 	"go-ead-indexer/pkg/ead/component"
 	"regexp"
 )
@@ -15,10 +15,10 @@ import (
 var namespaceRegexp = regexp.MustCompile(`<((?s)\s*)ead((?s).*)xmlns="(?U).*"`)
 
 type EAD struct {
-	CollectionDoc        collection.CollectionDoc `json:"collection_doc"`
-	Components           *[]component.Component   `json:"components"`
-	ModifiedFileContents string                   `json:"modified_file_contents"`
-	OriginalFileContents string                   `json:"original_file_contents"`
+	CollectionDoc        collectiondoc.CollectionDoc `json:"collection_doc"`
+	Components           *[]component.Component      `json:"components"`
+	ModifiedFileContents string                      `json:"modified_file_contents"`
+	OriginalFileContents string                      `json:"original_file_contents"`
 }
 
 // Note that the repository code historically is taken from the name of the
@@ -66,7 +66,7 @@ func New(repositoryCode string, eadXML string) (EAD, error) {
 		return ead, err
 	}
 
-	ead.CollectionDoc, err = collection.MakeCollectionDoc(repositoryCode, rootNode)
+	ead.CollectionDoc, err = collectiondoc.MakeCollectionDoc(repositoryCode, rootNode)
 	if err != nil {
 		return ead, err
 	}
