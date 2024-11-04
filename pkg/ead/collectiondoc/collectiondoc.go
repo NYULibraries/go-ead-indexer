@@ -117,8 +117,3 @@ func (collectionDoc *CollectionDoc) setParts(node types.Node) error {
 
 	return nil
 }
-
-func (collectionDoc *CollectionDoc) setHardcodedParts() {
-	collectionDoc.Parts.FormatForDisplay = "Archival Collection"
-	collectionDoc.Parts.FormatForSort = 0
-}
