@@ -4,18 +4,10 @@ import (
 	"fmt"
 	"github.com/lestrrat-go/libxml2/parser"
 	"github.com/lestrrat-go/libxml2/types"
+	"go-ead-indexer/pkg/ead/collection"
+	"go-ead-indexer/pkg/ead/component"
 	"regexp"
 )
-
-// TODO DLFA-238: fix the bug we've intentionally preserved in MARC subfield demarcation
-// replacement.  For details, see:
-//
-//   - https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10154897&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10154897
-//   - https://jira.nyu.edu/browse/DLFA-229?focusedCommentId=10153922&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10153922
-//
-// This is the buggy regular expression which replicates the v1 indexer code here:
-// https://github.com/NYULibraries/ead_indexer/blob/a367ab8cc791376f0d8a287cbcd5b6ee43d5c04f/lib/ead_indexer/behaviors.rb#L124
-var marcSubfieldDemarcator = regexp.MustCompile(`\|\w{1}`)
 
 // We need to set `xmlns=""` to get the xpath queries working.  See code comment
 // in `New()` for more details.  `xmlns=""` is valid according to this post:
@@ -23,10 +15,10 @@ var marcSubfieldDemarcator = regexp.MustCompile(`\|\w{1}`)
 var namespaceRegexp = regexp.MustCompile(`<((?s)\s*)ead((?s).*)xmlns="(?U).*"`)
 
 type EAD struct {
-	CollectionDoc        CollectionDoc `json:"collection_doc"`
-	Components           *[]Component  `json:"components"`
-	ModifiedFileContents string        `json:"modified_file_contents"`
-	OriginalFileContents string        `json:"original_file_contents"`
+	CollectionDoc        collection.CollectionDoc `json:"collection_doc"`
+	Components           *[]component.Component   `json:"components"`
+	ModifiedFileContents string                   `json:"modified_file_contents"`
+	OriginalFileContents string                   `json:"original_file_contents"`
 }
 
 // Note that the repository code historically is taken from the name of the
@@ -74,12 +66,12 @@ func New(repositoryCode string, eadXML string) (EAD, error) {
 		return ead, err
 	}
 
-	ead.CollectionDoc, err = MakeCollectionDoc(repositoryCode, rootNode)
+	ead.CollectionDoc, err = collection.MakeCollectionDoc(repositoryCode, rootNode)
 	if err != nil {
 		return ead, err
 	}
 
-	ead.Components, err = MakeComponents(repositoryCode, rootNode)
+	ead.Components, err = component.MakeComponents(repositoryCode, rootNode)
 	if err != nil {
 		return ead, err
 	}

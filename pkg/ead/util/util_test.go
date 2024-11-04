@@ -1,4 +1,4 @@
-package ead
+package util
 
 import (
 	"fmt"
@@ -64,7 +64,7 @@ func testConvertEADToHTML_EveryCombinationOfTagAndRenderAttributeWithInvalidChar
 	}
 
 	for _, testCase := range testCases {
-		actual, err := convertEADToHTML(testCase.eadString)
+		actual, err := ConvertEADToHTML(testCase.eadString)
 		if err != nil {
 			t.Errorf(`%s: expected no error, but got error: "%s"`, testCase.name,
 				err)
@@ -79,7 +79,7 @@ func testConvertEADToHTML_EveryCombinationOfTagAndRenderAttributeWithInvalidChar
 
 func testConvertEADToHTML_GracefulHandlingOfInvalidXML(t *testing.T) {
 	invalidXML := `<titleproper>This is invalid EAD</emph>`
-	result, err := convertEADToHTML(invalidXML)
+	result, err := ConvertEADToHTML(invalidXML)
 	if err == nil {
 		t.Errorf(`Does not return an error for "%s"`, invalidXML)
 	}
@@ -124,7 +124,7 @@ func testConvertEADToHTML_NestedTags(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		actual, err := convertEADToHTML(testCase.eadString)
+		actual, err := ConvertEADToHTML(testCase.eadString)
 		if err != nil {
 			t.Errorf(`%s: expected no error, but got error: "%s"`, testCase.name,
 				err)
@@ -177,7 +177,7 @@ func testConvertEADToHTML_Specificity(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		actual, err := convertEADToHTML(testCase.eadString)
+		actual, err := ConvertEADToHTML(testCase.eadString)
 		if err != nil {
 			t.Errorf(`%s: expected no error, but got error: "%s"`, testCase.name,
 				err)
@@ -227,7 +227,7 @@ func TestGetDateParts(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		actual := getDateParts(testCase.dateString)
+		actual := GetDateParts(testCase.dateString)
 		if actual.Start != testCase.expectedDateParts.Start || actual.End != testCase.expectedDateParts.End {
 			t.Errorf(`%s: expected start="%s" and end="%s" for date string="%s", but got start="%s" and end="%s"`,
 				testCase.name, testCase.expectedDateParts.Start, testCase.expectedDateParts.End,
@@ -291,7 +291,7 @@ func TestGetDateRange(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		actual := getDateRange(testCase.unitDates)
+		actual := GetDateRange(testCase.unitDates)
 		if slices.Compare(actual, testCase.expectedDateRange) != 0 {
 			t.Errorf(`%s: expected dates "%v" to map to ranges %v, but got ranges %v`,
 				testCase.name, testCase.unitDates, testCase.expectedDateRange, actual)
@@ -341,7 +341,7 @@ func TestLanguage(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		actualLanguages, actualErrors := getLanguage(testCase.langCodes)
+		actualLanguages, actualErrors := GetLanguage(testCase.langCodes)
 		if slices.Compare(actualLanguages, testCase.expectedLanguages) != 0 {
 			t.Errorf(`%s: expected language codes "%v" to map to languages %v, but got %v`,
 				testCase.name, testCase.langCodes, testCase.expectedLanguages,
@@ -416,7 +416,7 @@ func TestGetUnitDateDisplay(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		actual := getUnitDateDisplay(testCase.unitDateNoTypeAttribute, testCase.unitDateInclusive,
+		actual := GetUnitDateDisplay(testCase.unitDateNoTypeAttribute, testCase.unitDateInclusive,
 			testCase.unitDateBulk)
 		if actual != testCase.expected {
 			t.Errorf(`%s: expected unitDateNoTypeAttribute=%v, unitDateInclusive=%v, unitDateBulk=%v to return "%s", got "%s"`,
@@ -654,7 +654,7 @@ func testStripTags_EmptyElements(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		actual, err := stripTags(testCase.eadString)
+		actual, err := StripTags(testCase.eadString)
 		if err != nil {
 			t.Errorf(`%s: expected no error, but got error: "%s"`, testCase.name,
 				err)
@@ -715,7 +715,7 @@ func testStripTags_Specificity(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		actual, err := stripTags(testCase.xmlString)
+		actual, err := StripTags(testCase.xmlString)
 		if err != nil {
 			t.Errorf(`%s: expected no error, but got error: "%s"`, testCase.name,
 				err)

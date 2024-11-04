@@ -1,6 +1,9 @@
-package ead
+package collection
 
-import "strings"
+import (
+	"go-ead-indexer/pkg/ead/util"
+	"strings"
+)
 
 func (collectionDoc *CollectionDoc) setCreator() {
 	parts := &collectionDoc.Parts
@@ -15,16 +18,16 @@ func (collectionDoc *CollectionDoc) setCreator() {
 
 func (collectionDoc *CollectionDoc) setDateRange() {
 	collectionDoc.Parts.DateRange.Values =
-		getDateRange(collectionDoc.Parts.UnitDateNormal.Values)
+		util.GetDateRange(collectionDoc.Parts.UnitDateNormal.Values)
 }
 
 func (collectionDoc *CollectionDoc) setMaterialType() {
 	collectionDoc.Parts.MaterialType.Values =
-		convertToFacetSlice(collectionDoc.Parts.GenreForm.Values)
+		util.ConvertToFacetSlice(collectionDoc.Parts.GenreForm.Values)
 }
 
 func (collectionDoc *CollectionDoc) setLanguage() []error {
-	language, errs := getLanguage(collectionDoc.Parts.LangCode.Values)
+	language, errs := util.GetLanguage(collectionDoc.Parts.LangCode.Values)
 	if len(errs) > 0 {
 		return errs
 	}
@@ -42,7 +45,7 @@ func (collectionDoc *CollectionDoc) setName() {
 	nameValues = append(nameValues, parts.PersName.Values...)
 	nameValues = append(nameValues, parts.CorpNameNotInRepository.Values...)
 
-	nameValues = convertToFacetSlice(nameValues)
+	nameValues = util.ConvertToFacetSlice(nameValues)
 
 	parts.Name.Values = nameValues
 }
@@ -55,18 +58,18 @@ func (collectionDoc *CollectionDoc) setOnlineAccess() {
 
 func (collectionDoc *CollectionDoc) setPlace() {
 	collectionDoc.Parts.Place.Values =
-		convertToFacetSlice(collectionDoc.Parts.GeogName.Values)
+		util.ConvertToFacetSlice(collectionDoc.Parts.GeogName.Values)
 }
 
 func (collectionDoc *CollectionDoc) setSubject() {
 	collectionDoc.Parts.Subject.Values =
-		convertToFacetSlice(collectionDoc.Parts.SubjectForFacets.Values)
+		util.ConvertToFacetSlice(collectionDoc.Parts.SubjectForFacets.Values)
 }
 
 func (collectionDoc *CollectionDoc) setUnitDateDisplay() {
 	parts := &collectionDoc.Parts
 
-	parts.UnitDateDisplay.Values[0] = getUnitDateDisplay(parts.UnitDateNoTypeAttribute.Values,
+	parts.UnitDateDisplay.Values[0] = util.GetUnitDateDisplay(parts.UnitDateNoTypeAttribute.Values,
 		parts.UnitDateInclusive.Values, parts.UnitDateBulk.Values)
 }
 
@@ -75,7 +78,7 @@ func (collectionDoc *CollectionDoc) setUnitDateEnd() {
 
 	unitDateEndValues := []string{}
 	for _, unitDateNormal := range parts.UnitDateNormal.Values {
-		unitDateEnd := getDateParts(unitDateNormal).End
+		unitDateEnd := util.GetDateParts(unitDateNormal).End
 		if unitDateEnd != "" {
 			unitDateEndValues = append(unitDateEndValues, unitDateEnd)
 		}
@@ -89,7 +92,7 @@ func (collectionDoc *CollectionDoc) setUnitDateStart() {
 
 	unitDateStartValues := []string{}
 	for _, unitDateNormal := range parts.UnitDateNormal.Values {
-		unitDateStart := getDateParts(unitDateNormal).Start
+		unitDateStart := util.GetDateParts(unitDateNormal).Start
 		if unitDateStart != "" {
 			unitDateStartValues = append(unitDateStartValues, unitDateStart)
 		}
@@ -106,12 +109,12 @@ func (collectionDoc *CollectionDoc) setUnitTitleHTML() error {
 		unitTitleContents := strings.TrimSuffix(
 			strings.TrimPrefix(unitTitle, "<unittitle>"),
 			"</unittitle>")
-		converted, err := convertEADToHTML(unitTitleContents)
+		converted, err := util.ConvertEADToHTML(unitTitleContents)
 		if err != nil {
 			return err
 		}
 
-		unitTitleHTMLValue, err := stripTags(converted)
+		unitTitleHTMLValue, err := util.StripTags(converted)
 		if err != nil {
 			return err
 		}
