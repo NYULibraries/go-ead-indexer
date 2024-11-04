@@ -5,6 +5,31 @@ import (
 	"strings"
 )
 
+// TODO: Do we need to have anything in `CollectionDoc.Part.Source` for these?
+func (collectionDoc *CollectionDoc) setComplexParts() []error {
+	errs := []error{}
+
+	collectionDoc.setCreator()
+	collectionDoc.setDateRange()
+	languageErrors := collectionDoc.setLanguage()
+	if len(languageErrors) > 0 {
+		errs = append(errs, languageErrors...)
+	}
+	collectionDoc.setMaterialType()
+	collectionDoc.setName()
+	collectionDoc.setOnlineAccess()
+	collectionDoc.setPlace()
+	collectionDoc.setSubject()
+	collectionDoc.setUnitDateEnd()
+	collectionDoc.setUnitDateStart()
+	unitTitleHTMLError := collectionDoc.setUnitTitleHTML()
+	if unitTitleHTMLError != nil {
+		errs = append(errs, unitTitleHTMLError)
+	}
+
+	return errs
+}
+
 func (collectionDoc *CollectionDoc) setCreator() {
 	parts := &collectionDoc.Parts
 
