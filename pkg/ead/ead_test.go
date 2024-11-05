@@ -4,6 +4,8 @@ import (
 	"errors"
 	"flag"
 	"fmt"
+	"go-ead-indexer/pkg/ead/collectiondoc"
+	"go-ead-indexer/pkg/ead/component"
 	"go-ead-indexer/pkg/ead/testutils"
 	"go-ead-indexer/pkg/util"
 	"os"
@@ -38,17 +40,29 @@ func TestParseSolrAddMessages(t *testing.T) {
 				t.Fatal(err)
 			}
 
-			testSolrAddMessage(eadID, eadID, eadToTest.CollectionDoc.SolrAddMessage, t)
+			testCollectionDocSolrAddMessage(eadID, eadID,
+				eadToTest.CollectionDoc.SolrAddMessage, t)
 
 			componentIDs := []string{}
 			for _, component := range *eadToTest.Components {
 				componentIDs = append(componentIDs, component.ID)
-				testSolrAddMessage(eadID, component.ID, component.SolrAddMessage, t)
+				testComponentSolrAddMessage(eadID, component.ID,
+					component.SolrAddMessage, t)
 			}
 
 			testNoMissingComponents(eadID, componentIDs, t)
 		})
 	}
+}
+
+func testCollectionDocSolrAddMessage(eadID string, fileID string,
+	solrAddMessage collectiondoc.SolrAddMessage, t *testing.T) {
+	testSolrAddMessageXML(eadID, fileID, fmt.Sprintf("%s", solrAddMessage), t)
+}
+
+func testComponentSolrAddMessage(eadID string, fileID string,
+	solrAddMessage component.SolrAddMessage, t *testing.T) {
+	testSolrAddMessageXML(eadID, fileID, fmt.Sprintf("%s", solrAddMessage), t)
 }
 
 func testNoMissingComponents(eadID string, componentIDs []string, t *testing.T) {
@@ -75,7 +89,8 @@ func testNoMissingComponents(eadID string, componentIDs []string, t *testing.T) 
 	}
 }
 
-func testSolrAddMessage(eadID string, fileID string, actualValue string, t *testing.T) {
+func testSolrAddMessageXML(eadID string, fileID string,
+	actualValue string, t *testing.T) {
 	if *updateGoldenFiles {
 		err := testutils.UpdateGoldenFile(eadID, fileID, actualValue)
 		if err != nil {

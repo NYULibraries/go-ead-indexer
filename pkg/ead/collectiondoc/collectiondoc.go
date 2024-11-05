@@ -5,7 +5,7 @@ import (
 )
 
 type CollectionDoc struct {
-	SolrAddMessage string             `json:"solr_add_message"`
+	SolrAddMessage SolrAddMessage     `json:"solr_add_message"`
 	Parts          CollectionDocParts `json:"parts"`
 }
 
@@ -90,7 +90,6 @@ type CollectionDocPart struct {
 // See `ead.new()` comment on why we have to pass in `repositoryCode` as an argument.
 func MakeCollectionDoc(repositoryCode string, node types.Node) (CollectionDoc, error) {
 	newCollectionDoc := CollectionDoc{
-		SolrAddMessage: "",
 		Parts: CollectionDocParts{
 			RepositoryCode: CollectionDocPart{
 				Values: []string{repositoryCode},
@@ -99,6 +98,11 @@ func MakeCollectionDoc(repositoryCode string, node types.Node) (CollectionDoc, e
 	}
 
 	err := newCollectionDoc.setParts(node)
+	if err != nil {
+		return newCollectionDoc, err
+	}
+
+	err = newCollectionDoc.setSolrAddMessage()
 	if err != nil {
 		return newCollectionDoc, err
 	}

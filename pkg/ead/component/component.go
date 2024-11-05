@@ -8,7 +8,7 @@ import (
 type Component struct {
 	ID             string         `json:"id"`
 	Parts          ComponentParts `json:"parts"`
-	SolrAddMessage string         `json:"solr_add_message"`
+	SolrAddMessage SolrAddMessage `json:"solr_add_message"`
 }
 
 // For now, no struct tags for the `Component*` fields.  Keep it flat.
