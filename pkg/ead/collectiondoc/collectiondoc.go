@@ -102,10 +102,7 @@ func MakeCollectionDoc(repositoryCode string, node types.Node) (CollectionDoc, e
 		return newCollectionDoc, err
 	}
 
-	err = newCollectionDoc.setSolrAddMessage()
-	if err != nil {
-		return newCollectionDoc, err
-	}
+	newCollectionDoc.setSolrAddMessage()
 
 	return newCollectionDoc, nil
 }
