@@ -133,8 +133,8 @@ func (collectionDoc *CollectionDoc) setXPathSimpleParts(node types.Node) error {
 		return err
 	}
 
-	parts.FunctionNotInDSC.Source = "//archdesc[@level='collection']/*[name() != 'dsc']//function"
-	parts.FunctionNotInDSC.Values, parts.FunctionNotInDSC.XMLStrings, err = util.GetValuesForXPathQuery(parts.FunctionNotInDSC.Source, node)
+	parts.Function.Source = "//archdesc[@level='collection']/*[name() != 'dsc']//function"
+	parts.Function.Values, parts.Function.XMLStrings, err = util.GetValuesForXPathQuery(parts.Function.Source, node)
 	if err != nil {
 		return err
 	}

@@ -54,7 +54,7 @@ type CollectionDocXPathParts struct {
 	EADID                   CollectionDocPart `json:"eadid"`
 	FamName                 CollectionDocPart `json:"fam_name"`
 	FamNameNotInDSC         CollectionDocPart `json:"fam_name_not_in_dsc"`
-	FunctionNotInDSC        CollectionDocPart `json:"function_not_in_dsc"`
+	Function                CollectionDocPart `json:"function"`
 	GenreForm               CollectionDocPart `json:"genre_form"`
 	GenreFormNotInDSC       CollectionDocPart `json:"genre_form_not_in_dsc"`
 	GeogNameNotInDSC        CollectionDocPart `json:"geog_name_not_in_dsc"`
