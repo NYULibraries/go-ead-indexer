@@ -9,7 +9,7 @@ import (
 func (collectionDoc *CollectionDoc) setComplexParts() []error {
 	errs := []error{}
 
-	collectionDoc.setCreator()
+	collectionDoc.setCreatorComplex()
 	collectionDoc.setDateRange()
 	languageErrors := collectionDoc.setLanguage()
 	if len(languageErrors) > 0 {
@@ -30,7 +30,7 @@ func (collectionDoc *CollectionDoc) setComplexParts() []error {
 	return errs
 }
 
-func (collectionDoc *CollectionDoc) setCreator() {
+func (collectionDoc *CollectionDoc) setCreatorComplex() {
 	parts := &collectionDoc.Parts
 
 	// CreatorComplex
