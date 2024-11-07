@@ -213,6 +213,6 @@ func (collectionDoc *CollectionDoc) setSolrAddMessage() {
 	docElement.UnitTitle_teim = append(docElement.UnitTitle_teim, collectionDoc.Parts.UnitTitle.Values...)
 }
 
-func (solrAddMessage *SolrAddMessage) String() string {
+func (solrAddMessage SolrAddMessage) String() string {
 	return "test"
 }
