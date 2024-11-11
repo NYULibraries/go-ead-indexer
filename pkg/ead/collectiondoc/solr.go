@@ -1,5 +1,9 @@
 package collectiondoc
 
+import (
+	"strconv"
+)
+
 type SolrAddMessage struct {
 	Add AddElement `xml:"add"`
 }
@@ -31,7 +35,7 @@ type DocElement struct {
 	EAD_ssi                string   `xml:"ead_ssi"`
 	FamName_ssm            []string `xml:"famname_ssm,omitempty"`
 	FamName_teim           []string `xml:"famname_teim,omitempty"`
-	Format_ii              int      `xml:"format_ii,omitempty"`
+	Format_ii              string   `xml:"format_ii,omitempty"`
 	Format_sim             string   `xml:"format_sim,omitempty"`
 	Format_ssm             string   `xml:"format_ssm,omitempty"`
 	Function_ssm           []string `xml:"function_ssm,omitempty"`
@@ -128,7 +132,7 @@ func (collectionDoc *CollectionDoc) setSolrAddMessage() {
 	docElement.FamName_ssm = append(docElement.FamName_ssm, collectionDoc.Parts.FamName.Values...)
 	docElement.FamName_teim = append(docElement.FamName_teim, collectionDoc.Parts.FamName.Values...)
 
-	docElement.Format_ii = collectionDoc.Parts.FormatForSort
+	docElement.Format_ii = strconv.Itoa(collectionDoc.Parts.FormatForSort)
 	docElement.Format_sim = collectionDoc.Parts.FormatForDisplay
 	docElement.Format_ssm = collectionDoc.Parts.FormatForDisplay
 
