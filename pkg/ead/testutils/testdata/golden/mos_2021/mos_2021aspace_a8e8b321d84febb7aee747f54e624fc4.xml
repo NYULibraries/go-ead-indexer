@@ -49,6 +49,24 @@
                   title</field>
     <field name="unitid_teim">mos_2021_5</field>
     <field name="unitid_ssm">mos_2021_5</field>
+    <field name="creator_teim">World Trade Center
+                    (New York, N.Y.)</field>
+    <field name="creator_teim">Draper
+                  family</field>
+    <field name="creator_teim">Yonge, Charlotte Mary,
+                    1823-1901</field>
+    <field name="creator_ssm">World Trade Center
+                    (New York, N.Y.)</field>
+    <field name="creator_ssm">Draper
+                  family</field>
+    <field name="creator_ssm">Yonge, Charlotte Mary,
+                    1823-1901</field>
+    <field name="creator_ssm">World Trade Center
+                    (New York, N.Y.)</field>
+    <field name="creator_ssm">Draper
+                  family</field>
+    <field name="creator_ssm">Yonge, Charlotte Mary,
+                    1823-1901</field>
     <field name="unitdate_normal_ssm">2015/2019</field>
     <field name="unitdate_normal_teim">2015/2019</field>
     <field name="unitdate_normal_sim">2015/2019</field>
@@ -171,6 +189,12 @@
     <field name="location_ssm">box: 1, folder: 1</field>
     <field name="location_ssm">folder: 1</field>
     <field name="location_si">folder: 1</field>
+    <field name="creator_sim">World Trade Center
+                    (New York, N.Y.)</field>
+    <field name="creator_sim">Draper
+                  family</field>
+    <field name="creator_sim">Yonge, Charlotte Mary,
+                    1823-1901</field>
     <field name="name_sim">New York University</field>
     <field name="name_sim">World Trade Center
                     (New York, N.Y.)</field>
