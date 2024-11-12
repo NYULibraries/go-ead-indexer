@@ -98,11 +98,11 @@ type DocElement struct {
 	UnitDateEnd_sim        []string `xml:"unitdate_end_sim"`
 	UnitDateEnd_ssm        []string `xml:"unitdate_end_ssm"`
 	UnitDateEnd_si         string   `xml:"unitdate_end_si"`
+	UnitDate_ssm           []string `xml:"unitdate_ssm"`
 	DateRange_sim          []string `xml:"date_range_sim"`
 	// Currently not in Omega golden file, so don't know where to place them.
 	Note_ssm      []string `xml:"note_ssm"`
 	Note_teim     []string `xml:"note_teim"`
-	UnitDate_ssm  []string `xml:"unitdate_ssm"`
 	UnitDate_teim []string `xml:"unitdate_teim"`
 }
 
