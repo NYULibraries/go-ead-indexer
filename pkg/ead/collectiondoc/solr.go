@@ -139,7 +139,7 @@ func (collectionDoc *CollectionDoc) setSolrAddMessage() {
 
 	docElement.CustodHist_teim = append(docElement.CustodHist_teim, collectionDoc.Parts.CustodHist.Values...)
 
-	docElement.DAO_sim = collectionDoc.Parts.DAO.Values[0]
+	docElement.DAO_sim = collectionDoc.Parts.OnlineAccess.Values[0]
 
 	docElement.DateRange_sim = append(docElement.DateRange_sim, collectionDoc.Parts.DateRange.Values...)
 
