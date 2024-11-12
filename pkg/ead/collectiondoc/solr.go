@@ -155,8 +155,8 @@ func (collectionDoc *CollectionDoc) setSolrAddMessage() {
 	docElement.Function_ssm = append(docElement.Function_ssm, collectionDoc.Parts.Function.Values...)
 	docElement.Function_teim = append(docElement.Function_teim, collectionDoc.Parts.Function.Values...)
 
-	docElement.GenreForm_ssm = append(docElement.GenreForm_ssm, collectionDoc.Parts.GenreForm.Values...)
-	docElement.GenreForm_teim = append(docElement.GenreForm_teim, collectionDoc.Parts.GenreForm.Values...)
+	docElement.GenreForm_ssm = append(docElement.GenreForm_ssm, collectionDoc.Parts.GenreFormNotInDSC.Values...)
+	docElement.GenreForm_teim = append(docElement.GenreForm_teim, collectionDoc.Parts.GenreFormNotInDSC.Values...)
 
 	docElement.GeogName_ssm = append(docElement.GeogName_ssm, collectionDoc.Parts.GeogName.Values...)
 	docElement.GeogName_teim = append(docElement.GeogName_teim, collectionDoc.Parts.GeogName.Values...)
