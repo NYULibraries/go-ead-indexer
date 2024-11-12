@@ -145,8 +145,8 @@ func (collectionDoc *CollectionDoc) setSolrAddMessage() {
 
 	docElement.EAD_ssi = collectionDoc.Parts.EADID.Values[0]
 
-	docElement.FamName_ssm = append(docElement.FamName_ssm, collectionDoc.Parts.FamName.Values...)
-	docElement.FamName_teim = append(docElement.FamName_teim, collectionDoc.Parts.FamName.Values...)
+	docElement.FamName_ssm = append(docElement.FamName_ssm, collectionDoc.Parts.FamNameNotInDSC.Values...)
+	docElement.FamName_teim = append(docElement.FamName_teim, collectionDoc.Parts.FamNameNotInDSC.Values...)
 
 	docElement.Format_ii = strconv.Itoa(collectionDoc.Parts.FormatForSort)
 	docElement.Format_sim = collectionDoc.Parts.FormatForDisplay
