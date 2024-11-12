@@ -263,13 +263,17 @@ func getSolrFieldElementStringsInV1IndexerInsertionOrder(solrAddMessage SolrAddM
 		fieldTypeKind := field.Type().Kind()
 		if fieldTypeKind == reflect.Slice {
 			for _, fieldValue := range field.Interface().([]string) {
-				fieldsInV1IndexerInsertionOrder = append(fieldsInV1IndexerInsertionOrder,
-					makeSolrAddMessageFieldElementString(fieldName, fieldValue))
+				if fieldValue != "" {
+					fieldsInV1IndexerInsertionOrder = append(fieldsInV1IndexerInsertionOrder,
+						makeSolrAddMessageFieldElementString(fieldName, fieldValue))
+				}
 			}
 		} else if fieldTypeKind == reflect.String {
 			fieldValue := field.String()
-			fieldsInV1IndexerInsertionOrder = append(fieldsInV1IndexerInsertionOrder,
-				makeSolrAddMessageFieldElementString(fieldName, fieldValue))
+			if fieldValue != "" {
+				fieldsInV1IndexerInsertionOrder = append(fieldsInV1IndexerInsertionOrder,
+					makeSolrAddMessageFieldElementString(fieldName, fieldValue))
+			}
 		} else {
 			// Should never get here!
 			panic("Unrecognized `reflect.Type.Kind`: " + fieldTypeKind.String())
