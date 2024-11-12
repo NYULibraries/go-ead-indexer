@@ -2,6 +2,7 @@ package collectiondoc
 
 import (
 	"fmt"
+	"go-ead-indexer/pkg/util"
 	"reflect"
 	"strconv"
 	"strings"
@@ -130,18 +131,21 @@ func (collectionDoc *CollectionDoc) setSolrAddMessage() {
 	docElement.CorpName_teim = append(docElement.CorpName_teim, collectionDoc.Parts.CorpNameNotInDSC.Values...)
 
 	// See 2nd `Creator_ssm` append below.
-	docElement.Creator_sim = append(docElement.Creator_sim, collectionDoc.Parts.CreatorComplex.Values...)
+	docElement.Creator_sim = append(docElement.Creator_sim,
+		util.CompactStringSlicePreserveOrder(collectionDoc.Parts.CreatorComplex.Values)...)
 	docElement.Creator_ssm = append(docElement.Creator_ssm, collectionDoc.Parts.Creator.Values...)
 	// TODO: is this duplication done in v1 indexer a bug that needs to be added
 	// to https://jira.nyu.edu/browse/DLFA-211?
-	docElement.Creator_ssm = append(docElement.Creator_ssm, collectionDoc.Parts.CreatorComplex.Values...)
+	docElement.Creator_ssm = append(docElement.Creator_ssm,
+		util.CompactStringSlicePreserveOrder(collectionDoc.Parts.CreatorComplex.Values)...)
 	docElement.Creator_teim = append(docElement.Creator_teim, collectionDoc.Parts.Creator.Values...)
 
 	docElement.CustodHist_teim = append(docElement.CustodHist_teim, collectionDoc.Parts.CustodHist.Values...)
 
 	docElement.DAO_sim = collectionDoc.Parts.OnlineAccess.Values[0]
 
-	docElement.DateRange_sim = append(docElement.DateRange_sim, collectionDoc.Parts.DateRange.Values...)
+	docElement.DateRange_sim = append(docElement.DateRange_sim,
+		util.CompactStringSlicePreserveOrder(collectionDoc.Parts.DateRange.Values)...)
 
 	docElement.EAD_ssi = collectionDoc.Parts.EADID.Values[0]
 
@@ -161,7 +165,8 @@ func (collectionDoc *CollectionDoc) setSolrAddMessage() {
 	docElement.GeogName_ssm = append(docElement.GeogName_ssm, collectionDoc.Parts.GeogNameNotInDSC.Values...)
 	docElement.GeogName_teim = append(docElement.GeogName_teim, collectionDoc.Parts.GeogNameNotInDSC.Values...)
 
-	docElement.Heading_ssm = append(docElement.Heading_ssm, collectionDoc.Parts.Heading.Values...)
+	docElement.Heading_ssm = append(docElement.Heading_ssm,
+		util.CompactStringSlicePreserveOrder(collectionDoc.Parts.Heading.Values)...)
 
 	docElement.ID = collectionDoc.Parts.EADID.Values[0]
 
@@ -170,13 +175,17 @@ func (collectionDoc *CollectionDoc) setSolrAddMessage() {
 		docElement.Language_ssm = collectionDoc.Parts.Language.Values[0]
 	}
 
-	docElement.MaterialType_sim = append(docElement.MaterialType_sim, collectionDoc.Parts.MaterialType.Values...)
-	docElement.MaterialType_ssm = append(docElement.MaterialType_ssm, collectionDoc.Parts.MaterialType.Values...)
+	docElement.MaterialType_sim = append(docElement.MaterialType_sim,
+		util.CompactStringSlicePreserveOrder(collectionDoc.Parts.MaterialType.Values)...)
+	docElement.MaterialType_ssm = append(docElement.MaterialType_ssm,
+		util.CompactStringSlicePreserveOrder(collectionDoc.Parts.MaterialType.Values)...)
 
-	docElement.Name_sim = append(docElement.Name_sim, collectionDoc.Parts.Name.Values...)
+	docElement.Name_sim = append(docElement.Name_sim,
+		util.CompactStringSlicePreserveOrder(collectionDoc.Parts.Name.Values)...)
 	docElement.Name_ssm = append(docElement.Name_ssm, collectionDoc.Parts.NameNotInDSC.Values...)
 	docElement.Name_teim = append(docElement.Name_teim, collectionDoc.Parts.NameNotInDSC.Values...)
-	docElement.Name_teim = append(docElement.Name_teim, collectionDoc.Parts.Name.Values...)
+	docElement.Name_teim = append(docElement.Name_teim,
+		util.CompactStringSlicePreserveOrder(collectionDoc.Parts.Name.Values)...)
 
 	docElement.Note_ssm = append(docElement.Note_ssm, collectionDoc.Parts.NoteNotInDSC.Values...)
 	docElement.Note_teim = append(docElement.Note_teim, collectionDoc.Parts.NoteNotInDSC.Values...)
@@ -189,7 +198,8 @@ func (collectionDoc *CollectionDoc) setSolrAddMessage() {
 
 	docElement.PhysTech_teim = append(docElement.PhysTech_teim, collectionDoc.Parts.Phystech.Values...)
 
-	docElement.Place_sim = append(docElement.Place_sim, collectionDoc.Parts.Place.Values...)
+	docElement.Place_sim = append(docElement.Place_sim,
+		util.CompactStringSlicePreserveOrder(collectionDoc.Parts.Place.Values)...)
 
 	docElement.Repository_sim = collectionDoc.Parts.RepositoryCode.Values[0]
 	docElement.Repository_ssi = collectionDoc.Parts.RepositoryCode.Values[0]
@@ -198,12 +208,14 @@ func (collectionDoc *CollectionDoc) setSolrAddMessage() {
 	docElement.ScopeContent_teim = append(docElement.ScopeContent_teim, collectionDoc.Parts.ScopeContent.Values...)
 
 	// See 2nd `Subject_teim` append below.
-	docElement.Subject_sim = append(docElement.Subject_sim, collectionDoc.Parts.SubjectForFacets.Values...)
+	docElement.Subject_sim = append(docElement.Subject_sim,
+		util.CompactStringSlicePreserveOrder(collectionDoc.Parts.SubjectForFacets.Values)...)
 	docElement.Subject_ssm = append(docElement.Subject_ssm, collectionDoc.Parts.SubjectNotInDSC.Values...)
 	docElement.Subject_teim = append(docElement.Subject_teim, collectionDoc.Parts.SubjectNotInDSC.Values...)
 	// TODO: is this duplication done in v1 indexer a bug that needs to be added
 	// to https://jira.nyu.edu/browse/DLFA-211?
-	docElement.Subject_teim = append(docElement.Subject_teim, collectionDoc.Parts.SubjectForFacets.Values...)
+	docElement.Subject_teim = append(docElement.Subject_teim,
+		util.CompactStringSlicePreserveOrder(collectionDoc.Parts.SubjectForFacets.Values)...)
 
 	docElement.Title_ssm = append(docElement.Title_ssm, collectionDoc.Parts.TitleNotInDSC.Values...)
 	docElement.Title_teim = append(docElement.Title_teim, collectionDoc.Parts.TitleNotInDSC.Values...)
@@ -213,8 +225,10 @@ func (collectionDoc *CollectionDoc) setSolrAddMessage() {
 	if len(collectionDoc.Parts.UnitDateEnd.Values) > 0 {
 		docElement.UnitDateEnd_si = collectionDoc.Parts.UnitDateEnd.Values[len(collectionDoc.Parts.UnitDateEnd.Values)-1]
 	}
-	docElement.UnitDateEnd_sim = append(docElement.UnitDateEnd_sim, collectionDoc.Parts.UnitDateEnd.Values...)
-	docElement.UnitDateEnd_ssm = append(docElement.UnitDateEnd_ssm, collectionDoc.Parts.UnitDateEnd.Values...)
+	docElement.UnitDateEnd_sim = append(docElement.UnitDateEnd_sim,
+		util.CompactStringSlicePreserveOrder(collectionDoc.Parts.UnitDateEnd.Values)...)
+	docElement.UnitDateEnd_ssm = append(docElement.UnitDateEnd_ssm,
+		util.CompactStringSlicePreserveOrder(collectionDoc.Parts.UnitDateEnd.Values)...)
 
 	docElement.UnitDateInclusive_teim = append(docElement.UnitDateInclusive_teim, collectionDoc.Parts.UnitDateInclusive.Values...)
 
@@ -222,19 +236,23 @@ func (collectionDoc *CollectionDoc) setSolrAddMessage() {
 	docElement.UnitDateNormal_ssm = append(docElement.UnitDateNormal_ssm, collectionDoc.Parts.UnitDateNormal.Values...)
 	docElement.UnitDateNormal_teim = append(docElement.UnitDateNormal_teim, collectionDoc.Parts.UnitDateNormal.Values...)
 
-	docElement.UnitDate_ssm = append(docElement.UnitDate_ssm, collectionDoc.Parts.UnitDateDisplay.Values...)
+	docElement.UnitDate_ssm = append(docElement.UnitDate_ssm,
+		util.CompactStringSlicePreserveOrder(collectionDoc.Parts.UnitDateDisplay.Values)...)
 	docElement.UnitDate_teim = append(docElement.UnitDate_teim, collectionDoc.Parts.UnitDateNoTypeAttribute.Values...)
 
 	if len(collectionDoc.Parts.UnitDateStart.Values) > 0 {
 		docElement.UnitDateStart_si = collectionDoc.Parts.UnitDateStart.Values[len(collectionDoc.Parts.UnitDateStart.Values)-1]
 	}
-	docElement.UnitDateStart_sim = append(docElement.UnitDateStart_sim, collectionDoc.Parts.UnitDateStart.Values...)
-	docElement.UnitDateStart_ssm = append(docElement.UnitDateStart_ssm, collectionDoc.Parts.UnitDateStart.Values...)
+	docElement.UnitDateStart_sim = append(docElement.UnitDateStart_sim,
+		util.CompactStringSlicePreserveOrder(collectionDoc.Parts.UnitDateStart.Values)...)
+	docElement.UnitDateStart_ssm = append(docElement.UnitDateStart_ssm,
+		util.CompactStringSlicePreserveOrder(collectionDoc.Parts.UnitDateStart.Values)...)
 
 	docElement.UnitID_ssm = append(docElement.UnitID_ssm, collectionDoc.Parts.UnitID.Values...)
 	docElement.UnitID_teim = append(docElement.UnitID_teim, collectionDoc.Parts.UnitID.Values...)
 
-	docElement.UnitTitle_ssm = append(docElement.UnitTitle_ssm, collectionDoc.Parts.UnitTitleHTML.Values...)
+	docElement.UnitTitle_ssm = append(docElement.UnitTitle_ssm,
+		util.CompactStringSlicePreserveOrder(collectionDoc.Parts.UnitTitleHTML.Values)...)
 	docElement.UnitTitle_teim = append(docElement.UnitTitle_teim, collectionDoc.Parts.UnitTitle.Values...)
 }
 
