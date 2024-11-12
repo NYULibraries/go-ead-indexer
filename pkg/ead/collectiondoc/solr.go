@@ -93,10 +93,10 @@ type DocElement struct {
 	Heading_ssm            []string `xml:"heading_ssm"`
 	UnitDateStart_sim      []string `xml:"unitdate_start_sim"`
 	UnitDateStart_ssm      []string `xml:"unitdate_start_ssm"`
-	UnitDateStart_si       []string `xml:"unitdate_start_si"`
+	UnitDateStart_si       string   `xml:"unitdate_start_si"`
 	UnitDateEnd_sim        []string `xml:"unitdate_end_sim"`
 	UnitDateEnd_ssm        []string `xml:"unitdate_end_ssm"`
-	UnitDateEnd_si         []string `xml:"unitdate_end_si"`
+	UnitDateEnd_si         string   `xml:"unitdate_end_si"`
 	DateRange_sim          []string `xml:"date_range_sim"`
 	// Currently not in Omega golden file, so don't know where to place them.
 	Note_ssm      []string `xml:"note_ssm"`
@@ -210,7 +210,9 @@ func (collectionDoc *CollectionDoc) setSolrAddMessage() {
 
 	docElement.UnitDateBulk_teim = append(docElement.UnitDateBulk_teim, collectionDoc.Parts.UnitDateBulk.Values...)
 
-	docElement.UnitDateEnd_si = append(docElement.UnitDateEnd_si, collectionDoc.Parts.UnitDateEnd.Values...)
+	if len(collectionDoc.Parts.UnitDateEnd.Values) > 0 {
+		docElement.UnitDateEnd_si = collectionDoc.Parts.UnitDateEnd.Values[len(collectionDoc.Parts.UnitDateEnd.Values)-1]
+	}
 	docElement.UnitDateEnd_sim = append(docElement.UnitDateEnd_sim, collectionDoc.Parts.UnitDateEnd.Values...)
 	docElement.UnitDateEnd_ssm = append(docElement.UnitDateEnd_ssm, collectionDoc.Parts.UnitDateEnd.Values...)
 
@@ -223,7 +225,9 @@ func (collectionDoc *CollectionDoc) setSolrAddMessage() {
 	docElement.UnitDate_ssm = append(docElement.UnitDate_ssm, collectionDoc.Parts.UnitDateDisplay.Values...)
 	docElement.UnitDate_teim = append(docElement.UnitDate_teim, collectionDoc.Parts.UnitDateNoTypeAttribute.Values...)
 
-	docElement.UnitDateStart_si = append(docElement.UnitDateStart_si, collectionDoc.Parts.UnitDateStart.Values...)
+	if len(collectionDoc.Parts.UnitDateStart.Values) > 0 {
+		docElement.UnitDateStart_si = collectionDoc.Parts.UnitDateStart.Values[len(collectionDoc.Parts.UnitDateStart.Values)-1]
+	}
 	docElement.UnitDateStart_sim = append(docElement.UnitDateStart_sim, collectionDoc.Parts.UnitDateStart.Values...)
 	docElement.UnitDateStart_ssm = append(docElement.UnitDateStart_ssm, collectionDoc.Parts.UnitDateStart.Values...)
 
