@@ -18,16 +18,17 @@ type CollectionDocParts struct {
 }
 
 type CollectionDocComplexParts struct {
-	CreatorComplex CollectionDocPart `json:"creator_complex"`
-	DateRange      CollectionDocPart `json:"date_range"`
-	MaterialType   CollectionDocPart `json:"material_type"`
-	Name           CollectionDocPart `json:"name"`
-	Place          CollectionDocPart `json:"place"`
-	OnlineAccess   CollectionDocPart `json:"online_access"`
-	Subject        CollectionDocPart `json:"subject"`
-	UnitDateEnd    CollectionDocPart `json:"unit_date_end"`
-	UnitDateStart  CollectionDocPart `json:"unit_date_start"`
-	UnitTitleHTML  CollectionDocPart `json:"unit_title_html"`
+	ChronListComplex CollectionDocPart `json:"chron_list_complex"`
+	CreatorComplex   CollectionDocPart `json:"creator_complex"`
+	DateRange        CollectionDocPart `json:"date_range"`
+	MaterialType     CollectionDocPart `json:"material_type"`
+	Name             CollectionDocPart `json:"name"`
+	Place            CollectionDocPart `json:"place"`
+	OnlineAccess     CollectionDocPart `json:"online_access"`
+	Subject          CollectionDocPart `json:"subject"`
+	UnitDateEnd      CollectionDocPart `json:"unit_date_end"`
+	UnitDateStart    CollectionDocPart `json:"unit_date_start"`
+	UnitTitleHTML    CollectionDocPart `json:"unit_title_html"`
 }
 
 type CollectionDocHardcodedParts struct {

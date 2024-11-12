@@ -9,6 +9,7 @@ import (
 func (collectionDoc *CollectionDoc) setComplexParts() []error {
 	errs := []error{}
 
+	collectionDoc.setChronListComplex()
 	collectionDoc.setCreatorComplex()
 	collectionDoc.setDateRange()
 	languageErrors := collectionDoc.setLanguage()
@@ -28,6 +29,17 @@ func (collectionDoc *CollectionDoc) setComplexParts() []error {
 	}
 
 	return errs
+}
+
+func (collectionDoc *CollectionDoc) setChronListComplex() {
+	parts := &collectionDoc.Parts
+
+	chronListComplexValues := []string{}
+	for _, chronListValue := range parts.ChronList.Values {
+		chronListComplexValues = append(chronListComplexValues, strings.TrimSpace(chronListValue))
+	}
+
+	parts.ChronListComplex.Values = chronListComplexValues
 }
 
 func (collectionDoc *CollectionDoc) setCreatorComplex() {

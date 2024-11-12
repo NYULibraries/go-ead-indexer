@@ -120,7 +120,7 @@ func (collectionDoc *CollectionDoc) setSolrAddMessage() {
 
 	docElement.BiogHist_teim = append(docElement.BiogHist_teim, collectionDoc.Parts.BiogHist.Values...)
 
-	docElement.ChronList_teim = append(docElement.ChronList_teim, collectionDoc.Parts.ChronList.Values...)
+	docElement.ChronList_teim = append(docElement.ChronList_teim, collectionDoc.Parts.ChronListComplex.Values...)
 
 	docElement.Collection_sim = append(docElement.Collection_sim, collectionDoc.Parts.UnitTitle.Values...)
 	docElement.Collection_ssm = append(docElement.Collection_ssm, collectionDoc.Parts.UnitTitle.Values...)
