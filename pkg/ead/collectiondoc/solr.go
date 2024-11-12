@@ -175,6 +175,7 @@ func (collectionDoc *CollectionDoc) setSolrAddMessage() {
 
 	docElement.Name_sim = append(docElement.Name_sim, collectionDoc.Parts.NameNotInDSC.Values...)
 	docElement.Name_ssm = append(docElement.Name_ssm, collectionDoc.Parts.NameNotInDSC.Values...)
+	docElement.Name_teim = append(docElement.Name_teim, collectionDoc.Parts.NameNotInDSC.Values...)
 	docElement.Name_teim = append(docElement.Name_teim, collectionDoc.Parts.Name.Values...)
 
 	docElement.Note_ssm = append(docElement.Note_ssm, collectionDoc.Parts.NoteNotInDSC.Values...)
