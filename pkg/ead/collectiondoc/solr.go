@@ -1,9 +1,14 @@
 package collectiondoc
 
 import (
+	"fmt"
+	"reflect"
 	"strconv"
+	"strings"
 )
 
+// We are currently using `String()` and not marshaling, but for now we are
+// structuring as if we are or might later be marshaling.
 type SolrAddMessage struct {
 	Add AddElement `xml:"add"`
 }
@@ -12,81 +17,92 @@ type AddElement struct {
 	Doc DocElement `xml:"doc"`
 }
 
+// TODO DLFA-238:
+// This struct definition replicates the order in which the v1 indexer writes
+// out the Solr field elements in the HTTP request to Solr.  We are generating
+// the XML request body by using the `reflect` package to loop through the
+// struct fields in the order they are defined here (at least that's how it
+// seems in the current Go version).
+// After we pass the DLFA-201 acceptance test, we need to implement the
+// permanent `String()` or custom marshaling that will be free of the need to
+// match v1 indexer's ordering, and restore the alphabetical ordering of the field
+// definitions in this struct.
 type DocElement struct {
-	Abstract_ssm           []string `xml:"abstract_ssm"`
-	Abstract_teim          []string `xml:"abstract_teim"`
-	AcqInfo_teim           []string `xml:"acqinfo_teim"`
-	Appraisal_teim         []string `xml:"appraisal_teim"`
-	Author_ssm             []string `xml:"author_ssm"`
 	Author_teim            []string `xml:"author_teim"`
+	Author_ssm             []string `xml:"author_ssm"`
+	UnitTitle_teim         []string `xml:"unittitle_teim"`
+	UnitTitle_ssm          []string `xml:"unittitle_ssm"`
+	UnitID_teim            []string `xml:"unitid_teim"`
+	UnitID_ssm             []string `xml:"unitid_ssm"`
+	Language_ssm           string   `xml:"language_ssm"`
+	Language_sim           string   `xml:"language_sim"`
+	Abstract_teim          []string `xml:"abstract_teim"`
+	Abstract_ssm           []string `xml:"abstract_ssm"`
+	Creator_teim           []string `xml:"creator_teim"`
+	Creator_ssm            []string `xml:"creator_ssm"`
+	UnitDateNormal_ssm     []string `xml:"unitdate_normal_ssm"`
+	UnitDateNormal_teim    []string `xml:"unitdate_normal_teim"`
+	UnitDateNormal_sim     []string `xml:"unitdate_normal_sim"`
+	UnitDateBulk_teim      []string `xml:"unitdate_bulk_teim"`
+	UnitDateInclusive_teim []string `xml:"unitdate_inclusive_teim"`
+	ScopeContent_teim      []string `xml:"scopecontent_teim"`
 	BiogHist_teim          []string `xml:"bioghist_teim"`
+	AcqInfo_teim           []string `xml:"acqinfo_teim"`
+	CustodHist_teim        []string `xml:"custodhist_teim"`
+	Appraisal_teim         []string `xml:"appraisal_teim"`
+	PhysTech_teim          []string `xml:"phystech_teim"`
 	ChronList_teim         []string `xml:"chronlist_teim"`
+	CorpName_teim          []string `xml:"corpname_teim"`
+	CorpName_ssm           []string `xml:"corpname_ssm"`
+	FamName_teim           []string `xml:"famname_teim"`
+	FamName_ssm            []string `xml:"famname_ssm"`
+	Function_teim          []string `xml:"function_teim"`
+	Function_ssm           []string `xml:"function_ssm"`
+	GenreForm_teim         []string `xml:"genreform_teim"`
+	GenreForm_ssm          []string `xml:"genreform_ssm"`
+	GeogName_teim          []string `xml:"geogname_teim"`
+	GeogName_ssm           []string `xml:"geogname_ssm"`
+	Name_teim              []string `xml:"name_teim"`
+	Name_ssm               []string `xml:"name_ssm"`
+	Occupation_teim        []string `xml:"occupation_teim"`
+	Occupation_ssm         []string `xml:"occupation_ssm"`
+	PersName_teim          []string `xml:"persname_teim"`
+	PersName_ssm           []string `xml:"persname_ssm"`
+	Subject_teim           []string `xml:"subject_teim"`
+	Subject_ssm            []string `xml:"subject_ssm"`
+	Title_teim             []string `xml:"title_teim"`
+	Title_ssm              []string `xml:"title_ssm"`
 	Collection_sim         []string `xml:"collection_sim"`
 	Collection_ssm         []string `xml:"collection_ssm"`
 	Collection_teim        []string `xml:"collection_teim"`
-	CorpName_ssm           []string `xml:"corpname_ssm"`
-	CorpName_teim          []string `xml:"corpname_teim"`
-	Creator_sim            []string `xml:"creator_sim"`
-	Creator_ssm            []string `xml:"creator_ssm"`
-	Creator_teim           []string `xml:"creator_teim"`
-	CustodHist_teim        []string `xml:"custodhist_teim"`
-	DAO_sim                string   `xml:"dao_sim"`
-	DateRange_sim          []string `xml:"date_range_sim"`
-	EAD_ssi                string   `xml:"ead_ssi"`
-	FamName_ssm            []string `xml:"famname_ssm"`
-	FamName_teim           []string `xml:"famname_teim"`
-	Format_ii              string   `xml:"format_ii"`
-	Format_sim             string   `xml:"format_sim"`
-	Format_ssm             string   `xml:"format_ssm"`
-	Function_ssm           []string `xml:"function_ssm"`
-	Function_teim          []string `xml:"function_teim"`
-	GenreForm_ssm          []string `xml:"genreform_ssm"`
-	GenreForm_teim         []string `xml:"genreform_teim"`
-	GeogName_ssm           []string `xml:"geogname_ssm"`
-	GeogName_teim          []string `xml:"geogname_teim"`
 	Heading_ssm            []string `xml:"heading_ssm"`
 	ID                     string   `xml:"id"`
-	Language_sim           string   `xml:"language_sim"`
-	Language_ssm           string   `xml:"language_ssm"`
+	EAD_ssi                string   `xml:"ead_ssi"`
+	Repository_ssi         string   `xml:"repository_ssi"`
+	Repository_sim         string   `xml:"repository_sim"`
+	Repository_ssm         string   `xml:"repository_ssm"`
+	Format_sim             string   `xml:"format_sim"`
+	Format_ssm             string   `xml:"format_ssm"`
+	Format_ii              string   `xml:"format_ii"`
+	Creator_sim            []string `xml:"creator_sim"`
+	Name_sim               []string `xml:"name_sim"`
+	Place_sim              []string `xml:"place_sim"`
+	Subject_sim            []string `xml:"subject_sim"`
+	DAO_sim                string   `xml:"dao_sim"`
 	MaterialType_sim       []string `xml:"material_type_sim"`
 	MaterialType_ssm       []string `xml:"material_type_ssm"`
-	Name_sim               []string `xml:"name_sim"`
-	Name_ssm               []string `xml:"name_ssm"`
-	Name_teim              []string `xml:"name_teim"`
-	Note_ssm               []string `xml:"note_ssm"`
-	Note_teim              []string `xml:"note_teim"`
-	Occupation_ssm         []string `xml:"occupation_ssm"`
-	Occupation_teim        []string `xml:"occupation_teim"`
-	PersName_ssm           []string `xml:"persname_ssm"`
-	PersName_teim          []string `xml:"persname_teim"`
-	PhysTech_teim          []string `xml:"phystech_teim"`
-	Place_sim              []string `xml:"place_sim"`
-	Repository_sim         string   `xml:"repository_sim"`
-	Repository_ssi         string   `xml:"repository_ssi"`
-	Repository_ssm         string   `xml:"repository_ssm"`
-	ScopeContent_teim      []string `xml:"scopecontent_teim"`
-	Subject_sim            []string `xml:"subject_sim"`
-	Subject_ssm            []string `xml:"subject_ssm"`
-	Subject_teim           []string `xml:"subject_teim"`
-	Title_ssm              []string `xml:"title_ssm"`
-	Title_teim             []string `xml:"title_teim"`
-	UnitDateBulk_teim      []string `xml:"unitdate_bulk_teim"`
-	UnitDateEnd_si         []string `xml:"unitdate_end_si"`
-	UnitDateEnd_sim        []string `xml:"unitdate_end_sim"`
-	UnitDateEnd_ssm        []string `xml:"unitdate_end_ssm"`
-	UnitDateInclusive_teim []string `xml:"unitdate_inclusive_teim"`
-	UnitDateNormal_sim     []string `xml:"unitdate_normal_sim"`
-	UnitDateNormal_ssm     []string `xml:"unitdate_normal_ssm"`
-	UnitDateNormal_teim    []string `xml:"unitdate_normal_teim"`
-	UnitDate_ssm           []string `xml:"unitdate_ssm"`
-	UnitDateStart_si       []string `xml:"unitdate_start_si"`
 	UnitDateStart_sim      []string `xml:"unitdate_start_sim"`
 	UnitDateStart_ssm      []string `xml:"unitdate_start_ssm"`
-	UnitDate_teim          []string `xml:"unitdate_teim"`
-	UnitID_ssm             []string `xml:"unitid_ssm"`
-	UnitID_teim            []string `xml:"unitid_teim"`
-	UnitTitle_ssm          []string `xml:"unittitle_ssm"`
-	UnitTitle_teim         []string `xml:"unittitle_teim"`
+	UnitDateStart_si       []string `xml:"unitdate_start_si"`
+	UnitDateEnd_sim        []string `xml:"unitdate_end_sim"`
+	UnitDateEnd_ssm        []string `xml:"unitdate_end_ssm"`
+	UnitDateEnd_si         []string `xml:"unitdate_end_si"`
+	DateRange_sim          []string `xml:"date_range_sim"`
+	// Currently not in Omega golden file, so don't know where to place them.
+	Note_ssm      []string `xml:"note_ssm"`
+	Note_teim     []string `xml:"note_teim"`
+	UnitDate_ssm  []string `xml:"unitdate_ssm"`
+	UnitDate_teim []string `xml:"unitdate_teim"`
 }
 
 func (collectionDoc *CollectionDoc) setSolrAddMessage() {
@@ -217,6 +233,52 @@ func (collectionDoc *CollectionDoc) setSolrAddMessage() {
 	docElement.UnitTitle_teim = append(docElement.UnitTitle_teim, collectionDoc.Parts.UnitTitle.Values...)
 }
 
+// TODO DLFA-238:
+// This replicates the order in which the v1 indexer writes out the Solr
+// field elements in the HTTP request to Solr.  After we pass the DLFA-201
+// acceptance test, we need to implement the permanent `String()` or custom
+// marshaling that will be free of the need to match v1 indexer's ordering.
 func (solrAddMessage SolrAddMessage) String() string {
-	return "test"
+	fields := getSolrFieldElementStringsInV1IndexerInsertionOrder(solrAddMessage)
+
+	return fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+%s
+  </doc>
+</add>
+`, strings.Join(fields, "\n"))
+}
+
+func getSolrFieldElementStringsInV1IndexerInsertionOrder(solrAddMessage SolrAddMessage) []string {
+	var fieldsInV1IndexerInsertionOrder []string
+
+	docElementStructType := reflect.TypeOf(solrAddMessage.Add.Doc)
+	docElementStructValue := reflect.ValueOf(solrAddMessage.Add.Doc)
+
+	numFields := docElementStructValue.NumField()
+	for i := 0; i < numFields; i++ {
+		field := docElementStructValue.Field(i)
+		fieldName := strings.Split(docElementStructType.Field(i).Tag.Get("xml"), ",")[0]
+		fieldTypeKind := field.Type().Kind()
+		if fieldTypeKind == reflect.Slice {
+			for _, fieldValue := range field.Interface().([]string) {
+				fieldsInV1IndexerInsertionOrder = append(fieldsInV1IndexerInsertionOrder,
+					makeSolrAddMessageFieldElementString(fieldName, fieldValue))
+			}
+		} else if fieldTypeKind == reflect.String {
+			fieldValue := field.String()
+			fieldsInV1IndexerInsertionOrder = append(fieldsInV1IndexerInsertionOrder,
+				makeSolrAddMessageFieldElementString(fieldName, fieldValue))
+		} else {
+			// Should never get here!
+			panic("Unrecognized `reflect.Type.Kind`: " + fieldTypeKind.String())
+		}
+	}
+
+	return fieldsInV1IndexerInsertionOrder
+}
+
+func makeSolrAddMessageFieldElementString(fieldName string, fieldValue string) string {
+	return fmt.Sprintf(`    <field name="%s">%s</field>`, fieldName, fieldValue)
 }
