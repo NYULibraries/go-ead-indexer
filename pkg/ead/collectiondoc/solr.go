@@ -263,14 +263,14 @@ func getSolrFieldElementStringsInV1IndexerInsertionOrder(solrAddMessage SolrAddM
 		fieldTypeKind := field.Type().Kind()
 		if fieldTypeKind == reflect.Slice {
 			for _, fieldValue := range field.Interface().([]string) {
-				if fieldValue != "" {
+				if isNonEmptyString(fieldValue) {
 					fieldsInV1IndexerInsertionOrder = append(fieldsInV1IndexerInsertionOrder,
 						makeSolrAddMessageFieldElementString(fieldName, fieldValue))
 				}
 			}
 		} else if fieldTypeKind == reflect.String {
 			fieldValue := field.String()
-			if fieldValue != "" {
+			if isNonEmptyString(fieldValue) {
 				fieldsInV1IndexerInsertionOrder = append(fieldsInV1IndexerInsertionOrder,
 					makeSolrAddMessageFieldElementString(fieldName, fieldValue))
 			}
@@ -281,6 +281,11 @@ func getSolrFieldElementStringsInV1IndexerInsertionOrder(solrAddMessage SolrAddM
 	}
 
 	return fieldsInV1IndexerInsertionOrder
+}
+
+// Based on: https://stackoverflow.com/questions/18594330/what-is-the-best-way-to-test-for-an-empty-string-in-go
+func isNonEmptyString(value string) bool {
+	return len(strings.TrimSpace(value)) > 0
 }
 
 func makeSolrAddMessageFieldElementString(fieldName string, fieldValue string) string {
