@@ -75,7 +75,6 @@ type DocElement struct {
 	Collection_sim         []string `xml:"collection_sim"`
 	Collection_ssm         []string `xml:"collection_ssm"`
 	Collection_teim        []string `xml:"collection_teim"`
-	Heading_ssm            []string `xml:"heading_ssm"`
 	ID                     string   `xml:"id"`
 	EAD_ssi                string   `xml:"ead_ssi"`
 	Repository_ssi         string   `xml:"repository_ssi"`
@@ -91,6 +90,7 @@ type DocElement struct {
 	DAO_sim                string   `xml:"dao_sim"`
 	MaterialType_sim       []string `xml:"material_type_sim"`
 	MaterialType_ssm       []string `xml:"material_type_ssm"`
+	Heading_ssm            []string `xml:"heading_ssm"`
 	UnitDateStart_sim      []string `xml:"unitdate_start_sim"`
 	UnitDateStart_ssm      []string `xml:"unitdate_start_ssm"`
 	UnitDateStart_si       []string `xml:"unitdate_start_si"`
