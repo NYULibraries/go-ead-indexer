@@ -35,7 +35,7 @@ func TestParseSolrAddMessages(t *testing.T) {
 				t.Fatal(err)
 			}
 
-			eadToTest, err := New("archives", eadXML)
+			eadToTest, err := New("appdev", eadXML)
 			if err != nil {
 				t.Fatal(err)
 			}
