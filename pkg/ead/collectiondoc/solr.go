@@ -184,8 +184,8 @@ func (collectionDoc *CollectionDoc) setSolrAddMessage() {
 	docElement.Occupation_ssm = append(docElement.Occupation_ssm, collectionDoc.Parts.OccupationNotInDSC.Values...)
 	docElement.Occupation_teim = append(docElement.Occupation_teim, collectionDoc.Parts.OccupationNotInDSC.Values...)
 
-	docElement.PersName_ssm = append(docElement.PersName_ssm, collectionDoc.Parts.PersName.Values...)
-	docElement.PersName_teim = append(docElement.PersName_teim, collectionDoc.Parts.PersName.Values...)
+	docElement.PersName_ssm = append(docElement.PersName_ssm, collectionDoc.Parts.PersNameNotInDSC.Values...)
+	docElement.PersName_teim = append(docElement.PersName_teim, collectionDoc.Parts.PersNameNotInDSC.Values...)
 
 	docElement.PhysTech_teim = append(docElement.PhysTech_teim, collectionDoc.Parts.Phystech.Values...)
 
