@@ -99,7 +99,7 @@ func (collectionDoc *CollectionDoc) setPlace() {
 }
 
 func (collectionDoc *CollectionDoc) setSubject() {
-	collectionDoc.Parts.Subject.Values =
+	collectionDoc.Parts.SubjectForFacets.Values =
 		util.ConvertToFacetSlice(collectionDoc.Parts.SubjectForFacets.Values)
 }
 
