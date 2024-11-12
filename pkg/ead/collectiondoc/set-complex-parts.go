@@ -23,6 +23,7 @@ func (collectionDoc *CollectionDoc) setComplexParts() []error {
 	collectionDoc.setSubject()
 	collectionDoc.setUnitDateEnd()
 	collectionDoc.setUnitDateStart()
+	collectionDoc.setUnitDateDisplay()
 	unitTitleHTMLError := collectionDoc.setUnitTitleHTML()
 	if unitTitleHTMLError != nil {
 		errs = append(errs, unitTitleHTMLError)
@@ -106,8 +107,10 @@ func (collectionDoc *CollectionDoc) setSubject() {
 func (collectionDoc *CollectionDoc) setUnitDateDisplay() {
 	parts := &collectionDoc.Parts
 
-	parts.UnitDateDisplay.Values[0] = util.GetUnitDateDisplay(parts.UnitDateNoTypeAttribute.Values,
-		parts.UnitDateInclusive.Values, parts.UnitDateBulk.Values)
+	parts.UnitDateDisplay.Values = []string{
+		util.GetUnitDateDisplay(parts.UnitDateNoTypeAttribute.Values,
+			parts.UnitDateInclusive.Values, parts.UnitDateBulk.Values),
+	}
 }
 
 func (collectionDoc *CollectionDoc) setUnitDateEnd() {
