@@ -78,9 +78,9 @@ func (collectionDoc *CollectionDoc) setName() {
 	parts := &collectionDoc.Parts
 
 	nameValues := []string{}
+	nameValues = append(nameValues, parts.CorpNameNotInRepository.Values...)
 	nameValues = append(nameValues, parts.FamName.Values...)
 	nameValues = append(nameValues, parts.PersName.Values...)
-	nameValues = append(nameValues, parts.CorpNameNotInRepository.Values...)
 
 	nameValues = util.ConvertToFacetSlice(nameValues)
 
