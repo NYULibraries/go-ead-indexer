@@ -43,15 +43,14 @@ func TestParseSolrAddMessages(t *testing.T) {
 			testCollectionDocSolrAddMessage(eadID, eadID,
 				eadToTest.CollectionDoc.SolrAddMessage, t)
 
-			// TODO: Re-enable after starting work again on components.
-			//componentIDs := []string{}
-			//for _, component := range *eadToTest.Components {
-			//	componentIDs = append(componentIDs, component.ID)
-			//	testComponentSolrAddMessage(eadID, component.ID,
-			//		component.SolrAddMessage, t)
-			//}
-			//
-			//testNoMissingComponents(eadID, componentIDs, t)
+			componentIDs := []string{}
+			for _, component := range *eadToTest.Components {
+				componentIDs = append(componentIDs, component.ID)
+				testComponentSolrAddMessage(eadID, component.ID,
+					component.SolrAddMessage, t)
+			}
+
+			testNoMissingComponents(eadID, componentIDs, t)
 		})
 	}
 }
