@@ -2,6 +2,7 @@ package collectiondoc
 
 import (
 	"fmt"
+	eadUtil "go-ead-indexer/pkg/ead/util"
 	"go-ead-indexer/pkg/util"
 	"reflect"
 	"strconv"
@@ -312,5 +313,7 @@ func isNonEmptyString(value string) bool {
 }
 
 func makeSolrAddMessageFieldElementString(fieldName string, fieldValue string) string {
-	return fmt.Sprintf(`    <field name="%s">%s</field>`, fieldName, fieldValue)
+	escapedFieldValue := eadUtil.EscapeSolrFieldString(fieldValue)
+
+	return fmt.Sprintf(`    <field name="%s">%s</field>`, fieldName, escapedFieldValue)
 }

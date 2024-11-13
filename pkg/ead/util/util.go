@@ -7,6 +7,7 @@ import (
 	languageLib "go-ead-indexer/pkg/language"
 	"go-ead-indexer/pkg/sanitize"
 	"go-ead-indexer/pkg/util"
+	"html"
 	"io"
 	"maps"
 	"regexp"
@@ -87,6 +88,33 @@ func ConvertEADToHTML(eadString string) (string, error) {
 func ConvertToFacetSlice(rawSlice []string) []string {
 	return util.CompactStringSlicePreserveOrder(
 		replaceMARCSubfieldDemarcatorsInSlice(rawSlice))
+}
+
+// No need to write tests for this, because once the DLFA-243 stuff is removed,
+// this is just a wrapper for a one-line call to a standard library function.
+// Most likely once the DLFA-243 temporary code is cleared, we will just inline
+// this function.
+func EscapeSolrFieldString(value string) string {
+	// TODO: Should we do HTML escaping or XML escaping?  The body of the
+	// HTTP request to Solr is XML, but `unitTitleHTMLValue` is for HTML
+	// display.  The documentation for `html.EscapeString()` explicitly lists
+	// the characters that are transformed, whereas `xml.EscapeText()`
+	// documentation simply states that it writes the "the properly escaped
+	// XML equivalent".  Also, `xml.EscapeText()` returns an error which we
+	// would have to deal with.  Is it worth it, considering the source data
+	// is from valid XML to begin with?
+	escapedSolrFieldString := html.EscapeString(value)
+
+	// TODO: DLFA-243
+	// v1 indexer does not escape single or double-quotes.
+	// See "Encoding of special characters in Nokogiri nodes" in DLFA-212:
+	// https://jira.nyu.edu/browse/DLFA-212?focusedCommentId=10525776&page=com.atlassian.jira.plugin.system.issuetabpanels%3Acomment-tabpanel#comment-10525776
+	// After passing the DLFA-201 acceptance/transition test, remove these
+	// un-escaping steps.
+	escapedSolrFieldString = strings.ReplaceAll(escapedSolrFieldString, "&#39;", "'")
+	escapedSolrFieldString = strings.ReplaceAll(escapedSolrFieldString, "&#34;", `"`)
+
+	return escapedSolrFieldString
 }
 
 func GetDateParts(dateString string) DateParts {
