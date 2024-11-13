@@ -170,6 +170,15 @@ func (collectionDoc *CollectionDoc) setUnitTitleHTML() error {
 		// is from valid XML to begin with?
 		unitTitleHTMLValue = html.EscapeString(unitTitleHTMLValue)
 
+		// TODO: DLFA-243
+		// v1 indexer does not escape single or double-quotes here:
+		// 		https://github.com/sparklemotion/nokogiri/blob/v1.15.2/lib/nokogiri/xml/node.rb#L412
+		// 		https://nokogiri.org/rdoc/Nokogiri/XML/Node.html#method-i-encode_special_chars
+		// After passing the DLFA-201 acceptance/transition test, remove these
+		// unescaping steps.
+		unitTitleHTMLValue = strings.ReplaceAll(unitTitleHTMLValue, "&#39;", "'")
+		unitTitleHTMLValue = strings.ReplaceAll(unitTitleHTMLValue, "&#34;", `"`)
+
 		unitTitleHTMLValues = append(unitTitleHTMLValues, unitTitleHTMLValue)
 	}
 
