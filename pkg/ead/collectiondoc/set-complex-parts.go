@@ -2,6 +2,7 @@ package collectiondoc
 
 import (
 	"go-ead-indexer/pkg/ead/util"
+	"html"
 	"strings"
 )
 
@@ -158,6 +159,8 @@ func (collectionDoc *CollectionDoc) setUnitTitleHTML() error {
 		if err != nil {
 			return err
 		}
+
+		unitTitleHTMLValue = html.EscapeString(unitTitleHTMLValue)
 
 		unitTitleHTMLValues = append(unitTitleHTMLValues, unitTitleHTMLValue)
 	}
