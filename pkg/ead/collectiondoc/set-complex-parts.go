@@ -160,6 +160,14 @@ func (collectionDoc *CollectionDoc) setUnitTitleHTML() error {
 			return err
 		}
 
+		// TODO: Should we do HTML escaping or XML escaping?  The body of the
+		// HTTP request to Solr is XML, but `unitTitleHTMLValue` is for HTML
+		// display.  The documentation for `html.EscapeString()` explicitly lists
+		// the characters that are transformed, whereas `xml.EscapeText()`
+		// documentation simply states that it writes the "the properly escaped
+		// XML equivalent".  Also, `xml.EscapeText()` returns an error which we
+		// would have to deal with.  Is it worth it, considering the source data
+		// is from valid XML to begin with?
 		unitTitleHTMLValue = html.EscapeString(unitTitleHTMLValue)
 
 		unitTitleHTMLValues = append(unitTitleHTMLValues, unitTitleHTMLValue)
