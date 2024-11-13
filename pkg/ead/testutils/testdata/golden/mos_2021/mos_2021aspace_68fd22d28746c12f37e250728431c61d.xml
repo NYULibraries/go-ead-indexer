@@ -15,8 +15,8 @@
               title</field>
     <field name="component_level_isim">2</field>
     <field name="component_children_bsi">true</field>
-    <field name="collection_sim">Megan O'Shea's One Resource to  Rule Them All</field>
-    <field name="collection_ssm">Megan O'Shea's One Resource to  Rule Them All</field>
+    <field name="collection_sim">Megan O'Shea's "One Resource to  Rule Them All"</field>
+    <field name="collection_ssm">Megan O'Shea's "One Resource to  Rule Them All"</field>
     <field name="collection_unitid_ssm">MOS.2021</field>
     <field name="level_sim">subseries</field>
     <field name="unittitle_ssm">&lt;em&gt;Level 3&lt;/em&gt; Series I. Megan
@@ -173,7 +173,7 @@
     <field name="subject_sim">Fulbright scholars.</field>
     <field name="subject_sim">Irish American women -- History -- 19th century.</field>
     <field name="subject_sim">War Powers Conference</field>
-    <field name="collection_teim">Megan O'Shea's One Resource to  Rule Them All</field>
+    <field name="collection_teim">Megan O'Shea's "One Resource to  Rule Them All"</field>
     <field name="collection_unitid_teim">MOS.2021</field>
     <field name="series_sim">Level 2 Series I. Megan
               O'Shea

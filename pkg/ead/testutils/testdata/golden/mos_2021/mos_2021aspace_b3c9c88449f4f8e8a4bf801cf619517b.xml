@@ -15,8 +15,8 @@
               title</field>
     <field name="component_level_isim">2</field>
     <field name="component_children_bsi">false</field>
-    <field name="collection_sim">Megan O'Shea's One Resource to  Rule Them All</field>
-    <field name="collection_ssm">Megan O'Shea's One Resource to  Rule Them All</field>
+    <field name="collection_sim">Megan O'Shea's "One Resource to  Rule Them All"</field>
+    <field name="collection_ssm">Megan O'Shea's "One Resource to  Rule Them All"</field>
     <field name="collection_unitid_ssm">MOS.2021</field>
     <field name="level_sim">item</field>
     <field name="unittitle_ssm">&lt;strong&gt;This is an item&lt;/strong&gt; Here is a title.
@@ -38,7 +38,7 @@
     <field name="location_ssm">box: 1</field>
     <field name="location_si">box: 1</field>
     <field name="dao_sim">Online Access</field>
-    <field name="collection_teim">Megan O'Shea's One Resource to  Rule Them All</field>
+    <field name="collection_teim">Megan O'Shea's "One Resource to  Rule Them All"</field>
     <field name="collection_unitid_teim">MOS.2021</field>
     <field name="series_sim">Level 2 Series I. Megan
               O'Shea
