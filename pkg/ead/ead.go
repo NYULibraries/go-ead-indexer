@@ -1,12 +1,15 @@
 package ead
 
 import (
+	"errors"
 	"fmt"
 	"github.com/lestrrat-go/libxml2/parser"
 	"github.com/lestrrat-go/libxml2/types"
+	"github.com/nyulibraries/dlts-finding-aids-ead-go-packages/ead/modify"
 	"go-ead-indexer/pkg/ead/collectiondoc"
 	"go-ead-indexer/pkg/ead/component"
 	"regexp"
+	"strings"
 )
 
 // We need to set `xmlns=""` to get the xpath queries working.  See code comment
@@ -28,6 +31,12 @@ type EAD struct {
 func New(repositoryCode string, eadXML string) (EAD, error) {
 	ead := EAD{}
 
+	// DLTS modifications
+	fabIfiedEADXML, fabIfyErrors := modify.FABifyEAD([]byte(eadXML))
+	if len(fabIfyErrors) > 0 {
+		return ead, errors.New(strings.Join(fabIfyErrors, "; "))
+	}
+
 	// XPath queries fail if we don't set the namespace to empty string.
 	// Excepting the `xlink` prefix, the tags in the EAD files don't seem to use
 	// namespace prefixes much, and the XPath queries we need for this indexer
@@ -48,14 +57,14 @@ func New(repositoryCode string, eadXML string) (EAD, error) {
 	// A quick online search didn't turn up any easy to implement solutions for
 	// removing namespace stuff from all nodes using the standard library
 	// `encoding/xml` package.
-	matchGroups := namespaceRegexp.FindStringSubmatch(eadXML)
+	matchGroups := namespaceRegexp.FindStringSubmatch(fabIfiedEADXML)
 	newString := fmt.Sprintf(`<%sead%sxmlns=""`, matchGroups[1], matchGroups[2])
-	modifiedEADXML := namespaceRegexp.ReplaceAllString(eadXML, newString)
+	finalModifiedEADXML := namespaceRegexp.ReplaceAllString(fabIfiedEADXML, newString)
 
 	ead.OriginalFileContents = eadXML
-	ead.ModifiedFileContents = modifiedEADXML
+	ead.ModifiedFileContents = finalModifiedEADXML
 
-	xmlDoc, err := MakeXMLDoc(modifiedEADXML)
+	xmlDoc, err := MakeXMLDoc(finalModifiedEADXML)
 	defer xmlDoc.Free()
 	if err != nil {
 		return ead, err
