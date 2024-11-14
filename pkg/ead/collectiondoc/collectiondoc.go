@@ -5,8 +5,8 @@ import (
 )
 
 type CollectionDoc struct {
-	SolrAddMessage SolrAddMessage     `json:"solr_add_message"`
 	Parts          CollectionDocParts `json:"parts"`
+	SolrAddMessage SolrAddMessage     `json:"solr_add_message"`
 }
 
 // For now, no struct tags for the `CollectionDoc*` fields.  Keep it flat.
