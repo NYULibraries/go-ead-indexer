@@ -25,7 +25,7 @@ func TestMain(m *testing.M) {
 	os.Exit(m.Run())
 }
 
-func TestParseSolrAddMessages(t *testing.T) {
+func TestCollectionDocSolrAddMessage(t *testing.T) {
 	eadIDs := testutils.GetTestEADIDs()
 
 	for _, eadID := range eadIDs {
@@ -42,6 +42,24 @@ func TestParseSolrAddMessages(t *testing.T) {
 
 			testCollectionDocSolrAddMessage(eadID, eadID,
 				eadToTest.CollectionDoc.SolrAddMessage, t)
+		})
+	}
+}
+
+func TestComponentDocSolrAddMessage(t *testing.T) {
+	eadIDs := testutils.GetTestEADIDs()
+
+	for _, eadID := range eadIDs {
+		t.Run(eadID, func(t *testing.T) {
+			eadXML, err := testutils.GetEADFixtureValue(eadID)
+			if err != nil {
+				t.Fatal(err)
+			}
+
+			eadToTest, err := New("appdev", eadXML)
+			if err != nil {
+				t.Fatal(err)
+			}
 
 			componentIDs := []string{}
 			for _, component := range *eadToTest.Components {
