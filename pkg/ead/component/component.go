@@ -24,7 +24,7 @@ type ComponentXPathParts struct {
 	ChronList                     ComponentPart `json:"chron_list"`
 	Collection                    ComponentPart `json:"collection"`
 	CollectionUnitID              ComponentPart `json:"collection_unit_id"`
-	Corpname                      ComponentPart `json:"corpname"`
+	CorpName                      ComponentPart `json:"corpname"`
 	Creator                       ComponentPart `json:"creator"`
 	DAO                           ComponentPart `json:"dao"`
 	DIDUnitID                     ComponentPart `json:"did_unit_id"`
@@ -129,8 +129,8 @@ func (component *Component) setXPathDirectQueryParts(node types.Node) error {
 		return err
 	}
 
-	parts.Corpname.Source = "//corpname"
-	parts.Corpname.Values, parts.Corpname.XMLStrings, err = util.GetValuesForXPathQuery(parts.Corpname.Source, node)
+	parts.CorpName.Source = "//corpname"
+	parts.CorpName.Values, parts.CorpName.XMLStrings, err = util.GetValuesForXPathQuery(parts.CorpName.Source, node)
 	if err != nil {
 		return err
 	}
