@@ -12,8 +12,14 @@ type Component struct {
 
 // For now, no struct tags for the `Component*` fields.  Keep it flat.
 type ComponentParts struct {
+	ComponentComplexParts
 	ComponentXPathParts
 	RepositoryCode ComponentPart `json:"repository_code"`
+}
+
+type ComponentComplexParts struct {
+	Format   ComponentPart `json:"format"`
+	Location ComponentPart `json:"location"`
 }
 
 type ComponentXPathParts struct {
@@ -113,6 +119,8 @@ func (component *Component) setParts(node types.Node) error {
 	if err != nil {
 		return err
 	}
+
+	component.setComplexParts()
 
 	return nil
 }
