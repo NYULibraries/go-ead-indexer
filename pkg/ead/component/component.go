@@ -13,11 +13,11 @@ type Component struct {
 
 // For now, no struct tags for the `Component*` fields.  Keep it flat.
 type ComponentParts struct {
-	ComponentXPathDirectQueryParts
+	ComponentXPathParts
 	RepositoryCode ComponentPart `json:"repository_code"`
 }
 
-type ComponentXPathDirectQueryParts struct {
+type ComponentXPathParts struct {
 	Address                       ComponentPart `json:"address"`
 	Appraisal                     ComponentPart `json:"appraisal"`
 	BiogHist                      ComponentPart `json:"biog_hist"`
