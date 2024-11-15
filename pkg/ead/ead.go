@@ -34,7 +34,9 @@ func New(repositoryCode string, eadXML string) (EAD, error) {
 	// DLTS modifications
 	fabIfiedEADXML, fabIfyErrors := modify.FABifyEAD([]byte(eadXML))
 	if len(fabIfyErrors) > 0 {
-		return ead, errors.New(strings.Join(fabIfyErrors, "; "))
+		return ead, errors.New(
+			fmt.Sprintf("`modify.FABifyEAD()` returned errors: %s",
+				strings.Join(fabIfyErrors, "; ")))
 	}
 
 	// XPath queries fail if we don't set the namespace to empty string.
