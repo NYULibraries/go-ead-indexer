@@ -84,7 +84,14 @@ func MakeComponents(repositoryCode string, node types.Node) (*[]Component, error
 
 	components := []Component{}
 	for _, cNode := range cNodes {
-		newComponent, err := MakeComponent(repositoryCode, cNode)
+		// Remove child <c> nodes from to prevent duplication from overlapping
+		// node trees.
+		cNodeChildCNodesRemoved, err := removeChildCNodes(cNode)
+		if err != nil {
+			return &components, err
+		}
+
+		newComponent, err := MakeComponent(repositoryCode, cNodeChildCNodesRemoved)
 		if err != nil {
 			return &components, err
 		}
@@ -125,4 +132,39 @@ func (component *Component) setParts(node types.Node) error {
 	component.setComplexParts()
 
 	return nil
+}
+
+// Reasons for the defensive copy of the `node` arg:
+//  1. So that the caller can have the option of comparing before and after
+//  2. To prevent surprising the caller with an unwanted mutation.  Even though
+//     the param is `types.Node` and not `*types.Node`, mutations here are still
+//     still permanent, because that's just how that type works.
+//  3. To preserve the original node in case of a fatal error, so that the caller
+//     doesn't lose data permanently.
+//
+// TODO: `removeChildCNodes()` adds `xmlns:xlink="http://www.w3.org/1999/xlink"`
+// to the <c>.  Should we leave it, or strip it?  It's added in the `resultNode`
+// defensive copy; it doesn't happen happen when `node` is mutated directly.
+func removeChildCNodes(node types.Node) (types.Node, error) {
+	resultNode, err := node.Copy()
+	if err != nil {
+		return resultNode, err
+	}
+
+	childNodes, err := resultNode.ChildNodes()
+	if err != nil {
+		return resultNode, err
+	}
+	for _, childNode := range childNodes {
+		if childNode != nil {
+			if childNode.NodeName() == ComponentElementName {
+				err = resultNode.RemoveChild(childNode)
+				if err != nil {
+					return resultNode, err
+				}
+			}
+		}
+	}
+
+	return resultNode, nil
 }
