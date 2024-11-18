@@ -64,9 +64,11 @@ type ComponentPart struct {
 	XMLStrings []string `json:"xml_strings"`
 }
 
+const ComponentElementName = "c"
+
 // See `ead.new()` comment on why we have to pass in `repositoryCode` as an argument.
 func MakeComponents(repositoryCode string, node types.Node) (*[]Component, error) {
-	xpathResult, err := node.Find("//c")
+	xpathResult, err := node.Find("//" + ComponentElementName)
 	if err != nil {
 		return nil, err
 	}
