@@ -187,8 +187,7 @@
     <field name="format_sim">Archival Series</field>
     <field name="format_ssm">Archival Series</field>
     <field name="location_ssm">box: 1, folder: 1</field>
-    <field name="location_ssm">folder: 1</field>
-    <field name="location_si">folder: 1</field>
+    <field name="location_si">box: 1, folder: 1</field>
     <field name="creator_sim">World Trade Center
                     (New York, N.Y.)</field>
     <field name="creator_sim">Draper

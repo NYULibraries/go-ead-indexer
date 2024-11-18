@@ -176,8 +176,7 @@
     <field name="format_sim">Archival Series</field>
     <field name="format_ssm">Archival Series</field>
     <field name="location_ssm">box: 1, folder: 1</field>
-    <field name="location_ssm">folder: 1</field>
-    <field name="location_si">folder: 1</field>
+    <field name="location_si">box: 1, folder: 1</field>
     <field name="creator_sim">Yivo Institute for Jewish
                   Research</field>
     <field name="creator_sim">Pinsof
