@@ -253,7 +253,7 @@ func (collectionDoc *CollectionDoc) setXPathSimpleParts(node types.Node) error {
 		return err
 	}
 
-	parts.UnitID.Source = "//archdesc[@level='collection']/did/unitid"
+	parts.UnitID.Source = "//archdesc[@level='collection']/did/unitid[not(@type='aspace_uri')]"
 	parts.UnitID.Values, parts.UnitID.XMLStrings, err = util.GetValuesForXPathQuery(parts.UnitID.Source, node)
 	if err != nil {
 		return err

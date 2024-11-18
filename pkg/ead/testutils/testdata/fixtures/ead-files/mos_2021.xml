@@ -76,6 +76,7 @@
         <persname rules="local" source="local"> Weatherly Stephan</persname>
       </origination>
       <unitid>MOS.2021</unitid>
+      <unitid type="aspace_uri">[THIS SHOULD NEVER BE INDEXED -- SEE https://jira.nyu.edu/browse/DLFA-174</unitid>
       <physdesc altrender="whole">
         <extent altrender="materialtype spaceoccupied">25 Linear Feet</extent>
         <extent altrender="carrier">in <emph render="bold">24 record cartons</emph>, <lb/>1
