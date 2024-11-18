@@ -14,6 +14,7 @@ type Component struct {
 type ComponentParts struct {
 	ComponentComplexParts
 	ComponentXPathParts
+	Containers     []Container   `json:"containers"`
 	RepositoryCode ComponentPart `json:"repository_code"`
 }
 
@@ -62,6 +63,14 @@ type ComponentPart struct {
 	Source     string   `json:"source"`
 	Values     []string `json:"values"`
 	XMLStrings []string `json:"xml_strings"`
+}
+
+type Container struct {
+	ID        string `json:"id"`
+	Parent    string `json:"parent"`
+	Type      string `json:"type"`
+	Value     string `json:"value"`
+	XMLString string `json:"xmlstring"`
 }
 
 const ComponentElementName = "c"
@@ -125,6 +134,11 @@ func MakeComponent(repositoryCode string, node types.Node) (Component, error) {
 
 func (component *Component) setParts(node types.Node) error {
 	err := component.setXPathSimpleParts(node)
+	if err != nil {
+		return err
+	}
+
+	err = component.setContainersPart(node)
 	if err != nil {
 		return err
 	}
