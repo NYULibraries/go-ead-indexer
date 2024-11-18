@@ -79,14 +79,6 @@ func (collectionDoc *CollectionDoc) setXPathSimpleParts(node types.Node) error {
 	// https://groups.google.com/g/selenium-users/c/Lcvbjisk4qE
 	// "case-insensitive matching in XPath?"
 	// https://stackoverflow.com/questions/2893551/case-insensitive-matching-in-xpath
-	//
-	// Note also that DLTS's `modify.FABifyEAD()` only rewrites `<origination label="Creator">`
-	// elements -- see https://github.com/NYULibraries/dlts-finding-aids-ead-go-packages/blob/7baee7dfde24a01422ec8e6470fdc8a76d84b3fb/ead/modify/modify.go#L101-L103.
-	// This fulfills the needs of the finding aids generation workflow, and would
-	// take care of this particular assignment, but for the indexer we want to
-	// make sure we can handle any element with `label="Creator"`, such as the
-	// `parts.Creator*` field assignments following this one, and so we use
-	// case-insensitive XPath queries.
 	parts.Creator.Source = "//archdesc[@level='collection']/did/origination[translate(@label, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='creator']/*[name() = 'corpname' or name() = 'famname' or name() = 'persname']"
 	parts.Creator.Values, parts.Creator.XMLStrings, err = util.GetValuesForXPathQuery(parts.Creator.Source, node)
 	if err != nil {
