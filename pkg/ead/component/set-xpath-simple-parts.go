@@ -163,8 +163,8 @@ func (component *Component) setXPathSimpleParts(node types.Node) error {
 		return err
 	}
 
-	parts.Name.Source = "//name"
-	parts.Name.Values, parts.Name.XMLStrings, err = util.GetValuesForXPathQuery(parts.Name.Source, node)
+	parts.NameElementAll.Source = "//name"
+	parts.NameElementAll.Values, parts.NameElementAll.XMLStrings, err = util.GetValuesForXPathQuery(parts.NameElementAll.Source, node)
 	if err != nil {
 		return err
 	}

@@ -3,6 +3,7 @@ package component
 import (
 	"errors"
 	"fmt"
+	"go-ead-indexer/pkg/ead/util"
 	"regexp"
 	"strings"
 )
@@ -56,6 +57,7 @@ func (component *Component) setComplexParts() error {
 		return err
 	}
 	component.setCreatorComplex()
+	component.setName()
 
 	return nil
 }
@@ -168,4 +170,17 @@ func (component *Component) getLocationValuesInOccurrenceOrder() ([]string, erro
 	// mapping parent to child containers, so we match its signature to make
 	// transition easier and faster.
 	return locationValues, nil
+}
+
+func (component *Component) setName() {
+	parts := &component.Parts
+
+	nameValues := []string{}
+	nameValues = append(nameValues, parts.CorpNameNotInRepository.Values...)
+	nameValues = append(nameValues, parts.FamName.Values...)
+	nameValues = append(nameValues, parts.PersName.Values...)
+
+	nameValues = util.ConvertToFacetSlice(nameValues)
+
+	parts.Name.Values = nameValues
 }

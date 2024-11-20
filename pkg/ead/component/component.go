@@ -23,6 +23,7 @@ type ComponentComplexParts struct {
 	CreatorComplex ComponentPart `json:"creator_complex"`
 	Format         ComponentPart `json:"format"`
 	Location       ComponentPart `json:"location"`
+	Name           ComponentPart `json:"name"`
 }
 
 type ComponentXPathParts struct {
@@ -33,6 +34,7 @@ type ComponentXPathParts struct {
 	Collection                    ComponentPart `json:"collection"`
 	CollectionUnitID              ComponentPart `json:"collection_unit_id"`
 	CorpName                      ComponentPart `json:"corpname"`
+	CorpNameNotInRepository       ComponentPart `json:"corp_name_not_in_repository"`
 	Creator                       ComponentPart `json:"creator"`
 	CreatorCorpName               ComponentPart `json:"creator_corp_name"`
 	CreatorFamName                ComponentPart `json:"creator_fam_name"`
@@ -48,7 +50,7 @@ type ComponentXPathParts struct {
 	Heading                       ComponentPart `json:"heading"`
 	Language                      ComponentPart `json:"language"`
 	Level                         ComponentPart `json:"level"`
-	Name                          ComponentPart `json:"name"`
+	NameElementAll                ComponentPart `json:"name_element_all"`
 	Note                          ComponentPart `json:"note"`
 	Occupation                    ComponentPart `json:"occupation"`
 	PersName                      ComponentPart `json:"pers_name"`
