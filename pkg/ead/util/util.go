@@ -225,6 +225,9 @@ func GetValuesForXPathQuery(query string, node types.Node) ([]string, []string, 
 	return values, xmlStrings, nil
 }
 
+// Note that this function only removes child nodes, it does not recursively
+// remove all descendant notes which match `elementName`.
+//
 // Reasons for the defensive copy of the `node` arg:
 //
 //  1. So that the caller can have the option of comparing before and after
