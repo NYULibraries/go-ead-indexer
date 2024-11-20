@@ -1,0 +1,32 @@
+<root>
+    
+    <level2>
+        <alpha>a</alpha>
+        <Alpha>A</Alpha>
+        <bravo>b</bravo>
+        <zulu/>
+        <level3>
+            <alpha>a</alpha>
+            <bravo>b</bravo>
+            <Alpha>A</Alpha>
+            <zulu/>
+        </level3>
+    </level2>
+    <alpha>a</alpha>
+    <Alpha>A</Alpha>
+    <bravo>b</bravo>
+    
+    <level2>
+        <level3>
+            <alpha>a</alpha>
+            <Alpha>A</Alpha>
+        </level3>
+        <bravo>b</bravo>
+        <zulu/>
+    </level2>
+    <alpha>a</alpha>
+    <alpha>a</alpha>
+    <Alpha>A</Alpha>
+    <bravo>b</bravo>
+    
+</root>

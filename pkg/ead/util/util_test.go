@@ -1,13 +1,46 @@
 package util
 
 import (
+	"flag"
 	"fmt"
+	"github.com/lestrrat-go/libxml2/parser"
 	languageLib "go-ead-indexer/pkg/language"
+	"go-ead-indexer/pkg/util"
+	"os"
+	"path"
+	"path/filepath"
+	"runtime"
 	"slices"
 	"strings"
 	"testing"
 )
 
+var fixturesDirPath string
+var goldenFilesDirPath string
+
+var updateGoldenFiles = flag.Bool("update-golden-files", false, "update the golden files")
+
+// We need to get the absolute path to this package in order to enable the function
+// for golden file and fixture file retrieval to be called from other packages
+// which would not be able to resolve the hardcoded relative paths used here.
+func init() {
+	// The `filename` string is the absolute path to this source file, which should
+	// be located at the root of the package directory.
+	_, filename, _, ok := runtime.Caller(0)
+	if !ok {
+		panic("ERROR: `runtime.Caller(0)` failed")
+	}
+
+	// Get the path to the parent directory of this file.  Again, this is assuming
+	// that this `init()` function is defined in a package top level file -- or
+	// more precisely, that this file is in the same directory at the `testdata/`
+	// directory that is referenced in the relative paths used in the functions
+	// defined in this file.
+	herePath := filepath.Dir(filename)
+	// Get testdata directory paths
+	fixturesDirPath = filepath.Join(herePath, "testdata", "fixtures")
+	goldenFilesDirPath = filepath.Join(herePath, "testdata", "golden")
+}
 func TestConvertEADToHTML(t *testing.T) {
 	testConvertEADToHTML_EveryCombinationOfTagAndRenderAttributeWithInvalidChars(t)
 	testConvertEADToHTML_GracefulHandlingOfInvalidXML(t)
@@ -540,6 +573,88 @@ func TestLanguage(t *testing.T) {
 	}
 }
 
+func TestRemoveChildNodes(t *testing.T) {
+	testXMLBytes, err := os.ReadFile(path.Join(fixturesDirPath, "test.xml"))
+	if err != nil {
+		t.Errorf("Error reading fixture file: %s", err)
+	}
+	testXML := string(testXMLBytes)
+
+	testCases := []struct {
+		name            string
+		elementToRemove string
+		goldenName      string
+	}{
+		{
+			name:            "Remove nothing",
+			elementToRemove: "",
+			goldenName:      "remove-nothing",
+		},
+		{
+			name:            "Remove an element that is not present in the XML",
+			elementToRemove: "omega",
+			goldenName:      "remove-an-element-that-is-not-present",
+		},
+		{
+			name:            "Remove all top-level <alpha> elements, but not <Alpha> elements",
+			elementToRemove: "alpha",
+			goldenName:      "remove-top-level-alpha-lowercase",
+		},
+		{
+			name:            "Remove all top-level <Alpha> elements, but not <alpha> elements",
+			elementToRemove: "Alpha",
+			goldenName:      "remove-top-level-alpha-titlecase",
+		},
+		{
+			name:            "Remove all top-level <zulu/>",
+			elementToRemove: "zulu",
+			goldenName:      "remove-top-level-zulu",
+		},
+	}
+
+	xmlParser := parser.New()
+	testDoc, err := xmlParser.ParseString(testXML)
+	defer testDoc.Free()
+	if err != nil {
+		t.Errorf("Failed to parse test XML: %s", err)
+	}
+
+	testNode, err := testDoc.DocumentElement()
+	if err != nil {
+		t.Errorf("Failed to get `testNode` from `testDoc`: %s", err)
+	}
+
+	for _, testCase := range testCases {
+		actualNode, err := RemoveChildNodes(testNode, testCase.elementToRemove)
+		if err != nil {
+			t.Errorf(`%s: expected no error, but got error: "%s"`, testCase.name,
+				err)
+		}
+
+		actualXML := actualNode.String()
+
+		if *updateGoldenFiles {
+			err := updateGoldenFile(testCase.goldenName, actualXML)
+			if err != nil {
+				t.Fatalf("Error updating golden file: %s", err)
+			}
+		}
+
+		expectedXML, err := getGoldenFileValue(testCase.goldenName)
+		if err != nil {
+			t.Errorf("Failed to get `expectedXML`: %s", err)
+		}
+
+		if actualXML != expectedXML {
+			diff := util.DiffStrings("expectedXML", expectedXML,
+				"actualXML", actualXML)
+
+			t.Errorf(`%s: actual XML does not match expected XML: "%s",`,
+				testCase.name, diff)
+		}
+	}
+}
+
 func TestReplaceMARCSubfieldDemarcators(t *testing.T) {
 	// To see where some of these real life examples came from:
 	// https://jira.nyu.edu/browse/DLFA-229?focusedCommentId=10153922&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10153922
@@ -726,4 +841,30 @@ func testStripTags_Specificity(t *testing.T) {
 				testCase.name, testCase.xmlString, testCase.expectedHTMLString, actual)
 		}
 	}
+}
+
+// TODO: Consolidate fixture/helper/diff code with `pkg/ead/testutils/`?
+// Note the that latter was designed to be EAD file specific, and also was
+// written in anticipation of potentially lifting out of the `ead` package
+// entirely so it could be used by multiple packages.
+func getGoldenFileValue(goldenName string) (string, error) {
+	return getTestdataFileContents(goldenFilePath(goldenName))
+}
+
+func getTestdataFileContents(filename string) (string, error) {
+	bytes, err := os.ReadFile(filename)
+
+	if err != nil {
+		return filename, err
+	}
+
+	return string(bytes), nil
+}
+
+func goldenFilePath(goldenName string) string {
+	return filepath.Join(goldenFilesDirPath, goldenName+".xml")
+}
+
+func updateGoldenFile(goldenName string, data string) error {
+	return os.WriteFile(goldenFilePath(goldenName), []byte(data), 0644)
 }
