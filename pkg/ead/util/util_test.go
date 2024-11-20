@@ -41,6 +41,7 @@ func init() {
 	fixturesDirPath = filepath.Join(herePath, "testdata", "fixtures")
 	goldenFilesDirPath = filepath.Join(herePath, "testdata", "golden")
 }
+
 func TestConvertEADToHTML(t *testing.T) {
 	testConvertEADToHTML_EveryCombinationOfTagAndRenderAttributeWithInvalidChars(t)
 	testConvertEADToHTML_GracefulHandlingOfInvalidXML(t)
