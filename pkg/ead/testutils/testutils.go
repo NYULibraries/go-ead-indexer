@@ -31,8 +31,8 @@ func init() {
 	// defined in this file.
 	testutilsPath = filepath.Dir(filename)
 	// Get testdata directory paths
-	eadFixturesDirPath = filepath.Join(testutilsPath, "testdata", "fixtures", "ead-files")
-	goldenFilesDirPath = filepath.Join(testutilsPath, "testdata", "golden")
+	eadFixturesDirPath = filepath.Join(testutilsPath, "..", "testdata", "fixtures", "ead-files")
+	goldenFilesDirPath = filepath.Join(testutilsPath, "..", "testdata", "golden")
 }
 
 func GetEADFixtureValue(eadID string) (string, error) {
