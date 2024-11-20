@@ -143,7 +143,10 @@ func (component *Component) setParts(node types.Node) error {
 		return err
 	}
 
-	component.setComplexParts()
+	err = component.setComplexParts()
+	if err != nil {
+		return err
+	}
 
 	return nil
 }
