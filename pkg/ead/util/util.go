@@ -90,9 +90,9 @@ func ConvertToFacetSlice(rawSlice []string) []string {
 		replaceMARCSubfieldDemarcatorsInSlice(rawSlice))
 }
 
-// No need to write tests for this, because once the DLFA-243 stuff is removed,
+// No need to write tests for this, because once the DLFA-238 stuff is removed,
 // this is just a wrapper for a one-line call to a standard library function.
-// Most likely once the DLFA-243 temporary code is cleared, we will just inline
+// Most likely once the DLFA-238 temporary code is cleared, we will just inline
 // this function.
 func EscapeSolrFieldString(value string) string {
 	// TODO: Should we do HTML escaping or XML escaping?  The body of the
@@ -105,7 +105,7 @@ func EscapeSolrFieldString(value string) string {
 	// is from valid XML to begin with?
 	escapedSolrFieldString := html.EscapeString(value)
 
-	// TODO: DLFA-243
+	// TODO: DLFA-238
 	// v1 indexer does not escape single or double-quotes.
 	// See "Encoding of special characters in Nokogiri nodes" in DLFA-212:
 	// https://jira.nyu.edu/browse/DLFA-212?focusedCommentId=10525776&page=com.atlassian.jira.plugin.system.issuetabpanels%3Acomment-tabpanel#comment-10525776
