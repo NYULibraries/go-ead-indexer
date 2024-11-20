@@ -299,75 +299,6 @@ func TestGetDateRange(t *testing.T) {
 	}
 }
 
-// The `language` package has its own test suite, so we don't need to go crazy
-// with coverage here.
-func TestLanguage(t *testing.T) {
-	testCases := []struct {
-		name              string
-		langCodes         []string
-		expectedLanguages []string
-		expectedErrors    []error
-	}{
-		{
-			`Simple lookup`,
-			[]string{"ara", "eng"},
-			[]string{"Arabic", "English"},
-			[]error{},
-		},
-		{
-			`Language code not found`,
-			[]string{"xxx"},
-			[]string{},
-			[]error{languageLib.ErrLanguageNotFound},
-		},
-		{
-			`Invalid language codes`,
-			[]string{
-				"",
-				"!!!",
-				"abcdefghijklmnopqrstuvwxyz",
-				"a",
-				"e n g",
-			},
-			[]string{},
-			[]error{
-				languageLib.ErrEmptyLanguageCode,
-				languageLib.ErrInvalidCharacters,
-				languageLib.ErrInvalidLength,
-				languageLib.ErrInvalidLength,
-				languageLib.ErrInternalWhitespace,
-			},
-		},
-	}
-
-	for _, testCase := range testCases {
-		actualLanguages, actualErrors := GetLanguage(testCase.langCodes)
-		if slices.Compare(actualLanguages, testCase.expectedLanguages) != 0 {
-			t.Errorf(`%s: expected language codes "%v" to map to languages %v, but got %v`,
-				testCase.name, testCase.langCodes, testCase.expectedLanguages,
-				actualLanguages)
-		}
-		if len(actualErrors) > 0 || len(testCase.expectedErrors) > 0 {
-			// `slices.Compare(actualErrors, testCase.expectedErrors)` because
-			// `error` is not type `cmp.Ordered`.
-			actualErrorStrings := []string{}
-			for _, err := range actualErrors {
-				actualErrorStrings = append(actualErrorStrings, err.Error())
-			}
-			expectedErrorStrings := []string{}
-			for _, err := range testCase.expectedErrors {
-				expectedErrorStrings = append(expectedErrorStrings, err.Error())
-			}
-
-			if slices.Compare(actualErrorStrings, expectedErrorStrings) != 0 {
-				t.Errorf(`%s: expected language codes "%v" to generate errors %v, but got %v`,
-					testCase.name, testCase.langCodes, expectedErrorStrings,
-					actualErrorStrings)
-			}
-		}
-	}
-}
-
 func TestGetUnitDateDisplay(t *testing.T) {
 	testCases := []struct {
 		name                    string
@@ -536,6 +467,75 @@ func TestIsDateInRange(t *testing.T) {
 		if actual != testCase.expected {
 			t.Errorf(`%s: expected "%s" in "%s" to return %t, got %t`,
 				testCase.name, testCase.dateString, testCase.dateRange.Display, testCase.expected, actual)
+		}
+	}
+}
+
+// The `language` package has its own test suite, so we don't need to go crazy
+// with coverage here.
+func TestLanguage(t *testing.T) {
+	testCases := []struct {
+		name              string
+		langCodes         []string
+		expectedLanguages []string
+		expectedErrors    []error
+	}{
+		{
+			`Simple lookup`,
+			[]string{"ara", "eng"},
+			[]string{"Arabic", "English"},
+			[]error{},
+		},
+		{
+			`Language code not found`,
+			[]string{"xxx"},
+			[]string{},
+			[]error{languageLib.ErrLanguageNotFound},
+		},
+		{
+			`Invalid language codes`,
+			[]string{
+				"",
+				"!!!",
+				"abcdefghijklmnopqrstuvwxyz",
+				"a",
+				"e n g",
+			},
+			[]string{},
+			[]error{
+				languageLib.ErrEmptyLanguageCode,
+				languageLib.ErrInvalidCharacters,
+				languageLib.ErrInvalidLength,
+				languageLib.ErrInvalidLength,
+				languageLib.ErrInternalWhitespace,
+			},
+		},
+	}
+
+	for _, testCase := range testCases {
+		actualLanguages, actualErrors := GetLanguage(testCase.langCodes)
+		if slices.Compare(actualLanguages, testCase.expectedLanguages) != 0 {
+			t.Errorf(`%s: expected language codes "%v" to map to languages %v, but got %v`,
+				testCase.name, testCase.langCodes, testCase.expectedLanguages,
+				actualLanguages)
+		}
+		if len(actualErrors) > 0 || len(testCase.expectedErrors) > 0 {
+			// `slices.Compare(actualErrors, testCase.expectedErrors)` because
+			// `error` is not type `cmp.Ordered`.
+			actualErrorStrings := []string{}
+			for _, err := range actualErrors {
+				actualErrorStrings = append(actualErrorStrings, err.Error())
+			}
+			expectedErrorStrings := []string{}
+			for _, err := range testCase.expectedErrors {
+				expectedErrorStrings = append(expectedErrorStrings, err.Error())
+			}
+
+			if slices.Compare(actualErrorStrings, expectedErrorStrings) != 0 {
+				t.Errorf(`%s: expected language codes "%v" to generate errors %v, but got %v`,
+					testCase.name, testCase.langCodes, expectedErrorStrings,
+					actualErrorStrings)
+			}
 		}
 	}
 }
