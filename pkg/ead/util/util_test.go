@@ -625,7 +625,7 @@ func TestRemoveChildNodes(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		actualNode, err := RemoveChildNodes(testNode, testCase.elementToRemove)
+		actualNode, err := RemoveChildNodesMatchingName(testNode, testCase.elementToRemove)
 		if err != nil {
 			t.Errorf(`%s: expected no error, but got error: "%s"`, testCase.name,
 				err)

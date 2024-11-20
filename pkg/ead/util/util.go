@@ -240,7 +240,7 @@ func GetValuesForXPathQuery(query string, node types.Node) ([]string, []string, 
 // Note that this copy appears to automatically add namespace attributes to the
 // root node of the copy.  For an example, see the function comment for
 // `Component.removeChildCNodes`.
-func RemoveChildNodes(node types.Node, elementName string) (types.Node, error) {
+func RemoveChildNodesMatchingName(node types.Node, elementName string) (types.Node, error) {
 	resultNode, err := node.Copy()
 	if err != nil {
 		return resultNode, err

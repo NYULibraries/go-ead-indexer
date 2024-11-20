@@ -156,5 +156,5 @@ func (component *Component) setParts(node types.Node) error {
 // to the <c>.  Should we leave it, or strip it?  It's added in the `resultNode`
 // defensive copy; it doesn't happen happen when `node` is mutated directly.
 func removeChildCNodes(node types.Node) (types.Node, error) {
-	return util.RemoveChildNodes(node, CElementName)
+	return util.RemoveChildNodesMatchingName(node, CElementName)
 }
