@@ -39,7 +39,7 @@ type ComponentXPathParts struct {
 	CreatorCorpName               ComponentPart `json:"creator_corp_name"`
 	CreatorFamName                ComponentPart `json:"creator_fam_name"`
 	CreatorPersName               ComponentPart `json:"creator_pers_name"`
-	DAO                           ComponentPart `json:"dao"`
+	DAODescriptionParagraph       ComponentPart `json:"dao"`
 	DIDUnitID                     ComponentPart `json:"did_unit_id"`
 	DIDUnitTitle                  ComponentPart `json:"did_unit_title"`
 	EADID                         ComponentPart `json:"eadid"`

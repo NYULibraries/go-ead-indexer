@@ -97,8 +97,8 @@ func (component *Component) setXPathSimpleParts(node types.Node) error {
 		return err
 	}
 
-	parts.DAO.Source = "//dao/daodesc/p"
-	parts.DAO.Values, parts.DAO.XMLStrings, err = util.GetValuesForXPathQuery(parts.DAO.Source, node)
+	parts.DAODescriptionParagraph.Source = "//dao/daodesc/p"
+	parts.DAODescriptionParagraph.Values, parts.DAODescriptionParagraph.XMLStrings, err = util.GetValuesForXPathQuery(parts.DAODescriptionParagraph.Source, node)
 	if err != nil {
 		return err
 	}
