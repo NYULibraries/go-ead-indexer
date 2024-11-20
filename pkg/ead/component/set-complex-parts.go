@@ -55,8 +55,20 @@ func (component *Component) setComplexParts() error {
 	if err != nil {
 		return err
 	}
+	component.setCreatorComplex()
 
 	return nil
+}
+
+func (component *Component) setCreatorComplex() {
+	parts := &component.Parts
+
+	// CreatorComplex
+	creatorComplexValues := []string{}
+	creatorComplexValues = append(creatorComplexValues, parts.CreatorCorpName.Values...)
+	creatorComplexValues = append(creatorComplexValues, parts.CreatorFamName.Values...)
+	creatorComplexValues = append(creatorComplexValues, parts.CreatorPersName.Values...)
+	parts.CreatorComplex.Values = creatorComplexValues
 }
 
 func (component *Component) setFormat() {

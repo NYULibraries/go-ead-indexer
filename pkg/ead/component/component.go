@@ -20,8 +20,9 @@ type ComponentParts struct {
 }
 
 type ComponentComplexParts struct {
-	Format   ComponentPart `json:"format"`
-	Location ComponentPart `json:"location"`
+	CreatorComplex ComponentPart `json:"creator_complex"`
+	Format         ComponentPart `json:"format"`
+	Location       ComponentPart `json:"location"`
 }
 
 type ComponentXPathParts struct {
