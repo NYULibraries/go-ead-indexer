@@ -52,8 +52,47 @@ func (component *Component) setXPathSimpleParts(node types.Node) error {
 		return err
 	}
 
-	parts.Creator.Source = "//archdesc[@level='collection']/did/origination[@label='creator']/*[name() = 'corpname' or name() = 'famname' or name() = 'persname']"
+	// We need to be able to find elements with `label="Creator"` and `label="creator"`.
+	// For details, see email thread starting with email sent by Joe on Mon, Aug 28, 2023, 12:56PM
+	// with subject:
+	// "FADESIGN: ead-publisher taken offline, full site rebuild in progress, missing creator facet"
+	// ...and Jira ticket: https: //jira.nyu.edu/browse/FADESIGN-843.
+	//
+	// Note that XPath 2.0 functions `matches` and `lower-case` don't work for
+	// here.  `matches(@label,'creator','i')` fails with compile errors:
+	//
+	//           xmlXPathCompOpEval: function matches not found
+	//           XPath error : Unregistered function
+	//
+	// ...`lower-case(@label)='creator'`, the same.  Presumably this is because
+	// the libxml2 package we are using doesn't support XPath 2.0.
+	//
+	// The `translate` solution we use below for the `Creator*` fields seems
+	// to be the common method for who don't have XPath 2.0 options:
+	// "Case insensitive xpaths"
+	// https://groups.google.com/g/selenium-users/c/Lcvbjisk4qE
+	// "case-insensitive matching in XPath?"
+	// https://stackoverflow.com/questions/2893551/case-insensitive-matching-in-xpath
+	parts.Creator.Source = "//archdesc[@level='collection']/did/origination[translate(@label, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='creator']/*[name() = 'corpname' or name() = 'famname' or name() = 'persname']"
 	parts.Creator.Values, parts.Creator.XMLStrings, err = util.GetValuesForXPathQuery(parts.Creator.Source, node)
+	if err != nil {
+		return err
+	}
+
+	parts.CreatorCorpName.Source = "//origination[translate(@label, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='creator']/corpname"
+	parts.CreatorCorpName.Values, parts.CreatorCorpName.XMLStrings, err = util.GetValuesForXPathQuery(parts.CreatorCorpName.Source, node)
+	if err != nil {
+		return err
+	}
+
+	parts.CreatorFamName.Source = "//origination[translate(@label, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='creator']/famname"
+	parts.CreatorFamName.Values, parts.CreatorFamName.XMLStrings, err = util.GetValuesForXPathQuery(parts.CreatorFamName.Source, node)
+	if err != nil {
+		return err
+	}
+
+	parts.CreatorPersName.Source = "//origination[translate(@label, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='creator']/persname"
+	parts.CreatorPersName.Values, parts.CreatorPersName.XMLStrings, err = util.GetValuesForXPathQuery(parts.CreatorPersName.Source, node)
 	if err != nil {
 		return err
 	}
