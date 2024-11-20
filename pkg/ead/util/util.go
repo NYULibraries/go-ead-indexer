@@ -225,6 +225,42 @@ func GetValuesForXPathQuery(query string, node types.Node) ([]string, []string, 
 	return values, xmlStrings, nil
 }
 
+// Reasons for the defensive copy of the `node` arg:
+//
+//  1. So that the caller can have the option of comparing before and after
+//  2. To prevent surprising the caller with an unwanted mutation.  Even though
+//     the param is `types.Node` and not `*types.Node`, mutations here are still
+//     still permanent, because that's just how that type works.
+//  3. To preserve the original node in case of a fatal error, so that the caller
+//     doesn't lose data permanently.
+//
+// Note that this copy appears to automatically add namespace attributes to the
+// root node of the copy.  For an example, see the function comment for
+// `Component.removeChildCNodes`.
+func RemoveChildNodes(node types.Node, elementName string) (types.Node, error) {
+	resultNode, err := node.Copy()
+	if err != nil {
+		return resultNode, err
+	}
+
+	childNodes, err := resultNode.ChildNodes()
+	if err != nil {
+		return resultNode, err
+	}
+	for _, childNode := range childNodes {
+		if childNode != nil {
+			if childNode.NodeName() == elementName {
+				err = resultNode.RemoveChild(childNode)
+				if err != nil {
+					return resultNode, err
+				}
+			}
+		}
+	}
+
+	return resultNode, nil
+}
+
 // TODO: If we end up keeping this instead of using a 3rd-party package, make it
 // general purpose by adding an `allowedHTMLTags` parameter instead of coupling
 // to the package-level `allowedHTMLTags` var.
