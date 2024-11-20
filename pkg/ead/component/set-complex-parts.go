@@ -58,6 +58,7 @@ func (component *Component) setComplexParts() error {
 	}
 	component.setCreatorComplex()
 	component.setName()
+	component.setDAO()
 
 	return nil
 }
@@ -71,6 +72,16 @@ func (component *Component) setCreatorComplex() {
 	creatorComplexValues = append(creatorComplexValues, parts.CreatorFamName.Values...)
 	creatorComplexValues = append(creatorComplexValues, parts.CreatorPersName.Values...)
 	parts.CreatorComplex.Values = creatorComplexValues
+}
+
+func (component *Component) setDAO() {
+	parts := &component.Parts
+
+	if len(parts.DAODescriptionParagraph.Values) > 0 {
+		parts.DAO.Values = []string{"Online Access"}
+	} else {
+		// No value
+	}
 }
 
 func (component *Component) setFormat() {

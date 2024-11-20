@@ -21,6 +21,7 @@ type ComponentParts struct {
 
 type ComponentComplexParts struct {
 	CreatorComplex ComponentPart `json:"creator_complex"`
+	DAO            ComponentPart `json:"dao"`
 	Format         ComponentPart `json:"format"`
 	Location       ComponentPart `json:"location"`
 	Name           ComponentPart `json:"name"`
