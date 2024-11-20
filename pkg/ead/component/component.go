@@ -74,11 +74,11 @@ type Container struct {
 	XMLString string `json:"xmlstring"`
 }
 
-const ComponentElementName = "c"
+const CElementName = "c"
 
 // See `ead.new()` comment on why we have to pass in `repositoryCode` as an argument.
 func MakeComponents(repositoryCode string, node types.Node) (*[]Component, error) {
-	xpathResult, err := node.Find("//" + ComponentElementName)
+	xpathResult, err := node.Find("//" + CElementName)
 	if err != nil {
 		return nil, err
 	}
@@ -156,5 +156,5 @@ func (component *Component) setParts(node types.Node) error {
 // to the <c>.  Should we leave it, or strip it?  It's added in the `resultNode`
 // defensive copy; it doesn't happen happen when `node` is mutated directly.
 func removeChildCNodes(node types.Node) (types.Node, error) {
-	return util.RemoveChildNodes(node, ComponentElementName)
+	return util.RemoveChildNodes(node, CElementName)
 }
