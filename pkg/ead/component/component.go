@@ -25,6 +25,7 @@ type ComponentComplexParts struct {
 	Format         ComponentPart `json:"format"`
 	Location       ComponentPart `json:"location"`
 	Name           ComponentPart `json:"name"`
+	Place          ComponentPart `json:"place"`
 }
 
 type ComponentXPathParts struct {

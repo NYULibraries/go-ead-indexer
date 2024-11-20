@@ -59,6 +59,7 @@ func (component *Component) setComplexParts() error {
 		return err
 	}
 	component.setName()
+	component.setPlace()
 
 	return nil
 }
@@ -194,4 +195,9 @@ func (component *Component) setName() {
 	nameValues = util.ConvertToFacetSlice(nameValues)
 
 	parts.Name.Values = nameValues
+}
+
+func (component *Component) setPlace() {
+	component.Parts.Place.Values =
+		util.ConvertToFacetSlice(component.Parts.GeogName.Values)
 }
