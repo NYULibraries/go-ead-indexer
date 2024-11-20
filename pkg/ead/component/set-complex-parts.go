@@ -51,14 +51,14 @@ func (component *Component) makeRootContainerSliceAndParentChildContainerMap() (
 
 // TODO: Do we need to have anything in `CollectionDoc.Part.Source` for these?
 func (component *Component) setComplexParts() error {
+	component.setCreatorComplex()
+	component.setDAO()
 	component.setFormat()
 	err := component.setLocation()
 	if err != nil {
 		return err
 	}
-	component.setCreatorComplex()
 	component.setName()
-	component.setDAO()
 
 	return nil
 }
