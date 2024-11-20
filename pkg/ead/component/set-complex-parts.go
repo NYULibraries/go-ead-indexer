@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"regexp"
+	"strings"
 )
 
 const ARCHIVAL_OBJECT_FORMAT = "Archival Object"
@@ -14,11 +15,11 @@ var archivalSeriesRegExp = regexp.MustCompile(`/\Aseries|subseries/`)
 // This algorithm is based on the one used here:
 // https://github.com/NYULibraries/dlts-finding-aids-ead-go-packages/blob/7baee7dfde24a01422ec8e6470fdc8a76d84b3fb/ead/modify/modify.go#L153-L180
 func (component *Component) makeRootContainerSliceAndParentChildContainerMap() (
-	[]Container, map[string]Container, []error) {
+	[]Container, map[string]Container, error) {
 	rootContainers := []Container{}
 	parentChildContainerMap := map[string]Container{}
-	errs := []error{}
 
+	mappingErrors := []string{}
 	for _, container := range component.Parts.Containers {
 		parentID := container.Parent
 		if parentID != "" {
@@ -27,9 +28,9 @@ func (component *Component) makeRootContainerSliceAndParentChildContainerMap() (
 			// There should be no sibling relationships.  If there is already a
 			// child container mapped to `parentID`, that's an error condition.
 			if _, ok := parentChildContainerMap[parentID]; ok {
-				errs = append(errs,
-					errors.New(fmt.Sprintf("A child <container> element has already"+
-						` been mapped to a parent <container> with @id="%s""`, parentID)))
+				mappingErrors = append(mappingErrors,
+					fmt.Sprintf("A child <container> element has already"+
+						` been mapped to a parent <container> with @id="%s""`, parentID))
 			}
 
 			parentChildContainerMap[parentID] = container
@@ -39,7 +40,12 @@ func (component *Component) makeRootContainerSliceAndParentChildContainerMap() (
 		}
 	}
 
-	return rootContainers, parentChildContainerMap, errs
+	var err error
+	if len(mappingErrors) > 0 {
+		err = errors.New(strings.Join(mappingErrors, "; "))
+	}
+
+	return rootContainers, parentChildContainerMap, err
 }
 
 // TODO: Do we need to have anything in `CollectionDoc.Part.Source` for these?
@@ -90,10 +96,10 @@ func (component *Component) setLocation() error {
 
 func (component *Component) getLocationValues() ([]string, error) {
 	locationValues := []string{}
-	rootContainersSlice, parentChildContainerMap, errs :=
+	rootContainersSlice, parentChildContainerMap, err :=
 		component.makeRootContainerSliceAndParentChildContainerMap()
-	if len(errs) > 0 {
-		return locationValues, errors.Join(errs...)
+	if err != nil {
+		return locationValues, err
 	}
 
 	for _, rootContainer := range rootContainersSlice {
