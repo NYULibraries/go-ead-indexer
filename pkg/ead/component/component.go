@@ -2,7 +2,7 @@ package component
 
 import (
 	"github.com/lestrrat-go/libxml2/types"
-	"go-ead-indexer/pkg/ead/util"
+	"go-ead-indexer/pkg/ead/eadutil"
 )
 
 type Component struct {
@@ -165,5 +165,5 @@ func (component *Component) setParts(node types.Node) error {
 // to the <c>.  Should we leave it, or strip it?  It's added in the `resultNode`
 // defensive copy; it doesn't happen happen when `node` is mutated directly.
 func removeChildCNodes(node types.Node) (types.Node, error) {
-	return util.RemoveChildNodesMatchingName(node, CElementName)
+	return eadutil.RemoveChildNodesMatchingName(node, CElementName)
 }

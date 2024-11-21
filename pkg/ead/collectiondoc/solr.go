@@ -2,7 +2,7 @@ package collectiondoc
 
 import (
 	"fmt"
-	eadUtil "go-ead-indexer/pkg/ead/util"
+	eadUtil "go-ead-indexer/pkg/ead/eadutil"
 	"go-ead-indexer/pkg/util"
 	"reflect"
 	"strconv"

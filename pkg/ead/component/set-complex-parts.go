@@ -3,7 +3,7 @@ package component
 import (
 	"errors"
 	"fmt"
-	"go-ead-indexer/pkg/ead/util"
+	"go-ead-indexer/pkg/ead/eadutil"
 	"regexp"
 	"strings"
 )
@@ -193,17 +193,17 @@ func (component *Component) setName() {
 	nameValues = append(nameValues, parts.FamName.Values...)
 	nameValues = append(nameValues, parts.PersName.Values...)
 
-	nameValues = util.ConvertToFacetSlice(nameValues)
+	nameValues = eadutil.ConvertToFacetSlice(nameValues)
 
 	parts.Name.Values = nameValues
 }
 
 func (component *Component) setPlace() {
 	component.Parts.Place.Values =
-		util.ConvertToFacetSlice(component.Parts.GeogName.Values)
+		eadutil.ConvertToFacetSlice(component.Parts.GeogName.Values)
 }
 
 func (component *Component) setSubjectForFacets() {
 	component.Parts.SubjectForFacets.Values =
-		util.ConvertToFacetSlice(component.Parts.Subject.Values)
+		eadutil.ConvertToFacetSlice(component.Parts.Subject.Values)
 }

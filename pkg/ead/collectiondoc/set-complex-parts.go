@@ -1,7 +1,7 @@
 package collectiondoc
 
 import (
-	"go-ead-indexer/pkg/ead/util"
+	"go-ead-indexer/pkg/ead/eadutil"
 	"strings"
 )
 
@@ -56,16 +56,16 @@ func (collectionDoc *CollectionDoc) setCreatorComplex() {
 
 func (collectionDoc *CollectionDoc) setDateRange() {
 	collectionDoc.Parts.DateRange.Values =
-		util.GetDateRange(collectionDoc.Parts.UnitDateNormal.Values)
+		eadutil.GetDateRange(collectionDoc.Parts.UnitDateNormal.Values)
 }
 
 func (collectionDoc *CollectionDoc) setMaterialType() {
 	collectionDoc.Parts.MaterialType.Values =
-		util.ConvertToFacetSlice(collectionDoc.Parts.GenreForm.Values)
+		eadutil.ConvertToFacetSlice(collectionDoc.Parts.GenreForm.Values)
 }
 
 func (collectionDoc *CollectionDoc) setLanguage() []error {
-	language, errs := util.GetLanguage(collectionDoc.Parts.LangCode.Values)
+	language, errs := eadutil.GetLanguage(collectionDoc.Parts.LangCode.Values)
 	if len(errs) > 0 {
 		return errs
 	}
@@ -83,7 +83,7 @@ func (collectionDoc *CollectionDoc) setName() {
 	nameValues = append(nameValues, parts.FamName.Values...)
 	nameValues = append(nameValues, parts.PersName.Values...)
 
-	nameValues = util.ConvertToFacetSlice(nameValues)
+	nameValues = eadutil.ConvertToFacetSlice(nameValues)
 
 	parts.Name.Values = nameValues
 }
@@ -96,19 +96,19 @@ func (collectionDoc *CollectionDoc) setOnlineAccess() {
 
 func (collectionDoc *CollectionDoc) setPlace() {
 	collectionDoc.Parts.Place.Values =
-		util.ConvertToFacetSlice(collectionDoc.Parts.GeogName.Values)
+		eadutil.ConvertToFacetSlice(collectionDoc.Parts.GeogName.Values)
 }
 
 func (collectionDoc *CollectionDoc) setSubjectForFacets() {
 	collectionDoc.Parts.SubjectForFacets.Values =
-		util.ConvertToFacetSlice(collectionDoc.Parts.Subject.Values)
+		eadutil.ConvertToFacetSlice(collectionDoc.Parts.Subject.Values)
 }
 
 func (collectionDoc *CollectionDoc) setUnitDateDisplay() {
 	parts := &collectionDoc.Parts
 
 	parts.UnitDateDisplay.Values = []string{
-		util.GetUnitDateDisplay(parts.UnitDateNoTypeAttribute.Values,
+		eadutil.GetUnitDateDisplay(parts.UnitDateNoTypeAttribute.Values,
 			parts.UnitDateInclusive.Values, parts.UnitDateBulk.Values),
 	}
 }
@@ -118,7 +118,7 @@ func (collectionDoc *CollectionDoc) setUnitDateEnd() {
 
 	unitDateEndValues := []string{}
 	for _, unitDateNormal := range parts.UnitDateNormal.Values {
-		unitDateEnd := util.GetDateParts(unitDateNormal).End
+		unitDateEnd := eadutil.GetDateParts(unitDateNormal).End
 		if unitDateEnd != "" {
 			unitDateEndValues = append(unitDateEndValues, unitDateEnd)
 		}
@@ -132,7 +132,7 @@ func (collectionDoc *CollectionDoc) setUnitDateStart() {
 
 	unitDateStartValues := []string{}
 	for _, unitDateNormal := range parts.UnitDateNormal.Values {
-		unitDateStart := util.GetDateParts(unitDateNormal).Start
+		unitDateStart := eadutil.GetDateParts(unitDateNormal).Start
 		if unitDateStart != "" {
 			unitDateStartValues = append(unitDateStartValues, unitDateStart)
 		}
@@ -149,12 +149,12 @@ func (collectionDoc *CollectionDoc) setUnitTitleHTML() error {
 		unitTitleContents := strings.TrimSuffix(
 			strings.TrimPrefix(unitTitle, "<unittitle>"),
 			"</unittitle>")
-		converted, err := util.ConvertEADToHTML(unitTitleContents)
+		converted, err := eadutil.ConvertEADToHTML(unitTitleContents)
 		if err != nil {
 			return err
 		}
 
-		unitTitleHTMLValue, err := util.StripTags(converted)
+		unitTitleHTMLValue, err := eadutil.StripTags(converted)
 		if err != nil {
 			return err
 		}
