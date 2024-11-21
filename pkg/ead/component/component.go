@@ -1,6 +1,7 @@
 package component
 
 import (
+	"fmt"
 	"github.com/lestrrat-go/libxml2/types"
 	"go-ead-indexer/pkg/ead/eadutil"
 )
@@ -105,12 +106,12 @@ func MakeComponents(repositoryCode string, node types.Node) (*[]Component, error
 	for _, cNode := range cNodes {
 		// Remove child <c> nodes from to prevent duplication from overlapping
 		// node trees.
-		cNodeChildCNodesRemoved, err := removeChildCNodes(cNode)
+		err := removeChildCNodes(cNode)
 		if err != nil {
 			return &components, err
 		}
 
-		newComponent, err := MakeComponent(repositoryCode, cNodeChildCNodesRemoved)
+		newComponent, err := MakeComponent(repositoryCode, cNode)
 		if err != nil {
 			return &components, err
 		}
@@ -153,6 +154,9 @@ func (component *Component) setParts(node types.Node) error {
 		return err
 	}
 
+	parentNode, _ := node.ParentNode()
+	fmt.Println(parentNode)
+
 	err = component.setComplexParts()
 	if err != nil {
 		return err
@@ -161,9 +165,6 @@ func (component *Component) setParts(node types.Node) error {
 	return nil
 }
 
-// TODO: `removeChildCNodes()` adds `xmlns:xlink="http://www.w3.org/1999/xlink"`
-// to the <c>.  Should we leave it, or strip it?  It's added in the `resultNode`
-// defensive copy; it doesn't happen happen when `node` is mutated directly.
-func removeChildCNodes(node types.Node) (types.Node, error) {
+func removeChildCNodes(node types.Node) error {
 	return eadutil.RemoveChildNodesMatchingName(node, CElementName)
 }

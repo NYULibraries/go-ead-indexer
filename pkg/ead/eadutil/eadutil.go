@@ -228,40 +228,59 @@ func GetValuesForXPathQuery(query string, node types.Node) ([]string, []string, 
 // Note that this function only removes child nodes, it does not recursively
 // remove all descendant notes which match `elementName`.
 //
-// Reasons for the defensive copy of the `node` arg:
+// This function mutates the `node` arg.  The first version of this function made
+// a copy and returned it after removing the appropriate child nodes.  The
+// reasons for doing this were:
 //
-//  1. So that the caller can have the option of comparing before and after
+//  1. So that the caller can have the option of comparing before and after states
+//     of a node.
 //  2. To prevent surprising the caller with an unwanted mutation.  Even though
-//     the param is `types.Node` and not `*types.Node`, mutations here are still
-//     still permanent, because that's just how that type works.
+//     the param is `types.Node` and not `*types.Node`, the mutations performed
+//     here are permanent.
 //  3. To preserve the original node in case of a fatal error, so that the caller
-//     doesn't lose data permanently.
+//     doesn't permanently lose data.
 //
-// Note that this copy appears to automatically add namespace attributes to the
-// root node of the copy.  For an example, see the function comment for
-// `Component.removeChildCNodes`.
-func RemoveChildNodesMatchingName(node types.Node, elementName string) (types.Node, error) {
-	resultNode, err := node.Copy()
+// Returning a copy ended up not being as good a choice as it originally seemed.
+// There were two undesirable side effects:
+//
+//  1. The copying process appeared to automatically add namespace attributes to the
+//     root node of the copy.  In particular, it was adding this attribute to
+//     a root <c> node: `xmlns:xlink="http://www.w3.org/1999/xlink"`.  This
+//     probably is harmless, but it's an unwanted change.
+//
+//  2. When `node` has no parent, subsequent `.ParentNode()` calls to the
+//     returned modified node failed.  This was not an issue when calling this
+//     function in the unit test because there were no `.ParentNode()` calls,
+//     but the Component processing requires access to the <c> node parent.
+//     An attempt was made to attach the modified `node` copy to either the
+//     parent node of `node` or a copy of the parent node, but in cases where
+//     `node` had no parent, as in the unit test, the return error was cryptic:
+//     "unknown node: 9".  This could be from either `go-libxml2` or the `libxml2`
+//     C library, but in any case the returned error is a generic string error
+//     and not a typed error.  Doing a string match on "unknown node" to differentiate
+//     between cases where the error is simply due to `node` being a root node
+//     with no parent and an error caused by an actual problem seem too brittle.
+//
+// So for now, we mutate the arg.  The caller should make a defensive copy to avoid
+// any of the risks associated with mutation mentioned in the first list in this
+// comment.
+func RemoveChildNodesMatchingName(node types.Node, elementName string) error {
+	childNodes, err := node.ChildNodes()
 	if err != nil {
-		return resultNode, err
-	}
-
-	childNodes, err := resultNode.ChildNodes()
-	if err != nil {
-		return resultNode, err
+		return err
 	}
 	for _, childNode := range childNodes {
 		if childNode != nil {
 			if childNode.NodeName() == elementName {
-				err = resultNode.RemoveChild(childNode)
+				err = node.RemoveChild(childNode)
 				if err != nil {
-					return resultNode, err
+					return err
 				}
 			}
 		}
 	}
 
-	return resultNode, nil
+	return nil
 }
 
 // TODO: If we end up keeping this instead of using a 3rd-party package, make it

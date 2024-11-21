@@ -626,7 +626,14 @@ func TestRemoveChildNodes(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		actualNode, err := RemoveChildNodesMatchingName(testNode, testCase.elementToRemove)
+		// The child node removal function mutates `testNode`, so we need a
+		// defensive copy to can pass to it.
+		actualNode, err := testNode.Copy()
+		if err != nil {
+			t.Errorf("Failed to copy test node: %s", err)
+		}
+
+		err = RemoveChildNodesMatchingName(actualNode, testCase.elementToRemove)
 		if err != nil {
 			t.Errorf(`%s: expected no error, but got error: "%s"`, testCase.name,
 				err)
