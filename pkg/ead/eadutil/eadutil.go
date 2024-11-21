@@ -2,6 +2,7 @@ package eadutil
 
 import (
 	"encoding/xml"
+	"errors"
 	"fmt"
 	"github.com/lestrrat-go/libxml2/types"
 	languageLib "go-ead-indexer/pkg/language"
@@ -265,10 +266,15 @@ func GetValuesForXPathQuery(query string, node types.Node) ([]string, []string, 
 // any of the risks associated with mutation mentioned in the first list in this
 // comment.
 func RemoveChildNodesMatchingName(node types.Node, elementName string) error {
+	if node == nil {
+		return errors.New("`node` arg is `nil`")
+	}
+
 	childNodes, err := node.ChildNodes()
 	if err != nil {
 		return err
 	}
+
 	for _, childNode := range childNodes {
 		if childNode != nil {
 			if childNode.NodeName() == elementName {
