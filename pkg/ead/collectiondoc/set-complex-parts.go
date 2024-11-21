@@ -20,7 +20,7 @@ func (collectionDoc *CollectionDoc) setComplexParts() []error {
 	collectionDoc.setName()
 	collectionDoc.setOnlineAccess()
 	collectionDoc.setPlace()
-	collectionDoc.setSubject()
+	collectionDoc.setSubjectForFacets()
 	collectionDoc.setUnitDateEnd()
 	collectionDoc.setUnitDateStart()
 	collectionDoc.setUnitDateDisplay()
@@ -99,9 +99,9 @@ func (collectionDoc *CollectionDoc) setPlace() {
 		util.ConvertToFacetSlice(collectionDoc.Parts.GeogName.Values)
 }
 
-func (collectionDoc *CollectionDoc) setSubject() {
+func (collectionDoc *CollectionDoc) setSubjectForFacets() {
 	collectionDoc.Parts.SubjectForFacets.Values =
-		util.ConvertToFacetSlice(collectionDoc.Parts.SubjectForFacets.Values)
+		util.ConvertToFacetSlice(collectionDoc.Parts.Subject.Values)
 }
 
 func (collectionDoc *CollectionDoc) setUnitDateDisplay() {

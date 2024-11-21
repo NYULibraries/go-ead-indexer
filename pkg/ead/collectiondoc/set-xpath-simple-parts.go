@@ -211,8 +211,8 @@ func (collectionDoc *CollectionDoc) setXPathSimpleParts(node types.Node) error {
 		return err
 	}
 
-	parts.SubjectForFacets.Source = "//*[local-name()='subject' or local-name()='function' or local-name() = 'occupation']"
-	parts.SubjectForFacets.Values, parts.SubjectForFacets.XMLStrings, err = util.GetValuesForXPathQuery(parts.SubjectForFacets.Source, node)
+	parts.Subject.Source = "//*[local-name()='subject' or local-name()='function' or local-name() = 'occupation']"
+	parts.Subject.Values, parts.Subject.XMLStrings, err = util.GetValuesForXPathQuery(parts.Subject.Source, node)
 	if err != nil {
 		return err
 	}

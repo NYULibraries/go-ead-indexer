@@ -25,7 +25,7 @@ type CollectionDocComplexParts struct {
 	Name             CollectionDocPart `json:"name"`
 	Place            CollectionDocPart `json:"place"`
 	OnlineAccess     CollectionDocPart `json:"online_access"`
-	Subject          CollectionDocPart `json:"subject"`
+	SubjectForFacets CollectionDocPart `json:"subject_for_facets"`
 	UnitDateEnd      CollectionDocPart `json:"unit_date_end"`
 	UnitDateStart    CollectionDocPart `json:"unit_date_start"`
 	UnitTitleHTML    CollectionDocPart `json:"unit_title_html"`
@@ -70,7 +70,7 @@ type CollectionDocXPathParts struct {
 	PersNameNotInDSC        CollectionDocPart `json:"pers_name_not_in_dsc"`
 	Phystech                CollectionDocPart `json:"phystech"`
 	ScopeContent            CollectionDocPart `json:"scope_content"`
-	SubjectForFacets        CollectionDocPart `json:"subject_for_facets"`
+	Subject                 CollectionDocPart `json:"subject"`
 	SubjectNotInDSC         CollectionDocPart `json:"subject_not_in_dsc"`
 	TitleNotInDSC           CollectionDocPart `json:"title_not_in_dsc"`
 	UnitDateDisplay         CollectionDocPart `json:"unit_date_display"`
