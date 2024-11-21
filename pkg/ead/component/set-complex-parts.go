@@ -60,6 +60,7 @@ func (component *Component) setComplexParts() error {
 	}
 	component.setName()
 	component.setPlace()
+	component.setSubjectForFacets()
 
 	return nil
 }
@@ -200,4 +201,9 @@ func (component *Component) setName() {
 func (component *Component) setPlace() {
 	component.Parts.Place.Values =
 		util.ConvertToFacetSlice(component.Parts.GeogName.Values)
+}
+
+func (component *Component) setSubjectForFacets() {
+	component.Parts.SubjectForFacets.Values =
+		util.ConvertToFacetSlice(component.Parts.Subject.Values)
 }

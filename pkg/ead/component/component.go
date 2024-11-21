@@ -20,12 +20,13 @@ type ComponentParts struct {
 }
 
 type ComponentComplexParts struct {
-	CreatorComplex ComponentPart `json:"creator_complex"`
-	DAO            ComponentPart `json:"dao"`
-	Format         ComponentPart `json:"format"`
-	Location       ComponentPart `json:"location"`
-	Name           ComponentPart `json:"name"`
-	Place          ComponentPart `json:"place"`
+	CreatorComplex   ComponentPart `json:"creator_complex"`
+	DAO              ComponentPart `json:"dao"`
+	Format           ComponentPart `json:"format"`
+	Location         ComponentPart `json:"location"`
+	Name             ComponentPart `json:"name"`
+	Place            ComponentPart `json:"place"`
+	SubjectForFacets ComponentPart `json:"subject_for_facets"`
 }
 
 type ComponentXPathParts struct {
