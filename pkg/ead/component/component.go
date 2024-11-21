@@ -1,7 +1,6 @@
 package component
 
 import (
-	"fmt"
 	"github.com/lestrrat-go/libxml2/types"
 	"go-ead-indexer/pkg/ead/eadutil"
 )
@@ -153,9 +152,6 @@ func (component *Component) setParts(node types.Node) error {
 	if err != nil {
 		return err
 	}
-
-	parentNode, _ := node.ParentNode()
-	fmt.Println(parentNode)
 
 	err = component.setComplexParts()
 	if err != nil {

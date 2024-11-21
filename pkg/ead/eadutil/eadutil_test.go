@@ -575,59 +575,80 @@ func TestLanguage(t *testing.T) {
 }
 
 func TestRemoveChildNodes(t *testing.T) {
-	testXMLBytes, err := os.ReadFile(path.Join(fixturesDirPath, "test.xml"))
+	testRemoveChildNodes(t)
+	testRemoveChildNodes_errors(t)
+}
+
+func testRemoveChildNodes(t *testing.T) {
+	nodeWithChildNodesXMLBytes, err := os.ReadFile(path.Join(fixturesDirPath, "test.xml"))
 	if err != nil {
 		t.Errorf("Error reading fixture file: %s", err)
 	}
-	testXML := string(testXMLBytes)
+	nodeWithChildNodes := string(nodeWithChildNodesXMLBytes)
 
 	testCases := []struct {
 		name            string
+		nodeXML         string
 		elementToRemove string
 		goldenName      string
 	}{
 		{
+			name:            "Node arg has no child nodes",
+			nodeXML:         "<root></root>",
+			elementToRemove: "doesnotmatter",
+			goldenName:      "node-arg-has-no-child-nodes",
+		},
+		{
+			name:            "Node arg has only a text node",
+			nodeXML:         "<root>TEXT NODE</root>",
+			elementToRemove: "doesnotmatter",
+			goldenName:      "node-arg-has-only-a-text-node",
+		},
+		{
 			name:            "Remove nothing",
+			nodeXML:         nodeWithChildNodes,
 			elementToRemove: "",
 			goldenName:      "remove-nothing",
 		},
 		{
 			name:            "Remove an element that is not present in the XML",
+			nodeXML:         nodeWithChildNodes,
 			elementToRemove: "omega",
 			goldenName:      "remove-an-element-that-is-not-present",
 		},
 		{
 			name:            "Remove all top-level <alpha> elements, but not <Alpha> elements",
+			nodeXML:         nodeWithChildNodes,
 			elementToRemove: "alpha",
 			goldenName:      "remove-top-level-alpha-lowercase",
 		},
 		{
 			name:            "Remove all top-level <Alpha> elements, but not <alpha> elements",
+			nodeXML:         nodeWithChildNodes,
 			elementToRemove: "Alpha",
 			goldenName:      "remove-top-level-alpha-titlecase",
 		},
 		{
 			name:            "Remove all top-level <zulu/>",
+			nodeXML:         nodeWithChildNodes,
 			elementToRemove: "zulu",
 			goldenName:      "remove-top-level-zulu",
 		},
 	}
 
-	xmlParser := parser.New()
-	testDoc, err := xmlParser.ParseString(testXML)
-	defer testDoc.Free()
-	if err != nil {
-		t.Errorf("Failed to parse test XML: %s", err)
-	}
-
-	testNode, err := testDoc.DocumentElement()
-	if err != nil {
-		t.Errorf("Failed to get `testNode` from `testDoc`: %s", err)
-	}
-
 	for _, testCase := range testCases {
-		// The child node removal function mutates `testNode`, so we need a
-		// defensive copy to can pass to it.
+		xmlParser := parser.New()
+		testDoc, err := xmlParser.ParseString(testCase.nodeXML)
+		defer testDoc.Free()
+		if err != nil {
+			t.Errorf("Failed to parse test XML: %s", err)
+		}
+
+		testNode, err := testDoc.DocumentElement()
+		if err != nil {
+			t.Errorf("Failed to get `testNode` from `testDoc`: %s", err)
+		}
+
 		actualNode, err := testNode.Copy()
 		if err != nil {
 			t.Errorf("Failed to copy test node: %s", err)
@@ -660,6 +681,13 @@ func TestRemoveChildNodes(t *testing.T) {
 			t.Errorf(`%s: actual XML does not match expected XML: "%s",`,
 				testCase.name, diff)
 		}
+	}
+}
+
+func testRemoveChildNodes_errors(t *testing.T) {
+	err := RemoveChildNodesMatchingName(nil, "doesnotmatter")
+	if err == nil {
+		t.Errorf("Expected an error return for `nil` node arg, but didn't get one")
 	}
 }
 
