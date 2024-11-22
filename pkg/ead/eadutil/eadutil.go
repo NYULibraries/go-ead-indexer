@@ -244,10 +244,11 @@ func GetValuesForXPathQuery(query string, node types.Node) ([]string, []string, 
 // Returning a copy ended up not being as good a choice as it originally seemed.
 // There were two undesirable side effects:
 //
-//  1. The copying process appeared to automatically add namespace attributes to the
-//     root node of the copy.  In particular, it was adding this attribute to
-//     a root <c> node: `xmlns:xlink="http://www.w3.org/1999/xlink"`.  This
-//     probably is harmless, but it's an unwanted change.
+//  1. The copying process appeared to sometimes remove attributes from the root
+//     node of the copy.  In particular, it was adding this removing this attribute
+//     from a root <c> node: `xmlns:xlink="http://www.w3.org/1999/xlink"`.  This
+//     probably is harmless, and in fact for this package it's actually convenient,
+//     but it's an unexpected change that can't be opted out of.
 //
 //  2. When `node` has no parent, subsequent `.ParentNode()` calls to the
 //     returned modified node failed.  This was not an issue when calling this
