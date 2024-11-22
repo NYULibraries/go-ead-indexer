@@ -103,13 +103,6 @@ func MakeComponents(repositoryCode string, node types.Node) (*[]Component, error
 
 	components := []Component{}
 	for _, cNode := range cNodes {
-		// Remove child <c> nodes from to prevent duplication from overlapping
-		// node trees.
-		err := removeChildCNodes(cNode)
-		if err != nil {
-			return &components, err
-		}
-
 		newComponent, err := MakeComponent(repositoryCode, cNode)
 		if err != nil {
 			return &components, err
@@ -143,7 +136,14 @@ func MakeComponent(repositoryCode string, node types.Node) (Component, error) {
 }
 
 func (component *Component) setParts(node types.Node) error {
-	err := component.setXPathSimpleParts(node)
+	// Remove child <c> nodes from to prevent duplication from overlapping
+	// node trees.
+	err := removeChildCNodes(node)
+	if err != nil {
+		return err
+	}
+
+	err = component.setXPathSimpleParts(node)
 	if err != nil {
 		return err
 	}
