@@ -230,32 +230,23 @@ func GetValuesForXPathQuery(query string, node types.Node) ([]string, []string, 
 // remove all descendant notes which match `elementName`.
 //
 // This function mutates the `node` arg.  The first version of this function made
-// a copy and returned it after removing the appropriate child nodes.  The
-// reasons for doing this were:
-//
-//  1. So that the caller can have the option of comparing before and after states
-//     of a node.
-//  2. To prevent surprising the caller with an unwanted mutation.  Even though
-//     the param is `types.Node` and not `*types.Node`, the mutations performed
-//     here are permanent.
-//  3. To preserve the original node in case of a fatal error, so that the caller
-//     doesn't permanently lose data.
+// a copy and returned it after removing the appropriate child nodes.  This was
+// to prevent surprising the caller with an unwanted mutation, because even though
+// the param is `types.Node` and not `*types.Node`, the mutations performed here
+// are permanent.
 //
 // Returning a copy ended up not being as good a choice as it originally seemed.
 // There were two undesirable side effects:
 //
-//  1. The copying process appeared to sometimes remove attributes from the root
-//     node of the copy.  In particular, it was adding this removing this attribute
-//     from a root <c> node: `xmlns:xlink="http://www.w3.org/1999/xlink"`.  This
-//     probably is harmless, and in fact for this package it's actually convenient,
-//     but it's an unexpected change that can't be opted out of.
+//  1. The copying process removed this attribute from the root <c> node:
+//     `xmlns:xlink="http://www.w3.org/1999/xlink"`.  For this project this is
+//     most likely harmless, and in fact it is some ways convenient, it's an
+//     unexpected change that can't be opted out of.
 //
-//  2. When `node` has no parent, subsequent `.ParentNode()` calls to the
-//     returned modified node failed.  This was not an issue when calling this
-//     function in the unit test because there were no `.ParentNode()` calls,
-//     but the Component processing requires access to the <c> node parent.
-//     An attempt was made to attach the modified `node` copy to either the
-//     parent node of `node` or a copy of the parent node, but in cases where
+//  2. The `Node` returned by `node.Copy()` had non of the original node's parent
+//     node data, causing all `.ParentNode()` calls to the returned, modified copy
+//     to fail.  An attempt was made to attach the modified `node` copy to either
+//     the parent node of `node` or a copy of the parent node, but in cases where
 //     `node` had no parent, as in the unit test, the return error was cryptic:
 //     "unknown node: 9".  This could be from either `go-libxml2` or the `libxml2`
 //     C library, but in any case the returned error is a generic string error
