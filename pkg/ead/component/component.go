@@ -14,6 +14,7 @@ type Component struct {
 // For now, no struct tags for the `Component*` fields.  Keep it flat.
 type ComponentParts struct {
 	ComponentComplexParts
+	ComponentHierarchyParts
 	ComponentXPathParts
 	Containers     []Container   `json:"containers"`
 	RepositoryCode ComponentPart `json:"repository_code"`
@@ -27,6 +28,13 @@ type ComponentComplexParts struct {
 	Name             ComponentPart `json:"name"`
 	Place            ComponentPart `json:"place"`
 	SubjectForFacets ComponentPart `json:"subject_for_facets"`
+}
+
+type ComponentHierarchyParts struct {
+	ParentForDisplay ComponentPart `json:"parent_for_display"`
+	ParentForSort    ComponentPart `json:"parent_for_sort"`
+	ParentUnitTitles ComponentPart `json:"parent_unit_titles"`
+	ComponentLevel   int           `json:"component_level"`
 }
 
 type ComponentXPathParts struct {
@@ -136,19 +144,37 @@ func MakeComponent(repositoryCode string, node types.Node) (Component, error) {
 }
 
 func (component *Component) setParts(node types.Node) error {
-	// Remove child <c> nodes from to prevent duplication from overlapping
-	// node trees.
-	err := removeChildCNodes(node)
+	err := component.setHierarchyDataParts(node)
 	if err != nil {
 		return err
 	}
 
-	err = component.setXPathSimpleParts(node)
+	// Create a copy of the node with child <c> nodes for subsequent processing
+	// to prevent duplication from overlapping node trees.  Defensive copying is
+	// necessary because some processes require access to the parent node data,
+	// which `removeChildCNodes()` deletes from the child <c> nodes deleted.
+	// These deleted <c> nodes are later passed into this method when by the
+	// outer loop in which this method is called.
+	// As a rule, we would want to take care of all processing which requires
+	// parent node data before getting here, in which case we could keep using
+	// the original node, but there's no harm in being careful, and having the
+	// original node on hand for before/after comparison could come in handy.
+	nodeCopyWithChildCNodesRemoved, err := node.Copy()
 	if err != nil {
 		return err
 	}
 
-	err = component.setContainersPart(node)
+	err = removeChildCNodes(nodeCopyWithChildCNodesRemoved)
+	if err != nil {
+		return err
+	}
+
+	err = component.setXPathSimpleParts(nodeCopyWithChildCNodesRemoved)
+	if err != nil {
+		return err
+	}
+
+	err = component.setContainersPart(nodeCopyWithChildCNodesRemoved)
 	if err != nil {
 		return err
 	}
