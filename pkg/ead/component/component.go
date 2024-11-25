@@ -7,6 +7,7 @@ import (
 
 type Component struct {
 	ID             string         `json:"id"`
+	IDAttribute    string         `json:"IDAttribute"`
 	Parts          ComponentParts `json:"parts"`
 	SolrAddMessage SolrAddMessage `json:"solr_add_message"`
 }
@@ -140,13 +141,19 @@ func MakeComponent(repositoryCode string, collection string, collectionUnitID st
 		},
 	}
 
-	err := component.setParts(node)
+	idNode, err := node.(types.Element).GetAttribute("id")
+	if err != nil {
+		return component, errors.New(
+			fmt.Sprintf("Can't get `id` attribute of <c> element: %s", node.String()))
+	}
+	component.IDAttribute = idNode.NodeValue()
+
+	err = component.setParts(node)
 	if err != nil {
 		return component, err
 	}
 
-	component.ID = component.Parts.EADID.Values[0] +
-		component.Parts.Ref.Values[0]
+	component.ID = component.Parts.EADID.Values[0] + component.IDAttribute
 
 	return component, nil
 }
