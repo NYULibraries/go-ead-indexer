@@ -1,8 +1,12 @@
 package component
 
 import (
+	"errors"
+	"fmt"
 	"github.com/lestrrat-go/libxml2/types"
 	"go-ead-indexer/pkg/ead/eadutil"
+	"go-ead-indexer/pkg/util"
+	"strings"
 )
 
 type Component struct {
@@ -34,11 +38,11 @@ type ComponentComplexParts struct {
 }
 
 type ComponentHierarchyParts struct {
-	ComponentChildren bool          `json:"component_children"`
-	ComponentLevel    int           `json:"component_level"`
-	ParentForDisplay  ComponentPart `json:"parent_for_display"`
-	ParentForSort     ComponentPart `json:"parent_for_sort"`
-	ParentUnitTitles  ComponentPart `json:"parent_unit_titles"`
+	AncestorUnitTitleList []string      `json:"ancestor_unit_title_list"`
+	ComponentChildren     bool          `json:"component_children"`
+	ComponentLevel        int           `json:"component_level"`
+	ParentForDisplay      ComponentPart `json:"parent_for_display"`
+	ParentForSort         ComponentPart `json:"parent_for_sort"`
 }
 
 type ComponentXPathParts struct {
@@ -114,12 +118,22 @@ func MakeComponents(repositoryCode string, collection string, collectionUnitID s
 		return nil, nil
 	}
 
+	ancestorUnitTitleListMap, err := makeAncestorUnitTitleListMap(node)
+	if err != nil {
+		return nil, err
+	}
+
 	components := []Component{}
 	for _, cNode := range cNodes {
 		newComponent, err := MakeComponent(repositoryCode, collection,
 			collectionUnitID, cNode)
 		if err != nil {
 			return &components, err
+		}
+
+		if ancestorUnitTitleList, ok :=
+			ancestorUnitTitleListMap[newComponent.IDAttribute]; ok {
+			newComponent.Parts.AncestorUnitTitleList = ancestorUnitTitleList
 		}
 
 		components = append(components, newComponent)
@@ -197,6 +211,136 @@ func (component *Component) setParts(node types.Node) error {
 	err = component.setComplexParts()
 	if err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func getAncestorUnitTitle(node types.Node) (string, error) {
+	var ancestorUnitTitle string
+
+	// Try `<unittitle>` first, then try <unitdate>, and if neither worked, return
+	// no title available.
+	xpathResult, err := node.Find("did/unittitle")
+	if err != nil {
+		return ancestorUnitTitle, err
+	}
+
+	unitTitleNodes := xpathResult.NodeList()
+	if len(unitTitleNodes) > 0 {
+		unitTitleXMLString := unitTitleNodes[0].String()
+		unitTitleContents := strings.TrimSuffix(
+			strings.TrimPrefix(unitTitleXMLString, "<unittitle>"),
+			"</unittitle>")
+		if util.IsNonEmptyString(unitTitleContents) {
+			ancestorUnitTitle = unitTitleContents
+		}
+	}
+
+	// <unittitle> didn't work.  Try <unitdate>.
+	if ancestorUnitTitle == "" {
+		xpathResult, err := node.Find("did/unitdate")
+		if err != nil {
+			return ancestorUnitTitle, err
+		}
+
+		unitDateNodes := xpathResult.NodeList()
+		if len(unitDateNodes) > 0 {
+			unitDateXMLString := unitDateNodes[0].String()
+			unitDateContents := strings.TrimSuffix(
+				strings.TrimPrefix(unitDateXMLString, "<unitdate>"),
+				"</unitdate>")
+			if util.IsNonEmptyString(unitDateContents) {
+				ancestorUnitTitle = unitDateContents
+			}
+		}
+	}
+
+	// Can't create a title.
+	if ancestorUnitTitle == "" {
+		return "[No title available]", nil
+	}
+
+	// Make a proper unit title.
+	ancestorUnitTitleConverted, err := eadutil.ConvertEADToHTML(ancestorUnitTitle)
+	if err != nil {
+		return ancestorUnitTitle, err
+	}
+
+	ancestorUnitTitle, err = eadutil.StripTags(ancestorUnitTitleConverted)
+	if err != nil {
+		return ancestorUnitTitle, err
+	}
+
+	return ancestorUnitTitle, nil
+}
+
+func makeAncestorUnitTitleListMap(node types.Node) (map[string][]string, error) {
+	ancestorUnitTitleListMap := map[string][]string{}
+
+	dscNode, err := eadutil.GetFirstNodeForXPathQuery("//dsc", node)
+	if err != nil {
+		return ancestorUnitTitleListMap, err
+	}
+
+	if dscNode == nil {
+		return ancestorUnitTitleListMap,
+			errors.New("makeAncestorUnitTitleListMap() error: no <dsc> element found")
+	}
+
+	childCNodes, err := eadutil.GetNodeListForXPathQuery("child::c", dscNode)
+	if err != nil {
+		return ancestorUnitTitleListMap, err
+	}
+
+	if len(childCNodes) == 0 {
+		return ancestorUnitTitleListMap, nil
+	}
+
+	for _, cNode := range childCNodes {
+		ancestorUnitTitleList := []string{}
+		err = makeAncestorUnitTitleListMap_add(ancestorUnitTitleListMap,
+			ancestorUnitTitleList, cNode)
+		if err != nil {
+			return ancestorUnitTitleListMap, err
+		}
+	}
+
+	return ancestorUnitTitleListMap, nil
+}
+
+func makeAncestorUnitTitleListMap_add(ancestorUnitTitleListMap map[string][]string,
+	ancestorUnitTitleList []string, node types.Node) error {
+
+	ancestorUnitTitle, err := getAncestorUnitTitle(node)
+	if err != nil {
+		return err
+	}
+	ancestorUnitTitleList = append(ancestorUnitTitleList, ancestorUnitTitle)
+
+	idNode, err := node.(types.Element).GetAttribute("id")
+	if err != nil {
+		return errors.New(
+			fmt.Sprintf("makeAncestorUnitTitleListMap_add() error: can't get @idNode of node: %s", node.String()))
+	}
+
+	ancestorUnitTitleListMap[idNode.NodeValue()] = ancestorUnitTitleList
+
+	childCNodes, err := eadutil.GetNodeListForXPathQuery("child::c", node)
+	if err != nil {
+		return err
+	}
+
+	if len(childCNodes) == 0 {
+		return nil
+	}
+
+	for _, childCNode := range childCNodes {
+		err = makeAncestorUnitTitleListMap_add(ancestorUnitTitleListMap,
+			ancestorUnitTitleList, childCNode)
+		if err != nil {
+			return err
+		}
 	}
 
 	return nil
