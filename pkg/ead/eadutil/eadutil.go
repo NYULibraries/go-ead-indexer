@@ -209,6 +209,30 @@ func GetUnitDateDisplay(unitDateNoTypeAttribute []string, unitDateInclusive []st
 	return strings.Join(partsUnitDateDisplay, " ")
 }
 
+func GetFirstNodeForXPathQuery(query string, node types.Node) (types.Node, error) {
+	xpathResult, err := node.Find(query)
+	if err != nil {
+		return nil, err
+	}
+
+	nodeList := xpathResult.NodeList()
+
+	if len(nodeList) > 0 {
+		return nodeList[0], nil
+	} else {
+		return nil, nil
+	}
+}
+
+func GetNodeListForXPathQuery(query string, node types.Node) (types.NodeList, error) {
+	xpathResult, err := node.Find(query)
+	if err != nil {
+		return nil, err
+	}
+
+	return xpathResult.NodeList(), nil
+}
+
 func GetValuesForXPathQuery(query string, node types.Node) ([]string, []string, error) {
 	var values []string
 	var xmlStrings []string
