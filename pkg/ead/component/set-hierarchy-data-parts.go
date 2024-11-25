@@ -6,10 +6,15 @@ import (
 )
 
 func (component *Component) setHierarchyDataParts(node types.Node) error {
+	err := component.setComponentChildren(node)
+	if err != nil {
+		return err
+	}
+
 	// It is not possible for a <c> node to have no parent.  If we can't get the
 	// parent node for the `node` arg, there's no point doing any of the processing
 	// in this method.
-	_, err := node.ParentNode()
+	_, err = node.ParentNode()
 	if err != nil {
 		return err
 	}
@@ -24,6 +29,19 @@ func (component *Component) setHierarchyDataParts(node types.Node) error {
 	component.setParentForDisplay(node)
 	// Depends on `Component.setParentForDisplay()`
 	component.setComponentLevel()
+
+	return nil
+}
+
+func (component *Component) setComponentChildren(node types.Node) error {
+	childNodes, err := node.ChildNodes()
+	if err != nil {
+		return err
+	}
+
+	component.Parts.ComponentChildren = slices.ContainsFunc(childNodes, func(node types.Node) bool {
+		return node.NodeName() == CElementName
+	})
 
 	return nil
 }

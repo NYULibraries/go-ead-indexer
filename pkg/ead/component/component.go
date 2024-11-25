@@ -31,10 +31,11 @@ type ComponentComplexParts struct {
 }
 
 type ComponentHierarchyParts struct {
-	ParentForDisplay ComponentPart `json:"parent_for_display"`
-	ParentForSort    ComponentPart `json:"parent_for_sort"`
-	ParentUnitTitles ComponentPart `json:"parent_unit_titles"`
-	ComponentLevel   int           `json:"component_level"`
+	ParentForDisplay  ComponentPart `json:"parent_for_display"`
+	ParentForSort     ComponentPart `json:"parent_for_sort"`
+	ParentUnitTitles  ComponentPart `json:"parent_unit_titles"`
+	ComponentChildren bool          `json:"component_children"`
+	ComponentLevel    int           `json:"component_level"`
 }
 
 type ComponentXPathParts struct {
