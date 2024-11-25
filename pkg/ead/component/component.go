@@ -13,6 +13,8 @@ type Component struct {
 
 // For now, no struct tags for the `Component*` fields.  Keep it flat.
 type ComponentParts struct {
+	Collection       string `json:"collection"`
+	CollectionUnitID string `json:"collection_unit_id"`
 	ComponentComplexParts
 	ComponentHierarchyParts
 	ComponentXPathParts
@@ -95,7 +97,8 @@ type Container struct {
 const CElementName = "c"
 
 // See `ead.new()` comment on why we have to pass in `repositoryCode` as an argument.
-func MakeComponents(repositoryCode string, node types.Node) (*[]Component, error) {
+func MakeComponents(repositoryCode string, collection string, collectionUnitID string,
+	node types.Node) (*[]Component, error) {
 	xpathResult, err := node.Find("//" + CElementName)
 	if err != nil {
 		return nil, err
@@ -112,7 +115,8 @@ func MakeComponents(repositoryCode string, node types.Node) (*[]Component, error
 
 	components := []Component{}
 	for _, cNode := range cNodes {
-		newComponent, err := MakeComponent(repositoryCode, cNode)
+		newComponent, err := MakeComponent(repositoryCode, collection,
+			collectionUnitID, cNode)
 		if err != nil {
 			return &components, err
 		}
@@ -124,9 +128,12 @@ func MakeComponents(repositoryCode string, node types.Node) (*[]Component, error
 }
 
 // See `ead.new()` comment on why we have to pass in `repositoryCode` as an argument.
-func MakeComponent(repositoryCode string, node types.Node) (Component, error) {
+func MakeComponent(repositoryCode string, collection string, collectionUnitID string,
+	node types.Node) (Component, error) {
 	component := Component{
 		Parts: ComponentParts{
+			Collection:       collection,
+			CollectionUnitID: collectionUnitID,
 			RepositoryCode: ComponentPart{
 				Values: []string{repositoryCode},
 			},

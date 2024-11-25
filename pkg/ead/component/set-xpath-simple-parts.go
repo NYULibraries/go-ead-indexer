@@ -34,18 +34,6 @@ func (component *Component) setXPathSimpleParts(node types.Node) error {
 		return err
 	}
 
-	parts.Collection.Source = "//archdesc/did/unittitle"
-	parts.Collection.Values, parts.Collection.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.Collection.Source, node)
-	if err != nil {
-		return err
-	}
-
-	parts.CollectionUnitID.Source = "//archdesc/did/unitid"
-	parts.CollectionUnitID.Values, parts.CollectionUnitID.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.CollectionUnitID.Source, node)
-	if err != nil {
-		return err
-	}
-
 	parts.CorpName.Source = "//corpname"
 	parts.CorpName.Values, parts.CorpName.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.CorpName.Source, node)
 	if err != nil {
