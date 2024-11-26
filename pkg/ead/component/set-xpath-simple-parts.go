@@ -127,12 +127,6 @@ func (component *Component) setXPathSimpleParts(node types.Node) error {
 		return err
 	}
 
-	parts.Heading.Source = "//archdesc[@level='collection']/did/unittitle"
-	parts.Heading.Values, parts.Heading.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.Heading.Source, node)
-	if err != nil {
-		return err
-	}
-
 	parts.Language.Source = "//did/langmaterial/language/@langcode"
 	parts.Language.Values, parts.Language.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.Language.Source, node)
 	if err != nil {

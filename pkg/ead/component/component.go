@@ -64,7 +64,6 @@ type ComponentXPathParts struct {
 	Function                      ComponentPart `json:"function"`
 	GenreForm                     ComponentPart `json:"genre_form"`
 	GeogName                      ComponentPart `json:"geog_name"`
-	Heading                       ComponentPart `json:"heading"`
 	Language                      ComponentPart `json:"language"`
 	Level                         ComponentPart `json:"level"`
 	NameElementAll                ComponentPart `json:"name_element_all"`
