@@ -316,7 +316,8 @@ func makeAncestorUnitTitleListMap_add(ancestorUnitTitleListMap map[string][]stri
 	idNode, err := node.(types.Element).GetAttribute("id")
 	if err != nil {
 		return errors.New(
-			fmt.Sprintf("makeAncestorUnitTitleListMap_add() error: can't get @idNode of node: %s", node.String()))
+			fmt.Sprintf("makeAncestorUnitTitleListMap_add() error: can't get `id` attribute of node: %s",
+				node.String()))
 	}
 
 	ancestorUnitTitleListMap[idNode.NodeValue()] = ancestorUnitTitleList
