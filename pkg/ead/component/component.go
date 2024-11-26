@@ -53,7 +53,6 @@ type ComponentXPathParts struct {
 	CollectionUnitID              ComponentPart `json:"collection_unit_id"`
 	CorpName                      ComponentPart `json:"corpname"`
 	CorpNameNotInRepository       ComponentPart `json:"corp_name_not_in_repository"`
-	Creator                       ComponentPart `json:"creator"`
 	CreatorCorpName               ComponentPart `json:"creator_corp_name"`
 	CreatorFamName                ComponentPart `json:"creator_fam_name"`
 	CreatorPersName               ComponentPart `json:"creator_pers_name"`

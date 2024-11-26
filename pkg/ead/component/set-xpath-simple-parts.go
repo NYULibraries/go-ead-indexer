@@ -61,12 +61,6 @@ func (component *Component) setXPathSimpleParts(node types.Node) error {
 	// https://groups.google.com/g/selenium-users/c/Lcvbjisk4qE
 	// "case-insensitive matching in XPath?"
 	// https://stackoverflow.com/questions/2893551/case-insensitive-matching-in-xpath
-	parts.Creator.Source = "//archdesc[@level='collection']/did/origination[translate(@label, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='creator']/*[name() = 'corpname' or name() = 'famname' or name() = 'persname']"
-	parts.Creator.Values, parts.Creator.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.Creator.Source, node)
-	if err != nil {
-		return err
-	}
-
 	parts.CreatorCorpName.Source = "//origination[translate(@label, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='creator']/corpname"
 	parts.CreatorCorpName.Values, parts.CreatorCorpName.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.CreatorCorpName.Source, node)
 	if err != nil {
