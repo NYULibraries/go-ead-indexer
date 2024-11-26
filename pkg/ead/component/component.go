@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/lestrrat-go/libxml2/types"
 	"go-ead-indexer/pkg/ead/eadutil"
-	"go-ead-indexer/pkg/util"
 	"regexp"
 	"strings"
 )
@@ -235,7 +234,9 @@ func getAncestorUnitTitle(node types.Node) (string, error) {
 		unitTitleContents := strings.TrimSuffix(
 			strings.TrimPrefix(unitTitleXMLString, "<unittitle>"),
 			"</unittitle>")
-		if util.IsNonEmptyString(unitTitleContents) {
+		// TODO: DLFA-243
+		// Replace this with `util.IsNonEmptyString(unitDateContents)`
+		if unitTitleContents != "" {
 			ancestorUnitTitle = unitTitleContents
 		}
 	}
@@ -252,7 +253,9 @@ func getAncestorUnitTitle(node types.Node) (string, error) {
 			unitDateXMLString := unitDateNodes[0].String()
 			unitDateContents := strings.TrimSuffix(
 				unitDateOpenTagRegExp.ReplaceAllString(unitDateXMLString, ""), "</unitdate>")
-			if util.IsNonEmptyString(unitDateContents) {
+			// TODO: DLFA-243
+			// Replace this with `util.IsNonEmptyString(unitDateContents)`
+			if unitDateContents != "" {
 				ancestorUnitTitle = unitDateContents
 			}
 		}
