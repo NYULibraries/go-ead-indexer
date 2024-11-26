@@ -205,7 +205,7 @@ func (component *Component) setXPathSimpleParts(node types.Node) error {
 		return err
 	}
 
-	parts.UnitDateBulk.Source = "//archdesc[@level='collection']/did/unitdate[@type='bulk']"
+	parts.UnitDateBulk.Source = "//did/unitdate[@type='bulk']"
 	parts.UnitDateBulk.Values, parts.UnitDateBulk.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.UnitDateBulk.Source, node)
 	if err != nil {
 		return err
@@ -217,7 +217,7 @@ func (component *Component) setXPathSimpleParts(node types.Node) error {
 		return err
 	}
 
-	parts.UnitDateInclusive.Source = "//archdesc[@level='collection']/did/unitdate[@type='inclusive']"
+	parts.UnitDateInclusive.Source = "/did/unitdate[@type='inclusive']"
 	parts.UnitDateInclusive.Values, parts.UnitDateInclusive.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.UnitDateInclusive.Source, node)
 	if err != nil {
 		return err
