@@ -574,6 +574,79 @@ func TestLanguage(t *testing.T) {
 	}
 }
 
+// `MakeTitleHTML()` just calls `ConvertEADToHTML()` and `StripTags()` in succession.
+// Those function already have their own unit test coverage, so we don't necessarily
+// have to do extensive testing here, which would just have to be mechanically
+// updated every time we update those two functions.
+func TestMakeTitleHTML(t *testing.T) {
+	eadStringTokens := []string{
+		"0",
+		`<date type="acquisition" normal="19880423">April 23, 1988.</date>`,
+		"1",
+		"<title>TITLE [no attributes]</title>",
+		"2",
+		`<emph id="underline" render="underline" altrender="bold">EMPH [render="underline"]</emph>`,
+		"3",
+		`<emph id="underline" altrender="bold">EMPH [id="underline" altrender="bold"]</emph>`,
+		"4",
+		"<strong>STRONG</strong>",
+		"5",
+		"<lb/>",
+		"6",
+		"<br></br>",
+		"7",
+		`Statuary at Crystal Palace [<title><emph render="italic">Eve</emph></title> by Hiram Powers]`,
+		"8",
+	}
+	eadString := strings.Join(eadStringTokens, "")
+
+	expectedHTMLStringTokens := []string{
+		"0",
+		`April 23, 1988.`,
+		"1",
+		"TITLE [no attributes]",
+		"2",
+		`<em id="underline" altrender="bold">EMPH [render="underline"]</em>`,
+		"3",
+		`EMPH [id="underline" altrender="bold"]`,
+		"4",
+		`<strong>STRONG</strong>`,
+		"5",
+		"",
+		"6",
+		"",
+		"7",
+		"Statuary at Crystal Palace [<em>Eve</em> by Hiram Powers]",
+		"8",
+	}
+	expectedHTMLString := strings.Join(expectedHTMLStringTokens, "")
+
+	testCases := []struct {
+		name               string
+		eadString          string
+		expectedHTMLString string
+	}{
+		{
+			name:               "Basic test",
+			eadString:          eadString,
+			expectedHTMLString: expectedHTMLString,
+		},
+	}
+
+	for _, testCase := range testCases {
+		actual, err := MakeTitleHTML(testCase.eadString)
+		if err != nil {
+			t.Errorf(`%s: expected no error, but got error: "%s"`, testCase.name,
+				err)
+		}
+
+		if actual != testCase.expectedHTMLString {
+			t.Errorf(`%s: expected EAD string "%s" to be converted to HTML string "%s", but got "%s"`,
+				testCase.name, testCase.eadString, testCase.expectedHTMLString, actual)
+		}
+	}
+}
+
 func TestRemoveChildNodes(t *testing.T) {
 	testRemoveChildNodes(t)
 	testRemoveChildNodes_errors(t)
