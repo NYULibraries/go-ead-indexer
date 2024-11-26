@@ -6,6 +6,7 @@ import (
 	"github.com/lestrrat-go/libxml2/types"
 	"go-ead-indexer/pkg/ead/eadutil"
 	"go-ead-indexer/pkg/util"
+	"regexp"
 	"strings"
 )
 
@@ -100,6 +101,8 @@ type Container struct {
 }
 
 const CElementName = "c"
+
+var unitDateOpenTagRegExp = regexp.MustCompile("^<unitdate[^>]*>")
 
 // See `ead.new()` comment on why we have to pass in `repositoryCode` as an argument.
 func MakeComponents(repositoryCode string, collection string, collectionUnitID string,
@@ -248,8 +251,7 @@ func getAncestorUnitTitle(node types.Node) (string, error) {
 		if len(unitDateNodes) > 0 {
 			unitDateXMLString := unitDateNodes[0].String()
 			unitDateContents := strings.TrimSuffix(
-				strings.TrimPrefix(unitDateXMLString, "<unitdate>"),
-				"</unitdate>")
+				unitDateOpenTagRegExp.ReplaceAllString(unitDateXMLString, ""), "</unitdate>")
 			if util.IsNonEmptyString(unitDateContents) {
 				ancestorUnitTitle = unitDateContents
 			}
