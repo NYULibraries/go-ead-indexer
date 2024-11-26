@@ -49,6 +49,6 @@
     <field name="date_range_sim">1901-2000</field>
     <field name="language_sim">English</field>
     <field name="language_ssm">English</field>
-    <field name="sort_ii">19</field>
+    <field name="sort_ii">26</field>
   </doc>
 </add>

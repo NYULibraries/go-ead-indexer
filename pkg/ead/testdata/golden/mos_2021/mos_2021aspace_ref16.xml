@@ -40,6 +40,6 @@
     <field name="date_range_sim">2001-2100</field>
     <field name="language_sim">English</field>
     <field name="language_ssm">English</field>
-    <field name="sort_ii">18</field>
+    <field name="sort_ii">25</field>
   </doc>
 </add>

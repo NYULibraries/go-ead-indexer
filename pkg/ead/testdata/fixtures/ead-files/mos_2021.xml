@@ -1638,6 +1638,49 @@
         </c>
       </c>
 
+      <!-- Test `Component.getAncestorUnitTitle()` -->
+      <c id="ancestor1" level="file">
+        <did>
+          <unittitle>ANCESTOR 1</unittitle>
+          <unitdate datechar="creation" normal="1111/1111" type="inclusive">1111</unitdate>
+        </did>
+        <c id="ancestor2" level="item">
+          <did>
+            <unittitle>   </unittitle>
+            <unitdate datechar="creation" normal="1112/1112" type="inclusive">1112</unitdate>
+          </did>
+          <c id="ancestor3" level="item">
+            <did>
+              <unitdate datechar="creation" normal="1113/1113" type="inclusive">1113</unitdate>
+            </did>
+            <c id="leaf1" level="item">
+              <did>
+                <unittitle>LEAF 1</unittitle>
+              </did>
+            </c>
+            <c id="leaf2" level="item">
+              <did>
+                <unittitle>LEAF 2</unittitle>
+                <unitdate datechar="creation" normal="1114/1114" type="inclusive">1113</unitdate>
+              </did>
+            </c>
+            <c id="leaf3" level="item">
+              <did>
+                <unittitle>
+
+                </unittitle>
+                <unitdate datechar="creation" normal="1115/1115" type="inclusive">1113</unitdate>
+              </did>
+            </c>
+            <c id="leaf4" level="item">
+              <did>
+                <unitdate datechar="creation" normal="1116/1116" type="inclusive">1113</unitdate>
+              </did>
+            </c>
+          </c>
+        </c>
+      </c>
+
       <!-- Test 3-level nesting of <container> elements
            See https://jira.nyu.edu/browse/FADESIGN-846?focusedCommentId=4935269&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-4935269
            From archives/photo_00001 -->
