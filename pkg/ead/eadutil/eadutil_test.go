@@ -776,6 +776,62 @@ func TestReplaceMARCSubfieldDemarcators(t *testing.T) {
 	}
 }
 
+// Testing doesn't have to be extensive, because the function under test is only
+// used for strings returned by `types.Node.String()`.
+// See function header comment for StripOpenAndCloseTags().
+func TestStripOpenAndCloseTags(t *testing.T) {
+	testCases := []struct {
+		name   string
+		before string
+		after  string
+	}{
+		{
+			"Basic case",
+			`<unittitle>TITLE</unittitle>`,
+			"TITLE",
+		},
+		{
+			"Open tag has attributes",
+			`<unittitle attr1="1" attr2="2">TITLE</unittitle>`,
+			"TITLE",
+		},
+		{
+			"Empty string",
+			"",
+			"",
+		},
+		{
+			"Not an XML element",
+			"TITLE",
+			"TITLE",
+		},
+		{
+			"Open but no close tag",
+			"<unittitle>TITLE",
+			"TITLE",
+		},
+		{
+			"Close but no open tag",
+			"TITLE</unittitle>",
+			"TITLE",
+		},
+		{
+			"Remove outermost tags only",
+			"<unittitle><italic>TITLE</italic></unittitle>",
+			"<italic>TITLE</italic>",
+		},
+	}
+
+	for _, testCase := range testCases {
+		actual := StripOpenAndCloseTags(testCase.before)
+
+		if actual != testCase.after {
+			t.Errorf(`%s: expected XML string "%s" to be string "%s", but got "%s"`,
+				testCase.name, testCase.before, testCase.after, actual)
+		}
+	}
+}
+
 func TestStripTags(t *testing.T) {
 	testStripTags_EmptyElements(t)
 	testStripTags_Specificity(t)

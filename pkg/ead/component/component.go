@@ -6,7 +6,6 @@ import (
 	"github.com/lestrrat-go/libxml2/types"
 	"go-ead-indexer/pkg/ead/eadutil"
 	"regexp"
-	"strings"
 )
 
 type Component struct {
@@ -231,9 +230,7 @@ func getAncestorUnitTitle(node types.Node) (string, error) {
 	unitTitleNodes := xpathResult.NodeList()
 	if len(unitTitleNodes) > 0 {
 		unitTitleXMLString := unitTitleNodes[0].String()
-		unitTitleContents := strings.TrimSuffix(
-			strings.TrimPrefix(unitTitleXMLString, "<unittitle>"),
-			"</unittitle>")
+		unitTitleContents := eadutil.StripOpenAndCloseTags(unitTitleXMLString)
 		// TODO: DLFA-243
 		// Replace this with `util.IsNonEmptyString(unitDateContents)`
 		if unitTitleContents != "" {
@@ -251,8 +248,7 @@ func getAncestorUnitTitle(node types.Node) (string, error) {
 		unitDateNodes := xpathResult.NodeList()
 		if len(unitDateNodes) > 0 {
 			unitDateXMLString := unitDateNodes[0].String()
-			unitDateContents := strings.TrimSuffix(
-				unitDateOpenTagRegExp.ReplaceAllString(unitDateXMLString, ""), "</unitdate>")
+			unitDateContents := eadutil.StripOpenAndCloseTags(unitDateXMLString)
 			// TODO: DLFA-243
 			// Replace this with `util.IsNonEmptyString(unitDateContents)`
 			if unitDateContents != "" {
@@ -266,18 +262,12 @@ func getAncestorUnitTitle(node types.Node) (string, error) {
 		return "[No title available]", nil
 	}
 
-	// Make a proper unit title.
-	ancestorUnitTitleConverted, err := eadutil.ConvertEADToHTML(ancestorUnitTitle)
+	ancestorUnitTitleHTML, err := eadutil.MakeTitleHTML(ancestorUnitTitle)
 	if err != nil {
 		return ancestorUnitTitle, err
 	}
 
-	ancestorUnitTitle, err = eadutil.StripTags(ancestorUnitTitleConverted)
-	if err != nil {
-		return ancestorUnitTitle, err
-	}
-
-	return ancestorUnitTitle, nil
+	return ancestorUnitTitleHTML, nil
 }
 
 func makeAncestorUnitTitleListMap(node types.Node) (map[string][]string, error) {

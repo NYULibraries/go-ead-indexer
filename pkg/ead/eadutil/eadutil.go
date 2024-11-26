@@ -77,6 +77,11 @@ var eadTagRenderAttributeToHTMLTagName = map[string]string{
 // https://github.com/NYULibraries/ead_indexer/blob/a367ab8cc791376f0d8a287cbcd5b6ee43d5c04f/lib/ead_indexer/behaviors.rb#L124
 var marcSubfieldDemarcator = regexp.MustCompile(`\|\w{1}`)
 
+// These are not perfect regexps for open and close XML tags, but they are fine
+// for our constrained use cases.
+var closeTagRegExp = regexp.MustCompile("</[^>]+>$")
+var openTagRegExp = regexp.MustCompile("^<[^>]+>")
+
 func ConvertEADToHTML(eadString string) (string, error) {
 	htmlString, err := convertEADTagsWithRenderAttributesToHTML(eadString)
 	if err != nil {
@@ -250,6 +255,20 @@ func GetValuesForXPathQuery(query string, node types.Node) ([]string, []string, 
 	return values, xmlStrings, nil
 }
 
+func MakeTitleHTML(unitTitle string) (string, error) {
+	converted, err := ConvertEADToHTML(unitTitle)
+	if err != nil {
+		return converted, err
+	}
+
+	titleHTML, err := StripTags(converted)
+	if err != nil {
+		return titleHTML, err
+	}
+
+	return titleHTML, nil
+}
+
 // Note that this function only removes child nodes, it does not recursively
 // remove all descendant notes which match `elementName`.
 //
@@ -303,6 +322,18 @@ func RemoveChildNodesMatchingName(node types.Node, elementName string) error {
 	}
 
 	return nil
+}
+
+// This is not a particularly robust solution, but for our constrained use case
+// it's fine.  This function is used to remove the open and close tags *only* from
+// an XML string returned by `Node.String()`.  It's part of a tricky EAD to HTML
+// conversion process wherein certain tags are allowed but converted and other
+// tags are not allowed.  It may at first seem redundant given we also have the
+// `StripTags()` function below, but these functions run at different times and
+// do different things.
+func StripOpenAndCloseTags(xmlString string) string {
+	return openTagRegExp.ReplaceAllString(
+		closeTagRegExp.ReplaceAllString(xmlString, ""), "")
 }
 
 // TODO: If we end up keeping this instead of using a 3rd-party package, make it

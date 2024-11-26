@@ -146,15 +146,11 @@ func (collectionDoc *CollectionDoc) setUnitTitleHTML() error {
 
 	unitTitleHTMLValues := []string{}
 	for _, unitTitle := range parts.UnitTitle.XMLStrings {
-		unitTitleContents := strings.TrimSuffix(
-			strings.TrimPrefix(unitTitle, "<unittitle>"),
-			"</unittitle>")
-		converted, err := eadutil.ConvertEADToHTML(unitTitleContents)
-		if err != nil {
-			return err
-		}
+		// `eadutil.MakeTitleHTML()` will in most if not all cases strip out the
+		// open and close tags, but better safe than sorry.
+		unitTitleContents := eadutil.StripOpenAndCloseTags(unitTitle)
 
-		unitTitleHTMLValue, err := eadutil.StripTags(converted)
+		unitTitleHTMLValue, err := eadutil.MakeTitleHTML(unitTitleContents)
 		if err != nil {
 			return err
 		}
