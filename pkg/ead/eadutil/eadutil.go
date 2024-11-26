@@ -247,9 +247,9 @@ func GetValuesForXPathQuery(query string, node types.Node) ([]string, []string, 
 		return nil, nil, err
 	}
 
-	for _, node = range xpathResult.NodeList() {
-		values = append(values, node.NodeValue())
-		xmlStrings = append(xmlStrings, node.String())
+	for _, resultNode := range xpathResult.NodeList() {
+		values = append(values, resultNode.NodeValue())
+		xmlStrings = append(xmlStrings, resultNode.String())
 	}
 
 	return values, xmlStrings, nil
