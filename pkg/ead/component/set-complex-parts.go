@@ -56,6 +56,7 @@ func (component *Component) setComplexParts() error {
 	component.setCreatorComplex()
 	component.setDAO()
 	component.setFormat()
+	component.setHeading()
 	err := component.setLocation()
 	if err != nil {
 		return err
@@ -118,6 +119,11 @@ func (component *Component) setFormat() {
 	}
 
 	parts.Format.Values = []string{formatLevel}
+}
+
+func (component *Component) setHeading() {
+	component.Parts.Heading.Values = append(component.Parts.Heading.Values,
+		component.Parts.DIDUnitTitle.Values...)
 }
 
 // TODO: DLFA-243

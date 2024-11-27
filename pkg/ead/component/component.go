@@ -31,6 +31,7 @@ type ComponentComplexParts struct {
 	CreatorComplex   ComponentPart `json:"creator_complex"`
 	DAO              ComponentPart `json:"dao"`
 	Format           ComponentPart `json:"format"`
+	Heading          ComponentPart `json:"heading"`
 	Location         ComponentPart `json:"location"`
 	MaterialType     ComponentPart `json:"material_type"`
 	Name             ComponentPart `json:"name"`
