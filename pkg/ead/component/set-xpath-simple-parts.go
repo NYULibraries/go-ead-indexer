@@ -137,8 +137,8 @@ func (component *Component) setXPathSimpleParts(node types.Node) error {
 		return err
 	}
 
-	parts.Language.Source = ".//did/langmaterial/language/@langcode"
-	parts.Language.Values, parts.Language.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.Language.Source, node)
+	parts.LangCode.Source = ".//did/langmaterial/language/@langcode"
+	parts.LangCode.Values, parts.LangCode.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.LangCode.Source, node)
 	if err != nil {
 		return err
 	}

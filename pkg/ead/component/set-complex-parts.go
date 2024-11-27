@@ -58,6 +58,7 @@ func (component *Component) setComplexParts() error {
 	component.setDateRange()
 	component.setFormat()
 	component.setHeading()
+	component.setLanguage()
 	err := component.setLocation()
 	if err != nil {
 		return err
@@ -133,6 +134,17 @@ func (component *Component) setFormat() {
 func (component *Component) setHeading() {
 	component.Parts.Heading.Values = append(component.Parts.Heading.Values,
 		component.Parts.DIDUnitTitle.Values...)
+}
+
+func (component *Component) setLanguage() []error {
+	language, errs := eadutil.GetLanguage(component.Parts.LangCode.Values)
+	if len(errs) > 0 {
+		return errs
+	}
+
+	component.Parts.Language.Values = language
+
+	return nil
 }
 
 // TODO: DLFA-243

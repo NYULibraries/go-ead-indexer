@@ -33,6 +33,7 @@ type ComponentComplexParts struct {
 	DateRange        ComponentPart `json:"date_range"`
 	Format           ComponentPart `json:"format"`
 	Heading          ComponentPart `json:"heading"`
+	Language         ComponentPart `json:"language"`
 	Location         ComponentPart `json:"location"`
 	MaterialType     ComponentPart `json:"material_type"`
 	Name             ComponentPart `json:"name"`
@@ -72,7 +73,7 @@ type ComponentXPathParts struct {
 	Function                      ComponentPart `json:"function"`
 	GenreForm                     ComponentPart `json:"genre_form"`
 	GeogName                      ComponentPart `json:"geog_name"`
-	Language                      ComponentPart `json:"language"`
+	LangCode                      ComponentPart `json:"language"`
 	Level                         ComponentPart `json:"level"`
 	NameElementAll                ComponentPart `json:"name_element_all"`
 	Note                          ComponentPart `json:"note"`
