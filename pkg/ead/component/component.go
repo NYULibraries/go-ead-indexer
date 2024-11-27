@@ -59,7 +59,6 @@ type ComponentXPathParts struct {
 	Appraisal                     ComponentPart `json:"appraisal"`
 	BiogHist                      ComponentPart `json:"biog_hist"`
 	ChronList                     ComponentPart `json:"chron_list"`
-	Collection                    ComponentPart `json:"collection"`
 	CollectionUnitID              ComponentPart `json:"collection_unit_id"`
 	CorpName                      ComponentPart `json:"corpname"`
 	CorpNameNotInRepository       ComponentPart `json:"corp_name_not_in_repository"`
