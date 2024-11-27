@@ -157,6 +157,9 @@ func MakeComponents(collectionDocParts ComponentCollectionDocParts, node types.N
 			}
 		}
 
+		// This depends on `newComponent.Parts.AncestorUnitTitleList`
+		newComponent.setSolrAddMessage()
+
 		components = append(components, newComponent)
 	}
 
