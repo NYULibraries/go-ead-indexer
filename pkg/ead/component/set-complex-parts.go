@@ -55,6 +55,7 @@ func (component *Component) setComplexParts() error {
 	component.setChronListText()
 	component.setCreatorComplex()
 	component.setDAO()
+	component.setDateRange()
 	component.setFormat()
 	component.setHeading()
 	err := component.setLocation()
@@ -108,6 +109,11 @@ func (component *Component) setDAO() {
 	} else {
 		// No value
 	}
+}
+
+func (component *Component) setDateRange() {
+	component.Parts.DateRange.Values =
+		eadutil.GetDateRange(component.Parts.UnitDateNormal.Values)
 }
 
 func (component *Component) setFormat() {
