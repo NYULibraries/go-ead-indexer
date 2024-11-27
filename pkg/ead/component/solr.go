@@ -92,10 +92,10 @@ func (solrAddMessage SolrAddMessage) String() string {
 // field elements in the HTTP request to Solr.  After we pass the DLFA-201
 // acceptance test, we need to implement the permanent `String()` or custom
 // marshaling that will be free of the need to match v1 indexer's ordering.
-// Note that this function is duplicated in the `component` package.  Normally
-// we'd find a way to DRY this up (probably by using a `struct` param instead of
-// the `CollectionDoc.SolrAddMessage` and `Component.SolrAddMessage` types, but
-// since this is ephemeral, we just copy it.
+// Note that this function is duplicated in the `collection` and `component` packages.
+// Normally we'd find a way to DRY this up (probably by using a `struct` param
+// instead of the `CollectionDoc.SolrAddMessage` and `Component.SolrAddMessage`
+// types, but since function is ephemeral, we just copy it.
 func getSolrFieldElementStringsInV1IndexerInsertionOrder(solrAddMessage SolrAddMessage) []string {
 	var fieldsInV1IndexerInsertionOrder []string
 
