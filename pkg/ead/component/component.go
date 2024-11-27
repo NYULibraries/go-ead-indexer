@@ -61,7 +61,7 @@ type ComponentHierarchyParts struct {
 	ComponentChildren     bool          `json:"component_children"`
 	ComponentLevel        int           `json:"component_level"`
 	ParentForDisplay      ComponentPart `json:"parent_for_display"`
-	ParentForSort         ComponentPart `json:"parent_for_sort"`
+	ParentForSort         string        `json:"parent_for_sort"`
 	SeriesForSort         string        `json:"series_for_sort"`
 }
 

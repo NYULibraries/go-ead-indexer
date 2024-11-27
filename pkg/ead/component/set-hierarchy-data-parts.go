@@ -86,7 +86,7 @@ func (component *Component) setParentForSort(node types.Node) error {
 
 	parentNodeIDAttributeNode, err := parentNode.(types.Element).GetAttribute("id")
 	if err == nil {
-		component.Parts.ParentForSort.Values = []string{parentNodeIDAttributeNode.Value()}
+		component.Parts.ParentForSort = parentNodeIDAttributeNode.Value()
 	} else {
 		// Parent is <dsc>, which has no `id` attribute.
 	}
