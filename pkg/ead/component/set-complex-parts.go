@@ -64,6 +64,10 @@ func (component *Component) setComplexParts() error {
 	component.setName()
 	component.setPlace()
 	component.setSubjectForFacets()
+	err = component.setUnitTitleHTML()
+	if err != nil {
+		return err
+	}
 
 	return nil
 }
@@ -227,4 +231,26 @@ func (component *Component) setPlace() {
 func (component *Component) setSubjectForFacets() {
 	component.Parts.SubjectForFacets.Values =
 		eadutil.ConvertToFacetSlice(component.Parts.Subject.Values)
+}
+
+func (component *Component) setUnitTitleHTML() error {
+	parts := &component.Parts
+
+	unitTitleHTMLValues := []string{}
+	for _, unitTitle := range parts.DIDUnitTitle.XMLStrings {
+		// `eadutil.MakeTitleHTML()` will in most if not all cases strip out the
+		// open and close tags, but better safe than sorry.
+		unitTitleContents := eadutil.StripOpenAndCloseTags(unitTitle)
+
+		unitTitleHTMLValue, err := eadutil.MakeTitleHTML(unitTitleContents)
+		if err != nil {
+			return err
+		}
+
+		unitTitleHTMLValues = append(unitTitleHTMLValues, unitTitleHTMLValue)
+	}
+
+	parts.UnitTitleHTML.Values = unitTitleHTMLValues
+
+	return nil
 }

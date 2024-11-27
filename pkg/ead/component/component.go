@@ -36,6 +36,7 @@ type ComponentComplexParts struct {
 	Name             ComponentPart `json:"name"`
 	Place            ComponentPart `json:"place"`
 	SubjectForFacets ComponentPart `json:"subject_for_facets"`
+	UnitTitleHTML    ComponentPart `json:"unit_title_html"`
 }
 
 type ComponentHierarchyParts struct {
