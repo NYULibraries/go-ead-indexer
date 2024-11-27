@@ -257,6 +257,12 @@ func GetValuesForXPathQuery(query string, node types.Node) ([]string, []string, 
 	return values, xmlStrings, nil
 }
 
+func MakeSolrAddMessageFieldElementString(fieldName string, fieldValue string) string {
+	escapedFieldValue := EscapeSolrFieldString(fieldValue)
+
+	return fmt.Sprintf(`    <field name="%s">%s</field>`, fieldName, escapedFieldValue)
+}
+
 func MakeTitleHTML(unitTitle string) (string, error) {
 	converted, err := ConvertEADToHTML(unitTitle)
 	if err != nil {

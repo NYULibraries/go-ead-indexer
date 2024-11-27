@@ -2,7 +2,7 @@ package collectiondoc
 
 import (
 	"fmt"
-	eadUtil "go-ead-indexer/pkg/ead/eadutil"
+	"go-ead-indexer/pkg/ead/eadutil"
 	"go-ead-indexer/pkg/util"
 	"reflect"
 	"strconv"
@@ -291,14 +291,14 @@ func getSolrFieldElementStringsInV1IndexerInsertionOrder(solrAddMessage SolrAddM
 			for _, fieldValue := range field.Interface().([]string) {
 				if util.IsNonEmptyString(fieldValue) {
 					fieldsInV1IndexerInsertionOrder = append(fieldsInV1IndexerInsertionOrder,
-						makeSolrAddMessageFieldElementString(fieldName, fieldValue))
+						eadutil.MakeSolrAddMessageFieldElementString(fieldName, fieldValue))
 				}
 			}
 		} else if fieldTypeKind == reflect.String {
 			fieldValue := field.String()
 			if util.IsNonEmptyString(fieldValue) {
 				fieldsInV1IndexerInsertionOrder = append(fieldsInV1IndexerInsertionOrder,
-					makeSolrAddMessageFieldElementString(fieldName, fieldValue))
+					eadutil.MakeSolrAddMessageFieldElementString(fieldName, fieldValue))
 			}
 		} else {
 			// Should never get here!
@@ -307,10 +307,4 @@ func getSolrFieldElementStringsInV1IndexerInsertionOrder(solrAddMessage SolrAddM
 	}
 
 	return fieldsInV1IndexerInsertionOrder
-}
-
-func makeSolrAddMessageFieldElementString(fieldName string, fieldValue string) string {
-	escapedFieldValue := eadUtil.EscapeSolrFieldString(fieldValue)
-
-	return fmt.Sprintf(`    <field name="%s">%s</field>`, fieldName, escapedFieldValue)
 }
