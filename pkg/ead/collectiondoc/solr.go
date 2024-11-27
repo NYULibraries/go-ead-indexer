@@ -5,7 +5,6 @@ import (
 	"go-ead-indexer/pkg/ead/eadutil"
 	"go-ead-indexer/pkg/util"
 	"reflect"
-	"strconv"
 	"strings"
 )
 
@@ -155,7 +154,7 @@ func (collectionDoc *CollectionDoc) setSolrAddMessage() {
 	docElement.FamName_ssm = append(docElement.FamName_ssm, collectionDoc.Parts.FamNameNotInDSC.Values...)
 	docElement.FamName_teim = append(docElement.FamName_teim, collectionDoc.Parts.FamNameNotInDSC.Values...)
 
-	docElement.Format_ii = strconv.Itoa(collectionDoc.Parts.FormatForSort)
+	docElement.Format_ii = collectionDoc.Parts.FormatForSort
 	docElement.Format_sim = collectionDoc.Parts.FormatForDisplay
 	docElement.Format_ssm = collectionDoc.Parts.FormatForDisplay
 

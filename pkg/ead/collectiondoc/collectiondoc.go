@@ -34,7 +34,7 @@ type CollectionDocComplexParts struct {
 
 type CollectionDocHardcodedParts struct {
 	FormatForDisplay string `json:"format_for_display"`
-	FormatForSort    int    `json:"format_for_sort"`
+	FormatForSort    string `json:"format_for_sort"`
 }
 
 type CollectionDocXPathParts struct {
