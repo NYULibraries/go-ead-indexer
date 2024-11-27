@@ -54,6 +54,6 @@
     <field name="unitdate_end_si">1115</field>
     <field name="unitdate_ssm">Inclusive, 1113</field>
     <field name="date_range_sim">1101-1200</field>
-    <field name="sort_ii">23</field>
+    <field name="sort_ii">24</field>
   </doc>
 </add>

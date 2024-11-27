@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"go-ead-indexer/pkg/ead/eadutil"
+	"go-ead-indexer/pkg/util"
 	"regexp"
 	"strings"
 )
@@ -51,6 +52,7 @@ func (component *Component) makeRootContainerSliceAndParentChildContainerMap() (
 
 // TODO: Do we need to have anything in `CollectionDoc.Part.Source` for these?
 func (component *Component) setComplexParts() error {
+	component.setChronListText()
 	component.setCreatorComplex()
 	component.setDAO()
 	component.setFormat()
@@ -74,6 +76,19 @@ func (component *Component) setCreatorComplex() {
 	creatorComplexValues = append(creatorComplexValues, parts.CreatorFamName.Values...)
 	creatorComplexValues = append(creatorComplexValues, parts.CreatorPersName.Values...)
 	parts.CreatorComplex.Values = creatorComplexValues
+}
+
+func (component *Component) setChronListText() {
+	parts := &component.Parts
+
+	chronListTextValues := []string{}
+	for _, chronListValue := range parts.ChronList.Values {
+		if util.IsNonEmptyString(chronListValue) {
+			chronListTextValues = append(chronListTextValues, chronListValue)
+		}
+	}
+
+	parts.ChronListText.Values = chronListTextValues
 }
 
 func (component *Component) setDAO() {

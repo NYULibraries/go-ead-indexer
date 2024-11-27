@@ -1638,6 +1638,131 @@
         </c>
       </c>
 
+      <!-- Test `setChronListText()`.  The <bioghist> is from archives/mc_81.xml -->
+      <c id="chronlist_test" level="file">
+        <bioghist id="aspace_c7f9cf05fbe10faa4e5c69c6e640f918">
+          <head>Historical/Biographical Note</head>
+          <p>During his lifetime, Charles Butler was involved in many endeavors.
+            For a time he was employed as an agent for the New York Life
+            Insurance and Trust Company, and held various positions in the
+            transportation industry working with canals, roads, and railroads.
+            He was also involved in New York politics, anti-Masonry, and state
+            bond investment and land speculation in the antebellum west. One
+            such interest was in the Wabash and Erie Canal, the construction of
+            which Congress authorized in 1827. When completed in 1853, the
+            Wabash and Erie Canal was the longest man-made waterway in the
+            Western Hemisphere and extended nearly 500 miles. By 1860, however,
+            after a short time in use, the canal was incrementally abandoned in
+            response to the proliferation of railroads.
+          </p>
+          <p>Butler's other accomplishments are outlined in the following
+            chronology
+          </p>
+          <chronlist>
+            <head>Missing Title</head>
+            <chronitem>
+              <date>Jan 15, 1802</date>
+              <eventgrp>
+                <event>Born, Kinderhook Landing, N.Y.</event>
+              </eventgrp>
+            </chronitem>
+            <chronitem>
+              <date>1819</date>
+              <eventgrp>
+                <event>Employed as clerk in the law office of Martin Van Buren
+                  at Albany, N.Y.
+                </event>
+              </eventgrp>
+            </chronitem>
+            <chronitem>
+              <date>1822</date>
+              <eventgrp>
+                <event>Appointed deputy clerk of New York State Senate</event>
+              </eventgrp>
+            </chronitem>
+            <chronitem>
+              <date>1824</date>
+              <eventgrp>
+                <event>Admitted to New York Bar</event>
+              </eventgrp>
+            </chronitem>
+            <chronitem>
+              <date>1825</date>
+              <eventgrp>
+                <event>Married Eliza A. Ogden</event>
+              </eventgrp>
+            </chronitem>
+            <chronitem>
+              <date>1826-1827</date>
+              <eventgrp>
+                <event>Prosecuted the kidnappers of William Morgan, a
+                  Freemason
+                </event>
+              </eventgrp>
+            </chronitem>
+            <chronitem>
+              <date>1829</date>
+              <eventgrp>
+                <event>Appointed postmaster at Geneva, N.Y.</event>
+              </eventgrp>
+            </chronitem>
+            <chronitem>
+              <date>1830</date>
+              <eventgrp>
+                <event>Became an agent of the New York Life Insurance and Trust
+                  Co.
+                </event>
+              </eventgrp>
+            </chronitem>
+            <chronitem>
+              <date>1833</date>
+              <eventgrp>
+                <event>Traveled in Michigan, Indiana, and Illinois</event>
+              </eventgrp>
+            </chronitem>
+            <chronitem>
+              <date>1834</date>
+              <eventgrp>
+                <event>Moved to New York City</event>
+              </eventgrp>
+            </chronitem>
+            <chronitem>
+              <date>1836</date>
+              <eventgrp>
+                <event>Became a member of the Council of the University of the
+                  City of New York
+                </event>
+                <event>Became one of twenty founders of the Union Theological
+                  Seminary and a member of its first Board of Directors.
+                </event>
+              </eventgrp>
+            </chronitem>
+            <chronitem>
+              <date>ca. 1862</date>
+              <eventgrp>
+                <event>President of the St. Louis, Alton, and Terre Haute
+                  Railroad Co.
+                </event>
+              </eventgrp>
+            </chronitem>
+            <chronitem>
+              <date>1870-1897</date>
+              <eventgrp>
+                <event>President of the Board of Directors for the Union
+                  Theological Seminary
+                </event>
+              </eventgrp>
+            </chronitem>
+            <chronitem>
+              <date>Dec 13, 1897</date>
+              <eventgrp>
+                <event>Died, New York City</event>
+              </eventgrp>
+            </chronitem>
+          </chronlist>
+        </bioghist>
+      </c>
+
       <!-- Test `Component.getAncestorUnitTitle()` -->
       <c id="ancestor1" level="file">
         <did>

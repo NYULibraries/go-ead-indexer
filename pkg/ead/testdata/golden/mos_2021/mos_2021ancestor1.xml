@@ -33,6 +33,6 @@
     <field name="unitdate_end_si">1111</field>
     <field name="unitdate_ssm">Inclusive, 1111</field>
     <field name="date_range_sim">1101-1200</field>
-    <field name="sort_ii">18</field>
+    <field name="sort_ii">19</field>
   </doc>
 </add>

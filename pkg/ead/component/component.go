@@ -27,6 +27,7 @@ type ComponentParts struct {
 }
 
 type ComponentComplexParts struct {
+	ChronListText    ComponentPart `json:"chron_list_text"`
 	CreatorComplex   ComponentPart `json:"creator_complex"`
 	DAO              ComponentPart `json:"dao"`
 	Format           ComponentPart `json:"format"`
