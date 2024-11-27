@@ -80,7 +80,7 @@ type ComponentXPathParts struct {
 	Subject                       ComponentPart `json:"subject"`
 	SubjectOrFunctionOrOccupation ComponentPart `json:"subject_or_function_or_occupation"`
 	Title                         ComponentPart `json:"title"`
-	UnitDateNotType               ComponentPart `json:"unit_date_not_type"`
+	UnitDateNoTypeAttribute       ComponentPart `json:"unit_date_not_type"`
 	UnitDateBulk                  ComponentPart `json:"unit_date_bulk"`
 	UnitDateNormal                ComponentPart `json:"unit_date_normal"`
 	UnitDateInclusive             ComponentPart `json:"unit_date_inclusive"`

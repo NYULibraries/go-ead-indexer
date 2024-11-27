@@ -209,8 +209,8 @@ func (component *Component) setXPathSimpleParts(node types.Node) error {
 		return err
 	}
 
-	parts.UnitDateNotType.Source = ".//did/unitdate[not(@type)]"
-	parts.UnitDateNotType.Values, parts.UnitDateNotType.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.UnitDateNotType.Source, node)
+	parts.UnitDateNoTypeAttribute.Source = ".//did/unitdate[not(@type)]"
+	parts.UnitDateNoTypeAttribute.Values, parts.UnitDateNoTypeAttribute.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.UnitDateNoTypeAttribute.Source, node)
 	if err != nil {
 		return err
 	}
