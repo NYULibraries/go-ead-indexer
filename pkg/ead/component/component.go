@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/lestrrat-go/libxml2/types"
 	"go-ead-indexer/pkg/ead/eadutil"
-	"regexp"
 )
 
 type Component struct {
@@ -106,8 +105,6 @@ type Container struct {
 }
 
 const CElementName = "c"
-
-var unitDateOpenTagRegExp = regexp.MustCompile("^<unitdate[^>]*>")
 
 // See `ead.new()` comment on why we have to pass in `repositoryCode` as an argument.
 func MakeComponents(repositoryCode string, collection string, collectionUnitID string,
