@@ -2,7 +2,9 @@ package component
 
 import (
 	"github.com/lestrrat-go/libxml2/types"
+	"go-ead-indexer/pkg/ead/eadutil"
 	"slices"
+	"strings"
 )
 
 func (component *Component) setHierarchyDataParts(node types.Node) error {
@@ -88,6 +90,25 @@ func (component *Component) setParentForSort(node types.Node) error {
 	} else {
 		// Parent is <dsc>, which has no `id` attribute.
 	}
+
+	return nil
+}
+
+func (component *Component) setSeriesForSort() error {
+	parts := &component.Parts
+
+	ancestorUnitTitleHTMLValues := []string{}
+	for _, ancestorUnitTitle := range parts.AncestorUnitTitleList {
+		ancestorUnitTitleHTMLValue, err := eadutil.MakeTitleHTML(ancestorUnitTitle)
+		if err != nil {
+			return err
+		}
+
+		ancestorUnitTitleHTMLValues = append(ancestorUnitTitleHTMLValues,
+			ancestorUnitTitleHTMLValue)
+	}
+
+	parts.SeriesForSort = strings.Join(ancestorUnitTitleHTMLValues, " >> ")
 
 	return nil
 }

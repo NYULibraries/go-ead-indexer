@@ -51,6 +51,7 @@ type ComponentHierarchyParts struct {
 	ComponentLevel        int           `json:"component_level"`
 	ParentForDisplay      ComponentPart `json:"parent_for_display"`
 	ParentForSort         ComponentPart `json:"parent_for_sort"`
+	SeriesForSort         string        `json:"series_for_sort"`
 }
 
 type ComponentXPathParts struct {
@@ -141,6 +142,10 @@ func MakeComponents(repositoryCode string, collection string, collectionUnitID s
 		if ancestorUnitTitleList, ok :=
 			ancestorUnitTitleListMap[newComponent.IDAttribute]; ok {
 			newComponent.Parts.AncestorUnitTitleList = ancestorUnitTitleList
+			err = newComponent.setSeriesForSort()
+			if err != nil {
+				return &components, err
+			}
 		}
 
 		components = append(components, newComponent)
