@@ -37,6 +37,9 @@ type ComponentComplexParts struct {
 	Name             ComponentPart `json:"name"`
 	Place            ComponentPart `json:"place"`
 	SubjectForFacets ComponentPart `json:"subject_for_facets"`
+	UnitDateDisplay  ComponentPart `json:"unit_date_display"`
+	UnitDateEnd      ComponentPart `json:"unit_date_end"`
+	UnitDateStart    ComponentPart `json:"unit_date_start"`
 	UnitTitleHTML    ComponentPart `json:"unit_title_html"`
 }
 

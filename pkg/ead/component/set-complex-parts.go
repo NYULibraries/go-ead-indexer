@@ -69,6 +69,9 @@ func (component *Component) setComplexParts() error {
 	if err != nil {
 		return err
 	}
+	component.setUnitDateDisplay()
+	component.setUnitDateEnd()
+	component.setUnitDateStart()
 
 	return nil
 }
@@ -237,6 +240,43 @@ func (component *Component) setPlace() {
 func (component *Component) setSubjectForFacets() {
 	component.Parts.SubjectForFacets.Values =
 		eadutil.ConvertToFacetSlice(component.Parts.Subject.Values)
+}
+
+func (component *Component) setUnitDateDisplay() {
+	parts := &component.Parts
+
+	parts.UnitDateDisplay.Values = []string{
+		eadutil.GetUnitDateDisplay(parts.UnitDateNoTypeAttribute.Values,
+			parts.UnitDateInclusive.Values, parts.UnitDateBulk.Values),
+	}
+}
+
+func (component *Component) setUnitDateEnd() {
+	parts := &component.Parts
+
+	unitDateEndValues := []string{}
+	for _, unitDateNormal := range parts.UnitDateNormal.Values {
+		unitDateEnd := eadutil.GetDateParts(unitDateNormal).End
+		if unitDateEnd != "" {
+			unitDateEndValues = append(unitDateEndValues, unitDateEnd)
+		}
+	}
+
+	parts.UnitDateEnd.Values = unitDateEndValues
+}
+
+func (component *Component) setUnitDateStart() {
+	parts := &component.Parts
+
+	unitDateStartValues := []string{}
+	for _, unitDateNormal := range parts.UnitDateNormal.Values {
+		unitDateStart := eadutil.GetDateParts(unitDateNormal).Start
+		if unitDateStart != "" {
+			unitDateStartValues = append(unitDateStartValues, unitDateStart)
+		}
+	}
+
+	parts.UnitDateStart.Values = unitDateStartValues
 }
 
 func (component *Component) setUnitTitleHTML() error {
