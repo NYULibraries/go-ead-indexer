@@ -26,6 +26,7 @@ type CollectionDocComplexParts struct {
 	Place            CollectionDocPart `json:"place"`
 	OnlineAccess     CollectionDocPart `json:"online_access"`
 	SubjectForFacets CollectionDocPart `json:"subject_for_facets"`
+	UnitDateDisplay  CollectionDocPart `json:"unit_date_display"`
 	UnitDateEnd      CollectionDocPart `json:"unit_date_end"`
 	UnitDateStart    CollectionDocPart `json:"unit_date_start"`
 	UnitTitleHTML    CollectionDocPart `json:"unit_title_html"`
@@ -73,7 +74,6 @@ type CollectionDocXPathParts struct {
 	Subject                 CollectionDocPart `json:"subject"`
 	SubjectNotInDSC         CollectionDocPart `json:"subject_not_in_dsc"`
 	TitleNotInDSC           CollectionDocPart `json:"title_not_in_dsc"`
-	UnitDateDisplay         CollectionDocPart `json:"unit_date_display"`
 	UnitDateBulk            CollectionDocPart `json:"unit_date_bulk"`
 	UnitDateInclusive       CollectionDocPart `json:"unit_date_inclusive"`
 	UnitDateNormal          CollectionDocPart `json:"unit_date_normal"`
