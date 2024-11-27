@@ -24,6 +24,7 @@ type ComponentParts struct {
 	ComponentXPathParts
 	Containers     []Container   `json:"containers"`
 	RepositoryCode ComponentPart `json:"repository_code"`
+	Sort           int           `json:"sort"`
 }
 
 type ComponentComplexParts struct {
@@ -132,9 +133,11 @@ func MakeComponents(repositoryCode string, collection string, collectionUnitID s
 	}
 
 	components := []Component{}
+	sort := 0
 	for _, cNode := range cNodes {
+		sort += 1
 		newComponent, err := MakeComponent(repositoryCode, collection,
-			collectionUnitID, cNode)
+			collectionUnitID, sort, cNode)
 		if err != nil {
 			return &components, err
 		}
@@ -152,7 +155,7 @@ func MakeComponents(repositoryCode string, collection string, collectionUnitID s
 
 // See `ead.new()` comment on why we have to pass in `repositoryCode` as an argument.
 func MakeComponent(repositoryCode string, collection string, collectionUnitID string,
-	node types.Node) (Component, error) {
+	sort int, node types.Node) (Component, error) {
 	component := Component{
 		Parts: ComponentParts{
 			Collection:       collection,
@@ -160,6 +163,7 @@ func MakeComponent(repositoryCode string, collection string, collectionUnitID st
 			RepositoryCode: ComponentPart{
 				Values: []string{repositoryCode},
 			},
+			Sort: sort,
 		},
 	}
 
