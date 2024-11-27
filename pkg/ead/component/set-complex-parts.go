@@ -60,6 +60,7 @@ func (component *Component) setComplexParts() error {
 	if err != nil {
 		return err
 	}
+	component.setMaterialType()
 	component.setName()
 	component.setPlace()
 	component.setSubjectForFacets()
@@ -198,6 +199,11 @@ func (component *Component) getLocationValuesInOccurrenceOrder() ([]string, erro
 	// mapping parent to child containers, so we match its signature to make
 	// transition easier and faster.
 	return locationValues, nil
+}
+
+func (component *Component) setMaterialType() {
+	component.Parts.MaterialType.Values =
+		eadutil.ConvertToFacetSlice(component.Parts.GenreForm.Values)
 }
 
 func (component *Component) setName() {

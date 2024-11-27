@@ -32,6 +32,7 @@ type ComponentComplexParts struct {
 	DAO              ComponentPart `json:"dao"`
 	Format           ComponentPart `json:"format"`
 	Location         ComponentPart `json:"location"`
+	MaterialType     ComponentPart `json:"material_type"`
 	Name             ComponentPart `json:"name"`
 	Place            ComponentPart `json:"place"`
 	SubjectForFacets ComponentPart `json:"subject_for_facets"`
