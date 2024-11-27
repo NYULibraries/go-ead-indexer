@@ -369,7 +369,7 @@ func TestGetUnitDateDisplay(t *testing.T) {
 			[]string{},
 			"Inclusive, 1910 - 1990",
 		},
-		// TODO DLFA-238
+		// TODO: DLFA-238
 		// For now, preserve v1 indexer bug https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=8378822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-8378822
 		{
 			"`unitDateNoTypeAttribute` absent; `unitDateInclusive` absent and `unitDateBulk` present",

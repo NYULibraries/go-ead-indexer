@@ -19,7 +19,7 @@ type AddElement struct {
 	Doc DocElement `xml:"doc"`
 }
 
-// TODO DLFA-238:
+// TODO: DLFA-238
 // This struct definition replicates the order in which the v1 indexer writes
 // out the Solr field elements in the HTTP request to Solr.  We are generating
 // the XML request body by using the `reflect` package to loop through the
@@ -259,7 +259,7 @@ func (collectionDoc *CollectionDoc) setSolrAddMessage() {
 	docElement.UnitTitle_teim = append(docElement.UnitTitle_teim, collectionDoc.Parts.UnitTitle.Values...)
 }
 
-// TODO DLFA-238:
+// TODO: DLFA-238
 // This replicates the order in which the v1 indexer writes out the Solr
 // field elements in the HTTP request to Solr.  After we pass the DLFA-201
 // acceptance test, we need to implement the permanent `String()` or custom

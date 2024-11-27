@@ -67,8 +67,9 @@ var eadTagRenderAttributeToHTMLTagName = map[string]string{
 	"underline":       "em",
 }
 
-// TODO DLFA-238: fix the bug we've intentionally preserved in MARC subfield demarcation
-// replacement.  For details, see:
+// TODO: DLFA-238
+// Fix the bug we've intentionally preserved in MARC subfield demarcation replacement.
+// For details, see:
 //
 //   - https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10154897&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10154897
 //   - https://jira.nyu.edu/browse/DLFA-229?focusedCommentId=10153922&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10153922
@@ -191,8 +192,9 @@ func GetLanguage(langCodes []string) ([]string, []error) {
 	return language, errs
 }
 
-// TODO DLFA-238: This method preserves probable v1 indexer bug for the purposes of passing
-// the DLFA-201 transition acceptance test -- the bug:
+// TODO: DLFA-238
+// This method preserves probable v1 indexer bug for the purposes of passing the
+// DLFA-201 transition acceptance test -- the bug:
 // https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=8378822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-8378822
 // Fix this bug after we've completed the transition.
 func GetUnitDateDisplay(unitDateNoTypeAttribute []string, unitDateInclusive []string,
