@@ -4,6 +4,7 @@ import (
 	"github.com/lestrrat-go/libxml2/types"
 	"go-ead-indexer/pkg/ead/eadutil"
 	"slices"
+	"strconv"
 	"strings"
 )
 
@@ -41,16 +42,17 @@ func (component *Component) setComponentChildren(node types.Node) error {
 		return err
 	}
 
-	component.Parts.ComponentChildren = slices.ContainsFunc(childNodes, func(node types.Node) bool {
-		return node.NodeName() == CElementName
-	})
+	component.Parts.ComponentChildren =
+		strconv.FormatBool(slices.ContainsFunc(childNodes, func(node types.Node) bool {
+			return node.NodeName() == CElementName
+		}))
 
 	return nil
 }
 
 // Depends on `Component.setParentForDisplay()`
 func (component *Component) setComponentLevel() {
-	component.Parts.ComponentLevel = len(component.Parts.ParentForDisplay.Values) + 1
+	component.Parts.ComponentLevel = strconv.Itoa(len(component.Parts.ParentForDisplay.Values) + 1)
 }
 
 func (component *Component) setParentForDisplay(node types.Node) {

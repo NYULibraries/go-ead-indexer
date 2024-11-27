@@ -58,8 +58,8 @@ type ComponentComplexParts struct {
 
 type ComponentHierarchyParts struct {
 	AncestorUnitTitleList []string      `json:"ancestor_unit_title_list"`
-	ComponentChildren     bool          `json:"component_children"`
-	ComponentLevel        int           `json:"component_level"`
+	ComponentChildren     string        `json:"component_children"`
+	ComponentLevel        string        `json:"component_level"`
 	ParentForDisplay      ComponentPart `json:"parent_for_display"`
 	ParentForSort         string        `json:"parent_for_sort"`
 	SeriesForSort         string        `json:"series_for_sort"`
