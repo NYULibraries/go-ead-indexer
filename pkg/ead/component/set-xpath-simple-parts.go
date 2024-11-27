@@ -143,7 +143,7 @@ func (component *Component) setXPathSimpleParts(node types.Node) error {
 		return err
 	}
 
-	parts.Level.Source = "///c/@level"
+	parts.Level.Source = "./@level"
 	parts.Level.Values, parts.Level.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.Level.Source, node)
 	if err != nil {
 		return err
@@ -179,7 +179,7 @@ func (component *Component) setXPathSimpleParts(node types.Node) error {
 		return err
 	}
 
-	parts.Ref.Source = "///c/@id"
+	parts.Ref.Source = "./@id"
 	parts.Ref.Values, parts.Ref.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.Ref.Source, node)
 	if err != nil {
 		return err
