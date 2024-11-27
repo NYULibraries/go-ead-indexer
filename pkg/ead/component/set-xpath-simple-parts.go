@@ -5,36 +5,46 @@ import (
 	"go-ead-indexer/pkg/ead/eadutil"
 )
 
+// Even though `node` is technically a <c> element node, XPath expressions that
+// start with "//" when passed to `node.Find()` seem to query in the context of
+// the entire EAD document.  This is the case even though `node.Find()` makes
+// a next `Context` based on `node` (which is <c>).  There likely is a way
+// to force querying relative to the <c> node using the LibXML2 API to make a
+// new context based on copy, but the cheaper way for us would seem to be to
+// just add "." to the beginning of XPath expressions which want running in the
+// context of the <c> node.
+// See https://stackoverflow.com/questions/33416524/libxml2-xpath-relative-to-sub-node
+// for demonstration and explanation of the options.
 func (component *Component) setXPathSimpleParts(node types.Node) error {
 	var err error
 
 	parts := &component.Parts
 
-	parts.Address.Source = "//address/p"
+	parts.Address.Source = ".//address/p"
 	parts.Address.Values, parts.Address.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.Address.Source, node)
 	if err != nil {
 		return err
 	}
 
-	parts.Appraisal.Source = "//appraisal/p"
+	parts.Appraisal.Source = ".//appraisal/p"
 	parts.Appraisal.Values, parts.Appraisal.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.Appraisal.Source, node)
 	if err != nil {
 		return err
 	}
 
-	parts.BiogHist.Source = "//bioghist/p"
+	parts.BiogHist.Source = ".//bioghist/p"
 	parts.BiogHist.Values, parts.BiogHist.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.BiogHist.Source, node)
 	if err != nil {
 		return err
 	}
 
-	parts.ChronList.Source = "//chronlist/chronitem//text()"
+	parts.ChronList.Source = ".//chronlist/chronitem//text()"
 	parts.ChronList.Values, parts.ChronList.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.ChronList.Source, node)
 	if err != nil {
 		return err
 	}
 
-	parts.CorpName.Source = "//corpname"
+	parts.CorpName.Source = ".//corpname"
 	parts.CorpName.Values, parts.CorpName.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.CorpName.Source, node)
 	if err != nil {
 		return err
@@ -61,37 +71,37 @@ func (component *Component) setXPathSimpleParts(node types.Node) error {
 	// https://groups.google.com/g/selenium-users/c/Lcvbjisk4qE
 	// "case-insensitive matching in XPath?"
 	// https://stackoverflow.com/questions/2893551/case-insensitive-matching-in-xpath
-	parts.CreatorCorpName.Source = "//origination[translate(@label, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='creator']/corpname"
+	parts.CreatorCorpName.Source = ".//origination[translate(@label, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='creator']/corpname"
 	parts.CreatorCorpName.Values, parts.CreatorCorpName.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.CreatorCorpName.Source, node)
 	if err != nil {
 		return err
 	}
 
-	parts.CreatorFamName.Source = "//origination[translate(@label, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='creator']/famname"
+	parts.CreatorFamName.Source = ".//origination[translate(@label, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='creator']/famname"
 	parts.CreatorFamName.Values, parts.CreatorFamName.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.CreatorFamName.Source, node)
 	if err != nil {
 		return err
 	}
 
-	parts.CreatorPersName.Source = "//origination[translate(@label, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='creator']/persname"
+	parts.CreatorPersName.Source = ".//origination[translate(@label, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='creator']/persname"
 	parts.CreatorPersName.Values, parts.CreatorPersName.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.CreatorPersName.Source, node)
 	if err != nil {
 		return err
 	}
 
-	parts.DAODescriptionParagraph.Source = "//dao/daodesc/p"
+	parts.DAODescriptionParagraph.Source = ".//dao/daodesc/p"
 	parts.DAODescriptionParagraph.Values, parts.DAODescriptionParagraph.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.DAODescriptionParagraph.Source, node)
 	if err != nil {
 		return err
 	}
 
-	parts.DIDUnitID.Source = "//did/unitid"
+	parts.DIDUnitID.Source = ".//did/unitid"
 	parts.DIDUnitID.Values, parts.DIDUnitID.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.DIDUnitID.Source, node)
 	if err != nil {
 		return err
 	}
 
-	parts.DIDUnitTitle.Source = "//did/unittitle"
+	parts.DIDUnitTitle.Source = ".//did/unittitle"
 	parts.DIDUnitTitle.Values, parts.DIDUnitTitle.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.DIDUnitTitle.Source, node)
 	if err != nil {
 		return err
@@ -103,31 +113,31 @@ func (component *Component) setXPathSimpleParts(node types.Node) error {
 		return err
 	}
 
-	parts.FamName.Source = "//famname"
+	parts.FamName.Source = ".//famname"
 	parts.FamName.Values, parts.FamName.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.FamName.Source, node)
 	if err != nil {
 		return err
 	}
 
-	parts.Function.Source = "//function"
+	parts.Function.Source = ".//function"
 	parts.Function.Values, parts.Function.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.Function.Source, node)
 	if err != nil {
 		return err
 	}
 
-	parts.GenreForm.Source = "//genreform"
+	parts.GenreForm.Source = ".//genreform"
 	parts.GenreForm.Values, parts.GenreForm.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.GenreForm.Source, node)
 	if err != nil {
 		return err
 	}
 
-	parts.GeogName.Source = "//geogname"
+	parts.GeogName.Source = ".//geogname"
 	parts.GeogName.Values, parts.GeogName.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.GeogName.Source, node)
 	if err != nil {
 		return err
 	}
 
-	parts.Language.Source = "//did/langmaterial/language/@langcode"
+	parts.Language.Source = ".//did/langmaterial/language/@langcode"
 	parts.Language.Values, parts.Language.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.Language.Source, node)
 	if err != nil {
 		return err
@@ -139,31 +149,31 @@ func (component *Component) setXPathSimpleParts(node types.Node) error {
 		return err
 	}
 
-	parts.NameElementAll.Source = "//name"
+	parts.NameElementAll.Source = ".//name"
 	parts.NameElementAll.Values, parts.NameElementAll.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.NameElementAll.Source, node)
 	if err != nil {
 		return err
 	}
 
-	parts.Note.Source = "//note"
+	parts.Note.Source = ".//note"
 	parts.Note.Values, parts.Note.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.Note.Source, node)
 	if err != nil {
 		return err
 	}
 
-	parts.Occupation.Source = "//occupation"
+	parts.Occupation.Source = ".//occupation"
 	parts.Occupation.Values, parts.Occupation.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.Occupation.Source, node)
 	if err != nil {
 		return err
 	}
 
-	parts.PersName.Source = "//persname"
+	parts.PersName.Source = ".//persname"
 	parts.PersName.Values, parts.PersName.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.PersName.Source, node)
 	if err != nil {
 		return err
 	}
 
-	parts.PhysTech.Source = "//phystech/p"
+	parts.PhysTech.Source = ".//phystech/p"
 	parts.PhysTech.Values, parts.PhysTech.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.PhysTech.Source, node)
 	if err != nil {
 		return err
@@ -175,49 +185,49 @@ func (component *Component) setXPathSimpleParts(node types.Node) error {
 		return err
 	}
 
-	parts.ScopeContent.Source = "//scopecontent/p"
+	parts.ScopeContent.Source = ".//scopecontent/p"
 	parts.ScopeContent.Values, parts.ScopeContent.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.ScopeContent.Source, node)
 	if err != nil {
 		return err
 	}
 
-	parts.Subject.Source = "//subject"
+	parts.Subject.Source = ".//subject"
 	parts.Subject.Values, parts.Subject.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.Subject.Source, node)
 	if err != nil {
 		return err
 	}
 
-	parts.SubjectOrFunctionOrOccupation.Source = "//*[local-name()='subject' or local-name()='function' or local-name() = 'occupation']"
+	parts.SubjectOrFunctionOrOccupation.Source = ".//*[local-name()='subject' or local-name()='function' or local-name() = 'occupation']"
 	parts.SubjectOrFunctionOrOccupation.Values, parts.SubjectOrFunctionOrOccupation.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.SubjectOrFunctionOrOccupation.Source, node)
 	if err != nil {
 		return err
 	}
 
-	parts.Title.Source = "//title"
+	parts.Title.Source = ".//title"
 	parts.Title.Values, parts.Title.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.Title.Source, node)
 	if err != nil {
 		return err
 	}
 
-	parts.UnitDateNotType.Source = "//did/unitdate[not(@type)]"
+	parts.UnitDateNotType.Source = ".//did/unitdate[not(@type)]"
 	parts.UnitDateNotType.Values, parts.UnitDateNotType.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.UnitDateNotType.Source, node)
 	if err != nil {
 		return err
 	}
 
-	parts.UnitDateBulk.Source = "//did/unitdate[@type='bulk']"
+	parts.UnitDateBulk.Source = ".//did/unitdate[@type='bulk']"
 	parts.UnitDateBulk.Values, parts.UnitDateBulk.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.UnitDateBulk.Source, node)
 	if err != nil {
 		return err
 	}
 
-	parts.UnitDateNormal.Source = "//did/unitdate/@normal"
+	parts.UnitDateNormal.Source = ".//did/unitdate/@normal"
 	parts.UnitDateNormal.Values, parts.UnitDateNormal.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.UnitDateNormal.Source, node)
 	if err != nil {
 		return err
 	}
 
-	parts.UnitDateInclusive.Source = "/did/unitdate[@type='inclusive']"
+	parts.UnitDateInclusive.Source = ".//did/unitdate[@type='inclusive']"
 	parts.UnitDateInclusive.Values, parts.UnitDateInclusive.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.UnitDateInclusive.Source, node)
 	if err != nil {
 		return err
