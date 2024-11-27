@@ -16,14 +16,19 @@ type Component struct {
 
 // For now, no struct tags for the `Component*` fields.  Keep it flat.
 type ComponentParts struct {
-	Collection       string `json:"collection"`
-	CollectionUnitID string `json:"collection_unit_id"`
+	ComponentCollectionDocParts
 	ComponentComplexParts
 	ComponentHierarchyParts
 	ComponentXPathParts
-	Containers     []Container   `json:"containers"`
-	RepositoryCode ComponentPart `json:"repository_code"`
-	Sort           int           `json:"sort"`
+	Containers []Container `json:"containers"`
+
+	Sort int `json:"sort"`
+}
+
+type ComponentCollectionDocParts struct {
+	Collection       string `json:"collection"`
+	CollectionUnitID string `json:"collection_unit_id"`
+	RepositoryCode   string `json:"repository_code"`
 }
 
 type ComponentComplexParts struct {
@@ -108,8 +113,7 @@ type Container struct {
 const CElementName = "c"
 
 // See `ead.new()` comment on why we have to pass in `repositoryCode` as an argument.
-func MakeComponents(repositoryCode string, collection string, collectionUnitID string,
-	node types.Node) (*[]Component, error) {
+func MakeComponents(collectionDocParts ComponentCollectionDocParts, node types.Node) (*[]Component, error) {
 	xpathResult, err := node.Find("//" + CElementName)
 	if err != nil {
 		return nil, err
@@ -133,8 +137,7 @@ func MakeComponents(repositoryCode string, collection string, collectionUnitID s
 	sort := 0
 	for _, cNode := range cNodes {
 		sort += 1
-		newComponent, err := MakeComponent(repositoryCode, collection,
-			collectionUnitID, sort, cNode)
+		newComponent, err := MakeComponent(collectionDocParts, sort, cNode)
 		if err != nil {
 			return &components, err
 		}
@@ -155,16 +158,12 @@ func MakeComponents(repositoryCode string, collection string, collectionUnitID s
 }
 
 // See `ead.new()` comment on why we have to pass in `repositoryCode` as an argument.
-func MakeComponent(repositoryCode string, collection string, collectionUnitID string,
-	sort int, node types.Node) (Component, error) {
+func MakeComponent(collectionDocParts ComponentCollectionDocParts, sort int,
+	node types.Node) (Component, error) {
 	component := Component{
 		Parts: ComponentParts{
-			Collection:       collection,
-			CollectionUnitID: collectionUnitID,
-			RepositoryCode: ComponentPart{
-				Values: []string{repositoryCode},
-			},
-			Sort: sort,
+			ComponentCollectionDocParts: collectionDocParts,
+			Sort:                        sort,
 		},
 	}
 

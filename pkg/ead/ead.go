@@ -71,10 +71,12 @@ func New(repositoryCode string, eadXML string) (EAD, error) {
 		return ead, err
 	}
 
-	ead.Components, err = component.MakeComponents(repositoryCode,
-		ead.CollectionDoc.Parts.Collection.Values[0],
-		ead.CollectionDoc.Parts.UnitID.Values[0],
-		rootNode)
+	collectionDocParts := component.ComponentCollectionDocParts{
+		Collection:       ead.CollectionDoc.Parts.Collection.Values[0],
+		CollectionUnitID: ead.CollectionDoc.Parts.UnitID.Values[0],
+		RepositoryCode:   repositoryCode,
+	}
+	ead.Components, err = component.MakeComponents(collectionDocParts, rootNode)
 	if err != nil {
 		return ead, err
 	}
