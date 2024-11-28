@@ -327,12 +327,6 @@ func makeAncestorUnitTitleListMap(node types.Node) (map[string][]string, error) 
 func makeAncestorUnitTitleListMap_add(ancestorUnitTitleListMap map[string][]string,
 	ancestorUnitTitleList []string, node types.Node) error {
 
-	ancestorUnitTitle, err := getAncestorUnitTitle(node)
-	if err != nil {
-		return err
-	}
-	ancestorUnitTitleList = append(ancestorUnitTitleList, ancestorUnitTitle)
-
 	idNode, err := node.(types.Element).GetAttribute("id")
 	if err != nil {
 		return errors.New(
@@ -341,6 +335,12 @@ func makeAncestorUnitTitleListMap_add(ancestorUnitTitleListMap map[string][]stri
 	}
 
 	ancestorUnitTitleListMap[idNode.NodeValue()] = ancestorUnitTitleList
+
+	ancestorUnitTitle, err := getAncestorUnitTitle(node)
+	if err != nil {
+		return err
+	}
+	ancestorUnitTitleList = append(ancestorUnitTitleList, ancestorUnitTitle)
 
 	childCNodes, err := eadutil.GetNodeListForXPathQuery("child::c", node)
 	if err != nil {
