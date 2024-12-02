@@ -50,6 +50,12 @@ func (component *Component) setXPathSimpleParts(node types.Node) error {
 		return err
 	}
 
+	parts.CorpNameNotInRepository.Source = ".//*[local-name()!='repository']/corpname"
+	parts.CorpNameNotInRepository.Values, parts.CorpNameNotInRepository.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.CorpNameNotInRepository.Source, node)
+	if err != nil {
+		return err
+	}
+
 	// We need to be able to find elements with `label="Creator"` and `label="creator"`.
 	// For details, see email thread starting with email sent by Joe on Mon, Aug 28, 2023, 12:56PM
 	// with subject:
