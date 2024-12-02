@@ -12,7 +12,7 @@ import (
 const ARCHIVAL_OBJECT_FORMAT = "Archival Object"
 const ARCHIVAL_SERIES_FORMAT = "Archival Series"
 
-var archivalSeriesRegExp = regexp.MustCompile(`/\Aseries|subseries/`)
+var archivalSeriesRegExp = regexp.MustCompile(`\Aseries|subseries`)
 
 // This algorithm is based on the one used here:
 // https://github.com/NYULibraries/dlts-finding-aids-ead-go-packages/blob/7baee7dfde24a01422ec8e6470fdc8a76d84b3fb/ead/modify/modify.go#L153-L180
