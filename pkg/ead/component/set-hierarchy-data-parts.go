@@ -110,7 +110,15 @@ func (component *Component) setSeriesForSort() error {
 			ancestorUnitTitleHTMLValue)
 	}
 
-	parts.SeriesForSort = strings.Join(ancestorUnitTitleHTMLValues, " >> ")
+	if len(ancestorUnitTitleHTMLValues) > 0 {
+		parts.SeriesForSort = strings.Join(ancestorUnitTitleHTMLValues, " >> ")
+	} else {
+		if len(parts.UnitTitleHTML.Values) > 0 {
+			parts.SeriesForSort = parts.UnitTitleHTML.Values[0]
+		} else {
+			// Should never get here?
+		}
+	}
 
 	return nil
 }
