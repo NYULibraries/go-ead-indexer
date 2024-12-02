@@ -39,9 +39,6 @@ type DocElement struct {
 	ComponentChildren_bsi string   `xml:"component_children_bsi"`
 	Collection_sim        string   `xml:"collection_sim"`
 	Collection_ssm        string   `xml:"collection_ssm"`
-	Repository_ssi        string   `xml:"repository_ssi"`
-	Repository_sim        string   `xml:"repository_sim"`
-	Repository_ssm        string   `xml:"repository_ssm"`
 }
 
 func (component *Component) setSolrAddMessage() {
@@ -64,10 +61,6 @@ func (component *Component) setSolrAddMessage() {
 
 	docElement.ParentUnitTitles_ssm = component.Parts.AncestorUnitTitleList
 	docElement.ParentUnitTitles_teim = component.Parts.AncestorUnitTitleList
-
-	docElement.Repository_sim = component.Parts.RepositoryCode
-	docElement.Repository_ssi = component.Parts.RepositoryCode
-	docElement.Repository_ssm = component.Parts.RepositoryCode
 }
 
 // TODO: DLFA-238
