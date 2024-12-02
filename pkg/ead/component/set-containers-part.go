@@ -5,7 +5,7 @@ import "github.com/lestrrat-go/libxml2/types"
 func (component *Component) setContainersPart(node types.Node) error {
 	containers := []Container{}
 
-	xpathResult, err := node.Find("//container")
+	xpathResult, err := node.Find(".//container")
 	if err != nil {
 		return err
 	}
