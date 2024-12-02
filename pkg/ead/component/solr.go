@@ -55,7 +55,7 @@ func (component *Component) setSolrAddMessage() {
 	docElement.ComponentChildren_bsi = component.Parts.ComponentChildren
 	docElement.ComponentLevel_isim = component.Parts.ComponentLevel
 
-	docElement.EAD_ssi = component.ID
+	docElement.EAD_ssi = component.Parts.EADID.Values[0]
 
 	if component.Parts.ParentForSort != "" {
 		docElement.Parent_ssi = component.Parts.ParentForSort
