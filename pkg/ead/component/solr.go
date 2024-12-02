@@ -37,7 +37,7 @@ type DocElement struct {
 	ParentUnitTitles_teim []string `xml:"parent_unittitles_teim"`
 	ComponentLevel_isim   string   `xml:"component_level_isim"`
 	ComponentChildren_bsi string   `xml:"component_children_bsi"`
-	Collection_teim       string   `xml:"collection_teim"`
+	Collection_sim        string   `xml:"collection_sim"`
 	Collection_ssm        string   `xml:"collection_ssm"`
 	Repository_ssi        string   `xml:"repository_ssi"`
 	Repository_sim        string   `xml:"repository_sim"`
@@ -49,8 +49,8 @@ func (component *Component) setSolrAddMessage() {
 
 	docElement.ID = component.ID
 
+	docElement.Collection_sim = component.Parts.Collection
 	docElement.Collection_ssm = component.Parts.Collection
-	docElement.Collection_teim = component.Parts.Collection
 
 	docElement.ComponentChildren_bsi = component.Parts.ComponentChildren
 	docElement.ComponentLevel_isim = component.Parts.ComponentLevel
