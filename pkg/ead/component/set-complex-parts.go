@@ -257,7 +257,7 @@ func (component *Component) setPlace() {
 
 func (component *Component) setSubjectForFacets() {
 	component.Parts.SubjectForFacets.Values =
-		eadutil.ConvertToFacetSlice(component.Parts.Subject.Values)
+		eadutil.ConvertToFacetSlice(component.Parts.SubjectOrFunctionOrOccupation.Values)
 }
 
 func (component *Component) setUnitDateDisplay() {
