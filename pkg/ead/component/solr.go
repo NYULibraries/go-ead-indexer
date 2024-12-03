@@ -5,6 +5,7 @@ import (
 	"go-ead-indexer/pkg/ead/eadutil"
 	"go-ead-indexer/pkg/util"
 	"reflect"
+	"strconv"
 	"strings"
 )
 
@@ -50,6 +51,7 @@ type DocElement struct {
 	UnitDateNormal_ssm     []string `xml:"unitdate_normal_ssm"`
 	UnitDateNormal_teim    []string `xml:"unitdate_normal_teim"`
 	UnitDateNormal_sim     []string `xml:"unitdate_normal_sim"`
+	UnitDate_teim          []string `xml:"unitdate_teim"`
 	UnitDateInclusive_teim []string `xml:"unitdate_inclusive_teim"`
 	ScopeContent_teim      []string `xml:"scopecontent_teim"`
 	BiogHist_teim          []string `xml:"bioghist_teim"`
@@ -99,6 +101,20 @@ type DocElement struct {
 	CollectionUnitID_teim  string   `xml:"collection_unitid_teim"`
 	Series_sim             []string `xml:"series_sim"`
 	Series_si              string   `xml:"series_si"`
+	MaterialType_sim       []string `xml:"material_type_sim"`
+	MaterialType_ssm       []string `xml:"material_type_ssm"`
+	Heading_ssm            []string `xml:"heading_ssm"`
+	UnitDateStart_sim      []string `xml:"unitdate_start_sim"`
+	UnitDateStart_ssm      []string `xml:"unitdate_start_ssm"`
+	UnitDateStart_si       string   `xml:"unitdate_start_si"`
+	UnitDateEnd_sim        []string `xml:"unitdate_end_sim"`
+	UnitDateEnd_ssm        []string `xml:"unitdate_end_ssm"`
+	UnitDateEnd_si         string   `xml:"unitdate_end_si"`
+	UnitDate_ssm           []string `xml:"unitdate_ssm"`
+	DateRange_sim          []string `xml:"date_range_sim"`
+	Language_sim           string   `xml:"language_sim"`
+	Language_ssm           string   `xml:"language_ssm"`
+	Sort_ii                string   `xml:"sort_ii"`
 }
 
 func (component *Component) setSolrAddMessage() {
@@ -110,7 +126,7 @@ func (component *Component) setSolrAddMessage() {
 
 	docElement.BiogHist_teim = component.Parts.BiogHist.Values
 
-	docElement.ChronList_teim = component.Parts.ChronList.Values
+	docElement.ChronList_teim = component.Parts.ChronListComplex.Values
 
 	docElement.Collection_sim = component.Parts.Collection
 	docElement.Collection_ssm = component.Parts.Collection
@@ -149,6 +165,9 @@ func (component *Component) setSolrAddMessage() {
 	docElement.DAO_ssm = component.Parts.DAODescriptionParagraph.Values
 	docElement.DAO_teim = component.Parts.DAODescriptionParagraph.Values
 
+	docElement.DateRange_sim = append(docElement.DateRange_sim,
+		util.CompactStringSlicePreserveOrder(component.Parts.DateRange.Values)...)
+
 	docElement.EAD_ssi = component.Parts.EADID.Values[0]
 
 	docElement.FamName_ssm = component.Parts.FamName.Values
@@ -168,14 +187,25 @@ func (component *Component) setSolrAddMessage() {
 
 	docElement.ID = component.ID
 
+	docElement.Heading_ssm = component.Parts.Heading.Values
+
+	if len(component.Parts.Language.Values) > 0 {
+		docElement.Language_sim = component.Parts.Language.Values[0]
+		docElement.Language_ssm = component.Parts.Language.Values[0]
+	}
+
 	docElement.Level_sim = component.Parts.Level.Values[0]
 
 	docElement.Location_si = component.Parts.Location.Values
 	docElement.Location_ssm = component.Parts.Location.Values
 
+	docElement.MaterialType_sim = append(docElement.MaterialType_sim,
+		util.CompactStringSlicePreserveOrder(component.Parts.MaterialType.Values)...)
+	docElement.MaterialType_ssm = append(docElement.MaterialType_ssm,
+		util.CompactStringSlicePreserveOrder(component.Parts.MaterialType.Values)...)
+
 	docElement.Name_sim = append(docElement.Name_ssm, component.Parts.Name.Values...)
 	docElement.Name_ssm = append(docElement.Name_ssm, component.Parts.NameElementAll.Values...)
-	docElement.Name_ssm = append(docElement.Name_ssm, component.Parts.Name.Values...)
 	docElement.Name_teim = append(docElement.Name_teim, component.Parts.NameElementAll.Values...)
 	docElement.Name_teim = append(docElement.Name_teim, component.Parts.Name.Values...)
 
@@ -216,6 +246,8 @@ func (component *Component) setSolrAddMessage() {
 	// This is identical to `docElement.ParentUnitTitles_ssm`.
 	docElement.Series_sim = component.Parts.AncestorUnitTitleList
 
+	docElement.Sort_ii = strconv.Itoa(component.Parts.Sort)
+
 	docElement.Subject_sim = component.Parts.SubjectForFacets.Values
 	docElement.Subject_ssm = component.Parts.Subject.Values
 	docElement.Subject_teim = append(docElement.Subject_teim, component.Parts.Subject.Values...)
@@ -231,6 +263,26 @@ func (component *Component) setSolrAddMessage() {
 	docElement.UnitDateNormal_sim = component.Parts.UnitDateNormal.Values
 	docElement.UnitDateNormal_ssm = component.Parts.UnitDateNormal.Values
 	docElement.UnitDateNormal_teim = component.Parts.UnitDateNormal.Values
+
+	docElement.UnitDate_ssm = append(docElement.UnitDate_ssm,
+		util.CompactStringSlicePreserveOrder(component.Parts.UnitDateDisplay.Values)...)
+	docElement.UnitDate_teim = append(docElement.UnitDate_teim, component.Parts.UnitDateNoTypeAttribute.Values...)
+
+	if len(component.Parts.UnitDateEnd.Values) > 0 {
+		docElement.UnitDateEnd_si = component.Parts.UnitDateEnd.Values[len(component.Parts.UnitDateEnd.Values)-1]
+	}
+	docElement.UnitDateEnd_sim = append(docElement.UnitDateEnd_sim,
+		util.CompactStringSlicePreserveOrder(component.Parts.UnitDateEnd.Values)...)
+	docElement.UnitDateEnd_ssm = append(docElement.UnitDateEnd_ssm,
+		util.CompactStringSlicePreserveOrder(component.Parts.UnitDateEnd.Values)...)
+
+	if len(component.Parts.UnitDateStart.Values) > 0 {
+		docElement.UnitDateStart_si = component.Parts.UnitDateStart.Values[len(component.Parts.UnitDateStart.Values)-1]
+	}
+	docElement.UnitDateStart_sim = append(docElement.UnitDateStart_sim,
+		util.CompactStringSlicePreserveOrder(component.Parts.UnitDateStart.Values)...)
+	docElement.UnitDateStart_ssm = append(docElement.UnitDateStart_ssm,
+		util.CompactStringSlicePreserveOrder(component.Parts.UnitDateStart.Values)...)
 
 	docElement.UnitID_ssm = component.Parts.DIDUnitID.Values
 	docElement.UnitID_teim = component.Parts.DIDUnitID.Values

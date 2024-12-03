@@ -99,19 +99,30 @@ func (component *Component) setParentForSort(node types.Node) error {
 func (component *Component) setSeriesForSort() error {
 	parts := &component.Parts
 
-	ancestorUnitTitleHTMLValues := []string{}
+	titlesForSeriesSort := []string{}
 	for _, ancestorUnitTitle := range parts.AncestorUnitTitleList {
 		ancestorUnitTitleHTMLValue, err := eadutil.MakeTitleHTML(ancestorUnitTitle)
 		if err != nil {
 			return err
 		}
 
-		ancestorUnitTitleHTMLValues = append(ancestorUnitTitleHTMLValues,
+		titlesForSeriesSort = append(titlesForSeriesSort,
 			ancestorUnitTitleHTMLValue)
 	}
 
-	if len(ancestorUnitTitleHTMLValues) > 0 {
-		parts.SeriesForSort = strings.Join(ancestorUnitTitleHTMLValues, " >> ")
+	if len(titlesForSeriesSort) > 0 {
+		if len(parts.UnitTitleHTML.Values) > 0 {
+			titlesForSeriesSort = append(titlesForSeriesSort, parts.UnitTitleHTML.Values[0])
+		} else {
+			// TODO: DLFA-238
+			// Remove this `else`.  v1 indexer does not check for empty
+			// <unittitle> elements when it does the join for heading titles, and
+			// will simply add a " >> " followed by nothing if <unittitle> does
+			// not exist:
+			// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10840529&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10840529
+			titlesForSeriesSort = append(titlesForSeriesSort, "")
+		}
+		parts.SeriesForSort = strings.Join(titlesForSeriesSort, " >> ")
 	} else {
 		if len(parts.UnitTitleHTML.Values) > 0 {
 			parts.SeriesForSort = parts.UnitTitleHTML.Values[0]
