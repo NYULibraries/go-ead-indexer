@@ -278,14 +278,30 @@ func getSolrFieldElementStringsInV1IndexerInsertionOrder(solrAddMessage SolrAddM
 		fieldTypeKind := field.Type().Kind()
 		if fieldTypeKind == reflect.Slice {
 			for _, fieldValue := range field.Interface().([]string) {
-				if util.IsNonEmptyString(fieldValue) {
+				// TODO: DLFA-238
+				// Re-enable non-empty string checks.  v1 indexer does not filter
+				// out all whitespace values, it only filters out empty strings:
+				// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10840271&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10840271
+				// This is a DLFA-238 TODO within a function that is itself a DLFA-238 TODO.
+				// Putting this here in case any of the code ends up being copy-pasted
+				// into permanent functions.
+				// if util.IsNonEmptyString(fieldValue) {
+				if fieldValue != "" {
 					fieldsInV1IndexerInsertionOrder = append(fieldsInV1IndexerInsertionOrder,
 						eadutil.MakeSolrAddMessageFieldElementString(fieldName, fieldValue))
 				}
 			}
 		} else if fieldTypeKind == reflect.String {
 			fieldValue := field.String()
-			if util.IsNonEmptyString(fieldValue) {
+			/// TODO: DLFA-238
+			// Re-enable non-empty string checks.  v1 indexer does not filter
+			// out all whitespace values, it only filters out empty strings:
+			// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10840271&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10840271
+			// This is a DLFA-238 TODO within a function that is itself a DLFA-238 TODO.
+			// Putting this here in case any of the code ends up being copy-pasted
+			// into permanent functions.
+			// if util.IsNonEmptyString(fieldValue) {
+			if fieldValue != "" {
 				fieldsInV1IndexerInsertionOrder = append(fieldsInV1IndexerInsertionOrder,
 					eadutil.MakeSolrAddMessageFieldElementString(fieldName, fieldValue))
 			}
