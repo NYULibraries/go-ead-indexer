@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="id">arc_212_plymouth_beecheraspace_ref340_gbv</field>
+    <field name="ead_ssi">arc_212_plymouth_beecher</field>
+    <field name="parent_ssi">aspace_ref302_rr8</field>
+    <field name="parent_ssm">aspace_ref238_a85</field>
+    <field name="parent_ssm">aspace_ref302_rr8</field>
+    <field name="parent_unittitles_ssm">Series 2: Plymouth Church</field>
+    <field name="parent_unittitles_ssm">
+      Section 4: Church Organizations
+    </field>
+    <field name="parent_unittitles_teim">Series 2: Plymouth Church</field>
+    <field name="parent_unittitles_teim">
+      Section 4: Church Organizations
+    </field>
+    <field name="component_level_isim">3</field>
+    <field name="component_children_bsi">false</field>
+    <field name="collection_sim">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field>
+    <field name="collection_ssm">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field>
+    <field name="collection_unitid_ssm">ARC.212</field>
+    <field name="level_sim">file</field>
+    <field name="unittitle_ssm">Miscellaneous Activities.</field>
+    <field name="unittitle_teim">Miscellaneous Activities.</field>
+    <field name="unitdate_normal_ssm">1937/1941</field>
+    <field name="unitdate_normal_teim">1937/1941</field>
+    <field name="unitdate_normal_sim">1937/1941</field>
+    <field name="unitdate_inclusive_teim">1937-1941</field>
+    <field name="ref_ssi">aspace_ref340_gbv</field>
+    <field name="repository_ssi">cbh</field>
+    <field name="repository_sim">cbh</field>
+    <field name="repository_ssm">cbh</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="location_ssm">Box: 25, Folder: 5</field>
+    <field name="location_si">Box: 25, Folder: 5</field>
+    <field name="collection_teim">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field>
+    <field name="collection_unitid_teim">ARC.212</field>
+    <field name="series_sim">Series 2: Plymouth Church</field>
+    <field name="series_sim">
+      Section 4: Church Organizations
+    </field>
+    <field name="series_si">Series 2: Plymouth Church &gt;&gt; 
+      Section 4: Church Organizations
+     &gt;&gt; Miscellaneous Activities.</field>
+    <field name="heading_ssm">Miscellaneous Activities.</field>
+    <field name="unitdate_start_sim">1937</field>
+    <field name="unitdate_start_ssm">1937</field>
+    <field name="unitdate_start_si">1937</field>
+    <field name="unitdate_end_sim">1941</field>
+    <field name="unitdate_end_ssm">1941</field>
+    <field name="unitdate_end_si">1941</field>
+    <field name="unitdate_ssm">Inclusive, 1937-1941</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="sort_ii">334</field>
+  </doc>
+</add>

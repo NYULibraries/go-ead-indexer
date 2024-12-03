@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="id">tam_143aspace_ref184</field>
+    <field name="ead_ssi">tam_143</field>
+    <field name="parent_ssi">aspace_ref173</field>
+    <field name="parent_ssm">aspace_ref141</field>
+    <field name="parent_ssm">aspace_ref173</field>
+    <field name="parent_unittitles_ssm">Series IV: Writings</field>
+    <field name="parent_unittitles_ssm">Subseries IV:D: Published Writings</field>
+    <field name="parent_unittitles_teim">Series IV: Writings</field>
+    <field name="parent_unittitles_teim">Subseries IV:D: Published Writings</field>
+    <field name="component_level_isim">3</field>
+    <field name="component_children_bsi">false</field>
+    <field name="collection_sim">Cedric Belfrage Papers</field>
+    <field name="collection_ssm">Cedric Belfrage Papers</field>
+    <field name="collection_unitid_ssm">TAM.143</field>
+    <field name="level_sim">otherlevel</field>
+    <field name="unittitle_ssm">'The Frightened Giant' proposal, reviews and correspondence.</field>
+    <field name="unittitle_teim">'The Frightened Giant' proposal, reviews and correspondence.</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/192553</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/192553</field>
+    <field name="unitdate_normal_ssm">1955/1957</field>
+    <field name="unitdate_normal_teim">1955/1957</field>
+    <field name="unitdate_normal_sim">1955/1957</field>
+    <field name="unitdate_inclusive_teim">1955-1957</field>
+    <field name="ref_ssi">aspace_ref184</field>
+    <field name="repository_ssi">tamwag</field>
+    <field name="repository_sim">tamwag</field>
+    <field name="repository_ssm">tamwag</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="location_ssm">Box: 12, Folder: 11</field>
+    <field name="location_si">Box: 12, Folder: 11</field>
+    <field name="collection_teim">Cedric Belfrage Papers</field>
+    <field name="collection_unitid_teim">TAM.143</field>
+    <field name="series_sim">Series IV: Writings</field>
+    <field name="series_sim">Subseries IV:D: Published Writings</field>
+    <field name="series_si">Series IV: Writings &gt;&gt; Subseries IV:D: Published Writings &gt;&gt; 'The Frightened Giant' proposal, reviews and correspondence.</field>
+    <field name="heading_ssm">'The Frightened Giant' proposal, reviews and correspondence.</field>
+    <field name="unitdate_start_sim">1955</field>
+    <field name="unitdate_start_ssm">1955</field>
+    <field name="unitdate_start_si">1955</field>
+    <field name="unitdate_end_sim">1957</field>
+    <field name="unitdate_end_ssm">1957</field>
+    <field name="unitdate_end_si">1957</field>
+    <field name="unitdate_ssm">Inclusive, 1955-1957</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="sort_ii">175</field>
+  </doc>
+</add>

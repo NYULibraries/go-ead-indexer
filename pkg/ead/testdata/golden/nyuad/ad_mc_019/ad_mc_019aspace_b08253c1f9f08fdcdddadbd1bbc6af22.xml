@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="id">ad_mc_019aspace_b08253c1f9f08fdcdddadbd1bbc6af22</field>
+    <field name="ead_ssi">ad_mc_019</field>
+    <field name="parent_ssi">aspace_05649e9824cd0a4a8638168101fe6ffb</field>
+    <field name="parent_ssm">aspace_05649e9824cd0a4a8638168101fe6ffb</field>
+    <field name="parent_unittitles_ssm">Arabian (Persian) Gulf</field>
+    <field name="parent_unittitles_teim">Arabian (Persian) Gulf</field>
+    <field name="component_level_isim">2</field>
+    <field name="component_children_bsi">false</field>
+    <field name="collection_sim">Map Collection, NYU Abu Dhabi Library</field>
+    <field name="collection_ssm">Map Collection, NYU Abu Dhabi Library</field>
+    <field name="collection_unitid_ssm">AD.MC.019</field>
+    <field name="level_sim">file</field>
+    <field name="unittitle_ssm">Iraq-Kuwait Boundary Demarcation Commission.  Takhṭīṭ al-ḥudūd al-dawlīyah bayna Jumhūrīyat al-ʻIrāq wa-Dawlat al-Kuwayt</field>
+    <field name="unittitle_teim">Iraq-Kuwait Boundary Demarcation Commission.  Takhṭīṭ al-ḥudūd al-dawlīyah bayna Jumhūrīyat al-ʻIrāq wa-Dawlat al-Kuwayt</field>
+    <field name="unitdate_normal_ssm">1993/1993</field>
+    <field name="unitdate_normal_teim">1993/1993</field>
+    <field name="unitdate_normal_sim">1993/1993</field>
+    <field name="unitdate_teim">1993</field>
+    <field name="phystech_teim">Publication data:  Kuwait : al-Umam al-Muttaḥidah, al-Lajnah</field>
+    <field name="phystech_teim">Library call number:  G7611.F2 1993 .I7</field>
+    <field name="ref_ssi">aspace_b08253c1f9f08fdcdddadbd1bbc6af22</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="location_ssm">map-case: D, drawer: 5</field>
+    <field name="location_si">map-case: D, drawer: 5</field>
+    <field name="collection_teim">Map Collection, NYU Abu Dhabi Library</field>
+    <field name="collection_unitid_teim">AD.MC.019</field>
+    <field name="series_sim">Arabian (Persian) Gulf</field>
+    <field name="series_si">Arabian (Persian) Gulf &gt;&gt; Iraq-Kuwait Boundary Demarcation Commission.  Takhṭīṭ al-ḥudūd al-dawlīyah bayna Jumhūrīyat al-ʻIrāq wa-Dawlat al-Kuwayt</field>
+    <field name="heading_ssm">Iraq-Kuwait Boundary Demarcation Commission.  Takhṭīṭ al-ḥudūd al-dawlīyah bayna Jumhūrīyat al-ʻIrāq wa-Dawlat al-Kuwayt</field>
+    <field name="unitdate_start_sim">1993</field>
+    <field name="unitdate_start_ssm">1993</field>
+    <field name="unitdate_start_si">1993</field>
+    <field name="unitdate_end_sim">1993</field>
+    <field name="unitdate_end_ssm">1993</field>
+    <field name="unitdate_end_si">1993</field>
+    <field name="unitdate_ssm">1993</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="sort_ii">10</field>
+  </doc>
+</add>

@@ -50,37 +50,40 @@ func TestMain(m *testing.M) {
 }
 
 func TestCollectionDocSolrAddMessage(t *testing.T) {
-	eadIDs := testutils.GetTestEADIDs()
+	testEADs := testutils.GetTestEADs()
 
-	for _, eadID := range eadIDs {
-		t.Run(eadID, func(t *testing.T) {
-			eadXML, err := testutils.GetEADFixtureValue(eadID)
+	for _, testEAD := range testEADs {
+		t.Run(testEAD, func(t *testing.T) {
+			eadXML, err := testutils.GetEADFixtureValue(testEAD)
 			if err != nil {
 				t.Fatal(err)
 			}
 
-			eadToTest, err := New("appdev", eadXML)
+			repositoryCode := testutils.ParseRepositoryCode(testEAD)
+			eadToTest, err := New(repositoryCode, eadXML)
 			if err != nil {
 				t.Fatal(err)
 			}
 
-			testCollectionDocSolrAddMessage(eadID, eadID,
+			eadID := testutils.ParseEADID(testEAD)
+			testCollectionDocSolrAddMessage(testEAD, eadID,
 				eadToTest.CollectionDoc.SolrAddMessage, t)
 		})
 	}
 }
 
 func TestComponentDocSolrAddMessage(t *testing.T) {
-	eadIDs := testutils.GetTestEADIDs()
+	testEADs := testutils.GetTestEADs()
 
-	for _, eadID := range eadIDs {
-		t.Run(eadID, func(t *testing.T) {
-			eadXML, err := testutils.GetEADFixtureValue(eadID)
+	for _, testEAD := range testEADs {
+		t.Run(testEAD, func(t *testing.T) {
+			eadXML, err := testutils.GetEADFixtureValue(testEAD)
 			if err != nil {
 				t.Fatal(err)
 			}
 
-			eadToTest, err := New("appdev", eadXML)
+			repositoryCode := testutils.ParseRepositoryCode(testEAD)
+			eadToTest, err := New(repositoryCode, eadXML)
 			if err != nil {
 				t.Fatal(err)
 			}
@@ -88,31 +91,31 @@ func TestComponentDocSolrAddMessage(t *testing.T) {
 			componentIDs := []string{}
 			for _, component := range *eadToTest.Components {
 				componentIDs = append(componentIDs, component.ID)
-				testComponentSolrAddMessage(eadID, component.ID,
+				testComponentSolrAddMessage(testEAD, component.ID,
 					component.SolrAddMessage, t)
 			}
 
-			testNoMissingComponents(eadID, componentIDs, t)
+			testNoMissingComponents(testEAD, componentIDs, t)
 		})
 	}
 }
 
-func testCollectionDocSolrAddMessage(eadID string, fileID string,
+func testCollectionDocSolrAddMessage(testEAD string, fileID string,
 	solrAddMessage collectiondoc.SolrAddMessage, t *testing.T) {
-	testSolrAddMessageXML(eadID, fileID, fmt.Sprintf("%s", solrAddMessage), t)
+	testSolrAddMessageXML(testEAD, fileID, fmt.Sprintf("%s", solrAddMessage), t)
 }
 
-func testComponentSolrAddMessage(eadID string, fileID string,
+func testComponentSolrAddMessage(testEAD string, fileID string,
 	solrAddMessage component.SolrAddMessage, t *testing.T) {
-	testSolrAddMessageXML(eadID, fileID, fmt.Sprintf("%s", solrAddMessage), t)
+	testSolrAddMessageXML(testEAD, fileID, fmt.Sprintf("%s", solrAddMessage), t)
 }
 
-func testNoMissingComponents(eadID string, componentIDs []string, t *testing.T) {
+func testNoMissingComponents(testEAD string, componentIDs []string, t *testing.T) {
 	missingComponents := []string{}
 
-	goldenFileIDs := testutils.GetGoldenFileIDs(eadID)
+	goldenFileIDs := testutils.GetGoldenFileIDs(testEAD)
 	goldenFileIDs = slices.DeleteFunc(goldenFileIDs, func(goldenFileID string) bool {
-		return goldenFileID == eadID
+		return goldenFileID == testEAD
 	})
 
 	for _, goldenFileID := range goldenFileIDs {
@@ -125,22 +128,22 @@ func testNoMissingComponents(eadID string, componentIDs []string, t *testing.T) 
 		slices.SortStableFunc(missingComponents, func(a string, b string) int {
 			return strings.Compare(a, b)
 		})
-		failMessage := fmt.Sprintf("`EAD.Components` for eadID %s is missing the following component IDs:\n%s",
-			eadID, strings.Join(missingComponents, "\n"))
+		failMessage := fmt.Sprintf("`EAD.Components` for testEAD %s is missing the following component IDs:\n%s",
+			testEAD, strings.Join(missingComponents, "\n"))
 		t.Errorf(failMessage)
 	}
 }
 
-func testSolrAddMessageXML(eadID string, fileID string,
+func testSolrAddMessageXML(testEAD string, fileID string,
 	actualValue string, t *testing.T) {
 	if *updateGoldenFiles {
-		err := testutils.UpdateGoldenFile(eadID, fileID, actualValue)
+		err := testutils.UpdateGoldenFile(testEAD, fileID, actualValue)
 		if err != nil {
 			t.Fatalf("Error updating golden file: %s", err)
 		}
 	}
 
-	goldenValue, err := testutils.GetGoldenFileValue(eadID, fileID)
+	goldenValue, err := testutils.GetGoldenFileValue(testEAD, fileID)
 	if err != nil {
 		if errors.Is(err, os.ErrNotExist) {
 			// This is a test fail, not a fatal test execution error.
@@ -157,14 +160,14 @@ func testSolrAddMessageXML(eadID string, fileID string,
 	}
 
 	if actualValue != goldenValue {
-		err := writeActualSolrXMLToTmp(eadID, fileID, actualValue)
+		err := writeActualSolrXMLToTmp(testEAD, fileID, actualValue)
 		if err != nil {
 			t.Fatalf("Error writing actual temp file for test case \"%s/%s\": %s",
-				eadID, fileID, err)
+				testEAD, fileID, err)
 		}
 
-		goldenFile := testutils.GoldenFilePath(eadID, fileID)
-		actualFile := tmpFile(eadID, fileID)
+		goldenFile := testutils.GoldenFilePath(testEAD, fileID)
+		actualFile := tmpFile(testEAD, fileID)
 		diff, err := util.DiffFiles(goldenFile, actualFile)
 		if err != nil {
 			t.Fatalf("Error diff'ing %s vs. %s: %s\n"+
@@ -177,12 +180,12 @@ func testSolrAddMessageXML(eadID string, fileID string,
 	}
 }
 
-func tmpFile(eadID string, fileID string) string {
-	return filepath.Join(tmpFilesDirPath, eadID, fileID)
+func tmpFile(testEAD string, fileID string) string {
+	return filepath.Join(tmpFilesDirPath, testEAD, fileID)
 }
 
-func writeActualSolrXMLToTmp(eadID string, fileID string, actual string) error {
-	tmpFile := tmpFile(eadID, fileID)
+func writeActualSolrXMLToTmp(testEAD string, fileID string, actual string) error {
+	tmpFile := tmpFile(testEAD, fileID)
 	err := os.MkdirAll(filepath.Dir(tmpFile), 0755)
 	if err != nil {
 		return err

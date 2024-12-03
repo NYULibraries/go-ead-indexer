@@ -2,6 +2,7 @@ package testutils
 
 import (
 	_ "embed"
+	"fmt"
 	"io/fs"
 	"os"
 	"path/filepath"
@@ -35,8 +36,8 @@ func init() {
 	goldenFilesDirPath = filepath.Join(testutilsPath, "..", "testdata", "golden")
 }
 
-func GetEADFixtureValue(eadID string) (string, error) {
-	return GetTestdataFileContents(eadFixturePath(eadID))
+func GetEADFixtureValue(testEAD string) (string, error) {
+	return GetTestdataFileContents(eadFixturePath(testEAD))
 }
 
 func GetGoldenFileValue(eadID string, fileID string) (string, error) {
@@ -70,12 +71,14 @@ func GetGoldenFileIDs(eadID string) []string {
 	return goldenFileIDs
 }
 
-func GetTestEADIDs() []string {
-	testEADIDs := []string{}
+func GetTestEADs() []string {
+	testEADs := []string{}
 
 	err := filepath.WalkDir(eadFixturesDirPath, func(path string, dirEntry fs.DirEntry, err error) error {
 		if !dirEntry.IsDir() && filepath.Ext(path) == ".xml" {
-			testEADIDs = append(testEADIDs, strings.TrimSuffix(filepath.Base(path), filepath.Ext(path)))
+			repositoryCode := filepath.Base(filepath.Dir(path))
+			eadID := strings.TrimSuffix(filepath.Base(path), filepath.Ext(path))
+			testEADs = append(testEADs, fmt.Sprintf("%s/%s", repositoryCode, eadID))
 		}
 		return nil
 	})
@@ -83,17 +86,25 @@ func GetTestEADIDs() []string {
 		panic(err)
 	}
 
-	return testEADIDs
+	return testEADs
 }
 
-func GoldenFilePath(eadID string, fileID string) string {
-	return filepath.Join(goldenFilesDirPath, eadID, fileID+".xml")
+func GoldenFilePath(testEAD string, fileID string) string {
+	return filepath.Join(goldenFilesDirPath, testEAD, fileID+".xml")
 }
 
-func UpdateGoldenFile(eadID string, fileID string, data string) error {
-	return os.WriteFile(GoldenFilePath(eadID, fileID), []byte(data), 0644)
+func ParseEADID(testEAD string) string {
+	return filepath.Base(testEAD)
 }
 
-func eadFixturePath(eadID string) string {
-	return filepath.Join(eadFixturesDirPath, eadID+".xml")
+func ParseRepositoryCode(testEAD string) string {
+	return filepath.Dir(testEAD)
+}
+
+func UpdateGoldenFile(testEAD string, fileID string, data string) error {
+	return os.WriteFile(GoldenFilePath(testEAD, fileID), []byte(data), 0644)
+}
+
+func eadFixturePath(testEAD string) string {
+	return filepath.Join(eadFixturesDirPath, testEAD+".xml")
 }

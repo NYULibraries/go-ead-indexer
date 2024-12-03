@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="id">ad_mc_030aspace_852a36e751cb035f2ea54830e5b232ef</field>
+    <field name="ead_ssi">ad_mc_030</field>
+    <field name="parent_ssi">aspace_7e83d1d529a2971bd0adb1943face441</field>
+    <field name="parent_ssm">aspace_7e83d1d529a2971bd0adb1943face441</field>
+    <field name="parent_unittitles_ssm">Palestine Exploration Fund 1866-67</field>
+    <field name="parent_unittitles_teim">Palestine Exploration Fund 1866-67</field>
+    <field name="component_level_isim">2</field>
+    <field name="component_children_bsi">false</field>
+    <field name="collection_sim">Hisham Khatib Collection - Prints</field>
+    <field name="collection_ssm">Hisham Khatib Collection - Prints</field>
+    <field name="collection_unitid_ssm">AD.MC.030</field>
+    <field name="level_sim">file</field>
+    <field name="unittitle_ssm">Original PEF catalogue description of ref422 </field>
+    <field name="unittitle_teim">Original PEF catalogue description of ref422 </field>
+    <field name="unitid_teim">ref423</field>
+    <field name="unitid_ssm">ref423</field>
+    <field name="unitdate_teim">no date</field>
+    <field name="genreform_teim">Printed Materials</field>
+    <field name="genreform_ssm">Printed Materials</field>
+    <field name="dao_teim">Original PEF catalogue description of ref422 : no date</field>
+    <field name="dao_teim">Original PEF catalogue description of ref422 : no date</field>
+    <field name="dao_ssm">Original PEF catalogue description of ref422 : no date</field>
+    <field name="dao_ssm">Original PEF catalogue description of ref422 : no date</field>
+    <field name="ref_ssi">aspace_852a36e751cb035f2ea54830e5b232ef</field>
+    <field name="repository_ssi">akkasah</field>
+    <field name="repository_sim">akkasah</field>
+    <field name="repository_ssm">akkasah</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="location_ssm">object: Digital Copy Only - 030_ref422-ref425</field>
+    <field name="location_si">object: Digital Copy Only - 030_ref422-ref425</field>
+    <field name="dao_sim">Online Access</field>
+    <field name="collection_teim">Hisham Khatib Collection - Prints</field>
+    <field name="collection_unitid_teim">AD.MC.030</field>
+    <field name="series_sim">Palestine Exploration Fund 1866-67</field>
+    <field name="series_si">Palestine Exploration Fund 1866-67 &gt;&gt; Original PEF catalogue description of ref422 </field>
+    <field name="material_type_sim">Printed Materials</field>
+    <field name="material_type_ssm">Printed Materials</field>
+    <field name="heading_ssm">Original PEF catalogue description of ref422 </field>
+    <field name="unitdate_ssm">no date</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="sort_ii">413</field>
+  </doc>
+</add>

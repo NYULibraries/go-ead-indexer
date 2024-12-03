@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="id">mss_420aspace_364f7021f7d8c6f6ef9f1e66989db698</field>
+    <field name="ead_ssi">mss_420</field>
+    <field name="parent_ssi">aspace_ade9deb88b6e2ec824ec693eb0011149</field>
+    <field name="parent_ssm">aspace_ade9deb88b6e2ec824ec693eb0011149</field>
+    <field name="parent_unittitles_ssm">Series I. Recordings</field>
+    <field name="parent_unittitles_teim">Series I. Recordings</field>
+    <field name="component_level_isim">2</field>
+    <field name="component_children_bsi">false</field>
+    <field name="collection_sim">Hot Peaches Records</field>
+    <field name="collection_ssm">Hot Peaches Records</field>
+    <field name="collection_unitid_ssm">MSS.420</field>
+    <field name="level_sim">file</field>
+    <field name="unittitle_ssm">Jimmy Camicia</field>
+    <field name="unittitle_teim">Jimmy Camicia</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/979708</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/979708</field>
+    <field name="unitdate_normal_ssm">1979-10-20/1979-10-20</field>
+    <field name="unitdate_normal_teim">1979-10-20/1979-10-20</field>
+    <field name="unitdate_normal_sim">1979-10-20/1979-10-20</field>
+    <field name="unitdate_teim">October 20, 1979</field>
+    <field name="ref_ssi">aspace_364f7021f7d8c6f6ef9f1e66989db698</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="location_ssm">Box: Shared Fales 103, audiocassette: 420.0152</field>
+    <field name="location_si">Box: Shared Fales 103, audiocassette: 420.0152</field>
+    <field name="collection_teim">Hot Peaches Records</field>
+    <field name="collection_unitid_teim">MSS.420</field>
+    <field name="series_sim">Series I. Recordings</field>
+    <field name="series_si">Series I. Recordings &gt;&gt; Jimmy Camicia</field>
+    <field name="heading_ssm">Jimmy Camicia</field>
+    <field name="unitdate_ssm">October 20, 1979</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="sort_ii">44</field>
+  </doc>
+</add>

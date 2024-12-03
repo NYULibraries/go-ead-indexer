@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="id">mss_420aspace_bfde13ef203ed1303e9119f950172fda</field>
+    <field name="ead_ssi">mss_420</field>
+    <field name="parent_ssi">aspace_f4ab9d177f51cc8a94bfa72e13949ae0</field>
+    <field name="parent_ssm">aspace_f4ab9d177f51cc8a94bfa72e13949ae0</field>
+    <field name="parent_unittitles_ssm">Series II. Scripts</field>
+    <field name="parent_unittitles_teim">Series II. Scripts</field>
+    <field name="component_level_isim">2</field>
+    <field name="component_children_bsi">false</field>
+    <field name="collection_sim">Hot Peaches Records</field>
+    <field name="collection_ssm">Hot Peaches Records</field>
+    <field name="collection_unitid_ssm">MSS.420</field>
+    <field name="level_sim">file</field>
+    <field name="unittitle_ssm">&lt;em&gt;Ice Age&lt;/em&gt; / &lt;em&gt;The Penguin&lt;/em&gt;</field>
+    <field name="unittitle_teim">Ice Age / The Penguin</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/971650</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/971650</field>
+    <field name="unitdate_normal_ssm">1993/1993</field>
+    <field name="unitdate_normal_teim">1993/1993</field>
+    <field name="unitdate_normal_sim">1993/1993</field>
+    <field name="unitdate_teim">November 1993</field>
+    <field name="ref_ssi">aspace_bfde13ef203ed1303e9119f950172fda</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="location_ssm">Box: 7, Folder: 12</field>
+    <field name="location_si">Box: 7, Folder: 12</field>
+    <field name="collection_teim">Hot Peaches Records</field>
+    <field name="collection_unitid_teim">MSS.420</field>
+    <field name="series_sim">Series II. Scripts</field>
+    <field name="series_si">Series II. Scripts &gt;&gt; &lt;em&gt;Ice Age&lt;/em&gt; / &lt;em&gt;The Penguin&lt;/em&gt;</field>
+    <field name="heading_ssm">Ice Age / The Penguin</field>
+    <field name="unitdate_start_sim">1993</field>
+    <field name="unitdate_start_ssm">1993</field>
+    <field name="unitdate_start_si">1993</field>
+    <field name="unitdate_end_sim">1993</field>
+    <field name="unitdate_end_ssm">1993</field>
+    <field name="unitdate_end_si">1993</field>
+    <field name="unitdate_ssm">November 1993</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="sort_ii">232</field>
+  </doc>
+</add>

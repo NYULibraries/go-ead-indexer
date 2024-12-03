@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="id">ms347_foundling_hospitalaspace_ref4_l87</field>
+    <field name="ead_ssi">ms347_foundling_hospital</field>
+    <field name="component_level_isim">1</field>
+    <field name="component_children_bsi">true</field>
+    <field name="collection_sim">New York Foundling Hospital records</field>
+    <field name="collection_ssm">New York Foundling Hospital records</field>
+    <field name="collection_unitid_ssm">MS 347</field>
+    <field name="level_sim">series</field>
+    <field name="unittitle_ssm">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008</field>
+    <field name="unittitle_teim">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008</field>
+    <field name="scopecontent_teim">This series consists of 47 subseries, arranged alphabetically by program, center or department, using categories created mostly by Sister Marilda Joseph Aiello or by other representatives of the Foundling.  Many subseries contain only a few folders, or sometimes a single folder, of material.  Materials include correspondence, proposals, reports, pamphlets or brochures, and clippings.  Many subseries contain photographic prints, arranged at the end of the subseries.</field>
+    <field name="scopecontent_teim">The bulk of the individual programs collected in this series were initiated in the 1970's-1990's.  There are, however, significant exceptions, including the Boarding Department and the Ladies Auxiliary which both began in 1869, St. Joseph's-by-the-Sea which began in 1910, and Nurse Training which began in 1927.</field>
+    <field name="scopecontent_teim">The records of the St. Agatha Home for Children are not collected in this series.  They are arranged separately as Series V, because the program operated independently from the Foundling from 1884 to 1977.  Thereafter, it became a program of the Foundling.  </field>
+    <field name="scopecontent_teim">The scope and content notes for some subseries refer the researcher to other subseries which may also have pertinent information. </field>
+    <field name="ref_ssi">aspace_ref4_l87</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="collection_teim">New York Foundling Hospital records</field>
+    <field name="collection_unitid_teim">MS 347</field>
+    <field name="series_si">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008</field>
+    <field name="heading_ssm">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="sort_ii">326</field>
+  </doc>
+</add>

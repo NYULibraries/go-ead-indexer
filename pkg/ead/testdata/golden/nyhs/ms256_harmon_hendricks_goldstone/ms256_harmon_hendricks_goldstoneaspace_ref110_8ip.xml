@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="id">ms256_harmon_hendricks_goldstoneaspace_ref110_8ip</field>
+    <field name="ead_ssi">ms256_harmon_hendricks_goldstone</field>
+    <field name="component_level_isim">1</field>
+    <field name="component_children_bsi">true</field>
+    <field name="collection_sim">Harmon Hendricks Goldstone Papers</field>
+    <field name="collection_ssm">Harmon Hendricks Goldstone Papers</field>
+    <field name="collection_unitid_ssm">MS 256</field>
+    <field name="level_sim">series</field>
+    <field name="unittitle_ssm">Series VIII. Oversized Materials</field>
+    <field name="unittitle_teim">Series VIII. Oversized Materials</field>
+    <field name="scopecontent_teim">This series consists of miscellaneous oversized materials housed separately.  The call phrase for these materials is Y- Goldstone, Harmon Hendricks. </field>
+    <field name="scopecontent_teim">The Oversized Material series is located with the Oversize Manuscripts Collection, 1648-1998.</field>
+    <field name="ref_ssi">aspace_ref110_8ip</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="collection_teim">Harmon Hendricks Goldstone Papers</field>
+    <field name="collection_unitid_teim">MS 256</field>
+    <field name="series_si">Series VIII. Oversized Materials</field>
+    <field name="heading_ssm">Series VIII. Oversized Materials</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="sort_ii">83</field>
+  </doc>
+</add>

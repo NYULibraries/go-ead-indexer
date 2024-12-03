@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="id">ms347_foundling_hospitalaspace_ref366_f8y</field>
+    <field name="ead_ssi">ms347_foundling_hospital</field>
+    <field name="parent_ssi">aspace_ref4_l87</field>
+    <field name="parent_ssm">aspace_ref4_l87</field>
+    <field name="parent_unittitles_ssm">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008</field>
+    <field name="parent_unittitles_teim">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008</field>
+    <field name="component_level_isim">2</field>
+    <field name="component_children_bsi">true</field>
+    <field name="collection_sim">New York Foundling Hospital records</field>
+    <field name="collection_ssm">New York Foundling Hospital records</field>
+    <field name="collection_unitid_ssm">MS 347</field>
+    <field name="level_sim">subseries</field>
+    <field name="unittitle_ssm">Subseries IV.6. Boarding Department and Foster Care, 1916-1995</field>
+    <field name="unittitle_teim">Subseries IV.6. Boarding Department and Foster Care, 1916-1995</field>
+    <field name="scopecontent_teim">This subseries contains documents related to the Boarding Department, the Homefinding and Placement Departments, which originated as divisions of the Boarding Department, and the Foster Boarding Home Departments of the NY Foundling Hospital, and to foster care in general at the Foundling.  Materials include reports, newsletters, pamphlets, correspondence, memos, photographic prints, and clippings.  </field>
+    <field name="scopecontent_teim">Correspondence with Special Services for Children (Box 22, folders 14-17) includes correspondence related to Foundling programs that did not provide foster care services, as well as programs that did.  All correspondence is kept in this subseries as per original order.</field>
+    <field name="scopecontent_teim">From the Foundling's inception to the present day, a large part of the organization's work has involved boarding and foster care services.  Many other series and subseries in this collection contain documents relating to boarding and foster care, including but not limited to the Series IV subseries Adoption, AOBH, Blaine Hall, Bronx Community Services, St. Joseph's-by-the-Sea, and the Westchester Office.</field>
+    <field name="scopecontent_teim">Newsletters of the Association of Foster Parents 1955-1966 may be found in Series VII.   </field>
+    <field name="scopecontent_teim">Restricted volumes of the Boarding Department are located in Series XVI.</field>
+    <field name="ref_ssi">aspace_ref366_f8y</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="collection_teim">New York Foundling Hospital records</field>
+    <field name="collection_unitid_teim">MS 347</field>
+    <field name="series_sim">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008</field>
+    <field name="series_si">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008 &gt;&gt; Subseries IV.6. Boarding Department and Foster Care, 1916-1995</field>
+    <field name="heading_ssm">Subseries IV.6. Boarding Department and Foster Care, 1916-1995</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="sort_ii">350</field>
+  </doc>
+</add>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="id">ms256_harmon_hendricks_goldstoneaspace_ref53_icl</field>
+    <field name="ead_ssi">ms256_harmon_hendricks_goldstone</field>
+    <field name="component_level_isim">1</field>
+    <field name="component_children_bsi">true</field>
+    <field name="collection_sim">Harmon Hendricks Goldstone Papers</field>
+    <field name="collection_ssm">Harmon Hendricks Goldstone Papers</field>
+    <field name="collection_unitid_ssm">MS 256</field>
+    <field name="level_sim">series</field>
+    <field name="unittitle_ssm">Series III. Scrapbooks</field>
+    <field name="unittitle_teim">Series III. Scrapbooks</field>
+    <field name="scopecontent_teim">This series is composed of personal and professional scrapbooks created either by Harmon Goldstone or a family member spanning from 1906 to 1978. The professional scrapbooks primarily deal with the Landmarks Preservation Commission. His other professional scrapbooks concern the Junior Council of MOMA, Municipal Arts Society, and Goldstone's book, History Preserved: New York City Landmarks and Historic Districts.</field>
+    <field name="scopecontent_teim">Notable among the personal items is the wedding scrapbook of his parents, Aline May Lewis and Lafayette Anthony Goldstone, who married on June 10, 1908.</field>
+    <field name="title_teim">History Preserved: New York City Landmarks and Historic Districts.</field>
+    <field name="title_ssm">History Preserved: New York City Landmarks and Historic Districts.</field>
+    <field name="ref_ssi">aspace_ref53_icl</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="collection_teim">Harmon Hendricks Goldstone Papers</field>
+    <field name="collection_unitid_teim">MS 256</field>
+    <field name="series_si">Series III. Scrapbooks</field>
+    <field name="heading_ssm">Series III. Scrapbooks</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="sort_ii">25</field>
+  </doc>
+</add>
