@@ -52,7 +52,7 @@ func (component *Component) makeRootContainerSliceAndParentChildContainerMap() (
 
 // TODO: Do we need to have anything in `CollectionDoc.Part.Source` for these?
 func (component *Component) setComplexParts() error {
-	component.setChronListText()
+	component.setChronListComplex()
 	component.setCreatorComplex()
 	component.setDAO()
 	component.setDateRange()
@@ -89,17 +89,17 @@ func (component *Component) setCreatorComplex() {
 	parts.CreatorComplex.Values = creatorComplexValues
 }
 
-func (component *Component) setChronListText() {
+func (component *Component) setChronListComplex() {
 	parts := &component.Parts
 
-	chronListTextValues := []string{}
+	chronListComplexValues := []string{}
 	for _, chronListValue := range parts.ChronList.Values {
 		if util.IsNonEmptyString(chronListValue) {
-			chronListTextValues = append(chronListTextValues, chronListValue)
+			chronListComplexValues = append(chronListComplexValues, strings.TrimSpace(chronListValue))
 		}
 	}
 
-	parts.ChronListText.Values = chronListTextValues
+	parts.ChronListComplex.Values = chronListComplexValues
 }
 
 func (component *Component) setDAO() {

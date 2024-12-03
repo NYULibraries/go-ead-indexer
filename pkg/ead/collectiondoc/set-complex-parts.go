@@ -2,6 +2,7 @@ package collectiondoc
 
 import (
 	"go-ead-indexer/pkg/ead/eadutil"
+	"go-ead-indexer/pkg/util"
 	"strings"
 )
 
@@ -37,7 +38,9 @@ func (collectionDoc *CollectionDoc) setChronListComplex() {
 
 	chronListComplexValues := []string{}
 	for _, chronListValue := range parts.ChronList.Values {
-		chronListComplexValues = append(chronListComplexValues, strings.TrimSpace(chronListValue))
+		if util.IsNonEmptyString(chronListValue) {
+			chronListComplexValues = append(chronListComplexValues, strings.TrimSpace(chronListValue))
+		}
 	}
 
 	parts.ChronListComplex.Values = chronListComplexValues

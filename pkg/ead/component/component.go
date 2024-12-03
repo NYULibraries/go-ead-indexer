@@ -39,7 +39,7 @@ type ComponentCollectionDocParts struct {
 }
 
 type ComponentComplexParts struct {
-	ChronListText    ComponentPart `json:"chron_list_text"`
+	ChronListComplex ComponentPart `json:"chron_list_complex"`
 	CreatorComplex   ComponentPart `json:"creator_complex"`
 	DAO              ComponentPart `json:"dao"`
 	DateRange        ComponentPart `json:"date_range"`
