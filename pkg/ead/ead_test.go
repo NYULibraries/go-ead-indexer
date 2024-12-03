@@ -19,8 +19,32 @@ var tmpFilesDirPath = filepath.Join("testdata", "tmp", "actual")
 
 var updateGoldenFiles = flag.Bool("update-golden-files", false, "update the golden files")
 
+func clean() error {
+	err := os.RemoveAll(tmpFilesDirPath)
+	if err != nil {
+		return err
+	}
+
+	err = os.MkdirAll(tmpFilesDirPath, 0700)
+	if err != nil {
+		return err
+	}
+
+	_, err = os.Create(filepath.Join(tmpFilesDirPath, ".gitkeep"))
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func TestMain(m *testing.M) {
 	flag.Parse()
+
+	err := clean()
+	if err != nil {
+		panic(err)
+	}
 
 	os.Exit(m.Run())
 }
