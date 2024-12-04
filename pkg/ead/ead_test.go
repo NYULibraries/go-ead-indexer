@@ -19,25 +19,6 @@ var tmpFilesDirPath = filepath.Join("testdata", "tmp", "actual")
 
 var updateGoldenFiles = flag.Bool("update-golden-files", false, "update the golden files")
 
-func clean() error {
-	err := os.RemoveAll(tmpFilesDirPath)
-	if err != nil {
-		return err
-	}
-
-	err = os.MkdirAll(tmpFilesDirPath, 0700)
-	if err != nil {
-		return err
-	}
-
-	_, err = os.Create(filepath.Join(tmpFilesDirPath, ".gitkeep"))
-	if err != nil {
-		return err
-	}
-
-	return nil
-}
-
 func TestMain(m *testing.M) {
 	flag.Parse()
 
@@ -98,6 +79,25 @@ func TestComponentDocSolrAddMessage(t *testing.T) {
 			testNoMissingComponents(testEAD, componentIDs, t)
 		})
 	}
+}
+
+func clean() error {
+	err := os.RemoveAll(tmpFilesDirPath)
+	if err != nil {
+		return err
+	}
+
+	err = os.MkdirAll(tmpFilesDirPath, 0700)
+	if err != nil {
+		return err
+	}
+
+	_, err = os.Create(filepath.Join(tmpFilesDirPath, ".gitkeep"))
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
 
 func testCollectionDocSolrAddMessage(testEAD string, fileID string,
