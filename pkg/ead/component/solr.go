@@ -52,6 +52,7 @@ type DocElement struct {
 	UnitDateNormal_teim    []string `xml:"unitdate_normal_teim"`
 	UnitDateNormal_sim     []string `xml:"unitdate_normal_sim"`
 	UnitDate_teim          []string `xml:"unitdate_teim"`
+	UnitDateBulk_teim      []string `xml:"unitdate_bulk_teim"`
 	UnitDateInclusive_teim []string `xml:"unitdate_inclusive_teim"`
 	ScopeContent_teim      []string `xml:"scopecontent_teim"`
 	BiogHist_teim          []string `xml:"bioghist_teim"`
@@ -285,6 +286,8 @@ func (component *Component) setSolrAddMessage() {
 
 	docElement.Title_ssm = component.Parts.Title.Values
 	docElement.Title_teim = component.Parts.Title.Values
+
+	docElement.UnitDateBulk_teim = component.Parts.UnitDateBulk.Values
 
 	docElement.UnitDateInclusive_teim = component.Parts.UnitDateInclusive.Values
 
