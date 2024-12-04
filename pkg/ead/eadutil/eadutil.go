@@ -440,7 +440,12 @@ func convertEADTagsWithRenderAttributesToHTML(eadString string) (string, error) 
 			startTagNames = startTagNames[:len(startTagNames)-1]
 
 		case xml.CharData:
-			htmlString += string(token)
+			buffer := new(strings.Builder)
+			if err := xml.EscapeText(buffer, token); err != nil {
+				return htmlString, err
+			}
+
+			htmlString += buffer.String()
 		}
 	}
 

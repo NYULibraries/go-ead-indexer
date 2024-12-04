@@ -182,6 +182,8 @@ func testConvertEADToHTML_Specificity(t *testing.T) {
 		"3",
 		`<emph id="underline" altrender="bold">EMPH [id="underline" altrender="bold"]</emph>`,
 		"4",
+		`Thomson, John.  Arabia, Egypt, Abyssinia, Red Sea &amp;c.`,
+		"5",
 	}
 	eadString := strings.Join(eadStringTokens, "")
 
@@ -191,10 +193,12 @@ func testConvertEADToHTML_Specificity(t *testing.T) {
 		"1",
 		"<title>TITLE [no attributes]</title>",
 		"2",
-		`<em id="underline" altrender="bold">EMPH [render="underline"]</em>`,
+		`<em id="underline" altrender="bold">EMPH [render=&#34;underline&#34;]</em>`,
 		"3",
-		`<emph id="underline" altrender="bold">EMPH [id="underline" altrender="bold"]</emph>`,
+		`<emph id="underline" altrender="bold">EMPH [id=&#34;underline&#34; altrender=&#34;bold&#34;]</emph>`,
 		"4",
+		`Thomson, John.  Arabia, Egypt, Abyssinia, Red Sea &amp;c.`,
+		"5",
 	}
 	expectedHTMLString := strings.Join(expectedHTMLStringTokens, "")
 
