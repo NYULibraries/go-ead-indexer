@@ -35,8 +35,6 @@ type DocElement struct {
 	UnitTitle_ssm          []string `xml:"unittitle_ssm"`
 	UnitID_teim            []string `xml:"unitid_teim"`
 	UnitID_ssm             []string `xml:"unitid_ssm"`
-	Language_ssm           string   `xml:"language_ssm"`
-	Language_sim           string   `xml:"language_sim"`
 	Abstract_teim          []string `xml:"abstract_teim"`
 	Abstract_ssm           []string `xml:"abstract_ssm"`
 	Creator_teim           []string `xml:"creator_teim"`
@@ -104,6 +102,8 @@ type DocElement struct {
 	Note_ssm      []string `xml:"note_ssm"`
 	Note_teim     []string `xml:"note_teim"`
 	UnitDate_teim []string `xml:"unitdate_teim"`
+	Language_sim  string   `xml:"language_sim"`
+	Language_ssm  string   `xml:"language_ssm"`
 }
 
 func (collectionDoc *CollectionDoc) setSolrAddMessage() {
