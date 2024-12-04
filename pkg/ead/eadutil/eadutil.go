@@ -28,6 +28,15 @@ type DateRange struct {
 	EndDate   int
 }
 
+// TODO: DLFA-238
+// Remove these `consts` for left- and right- padding for matching v1
+// indexer bug behavior described here:
+// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506
+const daoDescriptionParagraphLeftPadString = "\n          "
+const daoDescriptionParagraphRightPadString = "\n        "
+const unitTitleLeftPadString = "\n      "
+const unitTitleRightPadString = "\n    "
+
 const undated = "undated & other"
 
 var allowedHTMLTags = util.CompactStringSlicePreserveOrder(
@@ -285,6 +294,23 @@ func MakeTitleHTML(unitTitle string) (string, error) {
 	return titleHTML, nil
 }
 
+// TODO: DLFA-238
+// Remove this left- and right- padding for matching v1 indexer bug
+// behavior described here:
+// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506
+func PadDAODescriptionParagraphIfNeeded(xmlString string, value string) string {
+	return padValueIfNeeded(xmlString, value, daoDescriptionParagraphLeftPadString,
+		daoDescriptionParagraphRightPadString)
+}
+
+// TODO: DLFA-238
+// Remove this left- and right- padding for matching v1 indexer bug
+// behavior described here:
+// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506
+func PadUnitTitleIfNeeded(xmlString string, value string) string {
+	return padValueIfNeeded(xmlString, value, unitTitleLeftPadString, unitTitleRightPadString)
+}
+
 // Note that this function only removes child nodes, it does not recursively
 // remove all descendant notes which match `elementName`.
 //
@@ -477,6 +503,26 @@ func isDateInRange(dateString string, dateRange DateRange) bool {
 
 	return (startDateInt >= dateRange.StartDate && startDateInt <= dateRange.EndDate) ||
 		(endDateInt >= dateRange.StartDate && endDateInt <= dateRange.EndDate)
+}
+
+// TODO: DLFA-238
+// Remove this left- and right- padding for matching v1 indexer bug
+// behavior described here:
+// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506
+func padValueIfNeeded(xmlString string, value string, leftPadString string, rightPadString string) string {
+	// Determine if the <unittitle> contents is wrapped in a single EAD tag:
+	//     <emph render="italic">A Christmas Card</emph>
+	// ...as opposed to something like this:
+	//     <emph render="italic">A Christmas Card</emph>, Also Known As <emph render="italic">X-mas Cards</emph>
+	// This is not an optimal or risk-free method, but this is a temporary
+	// function, and we want it to be fast (to pass the DLFA-201 1M+ test).
+	if strings.HasPrefix(xmlString, "<") &&
+		strings.HasSuffix(xmlString, ">") &&
+		(strings.Count(xmlString[1:len(xmlString)-1], "<") == 1) {
+		return leftPadString + value + rightPadString
+	} else {
+		return value
+	}
 }
 
 func replaceMARCSubfieldDemarcatorsInSlice(stringSlice []string) []string {
