@@ -115,7 +115,7 @@ func testNoMissingComponents(testEAD string, componentIDs []string, t *testing.T
 
 	goldenFileIDs := testutils.GetGoldenFileIDs(testEAD)
 	goldenFileIDs = slices.DeleteFunc(goldenFileIDs, func(goldenFileID string) bool {
-		return goldenFileID == testEAD
+		return goldenFileID == testutils.ParseEADID(testEAD)
 	})
 
 	for _, goldenFileID := range goldenFileIDs {
