@@ -16,8 +16,10 @@ const ARCHIVAL_SERIES_FORMAT = "Archival Series"
 // Remove these `consts` for left- and right- padding for matching v1
 // indexer bug behavior described here:
 // https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506
-const leftPadString = "\n      "
-const rightPadString = "\n    "
+const daoDescriptionParagraphLeftPadString = "\n          "
+const daoDescriptionParagraphRightPadString = "\n        "
+const unitTitleLeftPadString = "\n      "
+const unitTitleRightPadString = "\n    "
 
 var archivalSeriesRegExp = regexp.MustCompile(`\Aseries|subseries`)
 
@@ -62,6 +64,13 @@ func (component *Component) setComplexParts() error {
 	component.setChronListComplex()
 	component.setCreatorComplex()
 	component.setDAO()
+
+	// TODO: DLFA-238
+	// Remove this override which adds  left- and right- padding for matching v1
+	// indexer bug behavior described here:
+	// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506
+	component.setDAODescriptionParagraph()
+
 	component.setDateRange()
 
 	// TODO: DLFA-238
@@ -126,6 +135,32 @@ func (component *Component) setDAO() {
 	}
 }
 
+// TODO: DLFA-238
+// Remove this override which adds  left- and right- padding for matching v1
+// indexer bug behavior described here:
+// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506
+func (component *Component) setDAODescriptionParagraph() {
+	parts := &component.Parts
+
+	paddedDAODescriptionParagraph := []string{}
+	numDAODescriptionParagraph := len(parts.DAODescriptionParagraph.Values)
+	for i := 0; i < numDAODescriptionParagraph; i++ {
+		daoDescriptionParagraphValue := eadutil.StripOpenAndCloseTags(parts.DAODescriptionParagraph.Values[i])
+		daoDescriptionParagraphXMLString := eadutil.StripOpenAndCloseTags(parts.DAODescriptionParagraph.XMLStrings[i])
+
+		if needsPadding(daoDescriptionParagraphXMLString) {
+			// According to https://dev.to/pmalhaire/concatenate-strings-in-golang-a-quick-benchmark-4ahh,
+			// "+" is faster than `fmt.Sprintf()`.
+			daoDescriptionParagraphValue = daoDescriptionParagraphLeftPadString +
+				daoDescriptionParagraphValue + daoDescriptionParagraphRightPadString
+		}
+
+		paddedDAODescriptionParagraph = append(paddedDAODescriptionParagraph, daoDescriptionParagraphValue)
+	}
+
+	parts.DAODescriptionParagraph.Values = paddedDAODescriptionParagraph
+}
+
 func (component *Component) setDateRange() {
 	component.Parts.DateRange.Values =
 		eadutil.GetDateRange(component.Parts.UnitDateNormal.Values)
@@ -147,7 +182,7 @@ func (component *Component) setDIDUnitTitle() {
 		if needsPadding(unitTitleXMLString) {
 			// According to https://dev.to/pmalhaire/concatenate-strings-in-golang-a-quick-benchmark-4ahh,
 			// "+" is faster than `fmt.Sprintf()`.
-			unitTitleValue = leftPadString + unitTitleValue + rightPadString
+			unitTitleValue = unitTitleLeftPadString + unitTitleValue + unitTitleRightPadString
 		}
 
 		paddedDIDUnitTitleValues = append(paddedDIDUnitTitleValues, unitTitleValue)
@@ -357,7 +392,7 @@ func (component *Component) setUnitTitleHTML() error {
 		if needsPadding(unitTitleContents) {
 			// According to https://dev.to/pmalhaire/concatenate-strings-in-golang-a-quick-benchmark-4ahh,
 			// "+" is faster than `fmt.Sprintf()`.
-			unitTitleHTMLValue = leftPadString + unitTitleHTMLValue + rightPadString
+			unitTitleHTMLValue = unitTitleLeftPadString + unitTitleHTMLValue + unitTitleRightPadString
 		}
 
 		unitTitleHTMLValues = append(unitTitleHTMLValues, unitTitleHTMLValue)
