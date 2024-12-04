@@ -97,7 +97,7 @@ type DocElement struct {
 	Format_sim      []string `xml:"format_sim"`
 	Format_ssm      []string `xml:"format_ssm"`
 	Location_ssm    []string `xml:"location_ssm"`
-	Location_si     []string `xml:"location_si"`
+	Location_si     string   `xml:"location_si"`
 	Creator_sim     []string `xml:"creator_sim"`
 	Name_sim        []string `xml:"name_sim"`
 	// TODO: DLFA-238
@@ -211,7 +211,9 @@ func (component *Component) setSolrAddMessage() {
 
 	docElement.Level_sim = component.Parts.Level.Values[0]
 
-	docElement.Location_si = component.Parts.Location.Values
+	if len(component.Parts.Location.Values) > 0 {
+		docElement.Location_si = component.Parts.Location.Values[len(component.Parts.Location.Values)-1]
+	}
 	docElement.Location_ssm = component.Parts.Location.Values
 
 	docElement.MaterialType_sim = append(docElement.MaterialType_sim,
