@@ -250,7 +250,7 @@ func getAncestorUnitTitle(node types.Node) (string, error) {
 	unitTitleNodes := xpathResult.NodeList()
 	if len(unitTitleNodes) > 0 {
 		unitTitleContents := unitTitleNodes[0].TextContent()
-		// TODO: DLFA-243
+		// TODO: DLFA-238
 		// Replace this with `util.IsNonEmptyString(unitDateContents)`
 		if unitTitleContents != "" {
 			// TODO: Find out if `sanitize.Clean()` is necessary.
@@ -279,7 +279,7 @@ func getAncestorUnitTitle(node types.Node) (string, error) {
 		unitDateNodes := xpathResult.NodeList()
 		if len(unitDateNodes) > 0 {
 			unitDateContents := unitDateNodes[0].TextContent()
-			// TODO: DLFA-243
+			// TODO: DLFA-238
 			// Replace this with `util.IsNonEmptyString(unitDateContents)`
 			if unitDateContents != "" {
 				// TODO: Find out if `sanitize.Clean()` is necessary.

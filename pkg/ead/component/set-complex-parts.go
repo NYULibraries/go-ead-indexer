@@ -203,14 +203,14 @@ func (component *Component) setLanguage() []error {
 	return nil
 }
 
-// TODO: DLFA-243
+// TODO: DLFA-238
 // Change this from <container> hierarchy based on occurrence order of elements
 // to using `parent` attribute linking to the `id` attribute of direct parent
 // <container>.
 func (component *Component) setLocation() error {
 	parts := &component.Parts
 
-	// TODO: DLFA-243
+	// TODO: DLFA-238
 	// Delete this:
 	locationValues, err := component.getLocationValuesInOccurrenceOrder()
 	// ...and uncomment this:
@@ -251,7 +251,7 @@ func (component *Component) getLocationValues() ([]string, error) {
 	return locationValues, nil
 }
 
-// TODO: DLFA-243
+// TODO: DLFA-238
 // Remove this after passing the DLFA-201 acceptance test.  See function header
 // for `Component.setLocation()` above.
 func (component *Component) getLocationValuesInOccurrenceOrder() ([]string, error) {
