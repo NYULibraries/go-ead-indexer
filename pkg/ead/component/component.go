@@ -258,6 +258,14 @@ func getAncestorUnitTitle(node types.Node) (string, error) {
 			// necessary.  See `get_title()` in this comment:
 			// https://jira.nyu.edu/browse/DLFA-212?focusedCommentId=8495151&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-8495151
 			ancestorUnitTitle = sanitize.Clean(unitTitleContents)
+
+			// TODO: DLFA-238
+			// Remove this left- and right- padding for matching v1 indexer bug
+			// behavior described here:
+			// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506
+			ancestorUnitTitle = eadutil.PadUnitTitleIfNeeded(
+				eadutil.StripOpenAndCloseTags(unitTitleNodes[0].String()),
+				ancestorUnitTitle)
 		}
 	}
 
@@ -279,6 +287,14 @@ func getAncestorUnitTitle(node types.Node) (string, error) {
 				// necessary.  See `get_title()` in this comment:
 				// https://jira.nyu.edu/browse/DLFA-212?focusedCommentId=8495151&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-8495151
 				ancestorUnitTitle = sanitize.Clean(unitDateContents)
+
+				// TODO: DLFA-238
+				// Remove this left- and right- padding for matching v1 indexer bug
+				// behavior described here:
+				// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506
+				ancestorUnitTitle = eadutil.PadUnitTitleIfNeeded(
+					eadutil.StripOpenAndCloseTags(unitDateNodes[0].String()),
+					ancestorUnitTitle)
 			}
 		}
 	}
