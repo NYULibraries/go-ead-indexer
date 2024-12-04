@@ -12,6 +12,13 @@ import (
 const ARCHIVAL_OBJECT_FORMAT = "Archival Object"
 const ARCHIVAL_SERIES_FORMAT = "Archival Series"
 
+// TODO: DLFA-238
+// Remove these `consts` for left- and right- padding for matching v1
+// indexer bug behavior described here:
+// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506
+const leftPadString = "\n      "
+const rightPadString = "\n    "
+
 var archivalSeriesRegExp = regexp.MustCompile(`\Aseries|subseries`)
 
 // This algorithm is based on the one used here:
@@ -56,6 +63,13 @@ func (component *Component) setComplexParts() error {
 	component.setCreatorComplex()
 	component.setDAO()
 	component.setDateRange()
+
+	// TODO: DLFA-238
+	// Remove this override which adds  left- and right- padding for matching v1
+	// indexer bug behavior described here:
+	// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506
+	component.setDIDUnitTitle()
+
 	component.setFormat()
 	component.setHeading()
 	component.setLanguage()
@@ -115,6 +129,31 @@ func (component *Component) setDAO() {
 func (component *Component) setDateRange() {
 	component.Parts.DateRange.Values =
 		eadutil.GetDateRange(component.Parts.UnitDateNormal.Values)
+}
+
+// TODO: DLFA-238
+// Remove this override which adds  left- and right- padding for matching v1
+// indexer bug behavior described here:
+// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506
+func (component *Component) setDIDUnitTitle() {
+	parts := &component.Parts
+
+	paddedDIDUnitTitleValues := []string{}
+	numDIDUnitTitleValues := len(parts.DIDUnitTitle.Values)
+	for i := 0; i < numDIDUnitTitleValues; i++ {
+		unitTitleValue := eadutil.StripOpenAndCloseTags(parts.DIDUnitTitle.Values[i])
+		unitTitleXMLString := eadutil.StripOpenAndCloseTags(parts.DIDUnitTitle.XMLStrings[i])
+
+		if needsPadding(unitTitleXMLString) {
+			// According to https://dev.to/pmalhaire/concatenate-strings-in-golang-a-quick-benchmark-4ahh,
+			// "+" is faster than `fmt.Sprintf()`.
+			unitTitleValue = leftPadString + unitTitleValue + rightPadString
+		}
+
+		paddedDIDUnitTitleValues = append(paddedDIDUnitTitleValues, unitTitleValue)
+	}
+
+	parts.DIDUnitTitle.Values = paddedDIDUnitTitleValues
 }
 
 func (component *Component) setFormat() {
@@ -311,10 +350,36 @@ func (component *Component) setUnitTitleHTML() error {
 			return err
 		}
 
+		// TODO: DLFA-238
+		// Remove this left- and right- padding for matching v1 indexer bug
+		// behavior described here:
+		// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506
+		if needsPadding(unitTitleContents) {
+			// According to https://dev.to/pmalhaire/concatenate-strings-in-golang-a-quick-benchmark-4ahh,
+			// "+" is faster than `fmt.Sprintf()`.
+			unitTitleHTMLValue = leftPadString + unitTitleHTMLValue + rightPadString
+		}
+
 		unitTitleHTMLValues = append(unitTitleHTMLValues, unitTitleHTMLValue)
 	}
 
 	parts.UnitTitleHTML.Values = unitTitleHTMLValues
 
 	return nil
+}
+
+// TODO: DLFA-238
+// Remove this left- and right- padding for matching v1 indexer bug
+// behavior described here:
+// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506
+func needsPadding(unitTitleXML string) bool {
+	// Determine if the <unittitle> contents is wrapped in a single EAD tag:
+	//     <emph render="italic">A Christmas Card</emph>
+	// ...as opposed to something like this:
+	//     <emph render="italic">A Christmas Card</emph>, Also Known As <emph render="italic">X-mas Cards</emph>
+	// This is not an optimal or risk-free method, but this is a temporary
+	// function, and we want it to be fast (to pass the DLFA-201 1M+ test).
+	return strings.HasPrefix(unitTitleXML, "<") &&
+		strings.HasSuffix(unitTitleXML, ">") &&
+		(strings.Count(unitTitleXML[1:len(unitTitleXML)-1], "<") == 1)
 }
