@@ -380,7 +380,7 @@ func TestGetUnitDateDisplay(t *testing.T) {
 			[]string{},
 			[]string{},
 			[]string{"1930-1990"},
-			"Inclusive, ; 1930-1990",
+			"Inclusive,  ; 1930-1990",
 		},
 	}
 

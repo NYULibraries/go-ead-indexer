@@ -206,7 +206,15 @@ func GetUnitDateDisplay(unitDateNoTypeAttribute []string, unitDateInclusive []st
 		// Do nothing
 	} else {
 		partsUnitDateDisplay = append(partsUnitDateDisplay, "Inclusive,")
-		partsUnitDateDisplay = append(partsUnitDateDisplay, unitDateInclusive...)
+		// TODO: DLFA-238
+		// Replace this with just the `if` condition statement.
+		// This hack is just to get the later `strings.Join()` to add a trailing
+		// space to match v1 indexer.
+		if len(unitDateInclusive) > 0 {
+			partsUnitDateDisplay = append(partsUnitDateDisplay, unitDateInclusive...)
+		} else {
+			partsUnitDateDisplay = append(partsUnitDateDisplay, "")
+		}
 		if len(unitDateBulk) > 0 {
 			partsUnitDateDisplay = append(partsUnitDateDisplay, ";")
 			partsUnitDateDisplay = append(partsUnitDateDisplay, unitDateBulk...)
