@@ -69,52 +69,67 @@ type DocElement struct {
 	GenreForm_ssm          []string `xml:"genreform_ssm"`
 	GeogName_teim          []string `xml:"geogname_teim"`
 	GeogName_ssm           []string `xml:"geogname_ssm"`
-	Name_teim              []string `xml:"name_teim"`
-	Name_ssm               []string `xml:"name_ssm"`
-	Occupation_teim        []string `xml:"occupation_teim"`
-	Occupation_ssm         []string `xml:"occupation_ssm"`
-	PersName_teim          []string `xml:"persname_teim"`
-	PersName_ssm           []string `xml:"persname_ssm"`
-	Subject_teim           []string `xml:"subject_teim"`
-	Subject_ssm            []string `xml:"subject_ssm"`
-	Title_teim             []string `xml:"title_teim"`
-	Title_ssm              []string `xml:"title_ssm"`
-	Note_teim              []string `xml:"note_teim"`
-	Note_ssm               []string `xml:"note_ssm"`
-	DAO_teim               []string `xml:"dao_teim"`
-	DAO_ssm                []string `xml:"dao_ssm"`
-	Ref_ssi                string   `xml:"ref_ssi"`
-	Repository_ssi         string   `xml:"repository_ssi"`
-	Repository_sim         string   `xml:"repository_sim"`
-	Repository_ssm         string   `xml:"repository_ssm"`
-	Format_sim             []string `xml:"format_sim"`
-	Format_ssm             []string `xml:"format_ssm"`
-	Location_ssm           []string `xml:"location_ssm"`
-	Location_si            []string `xml:"location_si"`
-	Creator_sim            []string `xml:"creator_sim"`
-	Name_sim               []string `xml:"name_sim"`
-	DAO_sim                []string `xml:"dao_sim"`
-	Place_ssm              []string `xml:"place_ssm"`
-	Place_sim              []string `xml:"place_sim"`
-	Subject_sim            []string `xml:"subject_sim"`
-	Collection_teim        string   `xml:"collection_teim"`
-	CollectionUnitID_teim  string   `xml:"collection_unitid_teim"`
-	Series_sim             []string `xml:"series_sim"`
-	Series_si              string   `xml:"series_si"`
-	MaterialType_sim       []string `xml:"material_type_sim"`
-	MaterialType_ssm       []string `xml:"material_type_ssm"`
-	Heading_ssm            []string `xml:"heading_ssm"`
-	UnitDateStart_sim      []string `xml:"unitdate_start_sim"`
-	UnitDateStart_ssm      []string `xml:"unitdate_start_ssm"`
-	UnitDateStart_si       string   `xml:"unitdate_start_si"`
-	UnitDateEnd_sim        []string `xml:"unitdate_end_sim"`
-	UnitDateEnd_ssm        []string `xml:"unitdate_end_ssm"`
-	UnitDateEnd_si         string   `xml:"unitdate_end_si"`
-	UnitDate_ssm           []string `xml:"unitdate_ssm"`
-	DateRange_sim          []string `xml:"date_range_sim"`
-	Language_sim           string   `xml:"language_sim"`
-	Language_ssm           string   `xml:"language_ssm"`
-	Sort_ii                string   `xml:"sort_ii"`
+	// TODO: DLFA-238
+	// Change back to having just `docElement.Name_teim`.  This splitting of the
+	// field into 1 and 2 and the conditional append is done to match the variable
+	// positioning of the `name_teim` fields.  If there exist OM Term generated
+	// `name_teim` fields, the `get_ead_names()` generated `name_teim` fields
+	// go immediately after those Term-based fields, otherwise they go toward the
+	// end.
+	Name_1_teim     []string `xml:"name_teim"`
+	Name_ssm        []string `xml:"name_ssm"`
+	Occupation_teim []string `xml:"occupation_teim"`
+	Occupation_ssm  []string `xml:"occupation_ssm"`
+	PersName_teim   []string `xml:"persname_teim"`
+	PersName_ssm    []string `xml:"persname_ssm"`
+	Subject_teim    []string `xml:"subject_teim"`
+	Subject_ssm     []string `xml:"subject_ssm"`
+	Title_teim      []string `xml:"title_teim"`
+	Title_ssm       []string `xml:"title_ssm"`
+	Note_teim       []string `xml:"note_teim"`
+	Note_ssm        []string `xml:"note_ssm"`
+	DAO_teim        []string `xml:"dao_teim"`
+	DAO_ssm         []string `xml:"dao_ssm"`
+	Ref_ssi         string   `xml:"ref_ssi"`
+	Repository_ssi  string   `xml:"repository_ssi"`
+	Repository_sim  string   `xml:"repository_sim"`
+	Repository_ssm  string   `xml:"repository_ssm"`
+	Format_sim      []string `xml:"format_sim"`
+	Format_ssm      []string `xml:"format_ssm"`
+	Location_ssm    []string `xml:"location_ssm"`
+	Location_si     []string `xml:"location_si"`
+	Creator_sim     []string `xml:"creator_sim"`
+	Name_sim        []string `xml:"name_sim"`
+	// TODO: DLFA-238
+	// Change back to having just `docElement.Name_teim`.  This splitting of the
+	// field into 1 and 2 and the conditional append is done to match the variable
+	// positioning of the `name_teim` fields.  If there exist OM Term generated
+	// `name_teim` fields, the `get_ead_names()` generated `name_teim` fields
+	// go immediately after those Term-based fields, otherwise they go toward the
+	// end.
+	Name_2_teim           []string `xml:"name_teim"`
+	DAO_sim               []string `xml:"dao_sim"`
+	Place_ssm             []string `xml:"place_ssm"`
+	Place_sim             []string `xml:"place_sim"`
+	Subject_sim           []string `xml:"subject_sim"`
+	Collection_teim       string   `xml:"collection_teim"`
+	CollectionUnitID_teim string   `xml:"collection_unitid_teim"`
+	Series_sim            []string `xml:"series_sim"`
+	Series_si             string   `xml:"series_si"`
+	MaterialType_sim      []string `xml:"material_type_sim"`
+	MaterialType_ssm      []string `xml:"material_type_ssm"`
+	Heading_ssm           []string `xml:"heading_ssm"`
+	UnitDateStart_sim     []string `xml:"unitdate_start_sim"`
+	UnitDateStart_ssm     []string `xml:"unitdate_start_ssm"`
+	UnitDateStart_si      string   `xml:"unitdate_start_si"`
+	UnitDateEnd_sim       []string `xml:"unitdate_end_sim"`
+	UnitDateEnd_ssm       []string `xml:"unitdate_end_ssm"`
+	UnitDateEnd_si        string   `xml:"unitdate_end_si"`
+	UnitDate_ssm          []string `xml:"unitdate_ssm"`
+	DateRange_sim         []string `xml:"date_range_sim"`
+	Language_sim          string   `xml:"language_sim"`
+	Language_ssm          string   `xml:"language_ssm"`
+	Sort_ii               string   `xml:"sort_ii"`
 }
 
 func (component *Component) setSolrAddMessage() {
@@ -206,8 +221,19 @@ func (component *Component) setSolrAddMessage() {
 
 	docElement.Name_sim = append(docElement.Name_ssm, component.Parts.Name.Values...)
 	docElement.Name_ssm = append(docElement.Name_ssm, component.Parts.NameElementAll.Values...)
-	docElement.Name_teim = append(docElement.Name_teim, component.Parts.NameElementAll.Values...)
-	docElement.Name_teim = append(docElement.Name_teim, component.Parts.Name.Values...)
+	// TODO: DLFA-238
+	// Change back to having just `docElement.Name_teim`.  This splitting of the
+	// field into 1 and 2 and the conditional append is done to match the variable
+	// positioning of the `name_teim` fields.  If there exist OM Term generated
+	// `name_teim` fields, the `get_ead_names()` generated `name_teim` fields
+	// go immediately after those Term-based fields, otherwise they go toward the
+	// end.
+	docElement.Name_1_teim = append(docElement.Name_1_teim, component.Parts.NameElementAll.Values...)
+	if len(docElement.Name_1_teim) > 0 {
+		docElement.Name_1_teim = append(docElement.Name_1_teim, component.Parts.Name.Values...)
+	} else {
+		docElement.Name_2_teim = append(docElement.Name_2_teim, component.Parts.Name.Values...)
+	}
 
 	docElement.Note_ssm = component.Parts.Note.Values
 	docElement.Note_teim = component.Parts.Note.Values
