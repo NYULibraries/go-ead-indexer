@@ -161,21 +161,13 @@ func (component *Component) setSolrAddMessage() {
 		util.CompactStringSlicePreserveOrder(component.Parts.CreatorComplex.Values)...)
 	// See 2nd `Creator_ssm` append below.
 	docElement.Creator_ssm = append(docElement.Creator_ssm,
-		component.Parts.CreatorCorpName.Values...)
-	docElement.Creator_ssm = append(docElement.Creator_ssm,
-		component.Parts.CreatorFamName.Values...)
-	docElement.Creator_ssm = append(docElement.Creator_ssm,
-		component.Parts.CreatorPersName.Values...)
+		component.Parts.Creator.Values...)
 	// TODO: is this duplication done in v1 indexer a bug that needs to be added
 	// to https://jira.nyu.edu/browse/DLFA-211?
 	docElement.Creator_ssm = append(docElement.Creator_ssm,
 		util.CompactStringSlicePreserveOrder(component.Parts.CreatorComplex.Values)...)
 	docElement.Creator_teim = append(docElement.Creator_teim,
-		component.Parts.CreatorCorpName.Values...)
-	docElement.Creator_teim = append(docElement.Creator_teim,
-		component.Parts.CreatorFamName.Values...)
-	docElement.Creator_teim = append(docElement.Creator_teim,
-		component.Parts.CreatorPersName.Values...)
+		component.Parts.Creator.Values...)
 
 	docElement.DAO_sim = component.Parts.DAO.Values
 	docElement.DAO_ssm = component.Parts.DAODescriptionParagraph.Values
