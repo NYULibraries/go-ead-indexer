@@ -149,7 +149,7 @@ func GetDateParts(dateString string) DateParts {
 func GetDateRange(unitDates []string) []string {
 	dateRange := []string{}
 
-	// Add `dateRangeCentury` display dates for which least one date falls within
+	// Add `dateRangeCentury` display dates for which at least one date falls within
 	// range.
 	for _, dateRangeCentury := range dateRangesCenturies {
 		for _, unitDate := range unitDates {
