@@ -14,42 +14,6 @@ const ARCHIVAL_SERIES_FORMAT = "Archival Series"
 
 var archivalSeriesRegExp = regexp.MustCompile(`\Aseries|subseries`)
 
-// This algorithm is based on the one used here:
-// https://github.com/NYULibraries/dlts-finding-aids-ead-go-packages/blob/7baee7dfde24a01422ec8e6470fdc8a76d84b3fb/ead/modify/modify.go#L153-L180
-func (component *Component) makeRootContainerSliceAndParentChildContainerMap() (
-	[]Container, map[string]Container, error) {
-	rootContainers := []Container{}
-	parentChildContainerMap := map[string]Container{}
-
-	mappingErrors := []string{}
-	for _, container := range component.Parts.Containers {
-		parentID := container.Parent
-		if parentID != "" {
-			// Has a parent, so must be a child container.  Map it to its parent.
-
-			// There should be no sibling relationships.  If there is already a
-			// child container mapped to `parentID`, that's an error condition.
-			if _, ok := parentChildContainerMap[parentID]; ok {
-				mappingErrors = append(mappingErrors,
-					fmt.Sprintf("A child <container> element has already"+
-						` been mapped to a parent <container> with @id="%s""`, parentID))
-			}
-
-			parentChildContainerMap[parentID] = container
-		} else {
-			// No parent, so must be a root container.
-			rootContainers = append(rootContainers, container)
-		}
-	}
-
-	var err error
-	if len(mappingErrors) > 0 {
-		err = errors.New(strings.Join(mappingErrors, "; "))
-	}
-
-	return rootContainers, parentChildContainerMap, err
-}
-
 // TODO: Do we need to have anything in `CollectionDoc.Part.Source` for these?
 func (component *Component) setComplexParts() error {
 	component.setChronListComplex()
@@ -92,15 +56,40 @@ func (component *Component) setComplexParts() error {
 	return nil
 }
 
-func (component *Component) setCreatorComplex() {
-	parts := &component.Parts
+// This algorithm is based on the one used here:
+// https://github.com/NYULibraries/dlts-finding-aids-ead-go-packages/blob/7baee7dfde24a01422ec8e6470fdc8a76d84b3fb/ead/modify/modify.go#L153-L180
+func (component *Component) makeRootContainerSliceAndParentChildContainerMap() (
+	[]Container, map[string]Container, error) {
+	rootContainers := []Container{}
+	parentChildContainerMap := map[string]Container{}
 
-	// CreatorComplex
-	creatorComplexValues := []string{}
-	creatorComplexValues = append(creatorComplexValues, parts.CreatorCorpName.Values...)
-	creatorComplexValues = append(creatorComplexValues, parts.CreatorFamName.Values...)
-	creatorComplexValues = append(creatorComplexValues, parts.CreatorPersName.Values...)
-	parts.CreatorComplex.Values = creatorComplexValues
+	mappingErrors := []string{}
+	for _, container := range component.Parts.Containers {
+		parentID := container.Parent
+		if parentID != "" {
+			// Has a parent, so must be a child container.  Map it to its parent.
+
+			// There should be no sibling relationships.  If there is already a
+			// child container mapped to `parentID`, that's an error condition.
+			if _, ok := parentChildContainerMap[parentID]; ok {
+				mappingErrors = append(mappingErrors,
+					fmt.Sprintf("A child <container> element has already"+
+						` been mapped to a parent <container> with @id="%s""`, parentID))
+			}
+
+			parentChildContainerMap[parentID] = container
+		} else {
+			// No parent, so must be a root container.
+			rootContainers = append(rootContainers, container)
+		}
+	}
+
+	var err error
+	if len(mappingErrors) > 0 {
+		err = errors.New(strings.Join(mappingErrors, "; "))
+	}
+
+	return rootContainers, parentChildContainerMap, err
 }
 
 func (component *Component) setChronListComplex() {
@@ -114,6 +103,17 @@ func (component *Component) setChronListComplex() {
 	}
 
 	parts.ChronListComplex.Values = chronListComplexValues
+}
+
+func (component *Component) setCreatorComplex() {
+	parts := &component.Parts
+
+	// CreatorComplex
+	creatorComplexValues := []string{}
+	creatorComplexValues = append(creatorComplexValues, parts.CreatorCorpName.Values...)
+	creatorComplexValues = append(creatorComplexValues, parts.CreatorFamName.Values...)
+	creatorComplexValues = append(creatorComplexValues, parts.CreatorPersName.Values...)
+	parts.CreatorComplex.Values = creatorComplexValues
 }
 
 func (component *Component) setDAO() {

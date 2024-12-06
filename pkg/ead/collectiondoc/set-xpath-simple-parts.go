@@ -46,14 +46,14 @@ func (collectionDoc *CollectionDoc) setXPathSimpleParts(node types.Node) error {
 		return err
 	}
 
-	parts.CorpNameNotInRepository.Source = "//*[local-name()!='repository']/corpname"
-	parts.CorpNameNotInRepository.Values, parts.CorpNameNotInRepository.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.CorpNameNotInRepository.Source, node)
+	parts.CorpNameNotInDSC.Source = "//archdesc[@level='collection']/*[name() != 'dsc']//corpname"
+	parts.CorpNameNotInDSC.Values, parts.CorpNameNotInDSC.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.CorpNameNotInDSC.Source, node)
 	if err != nil {
 		return err
 	}
 
-	parts.CorpNameNotInDSC.Source = "//archdesc[@level='collection']/*[name() != 'dsc']//corpname"
-	parts.CorpNameNotInDSC.Values, parts.CorpNameNotInDSC.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.CorpNameNotInDSC.Source, node)
+	parts.CorpNameNotInRepository.Source = "//*[local-name()!='repository']/corpname"
+	parts.CorpNameNotInRepository.Values, parts.CorpNameNotInRepository.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.CorpNameNotInRepository.Source, node)
 	if err != nil {
 		return err
 	}
@@ -264,6 +264,9 @@ func (collectionDoc *CollectionDoc) setXPathSimpleParts(node types.Node) error {
 	if err != nil {
 		return err
 	}
+
+	// PROXY PARTS
+	// These parts depend on other simple XPath parts, so we do them at the end.
 
 	// Proxy for UnitTitle
 	parts.Collection.Source = parts.UnitTitle.Source

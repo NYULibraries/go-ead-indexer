@@ -62,11 +62,6 @@ func (collectionDoc *CollectionDoc) setDateRange() {
 		eadutil.GetDateRange(collectionDoc.Parts.UnitDateNormal.Values)
 }
 
-func (collectionDoc *CollectionDoc) setMaterialType() {
-	collectionDoc.Parts.MaterialType.Values =
-		eadutil.ConvertToFacetSlice(collectionDoc.Parts.GenreForm.Values)
-}
-
 func (collectionDoc *CollectionDoc) setLanguage() []error {
 	language, errs := eadutil.GetLanguage(collectionDoc.Parts.LangCode.Values)
 	if len(errs) > 0 {
@@ -76,6 +71,11 @@ func (collectionDoc *CollectionDoc) setLanguage() []error {
 	collectionDoc.Parts.Language.Values = language
 
 	return nil
+}
+
+func (collectionDoc *CollectionDoc) setMaterialType() {
+	collectionDoc.Parts.MaterialType.Values =
+		eadutil.ConvertToFacetSlice(collectionDoc.Parts.GenreForm.Values)
 }
 
 func (collectionDoc *CollectionDoc) setName() {

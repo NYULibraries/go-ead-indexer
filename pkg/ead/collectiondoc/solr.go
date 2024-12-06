@@ -28,6 +28,9 @@ type AddElement struct {
 // permanent `String()` or custom marshaling that will be free of the need to
 // match v1 indexer's ordering, and restore the alphabetical ordering of the field
 // definitions in this struct.
+// Note that unlike the struct tags used for `SolrAddMessage` and `AddElement`,
+// the struct tags for `DocElement` below are mandatory.  They are used for the
+// field name in the Solr HTTP request XML body.
 type DocElement struct {
 	Author_teim    []string `xml:"author_teim"`
 	Author_ssm     []string `xml:"author_ssm"`

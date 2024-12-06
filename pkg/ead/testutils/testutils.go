@@ -40,20 +40,6 @@ func GetEADFixtureValue(testEAD string) (string, error) {
 	return GetTestdataFileContents(eadFixturePath(testEAD))
 }
 
-func GetGoldenFileValue(eadID string, fileID string) (string, error) {
-	return GetTestdataFileContents(GoldenFilePath(eadID, fileID))
-}
-
-func GetTestdataFileContents(filename string) (string, error) {
-	bytes, err := os.ReadFile(filename)
-
-	if err != nil {
-		return filename, err
-	}
-
-	return string(bytes), nil
-}
-
 func GetGoldenFileIDs(eadID string) []string {
 	goldenFileIDs := []string{}
 
@@ -69,6 +55,20 @@ func GetGoldenFileIDs(eadID string) []string {
 	}
 
 	return goldenFileIDs
+}
+
+func GetGoldenFileValue(eadID string, fileID string) (string, error) {
+	return GetTestdataFileContents(GoldenFilePath(eadID, fileID))
+}
+
+func GetTestdataFileContents(filename string) (string, error) {
+	bytes, err := os.ReadFile(filename)
+
+	if err != nil {
+		return filename, err
+	}
+
+	return string(bytes), nil
 }
 
 func GetTestEADs() []string {

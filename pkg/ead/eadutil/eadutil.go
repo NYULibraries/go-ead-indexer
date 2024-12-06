@@ -185,6 +185,21 @@ func GetDateRange(unitDates []string) []string {
 	return dateRange
 }
 
+func GetFirstNodeForXPathQuery(query string, node types.Node) (types.Node, error) {
+	xpathResult, err := node.Find(query)
+	if err != nil {
+		return nil, err
+	}
+
+	nodeList := xpathResult.NodeList()
+
+	if len(nodeList) > 0 {
+		return nodeList[0], nil
+	} else {
+		return nil, nil
+	}
+}
+
 func GetLanguage(langCodes []string) ([]string, []error) {
 	language := []string{}
 	errs := []error{}
@@ -199,6 +214,15 @@ func GetLanguage(langCodes []string) ([]string, []error) {
 	}
 
 	return language, errs
+}
+
+func GetNodeListForXPathQuery(query string, node types.Node) (types.NodeList, error) {
+	xpathResult, err := node.Find(query)
+	if err != nil {
+		return nil, err
+	}
+
+	return xpathResult.NodeList(), nil
 }
 
 // TODO: DLFA-238
@@ -231,30 +255,6 @@ func GetUnitDateDisplay(unitDateNoTypeAttribute []string, unitDateInclusive []st
 	}
 
 	return strings.Join(partsUnitDateDisplay, " ")
-}
-
-func GetFirstNodeForXPathQuery(query string, node types.Node) (types.Node, error) {
-	xpathResult, err := node.Find(query)
-	if err != nil {
-		return nil, err
-	}
-
-	nodeList := xpathResult.NodeList()
-
-	if len(nodeList) > 0 {
-		return nodeList[0], nil
-	} else {
-		return nil, nil
-	}
-}
-
-func GetNodeListForXPathQuery(query string, node types.Node) (types.NodeList, error) {
-	xpathResult, err := node.Find(query)
-	if err != nil {
-		return nil, err
-	}
-
-	return xpathResult.NodeList(), nil
 }
 
 func GetValuesForXPathQuery(query string, node types.Node) ([]string, []string, error) {
@@ -530,6 +530,13 @@ func padValueIfNeeded(xmlString string, value string, leftPadString string, righ
 	}
 }
 
+// TODO: fix the bug we've intentionally preserved here -- for details, see:
+// * https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10154897&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10154897
+// * https://jira.nyu.edu/browse/DLFA-229?focusedCommentId=10153922&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10153922
+func replaceMARCSubfieldDemarcators(str string) string {
+	return marcSubfieldDemarcator.ReplaceAllString(str, "--")
+}
+
 func replaceMARCSubfieldDemarcatorsInSlice(stringSlice []string) []string {
 	newSlice := []string{}
 	for _, element := range stringSlice {
@@ -537,13 +544,6 @@ func replaceMARCSubfieldDemarcatorsInSlice(stringSlice []string) []string {
 	}
 
 	return newSlice
-}
-
-// TODO: fix the bug we've intentionally preserved here -- for details, see:
-// * https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10154897&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10154897
-// * https://jira.nyu.edu/browse/DLFA-229?focusedCommentId=10153922&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10153922
-func replaceMARCSubfieldDemarcators(str string) string {
-	return marcSubfieldDemarcator.ReplaceAllString(str, "--")
 }
 
 func stringifyStartElementToken(token xml.StartElement) string {

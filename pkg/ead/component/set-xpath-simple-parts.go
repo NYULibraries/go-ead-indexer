@@ -221,14 +221,14 @@ func (component *Component) setXPathSimpleParts(node types.Node) error {
 		return err
 	}
 
-	parts.UnitDateNoTypeAttribute.Source = ".//did/unitdate[not(@type)]"
-	parts.UnitDateNoTypeAttribute.Values, parts.UnitDateNoTypeAttribute.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.UnitDateNoTypeAttribute.Source, node)
+	parts.UnitDateBulk.Source = ".//did/unitdate[@type='bulk']"
+	parts.UnitDateBulk.Values, parts.UnitDateBulk.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.UnitDateBulk.Source, node)
 	if err != nil {
 		return err
 	}
 
-	parts.UnitDateBulk.Source = ".//did/unitdate[@type='bulk']"
-	parts.UnitDateBulk.Values, parts.UnitDateBulk.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.UnitDateBulk.Source, node)
+	parts.UnitDateInclusive.Source = ".//did/unitdate[@type='inclusive']"
+	parts.UnitDateInclusive.Values, parts.UnitDateInclusive.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.UnitDateInclusive.Source, node)
 	if err != nil {
 		return err
 	}
@@ -239,8 +239,8 @@ func (component *Component) setXPathSimpleParts(node types.Node) error {
 		return err
 	}
 
-	parts.UnitDateInclusive.Source = ".//did/unitdate[@type='inclusive']"
-	parts.UnitDateInclusive.Values, parts.UnitDateInclusive.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.UnitDateInclusive.Source, node)
+	parts.UnitDateNoTypeAttribute.Source = ".//did/unitdate[not(@type)]"
+	parts.UnitDateNoTypeAttribute.Values, parts.UnitDateNoTypeAttribute.XMLStrings, err = eadutil.GetValuesForXPathQuery(parts.UnitDateNoTypeAttribute.Source, node)
 	if err != nil {
 		return err
 	}
