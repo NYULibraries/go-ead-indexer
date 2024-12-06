@@ -1,5 +1,5 @@
-Keeping _testutils/_ in this package for now, but there's a fairly good chance
-this will need to be a shared package at top level, so for now, only include
-test utilities that can be shared with any other package.  All test utilities
-specific to `ead` package should go in _ead_test.go_ and or _ead/util/_.
+Keeping _testutils/_ in this package for now, but we might want this to be a
+shared package at top level (for use by, for example the `net/solr` package).
+All test utilities specific to `ead` package should go in _ead_test.go_ and or
+_ead/eadutil/_.
 
