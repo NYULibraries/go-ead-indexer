@@ -23,8 +23,8 @@ type CollectionDocComplexParts struct {
 	DateRange        CollectionDocPart `json:"date_range"`
 	MaterialType     CollectionDocPart `json:"material_type"`
 	Name             CollectionDocPart `json:"name"`
-	Place            CollectionDocPart `json:"place"`
 	OnlineAccess     CollectionDocPart `json:"online_access"`
+	Place            CollectionDocPart `json:"place"`
 	SubjectForFacets CollectionDocPart `json:"subject_for_facets"`
 	UnitDateDisplay  CollectionDocPart `json:"unit_date_display"`
 	UnitDateEnd      CollectionDocPart `json:"unit_date_end"`
@@ -45,8 +45,8 @@ type CollectionDocXPathParts struct {
 	BiogHist                CollectionDocPart `json:"biog_hist"`
 	ChronList               CollectionDocPart `json:"chron_list"`
 	Collection              CollectionDocPart `json:"collection"`
-	CorpNameNotInRepository CollectionDocPart `json:"corp_name_not_in_repository"`
 	CorpNameNotInDSC        CollectionDocPart `json:"corp_name_not_in_dsc"`
+	CorpNameNotInRepository CollectionDocPart `json:"corp_name_not_in_repository"`
 	Creator                 CollectionDocPart `json:"creator"`
 	CreatorCorpName         CollectionDocPart `json:"creator_corp_name"`
 	CreatorFamName          CollectionDocPart `json:"creator_fam_name"`
@@ -59,8 +59,8 @@ type CollectionDocXPathParts struct {
 	Function                CollectionDocPart `json:"function"`
 	GenreForm               CollectionDocPart `json:"genre_form"`
 	GenreFormNotInDSC       CollectionDocPart `json:"genre_form_not_in_dsc"`
-	GeogNameNotInDSC        CollectionDocPart `json:"geog_name_not_in_dsc"`
 	GeogName                CollectionDocPart `json:"geog_name"`
+	GeogNameNotInDSC        CollectionDocPart `json:"geog_name_not_in_dsc"`
 	Heading                 CollectionDocPart `json:"heading"`
 	LangCode                CollectionDocPart `json:"lang_code"`
 	Language                CollectionDocPart `json:"language"`
@@ -76,8 +76,8 @@ type CollectionDocXPathParts struct {
 	TitleNotInDSC           CollectionDocPart `json:"title_not_in_dsc"`
 	UnitDateBulk            CollectionDocPart `json:"unit_date_bulk"`
 	UnitDateInclusive       CollectionDocPart `json:"unit_date_inclusive"`
-	UnitDateNormal          CollectionDocPart `json:"unit_date_normal"`
 	UnitDateNoTypeAttribute CollectionDocPart `json:"unit_date_no_type_attribute"`
+	UnitDateNormal          CollectionDocPart `json:"unit_date_normal"`
 	UnitID                  CollectionDocPart `json:"unit_id"`
 	UnitTitle               CollectionDocPart `json:"unit_title"`
 }
