@@ -24,7 +24,7 @@ type EAD struct {
 // Note that the repository code historically is taken from the name of the
 // EAD file's parent directory, not from the anything in the contents of the file
 // itself.  For now we are keeping file handling out of this package, so it is
-// up to the client pass in the repository code.
+// up to the client to pass in the repository code.
 func New(repositoryCode string, eadXML string) (EAD, error) {
 	ead := EAD{}
 

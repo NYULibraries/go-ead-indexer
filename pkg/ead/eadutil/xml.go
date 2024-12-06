@@ -13,7 +13,7 @@
 
 // TODO: DLFA-238
 // Delete this entire file and switch back to using standard library `xml.EscapeText()`.
-// v1 indexer does not escape a lot of the characters that Go's `xml.EscapedText()`
+// v1 indexer does not escape a lot of the characters that Go's `xml.EscapeText()`
 // does, and these characters frequently appear in the <unittitle> data.
 package eadutil
 
