@@ -415,7 +415,12 @@ func StripTags(xmlString string) (string, error) {
 			startTagNames = startTagNames[:len(startTagNames)-1]
 
 		case xml.CharData:
-			strippedString += string(token)
+			buffer := new(strings.Builder)
+			if err := EscapeText(buffer, token); err != nil {
+				return strippedString, err
+			}
+
+			strippedString += buffer.String()
 		}
 	}
 
