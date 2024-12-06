@@ -81,7 +81,7 @@ func getAncestorUnitTitle(node types.Node) (string, error) {
 func makeAncestorUnitTitleListMap(node types.Node) (map[string][]string, error) {
 	ancestorUnitTitleListMap := map[string][]string{}
 
-	dscNode, err := eadutil.GetFirstNodeForXPathQuery("//dsc", node)
+	dscNode, err := eadutil.GetFirstNode("//dsc", node)
 	if err != nil {
 		return ancestorUnitTitleListMap, err
 	}
@@ -91,7 +91,7 @@ func makeAncestorUnitTitleListMap(node types.Node) (map[string][]string, error) 
 			errors.New("makeAncestorUnitTitleListMap() error: no <dsc> element found")
 	}
 
-	childCNodes, err := eadutil.GetNodeListForXPathQuery("child::c", dscNode)
+	childCNodes, err := eadutil.GetNodeList("child::c", dscNode)
 	if err != nil {
 		return ancestorUnitTitleListMap, err
 	}
@@ -130,7 +130,7 @@ func makeAncestorUnitTitleListMap_add(ancestorUnitTitleListMap map[string][]stri
 	}
 	ancestorUnitTitleList = append(ancestorUnitTitleList, ancestorUnitTitle)
 
-	childCNodes, err := eadutil.GetNodeListForXPathQuery("child::c", node)
+	childCNodes, err := eadutil.GetNodeList("child::c", node)
 	if err != nil {
 		return err
 	}

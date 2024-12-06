@@ -185,7 +185,7 @@ func GetDateRange(unitDates []string) []string {
 	return dateRange
 }
 
-func GetFirstNodeForXPathQuery(query string, node types.Node) (types.Node, error) {
+func GetFirstNode(query string, node types.Node) (types.Node, error) {
 	xpathResult, err := node.Find(query)
 	if err != nil {
 		return nil, err
@@ -216,7 +216,7 @@ func GetLanguage(langCodes []string) ([]string, []error) {
 	return language, errs
 }
 
-func GetNodeListForXPathQuery(query string, node types.Node) (types.NodeList, error) {
+func GetNodeList(query string, node types.Node) (types.NodeList, error) {
 	xpathResult, err := node.Find(query)
 	if err != nil {
 		return nil, err
@@ -257,7 +257,7 @@ func GetUnitDateDisplay(unitDateNoTypeAttribute []string, unitDateInclusive []st
 	return strings.Join(partsUnitDateDisplay, " ")
 }
 
-func GetValuesForXPathQuery(query string, node types.Node) ([]string, []string, error) {
+func GetNodeValuesAndXMLStrings(query string, node types.Node) ([]string, []string, error) {
 	var values []string
 	var xmlStrings []string
 
