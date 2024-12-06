@@ -475,7 +475,7 @@ func convertEADTagsWithRenderAttributesToHTML(eadString string) (string, error) 
 
 		case xml.CharData:
 			buffer := new(strings.Builder)
-			if err := xml.EscapeText(buffer, token); err != nil {
+			if err := EscapeText(buffer, token); err != nil {
 				return htmlString, err
 			}
 
