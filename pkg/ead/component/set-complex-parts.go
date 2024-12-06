@@ -373,6 +373,16 @@ func (component *Component) setUnitTitleHTML() error {
 		// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506
 		unitTitleHTMLValue = eadutil.PadUnitTitleIfNeeded(unitTitleContents, unitTitleHTMLValue)
 
+		// TODO: DLFA-238
+		// This is tough one to call.  Not sure if this absolutely needs to be
+		// removed or not.  Go's `xml.EscapeText()` automatically escapes single
+		// and double-quotes because they could potentially break tag attributes,
+		// but these <unittitle> values are never going to be in attributes.
+		// If there's no harm in letting them stay escaped, however, probably
+		// better to not undo it.
+		unitTitleHTMLValue = strings.ReplaceAll(unitTitleHTMLValue, "&#39;", "'")
+		unitTitleHTMLValue = strings.ReplaceAll(unitTitleHTMLValue, "&#34;", `"`)
+
 		unitTitleHTMLValues = append(unitTitleHTMLValues, unitTitleHTMLValue)
 	}
 
