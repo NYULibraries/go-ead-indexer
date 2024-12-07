@@ -202,8 +202,8 @@ func (component *Component) setParts(node types.Node) error {
 	// to prevent duplication from overlapping node trees.  Defensive copying is
 	// necessary because some processes require access to the parent node data,
 	// which `removeChildCNodes()` deletes from the child <c> nodes deleted.
-	// These deleted <c> nodes are later passed into this method when by the
-	// outer loop in which this method is called.
+	// These deleted <c> nodes are later passed into this method by the outer
+	// loop in which this method is called.
 	// As a rule, we would want to take care of all processing which requires
 	// parent node data before getting here, in which case we could keep using
 	// the original node, but there's no harm in being careful, and having the
