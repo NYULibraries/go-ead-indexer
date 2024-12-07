@@ -7,6 +7,11 @@ import (
 )
 
 // TODO: Do we need to have anything in `CollectionDoc.Part.Source` for these?
+// TODO: figure out whether to keep return value of `setComplexParts()` as
+// `[]error` or to change it to a single error, which is what the caller
+// `setParts()` returns to its caller.  If a single error, should it be an
+// early exit true single error, or use `errors.Join()` to wrap the slice of
+// all accumulated errors?
 func (collectionDoc *CollectionDoc) setComplexParts() []error {
 	errs := []error{}
 

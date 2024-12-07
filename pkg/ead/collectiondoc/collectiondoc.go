@@ -114,6 +114,7 @@ func (collectionDoc *CollectionDoc) setParts(node types.Node) error {
 		return err
 	}
 
+	// TODO: See TODO in `setComplexParts()` regarding return value.
 	collectionDoc.setComplexParts()
 	collectionDoc.setHardcodedParts()
 

@@ -15,6 +15,11 @@ const ARCHIVAL_SERIES_FORMAT = "Archival Series"
 var archivalSeriesRegExp = regexp.MustCompile(`\Aseries|subseries`)
 
 // TODO: Do we need to have anything in `CollectionDoc.Part.Source` for these?
+// TODO: figure out whether to keep return value of `setComplexParts()` as a
+// single error or to change it to an error slice.  Note that the caller
+// `setParts()` returns a single error to its caller.  If this method should
+// return a single error, should it be an early exit single error as it is now,
+// or should we use `errors.Join()` to wrap the slice of all accumulated errors?
 func (component *Component) setComplexParts() error {
 	component.setChronListComplex()
 	component.setCreatorComplex()
