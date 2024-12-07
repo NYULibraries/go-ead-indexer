@@ -166,7 +166,6 @@ func MakeComponents(collectionDocParts ComponentCollectionDocParts, node types.N
 	return &components, nil
 }
 
-// See `ead.new()` comment on why we have to pass in `repositoryCode` as an argument.
 func MakeComponent(collectionDocParts ComponentCollectionDocParts, sort int,
 	node types.Node) (Component, error) {
 	component := Component{
