@@ -90,5 +90,5 @@ queryString=$(IFS='&' ; echo "${QUERY_PARAMS[*]}")
 # https://jira.nyu.edu/browse/DLFA-182?jql=text%20~%20%22solr%20queries%22
 QUERY_URL="${specialCollectionsSolrOrigin}/solr/findingaids/select?q=ead_ssi:${eadid}&rows=${rows}&${queryString}"
 
-curl $QUERY_URL
+curl --silent $QUERY_URL
 
