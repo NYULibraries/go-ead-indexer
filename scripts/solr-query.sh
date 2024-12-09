@@ -16,7 +16,7 @@ DEFAULT_SPECIALCOLLECTIONS_SOLR_ORIGIN=http://44.218.37.122:8080
 # SPECIALCOLLECTIONS_SOLR_ORIGIN environment var must be a valid https://developer.mozilla.org/en-US/docs/Glossary/Origin
 specialCollectionsSolrOrigin=${SPECIALCOLLECTIONS_SOLR_ORIGIN:-$DEFAULT_SPECIALCOLLECTIONS_SOLR_ORIGIN}
 
-# Get the only require script arg, the EAD ID.
+# There is only one required arg, the EAD ID.
 eadid=$1
 if [ -z "$eadid" ]
 then
@@ -25,14 +25,16 @@ then
 fi
 
 # Default to returning all Solr docs. There's no "give me all rows" option in Solr.
-# You have to set `rows` to a number higher than the total number of docs in the
-# index.
+# You have to set the `rows` query param to a number higher than the total number
+# of docs in the index.
 DEFAULT_ROWS=999999999
-# Allow the user the option to set a row limit.
+# Allow the user the option to set a rows (docs) limit.
 rows="${2:-$DEFAULT_ROWS}"
 
 # We build the query used by the FAB landing page, which is a search that
-# returns everything.
+# returns everything.  See this Jira ticket for details:
+#     "Sample Solr requests/queries used by the FAB"
+#     https://jira.nyu.edu/browse/DLFA-182
 QUERY_PARAMS[0]='bq=format_sim%3A%22Archival+Collection%22%5E250'
 QUERY_PARAMS[1]='bq=level_sim%3Afile%5E20'
 QUERY_PARAMS[2]='bq=level_sim%3Aitem'
@@ -86,8 +88,6 @@ queryString=$(IFS='&' ; echo "${QUERY_PARAMS[*]}")
 # QUERY_URL="${SPECIALCOLLECTIONS_SOLR_ORIGIN}/solr/findingaids/select?q=ead_ssi:${eadid}&wt=json&indent=true&rows=${rows}&sort=id+asc"
 
 # FAB request
-# See: "Sample Solr requests/queries used by the FAB"
-# https://jira.nyu.edu/browse/DLFA-182?jql=text%20~%20%22solr%20queries%22
 QUERY_URL="${specialCollectionsSolrOrigin}/solr/findingaids/select?q=ead_ssi:${eadid}&rows=${rows}&${queryString}"
 
 curl --silent $QUERY_URL
