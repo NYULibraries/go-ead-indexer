@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="id">ms347_foundling_hospitalaspace_ref922_o2b</field>
+    <field name="ead_ssi">ms347_foundling_hospital</field>
+    <field name="parent_ssi">aspace_ref913_k2l</field>
+    <field name="parent_ssm">aspace_ref7_gzk</field>
+    <field name="parent_ssm">aspace_ref913_k2l</field>
+    <field name="parent_unittitles_ssm">Series VII. Foundling Publications - Pamphlets, Appeals, Newsletters, 1909-2009</field>
+    <field name="parent_unittitles_ssm">Subseries VII.1. Pamphlets, Appeals, Public Relations Materials, 1909-2007</field>
+    <field name="parent_unittitles_teim">Series VII. Foundling Publications - Pamphlets, Appeals, Newsletters, 1909-2009</field>
+    <field name="parent_unittitles_teim">Subseries VII.1. Pamphlets, Appeals, Public Relations Materials, 1909-2007</field>
+    <field name="component_level_isim">3</field>
+    <field name="component_children_bsi">false</field>
+    <field name="collection_sim">New York Foundling Hospital records</field>
+    <field name="collection_ssm">New York Foundling Hospital records</field>
+    <field name="collection_unitid_ssm">MS 347</field>
+    <field name="level_sim">file</field>
+    <field name="unittitle_ssm">Thank you flier, reporting on Bazaar 1957</field>
+    <field name="unittitle_teim">Thank you flier, reporting on Bazaar 1957</field>
+    <field name="unitdate_teim">circa 1957</field>
+    <field name="ref_ssi">aspace_ref922_o2b</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="location_ssm">Offsite-Box: 52, Folder: 7</field>
+    <field name="location_si">Offsite-Box: 52, Folder: 7</field>
+    <field name="collection_teim">New York Foundling Hospital records</field>
+    <field name="collection_unitid_teim">MS 347</field>
+    <field name="series_sim">Series VII. Foundling Publications - Pamphlets, Appeals, Newsletters, 1909-2009</field>
+    <field name="series_sim">Subseries VII.1. Pamphlets, Appeals, Public Relations Materials, 1909-2007</field>
+    <field name="series_si">Series VII. Foundling Publications - Pamphlets, Appeals, Newsletters, 1909-2009 &gt;&gt; Subseries VII.1. Pamphlets, Appeals, Public Relations Materials, 1909-2007 &gt;&gt; Thank you flier, reporting on Bazaar 1957</field>
+    <field name="heading_ssm">Thank you flier, reporting on Bazaar 1957</field>
+    <field name="unitdate_ssm">circa 1957</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="sort_ii">836</field>
+  </doc>
+</add>

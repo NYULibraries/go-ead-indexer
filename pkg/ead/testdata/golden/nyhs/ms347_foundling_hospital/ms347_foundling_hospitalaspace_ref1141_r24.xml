@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="id">ms347_foundling_hospitalaspace_ref1141_r24</field>
+    <field name="ead_ssi">ms347_foundling_hospital</field>
+    <field name="parent_ssi">aspace_ref1126_asp</field>
+    <field name="parent_ssm">aspace_ref198_wv5</field>
+    <field name="parent_ssm">aspace_ref1126_asp</field>
+    <field name="parent_unittitles_ssm">Series XIV. Records of Children and Mothers (Restricted), 1869-1966</field>
+    <field name="parent_unittitles_ssm">Subseries XIV.1. Admissions/Children's Records (Restricted)</field>
+    <field name="parent_unittitles_teim">Series XIV. Records of Children and Mothers (Restricted), 1869-1966</field>
+    <field name="parent_unittitles_teim">Subseries XIV.1. Admissions/Children's Records (Restricted)</field>
+    <field name="component_level_isim">3</field>
+    <field name="component_children_bsi">false</field>
+    <field name="collection_sim">New York Foundling Hospital records</field>
+    <field name="collection_ssm">New York Foundling Hospital records</field>
+    <field name="collection_unitid_ssm">MS 347</field>
+    <field name="level_sim">file</field>
+    <field name="unittitle_ssm">Admissions/Children's Record Vol. 13 [RESTRICTED]</field>
+    <field name="unittitle_teim">Admissions/Children's Record Vol. 13 [RESTRICTED]</field>
+    <field name="unitdate_teim">1951 September-1955 February</field>
+    <field name="ref_ssi">aspace_ref1141_r24</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="location_ssm">Offsite-Box: 91, Volume: 86</field>
+    <field name="location_si">Offsite-Box: 91, Volume: 86</field>
+    <field name="collection_teim">New York Foundling Hospital records</field>
+    <field name="collection_unitid_teim">MS 347</field>
+    <field name="series_sim">Series XIV. Records of Children and Mothers (Restricted), 1869-1966</field>
+    <field name="series_sim">Subseries XIV.1. Admissions/Children's Records (Restricted)</field>
+    <field name="series_si">Series XIV. Records of Children and Mothers (Restricted), 1869-1966 &gt;&gt; Subseries XIV.1. Admissions/Children's Records (Restricted) &gt;&gt; Admissions/Children's Record Vol. 13 [RESTRICTED]</field>
+    <field name="heading_ssm">Admissions/Children's Record Vol. 13 [RESTRICTED]</field>
+    <field name="unitdate_ssm">1951 September-1955 February</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="sort_ii">1037</field>
+  </doc>
+</add>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="id">ms256_harmon_hendricks_goldstoneaspace_ref23_rro</field>
+    <field name="ead_ssi">ms256_harmon_hendricks_goldstone</field>
+    <field name="parent_ssi">aspace_ref19_j4r</field>
+    <field name="parent_ssm">aspace_ref19_j4r</field>
+    <field name="parent_unittitles_ssm">Series II. Reports</field>
+    <field name="parent_unittitles_teim">Series II. Reports</field>
+    <field name="component_level_isim">2</field>
+    <field name="component_children_bsi">false</field>
+    <field name="collection_sim">Harmon Hendricks Goldstone Papers</field>
+    <field name="collection_ssm">Harmon Hendricks Goldstone Papers</field>
+    <field name="collection_unitid_ssm">MS 256</field>
+    <field name="level_sim">otherlevel</field>
+    <field name="unittitle_ssm">Landmarks Preservation Commission Reports (July 1974): &lt;strong&gt;Carnegie Hill Historic District&lt;/strong&gt;, Manhattan &lt;strong&gt;Grand Army Plaza&lt;/strong&gt;, Fifth Avenue at 59th Street, Manhattan &lt;strong&gt;First Church of Christ Scientist of New York City&lt;/strong&gt;, 1 West 96th Street, Manhattan &lt;strong&gt;11 East 70th Street House&lt;/strong&gt;, Manhattan &lt;strong&gt;New York Society for Ethical Culture&lt;/strong&gt;, 2 West 64th Street, Manhattan &lt;strong&gt;15 East 70th Street House&lt;/strong&gt;, Manhattan &lt;strong&gt;17 East 70th Street House&lt;/strong&gt;, Manhattan &lt;strong&gt;19 East 70th Street House&lt;/strong&gt;, Manhattan &lt;strong&gt;21 East 70th Street House&lt;/strong&gt;, Manhattan &lt;strong&gt;11 East 90th Street House&lt;/strong&gt;, Manhattan &lt;strong&gt;15 East 90th Street House&lt;/strong&gt;, Manhattan &lt;strong&gt;17 East 90th Street House&lt;/strong&gt;, Manhattan &lt;strong&gt;1261 Madison Avenue Apartment House&lt;/strong&gt;, Manhattan &lt;strong&gt;John Henry Hammond House&lt;/strong&gt;, 9 East 91st Street, Manhattan &lt;strong&gt;John B. Trevor House&lt;/strong&gt;, 11 East 91st Street, Manhattan 1&lt;strong&gt;321 Madison Avenue House&lt;/strong&gt;, Manhattan &lt;strong&gt;67 East 93rd Street House&lt;/strong&gt;, Manhattan &lt;strong&gt;Lycee Francais de New York&lt;/strong&gt;, 3 East 95th Street, Manhattan &lt;strong&gt;Edith Fabbri House &lt;/strong&gt;(House of the Redeemer), 7 East 95th Street, Manhattan</field>
+    <field name="unittitle_teim">Landmarks Preservation Commission Reports (July 1974): Carnegie Hill Historic District, Manhattan Grand Army Plaza, Fifth Avenue at 59th Street, Manhattan First Church of Christ Scientist of New York City, 1 West 96th Street, Manhattan 11 East 70th Street House, Manhattan New York Society for Ethical Culture, 2 West 64th Street, Manhattan 15 East 70th Street House, Manhattan 17 East 70th Street House, Manhattan 19 East 70th Street House, Manhattan 21 East 70th Street House, Manhattan 11 East 90th Street House, Manhattan 15 East 90th Street House, Manhattan 17 East 90th Street House, Manhattan 1261 Madison Avenue Apartment House, Manhattan John Henry Hammond House, 9 East 91st Street, Manhattan John B. Trevor House, 11 East 91st Street, Manhattan 1321 Madison Avenue House, Manhattan 67 East 93rd Street House, Manhattan Lycee Francais de New York, 3 East 95th Street, Manhattan Edith Fabbri House (House of the Redeemer), 7 East 95th Street, Manhattan</field>
+    <field name="unitdate_normal_ssm">1974/1974</field>
+    <field name="unitdate_normal_teim">1974/1974</field>
+    <field name="unitdate_normal_sim">1974/1974</field>
+    <field name="unitdate_inclusive_teim">1974</field>
+    <field name="ref_ssi">aspace_ref23_rro</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="location_ssm">Box: 3, Folder: 4</field>
+    <field name="location_si">Box: 3, Folder: 4</field>
+    <field name="collection_teim">Harmon Hendricks Goldstone Papers</field>
+    <field name="collection_unitid_teim">MS 256</field>
+    <field name="series_sim">Series II. Reports</field>
+    <field name="series_si">Series II. Reports &gt;&gt; Landmarks Preservation Commission Reports (July 1974): &lt;strong&gt;Carnegie Hill Historic District&lt;/strong&gt;, Manhattan &lt;strong&gt;Grand Army Plaza&lt;/strong&gt;, Fifth Avenue at 59th Street, Manhattan &lt;strong&gt;First Church of Christ Scientist of New York City&lt;/strong&gt;, 1 West 96th Street, Manhattan &lt;strong&gt;11 East 70th Street House&lt;/strong&gt;, Manhattan &lt;strong&gt;New York Society for Ethical Culture&lt;/strong&gt;, 2 West 64th Street, Manhattan &lt;strong&gt;15 East 70th Street House&lt;/strong&gt;, Manhattan &lt;strong&gt;17 East 70th Street House&lt;/strong&gt;, Manhattan &lt;strong&gt;19 East 70th Street House&lt;/strong&gt;, Manhattan &lt;strong&gt;21 East 70th Street House&lt;/strong&gt;, Manhattan &lt;strong&gt;11 East 90th Street House&lt;/strong&gt;, Manhattan &lt;strong&gt;15 East 90th Street House&lt;/strong&gt;, Manhattan &lt;strong&gt;17 East 90th Street House&lt;/strong&gt;, Manhattan &lt;strong&gt;1261 Madison Avenue Apartment House&lt;/strong&gt;, Manhattan &lt;strong&gt;John Henry Hammond House&lt;/strong&gt;, 9 East 91st Street, Manhattan &lt;strong&gt;John B. Trevor House&lt;/strong&gt;, 11 East 91st Street, Manhattan 1&lt;strong&gt;321 Madison Avenue House&lt;/strong&gt;, Manhattan &lt;strong&gt;67 East 93rd Street House&lt;/strong&gt;, Manhattan &lt;strong&gt;Lycee Francais de New York&lt;/strong&gt;, 3 East 95th Street, Manhattan &lt;strong&gt;Edith Fabbri House &lt;/strong&gt;(House of the Redeemer), 7 East 95th Street, Manhattan</field>
+    <field name="heading_ssm">Landmarks Preservation Commission Reports (July 1974): Carnegie Hill Historic District, Manhattan Grand Army Plaza, Fifth Avenue at 59th Street, Manhattan First Church of Christ Scientist of New York City, 1 West 96th Street, Manhattan 11 East 70th Street House, Manhattan New York Society for Ethical Culture, 2 West 64th Street, Manhattan 15 East 70th Street House, Manhattan 17 East 70th Street House, Manhattan 19 East 70th Street House, Manhattan 21 East 70th Street House, Manhattan 11 East 90th Street House, Manhattan 15 East 90th Street House, Manhattan 17 East 90th Street House, Manhattan 1261 Madison Avenue Apartment House, Manhattan John Henry Hammond House, 9 East 91st Street, Manhattan John B. Trevor House, 11 East 91st Street, Manhattan 1321 Madison Avenue House, Manhattan 67 East 93rd Street House, Manhattan Lycee Francais de New York, 3 East 95th Street, Manhattan Edith Fabbri House (House of the Redeemer), 7 East 95th Street, Manhattan</field>
+    <field name="unitdate_start_sim">1974</field>
+    <field name="unitdate_start_ssm">1974</field>
+    <field name="unitdate_start_si">1974</field>
+    <field name="unitdate_end_sim">1974</field>
+    <field name="unitdate_end_ssm">1974</field>
+    <field name="unitdate_end_si">1974</field>
+    <field name="unitdate_ssm">Inclusive, 1974</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="sort_ii">8</field>
+  </doc>
+</add>

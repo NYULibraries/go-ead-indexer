@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="id">ad_mc_030aspace_7e83d1d529a2971bd0adb1943face441</field>
+    <field name="ead_ssi">ad_mc_030</field>
+    <field name="component_level_isim">1</field>
+    <field name="component_children_bsi">true</field>
+    <field name="collection_sim">Hisham Khatib Collection - Prints</field>
+    <field name="collection_ssm">Hisham Khatib Collection - Prints</field>
+    <field name="collection_unitid_ssm">AD.MC.030</field>
+    <field name="level_sim">series</field>
+    <field name="unittitle_ssm">Palestine Exploration Fund 1866-67</field>
+    <field name="unittitle_teim">Palestine Exploration Fund 1866-67</field>
+    <field name="unitid_teim">ref727</field>
+    <field name="unitid_ssm">ref727</field>
+    <field name="ref_ssi">aspace_7e83d1d529a2971bd0adb1943face441</field>
+    <field name="repository_ssi">akkasah</field>
+    <field name="repository_sim">akkasah</field>
+    <field name="repository_ssm">akkasah</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="location_ssm">object: Digital Copy Only - 030_ref422-ref425</field>
+    <field name="location_si">object: Digital Copy Only - 030_ref422-ref425</field>
+    <field name="collection_teim">Hisham Khatib Collection - Prints</field>
+    <field name="collection_unitid_teim">AD.MC.030</field>
+    <field name="series_si">Palestine Exploration Fund 1866-67</field>
+    <field name="heading_ssm">Palestine Exploration Fund 1866-67</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="sort_ii">411</field>
+  </doc>
+</add>

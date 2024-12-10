@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="id">ms347_foundling_hospitalaspace_ref982_aog</field>
+    <field name="ead_ssi">ms347_foundling_hospital</field>
+    <field name="parent_ssi">aspace_ref8_pq6</field>
+    <field name="parent_ssm">aspace_ref8_pq6</field>
+    <field name="parent_unittitles_ssm">Series VIII. Events, 1875-2007</field>
+    <field name="parent_unittitles_teim">Series VIII. Events, 1875-2007</field>
+    <field name="component_level_isim">2</field>
+    <field name="component_children_bsi">false</field>
+    <field name="collection_sim">New York Foundling Hospital records</field>
+    <field name="collection_ssm">New York Foundling Hospital records</field>
+    <field name="collection_unitid_ssm">MS 347</field>
+    <field name="level_sim">file</field>
+    <field name="unittitle_ssm">Program for Afro-American Cultural Exhibit sponsored by Foundling</field>
+    <field name="unittitle_teim">Program for Afro-American Cultural Exhibit sponsored by Foundling</field>
+    <field name="unitdate_teim">1969 March 23</field>
+    <field name="ref_ssi">aspace_ref982_aog</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="location_ssm">Offsite-Box: 55, Folder: 4</field>
+    <field name="location_si">Offsite-Box: 55, Folder: 4</field>
+    <field name="collection_teim">New York Foundling Hospital records</field>
+    <field name="collection_unitid_teim">MS 347</field>
+    <field name="series_sim">Series VIII. Events, 1875-2007</field>
+    <field name="series_si">Series VIII. Events, 1875-2007 &gt;&gt; Program for Afro-American Cultural Exhibit sponsored by Foundling</field>
+    <field name="heading_ssm">Program for Afro-American Cultural Exhibit sponsored by Foundling</field>
+    <field name="unitdate_ssm">1969 March 23</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="sort_ii">897</field>
+  </doc>
+</add>

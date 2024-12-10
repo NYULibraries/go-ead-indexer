@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="id">ms347_foundling_hospitalaspace_ref367_gko</field>
+    <field name="ead_ssi">ms347_foundling_hospital</field>
+    <field name="parent_ssi">aspace_ref4_l87</field>
+    <field name="parent_ssm">aspace_ref4_l87</field>
+    <field name="parent_unittitles_ssm">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008</field>
+    <field name="parent_unittitles_teim">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008</field>
+    <field name="component_level_isim">2</field>
+    <field name="component_children_bsi">true</field>
+    <field name="collection_sim">New York Foundling Hospital records</field>
+    <field name="collection_ssm">New York Foundling Hospital records</field>
+    <field name="collection_unitid_ssm">MS 347</field>
+    <field name="level_sim">subseries</field>
+    <field name="unittitle_ssm">Subseries IV.7. Bronx Community Services, ca. 1970-2001</field>
+    <field name="unittitle_teim">Subseries IV.7. Bronx Community Services, ca. 1970-2001</field>
+    <field name="scopecontent_teim">The Foundling opened an office in the South Bronx in the mid-1960's, to provide foster care and related and preventive services to the Spanish-speaking community there.  </field>
+    <field name="scopecontent_teim">The subseries consists of four folders of materials from this program.  See also related materials in IV.27 - Mott Haven Prevention Program.</field>
+    <field name="ref_ssi">aspace_ref367_gko</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="collection_teim">New York Foundling Hospital records</field>
+    <field name="collection_unitid_teim">MS 347</field>
+    <field name="series_sim">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008</field>
+    <field name="series_si">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008 &gt;&gt; Subseries IV.7. Bronx Community Services, ca. 1970-2001</field>
+    <field name="heading_ssm">Subseries IV.7. Bronx Community Services, ca. 1970-2001</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="sort_ii">381</field>
+  </doc>
+</add>

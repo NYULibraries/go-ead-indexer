@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="id">ad_mc_019aspace_48ec5cac5aec3d493a4466a0788276de</field>
+    <field name="ead_ssi">ad_mc_019</field>
+    <field name="parent_ssi">aspace_a68a762e2aca52933dedc66002022f44</field>
+    <field name="parent_ssm">aspace_a68a762e2aca52933dedc66002022f44</field>
+    <field name="parent_unittitles_ssm">Tübingen Atlas des Vorderen Orients (TAVO) = Atlas of the Near and Middle East.</field>
+    <field name="parent_unittitles_teim">Tübingen Atlas des Vorderen Orients (TAVO) = Atlas of the Near and Middle East.</field>
+    <field name="component_level_isim">2</field>
+    <field name="component_children_bsi">false</field>
+    <field name="collection_sim">Map Collection, NYU Abu Dhabi Library</field>
+    <field name="collection_ssm">Map Collection, NYU Abu Dhabi Library</field>
+    <field name="collection_unitid_ssm">AD.MC.019</field>
+    <field name="level_sim">file</field>
+    <field name="unittitle_ssm">Portfolio vol. 7. Section B VIII maps 1-2, 4-8, 10, 12-20. From the crusader period up to 1510. </field>
+    <field name="unittitle_teim">Portfolio vol. 7. Section B VIII maps 1-2, 4-8, 10, 12-20. From the crusader period up to 1510. </field>
+    <field name="unitdate_normal_ssm">2000/2000</field>
+    <field name="unitdate_normal_teim">2000/2000</field>
+    <field name="unitdate_normal_sim">2000/2000</field>
+    <field name="unitdate_teim">2000</field>
+    <field name="ref_ssi">aspace_48ec5cac5aec3d493a4466a0788276de</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="location_ssm">map-case: C, drawer: 2C</field>
+    <field name="location_si">map-case: C, drawer: 2C</field>
+    <field name="collection_teim">Map Collection, NYU Abu Dhabi Library</field>
+    <field name="collection_unitid_teim">AD.MC.019</field>
+    <field name="series_sim">Tübingen Atlas des Vorderen Orients (TAVO) = Atlas of the Near and Middle East.</field>
+    <field name="series_si">Tübingen Atlas des Vorderen Orients (TAVO) = Atlas of the Near and Middle East. &gt;&gt; Portfolio vol. 7. Section B VIII maps 1-2, 4-8, 10, 12-20. From the crusader period up to 1510. </field>
+    <field name="heading_ssm">Portfolio vol. 7. Section B VIII maps 1-2, 4-8, 10, 12-20. From the crusader period up to 1510. </field>
+    <field name="unitdate_start_sim">2000</field>
+    <field name="unitdate_start_ssm">2000</field>
+    <field name="unitdate_start_si">2000</field>
+    <field name="unitdate_end_sim">2000</field>
+    <field name="unitdate_end_ssm">2000</field>
+    <field name="unitdate_end_si">2000</field>
+    <field name="unitdate_ssm">2000</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="sort_ii">86</field>
+  </doc>
+</add>

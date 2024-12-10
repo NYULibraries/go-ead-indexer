@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="id">ms256_harmon_hendricks_goldstoneaspace_ref31_38v</field>
+    <field name="ead_ssi">ms256_harmon_hendricks_goldstone</field>
+    <field name="parent_ssi">aspace_ref19_j4r</field>
+    <field name="parent_ssm">aspace_ref19_j4r</field>
+    <field name="parent_unittitles_ssm">Series II. Reports</field>
+    <field name="parent_unittitles_teim">Series II. Reports</field>
+    <field name="component_level_isim">2</field>
+    <field name="component_children_bsi">false</field>
+    <field name="collection_sim">Harmon Hendricks Goldstone Papers</field>
+    <field name="collection_ssm">Harmon Hendricks Goldstone Papers</field>
+    <field name="collection_unitid_ssm">MS 256</field>
+    <field name="level_sim">otherlevel</field>
+    <field name="unittitle_ssm">Landmarks Preservation Commission Reports (Nov 1978): &lt;strong&gt;Chanin Building&lt;/strong&gt;, 122 East 42nd Street, Manhattan &lt;strong&gt;Former Police Headquarters Building&lt;/strong&gt;, 240 Centre Street, Manhattan &lt;strong&gt;No. 8 Thomas Street Building&lt;/strong&gt;, Manhattan &lt;strong&gt;Fraunces Tavern Block Historic District&lt;/strong&gt;, Manhattan &lt;strong&gt;Town Hall&lt;/strong&gt;, 113-123 West 43rd Street, Manhattan</field>
+    <field name="unittitle_teim">Landmarks Preservation Commission Reports (Nov 1978): Chanin Building, 122 East 42nd Street, Manhattan Former Police Headquarters Building, 240 Centre Street, Manhattan No. 8 Thomas Street Building, Manhattan Fraunces Tavern Block Historic District, Manhattan Town Hall, 113-123 West 43rd Street, Manhattan</field>
+    <field name="unitdate_normal_ssm">1978/1978</field>
+    <field name="unitdate_normal_teim">1978/1978</field>
+    <field name="unitdate_normal_sim">1978/1978</field>
+    <field name="unitdate_inclusive_teim">1978</field>
+    <field name="ref_ssi">aspace_ref31_38v</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="location_ssm">Box: 4, Folder: 2</field>
+    <field name="location_si">Box: 4, Folder: 2</field>
+    <field name="collection_teim">Harmon Hendricks Goldstone Papers</field>
+    <field name="collection_unitid_teim">MS 256</field>
+    <field name="series_sim">Series II. Reports</field>
+    <field name="series_si">Series II. Reports &gt;&gt; Landmarks Preservation Commission Reports (Nov 1978): &lt;strong&gt;Chanin Building&lt;/strong&gt;, 122 East 42nd Street, Manhattan &lt;strong&gt;Former Police Headquarters Building&lt;/strong&gt;, 240 Centre Street, Manhattan &lt;strong&gt;No. 8 Thomas Street Building&lt;/strong&gt;, Manhattan &lt;strong&gt;Fraunces Tavern Block Historic District&lt;/strong&gt;, Manhattan &lt;strong&gt;Town Hall&lt;/strong&gt;, 113-123 West 43rd Street, Manhattan</field>
+    <field name="heading_ssm">Landmarks Preservation Commission Reports (Nov 1978): Chanin Building, 122 East 42nd Street, Manhattan Former Police Headquarters Building, 240 Centre Street, Manhattan No. 8 Thomas Street Building, Manhattan Fraunces Tavern Block Historic District, Manhattan Town Hall, 113-123 West 43rd Street, Manhattan</field>
+    <field name="unitdate_start_sim">1978</field>
+    <field name="unitdate_start_ssm">1978</field>
+    <field name="unitdate_start_si">1978</field>
+    <field name="unitdate_end_sim">1978</field>
+    <field name="unitdate_end_ssm">1978</field>
+    <field name="unitdate_end_si">1978</field>
+    <field name="unitdate_ssm">Inclusive, 1978</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="sort_ii">16</field>
+  </doc>
+</add>

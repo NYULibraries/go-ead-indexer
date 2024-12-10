@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="id">ms347_foundling_hospitalaspace_ref72_6sw</field>
+    <field name="ead_ssi">ms347_foundling_hospital</field>
+    <field name="parent_ssi">aspace_ref2_mpr</field>
+    <field name="parent_ssm">aspace_ref2_mpr</field>
+    <field name="parent_unittitles_ssm">Series II. Annual Reports and Inspections, 1869-2000</field>
+    <field name="parent_unittitles_teim">Series II. Annual Reports and Inspections, 1869-2000</field>
+    <field name="component_level_isim">2</field>
+    <field name="component_children_bsi">true</field>
+    <field name="collection_sim">New York Foundling Hospital records</field>
+    <field name="collection_ssm">New York Foundling Hospital records</field>
+    <field name="collection_unitid_ssm">MS 347</field>
+    <field name="level_sim">subseries</field>
+    <field name="unittitle_ssm">Subseries II.1. Published Annual and Biennial Reports, 1869-2000</field>
+    <field name="unittitle_teim">Subseries II.1. Published Annual and Biennial Reports, 1869-2000</field>
+    <field name="scopecontent_teim">The subseries contains an incomplete set of reports distributed to the public and potential donors.  There are multiple copies of many reports, including bound copies 1869-1917 and individual copies 1885-2000.  There are some gaps, including no reports 1936-1943 or 1948-1961 (see Series VII.2 to fill in gaps 1958-1962).  Bound copies are arranged first, followed by individual copies.</field>
+    <field name="scopecontent_teim">Annual Reports from 1958-1966 were published as the March issue of Mater Dei, a monthly publication of the Foundling.  This series includes loose copies of the annual report issues of Mater Dei from 1963-1965.  Bound copies of the periodical, which include annual reports 1958-1962 not represented in this subseries, may be found in Series VII.2 - Newsletters.</field>
+    <field name="scopecontent_teim">Please see Series IV.6 for annual reports of the Boarding Department.</field>
+    <field name="ref_ssi">aspace_ref72_6sw</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="collection_teim">New York Foundling Hospital records</field>
+    <field name="collection_unitid_teim">MS 347</field>
+    <field name="series_sim">Series II. Annual Reports and Inspections, 1869-2000</field>
+    <field name="series_si">Series II. Annual Reports and Inspections, 1869-2000 &gt;&gt; Subseries II.1. Published Annual and Biennial Reports, 1869-2000</field>
+    <field name="heading_ssm">Subseries II.1. Published Annual and Biennial Reports, 1869-2000</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="sort_ii">66</field>
+  </doc>
+</add>

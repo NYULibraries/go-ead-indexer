@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="id">ms347_foundling_hospitalaspace_ref513_yrf</field>
+    <field name="ead_ssi">ms347_foundling_hospital</field>
+    <field name="parent_ssi">aspace_ref376_j66</field>
+    <field name="parent_ssm">aspace_ref4_l87</field>
+    <field name="parent_ssm">aspace_ref376_j66</field>
+    <field name="parent_unittitles_ssm">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008</field>
+    <field name="parent_unittitles_ssm">Subseries IV.16. Vincent J. Fontana Center for Child Protection, 1949-2008</field>
+    <field name="parent_unittitles_teim">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008</field>
+    <field name="parent_unittitles_teim">Subseries IV.16. Vincent J. Fontana Center for Child Protection, 1949-2008</field>
+    <field name="component_level_isim">3</field>
+    <field name="component_children_bsi">false</field>
+    <field name="collection_sim">New York Foundling Hospital records</field>
+    <field name="collection_ssm">New York Foundling Hospital records</field>
+    <field name="collection_unitid_ssm">MS 347</field>
+    <field name="level_sim">file</field>
+    <field name="unittitle_ssm">&lt;em&gt;Family Practice Recertification&lt;/em&gt; Vol.12, No.11, with article by Vincent Fontana p. 71, and Fontana on editorial board</field>
+    <field name="unittitle_teim">Family Practice Recertification Vol.12, No.11, with article by Vincent Fontana p. 71, and Fontana on editorial board</field>
+    <field name="unitdate_teim">1990 November</field>
+    <field name="ref_ssi">aspace_ref513_yrf</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="location_ssm">Offsite-Box: 28, Folder: 6</field>
+    <field name="location_si">Offsite-Box: 28, Folder: 6</field>
+    <field name="collection_teim">New York Foundling Hospital records</field>
+    <field name="collection_unitid_teim">MS 347</field>
+    <field name="series_sim">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008</field>
+    <field name="series_sim">Subseries IV.16. Vincent J. Fontana Center for Child Protection, 1949-2008</field>
+    <field name="series_si">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008 &gt;&gt; Subseries IV.16. Vincent J. Fontana Center for Child Protection, 1949-2008 &gt;&gt; &lt;em&gt;Family Practice Recertification&lt;/em&gt; Vol.12, No.11, with article by Vincent Fontana p. 71, and Fontana on editorial board</field>
+    <field name="heading_ssm">Family Practice Recertification Vol.12, No.11, with article by Vincent Fontana p. 71, and Fontana on editorial board</field>
+    <field name="unitdate_ssm">1990 November</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="sort_ii">454</field>
+  </doc>
+</add>

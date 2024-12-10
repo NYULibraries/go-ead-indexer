@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="id">tam_143aspace_ref141</field>
+    <field name="ead_ssi">tam_143</field>
+    <field name="component_level_isim">1</field>
+    <field name="component_children_bsi">true</field>
+    <field name="collection_sim">Cedric Belfrage Papers</field>
+    <field name="collection_ssm">Cedric Belfrage Papers</field>
+    <field name="collection_unitid_ssm">TAM.143</field>
+    <field name="level_sim">series</field>
+    <field name="unittitle_ssm">Series IV: Writings</field>
+    <field name="unittitle_teim">Series IV: Writings</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/192510</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/192510</field>
+    <field name="unitdate_normal_ssm">1927/1990</field>
+    <field name="unitdate_normal_teim">1927/1990</field>
+    <field name="unitdate_normal_sim">1927/1990</field>
+    <field name="unitdate_inclusive_teim">1927-1990</field>
+    <field name="scopecontent_teim">Writings contains 12 subseries. The first consists of published and unpublished articles, travel notes, and translations. There is substantial documentation of Belfrage's two trips to Cuba (1961-1962 &amp; 1975-1977), including notes, articles and correspondence. There is a long correspondence with Belfrage's friend and colleague, Eduardo Galeano about Belfrage's translation of his trilogy, Memory of Fire.</field>
+    <field name="scopecontent_teim">Several sub-series document Cedric's published book projects and contains typescripts, correspondence and research files. There is a large section of writing and correspondence for the section of Belfrage's book, The Frightened Giant (about his deportation) called, The Admiral (1955-1965). This is about Scotty MacKenzie, who posed as a Naval admiral for many years, whom Belfrage met in jail. There is also a substantial section of Something to Guard materials, mostly reviews, notes and correspondence (1974-1980). The American Inquisition is the largest section (three linear feet). It consists mostly of research files which contain Belfrage's notes and source material. One linear foot exclusively contains information on the case of Miami lawyer Leo Sheiner who was taken before the Florida Supreme Court for alleged Communist Party affiliations, and on the `Red Cases' of several Miami residents taken before the House Un-American Activities Committee for the same reason. There is also a great deal of research on the atomic espionage cases of Ethel and Julius Rosenberg and Morton Sobell. The American Inquisition section documents Belfrage's 1973 publicity tour in the U.S., his first time back since his deportation in 1955, and his continuing campaign to obtain visas to visit the U.S.</field>
+    <field name="scopecontent_teim">Other sub-series contain unpublished writings. They are mostly book projects, but there are also numerous shorter pieces. The two longest projects are his book on Owen Whitfield and Thad Snow (Belfrage's fictional name for Owen Whitfield is Hugh Goodrum), and his Hollywood book and memoir. The Hollywood section contains many of Belfrage's articles as a film critic, manuscripts of chapters, and a small amount of correspondence and source material. There is also a short general memoir project including chapter notes on people who played influential roles in his life and an autobiographical outline. Most of the shorter pieces are light-hearted, humorous spoofs on miscellaneous topics. There are also two short manuscripts on Belfrages' German press control activities (circa 1947).</field>
+    <field name="ref_ssi">aspace_ref141</field>
+    <field name="repository_ssi">tamwag</field>
+    <field name="repository_sim">tamwag</field>
+    <field name="repository_ssm">tamwag</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="collection_teim">Cedric Belfrage Papers</field>
+    <field name="collection_unitid_teim">TAM.143</field>
+    <field name="series_si">Series IV: Writings</field>
+    <field name="heading_ssm">Series IV: Writings</field>
+    <field name="unitdate_start_sim">1927</field>
+    <field name="unitdate_start_ssm">1927</field>
+    <field name="unitdate_start_si">1927</field>
+    <field name="unitdate_end_sim">1990</field>
+    <field name="unitdate_end_ssm">1990</field>
+    <field name="unitdate_end_si">1990</field>
+    <field name="unitdate_ssm">Inclusive, 1927-1990</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="sort_ii">132</field>
+  </doc>
+</add>

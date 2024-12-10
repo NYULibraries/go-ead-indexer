@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="id">ad_mc_019aspace_2c78e71d54e8e27ce1c0f822502c3c89</field>
+    <field name="ead_ssi">ad_mc_019</field>
+    <field name="parent_ssi">aspace_2df0c697025749ba4eb607ed8c41c8a8</field>
+    <field name="parent_ssm">aspace_2df0c697025749ba4eb607ed8c41c8a8</field>
+    <field name="parent_unittitles_ssm">Middle East, general</field>
+    <field name="parent_unittitles_teim">Middle East, general</field>
+    <field name="component_level_isim">2</field>
+    <field name="component_children_bsi">false</field>
+    <field name="collection_sim">Map Collection, NYU Abu Dhabi Library</field>
+    <field name="collection_ssm">Map Collection, NYU Abu Dhabi Library</field>
+    <field name="collection_unitid_ssm">AD.MC.019</field>
+    <field name="level_sim">file</field>
+    <field name="unittitle_ssm">Wit, Frederik de.  Nova Persiae Armenia Natoliae et Arabiae</field>
+    <field name="unittitle_teim">Wit, Frederik de.  Nova Persiae Armenia Natoliae et Arabiae</field>
+    <field name="unitdate_normal_ssm">1686/1686</field>
+    <field name="unitdate_normal_teim">1686/1686</field>
+    <field name="unitdate_normal_sim">1686/1686</field>
+    <field name="unitdate_teim">1686?</field>
+    <field name="phystech_teim">Publication data:  T'Amsterdam : By Frederick de Wit in de Kalversbraet in de Witte Pascaert</field>
+    <field name="phystech_teim">Library call number:  G7420 .W5 1666</field>
+    <field name="ref_ssi">aspace_2c78e71d54e8e27ce1c0f822502c3c89</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="location_ssm">map-case: C, drawer: 1A</field>
+    <field name="location_si">map-case: C, drawer: 1A</field>
+    <field name="collection_teim">Map Collection, NYU Abu Dhabi Library</field>
+    <field name="collection_unitid_teim">AD.MC.019</field>
+    <field name="series_sim">Middle East, general</field>
+    <field name="series_si">Middle East, general &gt;&gt; Wit, Frederik de.  Nova Persiae Armenia Natoliae et Arabiae</field>
+    <field name="heading_ssm">Wit, Frederik de.  Nova Persiae Armenia Natoliae et Arabiae</field>
+    <field name="unitdate_start_sim">1686</field>
+    <field name="unitdate_start_ssm">1686</field>
+    <field name="unitdate_start_si">1686</field>
+    <field name="unitdate_end_sim">1686</field>
+    <field name="unitdate_end_ssm">1686</field>
+    <field name="unitdate_end_si">1686</field>
+    <field name="unitdate_ssm">1686?</field>
+    <field name="date_range_sim">1601-1700</field>
+    <field name="sort_ii">54</field>
+  </doc>
+</add>
