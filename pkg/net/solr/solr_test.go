@@ -16,26 +16,10 @@ func TestMain(m *testing.M) {
 }
 
 func TestAdd(t *testing.T) {
-	err := testutils.Clean()
-	if err != nil {
-		t.Errorf("clean() failed with error: %s", err)
-	}
-
-	fakeSolrServer := testutils.MakeSolrFake(t)
-	defer fakeSolrServer.Close()
-
-	err = SetSolrURLOrigin(fakeSolrServer.URL)
-	if err != nil {
-		t.Fatalf(`Setup of Solr fake failed with error: %s`, err)
-	}
-
-	goldenFileIDs := eadtestutils.GetGoldenFileIDs(testutils.TestEAD)
-	for _, goldenFileID := range goldenFileIDs {
-		testAdd(goldenFileID, t)
-	}
+	testAdd_successfulAdds(t)
 }
 
-func testAdd(goldenFileID string, t *testing.T) {
+func testAdd_successfulAdd(goldenFileID string, t *testing.T) {
 	postBody, err := eadtestutils.GetGoldenFileValue(testutils.TestEAD, goldenFileID)
 	if err != nil {
 		t.Fatalf("eadtestutils.GetGoldenFileValue(testutils.TestEAD, goldenFileID) failed with error: %s", err)
@@ -57,6 +41,26 @@ func testAdd(goldenFileID string, t *testing.T) {
 	if diff != "" {
 		t.Errorf(`%s fail: actual request does not match expected: %s`,
 			goldenFileID, diff)
+	}
+}
+
+func testAdd_successfulAdds(t *testing.T) {
+	err := testutils.Clean()
+	if err != nil {
+		t.Errorf("clean() failed with error: %s", err)
+	}
+
+	fakeSolrServer := testutils.MakeSolrFake(t)
+	defer fakeSolrServer.Close()
+
+	err = SetSolrURLOrigin(fakeSolrServer.URL)
+	if err != nil {
+		t.Fatalf(`Setup of Solr fake failed with error: %s`, err)
+	}
+
+	goldenFileIDs := eadtestutils.GetGoldenFileIDs(testutils.TestEAD)
+	for _, goldenFileID := range goldenFileIDs {
+		testAdd_successfulAdd(goldenFileID, t)
 	}
 }
 
