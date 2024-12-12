@@ -33,7 +33,15 @@ const (
 	HTTP504GatewayTimeout
 )
 
-var errorResponseTypeRegExp = regexp.MustCompile(`error_([a0-9]+)`)
+const errorResponseIDPrefix = "error_"
+
+var errorResponseTypeRegExp = regexp.MustCompile(errorResponseIDPrefix + "([a0-9]+)")
+
+func MakeErrorResponseID(errorResponseType ErrorResponseType) string {
+	errorResponseTypeString := strconv.Itoa(int(errorResponseType))
+
+	return errorResponseIDPrefix + errorResponseTypeString
+}
 
 func MakeSolrFake(t *testing.T) *httptest.Server {
 	return httptest.NewServer(
