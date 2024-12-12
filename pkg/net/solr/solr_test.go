@@ -43,32 +43,7 @@ func TestAdd(t *testing.T) {
 		t.Errorf("clean() failed with error: %s", err)
 	}
 
-	fakeSolrServer := httptest.NewServer(
-		http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			receivedRequest, err := httputil.DumpRequest(r, true)
-			if err != nil {
-				t.Errorf("httputil.DumpRequest(r) failed with error: %s", err)
-
-				return
-			}
-
-			fileID, err := getFileIDFromRequest(r)
-			if err != nil {
-				t.Errorf("getFileIDFromRequest(r) failed with error: %s", err)
-
-				return
-			}
-
-			err = writeActualSolrRequestToTmp(testEAD, fileID, string(receivedRequest))
-			if err != nil {
-				t.Errorf(
-					"writeActualSolrRequestToTmp(testEAD, fileID, receivedRequest) failed with error: %s",
-					err)
-
-				return
-			}
-		}),
-	)
+	fakeSolrServer := makeSolrFake(t)
 	defer fakeSolrServer.Close()
 
 	err = SetSolrURLOrigin(fakeSolrServer.URL)
@@ -235,6 +210,35 @@ func getPOSTRequestHTTPHeadersString(body string) string {
 	var charLength = len(body)
 
 	return postRequestHTTPHeadersString + strconv.Itoa(charLength)
+}
+
+func makeSolrFake(t *testing.T) *httptest.Server {
+	return httptest.NewServer(
+		http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			receivedRequest, err := httputil.DumpRequest(r, true)
+			if err != nil {
+				t.Errorf("httputil.DumpRequest(r) failed with error: %s", err)
+
+				return
+			}
+
+			fileID, err := getFileIDFromRequest(r)
+			if err != nil {
+				t.Errorf("getFileIDFromRequest(r) failed with error: %s", err)
+
+				return
+			}
+
+			err = writeActualSolrRequestToTmp(testEAD, fileID, string(receivedRequest))
+			if err != nil {
+				t.Errorf(
+					"writeActualSolrRequestToTmp(testEAD, fileID, receivedRequest) failed with error: %s",
+					err)
+
+				return
+			}
+		}),
+	)
 }
 
 func tmpFile(testEAD string, fileID string) string {
