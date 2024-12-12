@@ -17,9 +17,9 @@ func MakeSolrFake(t *testing.T) *httptest.Server {
 				return
 			}
 
-			fileID, err := getFileIDFromRequest(r)
+			fileID, err := GetID(r)
 			if err != nil {
-				t.Errorf("getFileIDFromRequest(r) failed with error: %s", err)
+				t.Errorf("GetID(r) failed with error: %s", err)
 
 				return
 			}

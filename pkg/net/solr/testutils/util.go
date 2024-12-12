@@ -58,7 +58,7 @@ func GetExpectedPOSTRequestString(body string) string {
 	return fmt.Sprintf("%s\n\n%s", getPOSTRequestHTTPHeadersString(body), body)
 }
 
-func getFileIDFromRequest(r *http.Request) (string, error) {
+func GetID(r *http.Request) (string, error) {
 	bodyBytes, err := io.ReadAll(r.Body)
 	if err != nil {
 		return "", err
