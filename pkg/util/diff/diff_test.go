@@ -5,8 +5,8 @@
 package diff
 
 import (
-	"ariadne/util/diff/txtar"
 	"bytes"
+	"go-ead-indexer/pkg/util/diff/txtar"
 	"path/filepath"
 	"testing"
 )
