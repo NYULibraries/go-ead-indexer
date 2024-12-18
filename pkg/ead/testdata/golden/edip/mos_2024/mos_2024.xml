@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Megan O'Shea</field>
+    <field name="author_ssm">Megan O'Shea</field>
+    <field name="unittitle_teim">Megan O'Shea's "One Resource to  Rule Them All"</field>
+    <field name="unittitle_ssm">Megan O'Shea's "&lt;em&gt;One&lt;/em&gt; Resource to  Rule Them All"</field>
+    <field name="unitid_teim">MOS.2021</field>
+    <field name="unitid_ssm">MOS.2021</field>
+    <field name="abstract_teim">This is the abstract. It has a
+          title in it.</field>
+    <field name="abstract_ssm">This is the abstract. It has a
+          title in it.</field>
+    <field name="creator_teim"> Megan O'Shea</field>
+    <field name="creator_teim">Belfrage family</field>
+    <field name="creator_teim"> Weatherly Stephan</field>
+    <field name="creator_ssm"> Megan O'Shea</field>
+    <field name="creator_ssm">Belfrage family</field>
+    <field name="creator_ssm"> Weatherly Stephan</field>
+    <field name="creator_ssm">80 Washington Square East
+              Galleries</field>
+    <field name="creator_ssm">9 to 5, National
+                Association of Working Women (U.S.)</field>
+    <field name="creator_ssm">Yivo Institute for Jewish
+                  Research</field>
+    <field name="creator_ssm">World Trade Center
+                    (New York, N.Y.)</field>
+    <field name="creator_ssm">Workers' Party of
+                      Ireland</field>
+    <field name="creator_ssm">Belfrage family</field>
+    <field name="creator_ssm">Blaustein
+            Family</field>
+    <field name="creator_ssm">Chen family</field>
+    <field name="creator_ssm">Pinsof
+                  family</field>
+    <field name="creator_ssm">Draper
+                  family</field>
+    <field name="creator_ssm">Blaustein
+                    Family</field>
+    <field name="creator_ssm"> Megan O'Shea</field>
+    <field name="creator_ssm"> Weatherly Stephan</field>
+    <field name="creator_ssm">Aaron,
+            Florence</field>
+    <field name="creator_ssm">Adams, B.
+                O.</field>
+    <field name="creator_ssm">Zwillinger,
+                Rhonda</field>
+    <field name="creator_ssm">Yonge, Charlotte Mary,
+                    1823-1901</field>
+    <field name="creator_ssm">Alum, Rolando
+                    A.</field>
+    <field name="unitdate_normal_ssm">2016/2021</field>
+    <field name="unitdate_normal_ssm">2020/2021</field>
+    <field name="unitdate_normal_teim">2016/2021</field>
+    <field name="unitdate_normal_teim">2020/2021</field>
+    <field name="unitdate_normal_sim">2016/2021</field>
+    <field name="unitdate_normal_sim">2020/2021</field>
+    <field name="unitdate_bulk_teim">2020-2021, undated</field>
+    <field name="unitdate_inclusive_teim">2016-2021, undated</field>
+    <field name="scopecontent_teim">This is the Scope and Content note.</field>
+    <field name="bioghist_teim">This is the Biographical note.</field>
+    <field name="acqinfo_teim">This is the Immediate Source of Acquisition note.</field>
+    <field name="custodhist_teim">This is the Custodial History note.</field>
+    <field name="appraisal_teim">This is the Appraisal note.</field>
+    <field name="phystech_teim">This is the Physical Characteristics and Technical Requirements note.</field>
+    <field name="chronlist_teim">1939</field>
+    <field name="chronlist_teim">The</field>
+    <field name="chronlist_teim">New York State Legislature</field>
+    <field name="chronlist_teim">enacted Section
+                12-a of the</field>
+    <field name="chronlist_teim">Civil Service Law</field>
+    <field name="chronlist_teim">which provided in substance that "no
+                person shall be appointed to or retained in the public service nor in any public
+                educational institution who becomes a member of any organization which advocates the
+                overthrow of government by force or violence, or by any unlawful means (L. 1939, Ch.
+                547)."</field>
+    <field name="corpname_teim">Tamiment Library and Robert F. Wagner Labor Archives</field>
+    <field name="corpname_teim">Tamiment Library</field>
+    <field name="corpname_teim">New York University</field>
+    <field name="corpname_teim">Tamiment Library</field>
+    <field name="corpname_teim">Harper Collins,</field>
+    <field name="corpname_teim">Tamiment Library</field>
+    <field name="corpname_teim">United States. Congress. House. |b Committee on Education and Labor</field>
+    <field name="corpname_teim">United States. Congress. House. |b Committee on Education and Labor. |b Select Subcommittee on Education</field>
+    <field name="corpname_teim">United States. Congress. House. |x Leadership</field>
+    <field name="corpname_ssm">Tamiment Library and Robert F. Wagner Labor Archives</field>
+    <field name="corpname_ssm">Tamiment Library</field>
+    <field name="corpname_ssm">New York University</field>
+    <field name="corpname_ssm">Tamiment Library</field>
+    <field name="corpname_ssm">Harper Collins,</field>
+    <field name="corpname_ssm">Tamiment Library</field>
+    <field name="corpname_ssm">United States. Congress. House. |b Committee on Education and Labor</field>
+    <field name="corpname_ssm">United States. Congress. House. |b Committee on Education and Labor. |b Select Subcommittee on Education</field>
+    <field name="corpname_ssm">United States. Congress. House. |x Leadership</field>
+    <field name="famname_teim">Belfrage family</field>
+    <field name="famname_teim">Tisch family |g [MISCELLANEOUS INFORMATION]</field>
+    <field name="famname_teim">Tisch family |g [EVEN MORE MISCELLANEOUS INFORMATION]</field>
+    <field name="famname_ssm">Belfrage family</field>
+    <field name="famname_ssm">Tisch family |g [MISCELLANEOUS INFORMATION]</field>
+    <field name="famname_ssm">Tisch family |g [EVEN MORE MISCELLANEOUS INFORMATION]</field>
+    <field name="function_teim">War Powers Conference</field>
+    <field name="function_ssm">War Powers Conference</field>
+    <field name="genreform_teim">Oral histories (literary works)</field>
+    <field name="genreform_teim">Court records |z New York (State)</field>
+    <field name="genreform_teim">Motion pictures |x Production and direction.</field>
+    <field name="genreform_teim">Court records |z New York (State) |z Kings County</field>
+    <field name="genreform_teim">Court records |z New York (State) |z Queens County</field>
+    <field name="genreform_teim">Land titles |z New York (State) |z Kings County</field>
+    <field name="genreform_teim">Cooking |v Periodicals</field>
+    <field name="genreform_teim">Cooking -- Periodicals</field>
+    <field name="genreform_teim">Oral histories (literary works)</field>
+    <field name="genreform_ssm">Oral histories (literary works)</field>
+    <field name="genreform_ssm">Court records |z New York (State)</field>
+    <field name="genreform_ssm">Motion pictures |x Production and direction.</field>
+    <field name="genreform_ssm">Court records |z New York (State) |z Kings County</field>
+    <field name="genreform_ssm">Court records |z New York (State) |z Queens County</field>
+    <field name="genreform_ssm">Land titles |z New York (State) |z Kings County</field>
+    <field name="genreform_ssm">Cooking |v Periodicals</field>
+    <field name="genreform_ssm">Cooking -- Periodicals</field>
+    <field name="genreform_ssm">Oral histories (literary works)</field>
+    <field name="geogname_teim">Boston (Mass.) -- Intellectual life -- 20th century.</field>
+    <field name="geogname_teim">New York (N.Y.) |x History</field>
+    <field name="geogname_teim">New York (N.Y.) |x Intellectual life |y 20th century</field>
+    <field name="geogname_teim">New York (N.Y.) |x Intellectual life</field>
+    <field name="geogname_teim">New York (N.Y.) |x Mass transit.</field>
+    <field name="geogname_teim">New York (N.Y.) |x Museums.</field>
+    <field name="geogname_teim">New York (N.Y.) |x Officials and employees |v Portraits.</field>
+    <field name="geogname_teim">New York (N.Y.) |x Officials and employees.</field>
+    <field name="geogname_teim">New York (N.Y.) |x Officials and employees</field>
+    <field name="geogname_teim">New York (N.Y.) |x Politics and government</field>
+    <field name="geogname_teim">New York (N.Y.) |x Religious life and customs</field>
+    <field name="geogname_teim">New York (N.Y.) |x Social conditions |y 20th century.</field>
+    <field name="geogname_teim">New York (N.Y.) |x Social conditions</field>
+    <field name="geogname_teim">New York (N.Y.) |x Social life and customs |x Pictorial works.</field>
+    <field name="geogname_teim">New York (N.Y.) |x Social life and customs |y 20th century.</field>
+    <field name="geogname_teim">New York (N.Y.) |x Social life and customs</field>
+    <field name="geogname_teim">New York (N.Y.) -- Social life and customs</field>
+    <field name="geogname_ssm">Boston (Mass.) -- Intellectual life -- 20th century.</field>
+    <field name="geogname_ssm">New York (N.Y.) |x History</field>
+    <field name="geogname_ssm">New York (N.Y.) |x Intellectual life |y 20th century</field>
+    <field name="geogname_ssm">New York (N.Y.) |x Intellectual life</field>
+    <field name="geogname_ssm">New York (N.Y.) |x Mass transit.</field>
+    <field name="geogname_ssm">New York (N.Y.) |x Museums.</field>
+    <field name="geogname_ssm">New York (N.Y.) |x Officials and employees |v Portraits.</field>
+    <field name="geogname_ssm">New York (N.Y.) |x Officials and employees.</field>
+    <field name="geogname_ssm">New York (N.Y.) |x Officials and employees</field>
+    <field name="geogname_ssm">New York (N.Y.) |x Politics and government</field>
+    <field name="geogname_ssm">New York (N.Y.) |x Religious life and customs</field>
+    <field name="geogname_ssm">New York (N.Y.) |x Social conditions |y 20th century.</field>
+    <field name="geogname_ssm">New York (N.Y.) |x Social conditions</field>
+    <field name="geogname_ssm">New York (N.Y.) |x Social life and customs |x Pictorial works.</field>
+    <field name="geogname_ssm">New York (N.Y.) |x Social life and customs |y 20th century.</field>
+    <field name="geogname_ssm">New York (N.Y.) |x Social life and customs</field>
+    <field name="geogname_ssm">New York (N.Y.) -- Social life and customs</field>
+    <field name="name_teim">name</field>
+    <field name="name_teim">Rolodex</field>
+    <field name="name_teim">New York City</field>
+    <field name="name_teim">Tamiment Library</field>
+    <field name="name_teim">New York University</field>
+    <field name="name_teim">Harper Collins,</field>
+    <field name="name_teim">United States. Congress. House. -- Committee on Education and Labor</field>
+    <field name="name_teim">United States. Congress. House. -- Committee on Education and Labor. -- Select Subcommittee on Education</field>
+    <field name="name_teim">United States. Congress. House. -- Leadership</field>
+    <field name="name_teim">80 Washington Square East
+              Galleries</field>
+    <field name="name_teim">Level 2 Index term 1</field>
+    <field name="name_teim">9 to 5, National
+                Association of Working Women (U.S.)</field>
+    <field name="name_teim">Level 3 Index item</field>
+    <field name="name_teim">Yivo Institute for Jewish
+                  Research</field>
+    <field name="name_teim">Level 4 Index item</field>
+    <field name="name_teim">World Trade Center
+                    (New York, N.Y.)</field>
+    <field name="name_teim">Level 5 Index Item</field>
+    <field name="name_teim">Workers' Party of
+                      Ireland</field>
+    <field name="name_teim">Level 6 Index item</field>
+    <field name="name_teim">Belfrage family</field>
+    <field name="name_teim">Tisch family -- [MISCELLANEOUS INFORMATION]</field>
+    <field name="name_teim">Tisch family -- [EVEN MORE MISCELLANEOUS INFORMATION]</field>
+    <field name="name_teim">Blaustein
+            Family</field>
+    <field name="name_teim">Chen family</field>
+    <field name="name_teim">Pinsof
+                  family</field>
+    <field name="name_teim">Draper
+                  family</field>
+    <field name="name_teim">Blaustein
+                    Family</field>
+    <field name="name_teim"> Megan O'Shea</field>
+    <field name="name_teim">Debs, Eugene V. (Eugene Victor), 1855-1926</field>
+    <field name="name_teim"> Weatherly Stephan</field>
+    <field name="name_teim">Weatherly Stephan</field>
+    <field name="name_teim">Governor Mario M. Cuomo</field>
+    <field name="name_teim">Brophy, John, 1883-1963. -- -- Portraits</field>
+    <field name="name_teim">Carey, James B. -- -- Portraits</field>
+    <field name="name_teim">Megan
+              O'Shea</field>
+    <field name="name_teim">Aaron,
+            Florence</field>
+    <field name="name_teim">Megan
+                O'Shea</field>
+    <field name="name_teim">Adams, B.
+                O.</field>
+    <field name="name_teim">Megan
+                  O'Shea</field>
+    <field name="name_teim">Zwillinger,
+                Rhonda</field>
+    <field name="name_teim">Megan
+                    O'Shea</field>
+    <field name="name_teim">Yonge, Charlotte Mary,
+                    1823-1901</field>
+    <field name="name_teim">Megan
+                      O'Shea</field>
+    <field name="name_teim">Alum, Rolando
+                    A.</field>
+    <field name="name_ssm">name</field>
+    <field name="name_ssm">Rolodex</field>
+    <field name="name_ssm">New York City</field>
+    <field name="occupation_teim">Fulbright scholars.</field>
+    <field name="occupation_teim">Fulbright scholars.</field>
+    <field name="occupation_ssm">Fulbright scholars.</field>
+    <field name="occupation_ssm">Fulbright scholars.</field>
+    <field name="persname_teim"> Megan O'Shea</field>
+    <field name="persname_teim">Debs, Eugene V. (Eugene Victor), 1855-1926</field>
+    <field name="persname_teim"> Weatherly Stephan</field>
+    <field name="persname_teim">Weatherly Stephan</field>
+    <field name="persname_teim">Governor Mario M. Cuomo</field>
+    <field name="persname_teim">Debs, Eugene V. (Eugene Victor), 1855-1926</field>
+    <field name="persname_teim">Brophy, John, 1883-1963. -- |v Portraits</field>
+    <field name="persname_teim">Carey, James B. -- |v Portraits</field>
+    <field name="persname_ssm"> Megan O'Shea</field>
+    <field name="persname_ssm">Debs, Eugene V. (Eugene Victor), 1855-1926</field>
+    <field name="persname_ssm"> Weatherly Stephan</field>
+    <field name="persname_ssm">Weatherly Stephan</field>
+    <field name="persname_ssm">Governor Mario M. Cuomo</field>
+    <field name="persname_ssm">Debs, Eugene V. (Eugene Victor), 1855-1926</field>
+    <field name="persname_ssm">Brophy, John, 1883-1963. -- |v Portraits</field>
+    <field name="persname_ssm">Carey, James B. -- |v Portraits</field>
+    <field name="subject_teim">Irish American women -- History -- 19th century.</field>
+    <field name="subject_teim">Irish American women -- History -- 19th century.</field>
+    <field name="subject_teim">Fulbright scholars.</field>
+    <field name="subject_teim">Irish American women -- History -- 19th century.</field>
+    <field name="subject_teim">War Powers Conference</field>
+    <field name="subject_teim">Level 2 Index term 3</field>
+    <field name="subject_teim">Irish American women -- History -- 19th
+                century.</field>
+    <field name="subject_teim">Irish American women -- History -- 19th
+                  century.</field>
+    <field name="subject_teim">Irish American women -- History -- 19th
+                      century.</field>
+    <field name="subject_ssm">Irish American women -- History -- 19th century.</field>
+    <field name="subject_ssm">Irish American women -- History -- 19th century.</field>
+    <field name="title_teim">title</field>
+    <field name="title_teim">Civil Service Law</field>
+    <field name="title_teim">Journal
+              of Archival Organization</field>
+    <field name="title_teim">Essais sur l'histoire d'Haiti</field>
+    <field name="title_teim">High Rise.</field>
+    <field name="title_teim">Essais sur l'histoire d'Haiti</field>
+    <field name="title_teim">New York Nichibei.</field>
+    <field name="title_ssm">title</field>
+    <field name="title_ssm">Civil Service Law</field>
+    <field name="title_ssm">Journal
+              of Archival Organization</field>
+    <field name="title_ssm">Essais sur l'histoire d'Haiti</field>
+    <field name="title_ssm">High Rise.</field>
+    <field name="title_ssm">Essais sur l'histoire d'Haiti</field>
+    <field name="title_ssm">New York Nichibei.</field>
+    <field name="collection_sim">Megan O'Shea's "One Resource to  Rule Them All"</field>
+    <field name="collection_ssm">Megan O'Shea's "One Resource to  Rule Them All"</field>
+    <field name="collection_teim">Megan O'Shea's "One Resource to  Rule Them All"</field>
+    <field name="id">mos_2024</field>
+    <field name="ead_ssi">mos_2024</field>
+    <field name="repository_ssi">edip</field>
+    <field name="repository_sim">edip</field>
+    <field name="repository_ssm">edip</field>
+    <field name="format_sim">Archival Collection</field>
+    <field name="format_ssm">Archival Collection</field>
+    <field name="format_ii">0</field>
+    <field name="creator_sim">80 Washington Square East
+              Galleries</field>
+    <field name="creator_sim">9 to 5, National
+                Association of Working Women (U.S.)</field>
+    <field name="creator_sim">Yivo Institute for Jewish
+                  Research</field>
+    <field name="creator_sim">World Trade Center
+                    (New York, N.Y.)</field>
+    <field name="creator_sim">Workers' Party of
+                      Ireland</field>
+    <field name="creator_sim">Belfrage family</field>
+    <field name="creator_sim">Blaustein
+            Family</field>
+    <field name="creator_sim">Chen family</field>
+    <field name="creator_sim">Pinsof
+                  family</field>
+    <field name="creator_sim">Draper
+                  family</field>
+    <field name="creator_sim">Blaustein
+                    Family</field>
+    <field name="creator_sim"> Megan O'Shea</field>
+    <field name="creator_sim"> Weatherly Stephan</field>
+    <field name="creator_sim">Aaron,
+            Florence</field>
+    <field name="creator_sim">Adams, B.
+                O.</field>
+    <field name="creator_sim">Zwillinger,
+                Rhonda</field>
+    <field name="creator_sim">Yonge, Charlotte Mary,
+                    1823-1901</field>
+    <field name="creator_sim">Alum, Rolando
+                    A.</field>
+    <field name="name_sim">Tamiment Library</field>
+    <field name="name_sim">New York University</field>
+    <field name="name_sim">Harper Collins,</field>
+    <field name="name_sim">United States. Congress. House. -- Committee on Education and Labor</field>
+    <field name="name_sim">United States. Congress. House. -- Committee on Education and Labor. -- Select Subcommittee on Education</field>
+    <field name="name_sim">United States. Congress. House. -- Leadership</field>
+    <field name="name_sim">80 Washington Square East
+              Galleries</field>
+    <field name="name_sim">Level 2 Index term 1</field>
+    <field name="name_sim">9 to 5, National
+                Association of Working Women (U.S.)</field>
+    <field name="name_sim">Level 3 Index item</field>
+    <field name="name_sim">Yivo Institute for Jewish
+                  Research</field>
+    <field name="name_sim">Level 4 Index item</field>
+    <field name="name_sim">World Trade Center
+                    (New York, N.Y.)</field>
+    <field name="name_sim">Level 5 Index Item</field>
+    <field name="name_sim">Workers' Party of
+                      Ireland</field>
+    <field name="name_sim">Level 6 Index item</field>
+    <field name="name_sim">Belfrage family</field>
+    <field name="name_sim">Tisch family -- [MISCELLANEOUS INFORMATION]</field>
+    <field name="name_sim">Tisch family -- [EVEN MORE MISCELLANEOUS INFORMATION]</field>
+    <field name="name_sim">Blaustein
+            Family</field>
+    <field name="name_sim">Chen family</field>
+    <field name="name_sim">Pinsof
+                  family</field>
+    <field name="name_sim">Draper
+                  family</field>
+    <field name="name_sim">Blaustein
+                    Family</field>
+    <field name="name_sim"> Megan O'Shea</field>
+    <field name="name_sim">Debs, Eugene V. (Eugene Victor), 1855-1926</field>
+    <field name="name_sim"> Weatherly Stephan</field>
+    <field name="name_sim">Weatherly Stephan</field>
+    <field name="name_sim">Governor Mario M. Cuomo</field>
+    <field name="name_sim">Brophy, John, 1883-1963. -- -- Portraits</field>
+    <field name="name_sim">Carey, James B. -- -- Portraits</field>
+    <field name="name_sim">Megan
+              O'Shea</field>
+    <field name="name_sim">Aaron,
+            Florence</field>
+    <field name="name_sim">Megan
+                O'Shea</field>
+    <field name="name_sim">Adams, B.
+                O.</field>
+    <field name="name_sim">Megan
+                  O'Shea</field>
+    <field name="name_sim">Zwillinger,
+                Rhonda</field>
+    <field name="name_sim">Megan
+                    O'Shea</field>
+    <field name="name_sim">Yonge, Charlotte Mary,
+                    1823-1901</field>
+    <field name="name_sim">Megan
+                      O'Shea</field>
+    <field name="name_sim">Alum, Rolando
+                    A.</field>
+    <field name="place_sim">Boston (Mass.) -- Intellectual life -- 20th century.</field>
+    <field name="place_sim">New York (N.Y.) -- History</field>
+    <field name="place_sim">New York (N.Y.) -- Intellectual life -- 20th century</field>
+    <field name="place_sim">New York (N.Y.) -- Intellectual life</field>
+    <field name="place_sim">New York (N.Y.) -- Mass transit.</field>
+    <field name="place_sim">New York (N.Y.) -- Museums.</field>
+    <field name="place_sim">New York (N.Y.) -- Officials and employees -- Portraits.</field>
+    <field name="place_sim">New York (N.Y.) -- Officials and employees.</field>
+    <field name="place_sim">New York (N.Y.) -- Officials and employees</field>
+    <field name="place_sim">New York (N.Y.) -- Politics and government</field>
+    <field name="place_sim">New York (N.Y.) -- Religious life and customs</field>
+    <field name="place_sim">New York (N.Y.) -- Social conditions -- 20th century.</field>
+    <field name="place_sim">New York (N.Y.) -- Social conditions</field>
+    <field name="place_sim">New York (N.Y.) -- Social life and customs -- Pictorial works.</field>
+    <field name="place_sim">New York (N.Y.) -- Social life and customs -- 20th century.</field>
+    <field name="place_sim">New York (N.Y.) -- Social life and customs</field>
+    <field name="place_sim">Boston (Mass.) -- Intellectual life -- 20th
+                century.</field>
+    <field name="place_sim">Boston (Mass.) -- Intellectual life -- 20th
+                  century.</field>
+    <field name="place_sim">Boston (Mass.) -- Intellectual life -- 20th
+                    century.</field>
+    <field name="place_sim">Washington Square (New York, N.Y.)</field>
+    <field name="subject_sim">Fulbright scholars.</field>
+    <field name="subject_sim">Irish American women -- History -- 19th century.</field>
+    <field name="subject_sim">War Powers Conference</field>
+    <field name="subject_sim">Level 2 Index term 3</field>
+    <field name="subject_sim">Irish American women -- History -- 19th
+                century.</field>
+    <field name="subject_sim">Irish American women -- History -- 19th
+                  century.</field>
+    <field name="subject_sim">Irish American women -- History -- 19th
+                      century.</field>
+    <field name="dao_sim">Online Access</field>
+    <field name="material_type_sim">Oral histories (literary works)</field>
+    <field name="material_type_sim">Court records -- New York (State)</field>
+    <field name="material_type_sim">Motion pictures -- Production and direction.</field>
+    <field name="material_type_sim">Court records -- New York (State) -- Kings County</field>
+    <field name="material_type_sim">Court records -- New York (State) -- Queens County</field>
+    <field name="material_type_sim">Land titles -- New York (State) -- Kings County</field>
+    <field name="material_type_sim">Cooking -- Periodicals</field>
+    <field name="material_type_ssm">Oral histories (literary works)</field>
+    <field name="material_type_ssm">Court records -- New York (State)</field>
+    <field name="material_type_ssm">Motion pictures -- Production and direction.</field>
+    <field name="material_type_ssm">Court records -- New York (State) -- Kings County</field>
+    <field name="material_type_ssm">Court records -- New York (State) -- Queens County</field>
+    <field name="material_type_ssm">Land titles -- New York (State) -- Kings County</field>
+    <field name="material_type_ssm">Cooking -- Periodicals</field>
+    <field name="heading_ssm">Megan O'Shea's "One Resource to  Rule Them All"</field>
+    <field name="unitdate_start_sim">2016</field>
+    <field name="unitdate_start_sim">2020</field>
+    <field name="unitdate_start_ssm">2016</field>
+    <field name="unitdate_start_ssm">2020</field>
+    <field name="unitdate_start_si">2020</field>
+    <field name="unitdate_end_sim">2021</field>
+    <field name="unitdate_end_ssm">2021</field>
+    <field name="unitdate_end_si">2021</field>
+    <field name="unitdate_ssm">Inclusive, 2016-2021, undated ; 2020-2021, undated</field>
+    <field name="date_range_sim">2001-2100</field>
+  </doc>
+</add>
