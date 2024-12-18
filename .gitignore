@@ -29,6 +29,7 @@ pkg/net/solr/testdata/tmp/actual/*
 
 # Test binary, built with `go test -c`
 *.test
+!Dockerfile.test
 
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
@@ -42,3 +43,6 @@ go.work.sum
 
 # env file
 .env
+
+# binary executable
+go-ead-indexer
