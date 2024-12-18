@@ -1,0 +1,19 @@
+FROM golang:1.23 as builder
+
+RUN update-ca-certificates
+
+WORKDIR /app
+
+RUN apt-get update -y && apt-get install -y libxml2-dev pkg-config
+RUN go install golang.org/x/lint/golint@latest
+COPY . . 
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags '-extldflags "-static"' -o app .
+
+FROM scratch 
+
+WORKDIR /app
+
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+COPY --from=builder /app/app ./eadindexer
+
+ENTRYPOINT [ "./eadindexer" ]
