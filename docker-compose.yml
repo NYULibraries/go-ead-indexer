@@ -1,0 +1,11 @@
+services:
+
+  cli:
+    image: eadindexer 
+    build: .
+
+  test:
+    image: eadindexer_test 
+    build:
+      context: .
+      dockerfile: Dockerfile.test
