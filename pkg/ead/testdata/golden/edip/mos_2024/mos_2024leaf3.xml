@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="id">mos_2024leaf3</field>
+    <field name="ead_ssi">mos_2024</field>
+    <field name="parent_ssi">ancestor3</field>
+    <field name="parent_ssm">ancestor1</field>
+    <field name="parent_ssm">ancestor2</field>
+    <field name="parent_ssm">ancestor3</field>
+    <field name="parent_unittitles_ssm">ANCESTOR 1</field>
+    <field name="parent_unittitles_ssm">   </field>
+    <field name="parent_unittitles_ssm">1113</field>
+    <field name="parent_unittitles_teim">ANCESTOR 1</field>
+    <field name="parent_unittitles_teim">   </field>
+    <field name="parent_unittitles_teim">1113</field>
+    <field name="component_level_isim">4</field>
+    <field name="component_children_bsi">false</field>
+    <field name="collection_sim">Megan O'Shea's "One Resource to  Rule Them All"</field>
+    <field name="collection_ssm">Megan O'Shea's "One Resource to  Rule Them All"</field>
+    <field name="collection_unitid_ssm">MOS.2021</field>
+    <field name="level_sim">item</field>
+    <field name="unittitle_ssm">
+
+                </field>
+    <field name="unittitle_teim">
+
+                </field>
+    <field name="unitdate_normal_ssm">1115/1115</field>
+    <field name="unitdate_normal_teim">1115/1115</field>
+    <field name="unitdate_normal_sim">1115/1115</field>
+    <field name="unitdate_inclusive_teim">1113</field>
+    <field name="ref_ssi">leaf3</field>
+    <field name="repository_ssi">edip</field>
+    <field name="repository_sim">edip</field>
+    <field name="repository_ssm">edip</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="collection_teim">Megan O'Shea's "One Resource to  Rule Them All"</field>
+    <field name="collection_unitid_teim">MOS.2021</field>
+    <field name="series_sim">ANCESTOR 1</field>
+    <field name="series_sim">   </field>
+    <field name="series_sim">1113</field>
+    <field name="series_si">ANCESTOR 1 &gt;&gt;     &gt;&gt; 1113 &gt;&gt; 
+
+                </field>
+    <field name="heading_ssm">
+
+                </field>
+    <field name="unitdate_start_sim">1115</field>
+    <field name="unitdate_start_ssm">1115</field>
+    <field name="unitdate_start_si">1115</field>
+    <field name="unitdate_end_sim">1115</field>
+    <field name="unitdate_end_ssm">1115</field>
+    <field name="unitdate_end_si">1115</field>
+    <field name="unitdate_ssm">Inclusive, 1113</field>
+    <field name="date_range_sim">1101-1200</field>
+    <field name="sort_ii">24</field>
+  </doc>
+</add>
