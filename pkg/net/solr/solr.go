@@ -9,6 +9,8 @@ import (
 	"regexp"
 )
 
+const UpdateURLPathAndQuery = "/solr/findingaids/update?wt=json&indent=true"
+
 // No default Solr URL.
 // We wouldn't want to corrupt the index of the default Solr server due to an
 // accidental misconfiguration of an instance.
@@ -28,7 +30,8 @@ func Add(xmlPostBody string) error {
 
 	postBody := []byte(`<field name="id">` + id + "</field>")
 	responseBody := bytes.NewBuffer(postBody)
-	_, _ = http.Post(solrURLOrigin, "text/xml", responseBody)
+	_, _ = http.Post(GetSolrURLOrigin()+UpdateURLPathAndQuery,
+		"text/xml", responseBody)
 
 	return nil
 }

@@ -50,7 +50,9 @@ func testAdd_successfulAdds(t *testing.T) {
 		t.Errorf("clean() failed with error: %s", err)
 	}
 
-	fakeSolrServer := testutils.MakeSolrFake(t)
+	// Have to pass in `UpdateURLPathAndQuery` to `testutils` sub-package, which
+	// can't import its own parent package.
+	fakeSolrServer := testutils.MakeSolrFake(UpdateURLPathAndQuery, t)
 	defer fakeSolrServer.Close()
 
 	err = SetSolrURLOrigin(fakeSolrServer.URL)

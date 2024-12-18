@@ -43,9 +43,16 @@ func MakeErrorResponseID(errorResponseType ErrorResponseType) string {
 	return errorResponseIDPrefix + errorResponseTypeString
 }
 
-func MakeSolrFake(t *testing.T) *httptest.Server {
+// Need to pass in `updateURLPathAndQuery` because can't use `UpdateURLPathAndQuery`
+// from `solr` package directly because importing `solr` throws an import cycle
+// compile error.
+func MakeSolrFake(updateURLPathAndQuery string, t *testing.T) *httptest.Server {
 	return httptest.NewServer(
 		http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			if !isValidSolrUpdateRequest(r, updateURLPathAndQuery) {
+				t.Fatal("Solr fake received an invalid Solr request from the test code.")
+			}
+
 			receivedRequest, err := httputil.DumpRequest(r, true)
 			if err != nil {
 				t.Errorf("httputil.DumpRequest(r) failed with error: %s", err)
@@ -114,4 +121,14 @@ func getErrorResponseType(id string) ErrorResponseType {
 	} else {
 		return NotAnError
 	}
+}
+
+func isValidSolrUpdateRequest(r *http.Request, updateURLPathAndQuery string) bool {
+	var pathAndRawQuery = r.URL.Path + "?" + r.URL.RawQuery
+	if pathAndRawQuery != updateURLPathAndQuery ||
+		r.Method != "POST" {
+		return false
+	}
+
+	return true
 }
