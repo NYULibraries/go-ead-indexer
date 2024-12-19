@@ -23,7 +23,7 @@ type setLevelFunction func()
 // {"time":"2023-04-17T11:11:16.545242-04:00","level":"DEBUG","msg":"","message":"debug"}
 // ...match "DEBUG" and "debug" in the "level" and "message" properties.
 var simpleLogEntryStringRegexp = regexp.MustCompile(
-	`.*"level":"([A-Z]+)","msg":"","message":"([a-z]+)"}`,
+	`.*"level":"([A-Z]+)","msg":"It is not an empty message","message":"([a-z]+)"}`,
 )
 
 const messageKey = "message"
