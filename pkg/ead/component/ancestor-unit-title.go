@@ -8,6 +8,8 @@ import (
 	"go-ead-indexer/pkg/sanitize"
 )
 
+const noTitleAvailable = "[No title available]"
+
 func getAncestorUnitTitle(node types.Node) (string, error) {
 	var ancestorUnitTitle string
 
@@ -72,7 +74,7 @@ func getAncestorUnitTitle(node types.Node) (string, error) {
 
 	// Can't create a title.
 	if ancestorUnitTitle == "" {
-		return "[No title available]", nil
+		return noTitleAvailable, nil
 	}
 
 	return ancestorUnitTitle, nil
