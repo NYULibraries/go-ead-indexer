@@ -22,7 +22,7 @@ const defaultSlogLevel = slog.LevelInfo
 // to `msg`, which doesn't really fit into our desired scheme for log output
 // as we'd like it to appear in Kibana.  For now, we'll just pass `msg` an empty
 // string.
-const emptyMsg = ""
+const emptyMsg = "It is not an empty message"
 
 var DefaultLevelStringOption = getLevelOptionStringForSlogLevel(defaultSlogLevel)
 
