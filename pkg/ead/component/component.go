@@ -118,7 +118,6 @@ type Container struct {
 
 const CElementName = "c"
 
-// See `ead.new()` comment on why we have to pass in `repositoryCode` as an argument.
 func MakeComponents(collectionDocParts ComponentCollectionDocParts, node types.Node) (*[]Component, error) {
 	xpathResult, err := node.Find("//" + CElementName)
 	if err != nil {
