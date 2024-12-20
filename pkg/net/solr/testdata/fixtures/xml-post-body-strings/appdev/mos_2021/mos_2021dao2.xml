@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <add>
   <doc>
-    <field name="id">mos_2021dao2</field>
-    <field name="ead_ssi">mos_2021</field>
+    <field name="id">mos_2024dao2</field>
+    <field name="ead_ssi">mos_2024</field>
     <field name="parent_ssi">additional-daos</field>
     <field name="parent_ssm">additional-daos</field>
     <field name="parent_unittitles_ssm">Series II. Additional Digital Objects</field>
@@ -18,9 +18,9 @@
     <field name="dao_teim">Cassettes - America's Disinherited - Commentary by Hacker/Willens -4/14/85</field>
     <field name="dao_ssm">Cassettes - America's Disinherited - Commentary by Hacker/Willens -4/14/85</field>
     <field name="ref_ssi">dao2</field>
-    <field name="repository_ssi">appdev</field>
-    <field name="repository_sim">appdev</field>
-    <field name="repository_ssm">appdev</field>
+    <field name="repository_ssi">edip</field>
+    <field name="repository_sim">edip</field>
+    <field name="repository_ssm">edip</field>
     <field name="format_sim">Archival Object</field>
     <field name="format_ssm">Archival Object</field>
     <field name="dao_sim">Online Access</field>

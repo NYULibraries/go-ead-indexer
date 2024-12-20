@@ -11,7 +11,7 @@ import (
 )
 
 const FakeSolrHostAndPort = "fake-solr-host.library.nyu.edu:8080"
-const TestEAD = "appdev/mos_2021"
+const TestEAD = "edip/mos_2024"
 
 var idRegExp = regexp.MustCompile(`<field name="id">([a-z0-9_-]+)</field>`)
 

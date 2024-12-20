@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <add>
   <doc>
-    <field name="id">mos_2021additional-daos</field>
-    <field name="ead_ssi">mos_2021</field>
+    <field name="id">mos_2024additional-daos</field>
+    <field name="ead_ssi">mos_2024</field>
     <field name="component_level_isim">1</field>
     <field name="component_children_bsi">true</field>
     <field name="collection_sim">Megan O'Shea's "One Resource to  Rule Them All"</field>
@@ -12,9 +12,9 @@
     <field name="unittitle_ssm">Series II. Additional Digital Objects</field>
     <field name="unittitle_teim">Series II. Additional Digital Objects</field>
     <field name="ref_ssi">additional-daos</field>
-    <field name="repository_ssi">appdev</field>
-    <field name="repository_sim">appdev</field>
-    <field name="repository_ssm">appdev</field>
+    <field name="repository_ssi">edip</field>
+    <field name="repository_sim">edip</field>
+    <field name="repository_ssm">edip</field>
     <field name="format_sim">Archival Series</field>
     <field name="format_ssm">Archival Series</field>
     <field name="collection_teim">Megan O'Shea's "One Resource to  Rule Them All"</field>

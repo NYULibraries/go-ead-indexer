@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <add>
   <doc>
-    <field name="id">mos_2021leaf1</field>
-    <field name="ead_ssi">mos_2021</field>
+    <field name="id">mos_2024leaf1</field>
+    <field name="ead_ssi">mos_2024</field>
     <field name="parent_ssi">ancestor3</field>
     <field name="parent_ssm">ancestor1</field>
     <field name="parent_ssm">ancestor2</field>
@@ -22,9 +22,9 @@
     <field name="unittitle_ssm">LEAF 1</field>
     <field name="unittitle_teim">LEAF 1</field>
     <field name="ref_ssi">leaf1</field>
-    <field name="repository_ssi">appdev</field>
-    <field name="repository_sim">appdev</field>
-    <field name="repository_ssm">appdev</field>
+    <field name="repository_ssi">edip</field>
+    <field name="repository_sim">edip</field>
+    <field name="repository_ssm">edip</field>
     <field name="format_sim">Archival Object</field>
     <field name="format_ssm">Archival Object</field>
     <field name="collection_teim">Megan O'Shea's "One Resource to  Rule Them All"</field>

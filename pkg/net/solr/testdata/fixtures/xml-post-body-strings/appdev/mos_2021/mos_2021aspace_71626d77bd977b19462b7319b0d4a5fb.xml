@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <add>
   <doc>
-    <field name="id">mos_2021aspace_71626d77bd977b19462b7319b0d4a5fb</field>
-    <field name="ead_ssi">mos_2021</field>
+    <field name="id">mos_2024aspace_71626d77bd977b19462b7319b0d4a5fb</field>
+    <field name="ead_ssi">mos_2024</field>
     <field name="parent_ssi">aspace_bb018068fcbef8e42d90b29434d476d6</field>
     <field name="parent_ssm">aspace_499449c48c751a22b7c222d3ce2c2879</field>
     <field name="parent_ssm">aspace_68fd22d28746c12f37e250728431c61d</field>
@@ -64,9 +64,9 @@
     <field name="unitdate_normal_sim">1981-08-31/1981-08-31</field>
     <field name="unitdate_teim">1981-08-31</field>
     <field name="ref_ssi">aspace_71626d77bd977b19462b7319b0d4a5fb</field>
-    <field name="repository_ssi">appdev</field>
-    <field name="repository_sim">appdev</field>
-    <field name="repository_ssm">appdev</field>
+    <field name="repository_ssi">edip</field>
+    <field name="repository_sim">edip</field>
+    <field name="repository_ssm">edip</field>
     <field name="format_sim">Archival Object</field>
     <field name="format_ssm">Archival Object</field>
     <field name="collection_teim">Megan O'Shea's "One Resource to  Rule Them All"</field>

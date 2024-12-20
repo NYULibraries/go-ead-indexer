@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <add>
   <doc>
-    <field name="id">mos_2021aspace_7c4d41e52826eec1ee0f21625ae73961</field>
-    <field name="ead_ssi">mos_2021</field>
+    <field name="id">mos_2024aspace_7c4d41e52826eec1ee0f21625ae73961</field>
+    <field name="ead_ssi">mos_2024</field>
     <field name="parent_ssi">additional-daos</field>
     <field name="parent_ssm">additional-daos</field>
     <field name="parent_unittitles_ssm">Series II. Additional Digital Objects</field>
@@ -18,9 +18,9 @@
     <field name="dao_teim">Three children in the Japanese Gardens: 1984</field>
     <field name="dao_ssm">Three children in the Japanese Gardens: 1984</field>
     <field name="ref_ssi">aspace_7c4d41e52826eec1ee0f21625ae73961</field>
-    <field name="repository_ssi">appdev</field>
-    <field name="repository_sim">appdev</field>
-    <field name="repository_ssm">appdev</field>
+    <field name="repository_ssi">edip</field>
+    <field name="repository_sim">edip</field>
+    <field name="repository_ssm">edip</field>
     <field name="format_sim">Archival Object</field>
     <field name="format_ssm">Archival Object</field>
     <field name="dao_sim">Online Access</field>
