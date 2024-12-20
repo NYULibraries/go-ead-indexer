@@ -11,6 +11,10 @@ import (
 
 const UpdateURLPathAndQuery = "/solr/findingaids/update?wt=json&indent=true"
 
+const DefaultRetries = 3
+
+var retries = DefaultRetries
+
 // No default Solr URL.
 // We wouldn't want to corrupt the index of the default Solr server due to an
 // accidental misconfiguration of an instance.
@@ -48,8 +52,22 @@ func GetPOSTRequest(eadID string) error {
 	return nil
 }
 
+func GetRetries() int {
+	return retries
+}
+
 func GetSolrURLOrigin() string {
 	return solrURLOrigin
+}
+
+func SetRetries(newRetries int) error {
+	if newRetries < 0 {
+		return fmt.Errorf("Invalid value passed to `SetRetries()`: %d", newRetries)
+	}
+
+	retries = newRetries
+
+	return nil
 }
 
 func SetSolrURLOrigin(solrURLOriginArg string) error {

@@ -66,6 +66,39 @@ func testAdd_successfulAdds(t *testing.T) {
 	}
 }
 
+func TestGetRetries(t *testing.T) {
+	actual := GetRetries()
+	if actual != DefaultRetries {
+		t.Errorf(`Expected %d, got %d`, DefaultRetries, actual)
+	}
+}
+
+func TestSetRetries(t *testing.T) {
+	testSetRetries_badInput(t)
+	testSetRetries_normal(t)
+}
+
+func testSetRetries_badInput(t *testing.T) {
+	err := SetRetries(-1)
+	if err == nil {
+		t.Error("Expected `SetRetries(-1)` to return an error, but no error was returned")
+	}
+}
+
+func testSetRetries_normal(t *testing.T) {
+	newRetries := 999
+	err := SetRetries(newRetries)
+	if err != nil {
+		t.Errorf("`SetRetries(%d)` returned an error: %s",
+			newRetries, err.Error())
+	}
+
+	if GetRetries() != newRetries {
+		t.Errorf("Expected `GetRetries()` to return %d, but it returned %d",
+			newRetries, retries)
+	}
+}
+
 func TestSetSolrURL(t *testing.T) {
 	testCases := []struct {
 		origin        string
