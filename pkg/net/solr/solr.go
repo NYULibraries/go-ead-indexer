@@ -78,7 +78,7 @@ func SetSolrURLOrigin(solrURLOriginArg string) error {
 
 	// Are the servers going to eventually be HTTPS?
 	if parsedURL.Scheme != "http" {
-		if parsedURL.Scheme != "https" {
+		if parsedURL.Scheme == "https" {
 			return errors.New(fmt.Sprintf(`SetSolrURLOrigin("%s"): https is not currently supported`,
 				solrURLOriginArg))
 		} else {
