@@ -99,7 +99,12 @@ func testSetRetries_normal(t *testing.T) {
 	}
 }
 
-func TestSetSolrURL(t *testing.T) {
+func TestSetSolrURLOrigin(t *testing.T) {
+	testSetSolrURLOrigin_errors(t)
+	testSetSolrURLOrigin_normal(t)
+}
+
+func testSetSolrURLOrigin_errors(t *testing.T) {
 	testCases := []struct {
 		origin        string
 		expectedError string
@@ -122,17 +127,15 @@ func TestSetSolrURL(t *testing.T) {
 		},
 		{
 			origin:        "https://",
-			expectedError: `SetSolrURLOrigin("https://"): host is empty`,
+			expectedError: `SetSolrURLOrigin("https://"): https is not currently supported`,
 		},
 		{
 			origin:        testutils.FakeSolrHostAndPort,
 			expectedError: `SetSolrURLOrigin("` + testutils.FakeSolrHostAndPort + `"): invalid scheme`,
 		},
-		{
-			origin:        "http://" + testutils.FakeSolrHostAndPort,
-			expectedError: "",
-		},
 	}
+
+	initialSolrURLOrigin := GetSolrURLOrigin()
 
 	for _, testCase := range testCases {
 		actualError := SetSolrURLOrigin(testCase.origin)
@@ -163,10 +166,37 @@ func TestSetSolrURL(t *testing.T) {
 			}
 
 			actualOrigin := GetSolrURLOrigin()
-			if actualOrigin != "" {
-				t.Errorf(`GetSolrURLOrigin() should return "", but it instead`+
-					` returned "%s"`, actualOrigin)
+			if actualOrigin != initialSolrURLOrigin {
+				t.Errorf("`GetSolrURLOrigin()` should have returned the"+
+					` unchanged initial value "%s", but it instead returned "%s"`,
+					initialSolrURLOrigin, actualOrigin)
 			}
+		}
+	}
+}
+
+func testSetSolrURLOrigin_normal(t *testing.T) {
+	testCases := []struct {
+		origin        string
+		expectedError string
+	}{
+		{
+			origin:        "http://" + testutils.FakeSolrHostAndPort,
+			expectedError: "",
+		},
+	}
+
+	for _, testCase := range testCases {
+		err := SetSolrURLOrigin(testCase.origin)
+		if err != nil {
+			t.Errorf(`SetSolrURLOrigin("%s") should not have returned an error,`+
+				` but it returned error "%s"`, testCase.origin, err.Error())
+		}
+
+		actualOrigin := GetSolrURLOrigin()
+		if actualOrigin != testCase.origin {
+			t.Errorf(`GetSolrURLOrigin() should have returned "%s",`+
+				` but it instead returned "%s"`, testCase.origin, actualOrigin)
 		}
 	}
 }
