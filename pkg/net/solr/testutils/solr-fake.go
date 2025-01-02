@@ -6,41 +6,40 @@ import (
 	"net/http/httptest"
 	"net/http/httputil"
 	"regexp"
-	"strconv"
 	"testing"
 )
 
-type ErrorResponseType int
+type ErrorResponseType string
 
-const NotAnError ErrorResponseType = -1
+const NotAnError ErrorResponseType = "notanerror"
 
 const (
-	ConnectionAborted ErrorResponseType = iota + 1
-	ConnectionRefused
-	ConnectionReset
-	ConnectionTimeout
+	ConnectionAborted ErrorResponseType = "connectionaborted"
+	ConnectionRefused ErrorResponseType = "connectionrefused"
+	ConnectionReset   ErrorResponseType = "connectionreset"
+	ConnectionTimeout ErrorResponseType = "connectiontimeout"
 
-	HTTP302Found
-	HTTP400BadRequest
-	HTTP401Unauthorized
-	HTTP403Forbidden
-	HTTP404NotFound
-	HTTP405HTTPMethodNotAllowed
-	HTTP408RequestTimeout
-	HTTP500InternalServerError
-	HTTP502BadGateway
-	HTTP503ServiceUnavailable
-	HTTP504GatewayTimeout
+	HTTP302Found                ErrorResponseType = "http302found"
+	HTTP400BadRequest           ErrorResponseType = "http400badrequest"
+	HTTP401Unauthorized         ErrorResponseType = "http401unauthorized"
+	HTTP403Forbidden            ErrorResponseType = "http403forbidden"
+	HTTP404NotFound             ErrorResponseType = "http404notfound"
+	HTTP405HTTPMethodNotAllowed ErrorResponseType = "http405httpmethodnotallowed"
+	HTTP408RequestTimeout       ErrorResponseType = "http408requesttimeout"
+	HTTP500InternalServerError  ErrorResponseType = "http500internalservererror"
+	HTTP502BadGateway           ErrorResponseType = "http502badgateway"
+	HTTP503ServiceUnavailable   ErrorResponseType = "http503serviceunavailable"
+	HTTP504GatewayTimeout       ErrorResponseType = "http504gatewaytimeout"
+
+	ConnectionTimeoutPermanent ErrorResponseType = "connectiontimeoutpermanent"
 )
 
 const errorResponseIDPrefix = "error_"
 
-var errorResponseTypeRegExp = regexp.MustCompile(errorResponseIDPrefix + "([a0-9]+)")
+var errorResponseTypeRegExp = regexp.MustCompile(errorResponseIDPrefix + "([a-z0-9]+)")
 
 func MakeErrorResponseID(errorResponseType ErrorResponseType) string {
-	errorResponseTypeString := strconv.Itoa(int(errorResponseType))
-
-	return errorResponseIDPrefix + errorResponseTypeString
+	return errorResponseIDPrefix + string(errorResponseType)
 }
 
 // Need to pass in `updateURLPathAndQuery` because can't use `UpdateURLPathAndQuery`
@@ -95,6 +94,7 @@ func MakeSolrFake(updateURLPathAndQuery string, t *testing.T) *httptest.Server {
 				case HTTP502BadGateway:
 				case HTTP503ServiceUnavailable:
 				case HTTP504GatewayTimeout:
+				case ConnectionTimeoutPermanent:
 				default:
 					t.Fatalf(fmt.Sprintf("Unrecognized `ErrorResponseType`: %s",
 						errorResponseType))
@@ -108,14 +108,7 @@ func getErrorResponseType(id string) ErrorResponseType {
 	matches := errorResponseTypeRegExp.FindStringSubmatch(id)
 
 	if len(matches) > 1 {
-		value, err := strconv.Atoi(matches[1])
-		if err != nil {
-			panic(fmt.Sprintf(
-				"Check regular expression `errorResponseTypeRegExp`!  Error: %s",
-				err))
-		}
-
-		errorResponseType := ErrorResponseType(value)
+		errorResponseType := ErrorResponseType(matches[1])
 
 		return errorResponseType
 	} else {
