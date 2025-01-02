@@ -19,7 +19,6 @@ const (
 	ConnectionReset   ErrorResponseType = "connectionreset"
 	ConnectionTimeout ErrorResponseType = "connectiontimeout"
 
-	HTTP302Found                ErrorResponseType = "http302found"
 	HTTP400BadRequest           ErrorResponseType = "http400badrequest"
 	HTTP401Unauthorized         ErrorResponseType = "http401unauthorized"
 	HTTP403Forbidden            ErrorResponseType = "http403forbidden"
@@ -83,7 +82,6 @@ func MakeSolrFake(updateURLPathAndQuery string, t *testing.T) *httptest.Server {
 				case ConnectionRefused:
 				case ConnectionReset:
 				case ConnectionTimeout:
-				case HTTP302Found:
 				case HTTP400BadRequest:
 				case HTTP401Unauthorized:
 				case HTTP403Forbidden:
