@@ -16,10 +16,10 @@ func TestMain(m *testing.M) {
 }
 
 func TestAdd(t *testing.T) {
-	testAdd_successfulAdds(t)
+	testAdd_successAdds(t)
 }
 
-func testAdd_successfulAdd(goldenFileID string, t *testing.T) {
+func testAdd_successAdd(goldenFileID string, t *testing.T) {
 	postBody, err := eadtestutils.GetGoldenFileValue(testutils.TestEAD, goldenFileID)
 	if err != nil {
 		t.Fatalf("eadtestutils.GetGoldenFileValue(testutils.TestEAD, goldenFileID) failed with error: %s", err)
@@ -44,7 +44,7 @@ func testAdd_successfulAdd(goldenFileID string, t *testing.T) {
 	}
 }
 
-func testAdd_successfulAdds(t *testing.T) {
+func testAdd_successAdds(t *testing.T) {
 	err := testutils.Clean()
 	if err != nil {
 		t.Errorf("clean() failed with error: %s", err)
@@ -62,7 +62,7 @@ func testAdd_successfulAdds(t *testing.T) {
 
 	goldenFileIDs := eadtestutils.GetGoldenFileIDs(testutils.TestEAD)
 	for _, goldenFileID := range goldenFileIDs {
-		testAdd_successfulAdd(goldenFileID, t)
+		testAdd_successAdd(goldenFileID, t)
 	}
 }
 
