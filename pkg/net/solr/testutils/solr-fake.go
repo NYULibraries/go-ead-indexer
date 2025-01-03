@@ -123,3 +123,17 @@ func isValidSolrUpdateRequest(r *http.Request, updateURLPathAndQuery string) boo
 
 	return true
 }
+
+func send200Response(w http.ResponseWriter, t *testing.T) error {
+	w.Header().Add("Content-Type", "text/plain;charset=UTF-8")
+	w.Header().Add("Transfer-Encoding", "chunked")
+	// Suppress automatic header.
+	w.Header()["Date"] = nil
+
+	_, err := w.Write([]byte(`{
+  "responseHeader":{
+    "status":0,
+    "QTime":0}}`))
+
+	return err
+}
