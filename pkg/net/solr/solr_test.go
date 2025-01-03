@@ -1,7 +1,9 @@
 package solr
 
 import (
+	"bytes"
 	"flag"
+	"fmt"
 	eadtestutils "go-ead-indexer/pkg/ead/testutils"
 	"go-ead-indexer/pkg/net/solr/testutils"
 	"go-ead-indexer/pkg/util"
@@ -16,8 +18,129 @@ func TestMain(m *testing.M) {
 }
 
 func TestAdd(t *testing.T) {
-	// TODO: Re-enable
+	// TODO: Re-enable once these are fully implemented.
+	//testAdd_failAdds(t)
+	//testAdd_retryFailAdds(t)
+	//testAdd_retrySuccessAdds(t)
+	// TODO: Re-enable once these pass.
 	//testAdd_successAdds(t)
+}
+
+func errorResponseXMLPostBody(id string) string {
+	postBody := []byte(fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="id">%s</field>
+  </doc>
+</add>`, id))
+
+	return bytes.NewBuffer(postBody).String()
+}
+
+// Test requests which trigger error responses for which retries are not attempted.
+func testAdd_failAdds(t *testing.T) {
+	// Have to pass in `UpdateURLPathAndQuery` to `testutils` sub-package, which
+	// can't import its own parent package.
+	fakeSolrServer := testutils.MakeSolrFake(UpdateURLPathAndQuery, t)
+	defer fakeSolrServer.Close()
+
+	err := SetSolrURLOrigin(fakeSolrServer.URL)
+	if err != nil {
+		t.Fatalf(`Setup of Solr fake failed with error: %s`, err)
+	}
+
+	testCases := []struct {
+		errorResponseType testutils.ErrorResponseType
+		expectedError     string
+	}{
+		{
+			errorResponseType: testutils.HTTP400BadRequest,
+			expectedError:     "",
+		},
+		{
+			errorResponseType: testutils.HTTP401Unauthorized,
+			expectedError:     "",
+		},
+		{
+			errorResponseType: testutils.HTTP403Forbidden,
+			expectedError:     "",
+		},
+		{
+			errorResponseType: testutils.HTTP404NotFound,
+			expectedError:     "",
+		},
+		{
+			errorResponseType: testutils.HTTP405HTTPMethodNotAllowed,
+			expectedError:     "",
+		},
+		{
+			errorResponseType: testutils.HTTP403Forbidden,
+			expectedError:     "",
+		},
+	}
+
+	for _, testCase := range testCases {
+		id := testutils.MakeErrorResponseID(testCase.errorResponseType)
+
+		err := Add(errorResponseXMLPostBody(id))
+
+		if err == nil {
+			t.Errorf(`Expected Add() for id="%s" to return an error, but no error was returned`,
+				id)
+
+			continue
+		}
+
+		if err.Error() != testCase.expectedError {
+			t.Errorf(`Expected request for id="%s" to return error "%s", `+
+				` but got error "%s"`, id, testCase.expectedError, err.Error())
+		}
+	}
+}
+
+func testAdd_retryFailAdds(t *testing.T) {
+	const expectedError = ""
+
+	id := testutils.MakeErrorResponseID(testutils.ConnectionTimeoutPermanent)
+
+	err := Add(errorResponseXMLPostBody(id))
+
+	if err == nil {
+		t.Errorf(`Expected Add() for id="%s" to return an error, but no error was returned`,
+			id)
+
+		return
+	}
+
+	if err.Error() != expectedError {
+		t.Errorf(`Expected request for id="%s" to return error "%s", `+
+			` but got error "%s"`, id, expectedError, err.Error())
+	}
+}
+
+func testAdd_retrySuccessAdds(t *testing.T) {
+	errorResponseTypes := []testutils.ErrorResponseType{
+		testutils.ConnectionAborted,
+		testutils.ConnectionRefused,
+		testutils.ConnectionReset,
+		testutils.ConnectionTimeout,
+		testutils.HTTP408RequestTimeout,
+		testutils.HTTP500InternalServerError,
+		testutils.HTTP502BadGateway,
+		testutils.HTTP503ServiceUnavailable,
+		testutils.HTTP504GatewayTimeout,
+	}
+
+	for _, errorResponseType := range errorResponseTypes {
+		id := testutils.MakeErrorResponseID(errorResponseType)
+
+		err := Add(errorResponseXMLPostBody(id))
+
+		if err != nil {
+			t.Errorf(`Expected request for id="%s" to succeed, but it failed with error "%s"`,
+				id, err.Error())
+		}
+	}
 }
 
 func testAdd_successAdd(goldenFileID string, t *testing.T) {
