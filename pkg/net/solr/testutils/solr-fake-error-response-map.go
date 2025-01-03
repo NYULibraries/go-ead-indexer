@@ -89,7 +89,7 @@ func makeSolrErrorJSONResponseBody(code int, msg string, trace string) string {
 		panic("makeSolrErrorJSONResponseBody() helper called with no `msg` or `trace`")
 	}
 
-	return fmt.Sprintf(`{"responseHeader":{"status":%i,"QTime":0},"error":{"%s":"%s","code":%i}}`,
+	return fmt.Sprintf(`{"responseHeader":{"status":%d,"QTime":0},"error":{"%s":"%s","code":%d}}`,
 		code, key, value, code)
 }
 
