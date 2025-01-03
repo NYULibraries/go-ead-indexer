@@ -67,7 +67,14 @@ func MakeSolrFake(updateURLPathAndQuery string, t *testing.T) *httptest.Server {
 			}
 
 			if isErrorResponseID(id) {
-				handleErrorResponse(w, id, receivedRequest)
+				err := handleErrorResponse(w, id, receivedRequest)
+				if err != nil {
+					t.Errorf(
+						"handleErrorResponse() failed with error: %s",
+						err)
+
+					return
+				}
 			} else {
 				err := send200ResponseAndWriteActualFile(w, id, receivedRequest)
 				if err != nil {
