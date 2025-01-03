@@ -1,6 +1,7 @@
 package testutils
 
 import (
+	"errors"
 	"fmt"
 	"net/http"
 	"net/http/httptest"
@@ -66,28 +67,7 @@ func MakeSolrFake(updateURLPathAndQuery string, t *testing.T) *httptest.Server {
 			}
 
 			if isErrorResponseID(id) {
-				errorResponseType := getErrorResponseType(id)
-
-				switch errorResponseType {
-				case ConnectionAborted:
-				case ConnectionRefused:
-				case ConnectionReset:
-				case ConnectionTimeout:
-				case HTTP400BadRequest:
-				case HTTP401Unauthorized:
-				case HTTP403Forbidden:
-				case HTTP404NotFound:
-				case HTTP405HTTPMethodNotAllowed:
-				case HTTP408RequestTimeout:
-				case HTTP500InternalServerError:
-				case HTTP502BadGateway:
-				case HTTP503ServiceUnavailable:
-				case HTTP504GatewayTimeout:
-				case ConnectionTimeoutPermanent:
-				default:
-					t.Fatalf(fmt.Sprintf("Unrecognized `ErrorResponseType`: %s",
-						errorResponseType))
-				}
+				handleErrorResponse(w, id, receivedRequest)
 			} else {
 				err := send200ResponseAndWriteActualFile(w, id, receivedRequest)
 				if err != nil {
@@ -112,6 +92,33 @@ func getErrorResponseType(id string) ErrorResponseType {
 	} else {
 		return NotAnError
 	}
+}
+
+func handleErrorResponse(w http.ResponseWriter, id string, receivedRequest []byte) error {
+	errorResponseType := getErrorResponseType(id)
+
+	switch errorResponseType {
+	case ConnectionAborted:
+	case ConnectionRefused:
+	case ConnectionReset:
+	case ConnectionTimeout:
+	case HTTP400BadRequest:
+	case HTTP401Unauthorized:
+	case HTTP403Forbidden:
+	case HTTP404NotFound:
+	case HTTP405HTTPMethodNotAllowed:
+	case HTTP408RequestTimeout:
+	case HTTP500InternalServerError:
+	case HTTP502BadGateway:
+	case HTTP503ServiceUnavailable:
+	case HTTP504GatewayTimeout:
+	case ConnectionTimeoutPermanent:
+	default:
+		return errors.New(fmt.Sprintf("Unrecognized `ErrorResponseType`: %s",
+			errorResponseType))
+	}
+
+	return nil
 }
 
 func isErrorResponseID(id string) bool {
