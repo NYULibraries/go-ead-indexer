@@ -65,18 +65,9 @@ func MakeSolrFake(updateURLPathAndQuery string, t *testing.T) *httptest.Server {
 				return
 			}
 
-			errorResponseType := getErrorResponseType(id)
+			if isErrorResponseID(id) {
+				errorResponseType := getErrorResponseType(id)
 
-			if errorResponseType == NotAnError {
-				err := send200ResponseAndWriteActualFile(w, id, receivedRequest)
-				if err != nil {
-					t.Errorf(
-						"send200ResponseAndWriteActualFile() failed with error: %s",
-						err)
-
-					return
-				}
-			} else {
 				switch errorResponseType {
 				case ConnectionAborted:
 				case ConnectionRefused:
@@ -97,6 +88,15 @@ func MakeSolrFake(updateURLPathAndQuery string, t *testing.T) *httptest.Server {
 					t.Fatalf(fmt.Sprintf("Unrecognized `ErrorResponseType`: %s",
 						errorResponseType))
 				}
+			} else {
+				err := send200ResponseAndWriteActualFile(w, id, receivedRequest)
+				if err != nil {
+					t.Errorf(
+						"send200ResponseAndWriteActualFile() failed with error: %s",
+						err)
+
+					return
+				}
 			}
 		}),
 	)
@@ -112,6 +112,10 @@ func getErrorResponseType(id string) ErrorResponseType {
 	} else {
 		return NotAnError
 	}
+}
+
+func isErrorResponseID(id string) bool {
+	return errorResponseTypeRegExp.MatchString(id)
 }
 
 func isValidSolrUpdateRequest(r *http.Request, updateURLPathAndQuery string) bool {
