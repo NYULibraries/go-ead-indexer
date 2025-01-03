@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"net/http/httputil"
 	"net/url"
 	"regexp"
 )
@@ -34,8 +35,18 @@ func Add(xmlPostBody string) error {
 
 	postBody := []byte(`<field name="id">` + id + "</field>")
 	responseBody := bytes.NewBuffer(postBody)
-	_, _ = http.Post(GetSolrURLOrigin()+UpdateURLPathAndQuery,
+	response, err := http.Post(GetSolrURLOrigin()+UpdateURLPathAndQuery,
 		"text/xml", responseBody)
+	if err != nil {
+		panic(err)
+	}
+
+	dumpedResponse, err := httputil.DumpResponse(response, true)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Printf("%q", dumpedResponse)
 
 	return nil
 }
