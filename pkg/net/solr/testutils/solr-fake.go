@@ -68,10 +68,10 @@ func MakeSolrFake(updateURLPathAndQuery string, t *testing.T) *httptest.Server {
 			errorResponseType := getErrorResponseType(id)
 
 			if errorResponseType == NotAnError {
-				err = writeActualSolrRequestToTmp(TestEAD, id, string(receivedRequest))
+				err := send200ResponseAndWriteActualFile(w, id, receivedRequest)
 				if err != nil {
 					t.Errorf(
-						"writeActualSolrRequestToTmp(TestEAD, fileID, receivedRequest) failed with error: %s",
+						"send200ResponseAndWriteActualFile() failed with error: %s",
 						err)
 
 					return
@@ -124,7 +124,7 @@ func isValidSolrUpdateRequest(r *http.Request, updateURLPathAndQuery string) boo
 	return true
 }
 
-func send200Response(w http.ResponseWriter, t *testing.T) error {
+func send200Response(w http.ResponseWriter) error {
 	w.Header().Add("Content-Type", "text/plain;charset=UTF-8")
 	w.Header().Add("Transfer-Encoding", "chunked")
 	// Suppress automatic header.
@@ -136,4 +136,13 @@ func send200Response(w http.ResponseWriter, t *testing.T) error {
     "QTime":0}}`))
 
 	return err
+}
+
+func send200ResponseAndWriteActualFile(w http.ResponseWriter, id string, receivedRequest []byte) error {
+	err := send200Response(w)
+	if err != nil {
+		return err
+	}
+
+	return writeActualSolrRequestToTmp(TestEAD, id, string(receivedRequest))
 }
