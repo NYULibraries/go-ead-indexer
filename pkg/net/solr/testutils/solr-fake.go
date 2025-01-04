@@ -12,7 +12,7 @@ import (
 
 type ErrorResponseType string
 
-const NotAnError ErrorResponseType = "notanerror"
+const InvalidErrorResponseType ErrorResponseType = ""
 
 const (
 	ConnectionAborted ErrorResponseType = "connectionaborted"
@@ -89,15 +89,22 @@ func MakeSolrFake(updateURLPathAndQuery string, t *testing.T) *httptest.Server {
 	)
 }
 
-func getErrorResponseType(id string) ErrorResponseType {
+func getErrorResponse(id string) (ErrorResponseType, ErrorResponse, error) {
 	matches := errorResponseTypeRegExp.FindStringSubmatch(id)
 
 	if len(matches) > 1 {
 		errorResponseType := ErrorResponseType(matches[1])
 
-		return errorResponseType
+		errorResponse, ok := errorResponseMap[errorResponseType]
+		if !ok {
+			return errorResponseType, errorResponse, errors.New(
+				fmt.Sprintf(`No ErrorResponse found for ID "%s"`))
+		}
+
+		return errorResponseType, errorResponse, nil
 	} else {
-		return NotAnError
+		return InvalidErrorResponseType, ErrorResponse{},
+			errors.New(`"%s" is not a valid ErrorResponseType ID`)
 	}
 }
 
