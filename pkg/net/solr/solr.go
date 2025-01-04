@@ -42,6 +42,13 @@ func Add(xmlPostBody string) error {
 	}
 
 	if response.StatusCode != http.StatusOK {
+		// Some extra characters appear in the dumped response body.  See:
+		// "http resp.Write & httputil.DumpResponse include extra text with body"
+		// https://groups.google.com/g/golang-nuts/c/LCoPQOpDvx4?pli=1
+		//
+		// To test this, removed "Transfer-Encoding: chunked" HTTP header
+		// from the Solr fake responses, and extra characters no longer appeared
+		// (and Content-Length header was automatically added).
 		dumpedResponse, dumpResponseError := httputil.DumpResponse(response, true)
 		if dumpResponseError != nil {
 			return dumpResponseError
