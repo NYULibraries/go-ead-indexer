@@ -36,6 +36,8 @@ const (
 
 const errorResponseIDPrefix = "error_"
 
+var errorResponseToggle = map[ErrorResponseType]bool{}
+
 var errorResponseTypeRegExp = regexp.MustCompile(errorResponseIDPrefix + "([a-z0-9]+)")
 
 func MakeErrorResponseID(errorResponseType ErrorResponseType) string {
@@ -109,27 +111,33 @@ func getErrorResponse(id string) (ErrorResponseType, ErrorResponse, error) {
 }
 
 func handleErrorResponse(w http.ResponseWriter, id string, receivedRequest []byte) error {
-	errorResponseType := getErrorResponseType(id)
+	errorResponseType, errorResponse, err := getErrorResponse(id)
+	if err != nil {
+		return err
+	}
 
-	switch errorResponseType {
-	case ConnectionAborted:
-	case ConnectionRefused:
-	case ConnectionReset:
-	case ConnectionTimeout:
-	case HTTP400BadRequest:
-	case HTTP401Unauthorized:
-	case HTTP403Forbidden:
-	case HTTP404NotFound:
-	case HTTP405HTTPMethodNotAllowed:
-	case HTTP408RequestTimeout:
-	case HTTP500InternalServerError:
-	case HTTP502BadGateway:
-	case HTTP503ServiceUnavailable:
-	case HTTP504GatewayTimeout:
-	case ConnectionTimeoutPermanent:
-	default:
-		return errors.New(fmt.Sprintf("Unrecognized `ErrorResponseType`: %s",
-			errorResponseType))
+	if isHTTPErrorResponse(errorResponse) {
+		if errorResponse.RetriesAlwaysFail {
+			err = sendHTTPErrorResponse(w, errorResponse)
+		} else {
+			// Fail on first try, succeed on retry
+			if _, ok := errorResponseToggle[errorResponseType]; !ok {
+				// First time for this error.  Set it for clearing on retry and
+				// send error response.
+				errorResponseToggle[errorResponseType] = true
+				err = sendHTTPErrorResponse(w, errorResponse)
+			} else {
+				// Clear the error and send a 200 response.
+				delete(errorResponseToggle, errorResponseType)
+				err = send200ResponseAndWriteActualFile(w, id, receivedRequest)
+			}
+		}
+	} else {
+		// TODO
+	}
+
+	if err != nil {
+		return err
 	}
 
 	return nil
