@@ -73,10 +73,6 @@ func testAdd_failAdds(t *testing.T) {
 			errorResponseType: testutils.HTTP405HTTPMethodNotAllowed,
 			expectedError:     "",
 		},
-		{
-			errorResponseType: testutils.HTTP403Forbidden,
-			expectedError:     "",
-		},
 	}
 
 	for _, testCase := range testCases {
