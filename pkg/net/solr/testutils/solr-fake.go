@@ -132,6 +132,10 @@ func isErrorResponseID(id string) bool {
 	return errorResponseTypeRegExp.MatchString(id)
 }
 
+func isHTTPErrorResponse(errorResponse ErrorResponse) bool {
+	return errorResponse.HTTPStatusCode > 0
+}
+
 func isValidSolrUpdateRequest(r *http.Request, updateURLPathAndQuery string) bool {
 	var pathAndRawQuery = r.URL.Path + "?" + r.URL.RawQuery
 	if pathAndRawQuery != updateURLPathAndQuery ||
@@ -157,6 +161,11 @@ func send200ResponseAndWriteActualFile(w http.ResponseWriter, id string, receive
 
 	return writeActualSolrRequestToTmp(TestEAD, id, string(receivedRequest))
 }
+
+func sendHTTPErrorResponse(w http.ResponseWriter, errorResponse ErrorResponse) error {
+	return sendResponse(w, errorResponse.HTTPStatusCode, errorResponse.ResponseBody)
+}
+
 func sendResponse(w http.ResponseWriter, statusCode int, body string) error {
 	w.Header().Add("Content-Type", "text/plain;charset=UTF-8")
 	w.Header().Add("Transfer-Encoding", "chunked")
