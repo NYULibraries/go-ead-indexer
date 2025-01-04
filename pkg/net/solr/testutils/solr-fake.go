@@ -143,17 +143,10 @@ func isValidSolrUpdateRequest(r *http.Request, updateURLPathAndQuery string) boo
 }
 
 func send200Response(w http.ResponseWriter) error {
-	w.Header().Add("Content-Type", "text/plain;charset=UTF-8")
-	w.Header().Add("Transfer-Encoding", "chunked")
-	// Suppress automatic header.
-	w.Header()["Date"] = nil
-
-	_, err := w.Write([]byte(`{
+	return sendResponse(w, http.StatusOK, `{
   "responseHeader":{
     "status":0,
-    "QTime":0}}`))
-
-	return err
+    "QTime":0}}`)
 }
 
 func send200ResponseAndWriteActualFile(w http.ResponseWriter, id string, receivedRequest []byte) error {
@@ -163,4 +156,16 @@ func send200ResponseAndWriteActualFile(w http.ResponseWriter, id string, receive
 	}
 
 	return writeActualSolrRequestToTmp(TestEAD, id, string(receivedRequest))
+}
+func sendResponse(w http.ResponseWriter, statusCode int, body string) error {
+	w.Header().Add("Content-Type", "text/plain;charset=UTF-8")
+	w.Header().Add("Transfer-Encoding", "chunked")
+	// Suppress automatic header.
+	w.Header()["Date"] = nil
+
+	w.WriteHeader(statusCode)
+
+	_, err := w.Write([]byte(body))
+
+	return err
 }
