@@ -5,10 +5,13 @@ import (
 	"net/http"
 )
 
-var errorResponseMap = map[ErrorResponseType]struct {
-	HTTPStatusCode int
-	ResponseBody   string
-}{
+type ErrorResponse struct {
+	HTTPStatusCode    int
+	ResponseBody      string
+	RetriesAlwaysFail bool
+}
+
+var errorResponseMap = map[ErrorResponseType]ErrorResponse{
 	ConnectionAborted: {},
 	ConnectionRefused: {},
 	ConnectionReset:   {},
@@ -72,7 +75,7 @@ var errorResponseMap = map[ErrorResponseType]struct {
 			"Gateway Timeout"),
 	},
 
-	ConnectionTimeoutPermanent: {},
+	ConnectionTimeoutPermanent: {RetriesAlwaysFail: true},
 }
 
 func makeSolrErrorJSONResponseBody(code int, msg string, trace string) string {
