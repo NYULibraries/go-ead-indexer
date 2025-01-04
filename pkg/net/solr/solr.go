@@ -38,15 +38,17 @@ func Add(xmlPostBody string) error {
 	response, err := http.Post(GetSolrURLOrigin()+UpdateURLPathAndQuery,
 		"text/xml", responseBody)
 	if err != nil {
-		panic(err)
+		return err
 	}
 
-	dumpedResponse, err := httputil.DumpResponse(response, true)
-	if err != nil {
-		panic(err)
-	}
+	if response.StatusCode != http.StatusOK {
+		dumpedResponse, dumpResponseError := httputil.DumpResponse(response, true)
+		if dumpResponseError != nil {
+			return dumpResponseError
+		}
 
-	fmt.Printf("%q", dumpedResponse)
+		return errors.New(string(dumpedResponse))
+	}
 
 	return nil
 }
