@@ -30,8 +30,6 @@ const (
 	HTTP502BadGateway           ErrorResponseType = "http502badgateway"
 	HTTP503ServiceUnavailable   ErrorResponseType = "http503serviceunavailable"
 	HTTP504GatewayTimeout       ErrorResponseType = "http504gatewaytimeout"
-
-	ConnectionTimeoutPermanent ErrorResponseType = "connectiontimeoutpermanent"
 )
 
 const errorResponseIDPrefix = "error_"
