@@ -9,6 +9,7 @@ type ErrorResponse struct {
 	HTTPStatusCode     int
 	NumRetriesRequired int
 	ResponseBody       string
+	Type               ErrorResponseType
 }
 
 var errorResponseMap = map[ErrorResponseType]ErrorResponse{
