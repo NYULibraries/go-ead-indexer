@@ -110,7 +110,7 @@ func getErrorResponse(id string) (ErrorResponse, error) {
 		errorResponse, ok := errorResponseMap[errorResponseType]
 		if !ok {
 			return errorResponse, errors.New(
-				fmt.Sprintf(`No ErrorResponse found for ID "%s"`))
+				fmt.Sprintf(`No ErrorResponse found for ID "%s"`, id))
 		}
 		errorResponse.NumRetriesRequired = numRetriesRequired
 		errorResponse.Type = errorResponseType
