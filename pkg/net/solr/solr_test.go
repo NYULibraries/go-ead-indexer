@@ -8,6 +8,7 @@ import (
 	"go-ead-indexer/pkg/net/solr/testutils"
 	"go-ead-indexer/pkg/util"
 	"os"
+	"strings"
 	"testing"
 )
 
@@ -18,8 +19,8 @@ func TestMain(m *testing.M) {
 }
 
 func TestAdd(t *testing.T) {
+	testAdd_failAdds(t)
 	// TODO: Re-enable once these are fully implemented.
-	//testAdd_failAdds(t)
 	//testAdd_retryFailAdds(t)
 	//testAdd_retrySuccessAdds(t)
 	// TODO: Re-enable once these pass.
@@ -55,28 +56,128 @@ func testAdd_failAdds(t *testing.T) {
 	}{
 		{
 			errorResponseType: testutils.HTTP400BadRequest,
-			expectedError:     "",
+			expectedError: `HTTP/1.1 400 Bad Request
+Transfer-Encoding: chunked
+Content-Type: text/plain;charset=UTF-8
+
+5f
+{"responseHeader":{"status":400,"QTime":0},"error":{"msg":"missing content stream","code":400}}
+0
+
+`,
 		},
 		{
 			errorResponseType: testutils.HTTP401Unauthorized,
-			expectedError:     "",
+			expectedError: `HTTP/1.1 401 Unauthorized
+Transfer-Encoding: chunked
+Content-Type: text/plain;charset=UTF-8
+
+5e
+{"responseHeader":{"status":401,"QTime":0},"error":{"msg":"[http401unauthorized]","code":401}}
+0
+
+`,
 		},
 		{
 			errorResponseType: testutils.HTTP403Forbidden,
-			expectedError:     "",
+			expectedError: `HTTP/1.1 403 Forbidden
+Transfer-Encoding: chunked
+Content-Type: text/plain;charset=UTF-8
+
+5b
+{"responseHeader":{"status":403,"QTime":0},"error":{"msg":"[http403forbidden]","code":403}}
+0
+
+`,
 		},
 		{
 			errorResponseType: testutils.HTTP404NotFound,
-			expectedError:     "",
+			expectedError: `HTTP/1.1 404 Not Found
+Transfer-Encoding: chunked
+Content-Type: text/plain;charset=UTF-8
+
+56a
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+<title>Error 404 Not Found</title>
+</head>
+<body><h2>HTTP ERROR 404</h2>
+<p>Problem accessing /solr/nonexistent-path.. Reason:
+<pre>    Not Found</pre></p><hr /><i><small>Powered by Jetty://</small></i><br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+
+</body>
+</html>
+0
+
+`,
 		},
 		{
 			errorResponseType: testutils.HTTP405HTTPMethodNotAllowed,
-			expectedError:     "",
+			expectedError: `HTTP/1.1 405 Method Not Allowed
+Transfer-Encoding: chunked
+Content-Type: text/plain;charset=UTF-8
+
+5ac
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+<title>Error 405 HTTP method POST is not supported by this URL</title>
+</head>
+<body><h2>HTTP ERROR 405</h2>
+<p>Problem accessing /solr/admin.html.. Reason:
+<pre>    HTTP method POST is not supported by this URL</pre></p><hr /><i><small>Powered by Jetty://</small></i><br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+
+</body>
+</html>
+0
+
+`,
 		},
 	}
 
 	for _, testCase := range testCases {
-		id := testutils.MakeErrorResponseID(testCase.errorResponseType)
+		// Set `numErrorResponsesToReturn` to 1 because `Add()` should never retry
+		// these kinds of errors.
+		id := testutils.MakeErrorResponseID(testCase.errorResponseType, 1)
 
 		err := Add(errorResponseXMLPostBody(id))
 
@@ -87,7 +188,12 @@ func testAdd_failAdds(t *testing.T) {
 			continue
 		}
 
-		if err.Error() != testCase.expectedError {
+		// The returned error contains carriage returns, which would be a pain
+		// to get into the copy/pasted values above, so we just remove it from
+		// actual values before comparison.  Not using golden files for these
+		// because they very likely will never change.
+		massagedActualError := strings.ReplaceAll(err.Error(), "\r", "")
+		if massagedActualError != testCase.expectedError {
 			t.Errorf(`Expected request for id="%s" to return error "%s", `+
 				` but got error "%s"`, id, testCase.expectedError, err.Error())
 		}
@@ -97,7 +203,7 @@ func testAdd_failAdds(t *testing.T) {
 func testAdd_retryFailAdds(t *testing.T) {
 	const expectedError = ""
 
-	id := testutils.MakeErrorResponseID(testutils.ConnectionTimeoutPermanent)
+	id := testutils.MakeErrorResponseID(testutils.HTTP408RequestTimeout, GetRetries()+1)
 
 	err := Add(errorResponseXMLPostBody(id))
 
@@ -128,7 +234,7 @@ func testAdd_retrySuccessAdds(t *testing.T) {
 	}
 
 	for _, errorResponseType := range errorResponseTypes {
-		id := testutils.MakeErrorResponseID(errorResponseType)
+		id := testutils.MakeErrorResponseID(errorResponseType, GetRetries())
 
 		err := Add(errorResponseXMLPostBody(id))
 
