@@ -30,8 +30,8 @@ func TestAdd(t *testing.T) {
 	}
 
 	testAdd_failAdds(t)
+	testAdd_retryFailAdds(t)
 	// TODO: Re-enable once these are fully implemented.
-	//testAdd_retryFailAdds(t)
 	//testAdd_retrySuccessAdds(t)
 	// TODO: Re-enable once these pass.
 	//testAdd_successAdds(t)
@@ -203,7 +203,17 @@ Content-Type: text/plain;charset=UTF-8
 }
 
 func testAdd_retryFailAdds(t *testing.T) {
-	const expectedError = ""
+	testutils.ResetErrorResponseCounts()
+
+	const expectedError = `HTTP/1.1 408 Request Timeout
+Transfer-Encoding: chunked
+Content-Type: text/plain;charset=UTF-8
+
+60
+{"responseHeader":{"status":408,"QTime":0},"error":{"msg":"[http408requesttimeout]","code":408}}
+0
+
+`
 
 	id := testutils.MakeErrorResponseID(testutils.HTTP408RequestTimeout, GetRetries()+1)
 
