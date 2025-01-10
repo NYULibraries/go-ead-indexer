@@ -7,6 +7,7 @@ import (
 	"net/http/httptest"
 	"net/http/httputil"
 	"regexp"
+	"strconv"
 	"testing"
 )
 
@@ -36,10 +37,15 @@ const errorResponseIDPrefix = "error_"
 
 var errorResponseToggle = map[ErrorResponseType]bool{}
 
-var errorResponseTypeRegExp = regexp.MustCompile(errorResponseIDPrefix + "([a-z0-9]+)")
+var errorResponseTypeRegExp = regexp.MustCompile(errorResponseIDPrefix +
+	"([a-z0-9]+)" + "_" + "([0-9]+)")
 
-func MakeErrorResponseID(errorResponseType ErrorResponseType) string {
-	return errorResponseIDPrefix + string(errorResponseType)
+func MakeErrorResponseID(errorResponseType ErrorResponseType, numErrorResponsesToReturn int) string {
+	if numErrorResponsesToReturn <= 0 {
+		panic("`MakeErrorResponseID()` requires a positive integer for `numErrorResponsesToReturn`")
+	}
+
+	return errorResponseIDPrefix + string(errorResponseType) + "_" + strconv.Itoa(numErrorResponsesToReturn)
 }
 
 // Need to pass in `updateURLPathAndQuery` because can't use `UpdateURLPathAndQuery`
@@ -89,30 +95,40 @@ func MakeSolrFake(updateURLPathAndQuery string, t *testing.T) *httptest.Server {
 	)
 }
 
-func getErrorResponse(id string) (ErrorResponseType, ErrorResponse, error) {
+func getErrorResponse(id string) (ErrorResponse, error) {
 	matches := errorResponseTypeRegExp.FindStringSubmatch(id)
 
-	if len(matches) > 1 {
+	if len(matches) > 2 {
 		errorResponseType := ErrorResponseType(matches[1])
+		numRetriesRequired, err := strconv.Atoi(matches[2])
+		// An error should only be possible if `errorResponseTypeRegExp` is buggy,
+		// or if `MakeErrorResponseID()` does not limit the error count to int values.
+		if err != nil {
+			panic(err)
+		}
 
 		errorResponse, ok := errorResponseMap[errorResponseType]
 		if !ok {
-			return errorResponseType, errorResponse, errors.New(
+			return errorResponse, errors.New(
 				fmt.Sprintf(`No ErrorResponse found for ID "%s"`))
 		}
+		errorResponse.NumRetriesRequired = numRetriesRequired
+		errorResponse.Type = errorResponseType
 
-		return errorResponseType, errorResponse, nil
+		return errorResponse, nil
 	} else {
-		return InvalidErrorResponseType, ErrorResponse{},
-			errors.New(`"%s" is not a valid ErrorResponseType ID`)
+		return ErrorResponse{}, errors.New(`"%s" is not a valid ErrorResponseType ID`)
 	}
 }
 
 func handleErrorResponse(w http.ResponseWriter, id string, receivedRequest []byte) error {
-	errorResponseType, errorResponse, err := getErrorResponse(id)
+	errorResponse, err := getErrorResponse(id)
 	if err != nil {
 		return err
 	}
+
+	errorResponseType := errorResponse.Type
+	numRetriesRequired := errorResponse.NumRetriesRequired
 
 	if isHTTPErrorResponse(errorResponse) {
 		if errorResponse.RetriesAlwaysFail {
