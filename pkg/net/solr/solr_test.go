@@ -19,6 +19,16 @@ func TestMain(m *testing.M) {
 }
 
 func TestAdd(t *testing.T) {
+	// Have to pass in `UpdateURLPathAndQuery` to `testutils` sub-package, which
+	// can't import its own parent package.
+	fakeSolrServer := testutils.MakeSolrFake(UpdateURLPathAndQuery, t)
+	defer fakeSolrServer.Close()
+
+	err := SetSolrURLOrigin(fakeSolrServer.URL)
+	if err != nil {
+		t.Fatalf(`Setup of Solr fake failed with error: %s`, err)
+	}
+
 	testAdd_failAdds(t)
 	// TODO: Re-enable once these are fully implemented.
 	//testAdd_retryFailAdds(t)
@@ -40,15 +50,7 @@ func errorResponseXMLPostBody(id string) string {
 
 // Test requests which trigger error responses for which retries are not attempted.
 func testAdd_failAdds(t *testing.T) {
-	// Have to pass in `UpdateURLPathAndQuery` to `testutils` sub-package, which
-	// can't import its own parent package.
-	fakeSolrServer := testutils.MakeSolrFake(UpdateURLPathAndQuery, t)
-	defer fakeSolrServer.Close()
-
-	err := SetSolrURLOrigin(fakeSolrServer.URL)
-	if err != nil {
-		t.Fatalf(`Setup of Solr fake failed with error: %s`, err)
-	}
+	testutils.ResetErrorResponseCounts()
 
 	testCases := []struct {
 		errorResponseType testutils.ErrorResponseType
@@ -214,13 +216,20 @@ func testAdd_retryFailAdds(t *testing.T) {
 		return
 	}
 
-	if err.Error() != expectedError {
-		t.Errorf(`Expected request for id="%s" to return error "%s", `+
-			` but got error "%s"`, id, expectedError, err.Error())
+	// The returned error contains carriage returns, which would be a pain
+	// to get into the copy/pasted values above, so we just remove it from
+	// actual values before comparison.  Not using golden files for these
+	// because they very likely will never change.
+	massagedActualError := strings.ReplaceAll(err.Error(), "\r", "")
+	if massagedActualError != expectedError {
+		t.Errorf(`Expected request for id="%s" to return error "%s"`+
+			` but got error "%s"`, id, expectedError, massagedActualError)
 	}
 }
 
 func testAdd_retrySuccessAdds(t *testing.T) {
+	testutils.ResetErrorResponseCounts()
+
 	errorResponseTypes := []testutils.ErrorResponseType{
 		testutils.ConnectionAborted,
 		testutils.ConnectionRefused,

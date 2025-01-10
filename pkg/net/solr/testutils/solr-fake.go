@@ -95,6 +95,10 @@ func MakeSolrFake(updateURLPathAndQuery string, t *testing.T) *httptest.Server {
 	)
 }
 
+func ResetErrorResponseCounts() {
+	errorResponseCounts = map[ErrorResponseType]int{}
+}
+
 func getErrorResponse(id string) (ErrorResponse, error) {
 	matches := errorResponseTypeRegExp.FindStringSubmatch(id)
 
