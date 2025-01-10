@@ -35,7 +35,7 @@ const (
 
 const errorResponseIDPrefix = "error_"
 
-var errorResponseToggle = map[ErrorResponseType]bool{}
+var errorResponseCounts = map[ErrorResponseType]int{}
 
 var errorResponseTypeRegExp = regexp.MustCompile(errorResponseIDPrefix +
 	"([a-z0-9]+)" + "_" + "([0-9]+)")
@@ -131,23 +131,27 @@ func handleErrorResponse(w http.ResponseWriter, id string, receivedRequest []byt
 	numRetriesRequired := errorResponse.NumRetriesRequired
 
 	if isHTTPErrorResponse(errorResponse) {
-		if errorResponse.RetriesAlwaysFail {
+		// Check the number of times this error response type has been sent, and
+		// response accordingly to this current request.
+		if _, ok := errorResponseCounts[errorResponseType]; !ok {
+			// This is the first occurrence.  Start the count, and send the
+			// error response.
+			errorResponseCounts[errorResponseType] = 1
 			err = sendHTTPErrorResponse(w, errorResponse)
 		} else {
-			// Fail on first try, succeed on retry
-			if _, ok := errorResponseToggle[errorResponseType]; !ok {
-				// First time for this error.  Set it for clearing on retry and
-				// send error response.
-				errorResponseToggle[errorResponseType] = true
-				err = sendHTTPErrorResponse(w, errorResponse)
-			} else {
+			currentCount := errorResponseCounts[errorResponseType]
+			if currentCount == numRetriesRequired {
 				// Clear the error and send a 200 response.
-				delete(errorResponseToggle, errorResponseType)
+				errorResponseCounts[errorResponseType] = 0
 				err = send200ResponseAndWriteActualFile(w, id, receivedRequest)
+			} else {
+				// Increment the error count and send an error response.
+				errorResponseCounts[errorResponseType] += 1
+				err = sendHTTPErrorResponse(w, errorResponse)
 			}
 		}
 	} else {
-		// TODO
+		// TODO: non HTTP errors
 	}
 
 	if err != nil {
