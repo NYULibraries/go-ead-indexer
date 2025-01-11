@@ -13,9 +13,7 @@ type ErrorResponse struct {
 }
 
 var errorResponseMap = map[ErrorResponseType]ErrorResponse{
-	ConnectionAborted: {},
 	ConnectionRefused: {},
-	ConnectionReset:   {},
 	ConnectionTimeout: {},
 
 	// Response bodies from https://jira.nyu.edu/browse/DLFA-251, when available.

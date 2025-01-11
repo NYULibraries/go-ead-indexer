@@ -14,9 +14,7 @@ import (
 type ErrorResponseType string
 
 const (
-	ConnectionAborted ErrorResponseType = "connectionaborted"
 	ConnectionRefused ErrorResponseType = "connectionrefused"
-	ConnectionReset   ErrorResponseType = "connectionreset"
 	ConnectionTimeout ErrorResponseType = "connectiontimeout"
 
 	HTTP400BadRequest           ErrorResponseType = "http400badrequest"

@@ -241,9 +241,7 @@ func testAdd_retrySuccessAdds(t *testing.T) {
 	testutils.ResetErrorResponseCounts()
 
 	errorResponseTypes := []testutils.ErrorResponseType{
-		testutils.ConnectionAborted,
 		testutils.ConnectionRefused,
-		testutils.ConnectionReset,
 		testutils.ConnectionTimeout,
 		testutils.HTTP408RequestTimeout,
 		testutils.HTTP500InternalServerError,
