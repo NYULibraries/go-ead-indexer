@@ -132,28 +132,31 @@ func handleErrorResponse(w http.ResponseWriter, id string, receivedRequest []byt
 	errorResponseType := errorResponse.Type
 	numRetriesRequired := errorResponse.NumRetriesRequired
 
+	var sendErrorResponseFunction func(http.ResponseWriter, ErrorResponse) error
 	if isHTTPErrorResponse(errorResponse) {
-		// Check the number of times this error response type has been sent, and
-		// response accordingly to this current request.
-		if _, ok := errorResponseCounts[errorResponseType]; !ok {
-			// This is the first occurrence.  Start the count, and send the
-			// error response.
-			errorResponseCounts[errorResponseType] = 1
-			err = sendHTTPErrorResponse(w, errorResponse)
-		} else {
-			currentCount := errorResponseCounts[errorResponseType]
-			if currentCount == numRetriesRequired {
-				// Clear the error and send a 200 response.
-				errorResponseCounts[errorResponseType] = 0
-				err = send200ResponseAndWriteActualFile(w, id, receivedRequest)
-			} else {
-				// Increment the error count and send an error response.
-				errorResponseCounts[errorResponseType] += 1
-				err = sendHTTPErrorResponse(w, errorResponse)
-			}
-		}
+		sendErrorResponseFunction = sendHTTPErrorResponse
 	} else {
 		// TODO: non HTTP errors
+	}
+
+	// Check the number of times this error response type has been sent, and
+	// response accordingly to this current request.
+	if _, ok := errorResponseCounts[errorResponseType]; !ok {
+		// This is the first occurrence.  Start the count, and send the
+		// error response.
+		errorResponseCounts[errorResponseType] = 1
+		err = sendErrorResponseFunction(w, errorResponse)
+	} else {
+		currentCount := errorResponseCounts[errorResponseType]
+		if currentCount == numRetriesRequired {
+			// Clear the error and send a 200 response.
+			errorResponseCounts[errorResponseType] = 0
+			err = send200ResponseAndWriteActualFile(w, id, receivedRequest)
+		} else {
+			// Increment the error count and send an error response.
+			errorResponseCounts[errorResponseType] += 1
+			err = sendErrorResponseFunction(w, errorResponse)
+		}
 	}
 
 	if err != nil {
