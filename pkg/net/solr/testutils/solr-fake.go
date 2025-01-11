@@ -13,8 +13,6 @@ import (
 
 type ErrorResponseType string
 
-const InvalidErrorResponseType ErrorResponseType = ""
-
 const (
 	ConnectionAborted ErrorResponseType = "connectionaborted"
 	ConnectionRefused ErrorResponseType = "connectionrefused"
