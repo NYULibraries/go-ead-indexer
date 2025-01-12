@@ -34,9 +34,9 @@ func Add(xmlPostBody string) error {
 	id := matches[1]
 
 	postBody := []byte(`<field name="id">` + id + "</field>")
-	responseBody := bytes.NewBuffer(postBody)
+	postBodyBuffer := bytes.NewBuffer(postBody)
 	response, err := http.Post(GetSolrURLOrigin()+UpdateURLPathAndQuery,
-		"text/xml", responseBody)
+		"text/xml", postBodyBuffer)
 	if err != nil {
 		return err
 	}
