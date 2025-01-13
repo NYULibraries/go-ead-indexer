@@ -29,8 +29,8 @@ func TestAdd(t *testing.T) {
 		t.Fatalf(`Setup of Solr fake failed with error: %s`, err)
 	}
 
-	testAdd_failAdds(t)
-	testAdd_retryFailAddMaxedOutRetries(t)
+	testAdd_doNotRetryIndefinitely(t)
+	testAdd_neverRetryCertainErrors(t)
 	// TODO: Re-enable once these pass.
 	//testAdd_retrySuccessAddConnectionTimeout(t)
 	//testAdd_retrySuccessAddHTTPErrors(t)
@@ -48,8 +48,45 @@ func errorResponseXMLPostBody(id string) string {
 	return bytes.NewBuffer(postBody).String()
 }
 
-// Test requests which trigger error responses for which retries are not attempted.
-func testAdd_failAdds(t *testing.T) {
+func testAdd_doNotRetryIndefinitely(t *testing.T) {
+	testutils.ResetErrorResponseCounts()
+
+	const expectedError = `HTTP/1.1 408 Request Timeout
+Transfer-Encoding: chunked
+Content-Type: text/plain;charset=UTF-8
+
+60
+{"responseHeader":{"status":408,"QTime":0},"error":{"msg":"[http408requesttimeout]","code":408}}
+0
+
+`
+
+	// Have Solr fake error out more times than `Add()` will retry.
+	id := testutils.MakeErrorResponseID(testutils.HTTP408RequestTimeout, GetRetries()+1)
+
+	err := Add(errorResponseXMLPostBody(id))
+
+	if err == nil {
+		t.Errorf(`Expected Add() for id="%s" to return an error, but no error was returned`,
+			id)
+
+		return
+	}
+
+	// The returned error contains carriage returns, which would be a pain
+	// to get into the copy/pasted values above, so we just remove it from
+	// actual values before comparison.  Not using golden files for these
+	// because they very likely will never change.
+	massagedActualError := strings.ReplaceAll(err.Error(), "\r", "")
+	if massagedActualError != expectedError {
+		t.Errorf(`Expected request for id="%s" to return error "%s"`+
+			` but got error "%s"`, id, expectedError, massagedActualError)
+	}
+}
+
+// Test that `Add()` will not attempt to retry certain errors which are not worth
+// retrying.
+func testAdd_neverRetryCertainErrors(t *testing.T) {
 	testutils.ResetErrorResponseCounts()
 
 	const expectedErrorHTTP400BadRequest = `HTTP/1.1 400 Bad Request
@@ -204,41 +241,6 @@ Content-Type: text/plain;charset=UTF-8
 			t.Errorf(`Expected request for id="%s" to return error "%s", `+
 				` but got error "%s"`, id, testCase.expectedError, err.Error())
 		}
-	}
-}
-
-func testAdd_retryFailAddMaxedOutRetries(t *testing.T) {
-	testutils.ResetErrorResponseCounts()
-
-	const expectedError = `HTTP/1.1 408 Request Timeout
-Transfer-Encoding: chunked
-Content-Type: text/plain;charset=UTF-8
-
-60
-{"responseHeader":{"status":408,"QTime":0},"error":{"msg":"[http408requesttimeout]","code":408}}
-0
-
-`
-
-	id := testutils.MakeErrorResponseID(testutils.HTTP408RequestTimeout, GetRetries()+1)
-
-	err := Add(errorResponseXMLPostBody(id))
-
-	if err == nil {
-		t.Errorf(`Expected Add() for id="%s" to return an error, but no error was returned`,
-			id)
-
-		return
-	}
-
-	// The returned error contains carriage returns, which would be a pain
-	// to get into the copy/pasted values above, so we just remove it from
-	// actual values before comparison.  Not using golden files for these
-	// because they very likely will never change.
-	massagedActualError := strings.ReplaceAll(err.Error(), "\r", "")
-	if massagedActualError != expectedError {
-		t.Errorf(`Expected request for id="%s" to return error "%s"`+
-			` but got error "%s"`, id, expectedError, massagedActualError)
 	}
 }
 
