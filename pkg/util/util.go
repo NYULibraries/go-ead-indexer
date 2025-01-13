@@ -1,7 +1,9 @@
 package util
 
 import (
+	"fmt"
 	"go-ead-indexer/pkg/util/diff"
+	"net"
 	"os"
 	"strings"
 )
@@ -43,6 +45,25 @@ func DiffStrings(label1 string, string1 string, label2, string2 string) string {
 	diffString := string(diff.Diff(label1, []byte(string1), label2, []byte(string2)))
 
 	return diffString
+}
+
+// This is the method that Go itself uses: see net/http/httptest/server.go:
+// https://github.com/golang/go/blob/69234ded30614a471c35cef5d87b0e0d3c136cd9/src/net/http/httptest/server.go#L60-L75
+// See also:
+// "Is it possible to connect to TCP port 0?"
+// https://unix.stackexchange.com/questions/180492/is-it-possible-to-connect-to-tcp-port-0
+func GetUnusedLocalhostNetworkAddress() string {
+	// Based on https://github.com/golang/go/blob/69234ded30614a471c35cef5d87b0e0d3c136cd9/src/net/http/httptest/server.go#L68-L73
+	//throwawayListener, err := net.Listen("tcp", "127.0.0.1:0")
+	throwawayListener, err := net.Listen("tcp", "127.0.0.1:60570")
+	if err != nil {
+		if throwawayListener, err = net.Listen("tcp6", "[::1]:0"); err != nil {
+			panic(fmt.Sprintf("httptest: failed to listen on a port: %v", err))
+		}
+	}
+	defer throwawayListener.Close()
+
+	return throwawayListener.Addr().String()
 }
 
 // Based on: https://stackoverflow.com/questions/18594330/what-is-the-best-way-to-test-for-an-empty-string-in-go
