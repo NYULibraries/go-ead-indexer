@@ -8,11 +8,17 @@ import (
 	"net/http/httputil"
 	"net/url"
 	"regexp"
+	"time"
 )
 
 const UpdateURLPathAndQuery = "/solr/findingaids/update?wt=json&indent=true"
 
 const DefaultRetries = 3
+const DefaultTimeout = 30 * time.Second
+
+var client = http.Client{
+	Timeout: DefaultTimeout,
+}
 
 var retries = DefaultRetries
 
@@ -35,7 +41,7 @@ func Add(xmlPostBody string) error {
 
 	postBody := []byte(`<field name="id">` + id + "</field>")
 	postBodyBuffer := bytes.NewBuffer(postBody)
-	response, err := http.Post(GetSolrURLOrigin()+UpdateURLPathAndQuery,
+	response, err := client.Post(GetSolrURLOrigin()+UpdateURLPathAndQuery,
 		"text/xml", postBodyBuffer)
 	if err != nil {
 		return err
@@ -115,4 +121,8 @@ func SetSolrURLOrigin(solrURLOriginArg string) error {
 	solrURLOrigin = solrURLOriginArg
 
 	return nil
+}
+
+func setTimeout(timeoutArg time.Duration) {
+	client.Timeout = timeoutArg
 }
