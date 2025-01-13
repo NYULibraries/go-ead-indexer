@@ -52,13 +52,7 @@ func errorResponseXMLPostBody(id string) string {
 func testAdd_failAdds(t *testing.T) {
 	testutils.ResetErrorResponseCounts()
 
-	testCases := []struct {
-		errorResponseType testutils.ErrorResponseType
-		expectedError     string
-	}{
-		{
-			errorResponseType: testutils.HTTP400BadRequest,
-			expectedError: `HTTP/1.1 400 Bad Request
+	const expectedErrorHTTP400BadRequest = `HTTP/1.1 400 Bad Request
 Transfer-Encoding: chunked
 Content-Type: text/plain;charset=UTF-8
 
@@ -66,11 +60,8 @@ Content-Type: text/plain;charset=UTF-8
 {"responseHeader":{"status":400,"QTime":0},"error":{"msg":"missing content stream","code":400}}
 0
 
-`,
-		},
-		{
-			errorResponseType: testutils.HTTP401Unauthorized,
-			expectedError: `HTTP/1.1 401 Unauthorized
+`
+	const expectedErrorHTTPE401Unauthorized = `HTTP/1.1 401 Unauthorized
 Transfer-Encoding: chunked
 Content-Type: text/plain;charset=UTF-8
 
@@ -78,11 +69,8 @@ Content-Type: text/plain;charset=UTF-8
 {"responseHeader":{"status":401,"QTime":0},"error":{"msg":"[http401unauthorized]","code":401}}
 0
 
-`,
-		},
-		{
-			errorResponseType: testutils.HTTP403Forbidden,
-			expectedError: `HTTP/1.1 403 Forbidden
+`
+	const expectedErrorHTTP403Forbidden = `HTTP/1.1 403 Forbidden
 Transfer-Encoding: chunked
 Content-Type: text/plain;charset=UTF-8
 
@@ -90,11 +78,8 @@ Content-Type: text/plain;charset=UTF-8
 {"responseHeader":{"status":403,"QTime":0},"error":{"msg":"[http403forbidden]","code":403}}
 0
 
-`,
-		},
-		{
-			errorResponseType: testutils.HTTP404NotFound,
-			expectedError: `HTTP/1.1 404 Not Found
+`
+	const expectedErrorHTTP404NotFound = `HTTP/1.1 404 Not Found
 Transfer-Encoding: chunked
 Content-Type: text/plain;charset=UTF-8
 
@@ -131,11 +116,8 @@ Content-Type: text/plain;charset=UTF-8
 </html>
 0
 
-`,
-		},
-		{
-			errorResponseType: testutils.HTTP405HTTPMethodNotAllowed,
-			expectedError: `HTTP/1.1 405 Method Not Allowed
+`
+	const expectedErrorHTTP405MethodNotAllowed = `HTTP/1.1 405 Method Not Allowed
 Transfer-Encoding: chunked
 Content-Type: text/plain;charset=UTF-8
 
@@ -172,7 +154,30 @@ Content-Type: text/plain;charset=UTF-8
 </html>
 0
 
-`,
+`
+	testCases := []struct {
+		errorResponseType testutils.ErrorResponseType
+		expectedError     string
+	}{
+		{
+			errorResponseType: testutils.HTTP400BadRequest,
+			expectedError:     expectedErrorHTTP400BadRequest,
+		},
+		{
+			errorResponseType: testutils.HTTP401Unauthorized,
+			expectedError:     expectedErrorHTTPE401Unauthorized,
+		},
+		{
+			errorResponseType: testutils.HTTP403Forbidden,
+			expectedError:     expectedErrorHTTP403Forbidden,
+		},
+		{
+			errorResponseType: testutils.HTTP404NotFound,
+			expectedError:     expectedErrorHTTP404NotFound,
+		},
+		{
+			errorResponseType: testutils.HTTP405HTTPMethodNotAllowed,
+			expectedError:     expectedErrorHTTP405MethodNotAllowed,
 		},
 	}
 
