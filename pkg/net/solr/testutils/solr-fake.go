@@ -29,6 +29,8 @@ const (
 	HTTP504GatewayTimeout       ErrorResponseType = "http504gatewaytimeout"
 )
 
+const ConnectionTimeoutDuration = 1 * time.Second
+
 const errorResponseIDPrefix = "error_"
 
 var errorResponseCounts = map[ErrorResponseType]int{}
@@ -131,10 +133,10 @@ func handleErrorResponse(w http.ResponseWriter, id string, receivedRequest []byt
 	numRetriesRequired := errorResponse.NumRetriesRequired
 
 	var sendErrorResponseFunction func(http.ResponseWriter, ErrorResponse) error
-	if isHTTPErrorResponse(errorResponse) {
-		sendErrorResponseFunction = sendHTTPErrorResponse
+	if errorResponseType == ConnectionTimeout {
+		sendErrorResponseFunction = sendConnectionTimeoutResponse
 	} else {
-		// TODO: non HTTP errors
+		sendErrorResponseFunction = sendHTTPErrorResponse
 	}
 
 	// Check the number of times this error response type has been sent, and
@@ -168,10 +170,6 @@ func isErrorResponseID(id string) bool {
 	return errorResponseTypeRegExp.MatchString(id)
 }
 
-func isHTTPErrorResponse(errorResponse ErrorResponse) bool {
-	return errorResponse.HTTPStatusCode > 0
-}
-
 func isValidSolrUpdateRequest(r *http.Request, updateURLPathAndQuery string) bool {
 	var pathAndRawQuery = r.URL.Path + "?" + r.URL.RawQuery
 	if pathAndRawQuery != updateURLPathAndQuery ||
@@ -196,6 +194,12 @@ func send200ResponseAndWriteActualFile(w http.ResponseWriter, id string, receive
 	}
 
 	return writeActualSolrRequestToTmp(TestEAD, id, string(receivedRequest))
+}
+
+func sendConnectionTimeoutResponse(w http.ResponseWriter, errorResponse ErrorResponse) error {
+	time.Sleep(ConnectionTimeoutDuration)
+
+	return nil
 }
 
 func sendHTTPErrorResponse(w http.ResponseWriter, errorResponse ErrorResponse) error {
