@@ -9,12 +9,12 @@ import (
 	"regexp"
 	"strconv"
 	"testing"
+	"time"
 )
 
 type ErrorResponseType string
 
 const (
-	ConnectionRefused ErrorResponseType = "connectionrefused"
 	ConnectionTimeout ErrorResponseType = "connectiontimeout"
 
 	HTTP400BadRequest           ErrorResponseType = "http400badrequest"
