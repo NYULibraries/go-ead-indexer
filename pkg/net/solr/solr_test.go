@@ -30,10 +30,10 @@ func TestAdd(t *testing.T) {
 	}
 
 	testAdd_failAdds(t)
-	testAdd_retryFailAdds(t)
-	// TODO: Re-enable once these are fully implemented.
-	//testAdd_retrySuccessAdds(t)
+	testAdd_retryFailAddMaxedOutRetries(t)
 	// TODO: Re-enable once these pass.
+	//testAdd_retrySuccessAddConnectionTimeout(t)
+	//testAdd_retrySuccessAddHTTPErrors(t)
 	//testAdd_successAdds(t)
 }
 
@@ -202,7 +202,7 @@ Content-Type: text/plain;charset=UTF-8
 	}
 }
 
-func testAdd_retryFailAdds(t *testing.T) {
+func testAdd_retryFailAddMaxedOutRetries(t *testing.T) {
 	testutils.ResetErrorResponseCounts()
 
 	const expectedError = `HTTP/1.1 408 Request Timeout
@@ -237,12 +237,23 @@ Content-Type: text/plain;charset=UTF-8
 	}
 }
 
-func testAdd_retrySuccessAdds(t *testing.T) {
+func testAdd_retrySuccessAddConnectionTimeout(t *testing.T) {
 	testutils.ResetErrorResponseCounts()
 
+	setTimeout(testutils.ConnectionTimeoutDuration)
+
+	id := testutils.MakeErrorResponseID(testutils.ConnectionTimeout, GetRetries())
+
+	err := Add(errorResponseXMLPostBody(id))
+	if err != nil {
+		t.Errorf(`Expected request for id="%s" to succeed, but it failed with error "%s"`,
+			id, err.Error())
+	}
+}
+
+func testAdd_retrySuccessAddHTTPErrors(t *testing.T) {
+	testutils.ResetErrorResponseCounts()
 	errorResponseTypes := []testutils.ErrorResponseType{
-		testutils.ConnectionRefused,
-		testutils.ConnectionTimeout,
 		testutils.HTTP408RequestTimeout,
 		testutils.HTTP500InternalServerError,
 		testutils.HTTP502BadGateway,
