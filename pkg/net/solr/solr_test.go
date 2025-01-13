@@ -7,10 +7,14 @@ import (
 	eadtestutils "go-ead-indexer/pkg/ead/testutils"
 	"go-ead-indexer/pkg/net/solr/testutils"
 	"go-ead-indexer/pkg/util"
+	"net/http/httptest"
 	"os"
 	"strings"
 	"testing"
+	"time"
 )
+
+var fakeSolrServer *httptest.Server
 
 func TestMain(m *testing.M) {
 	flag.Parse()
@@ -21,7 +25,7 @@ func TestMain(m *testing.M) {
 func TestAdd(t *testing.T) {
 	// Have to pass in `UpdateURLPathAndQuery` to `testutils` sub-package, which
 	// can't import its own parent package.
-	fakeSolrServer := testutils.MakeSolrFake(UpdateURLPathAndQuery, t)
+	fakeSolrServer = testutils.MakeSolrFake(UpdateURLPathAndQuery, t)
 	defer fakeSolrServer.Close()
 
 	err := SetSolrURLOrigin(fakeSolrServer.URL)
@@ -29,10 +33,11 @@ func TestAdd(t *testing.T) {
 		t.Fatalf(`Setup of Solr fake failed with error: %s`, err)
 	}
 
-	testAdd_doNotRetryIndefinitely(t)
-	testAdd_neverRetryCertainHTTPErrors(t)
+	//testAdd_doNotRetryIndefinitely(t)
+	//testAdd_neverRetryCertainHTTPErrors(t)
 	// TODO: Re-enable once these pass.
 	//testAdd_retryCertainHTTPErrors(t)
+	//testAdd_retryConnectionRefused(t)
 	//testAdd_retryConnectionTimeouts(t)
 	//testAdd_successAdds(t)
 }
@@ -263,6 +268,39 @@ func testAdd_retryCertainHTTPErrors(t *testing.T) {
 			t.Errorf(`Expected request for id="%s" to succeed, but it failed with error "%s"`,
 				id, err.Error())
 		}
+	}
+}
+
+func testAdd_retryConnectionRefused(t *testing.T) {
+	testutils.ResetErrorResponseCounts()
+
+	// Set Solr origin to the address of an unused port on localhost.
+	connectionRefusedOrigin := "http://" + util.GetUnusedLocalhostNetworkAddress()
+	err := SetSolrURLOrigin(connectionRefusedOrigin)
+	if err != nil {
+		t.Fatalf(`Setup of Solr fake failed with error: %s`, err)
+	}
+
+	// TODO: After we have decided upon and implemented the retries, set this
+	// timer to execute its function before the first retry interval passes.
+	//
+	// Switch to Solr fake before `Add()` is done with its retries.
+	// This test was initially itself tested for correctness by having `Add()`
+	// do several consecutive POST requests with no break in between them.
+	// It's worth noting that one millisecond was the maximum number of
+	// milliseconds that could be used to get this test to pass with four POST
+	// requests in a row.  Even two milliseconds gave the `Add()` too much time
+	// to do attempt all the retries.
+	time.AfterFunc(1*time.Millisecond, func() {
+		err := SetSolrURLOrigin(fakeSolrServer.URL)
+		if err != nil {
+			t.Fatalf(`Setup of Solr fake failed with error: %s`, err)
+		}
+	})
+	err = Add(idFieldOnlyXMLPostBody("connectionrefused_0"))
+	if err != nil {
+		t.Errorf(`Expected simulated retry of connection refused request`+
+			` to succeed, but it failed with error "%s"`, err.Error())
 	}
 }
 
