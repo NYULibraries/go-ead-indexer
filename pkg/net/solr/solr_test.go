@@ -30,10 +30,10 @@ func TestAdd(t *testing.T) {
 	}
 
 	testAdd_doNotRetryIndefinitely(t)
-	testAdd_neverRetryCertainErrors(t)
+	testAdd_neverRetryCertainHTTPErrors(t)
 	// TODO: Re-enable once these pass.
-	//testAdd_retrySuccessAddConnectionTimeout(t)
-	//testAdd_retrySuccessAddHTTPErrors(t)
+	//testAdd_retryCertainHTTPErrors(t)
+	//testAdd_retryConnectionTimeouts(t)
 	//testAdd_successAdds(t)
 }
 
@@ -86,7 +86,7 @@ Content-Type: text/plain;charset=UTF-8
 
 // Test that `Add()` will not attempt to retry certain errors which are not worth
 // retrying.
-func testAdd_neverRetryCertainErrors(t *testing.T) {
+func testAdd_neverRetryCertainHTTPErrors(t *testing.T) {
 	testutils.ResetErrorResponseCounts()
 
 	const expectedErrorHTTP400BadRequest = `HTTP/1.1 400 Bad Request
@@ -244,21 +244,7 @@ Content-Type: text/plain;charset=UTF-8
 	}
 }
 
-func testAdd_retrySuccessAddConnectionTimeout(t *testing.T) {
-	testutils.ResetErrorResponseCounts()
-
-	setTimeout(testutils.ConnectionTimeoutDuration)
-
-	id := testutils.MakeErrorResponseID(testutils.ConnectionTimeout, GetRetries())
-
-	err := Add(errorResponseXMLPostBody(id))
-	if err != nil {
-		t.Errorf(`Expected request for id="%s" to succeed, but it failed with error "%s"`,
-			id, err.Error())
-	}
-}
-
-func testAdd_retrySuccessAddHTTPErrors(t *testing.T) {
+func testAdd_retryCertainHTTPErrors(t *testing.T) {
 	testutils.ResetErrorResponseCounts()
 	errorResponseTypes := []testutils.ErrorResponseType{
 		testutils.HTTP408RequestTimeout,
@@ -277,6 +263,20 @@ func testAdd_retrySuccessAddHTTPErrors(t *testing.T) {
 			t.Errorf(`Expected request for id="%s" to succeed, but it failed with error "%s"`,
 				id, err.Error())
 		}
+	}
+}
+
+func testAdd_retryConnectionTimeouts(t *testing.T) {
+	testutils.ResetErrorResponseCounts()
+
+	setTimeout(testutils.ConnectionTimeoutDuration)
+
+	id := testutils.MakeErrorResponseID(testutils.ConnectionTimeout, GetRetries())
+
+	err := Add(errorResponseXMLPostBody(id))
+	if err != nil {
+		t.Errorf(`Expected request for id="%s" to succeed, but it failed with error "%s"`,
+			id, err.Error())
 	}
 }
 
