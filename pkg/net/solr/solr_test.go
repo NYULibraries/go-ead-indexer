@@ -33,8 +33,8 @@ func TestAdd(t *testing.T) {
 		t.Fatalf(`Setup of Solr fake failed with error: %s`, err)
 	}
 
-	//testAdd_doNotRetryIndefinitely(t)
-	//testAdd_neverRetryCertainHTTPErrors(t)
+	testAdd_doNotRetryIndefinitely(t)
+	testAdd_neverRetryCertainHTTPErrors(t)
 	// TODO: Re-enable once these pass.
 	//testAdd_retryCertainHTTPErrors(t)
 	//testAdd_retryConnectionRefused(t)
