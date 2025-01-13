@@ -2,8 +2,6 @@ package testutils
 
 import (
 	"fmt"
-	"io"
-	"net/http"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -58,13 +56,8 @@ func GetExpectedPOSTRequestString(body string) string {
 	return fmt.Sprintf("%s\n\n%s", getPOSTRequestHTTPHeadersString(body), body)
 }
 
-func GetID(r *http.Request) (string, error) {
-	bodyBytes, err := io.ReadAll(r.Body)
-	if err != nil {
-		return "", err
-	}
-
-	matches := idRegExp.FindStringSubmatch(string(bodyBytes))
+func GetID(dumpedRequest []byte) (string, error) {
+	matches := idRegExp.FindStringSubmatch(string(dumpedRequest))
 
 	if len(matches) > 1 {
 		return matches[1], nil

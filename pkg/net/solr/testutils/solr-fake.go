@@ -61,7 +61,7 @@ func MakeSolrFake(updateURLPathAndQuery string, t *testing.T) *httptest.Server {
 				return
 			}
 
-			id, err := GetID(r)
+			id, err := GetID(receivedRequest)
 			if err != nil {
 				t.Errorf("GetID(r) failed with error: %s", err)
 
