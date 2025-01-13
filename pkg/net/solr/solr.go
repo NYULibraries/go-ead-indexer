@@ -26,8 +26,6 @@ var retries = DefaultRetries
 // accidental misconfiguration of an instance.
 var solrURLOrigin string
 
-// TODO: Obviously replace this fake stuff after `TestAdd()` is completed.  There
-// needs to be actual files written out for the test to do diff'ing against.
 func Add(xmlPostBody string) error {
 	response, err := client.Post(GetSolrURLOrigin()+UpdateURLPathAndQuery,
 		"text/xml", bytes.NewBuffer([]byte(xmlPostBody)))

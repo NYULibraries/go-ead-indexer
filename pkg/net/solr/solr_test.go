@@ -39,7 +39,7 @@ func TestAdd(t *testing.T) {
 	//testAdd_retryCertainHTTPErrors(t)
 	//testAdd_retryConnectionRefused(t)
 	//testAdd_retryConnectionTimeouts(t)
-	//testAdd_successAdds(t)
+	testAdd_successAdds(t)
 }
 
 func idFieldOnlyXMLPostBody(id string) string {
@@ -333,10 +333,11 @@ func testAdd_successAdd(goldenFileID string, t *testing.T) {
 	if err != nil {
 		t.Fatalf("testutils.getActualFileContents(testutils.TestEAD, goldenFileID) failed with error: %s", err)
 	}
+	massagedActualRequest := testutils.MassagedGoHTTPClientRequest(actualRequest)
 
 	expectedRequest := testutils.GetExpectedPOSTRequestString(postBody)
 	diff := util.DiffStrings("expected", expectedRequest,
-		"actual", actualRequest)
+		"actual", massagedActualRequest)
 	if diff != "" {
 		t.Errorf(`%s fail: actual request does not match expected: %s`,
 			goldenFileID, diff)
