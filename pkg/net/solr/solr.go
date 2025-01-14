@@ -27,8 +27,7 @@ var retries = DefaultRetries
 var solrURLOrigin string
 
 func Add(xmlPostBody string) error {
-	response, err := client.Post(GetSolrURLOrigin()+UpdateURLPathAndQuery,
-		"text/xml", bytes.NewBuffer([]byte(xmlPostBody)))
+	response, err := sendRequest(xmlPostBody)
 	if err != nil {
 		return err
 	}
@@ -107,6 +106,16 @@ func SetSolrURLOrigin(solrURLOriginArg string) error {
 	solrURLOrigin = solrURLOriginArg
 
 	return nil
+}
+
+func sendRequest(xmlPostBody string) (*http.Response, error) {
+	response, err := client.Post(GetSolrURLOrigin()+UpdateURLPathAndQuery,
+		"text/xml", bytes.NewBuffer([]byte(xmlPostBody)))
+	if err != nil {
+		return response, err
+	}
+
+	return response, nil
 }
 
 func setTimeout(timeoutArg time.Duration) {
