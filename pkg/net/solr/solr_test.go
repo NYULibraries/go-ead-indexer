@@ -443,33 +443,20 @@ func testSetSolrURLOrigin_errors(t *testing.T) {
 			actualErrorString = actualError.Error()
 		}
 
-		if testCase.expectedError == "" {
-			if actualErrorString != "" {
-				t.Errorf(`SetSolrURLOrigin("%s") should not have returned an error,`+
-					` but it returned error "%s"`, testCase.origin, actualErrorString)
-			}
+		if actualErrorString == "" {
+			t.Errorf(`SetSolrURLOrigin("%s") should have returned error "%s",`+
+				" but no error was returned", testCase.origin, testCase.expectedError)
+		} else if actualErrorString != testCase.expectedError {
+			t.Errorf(`SetSolrURLOrigin("%s") should have returned error "%s",`+
+				` but instead returned error "%s"`, testCase.origin, testCase.expectedError,
+				actualErrorString)
+		}
 
-			actualOrigin := GetSolrURLOrigin()
-			if actualOrigin != testCase.origin {
-				t.Errorf(`GetSolrURLOrigin() should return "%s", but it instead`+
-					` returned "%s"`, testCase.origin, actualOrigin)
-			}
-		} else {
-			if actualErrorString == "" {
-				t.Errorf(`SetSolrURLOrigin("%s") should have returned error "%s",`+
-					" but no error was returned", testCase.origin, testCase.expectedError)
-			} else if actualErrorString != testCase.expectedError {
-				t.Errorf(`SetSolrURLOrigin("%s") should have returned error "%s",`+
-					` but instead returned error "%s"`, testCase.origin, testCase.expectedError,
-					actualErrorString)
-			}
-
-			actualOrigin := GetSolrURLOrigin()
-			if actualOrigin != initialSolrURLOrigin {
-				t.Errorf("`GetSolrURLOrigin()` should have returned the"+
-					` unchanged initial value "%s", but it instead returned "%s"`,
-					initialSolrURLOrigin, actualOrigin)
-			}
+		actualOrigin := GetSolrURLOrigin()
+		if actualOrigin != initialSolrURLOrigin {
+			t.Errorf("`GetSolrURLOrigin()` should have returned the"+
+				` unchanged initial value "%s", but it instead returned "%s"`,
+				initialSolrURLOrigin, actualOrigin)
 		}
 	}
 }
