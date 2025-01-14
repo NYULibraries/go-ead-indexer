@@ -33,13 +33,13 @@ func TestAdd(t *testing.T) {
 		t.Fatalf(`Setup of Solr fake failed with error: %s`, err)
 	}
 
-	testAdd_doNotRetryIndefinitely(t)
-	testAdd_neverRetryCertainHTTPErrors(t)
-	// TODO: Re-enable once these pass.
-	//testAdd_retryCertainHTTPErrors(t)
-	//testAdd_retryConnectionRefused(t)
-	//testAdd_retryConnectionTimeouts(t)
-	testAdd_successAdds(t)
+	t.Run("Do not retry indefinitely", testAdd_doNotRetryIndefinitely)
+	t.Run("Never retry certain HTTP errors", testAdd_neverRetryCertainHTTPErrors)
+	// TODO: Re-enable once these pass
+	//t.Run("Retry certain HTTP errors", testAdd_retryCertainHTTPErrors)
+	//t.Run("Retry connection refused errors", testAdd_retryConnectionRefused)
+	//t.Run("Retry connection timeout errors", testAdd_retryConnectionTimeouts)
+	t.Run("Successfully add", testAdd_successAdds)
 }
 
 func idFieldOnlyXMLPostBody(id string) string {
