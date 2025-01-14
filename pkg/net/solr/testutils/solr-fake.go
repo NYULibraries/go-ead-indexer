@@ -159,11 +159,11 @@ func handleErrorResponse(w http.ResponseWriter, id string, receivedRequest []byt
 		if currentCount == numRetriesRequired {
 			// Send a 200 response, and don't response with an error for this
 			// error response type anymore.
-			err = send200ResponseAndWriteActualFile(w, id, receivedRequest)
+			err = send200Response(w)
 			errorResponseCounts[errorResponseType] = errorsTurnedOff
 		} else if currentCount == errorsTurnedOff {
 			// The error responses have been used up.  Send a 200 response.
-			err = send200ResponseAndWriteActualFile(w, id, receivedRequest)
+			err = send200Response(w)
 		} else {
 			// We've not used up the errors yet.
 			// Increment the error count and send an error response.
