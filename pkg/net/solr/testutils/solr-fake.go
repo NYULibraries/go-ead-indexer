@@ -33,6 +33,8 @@ const ConnectionTimeoutDuration = 1 * time.Second
 
 const errorResponseIDPrefix = "error_"
 
+const errorsTurnedOff = -1
+
 var errorResponseCounts = map[ErrorResponseType]int{}
 
 var errorResponseTypeRegExp = regexp.MustCompile(errorResponseIDPrefix +
@@ -149,10 +151,15 @@ func handleErrorResponse(w http.ResponseWriter, id string, receivedRequest []byt
 	} else {
 		currentCount := errorResponseCounts[errorResponseType]
 		if currentCount == numRetriesRequired {
-			// Clear the error and send a 200 response.
-			errorResponseCounts[errorResponseType] = 0
+			// Send a 200 response, and don't response with an error for this
+			// error response type anymore.
+			err = send200ResponseAndWriteActualFile(w, id, receivedRequest)
+			errorResponseCounts[errorResponseType] = errorsTurnedOff
+		} else if currentCount == errorsTurnedOff {
+			// The error responses have been used up.  Send a 200 response.
 			err = send200ResponseAndWriteActualFile(w, id, receivedRequest)
 		} else {
+			// We've not used up the errors yet.
 			// Increment the error count and send an error response.
 			errorResponseCounts[errorResponseType] += 1
 			err = sendErrorResponseFunction(w, errorResponse)
