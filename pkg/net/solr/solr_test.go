@@ -399,8 +399,8 @@ func testSetRetries_normal(t *testing.T) {
 }
 
 func TestSetSolrURLOrigin(t *testing.T) {
-	testSetSolrURLOrigin_errors(t)
-	testSetSolrURLOrigin_normal(t)
+	t.Run("Errors", testSetSolrURLOrigin_errors)
+	t.Run("Successfully set URL origin", testSetSolrURLOrigin_normal)
 }
 
 func testSetSolrURLOrigin_errors(t *testing.T) {
