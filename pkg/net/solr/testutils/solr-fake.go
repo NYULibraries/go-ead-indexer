@@ -1,6 +1,7 @@
 package testutils
 
 import (
+	"bytes"
 	"errors"
 	"fmt"
 	"net/http"
@@ -40,12 +41,17 @@ var errorResponseCounts = map[ErrorResponseType]int{}
 var errorResponseTypeRegExp = regexp.MustCompile(errorResponseIDPrefix +
 	"([a-z0-9]+)" + "_" + "([0-9]+)")
 
-func MakeErrorResponseID(errorResponseType ErrorResponseType, numErrorResponsesToReturn int) string {
-	if numErrorResponsesToReturn <= 0 {
-		panic("`MakeErrorResponseID()` requires a positive integer for `numErrorResponsesToReturn`")
-	}
+func MakeErrorResponseIDAndPostBody(errorResponseType ErrorResponseType,
+	numErrorResponsesToReturn int) (string, string) {
+	id := makeErrorResponseID(errorResponseType, numErrorResponsesToReturn)
+	postBody := []byte(fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="id">%s</field>
+  </doc>
+</add>`, id))
 
-	return errorResponseIDPrefix + string(errorResponseType) + "_" + strconv.Itoa(numErrorResponsesToReturn)
+	return id, bytes.NewBuffer(postBody).String()
 }
 
 // Need to pass in `updateURLPathAndQuery` because can't use `UpdateURLPathAndQuery`
@@ -185,6 +191,14 @@ func isValidSolrUpdateRequest(r *http.Request, updateURLPathAndQuery string) boo
 	}
 
 	return true
+}
+
+func makeErrorResponseID(errorResponseType ErrorResponseType, numErrorResponsesToReturn int) string {
+	if numErrorResponsesToReturn <= 0 {
+		panic("`MakeErrorResponseID()` requires a positive integer for `numErrorResponsesToReturn`")
+	}
+
+	return errorResponseIDPrefix + string(errorResponseType) + "_" + strconv.Itoa(numErrorResponsesToReturn)
 }
 
 func send200Response(w http.ResponseWriter) error {

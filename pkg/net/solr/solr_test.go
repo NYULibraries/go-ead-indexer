@@ -1,9 +1,7 @@
 package solr
 
 import (
-	"bytes"
 	"flag"
-	"fmt"
 	eadtestutils "go-ead-indexer/pkg/ead/testutils"
 	"go-ead-indexer/pkg/net/solr/testutils"
 	"go-ead-indexer/pkg/util"
@@ -42,17 +40,6 @@ func TestAdd(t *testing.T) {
 	t.Run("Successfully add", testAdd_successAdds)
 }
 
-func idFieldOnlyXMLPostBody(id string) string {
-	postBody := []byte(fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8"?>
-<add>
-  <doc>
-    <field name="id">%s</field>
-  </doc>
-</add>`, id))
-
-	return bytes.NewBuffer(postBody).String()
-}
-
 func testAdd_doNotRetryIndefinitely(t *testing.T) {
 	testutils.ResetErrorResponseCounts()
 
@@ -67,9 +54,10 @@ Content-Type: text/plain;charset=UTF-8
 `
 
 	// Have Solr fake error out more times than `Add()` will retry.
-	id := testutils.MakeErrorResponseID(testutils.HTTP408RequestTimeout, GetRetries()+1)
+	id, postBody := testutils.MakeErrorResponseIDAndPostBody(
+		testutils.HTTP408RequestTimeout, GetRetries()+1)
 
-	err := Add(idFieldOnlyXMLPostBody(id))
+	err := Add(postBody)
 
 	if err == nil {
 		t.Errorf(`Expected Add() for id="%s" to return an error, but no error was returned`,
@@ -226,9 +214,10 @@ Content-Type: text/plain;charset=UTF-8
 	for _, testCase := range testCases {
 		// Set `numErrorResponsesToReturn` to 1 because `Add()` should never retry
 		// these kinds of errors.
-		id := testutils.MakeErrorResponseID(testCase.errorResponseType, 1)
+		id, postBody := testutils.MakeErrorResponseIDAndPostBody(
+			testCase.errorResponseType, 1)
 
-		err := Add(idFieldOnlyXMLPostBody(id))
+		err := Add(postBody)
 
 		if err == nil {
 			t.Errorf(`Expected Add() for id="%s" to return an error, but no error was returned`,
@@ -260,9 +249,10 @@ func testAdd_retryCertainHTTPErrors(t *testing.T) {
 	}
 
 	for _, errorResponseType := range errorResponseTypes {
-		id := testutils.MakeErrorResponseID(errorResponseType, GetRetries())
+		id, postBody := testutils.MakeErrorResponseIDAndPostBody(
+			errorResponseType, GetRetries())
 
-		err := Add(idFieldOnlyXMLPostBody(id))
+		err := Add(postBody)
 
 		if err != nil {
 			t.Errorf(`Expected request for id="%s" to succeed, but it failed with error "%s"`,
@@ -297,7 +287,15 @@ func testAdd_retryConnectionRefused(t *testing.T) {
 			t.Fatalf(`Setup of Solr fake failed with error: %s`, err)
 		}
 	})
-	err = Add(idFieldOnlyXMLPostBody("connectionrefused_0"))
+
+	postBody := `<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="id">connectionrefused_0</field>
+  </doc>
+</add>`
+
+	err = Add(postBody)
 	if err != nil {
 		t.Errorf(`Expected simulated retry of connection refused request`+
 			` to succeed, but it failed with error "%s"`, err.Error())
@@ -309,9 +307,10 @@ func testAdd_retryConnectionTimeouts(t *testing.T) {
 
 	setTimeout(testutils.ConnectionTimeoutDuration)
 
-	id := testutils.MakeErrorResponseID(testutils.ConnectionTimeout, GetRetries())
+	id, postBody := testutils.MakeErrorResponseIDAndPostBody(
+		testutils.ConnectionTimeout, GetRetries())
 
-	err := Add(idFieldOnlyXMLPostBody(id))
+	err := Add(postBody)
 	if err != nil {
 		t.Errorf(`Expected request for id="%s" to succeed, but it failed with error "%s"`,
 			id, err.Error())
