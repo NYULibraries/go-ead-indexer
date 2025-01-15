@@ -55,7 +55,7 @@ Content-Type: text/plain;charset=UTF-8
 
 	// Have Solr fake error out more times than `Add()` will retry.
 	id, postBody := testutils.MakeErrorResponseIDAndPostBody(
-		testutils.HTTP408RequestTimeout, GetRetries()+1)
+		testutils.HTTP408RequestTimeout, GetMaxRetries()+1)
 
 	err := Add(postBody)
 
@@ -250,7 +250,7 @@ func testAdd_retryCertainHTTPErrors(t *testing.T) {
 
 	for _, errorResponseType := range errorResponseTypes {
 		id, postBody := testutils.MakeErrorResponseIDAndPostBody(
-			errorResponseType, GetRetries())
+			errorResponseType, GetMaxRetries())
 
 		err := Add(postBody)
 
@@ -308,7 +308,7 @@ func testAdd_retryConnectionTimeouts(t *testing.T) {
 	setTimeout(testutils.ConnectionTimeoutDuration)
 
 	id, postBody := testutils.MakeErrorResponseIDAndPostBody(
-		testutils.ConnectionTimeout, GetRetries())
+		testutils.ConnectionTimeout, GetMaxRetries())
 
 	err := Add(postBody)
 	if err != nil {
@@ -366,9 +366,9 @@ func testAdd_successAdds(t *testing.T) {
 }
 
 func TestGetRetries(t *testing.T) {
-	actual := GetRetries()
-	if actual != DefaultRetries {
-		t.Errorf(`Expected %d, got %d`, DefaultRetries, actual)
+	actual := GetMaxRetries()
+	if actual != DefaultMaxRetries {
+		t.Errorf(`Expected %d, got %d`, DefaultMaxRetries, actual)
 	}
 }
 
@@ -378,23 +378,23 @@ func TestSetRetries(t *testing.T) {
 }
 
 func testSetRetries_badInput(t *testing.T) {
-	err := SetRetries(-1)
+	err := SetMaxRetries(-1)
 	if err == nil {
-		t.Error("Expected `SetRetries(-1)` to return an error, but no error was returned")
+		t.Error("Expected `SetMaxRetries(-1)` to return an error, but no error was returned")
 	}
 }
 
 func testSetRetries_normal(t *testing.T) {
 	newRetries := 999
-	err := SetRetries(newRetries)
+	err := SetMaxRetries(newRetries)
 	if err != nil {
-		t.Errorf("`SetRetries(%d)` returned an error: %s",
+		t.Errorf("`SetMaxRetries(%d)` returned an error: %s",
 			newRetries, err.Error())
 	}
 
-	if GetRetries() != newRetries {
-		t.Errorf("Expected `GetRetries()` to return %d, but it returned %d",
-			newRetries, retries)
+	if GetMaxRetries() != newRetries {
+		t.Errorf("Expected `GetMaxRetries()` to return %d, but it returned %d",
+			newRetries, maxRetries)
 	}
 }
 

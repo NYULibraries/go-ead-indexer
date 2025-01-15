@@ -59,21 +59,21 @@ func Delete(eadID string) error {
 	return nil
 }
 
-func GetPOSTRequest(eadID string) error {
-	return nil
+func GetMaxRetries() int {
+	return maxRetries
 }
 
-func GetRetries() int {
-	return maxRetries
+func GetPOSTRequest(eadID string) error {
+	return nil
 }
 
 func GetSolrURLOrigin() string {
 	return solrURLOrigin
 }
 
-func SetRetries(newRetries int) error {
+func SetMaxRetries(newRetries int) error {
 	if newRetries < 0 {
-		return fmt.Errorf("Invalid value passed to `SetRetries()`: %d", newRetries)
+		return fmt.Errorf("Invalid value passed to `SetMaxRetries()`: %d", newRetries)
 	}
 
 	maxRetries = newRetries
