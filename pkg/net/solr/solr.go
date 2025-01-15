@@ -10,10 +10,10 @@ import (
 	"time"
 )
 
-const UpdateURLPathAndQuery = "/solr/findingaids/update?wt=json&indent=true"
-
 const DefaultRetries = 3
 const DefaultTimeout = 30 * time.Second
+
+const UpdateURLPathAndQuery = "/solr/findingaids/update?wt=json&indent=true"
 
 var client = http.Client{
 	Timeout: DefaultTimeout,
