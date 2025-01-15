@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-const DefaultRetries = 3
+const DefaultMaxRetries = 3
 const DefaultTimeout = 30 * time.Second
 
 const UpdateURLPathAndQuery = "/solr/findingaids/update?wt=json&indent=true"
@@ -19,7 +19,7 @@ var client = http.Client{
 	Timeout: DefaultTimeout,
 }
 
-var retries = DefaultRetries
+var maxRetries = DefaultMaxRetries
 
 // No default Solr URL.
 // We wouldn't want to corrupt the index of the default Solr server due to an
@@ -64,7 +64,7 @@ func GetPOSTRequest(eadID string) error {
 }
 
 func GetRetries() int {
-	return retries
+	return maxRetries
 }
 
 func GetSolrURLOrigin() string {
@@ -76,7 +76,7 @@ func SetRetries(newRetries int) error {
 		return fmt.Errorf("Invalid value passed to `SetRetries()`: %d", newRetries)
 	}
 
-	retries = newRetries
+	maxRetries = newRetries
 
 	return nil
 }
