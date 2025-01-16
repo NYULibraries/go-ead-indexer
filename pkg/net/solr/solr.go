@@ -120,7 +120,7 @@ func (sc *solrClient) sendRequest(xmlPostBody string) (*http.Response, error) {
 	// called in the middle of the retry loop.
 	numRetries := sc.GetMaxRetries()
 	sleepInterval := sc.backoffInitialInterval
-	for i := 0; i <= numRetries; i++ {
+	for i := 0; i < numRetries+1; i++ {
 		response, err = sc.client.Post(sc.GetSolrURLOrigin()+UpdateURLPathAndQuery,
 			"text/xml", bytes.NewBuffer([]byte(xmlPostBody)))
 		if err != nil && !isRetryableError(err) {
