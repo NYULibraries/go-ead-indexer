@@ -5,6 +5,7 @@ import (
 	eadtestutils "go-ead-indexer/pkg/ead/testutils"
 	"go-ead-indexer/pkg/net/solr/testutils"
 	"go-ead-indexer/pkg/util"
+	"net/http"
 	"net/http/httptest"
 	"os"
 	"strings"
@@ -14,8 +15,24 @@ import (
 
 var fakeSolrServer *httptest.Server
 
+// Client used by all tests except `testAdd_retryConnectionRefused()`.
+var solrClientMain solrClient
+
 func TestMain(m *testing.M) {
 	flag.Parse()
+
+	// Set up client that is used for all tests except for
+	// `testAdd_retryConnectionRefused()`, which will configure and use
+	// `solrClientConnectionRefused`.  Note that `urlOrigin` field can't be
+	// set until the Solr fake is created.
+	solrClientMain = solrClient{
+		backoffInitialInterval: DefaultBackoffInitialInterval,
+		backoffMultiplier:      DefaultBackoffMultiplier,
+		client: http.Client{
+			Timeout: DefaultTimeout,
+		},
+		maxRetries: DefaultMaxRetries,
+	}
 
 	os.Exit(m.Run())
 }
@@ -26,9 +43,10 @@ func TestAdd(t *testing.T) {
 	fakeSolrServer = testutils.MakeSolrFake(UpdateURLPathAndQuery, t)
 	defer fakeSolrServer.Close()
 
-	err := SetSolrURLOrigin(fakeSolrServer.URL)
+	err := solrClientMain.SetSolrURLOrigin(fakeSolrServer.URL)
 	if err != nil {
-		t.Fatalf(`Setup of Solr fake failed with error: %s`, err)
+		t.Fatalf(`solrClientMain.SetSolrURLOrigin(fakeSolrServer.URL)`+
+			` failed with error: %s`, err)
 	}
 
 	t.Run("Do not retry indefinitely", testAdd_doNotRetryIndefinitely)
@@ -55,9 +73,9 @@ Content-Type: text/plain;charset=UTF-8
 
 	// Have Solr fake error out more times than `Add()` will retry.
 	id, postBody := testutils.MakeErrorResponseIDAndPostBody(
-		testutils.HTTP408RequestTimeout, GetMaxRetries()+1)
+		testutils.HTTP408RequestTimeout, solrClientMain.GetMaxRetries()+1)
 
-	err := Add(postBody)
+	err := solrClientMain.Add(postBody)
 
 	if err == nil {
 		t.Errorf(`Expected Add() for id="%s" to return an error, but no error was returned`,
@@ -217,7 +235,7 @@ Content-Type: text/plain;charset=UTF-8
 		id, postBody := testutils.MakeErrorResponseIDAndPostBody(
 			testCase.errorResponseType, 1)
 
-		err := Add(postBody)
+		err := solrClientMain.Add(postBody)
 
 		if err == nil {
 			t.Errorf(`Expected Add() for id="%s" to return an error, but no error was returned`,
@@ -250,9 +268,9 @@ func testAdd_retryCertainHTTPErrors(t *testing.T) {
 
 	for _, errorResponseType := range errorResponseTypes {
 		id, postBody := testutils.MakeErrorResponseIDAndPostBody(
-			errorResponseType, GetMaxRetries())
+			errorResponseType, solrClientMain.GetMaxRetries())
 
-		err := Add(postBody)
+		err := solrClientMain.Add(postBody)
 
 		if err != nil {
 			t.Errorf(`Expected request for id="%s" to succeed, but it failed with error "%s"`,
@@ -264,9 +282,18 @@ func testAdd_retryCertainHTTPErrors(t *testing.T) {
 func testAdd_retryConnectionRefused(t *testing.T) {
 	testutils.ResetErrorResponseCounts()
 
+	solrClientConnectionRefused := solrClient{
+		backoffInitialInterval: DefaultBackoffInitialInterval,
+		backoffMultiplier:      DefaultBackoffMultiplier,
+		client: http.Client{
+			Timeout: DefaultTimeout,
+		},
+		maxRetries: DefaultMaxRetries,
+	}
+
 	// Set Solr origin to the address of an unused port on localhost.
 	connectionRefusedOrigin := "http://" + util.GetUnusedLocalhostNetworkAddress()
-	err := SetSolrURLOrigin(connectionRefusedOrigin)
+	err := solrClientConnectionRefused.SetSolrURLOrigin(connectionRefusedOrigin)
 	if err != nil {
 		t.Fatalf(`Setup of Solr fake failed with error: %s`, err)
 	}
@@ -282,7 +309,7 @@ func testAdd_retryConnectionRefused(t *testing.T) {
 	// requests in a row.  Even two milliseconds gave the `Add()` too much time
 	// to do attempt all the retries.
 	time.AfterFunc(1*time.Millisecond, func() {
-		err := SetSolrURLOrigin(fakeSolrServer.URL)
+		err := solrClientConnectionRefused.SetSolrURLOrigin(fakeSolrServer.URL)
 		if err != nil {
 			t.Fatalf(`Setup of Solr fake failed with error: %s`, err)
 		}
@@ -295,7 +322,7 @@ func testAdd_retryConnectionRefused(t *testing.T) {
   </doc>
 </add>`
 
-	err = Add(postBody)
+	err = solrClientConnectionRefused.Add(postBody)
 	if err != nil {
 		t.Errorf(`Expected simulated retry of connection refused request`+
 			` to succeed, but it failed with error "%s"`, err.Error())
@@ -305,12 +332,12 @@ func testAdd_retryConnectionRefused(t *testing.T) {
 func testAdd_retryConnectionTimeouts(t *testing.T) {
 	testutils.ResetErrorResponseCounts()
 
-	setTimeout(testutils.ConnectionTimeoutDuration)
+	solrClientMain.setTimeout(testutils.ConnectionTimeoutDuration)
 
 	id, postBody := testutils.MakeErrorResponseIDAndPostBody(
-		testutils.ConnectionTimeout, GetMaxRetries())
+		testutils.ConnectionTimeout, solrClientMain.GetMaxRetries())
 
-	err := Add(postBody)
+	err := solrClientMain.Add(postBody)
 	if err != nil {
 		t.Errorf(`Expected request for id="%s" to succeed, but it failed with error "%s"`,
 			id, err.Error())
@@ -323,7 +350,7 @@ func testAdd_successAdd(goldenFileID string, t *testing.T) {
 		t.Fatalf("eadtestutils.GetGoldenFileValue(testutils.TestEAD, goldenFileID) failed with error: %s", err)
 	}
 
-	err = Add(postBody)
+	err = solrClientMain.Add(postBody)
 	if err != nil {
 		t.Fatalf("Expected no error for %s, got: %s", goldenFileID, err)
 	}
@@ -354,7 +381,7 @@ func testAdd_successAdds(t *testing.T) {
 	fakeSolrServer := testutils.MakeSolrFake(UpdateURLPathAndQuery, t)
 	defer fakeSolrServer.Close()
 
-	err = SetSolrURLOrigin(fakeSolrServer.URL)
+	err = solrClientMain.SetSolrURLOrigin(fakeSolrServer.URL)
 	if err != nil {
 		t.Fatalf(`Setup of Solr fake failed with error: %s`, err)
 	}
@@ -366,7 +393,7 @@ func testAdd_successAdds(t *testing.T) {
 }
 
 func TestGetRetries(t *testing.T) {
-	actual := GetMaxRetries()
+	actual := solrClientMain.GetMaxRetries()
 	if actual != DefaultMaxRetries {
 		t.Errorf(`Expected %d, got %d`, DefaultMaxRetries, actual)
 	}
@@ -378,7 +405,7 @@ func TestSetRetries(t *testing.T) {
 }
 
 func testSetRetries_badInput(t *testing.T) {
-	err := SetMaxRetries(-1)
+	err := solrClientMain.SetMaxRetries(-1)
 	if err == nil {
 		t.Error("Expected `SetMaxRetries(-1)` to return an error, but no error was returned")
 	}
@@ -386,15 +413,15 @@ func testSetRetries_badInput(t *testing.T) {
 
 func testSetRetries_normal(t *testing.T) {
 	newRetries := 999
-	err := SetMaxRetries(newRetries)
+	err := solrClientMain.SetMaxRetries(newRetries)
 	if err != nil {
 		t.Errorf("`SetMaxRetries(%d)` returned an error: %s",
 			newRetries, err.Error())
 	}
 
-	if GetMaxRetries() != newRetries {
+	if solrClientMain.GetMaxRetries() != newRetries {
 		t.Errorf("Expected `GetMaxRetries()` to return %d, but it returned %d",
-			newRetries, maxRetries)
+			newRetries, solrClientMain.maxRetries)
 	}
 }
 
@@ -434,10 +461,10 @@ func testSetSolrURLOrigin_errors(t *testing.T) {
 		},
 	}
 
-	initialSolrURLOrigin := GetSolrURLOrigin()
+	initialSolrURLOrigin := solrClientMain.GetSolrURLOrigin()
 
 	for _, testCase := range testCases {
-		actualError := SetSolrURLOrigin(testCase.origin)
+		actualError := solrClientMain.SetSolrURLOrigin(testCase.origin)
 		var actualErrorString string
 		if actualError != nil {
 			actualErrorString = actualError.Error()
@@ -452,7 +479,7 @@ func testSetSolrURLOrigin_errors(t *testing.T) {
 				actualErrorString)
 		}
 
-		actualOrigin := GetSolrURLOrigin()
+		actualOrigin := solrClientMain.GetSolrURLOrigin()
 		if actualOrigin != initialSolrURLOrigin {
 			t.Errorf("`GetSolrURLOrigin()` should have returned the"+
 				` unchanged initial value "%s", but it instead returned "%s"`,
@@ -473,13 +500,13 @@ func testSetSolrURLOrigin_normal(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		err := SetSolrURLOrigin(testCase.origin)
+		err := solrClientMain.SetSolrURLOrigin(testCase.origin)
 		if err != nil {
 			t.Errorf(`SetSolrURLOrigin("%s") should not have returned an error,`+
 				` but it returned error "%s"`, testCase.origin, err.Error())
 		}
 
-		actualOrigin := GetSolrURLOrigin()
+		actualOrigin := solrClientMain.GetSolrURLOrigin()
 		if actualOrigin != testCase.origin {
 			t.Errorf(`GetSolrURLOrigin() should have returned "%s",`+
 				` but it instead returned "%s"`, testCase.origin, actualOrigin)

@@ -10,24 +10,26 @@ import (
 	"time"
 )
 
+type solrClient struct {
+	backoffInitialInterval time.Duration
+	backoffMultiplier      time.Duration
+	client                 http.Client
+	maxRetries             int
+	urlOrigin              string
+}
+
+// No default Solr URL.
+// We wouldn't want to corrupt the index of the default Solr server due to an
+// accidental misconfiguration of an instance.
+const DefaultBackoffInitialInterval = 1 * time.Second
+const DefaultBackoffMultiplier = 4
 const DefaultMaxRetries = 3
 const DefaultTimeout = 30 * time.Second
 
 const UpdateURLPathAndQuery = "/solr/findingaids/update?wt=json&indent=true"
 
-var client = http.Client{
-	Timeout: DefaultTimeout,
-}
-
-var maxRetries = DefaultMaxRetries
-
-// No default Solr URL.
-// We wouldn't want to corrupt the index of the default Solr server due to an
-// accidental misconfiguration of an instance.
-var solrURLOrigin string
-
-func Add(xmlPostBody string) error {
-	response, err := sendRequest(xmlPostBody)
+func (sc *solrClient) Add(xmlPostBody string) error {
+	response, err := sc.sendRequest(xmlPostBody)
 	if err != nil {
 		return err
 	}
@@ -51,37 +53,37 @@ func Add(xmlPostBody string) error {
 	return nil
 }
 
-func Commit() error {
+func (sc *solrClient) Commit() error {
 	return nil
 }
 
-func Delete(eadID string) error {
+func (sc *solrClient) Delete(eadID string) error {
 	return nil
 }
 
-func GetMaxRetries() int {
-	return maxRetries
+func (sc *solrClient) GetMaxRetries() int {
+	return sc.maxRetries
 }
 
-func GetPOSTRequest(eadID string) error {
+func (sc *solrClient) GetPOSTRequest(eadID string) error {
 	return nil
 }
 
-func GetSolrURLOrigin() string {
-	return solrURLOrigin
+func (sc *solrClient) GetSolrURLOrigin() string {
+	return sc.urlOrigin
 }
 
-func SetMaxRetries(newRetries int) error {
+func (sc *solrClient) SetMaxRetries(newRetries int) error {
 	if newRetries < 0 {
 		return fmt.Errorf("Invalid value passed to `SetMaxRetries()`: %d", newRetries)
 	}
 
-	maxRetries = newRetries
+	sc.maxRetries = newRetries
 
 	return nil
 }
 
-func SetSolrURLOrigin(solrURLOriginArg string) error {
+func (sc *solrClient) SetSolrURLOrigin(solrURLOriginArg string) error {
 	parsedURL, err := url.ParseRequestURI(solrURLOriginArg)
 	if err != nil {
 		return err
@@ -103,13 +105,13 @@ func SetSolrURLOrigin(solrURLOriginArg string) error {
 			solrURLOriginArg))
 	}
 
-	solrURLOrigin = solrURLOriginArg
+	sc.urlOrigin = solrURLOriginArg
 
 	return nil
 }
 
-func sendRequest(xmlPostBody string) (*http.Response, error) {
-	response, err := client.Post(GetSolrURLOrigin()+UpdateURLPathAndQuery,
+func (sc *solrClient) sendRequest(xmlPostBody string) (*http.Response, error) {
+	response, err := sc.client.Post(sc.GetSolrURLOrigin()+UpdateURLPathAndQuery,
 		"text/xml", bytes.NewBuffer([]byte(xmlPostBody)))
 	if err != nil {
 		return response, err
@@ -118,6 +120,6 @@ func sendRequest(xmlPostBody string) (*http.Response, error) {
 	return response, nil
 }
 
-func setTimeout(timeoutArg time.Duration) {
-	client.Timeout = timeoutArg
+func (sc *solrClient) setTimeout(timeoutArg time.Duration) {
+	sc.client.Timeout = timeoutArg
 }
