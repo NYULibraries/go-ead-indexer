@@ -297,13 +297,6 @@ func testAdd_retryConnectionRefused(t *testing.T) {
 	}
 
 	// Switch to Solr fake before `Add()` is done with its retries.
-	// This test was initially itself tested for correctness by having `Add()`
-	// do several consecutive POST requests with no break in between them.
-	// It's worth noting that one millisecond was the maximum number of
-	// milliseconds that could be used to get this test to pass with four POST
-	// requests in a row.  Even two milliseconds gave the `Add()` too much time
-	// to do attempt all the retries.  This is why `backoffInitialInterval` is
-	// set to `1 * time.Millisecond`.
 	time.AfterFunc(backoffInitialInterval, func() {
 		err := solrClientConnectionRefused.SetSolrURLOrigin(fakeSolrServer.URL)
 		if err != nil {
