@@ -381,11 +381,6 @@ func testAdd_successAdds(t *testing.T) {
 	fakeSolrServer := testutils.MakeSolrFake(UpdateURLPathAndQuery, t)
 	defer fakeSolrServer.Close()
 
-	err = solrClientMain.SetSolrURLOrigin(fakeSolrServer.URL)
-	if err != nil {
-		t.Fatalf(`Setup of Solr fake failed with error: %s`, err)
-	}
-
 	goldenFileIDs := eadtestutils.GetGoldenFileIDs(testutils.TestEAD)
 	for _, goldenFileID := range goldenFileIDs {
 		testAdd_successAdd(goldenFileID, t)
