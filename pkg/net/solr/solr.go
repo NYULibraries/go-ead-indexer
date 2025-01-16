@@ -2,6 +2,7 @@ package solr
 
 import (
 	"bytes"
+	"context"
 	"errors"
 	"fmt"
 	"net/http"
@@ -156,6 +157,8 @@ func isRetryableError(err error) bool {
 		default:
 			return false
 		}
+	case errors.Is(err, context.DeadlineExceeded):
+		return true
 	default:
 		return false
 	}
