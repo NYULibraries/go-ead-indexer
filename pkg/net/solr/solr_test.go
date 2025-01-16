@@ -333,20 +333,28 @@ func testAdd_retryConnectionTimeouts(t *testing.T) {
 	}
 }
 
+// Use `t.Errorf()` followed by `return` instead of `t.Fatalf()` to allow
+// the `testAdd_successAdds()` caller to do its entire test loop.
 func testAdd_successAdd(goldenFileID string, t *testing.T) {
 	postBody, err := eadtestutils.GetGoldenFileValue(testutils.TestEAD, goldenFileID)
 	if err != nil {
-		t.Fatalf("eadtestutils.GetGoldenFileValue(testutils.TestEAD, goldenFileID) failed with error: %s", err)
+		t.Errorf("eadtestutils.GetGoldenFileValue(testutils.TestEAD, goldenFileID) failed with error: %s", err)
+
+		return
 	}
 
 	err = solrClientDefault.Add(postBody)
 	if err != nil {
-		t.Fatalf("Expected no error for %s, got: %s", goldenFileID, err)
+		t.Errorf("Expected no error for %s, got: %s", goldenFileID, err)
+
+		return
 	}
 
 	actualRequest, err := testutils.GetActualFileContents(testutils.TestEAD, goldenFileID)
 	if err != nil {
-		t.Fatalf("testutils.getActualFileContents(testutils.TestEAD, goldenFileID) failed with error: %s", err)
+		t.Errorf("testutils.getActualFileContents(testutils.TestEAD, goldenFileID) failed with error: %s", err)
+
+		return
 	}
 	massagedActualRequest := testutils.MassagedGoHTTPClientRequest(actualRequest)
 
