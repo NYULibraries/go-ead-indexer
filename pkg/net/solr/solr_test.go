@@ -113,7 +113,7 @@ Content-Type: text/plain;charset=UTF-8
 Transfer-Encoding: chunked
 Content-Type: text/plain;charset=UTF-8
 
-56a
+1aa
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
@@ -121,26 +121,26 @@ Content-Type: text/plain;charset=UTF-8
 </head>
 <body><h2>HTTP ERROR 404</h2>
 <p>Problem accessing /solr/nonexistent-path.. Reason:
-<pre>    Not Found</pre></p><hr /><i><small>Powered by Jetty://</small></i><br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
+<pre>    Not Found</pre></p><hr /><i><small>Powered by Jetty://</small></i><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
 </body>
 </html>
@@ -151,7 +151,7 @@ Content-Type: text/plain;charset=UTF-8
 Transfer-Encoding: chunked
 Content-Type: text/plain;charset=UTF-8
 
-5ac
+1ec
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
@@ -159,26 +159,26 @@ Content-Type: text/plain;charset=UTF-8
 </head>
 <body><h2>HTTP ERROR 405</h2>
 <p>Problem accessing /solr/admin.html.. Reason:
-<pre>    HTTP method POST is not supported by this URL</pre></p><hr /><i><small>Powered by Jetty://</small></i><br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
+<pre>    HTTP method POST is not supported by this URL</pre></p><hr /><i><small>Powered by Jetty://</small></i><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
 </body>
 </html>

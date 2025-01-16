@@ -102,26 +102,26 @@ func makeJettyErrorHTMLResponseBody(title string, heading string, problem string
 </head>
 <body><h2>%s</h2>
 <p>%s. Reason:
-<pre>    %s</pre></p><hr /><i><small>Powered by Jetty://</small></i><br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
-<br/>                                                
+<pre>    %s</pre></p><hr /><i><small>Powered by Jetty://</small></i><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
 </body>
 </html>`, title, heading, problem, reason)
