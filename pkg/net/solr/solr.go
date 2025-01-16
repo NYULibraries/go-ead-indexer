@@ -116,8 +116,6 @@ func (sc *solrClient) sendRequest(xmlPostBody string) (*http.Response, error) {
 	var response *http.Response
 	var err error
 
-	// Save this because technically it's possible for SetMaxRetries() to be
-	// called in the middle of the retry loop.
 	numRetries := sc.GetMaxRetries()
 	sleepInterval := sc.backoffInitialInterval
 	for i := 0; i < numRetries+1; i++ {
