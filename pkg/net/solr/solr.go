@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"net/http/httputil"
 	"net/url"
+	"syscall"
 	"time"
 )
 
@@ -111,15 +112,65 @@ func (sc *solrClient) SetSolrURLOrigin(solrURLOriginArg string) error {
 }
 
 func (sc *solrClient) sendRequest(xmlPostBody string) (*http.Response, error) {
-	response, err := sc.client.Post(sc.GetSolrURLOrigin()+UpdateURLPathAndQuery,
-		"text/xml", bytes.NewBuffer([]byte(xmlPostBody)))
-	if err != nil {
-		return response, err
+	var response *http.Response
+	var err error
+
+	// Save this because technically it's possible for SetMaxRetries() to be
+	// called in the middle of the retry loop.
+	numRetries := sc.GetMaxRetries()
+	sleepInterval := sc.backoffInitialInterval
+	for i := 0; i <= numRetries; i++ {
+		response, err = sc.client.Post(sc.GetSolrURLOrigin()+UpdateURLPathAndQuery,
+			"text/xml", bytes.NewBuffer([]byte(xmlPostBody)))
+		if err != nil && !isRetryableError(err) {
+			break
+		}
+
+		if response != nil {
+			if response.StatusCode == http.StatusOK ||
+				!isRetryableHTTPError(response.StatusCode) {
+				break
+			}
+		}
+
+		time.Sleep(sleepInterval)
+		sleepInterval = sleepInterval * sc.backoffMultiplier
 	}
 
-	return response, nil
+	return response, err
 }
 
 func (sc *solrClient) setTimeout(timeoutArg time.Duration) {
 	sc.client.Timeout = timeoutArg
+}
+
+func isRetryableError(err error) bool {
+	var syscallErrno syscall.Errno
+	switch {
+	case errors.As(err, &syscallErrno):
+		switch {
+		case errors.Is(err, syscall.ECONNREFUSED),
+			errors.Is(err, syscall.ECONNRESET),
+			errors.Is(err, syscall.ETIMEDOUT):
+			return true
+		default:
+			return false
+		}
+	default:
+		return false
+	}
+}
+
+func isRetryableHTTPError(statusCode int) bool {
+	switch statusCode {
+	case http.StatusBadGateway,
+		http.StatusGatewayTimeout,
+		http.StatusInternalServerError,
+		http.StatusRequestTimeout,
+		http.StatusServiceUnavailable:
+		return true
+
+	default:
+		return false
+	}
 }
