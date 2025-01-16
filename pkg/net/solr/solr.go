@@ -5,6 +5,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"io"
 	"net/http"
 	"net/http/httputil"
 	"net/url"
@@ -67,8 +68,17 @@ func (sc *solrClient) GetMaxRetries() int {
 	return sc.maxRetries
 }
 
-func (sc *solrClient) GetPOSTRequest(eadID string) error {
-	return nil
+func (sc *solrClient) GetPostRequest(xmlPostBody string) (*http.Request, error) {
+	postRequest, err := http.NewRequest(http.MethodPost,
+		sc.GetSolrURLOrigin()+UpdateURLPathAndQuery,
+		bytes.NewReader([]byte(xmlPostBody)))
+	if err != nil {
+		return postRequest, err
+	}
+
+	postRequest.Header.Set("Content-Type", "text/xml")
+
+	return postRequest, nil
 }
 
 func (sc *solrClient) GetSolrURLOrigin() string {
@@ -113,14 +123,16 @@ func (sc *solrClient) SetSolrURLOrigin(solrURLOriginArg string) error {
 }
 
 func (sc *solrClient) sendRequest(xmlPostBody string) (*http.Response, error) {
-	var response *http.Response
-	var err error
+	request, err := sc.GetPostRequest(xmlPostBody)
+	if err != nil {
+		return nil, err
+	}
 
+	var response *http.Response
 	numRetries := sc.GetMaxRetries()
 	sleepInterval := sc.backoffInitialInterval
 	for i := 0; i < numRetries+1; i++ {
-		response, err = sc.client.Post(sc.GetSolrURLOrigin()+UpdateURLPathAndQuery,
-			"text/xml", bytes.NewBuffer([]byte(xmlPostBody)))
+		response, err = sc.client.Do(request)
 		if err != nil && !isRetryableError(err) {
 			break
 		}
@@ -132,6 +144,10 @@ func (sc *solrClient) sendRequest(xmlPostBody string) (*http.Response, error) {
 			}
 		}
 
+		// Restore POST body of request for next try.
+		request.Body = io.NopCloser(bytes.NewBuffer([]byte(xmlPostBody)))
+
+		// Wait.
 		time.Sleep(sleepInterval)
 		sleepInterval = sleepInterval * sc.backoffMultiplier
 	}
