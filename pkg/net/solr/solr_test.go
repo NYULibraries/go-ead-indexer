@@ -48,10 +48,9 @@ func TestAdd(t *testing.T) {
 
 	t.Run("Do not retry indefinitely", testAdd_doNotRetryIndefinitely)
 	t.Run("Never retry certain HTTP errors", testAdd_neverRetryCertainHTTPErrors)
-	// TODO: Re-enable once these pass
-	//t.Run("Retry certain HTTP errors", testAdd_retryCertainHTTPErrors)
-	//t.Run("Retry connection refused errors", testAdd_retryConnectionRefused)
-	//t.Run("Retry connection timeout errors", testAdd_retryConnectionTimeouts)
+	t.Run("Retry certain HTTP errors", testAdd_retryCertainHTTPErrors)
+	t.Run("Retry connection refused errors", testAdd_retryConnectionRefused)
+	t.Run("Retry connection timeout errors", testAdd_retryConnectionTimeouts)
 	t.Run("Successfully add", testAdd_successAdds)
 }
 
