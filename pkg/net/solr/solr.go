@@ -31,6 +31,20 @@ const UpdateURLPathAndQuery = "/solr/findingaids/update?wt=json&indent=true"
 
 var maxRetries = 3
 
+func NewSolrClient(urlOrigin string) (SolrClient, error) {
+	solrClient := SolrClient{
+		backoffInitialInterval: DefaultBackoffInitialInterval,
+		backoffMultiplier:      DefaultBackoffMultiplier,
+		client: http.Client{
+			Timeout: DefaultTimeout,
+		},
+	}
+
+	err := solrClient.setSolrURLOrigin(urlOrigin)
+
+	return solrClient, err
+}
+
 func (sc *SolrClient) Add(xmlPostBody string) error {
 	return sc.solrRequest(xmlPostBody)
 }
@@ -157,20 +171,6 @@ func (sc *SolrClient) solrRequest(xmlPostBody string) error {
 	}
 
 	return nil
-}
-
-func NewSolrClient(urlOrigin string) (SolrClient, error) {
-	solrClient := SolrClient{
-		backoffInitialInterval: DefaultBackoffInitialInterval,
-		backoffMultiplier:      DefaultBackoffMultiplier,
-		client: http.Client{
-			Timeout: DefaultTimeout,
-		},
-	}
-
-	err := solrClient.setSolrURLOrigin(urlOrigin)
-
-	return solrClient, err
 }
 
 func getMaxRetries() int {
