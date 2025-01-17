@@ -48,6 +48,29 @@ func TestAdd(t *testing.T) {
 	t.Run("Successfully add", testAdd_successAdds)
 }
 
+// All requests made by `SolrClient` use the same retry logic in `sendRequest()`,
+// so we don't bother with the complicated retry test suites already implemented
+// for `TestAdd()`.
+func TestCommit(t *testing.T) {
+	t.Run("Commit correctly returns an error",
+		testCommit_connectionRefusedError)
+	t.Run("Commit success", testCommit_success)
+}
+
+// All requests made by `SolrClient` use the same retry logic in `sendRequest()`,
+// so we don't bother with the complicated retry test suites already implemented
+// for `TestAdd()`.
+func TestDelete(t *testing.T) {
+	t.Run("Delete correctly returns an error",
+		testDelete_connectionRefusedError)
+	t.Run("Delete success", testDelete_success)
+}
+
+func TestSetSolrURLOrigin(t *testing.T) {
+	t.Run("Errors", testSetSolrURLOrigin_errors)
+	t.Run("Successfully set URL origin", testSetSolrURLOrigin_normal)
+}
+
 func testAdd_doNotRetryIndefinitely(t *testing.T) {
 	testutils.ResetErrorResponseCounts()
 
@@ -335,15 +358,6 @@ func testAdd_successAdds(t *testing.T) {
 	}
 }
 
-// All requests made by `SolrClient` use the same retry logic in `sendRequest()`,
-// so we don't bother with the complicated retry test suites already implemented
-// for `TestAdd()`.
-func TestCommit(t *testing.T) {
-	t.Run("Commit correctly returns an error",
-		testCommit_connectionRefusedError)
-	t.Run("Commit success", testCommit_success)
-}
-
 func testCommit_connectionRefusedError(t *testing.T) {
 	testPermanentConnectionRefusedRequest(t, func(solrClient SolrClient) error {
 		err := solrClient.Commit()
@@ -376,15 +390,6 @@ func testCommit_success(t *testing.T) {
 
 		return
 	}
-}
-
-// All requests made by `SolrClient` use the same retry logic in `sendRequest()`,
-// so we don't bother with the complicated retry test suites already implemented
-// for `TestAdd()`.
-func TestDelete(t *testing.T) {
-	t.Run("Delete correctly returns an error",
-		testDelete_connectionRefusedError)
-	t.Run("Delete success", testDelete_success)
 }
 
 func testDelete_connectionRefusedError(t *testing.T) {
@@ -421,9 +426,34 @@ func testDelete_success(t *testing.T) {
 	}
 }
 
-func TestSetSolrURLOrigin(t *testing.T) {
-	t.Run("Errors", testSetSolrURLOrigin_errors)
-	t.Run("Successfully set URL origin", testSetSolrURLOrigin_normal)
+func testPermanentConnectionRefusedRequest(t *testing.T, requestFunction func(SolrClient) error) {
+	unusedLocalhostNetworkAddress := util.GetUnusedLocalhostNetworkAddress()
+
+	solrClient, err := NewSolrClient("http://" + unusedLocalhostNetworkAddress)
+	if err != nil {
+		t.Fatalf(`NewSolrClient() failed with error: %s`, err)
+	}
+
+	// All retries will fail, so execute them as quickly as possible.
+	solrClient.backoffInitialInterval = 1 * time.Nanosecond
+
+	err = requestFunction(solrClient)
+	if err == nil {
+		t.Errorf("Expected an error to be returned for a request" +
+			" made to an unused localhost port, but no error was returned")
+
+		return
+	}
+
+	var syscallErrno syscall.Errno
+	if errors.As(err, &syscallErrno) {
+		if errors.Is(err, syscall.ECONNREFUSED) {
+			return
+		}
+	}
+
+	t.Errorf("Expected a connection refused request to be returned, but"+
+		` got: "%s"`, err.Error())
 }
 
 func testSetSolrURLOrigin_errors(t *testing.T) {
@@ -518,34 +548,4 @@ func testSetSolrURLOrigin_normal(t *testing.T) {
 				` but it instead returned "%s"`, testCase.origin, actualOrigin)
 		}
 	}
-}
-
-func testPermanentConnectionRefusedRequest(t *testing.T, requestFunction func(SolrClient) error) {
-	unusedLocalhostNetworkAddress := util.GetUnusedLocalhostNetworkAddress()
-
-	solrClient, err := NewSolrClient("http://" + unusedLocalhostNetworkAddress)
-	if err != nil {
-		t.Fatalf(`NewSolrClient() failed with error: %s`, err)
-	}
-
-	// All retries will fail, so execute them as quickly as possible.
-	solrClient.backoffInitialInterval = 1 * time.Nanosecond
-
-	err = requestFunction(solrClient)
-	if err == nil {
-		t.Errorf("Expected an error to be returned for a request" +
-			" made to an unused localhost port, but no error was returned")
-
-		return
-	}
-
-	var syscallErrno syscall.Errno
-	if errors.As(err, &syscallErrno) {
-		if errors.Is(err, syscall.ECONNREFUSED) {
-			return
-		}
-	}
-
-	t.Errorf("Expected a connection refused request to be returned, but"+
-		` got: "%s"`, err.Error())
 }
