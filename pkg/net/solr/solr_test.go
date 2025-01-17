@@ -353,19 +353,19 @@ func testSetSolrURLOrigin_errors(t *testing.T) {
 		},
 		{
 			origin:        "ftp://solr-host.org",
-			expectedError: `SetSolrURLOrigin("ftp://solr-host.org"): invalid scheme`,
+			expectedError: `setSolrURLOrigin("ftp://solr-host.org"): invalid scheme`,
 		},
 		{
 			origin:        "http://",
-			expectedError: `SetSolrURLOrigin("http://"): host is empty`,
+			expectedError: `setSolrURLOrigin("http://"): host is empty`,
 		},
 		{
 			origin:        "https://",
-			expectedError: `SetSolrURLOrigin("https://"): https is not currently supported`,
+			expectedError: `setSolrURLOrigin("https://"): https is not currently supported`,
 		},
 		{
 			origin:        testutils.FakeSolrHostAndPort,
-			expectedError: `SetSolrURLOrigin("` + testutils.FakeSolrHostAndPort + `"): invalid scheme`,
+			expectedError: `setSolrURLOrigin("` + testutils.FakeSolrHostAndPort + `"): invalid scheme`,
 		},
 	}
 
@@ -377,17 +377,17 @@ func testSetSolrURLOrigin_errors(t *testing.T) {
 	initialSolrURLOrigin := sc.GetSolrURLOrigin()
 
 	for _, testCase := range testCases {
-		actualError := sc.SetSolrURLOrigin(testCase.origin)
+		actualError := sc.setSolrURLOrigin(testCase.origin)
 		var actualErrorString string
 		if actualError != nil {
 			actualErrorString = actualError.Error()
 		}
 
 		if actualErrorString == "" {
-			t.Errorf(`SetSolrURLOrigin("%s") should have returned error "%s",`+
+			t.Errorf(`setSolrURLOrigin("%s") should have returned error "%s",`+
 				" but no error was returned", testCase.origin, testCase.expectedError)
 		} else if actualErrorString != testCase.expectedError {
-			t.Errorf(`SetSolrURLOrigin("%s") should have returned error "%s",`+
+			t.Errorf(`setSolrURLOrigin("%s") should have returned error "%s",`+
 				` but instead returned error "%s"`, testCase.origin, testCase.expectedError,
 				actualErrorString)
 		}
@@ -418,9 +418,9 @@ func testSetSolrURLOrigin_normal(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		err := sc.SetSolrURLOrigin(testCase.origin)
+		err := sc.setSolrURLOrigin(testCase.origin)
 		if err != nil {
-			t.Errorf(`SetSolrURLOrigin("%s") should not have returned an error,`+
+			t.Errorf(`setSolrURLOrigin("%s") should not have returned an error,`+
 				` but it returned error "%s"`, testCase.origin, err.Error())
 		}
 

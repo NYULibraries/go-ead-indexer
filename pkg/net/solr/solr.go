@@ -81,33 +81,6 @@ func (sc *SolrClient) GetSolrURLOrigin() string {
 	return sc.urlOrigin
 }
 
-func (sc *SolrClient) SetSolrURLOrigin(solrURLOriginArg string) error {
-	parsedURL, err := url.ParseRequestURI(solrURLOriginArg)
-	if err != nil {
-		return err
-	}
-
-	// Are the servers going to eventually be HTTPS?
-	if parsedURL.Scheme != "http" {
-		if parsedURL.Scheme == "https" {
-			return errors.New(fmt.Sprintf(`SetSolrURLOrigin("%s"): https is not currently supported`,
-				solrURLOriginArg))
-		} else {
-			return errors.New(fmt.Sprintf(`SetSolrURLOrigin("%s"): invalid scheme`,
-				solrURLOriginArg))
-		}
-	}
-
-	if parsedURL.Host == "" {
-		return errors.New(fmt.Sprintf(`SetSolrURLOrigin("%s"): host is empty`,
-			solrURLOriginArg))
-	}
-
-	sc.urlOrigin = solrURLOriginArg
-
-	return nil
-}
-
 func (sc *SolrClient) sendRequest(xmlPostBody string) (*http.Response, error) {
 	request, err := sc.GetPostRequest(xmlPostBody)
 	if err != nil {
@@ -141,6 +114,33 @@ func (sc *SolrClient) sendRequest(xmlPostBody string) (*http.Response, error) {
 	return response, err
 }
 
+func (sc *SolrClient) setSolrURLOrigin(solrURLOriginArg string) error {
+	parsedURL, err := url.ParseRequestURI(solrURLOriginArg)
+	if err != nil {
+		return err
+	}
+
+	// Are the servers going to eventually be HTTPS?
+	if parsedURL.Scheme != "http" {
+		if parsedURL.Scheme == "https" {
+			return errors.New(fmt.Sprintf(`setSolrURLOrigin("%s"): https is not currently supported`,
+				solrURLOriginArg))
+		} else {
+			return errors.New(fmt.Sprintf(`setSolrURLOrigin("%s"): invalid scheme`,
+				solrURLOriginArg))
+		}
+	}
+
+	if parsedURL.Host == "" {
+		return errors.New(fmt.Sprintf(`setSolrURLOrigin("%s"): host is empty`,
+			solrURLOriginArg))
+	}
+
+	sc.urlOrigin = solrURLOriginArg
+
+	return nil
+}
+
 func (sc *SolrClient) setTimeout(timeoutArg time.Duration) {
 	sc.client.Timeout = timeoutArg
 }
@@ -154,7 +154,7 @@ func NewSolrClient(urlOrigin string) (SolrClient, error) {
 		},
 	}
 
-	err := solrClient.SetSolrURLOrigin(urlOrigin)
+	err := solrClient.setSolrURLOrigin(urlOrigin)
 
 	return solrClient, err
 }
