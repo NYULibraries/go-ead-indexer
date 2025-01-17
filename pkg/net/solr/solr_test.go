@@ -2,12 +2,10 @@ package solr
 
 import (
 	"errors"
-	"flag"
 	eadtestutils "go-ead-indexer/pkg/ead/testutils"
 	"go-ead-indexer/pkg/net/solr/testutils"
 	"go-ead-indexer/pkg/util"
 	"net/http/httptest"
-	"os"
 	"strings"
 	"syscall"
 	"testing"
@@ -18,12 +16,6 @@ var fakeSolrServer *httptest.Server
 
 // Shared default Solr client for `Add()` tests
 var solrClientDefaultForAddTests SolrClient
-
-func TestMain(m *testing.M) {
-	flag.Parse()
-
-	os.Exit(m.Run())
-}
 
 func TestAdd(t *testing.T) {
 	// Have to pass in `UpdateURLPathAndQuery` to `testutils` sub-package, which
