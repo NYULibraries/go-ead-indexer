@@ -117,7 +117,7 @@ func (sc *solrClient) sendRequest(xmlPostBody string) (*http.Response, error) {
 	var response *http.Response
 	numRetries := getMaxRetries()
 	sleepInterval := sc.backoffInitialInterval
-	for i := 0; i < numRetries+1; i++ {
+	for i := 0; i < 1+numRetries; i++ {
 		response, err = sc.client.Do(request)
 		if err != nil && !isRetryableError(err) {
 			break
