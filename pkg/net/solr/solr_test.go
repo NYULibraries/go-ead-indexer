@@ -17,9 +17,8 @@ var fakeSolrServer *httptest.Server
 
 // Note that `urlOrigin` field can't be  set until the Solr fake is created.
 var solrClientDefault = solrClient{
-	// The Solr fake returns almost all errors immediately
-	// (the exception being connection timeout, which returns after a short sleep).
-	// Make these tests fast by shortening the retry intervals.
+	// The Solr fake returns almost all error responses immediately, so make
+	// these tests fast by shortening the retry intervals.
 	backoffInitialInterval: 1 * time.Millisecond,
 	backoffMultiplier:      DefaultBackoffMultiplier,
 	client: http.Client{
