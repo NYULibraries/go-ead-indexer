@@ -15,6 +15,22 @@ import (
 
 type ErrorResponseType string
 
+// NOTE: It is challenging reliably simulate network errors such as connection refused,
+// connection reset, and connection timeout.  It would be a lot of work to write
+// tests for retry of those kinds of errors, so for now we don't.
+// Even something that should be straightforward to simulate like connection
+// refused proved to be difficult due to the limitations of net/http/httptest
+// Server:
+// * `Server` can't be stopped and restarted because `Start()` only works on
+// an unstarted server.
+// * Setting the URL on an unstarted server and then calling `Start()` doesn't
+// work because `Start()` will panic with error "Server already started" if URL is
+// not empty.
+// * The URL of `Server()` is empty until it is started (needs to find an unused
+// port), so there is no way to set the URL origin on the Solr client in advance.
+// The `Start()` code sets URL from `.Listener.Addr().String()`, but when this
+// is used in advance to set the Solr client URL origin it causes the test to
+// spin.  Loading the URL into a browser results in a white page with spinner.
 const (
 	ContextDeadlineExceeded ErrorResponseType = "connectiontimeout"
 

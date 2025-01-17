@@ -48,9 +48,6 @@ func TestAdd(t *testing.T) {
 	t.Run("Do not retry indefinitely", testAdd_doNotRetryIndefinitely)
 	t.Run("Never retry certain HTTP errors", testAdd_neverRetryCertainHTTPErrors)
 	t.Run("Retry certain HTTP errors", testAdd_retryCertainHTTPErrors)
-	// TODO: Re-enable when this is working again.  Now that we cache the URL
-	// in the `http.Request`, the switching URL origin trick doesn't work anymore.
-	//t.Run("Retry connection refused errors", testAdd_retryConnectionRefused)
 	t.Run("Retry context deadline exceeded errors", testAdd_retryContextDeadlineExceeded)
 	t.Run("Successfully add", testAdd_successAdds)
 }
@@ -273,49 +270,6 @@ func testAdd_retryCertainHTTPErrors(t *testing.T) {
 			t.Errorf(`Expected request for id="%s" to succeed, but it failed with error "%s"`,
 				id, err.Error())
 		}
-	}
-}
-
-func testAdd_retryConnectionRefused(t *testing.T) {
-	testutils.ResetErrorResponseCounts()
-
-	const backoffInitialInterval = 1 * time.Millisecond
-
-	solrClientConnectionRefused := solrClient{
-		backoffInitialInterval: backoffInitialInterval,
-		backoffMultiplier:      DefaultBackoffMultiplier,
-		client: http.Client{
-			Timeout: DefaultTimeout,
-		},
-		maxRetries: DefaultMaxRetries,
-	}
-
-	// Set Solr origin to the address of an unused port on localhost.
-	connectionRefusedOrigin := "http://" + util.GetUnusedLocalhostNetworkAddress()
-	err := solrClientConnectionRefused.SetSolrURLOrigin(connectionRefusedOrigin)
-	if err != nil {
-		t.Fatalf(`Setup of Solr fake failed with error: %s`, err)
-	}
-
-	// Switch to Solr fake before `Add()` is done with its retries.
-	time.AfterFunc(backoffInitialInterval, func() {
-		err := solrClientConnectionRefused.SetSolrURLOrigin(fakeSolrServer.URL)
-		if err != nil {
-			t.Fatalf(`Setup of Solr fake failed with error: %s`, err)
-		}
-	})
-
-	postBody := `<?xml version="1.0" encoding="UTF-8"?>
-<add>
-  <doc>
-    <field name="id">connectionrefused_0</field>
-  </doc>
-</add>`
-
-	err = solrClientConnectionRefused.Add(postBody)
-	if err != nil {
-		t.Errorf(`Expected simulated retry of connection refused request`+
-			` to succeed, but it failed with error "%s"`, err.Error())
 	}
 }
 
