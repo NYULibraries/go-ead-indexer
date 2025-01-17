@@ -24,7 +24,6 @@ var solrClientDefault = solrClient{
 	client: http.Client{
 		Timeout: DefaultTimeout,
 	},
-	maxRetries: DefaultMaxRetries,
 }
 
 func TestMain(m *testing.M) {
@@ -67,7 +66,7 @@ Content-Type: text/plain;charset=UTF-8
 
 	// Have Solr fake error out more times than `Add()` will retry.
 	id, postBody := testutils.MakeErrorResponseIDAndPostBody(
-		testutils.HTTP408RequestTimeout, solrClientDefault.GetMaxRetries()+1)
+		testutils.HTTP408RequestTimeout, getMaxRetries()+1)
 
 	err := solrClientDefault.Add(postBody)
 
@@ -262,7 +261,7 @@ func testAdd_retryCertainHTTPErrors(t *testing.T) {
 
 	for _, errorResponseType := range errorResponseTypes {
 		id, postBody := testutils.MakeErrorResponseIDAndPostBody(
-			errorResponseType, solrClientDefault.GetMaxRetries())
+			errorResponseType, getMaxRetries())
 
 		err := solrClientDefault.Add(postBody)
 
@@ -279,7 +278,7 @@ func testAdd_retryContextDeadlineExceeded(t *testing.T) {
 	solrClientDefault.setTimeout(testutils.ContextDeadlineExceededErrorResponseDuration)
 
 	id, postBody := testutils.MakeErrorResponseIDAndPostBody(
-		testutils.ContextDeadlineExceeded, solrClientDefault.GetMaxRetries())
+		testutils.ContextDeadlineExceeded, getMaxRetries())
 
 	err := solrClientDefault.Add(postBody)
 	if err != nil {
@@ -336,41 +335,6 @@ func testAdd_successAdds(t *testing.T) {
 	goldenFileIDs := eadtestutils.GetGoldenFileIDs(testutils.TestEAD)
 	for _, goldenFileID := range goldenFileIDs {
 		testAdd_successAdd(goldenFileID, t)
-	}
-}
-
-func TestGetRetries(t *testing.T) {
-	actual := solrClientDefault.GetMaxRetries()
-	if actual != DefaultMaxRetries {
-		t.Errorf(`Expected %d, got %d`, DefaultMaxRetries, actual)
-	}
-}
-
-func TestSetRetries(t *testing.T) {
-	testSetRetries_badInput(t)
-	testSetRetries_normal(t)
-}
-
-func testSetRetries_badInput(t *testing.T) {
-	sc := solrClient{}
-	err := sc.SetMaxRetries(-1)
-	if err == nil {
-		t.Error("Expected `SetMaxRetries(-1)` to return an error, but no error was returned")
-	}
-}
-
-func testSetRetries_normal(t *testing.T) {
-	sc := solrClient{}
-	newRetries := 999
-	err := sc.SetMaxRetries(newRetries)
-	if err != nil {
-		t.Errorf("`SetMaxRetries(%d)` returned an error: %s",
-			newRetries, err.Error())
-	}
-
-	if sc.GetMaxRetries() != newRetries {
-		t.Errorf("Expected `GetMaxRetries()` to return %d, but it returned %d",
-			newRetries, sc.maxRetries)
 	}
 }
 

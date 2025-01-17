@@ -17,7 +17,6 @@ type solrClient struct {
 	backoffInitialInterval time.Duration
 	backoffMultiplier      time.Duration
 	client                 http.Client
-	maxRetries             int
 	urlOrigin              string
 }
 
@@ -26,10 +25,11 @@ type solrClient struct {
 // accidental misconfiguration of an instance.
 const DefaultBackoffInitialInterval = 1 * time.Second
 const DefaultBackoffMultiplier = 4
-const DefaultMaxRetries = 3
 const DefaultTimeout = 30 * time.Second
 
 const UpdateURLPathAndQuery = "/solr/findingaids/update?wt=json&indent=true"
+
+var maxRetries = 3
 
 func (sc *solrClient) Add(xmlPostBody string) error {
 	response, err := sc.sendRequest(xmlPostBody)
@@ -64,10 +64,6 @@ func (sc *solrClient) Delete(eadID string) error {
 	return nil
 }
 
-func (sc *solrClient) GetMaxRetries() int {
-	return sc.maxRetries
-}
-
 func (sc *solrClient) GetPostRequest(xmlPostBody string) (*http.Request, error) {
 	postRequest, err := http.NewRequest(http.MethodPost,
 		sc.GetSolrURLOrigin()+UpdateURLPathAndQuery,
@@ -83,16 +79,6 @@ func (sc *solrClient) GetPostRequest(xmlPostBody string) (*http.Request, error) 
 
 func (sc *solrClient) GetSolrURLOrigin() string {
 	return sc.urlOrigin
-}
-
-func (sc *solrClient) SetMaxRetries(newRetries int) error {
-	if newRetries < 0 {
-		return fmt.Errorf("Invalid value passed to `SetMaxRetries()`: %d", newRetries)
-	}
-
-	sc.maxRetries = newRetries
-
-	return nil
 }
 
 func (sc *solrClient) SetSolrURLOrigin(solrURLOriginArg string) error {
@@ -129,7 +115,7 @@ func (sc *solrClient) sendRequest(xmlPostBody string) (*http.Response, error) {
 	}
 
 	var response *http.Response
-	numRetries := sc.GetMaxRetries()
+	numRetries := getMaxRetries()
 	sleepInterval := sc.backoffInitialInterval
 	for i := 0; i < numRetries+1; i++ {
 		response, err = sc.client.Do(request)
@@ -157,6 +143,10 @@ func (sc *solrClient) sendRequest(xmlPostBody string) (*http.Response, error) {
 
 func (sc *solrClient) setTimeout(timeoutArg time.Duration) {
 	sc.client.Timeout = timeoutArg
+}
+
+func getMaxRetries() int {
+	return maxRetries
 }
 
 func isRetryableError(err error) bool {
