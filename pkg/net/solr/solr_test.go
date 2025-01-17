@@ -345,34 +345,10 @@ func TestCommit(t *testing.T) {
 }
 
 func testCommit_connectionRefusedError(t *testing.T) {
-	unusedLocalhostNetworkAddress := util.GetUnusedLocalhostNetworkAddress()
-
-	solrClientForCommitErrorTests, err := NewSolrClient(
-		"http://" + unusedLocalhostNetworkAddress)
-	if err != nil {
-		t.Fatalf(`NewSolrClient() failed with error: %s`, err)
-	}
-
-	// All retries will fail, so execute them as quickly as possible.
-	solrClientForCommitErrorTests.backoffInitialInterval = 1 * time.Nanosecond
-
-	err = solrClientForCommitErrorTests.Commit()
-	if err == nil {
-		t.Errorf("Expected anerror to be returned for a commit request" +
-			" made to an unused localhost port, but no error was returned")
-
-		return
-	}
-
-	var syscallErrno syscall.Errno
-	if errors.As(err, &syscallErrno) {
-		if errors.Is(err, syscall.ECONNREFUSED) {
-			return
-		}
-	}
-
-	t.Errorf("Expected a connection refused request to be returned, but"+
-		` got: "%s"`, err.Error())
+	testPermanentConnectionRefusedRequest(t, func(solrClient SolrClient) error {
+		err := solrClient.Commit()
+		return err
+	})
 }
 
 func testCommit_success(t *testing.T) {
@@ -412,34 +388,10 @@ func TestDelete(t *testing.T) {
 }
 
 func testDelete_connectionRefusedError(t *testing.T) {
-	unusedLocalhostNetworkAddress := util.GetUnusedLocalhostNetworkAddress()
-
-	solrClientForDeleteErrorTests, err := NewSolrClient(
-		"http://" + unusedLocalhostNetworkAddress)
-	if err != nil {
-		t.Fatalf(`NewSolrClient() failed with error: %s`, err)
-	}
-
-	// All retries will fail, so execute them as quickly as possible.
-	solrClientForDeleteErrorTests.backoffInitialInterval = 1 * time.Nanosecond
-
-	err = solrClientForDeleteErrorTests.Delete("doesnotmatter_1")
-	if err == nil {
-		t.Errorf("Expected an error to be returned for a delete request" +
-			" made to an unused localhost port, but no error was returned")
-
-		return
-	}
-
-	var syscallErrno syscall.Errno
-	if errors.As(err, &syscallErrno) {
-		if errors.Is(err, syscall.ECONNREFUSED) {
-			return
-		}
-	}
-
-	t.Errorf("Expected a connection refused request to be returned, but"+
-		` got: "%s"`, err.Error())
+	testPermanentConnectionRefusedRequest(t, func(solrClient SolrClient) error {
+		err := solrClient.Delete("doesnotmatter_1")
+		return err
+	})
 }
 
 func testDelete_success(t *testing.T) {
@@ -566,4 +518,34 @@ func testSetSolrURLOrigin_normal(t *testing.T) {
 				` but it instead returned "%s"`, testCase.origin, actualOrigin)
 		}
 	}
+}
+
+func testPermanentConnectionRefusedRequest(t *testing.T, requestFunction func(SolrClient) error) {
+	unusedLocalhostNetworkAddress := util.GetUnusedLocalhostNetworkAddress()
+
+	solrClient, err := NewSolrClient("http://" + unusedLocalhostNetworkAddress)
+	if err != nil {
+		t.Fatalf(`NewSolrClient() failed with error: %s`, err)
+	}
+
+	// All retries will fail, so execute them as quickly as possible.
+	solrClient.backoffInitialInterval = 1 * time.Nanosecond
+
+	err = requestFunction(solrClient)
+	if err == nil {
+		t.Errorf("Expected an error to be returned for a request" +
+			" made to an unused localhost port, but no error was returned")
+
+		return
+	}
+
+	var syscallErrno syscall.Errno
+	if errors.As(err, &syscallErrno) {
+		if errors.Is(err, syscall.ECONNREFUSED) {
+			return
+		}
+	}
+
+	t.Errorf("Expected a connection refused request to be returned, but"+
+		` got: "%s"`, err.Error())
 }
