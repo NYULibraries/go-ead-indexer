@@ -13,7 +13,7 @@ const FakeSolrHostAndPort = "fake-solr-host.library.nyu.edu:8080"
 const TestEAD = "edip/mos_2024"
 
 var hostHeaderRegExp = regexp.MustCompile("Host: 127.0.0.1:[0-9]+")
-var idRegExp = regexp.MustCompile(`<field name="id">([a-z0-9_-]+)</field>`)
+var addIdRegExp = regexp.MustCompile(`<field name="id">([a-z0-9_-]+)</field>`)
 
 var tmpFilesDirPath = filepath.Join("testdata", "tmp", "actual")
 
@@ -52,7 +52,7 @@ func GetExpectedPOSTRequestString(body string) string {
 }
 
 func GetID(dumpedRequest []byte) (string, error) {
-	matches := idRegExp.FindStringSubmatch(string(dumpedRequest))
+	matches := addIdRegExp.FindStringSubmatch(string(dumpedRequest))
 
 	if len(matches) > 1 {
 		return matches[1], nil
