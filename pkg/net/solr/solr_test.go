@@ -1,6 +1,7 @@
 package solr
 
 import (
+	"errors"
 	"flag"
 	eadtestutils "go-ead-indexer/pkg/ead/testutils"
 	"go-ead-indexer/pkg/net/solr/testutils"
@@ -8,6 +9,7 @@ import (
 	"net/http/httptest"
 	"os"
 	"strings"
+	"syscall"
 	"testing"
 	"time"
 )
@@ -336,10 +338,44 @@ func testAdd_successAdds(t *testing.T) {
 // All requests made by `SolrClient` use the same retry logic in `sendRequest()`,
 // so we don't bother with the complicated retry test suites already implemented
 // for `TestAdd()`.
-// The Solr fake will return an HTTP 200 response if the request was correct,
-// otherwise it will return an HTTP 500 error, whose body will contain the dumped
-// request that was received.
 func TestCommit(t *testing.T) {
+	t.Run("Commit correctly returns an error",
+		testCommit_connectionRefusedError)
+	t.Run("Commit success", testCommit_success)
+}
+
+func testCommit_connectionRefusedError(t *testing.T) {
+	unusedLocalhostNetworkAddress := util.GetUnusedLocalhostNetworkAddress()
+
+	solrClientForCommitErrorTests, err := NewSolrClient(
+		"http://" + unusedLocalhostNetworkAddress)
+	if err != nil {
+		t.Fatalf(`NewSolrClient() failed with error: %s`, err)
+	}
+
+	// All retries will fail, so execute them as quickly as possible.
+	solrClientForCommitErrorTests.backoffInitialInterval = 1 * time.Nanosecond
+
+	err = solrClientForCommitErrorTests.Commit()
+	if err == nil {
+		t.Errorf("Expected anerror to be returned for a commit request" +
+			" made to an unused localhost port, but no error was returned")
+
+		return
+	}
+
+	var syscallErrno syscall.Errno
+	if errors.As(err, &syscallErrno) {
+		if errors.Is(err, syscall.ECONNREFUSED) {
+			return
+		}
+	}
+
+	t.Errorf("Expected a connection refused request to be returned, but"+
+		` got: "%s"`, err.Error())
+}
+
+func testCommit_success(t *testing.T) {
 	testutils.ResetErrorResponseCounts()
 
 	// Have to pass in `UpdateURLPathAndQuery` to `testutils` sub-package, which
@@ -347,16 +383,16 @@ func TestCommit(t *testing.T) {
 	fakeSolrServer = testutils.MakeSolrFake(UpdateURLPathAndQuery, t)
 	defer fakeSolrServer.Close()
 
-	solrClientForCommitTests, err := NewSolrClient(fakeSolrServer.URL)
+	solrClientForCommitSuccessTests, err := NewSolrClient(fakeSolrServer.URL)
 	if err != nil {
 		t.Fatalf(`NewSolrClient() failed with error: %s`, err)
 	}
 
 	// The Solr fake returns almost all error responses immediately, so make
 	// these tests fast by shortening the retry intervals.
-	solrClientForCommitTests.backoffInitialInterval = 1 * time.Millisecond
+	solrClientForCommitSuccessTests.backoffInitialInterval = 1 * time.Millisecond
 
-	err = solrClientForCommitTests.Commit()
+	err = solrClientForCommitSuccessTests.Commit()
 	if err != nil {
 		t.Errorf(`Expected no error for commit request, got: "%s".  Error shows`+
 			` commit request received, which does not match expected "%s",`,
