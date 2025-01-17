@@ -13,7 +13,7 @@ type ErrorResponse struct {
 }
 
 var errorResponseMap = map[ErrorResponseType]ErrorResponse{
-	ConnectionTimeout: {},
+	ContextDeadlineExceeded: {},
 
 	// Response bodies from https://jira.nyu.edu/browse/DLFA-251, when available.
 	// Those values not from https://jira.nyu.edu/browse/DLFA-251 are in square brackets.

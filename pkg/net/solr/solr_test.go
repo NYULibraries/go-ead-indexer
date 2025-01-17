@@ -51,7 +51,7 @@ func TestAdd(t *testing.T) {
 	// TODO: Re-enable when this is working again.  Now that we cache the URL
 	// in the `http.Request`, the switching URL origin trick doesn't work anymore.
 	//t.Run("Retry connection refused errors", testAdd_retryConnectionRefused)
-	t.Run("Retry connection timeout errors", testAdd_retryConnectionTimeouts)
+	t.Run("Retry context deadline exceeded errors", testAdd_retryContextDeadlineExceeded)
 	t.Run("Successfully add", testAdd_successAdds)
 }
 
@@ -319,13 +319,13 @@ func testAdd_retryConnectionRefused(t *testing.T) {
 	}
 }
 
-func testAdd_retryConnectionTimeouts(t *testing.T) {
+func testAdd_retryContextDeadlineExceeded(t *testing.T) {
 	testutils.ResetErrorResponseCounts()
 
-	solrClientDefault.setTimeout(testutils.ConnectionTimeoutDuration)
+	solrClientDefault.setTimeout(testutils.ContextDeadlineExceededErrorResponseDuration)
 
 	id, postBody := testutils.MakeErrorResponseIDAndPostBody(
-		testutils.ConnectionTimeout, solrClientDefault.GetMaxRetries())
+		testutils.ContextDeadlineExceeded, solrClientDefault.GetMaxRetries())
 
 	err := solrClientDefault.Add(postBody)
 	if err != nil {

@@ -16,7 +16,7 @@ import (
 type ErrorResponseType string
 
 const (
-	ConnectionTimeout ErrorResponseType = "connectiontimeout"
+	ContextDeadlineExceeded ErrorResponseType = "connectiontimeout"
 
 	HTTP400BadRequest           ErrorResponseType = "http400badrequest"
 	HTTP401Unauthorized         ErrorResponseType = "http401unauthorized"
@@ -30,7 +30,7 @@ const (
 	HTTP504GatewayTimeout       ErrorResponseType = "http504gatewaytimeout"
 )
 
-const ConnectionTimeoutDuration = 1 * time.Second
+const ContextDeadlineExceededErrorResponseDuration = 1 * time.Second
 
 const errorResponseIDPrefix = "error_"
 
@@ -141,7 +141,7 @@ func handleErrorResponse(w http.ResponseWriter, id string, receivedRequest []byt
 	numRetriesRequired := errorResponse.NumRetriesRequired
 
 	var sendErrorResponseFunction func(http.ResponseWriter, ErrorResponse) error
-	if errorResponseType == ConnectionTimeout {
+	if errorResponseType == ContextDeadlineExceeded {
 		sendErrorResponseFunction = sendConnectionTimeoutResponse
 	} else {
 		sendErrorResponseFunction = sendHTTPErrorResponse
@@ -218,7 +218,7 @@ func send200ResponseAndWriteActualFile(w http.ResponseWriter, id string, receive
 }
 
 func sendConnectionTimeoutResponse(w http.ResponseWriter, errorResponse ErrorResponse) error {
-	time.Sleep(ConnectionTimeoutDuration)
+	time.Sleep(ContextDeadlineExceededErrorResponseDuration)
 
 	return nil
 }
