@@ -13,7 +13,7 @@ import (
 	"time"
 )
 
-type solrClient struct {
+type SolrClient struct {
 	backoffInitialInterval time.Duration
 	backoffMultiplier      time.Duration
 	client                 http.Client
@@ -31,7 +31,7 @@ const UpdateURLPathAndQuery = "/solr/findingaids/update?wt=json&indent=true"
 
 var maxRetries = 3
 
-func (sc *solrClient) Add(xmlPostBody string) error {
+func (sc *SolrClient) Add(xmlPostBody string) error {
 	response, err := sc.sendRequest(xmlPostBody)
 	if err != nil {
 		return err
@@ -56,15 +56,15 @@ func (sc *solrClient) Add(xmlPostBody string) error {
 	return nil
 }
 
-func (sc *solrClient) Commit() error {
+func (sc *SolrClient) Commit() error {
 	return nil
 }
 
-func (sc *solrClient) Delete(eadID string) error {
+func (sc *SolrClient) Delete(eadID string) error {
 	return nil
 }
 
-func (sc *solrClient) GetPostRequest(xmlPostBody string) (*http.Request, error) {
+func (sc *SolrClient) GetPostRequest(xmlPostBody string) (*http.Request, error) {
 	postRequest, err := http.NewRequest(http.MethodPost,
 		sc.GetSolrURLOrigin()+UpdateURLPathAndQuery,
 		bytes.NewReader([]byte(xmlPostBody)))
@@ -77,11 +77,11 @@ func (sc *solrClient) GetPostRequest(xmlPostBody string) (*http.Request, error) 
 	return postRequest, nil
 }
 
-func (sc *solrClient) GetSolrURLOrigin() string {
+func (sc *SolrClient) GetSolrURLOrigin() string {
 	return sc.urlOrigin
 }
 
-func (sc *solrClient) SetSolrURLOrigin(solrURLOriginArg string) error {
+func (sc *SolrClient) SetSolrURLOrigin(solrURLOriginArg string) error {
 	parsedURL, err := url.ParseRequestURI(solrURLOriginArg)
 	if err != nil {
 		return err
@@ -108,7 +108,7 @@ func (sc *solrClient) SetSolrURLOrigin(solrURLOriginArg string) error {
 	return nil
 }
 
-func (sc *solrClient) sendRequest(xmlPostBody string) (*http.Response, error) {
+func (sc *SolrClient) sendRequest(xmlPostBody string) (*http.Response, error) {
 	request, err := sc.GetPostRequest(xmlPostBody)
 	if err != nil {
 		return nil, err
@@ -141,8 +141,22 @@ func (sc *solrClient) sendRequest(xmlPostBody string) (*http.Response, error) {
 	return response, err
 }
 
-func (sc *solrClient) setTimeout(timeoutArg time.Duration) {
+func (sc *SolrClient) setTimeout(timeoutArg time.Duration) {
 	sc.client.Timeout = timeoutArg
+}
+
+func NewSolrClient(urlOrigin string) (SolrClient, error) {
+	solrClient := SolrClient{
+		backoffInitialInterval: DefaultBackoffInitialInterval,
+		backoffMultiplier:      DefaultBackoffMultiplier,
+		client: http.Client{
+			Timeout: DefaultTimeout,
+		},
+	}
+
+	err := solrClient.SetSolrURLOrigin(urlOrigin)
+
+	return solrClient, err
 }
 
 func getMaxRetries() int {
