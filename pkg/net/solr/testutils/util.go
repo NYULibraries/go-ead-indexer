@@ -9,8 +9,15 @@ import (
 	"strings"
 )
 
+const EADIDForDeleteTest = "sample_delete_1"
 const FakeSolrHostAndPort = "fake-solr-host.library.nyu.edu:8080"
 const TestEAD = "edip/mos_2024"
+
+var ExpectedDeleteRequest = fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8"?>
+<delete>
+  <query>ead_ssi:"%s"</query>
+</delete>
+`, EADIDForDeleteTest)
 
 var hostHeaderRegExp = regexp.MustCompile("Host: 127.0.0.1:[0-9]+")
 var addIdRegExp = regexp.MustCompile(`<field name="id">([a-z0-9_-]+)</field>`)

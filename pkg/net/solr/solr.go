@@ -61,6 +61,33 @@ func (sc *SolrClient) Commit() error {
 }
 
 func (sc *SolrClient) Delete(eadID string) error {
+	xmlPostBody := fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8"?>
+<delete>
+  <query>ead_ssi:"%s"</query>
+</delete>
+`, eadID)
+
+	response, err := sc.sendRequest(xmlPostBody)
+	if err != nil {
+		return err
+	}
+
+	if response.StatusCode != http.StatusOK {
+		// Some extra characters appear in the dumped response body.  See:
+		// "http resp.Write & httputil.DumpResponse include extra text with body"
+		// https://groups.google.com/g/golang-nuts/c/LCoPQOpDvx4?pli=1
+		//
+		// To test this, removed "Transfer-Encoding: chunked" HTTP header
+		// from the Solr fake responses, and extra characters no longer appeared
+		// (and Content-Length header was automatically added).
+		dumpedResponse, dumpResponseError := httputil.DumpResponse(response, true)
+		if dumpResponseError != nil {
+			return dumpResponseError
+		}
+
+		return errors.New(string(dumpedResponse))
+	}
+
 	return nil
 }
 

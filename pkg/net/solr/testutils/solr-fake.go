@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
+	"io"
 	"net/http"
 	"net/http/httptest"
 	"net/http/httputil"
@@ -94,6 +95,15 @@ func MakeSolrFake(updateURLPathAndQuery string, t *testing.T) *httptest.Server {
 				return
 			}
 
+			if id == EADIDForDeleteTest {
+				err := handleDeleteRequest(w, r)
+				if err != nil {
+					t.Errorf("handleDeleteRequest() failed with error: %s", err)
+				}
+
+				return
+			}
+
 			if isErrorResponseID(id) {
 				err := handleErrorResponse(w, id, receivedRequest)
 				if err != nil {
@@ -145,6 +155,23 @@ func getErrorResponse(id string) (ErrorResponse, error) {
 	} else {
 		return ErrorResponse{}, errors.New(`"%s" is not a valid ErrorResponseType ID`)
 	}
+}
+
+func handleDeleteRequest(w http.ResponseWriter, r *http.Request) error {
+	receivedRequestBody, err := io.ReadAll(r.Body)
+	if err != nil {
+		return err
+	}
+	receivedRequestBodyString := string(receivedRequestBody)
+
+	if receivedRequestBodyString != ExpectedDeleteRequest {
+		err := sendResponse(w, http.StatusBadRequest, receivedRequestBodyString)
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
 }
 
 func handleErrorResponse(w http.ResponseWriter, id string, receivedRequest []byte) error {
