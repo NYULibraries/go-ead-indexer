@@ -339,6 +339,39 @@ func testAdd_successAdds(t *testing.T) {
 // The Solr fake will return an HTTP 200 response if the request was correct,
 // otherwise it will return an HTTP 500 error, whose body will contain the dumped
 // request that was received.
+func TestCommit(t *testing.T) {
+	testutils.ResetErrorResponseCounts()
+
+	// Have to pass in `UpdateURLPathAndQuery` to `testutils` sub-package, which
+	// can't import its own parent package.
+	fakeSolrServer = testutils.MakeSolrFake(UpdateURLPathAndQuery, t)
+	defer fakeSolrServer.Close()
+
+	solrClientForCommitTests, err := NewSolrClient(fakeSolrServer.URL)
+	if err != nil {
+		t.Fatalf(`NewSolrClient() failed with error: %s`, err)
+	}
+
+	// The Solr fake returns almost all error responses immediately, so make
+	// these tests fast by shortening the retry intervals.
+	solrClientForCommitTests.backoffInitialInterval = 1 * time.Millisecond
+
+	err = solrClientForCommitTests.Commit()
+	if err != nil {
+		t.Errorf(`Expected no error for commit request, got: "%s".  Error shows`+
+			` commit request received, which does not match expected "%s",`,
+			err, testutils.ExpectedCommitRequest)
+
+		return
+	}
+}
+
+// All requests made by `SolrClient` use the same retry logic in `sendRequest()`,
+// so we don't bother with the complicated retry test suites already implemented
+// for `TestAdd()`.
+// The Solr fake will return an HTTP 200 response if the request was correct,
+// otherwise it will return an HTTP 500 error, whose body will contain the dumped
+// request that was received.
 func TestDelete(t *testing.T) {
 	testutils.ResetErrorResponseCounts()
 

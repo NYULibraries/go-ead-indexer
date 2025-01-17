@@ -95,6 +95,16 @@ func MakeSolrFake(updateURLPathAndQuery string, t *testing.T) *httptest.Server {
 				return
 			}
 
+			if id == "" {
+				// This is a commit request.
+				err := handleCommitRequest(w, r)
+				if err != nil {
+					t.Errorf("handleCommitRequest() failed with error: %s", err)
+				}
+
+				return
+			}
+
 			if id == EADIDForDeleteTest {
 				err := handleDeleteRequest(w, r)
 				if err != nil {
@@ -155,6 +165,23 @@ func getErrorResponse(id string) (ErrorResponse, error) {
 	} else {
 		return ErrorResponse{}, errors.New(`"%s" is not a valid ErrorResponseType ID`)
 	}
+}
+
+func handleCommitRequest(w http.ResponseWriter, r *http.Request) error {
+	receivedRequestBody, err := io.ReadAll(r.Body)
+	if err != nil {
+		return err
+	}
+	receivedRequestBodyString := string(receivedRequestBody)
+
+	if receivedRequestBodyString != ExpectedCommitRequest {
+		err := sendResponse(w, http.StatusBadRequest, receivedRequestBodyString)
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
 }
 
 func handleDeleteRequest(w http.ResponseWriter, r *http.Request) error {

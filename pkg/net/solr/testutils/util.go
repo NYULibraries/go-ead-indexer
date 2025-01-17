@@ -13,6 +13,9 @@ const EADIDForDeleteTest = "sample_delete_1"
 const FakeSolrHostAndPort = "fake-solr-host.library.nyu.edu:8080"
 const TestEAD = "edip/mos_2024"
 
+var ExpectedCommitRequest = `<?xml version="1.0" encoding="UTF-8"?>
+<commit/>
+`
 var ExpectedDeleteRequest = fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8"?>
 <delete>
   <query>ead_ssi:"%s"</query>
