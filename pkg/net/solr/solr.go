@@ -32,28 +32,7 @@ const UpdateURLPathAndQuery = "/solr/findingaids/update?wt=json&indent=true"
 var maxRetries = 3
 
 func (sc *SolrClient) Add(xmlPostBody string) error {
-	response, err := sc.sendRequest(xmlPostBody)
-	if err != nil {
-		return err
-	}
-
-	if response.StatusCode != http.StatusOK {
-		// Some extra characters appear in the dumped response body.  See:
-		// "http resp.Write & httputil.DumpResponse include extra text with body"
-		// https://groups.google.com/g/golang-nuts/c/LCoPQOpDvx4?pli=1
-		//
-		// To test this, removed "Transfer-Encoding: chunked" HTTP header
-		// from the Solr fake responses, and extra characters no longer appeared
-		// (and Content-Length header was automatically added).
-		dumpedResponse, dumpResponseError := httputil.DumpResponse(response, true)
-		if dumpResponseError != nil {
-			return dumpResponseError
-		}
-
-		return errors.New(string(dumpedResponse))
-	}
-
-	return nil
+	return sc.solrRequest(xmlPostBody)
 }
 
 func (sc *SolrClient) Commit() error {
@@ -61,28 +40,7 @@ func (sc *SolrClient) Commit() error {
 <commit/>
 `)
 
-	response, err := sc.sendRequest(xmlPostBody)
-	if err != nil {
-		return err
-	}
-
-	if response.StatusCode != http.StatusOK {
-		// Some extra characters appear in the dumped response body.  See:
-		// "http resp.Write & httputil.DumpResponse include extra text with body"
-		// https://groups.google.com/g/golang-nuts/c/LCoPQOpDvx4?pli=1
-		//
-		// To test this, removed "Transfer-Encoding: chunked" HTTP header
-		// from the Solr fake responses, and extra characters no longer appeared
-		// (and Content-Length header was automatically added).
-		dumpedResponse, dumpResponseError := httputil.DumpResponse(response, true)
-		if dumpResponseError != nil {
-			return dumpResponseError
-		}
-
-		return errors.New(string(dumpedResponse))
-	}
-
-	return nil
+	return sc.solrRequest(xmlPostBody)
 }
 
 func (sc *SolrClient) Delete(eadID string) error {
@@ -92,28 +50,7 @@ func (sc *SolrClient) Delete(eadID string) error {
 </delete>
 `, eadID)
 
-	response, err := sc.sendRequest(xmlPostBody)
-	if err != nil {
-		return err
-	}
-
-	if response.StatusCode != http.StatusOK {
-		// Some extra characters appear in the dumped response body.  See:
-		// "http resp.Write & httputil.DumpResponse include extra text with body"
-		// https://groups.google.com/g/golang-nuts/c/LCoPQOpDvx4?pli=1
-		//
-		// To test this, removed "Transfer-Encoding: chunked" HTTP header
-		// from the Solr fake responses, and extra characters no longer appeared
-		// (and Content-Length header was automatically added).
-		dumpedResponse, dumpResponseError := httputil.DumpResponse(response, true)
-		if dumpResponseError != nil {
-			return dumpResponseError
-		}
-
-		return errors.New(string(dumpedResponse))
-	}
-
-	return nil
+	return sc.solrRequest(xmlPostBody)
 }
 
 func (sc *SolrClient) GetPostRequest(xmlPostBody string) (*http.Request, error) {
@@ -195,6 +132,31 @@ func (sc *SolrClient) setSolrURLOrigin(solrURLOriginArg string) error {
 
 func (sc *SolrClient) setTimeout(timeoutArg time.Duration) {
 	sc.client.Timeout = timeoutArg
+}
+
+func (sc *SolrClient) solrRequest(xmlPostBody string) error {
+	response, err := sc.sendRequest(xmlPostBody)
+	if err != nil {
+		return err
+	}
+
+	if response.StatusCode != http.StatusOK {
+		// Some extra characters appear in the dumped response body.  See:
+		// "http resp.Write & httputil.DumpResponse include extra text with body"
+		// https://groups.google.com/g/golang-nuts/c/LCoPQOpDvx4?pli=1
+		//
+		// To test this, removed "Transfer-Encoding: chunked" HTTP header
+		// from the Solr fake responses, and extra characters no longer appeared
+		// (and Content-Length header was automatically added).
+		dumpedResponse, dumpResponseError := httputil.DumpResponse(response, true)
+		if dumpResponseError != nil {
+			return dumpResponseError
+		}
+
+		return errors.New(string(dumpedResponse))
+	}
+
+	return nil
 }
 
 func NewSolrClient(urlOrigin string) (SolrClient, error) {
