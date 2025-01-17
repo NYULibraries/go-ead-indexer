@@ -405,10 +405,44 @@ func testCommit_success(t *testing.T) {
 // All requests made by `SolrClient` use the same retry logic in `sendRequest()`,
 // so we don't bother with the complicated retry test suites already implemented
 // for `TestAdd()`.
-// The Solr fake will return an HTTP 200 response if the request was correct,
-// otherwise it will return an HTTP 500 error, whose body will contain the dumped
-// request that was received.
 func TestDelete(t *testing.T) {
+	t.Run("Delete correctly returns an error",
+		testDelete_connectionRefusedError)
+	t.Run("Delete success", testDelete_success)
+}
+
+func testDelete_connectionRefusedError(t *testing.T) {
+	unusedLocalhostNetworkAddress := util.GetUnusedLocalhostNetworkAddress()
+
+	solrClientForDeleteErrorTests, err := NewSolrClient(
+		"http://" + unusedLocalhostNetworkAddress)
+	if err != nil {
+		t.Fatalf(`NewSolrClient() failed with error: %s`, err)
+	}
+
+	// All retries will fail, so execute them as quickly as possible.
+	solrClientForDeleteErrorTests.backoffInitialInterval = 1 * time.Nanosecond
+
+	err = solrClientForDeleteErrorTests.Delete("doesnotmatter_1")
+	if err == nil {
+		t.Errorf("Expected an error to be returned for a delete request" +
+			" made to an unused localhost port, but no error was returned")
+
+		return
+	}
+
+	var syscallErrno syscall.Errno
+	if errors.As(err, &syscallErrno) {
+		if errors.Is(err, syscall.ECONNREFUSED) {
+			return
+		}
+	}
+
+	t.Errorf("Expected a connection refused request to be returned, but"+
+		` got: "%s"`, err.Error())
+}
+
+func testDelete_success(t *testing.T) {
 	testutils.ResetErrorResponseCounts()
 
 	// Have to pass in `UpdateURLPathAndQuery` to `testutils` sub-package, which
@@ -416,16 +450,16 @@ func TestDelete(t *testing.T) {
 	fakeSolrServer = testutils.MakeSolrFake(UpdateURLPathAndQuery, t)
 	defer fakeSolrServer.Close()
 
-	solrClientForDeleteTests, err := NewSolrClient(fakeSolrServer.URL)
+	solrClientForDeleteSuccessTests, err := NewSolrClient(fakeSolrServer.URL)
 	if err != nil {
 		t.Fatalf(`NewSolrClient() failed with error: %s`, err)
 	}
 
 	// The Solr fake returns almost all error responses immediately, so make
 	// these tests fast by shortening the retry intervals.
-	solrClientForDeleteTests.backoffInitialInterval = 1 * time.Millisecond
+	solrClientForDeleteSuccessTests.backoffInitialInterval = 1 * time.Millisecond
 
-	err = solrClientForDeleteTests.Delete(testutils.EADIDForDeleteTest)
+	err = solrClientForDeleteSuccessTests.Delete(testutils.EADIDForDeleteTest)
 	if err != nil {
 		t.Errorf(`Expected no error for "%s", got: "%s".  Error shows`+
 			` delete request received, which does not match expected "%s",`,
