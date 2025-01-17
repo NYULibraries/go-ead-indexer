@@ -95,8 +95,8 @@ func MakeSolrFake(updateURLPathAndQuery string, t *testing.T) *httptest.Server {
 				return
 			}
 
+			// Is this a test Commit() request?
 			if id == "" {
-				// This is a commit request.
 				err := handleCommitRequest(w, r)
 				if err != nil {
 					t.Errorf("handleCommitRequest() failed with error: %s", err)
@@ -105,6 +105,7 @@ func MakeSolrFake(updateURLPathAndQuery string, t *testing.T) *httptest.Server {
 				return
 			}
 
+			// Is this a test Delete() request?
 			if id == EADIDForDeleteTest {
 				err := handleDeleteRequest(w, r)
 				if err != nil {
@@ -114,6 +115,7 @@ func MakeSolrFake(updateURLPathAndQuery string, t *testing.T) *httptest.Server {
 				return
 			}
 
+			// This is a test Add() request.
 			if isErrorResponseID(id) {
 				err := handleErrorResponse(w, id, receivedRequest)
 				if err != nil {
