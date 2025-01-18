@@ -117,7 +117,7 @@ func MakeSolrFake(updateURLPathAndQuery string, t *testing.T) *httptest.Server {
 
 			// This is a test Add() request.
 			if isErrorResponseID(id) {
-				err := handleErrorResponse(w, id, receivedRequest)
+				err := handleErrorResponse(w, id)
 				if err != nil {
 					t.Errorf(
 						"handleErrorResponse() failed with error: %s",
@@ -203,7 +203,7 @@ func handleDeleteRequest(w http.ResponseWriter, r *http.Request) error {
 	return nil
 }
 
-func handleErrorResponse(w http.ResponseWriter, id string, receivedRequest []byte) error {
+func handleErrorResponse(w http.ResponseWriter, id string) error {
 	errorResponse, err := getErrorResponse(id)
 	if err != nil {
 		return err
