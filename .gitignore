@@ -4,10 +4,16 @@
 .DS_Store
 
 # Temporary files for diff'ing of actual values against golden files.
+# `ead` package
 pkg/ead/testdata/tmp/*
 !pkg/ead/testdata/tmp/actual/
 pkg/ead/testdata/tmp/actual/*
 !pkg/ead/testdata/tmp/actual/.gitkeep
+# `net/solr` package
+pkg/net/solr/testdata/tmp/*
+!pkg/net/solr/testdata/tmp/actual/
+pkg/net/solr/testdata/tmp/actual/*
+!pkg/net/solr/testdata/tmp/actual/.gitkeep
 
 ### Patterns below are copied from https://github.com/github/gitignore/blob/e95aa3fbbd591f0486205cb8848d99e38bee5b35/Go.gitignore
 
