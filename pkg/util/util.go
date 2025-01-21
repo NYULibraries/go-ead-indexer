@@ -6,7 +6,6 @@ import (
 	"go-ead-indexer/pkg/util/diff"
 	"net"
 	"os"
-	"path/filepath"
 	"runtime"
 	"strings"
 )
@@ -50,17 +49,18 @@ func DiffStrings(label1 string, string1 string, label2, string2 string) string {
 	return diffString
 }
 
-func GetCallerFunctionName(skip int) (string, error) {
+func GetCallerFunctionName(skip int) (string, string, error) {
 	pc, _, _, ok := runtime.Caller(skip)
 	if !ok {
-		return "", errors.New("runtime.Caller(skip) failed")
+		return "", "", errors.New(fmt.Sprintf("runtime.Caller(%d) failed", skip))
 	}
 
 	fullyQualifiedFunctionName := runtime.FuncForPC(pc).Name()
-	functionName := filepath.Ext(fullyQualifiedFunctionName)
+	dotSeparator := strings.LastIndexByte(fullyQualifiedFunctionName, '.')
 
-	// Don't include the initial period.
-	return functionName[1:], nil
+	return fullyQualifiedFunctionName[:dotSeparator],
+		fullyQualifiedFunctionName[dotSeparator+1:],
+		nil
 }
 
 // This is the method that Go itself uses: see net/http/httptest/server.go:
