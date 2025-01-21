@@ -4,12 +4,14 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
+	"go-ead-indexer/pkg/util"
 	"io"
 	"net/http"
 	"net/http/httptest"
 	"net/http/httputil"
 	"regexp"
 	"strconv"
+	"strings"
 	"testing"
 	"time"
 )
@@ -53,6 +55,8 @@ const errorResponseIDPrefix = "error_"
 
 const errorsTurnedOff = -1
 
+var nonAlphanumericRegExp = regexp.MustCompile("[^a-zA-Z0-9]")
+
 // Count of errors responses already returned for an error response type.
 // Separate counts are kept for each test name.
 var errorResponseCounts = map[string]map[ErrorResponseType]int{}
@@ -60,8 +64,14 @@ var errorResponseCounts = map[string]map[ErrorResponseType]int{}
 var errorResponseTypeRegExp = regexp.MustCompile(errorResponseIDPrefix +
 	"([a-z0-9]+)" + "_" + "([a-z0-9]+)" + "_" + "([0-9]+)")
 
-func MakeErrorResponseIDAndPostBody(testName string, errorResponseType ErrorResponseType,
+// Make and error response ID and POST body from an error response type and number
+// number of error responses the Solr fake should return.  The `testName` key used
+// for the ID is generated automatically so that the test function does not need
+// to pass in its own name.
+func MakeErrorResponseIDAndPostBody(errorResponseType ErrorResponseType,
 	numErrorResponsesToReturn int) (string, string) {
+	testName := getTestNameForErrorResponseCountMapKey()
+
 	id := makeErrorResponseID(testName, errorResponseType, numErrorResponsesToReturn)
 	postBody := []byte(fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8"?>
 <add>
@@ -141,7 +151,11 @@ func MakeSolrFake(updateURLPathAndQuery string, t *testing.T) *httptest.Server {
 	)
 }
 
-func ResetErrorResponseCounts(testName string) {
+// Reset error response counts for the test.  The `testName` key is generated
+// automatically so that the test function does not need to pass in its own name.
+func ResetErrorResponseCounts() {
+	testName := getTestNameForErrorResponseCountMapKey()
+
 	delete(errorResponseCounts, testName)
 }
 
@@ -171,6 +185,35 @@ func getErrorResponse(id string) (ErrorResponse, error) {
 	} else {
 		return ErrorResponse{}, errors.New(`"%s" is not a valid ErrorResponseType ID`)
 	}
+}
+
+// This is used by helper functions in this file for making a string key for the
+// `errorResponseCounts` map by getting the name of the test function which called
+// the helper and normalizing it for the map.
+func getTestNameForErrorResponseCountMapKey() string {
+	callstackErrorMessage := `The call stack for this utility function must match this pattern:
+-> this function
+-> a Solr fake helper function
+-> a test function`
+
+	// Skip value is 3 to get the name of the test function which called the helper
+	// which called this function.
+	raw, err := util.GetCallerFunctionName(3)
+	if err != nil {
+		panic(fmt.Sprintf(`util.GetCallerFunctionName([SKIP]) failed with error`+
+			` "%s".  Please check the [SKIP] value.
+%s`,
+			err.Error(), callstackErrorMessage))
+	}
+
+	alphanumericOnly := nonAlphanumericRegExp.ReplaceAllString(raw, "")
+
+	if !strings.HasPrefix(alphanumericOnly, "test") {
+		panic(fmt.Sprintf(`"%s" is not a valid test name.  `+callstackErrorMessage,
+			alphanumericOnly))
+	}
+
+	return strings.ToLower(alphanumericOnly)
 }
 
 func handleCommitRequest(w http.ResponseWriter, r *http.Request) error {
