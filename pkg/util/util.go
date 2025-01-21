@@ -49,6 +49,10 @@ func DiffStrings(label1 string, string1 string, label2, string2 string) string {
 	return diffString
 }
 
+// Return package name and function name for caller on the callstack, selected
+// by `skip` which is the number of stack frames to ascend, where 0 identifies
+// the caller of this utility function.  See `runtime.Caller` code and/or
+// documentations for more details.
 func GetCallerFunctionName(skip int) (string, string, error) {
 	pc, _, _, ok := runtime.Caller(skip)
 	if !ok {
