@@ -64,7 +64,8 @@ func TestSetSolrURLOrigin(t *testing.T) {
 }
 
 func testAdd_doNotRetryIndefinitely(t *testing.T) {
-	testutils.ResetErrorResponseCounts()
+	testName := testutils.GetErrorResponseCountsTestName()
+	testutils.ResetErrorResponseCounts(testName)
 
 	const expectedError = `HTTP/1.1 408 Request Timeout
 Transfer-Encoding: chunked
@@ -77,7 +78,7 @@ Content-Type: text/plain;charset=UTF-8
 `
 
 	// Have Solr fake error out more times than `Add()` will retry.
-	id, postBody := testutils.MakeErrorResponseIDAndPostBody(
+	id, postBody := testutils.MakeErrorResponseIDAndPostBody(testName,
 		testutils.HTTP408RequestTimeout, getMaxRetries()+1)
 
 	err := solrClientDefaultForAddTests.Add(postBody)
@@ -103,7 +104,8 @@ Content-Type: text/plain;charset=UTF-8
 // Test that `Add()` will not attempt to retry certain errors which are not worth
 // retrying.
 func testAdd_neverRetryCertainHTTPErrors(t *testing.T) {
-	testutils.ResetErrorResponseCounts()
+	testName := testutils.GetErrorResponseCountsTestName()
+	testutils.ResetErrorResponseCounts(testName)
 
 	const expectedErrorHTTP400BadRequest = `HTTP/1.1 400 Bad Request
 Transfer-Encoding: chunked
@@ -237,7 +239,7 @@ Content-Type: text/plain;charset=UTF-8
 	for _, testCase := range testCases {
 		// Set `numErrorResponsesToReturn` to 1 because `Add()` should never retry
 		// these kinds of errors.
-		id, postBody := testutils.MakeErrorResponseIDAndPostBody(
+		id, postBody := testutils.MakeErrorResponseIDAndPostBody(testName,
 			testCase.errorResponseType, 1)
 
 		err := solrClientDefaultForAddTests.Add(postBody)
@@ -262,7 +264,8 @@ Content-Type: text/plain;charset=UTF-8
 }
 
 func testAdd_retryCertainHTTPErrors(t *testing.T) {
-	testutils.ResetErrorResponseCounts()
+	testName := testutils.GetErrorResponseCountsTestName()
+	testutils.ResetErrorResponseCounts(testName)
 
 	errorResponseTypes := []testutils.ErrorResponseType{
 		testutils.HTTP408RequestTimeout,
@@ -273,7 +276,7 @@ func testAdd_retryCertainHTTPErrors(t *testing.T) {
 	}
 
 	for _, errorResponseType := range errorResponseTypes {
-		id, postBody := testutils.MakeErrorResponseIDAndPostBody(
+		id, postBody := testutils.MakeErrorResponseIDAndPostBody(testName,
 			errorResponseType, getMaxRetries())
 
 		err := solrClientDefaultForAddTests.Add(postBody)
@@ -286,11 +289,12 @@ func testAdd_retryCertainHTTPErrors(t *testing.T) {
 }
 
 func testAdd_retryContextDeadlineExceeded(t *testing.T) {
-	testutils.ResetErrorResponseCounts()
+	testName := testutils.GetErrorResponseCountsTestName()
+	testutils.ResetErrorResponseCounts(testName)
 
 	solrClientDefaultForAddTests.setTimeout(testutils.ContextDeadlineExceededErrorResponseDuration)
 
-	id, postBody := testutils.MakeErrorResponseIDAndPostBody(
+	id, postBody := testutils.MakeErrorResponseIDAndPostBody(testName,
 		testutils.ContextDeadlineExceeded, getMaxRetries())
 
 	err := solrClientDefaultForAddTests.Add(postBody)
@@ -359,7 +363,8 @@ func testCommit_connectionRefusedError(t *testing.T) {
 }
 
 func testCommit_success(t *testing.T) {
-	testutils.ResetErrorResponseCounts()
+	testName := testutils.GetErrorResponseCountsTestName()
+	testutils.ResetErrorResponseCounts(testName)
 
 	// Have to pass in `UpdateURLPathAndQuery` to `testutils` sub-package, which
 	// can't import its own parent package.
@@ -393,7 +398,8 @@ func testDelete_connectionRefusedError(t *testing.T) {
 }
 
 func testDelete_success(t *testing.T) {
-	testutils.ResetErrorResponseCounts()
+	testName := testutils.GetErrorResponseCountsTestName()
+	testutils.ResetErrorResponseCounts(testName)
 
 	// Have to pass in `UpdateURLPathAndQuery` to `testutils` sub-package, which
 	// can't import its own parent package.
