@@ -38,6 +38,22 @@ func TestCompactStringSlicePreserveOrder(t *testing.T) {
 	}
 }
 
+func TestGetCallerFunctionNameError(t *testing.T) {
+	expectedError := "runtime.Caller(999) failed"
+
+	_, _, err := GetCallerFunctionName(999)
+	if err == nil {
+		t.Errorf("Expected GetCallerFunctionName(2) to return error"+
+			` "%s", but no error was returned.`, expectedError)
+	} else {
+		actualError := err.Error()
+		if actualError != expectedError {
+			t.Errorf("Expected GetCallerFunctionName(2) to return error"+
+				` "%s", but instead got error "%s"`, expectedError, actualError)
+		}
+	}
+}
+
 func TestGetCallerFunctionNameSkip1(t *testing.T) {
 	const expectedPackage = "go-ead-indexer/pkg/util"
 	const expectedFunction = "TestGetCallerFunctionNameSkip1"
