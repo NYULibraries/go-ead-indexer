@@ -1,0 +1,550 @@
+package solr
+
+import (
+	"errors"
+	eadtestutils "go-ead-indexer/pkg/ead/testutils"
+	"go-ead-indexer/pkg/net/solr/testutils"
+	"go-ead-indexer/pkg/util"
+	"net/http/httptest"
+	"strings"
+	"syscall"
+	"testing"
+	"time"
+)
+
+var fakeSolrServer *httptest.Server
+
+// Shared default Solr client for `Add()` tests
+var solrClientDefaultForAddTests SolrClient
+
+func TestAdd(t *testing.T) {
+	// Have to pass in `UpdateURLPathAndQuery` to `testutils` sub-package, which
+	// can't import its own parent package.
+	fakeSolrServer = testutils.MakeSolrFake(UpdateURLPathAndQuery, t)
+	defer fakeSolrServer.Close()
+
+	var err error
+	solrClientDefaultForAddTests, err = NewSolrClient(fakeSolrServer.URL)
+	if err != nil {
+		t.Fatalf(`NewSolrClient() failed with error: %s`, err)
+	}
+
+	// The Solr fake returns almost all error responses immediately, so make
+	// these tests fast by shortening the retry intervals.
+	solrClientDefaultForAddTests.backoffInitialInterval = 1 * time.Millisecond
+
+	t.Run("Do not retry indefinitely", testAdd_doNotRetryMoreThanMaxRetries)
+	t.Run("Never retry certain HTTP errors", testAdd_neverRetryCertainHTTPErrors)
+	t.Run("Retry certain HTTP errors", testAdd_retryCertainHTTPErrors)
+	t.Run("Retry context deadline exceeded errors", testAdd_retryContextDeadlineExceeded)
+	t.Run("Successfully add", testAdd_successAdds)
+}
+
+// All requests made by `SolrClient` use the same retry logic in `sendRequest()`,
+// so we don't bother with the complicated retry test suites already implemented
+// for `TestAdd()`.
+func TestCommit(t *testing.T) {
+	t.Run("Commit correctly returns an error",
+		testCommit_connectionRefusedError)
+	t.Run("Commit success", testCommit_success)
+}
+
+// All requests made by `SolrClient` use the same retry logic in `sendRequest()`,
+// so we don't bother with the complicated retry test suites already implemented
+// for `TestAdd()`.
+func TestDelete(t *testing.T) {
+	t.Run("Delete correctly returns an error",
+		testDelete_connectionRefusedError)
+	t.Run("Delete success", testDelete_success)
+}
+
+func TestSetSolrURLOrigin(t *testing.T) {
+	t.Run("Errors", testSetSolrURLOrigin_errors)
+	t.Run("Successfully set URL origin", testSetSolrURLOrigin_normal)
+}
+
+func testAdd_doNotRetryMoreThanMaxRetries(t *testing.T) {
+	testName := testutils.GetErrorResponseCountsTestName()
+	testutils.ResetErrorResponseCounts(testName)
+
+	const expectedError = `HTTP/1.1 408 Request Timeout
+Transfer-Encoding: chunked
+Content-Type: text/plain;charset=UTF-8
+
+60
+{"responseHeader":{"status":408,"QTime":0},"error":{"msg":"[http408requesttimeout]","code":408}}
+0
+
+`
+
+	// Have Solr fake error out more times than `Add()` will retry.
+	id, postBody := testutils.MakeErrorResponseIDAndPostBody(testName,
+		testutils.HTTP408RequestTimeout, getMaxRetries()+1)
+
+	err := solrClientDefaultForAddTests.Add(postBody)
+
+	if err == nil {
+		t.Errorf(`Expected Add() for id="%s" to return an error, but no error was returned`,
+			id)
+
+		return
+	}
+
+	// The returned error contains carriage returns, which would be a pain
+	// to get into the copy/pasted values above, so we just remove it from
+	// actual values before comparison.  Not using golden files for these
+	// because they very likely will never change.
+	massagedActualError := strings.ReplaceAll(err.Error(), "\r", "")
+	if massagedActualError != expectedError {
+		t.Errorf(`Expected request for id="%s" to return error "%s"`+
+			` but got error "%s"`, id, expectedError, massagedActualError)
+	}
+}
+
+// Test that `Add()` will not attempt to retry certain errors which are not worth
+// retrying.
+func testAdd_neverRetryCertainHTTPErrors(t *testing.T) {
+	testName := testutils.GetErrorResponseCountsTestName()
+	testutils.ResetErrorResponseCounts(testName)
+
+	const expectedErrorHTTP400BadRequest = `HTTP/1.1 400 Bad Request
+Transfer-Encoding: chunked
+Content-Type: text/plain;charset=UTF-8
+
+5f
+{"responseHeader":{"status":400,"QTime":0},"error":{"msg":"missing content stream","code":400}}
+0
+
+`
+	const expectedErrorHTTPE401Unauthorized = `HTTP/1.1 401 Unauthorized
+Transfer-Encoding: chunked
+Content-Type: text/plain;charset=UTF-8
+
+5e
+{"responseHeader":{"status":401,"QTime":0},"error":{"msg":"[http401unauthorized]","code":401}}
+0
+
+`
+	const expectedErrorHTTP403Forbidden = `HTTP/1.1 403 Forbidden
+Transfer-Encoding: chunked
+Content-Type: text/plain;charset=UTF-8
+
+5b
+{"responseHeader":{"status":403,"QTime":0},"error":{"msg":"[http403forbidden]","code":403}}
+0
+
+`
+	const expectedErrorHTTP404NotFound = `HTTP/1.1 404 Not Found
+Transfer-Encoding: chunked
+Content-Type: text/plain;charset=UTF-8
+
+1aa
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+<title>Error 404 Not Found</title>
+</head>
+<body><h2>HTTP ERROR 404</h2>
+<p>Problem accessing /solr/nonexistent-path.. Reason:
+<pre>    Not Found</pre></p><hr /><i><small>Powered by Jetty://</small></i><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+</body>
+</html>
+0
+
+`
+	const expectedErrorHTTP405MethodNotAllowed = `HTTP/1.1 405 Method Not Allowed
+Transfer-Encoding: chunked
+Content-Type: text/plain;charset=UTF-8
+
+1ec
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+<title>Error 405 HTTP method POST is not supported by this URL</title>
+</head>
+<body><h2>HTTP ERROR 405</h2>
+<p>Problem accessing /solr/admin.html.. Reason:
+<pre>    HTTP method POST is not supported by this URL</pre></p><hr /><i><small>Powered by Jetty://</small></i><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+</body>
+</html>
+0
+
+`
+	testCases := []struct {
+		errorResponseType testutils.ErrorResponseType
+		expectedError     string
+	}{
+		{
+			errorResponseType: testutils.HTTP400BadRequest,
+			expectedError:     expectedErrorHTTP400BadRequest,
+		},
+		{
+			errorResponseType: testutils.HTTP401Unauthorized,
+			expectedError:     expectedErrorHTTPE401Unauthorized,
+		},
+		{
+			errorResponseType: testutils.HTTP403Forbidden,
+			expectedError:     expectedErrorHTTP403Forbidden,
+		},
+		{
+			errorResponseType: testutils.HTTP404NotFound,
+			expectedError:     expectedErrorHTTP404NotFound,
+		},
+		{
+			errorResponseType: testutils.HTTP405HTTPMethodNotAllowed,
+			expectedError:     expectedErrorHTTP405MethodNotAllowed,
+		},
+	}
+
+	for _, testCase := range testCases {
+		// Set `numErrorResponsesToReturn` to 1 because `Add()` should never retry
+		// these kinds of errors.
+		id, postBody := testutils.MakeErrorResponseIDAndPostBody(testName,
+			testCase.errorResponseType, 1)
+
+		err := solrClientDefaultForAddTests.Add(postBody)
+
+		if err == nil {
+			t.Errorf(`Expected Add() for id="%s" to return an error, but no error was returned`,
+				id)
+
+			continue
+		}
+
+		// The returned error contains carriage returns, which would be a pain
+		// to get into the copy/pasted values above, so we just remove it from
+		// actual values before comparison.  Not using golden files for these
+		// because they very likely will never change.
+		massagedActualError := strings.ReplaceAll(err.Error(), "\r", "")
+		if massagedActualError != testCase.expectedError {
+			t.Errorf(`Expected request for id="%s" to return error "%s", `+
+				` but got error "%s"`, id, testCase.expectedError, err.Error())
+		}
+	}
+}
+
+func testAdd_retryCertainHTTPErrors(t *testing.T) {
+	testName := testutils.GetErrorResponseCountsTestName()
+	testutils.ResetErrorResponseCounts(testName)
+
+	errorResponseTypes := []testutils.ErrorResponseType{
+		testutils.HTTP408RequestTimeout,
+		testutils.HTTP500InternalServerError,
+		testutils.HTTP502BadGateway,
+		testutils.HTTP503ServiceUnavailable,
+		testutils.HTTP504GatewayTimeout,
+	}
+
+	for _, errorResponseType := range errorResponseTypes {
+		id, postBody := testutils.MakeErrorResponseIDAndPostBody(testName,
+			errorResponseType, getMaxRetries())
+
+		err := solrClientDefaultForAddTests.Add(postBody)
+
+		if err != nil {
+			t.Errorf(`Expected request for id="%s" to succeed, but it failed with error "%s"`,
+				id, err.Error())
+		}
+	}
+}
+
+func testAdd_retryContextDeadlineExceeded(t *testing.T) {
+	testName := testutils.GetErrorResponseCountsTestName()
+	testutils.ResetErrorResponseCounts(testName)
+
+	solrClientDefaultForAddTests.setTimeout(testutils.ContextDeadlineExceededErrorResponseDuration)
+
+	id, postBody := testutils.MakeErrorResponseIDAndPostBody(testName,
+		testutils.ContextDeadlineExceeded, getMaxRetries())
+
+	err := solrClientDefaultForAddTests.Add(postBody)
+	if err != nil {
+		t.Errorf(`Expected request for id="%s" to succeed, but it failed with error "%s"`,
+			id, err.Error())
+	}
+}
+
+// Use `t.Errorf()` followed by `return` instead of `t.Fatalf()` to allow
+// the `testAdd_successAdds()` caller to do its entire test loop.
+func testAdd_successAdd(goldenFileID string, t *testing.T) {
+	postBody, err := eadtestutils.GetGoldenFileValue(testutils.TestEAD, goldenFileID)
+	if err != nil {
+		t.Errorf("eadtestutils.GetGoldenFileValue(testutils.TestEAD, goldenFileID) failed with error: %s", err)
+
+		return
+	}
+
+	err = solrClientDefaultForAddTests.Add(postBody)
+	if err != nil {
+		t.Errorf("Expected no error for %s, got: %s", goldenFileID, err)
+
+		return
+	}
+
+	actualRequest, err := testutils.GetActualFileContents(testutils.TestEAD, goldenFileID)
+	if err != nil {
+		t.Errorf("testutils.getActualFileContents(testutils.TestEAD, goldenFileID) failed with error: %s", err)
+
+		return
+	}
+	massagedActualRequest := testutils.MassagedGoHTTPClientRequest(actualRequest)
+
+	expectedRequest := testutils.GetExpectedPOSTRequestString(postBody)
+	diff := util.DiffStrings("expected", expectedRequest,
+		"actual", massagedActualRequest)
+	if diff != "" {
+		t.Errorf(`%s fail: actual request does not match expected: %s`,
+			goldenFileID, diff)
+	}
+}
+
+func testAdd_successAdds(t *testing.T) {
+	err := testutils.Clean()
+	if err != nil {
+		t.Errorf("clean() failed with error: %s", err)
+	}
+
+	// Have to pass in `UpdateURLPathAndQuery` to `testutils` sub-package, which
+	// can't import its own parent package.
+	fakeSolrServer := testutils.MakeSolrFake(UpdateURLPathAndQuery, t)
+	defer fakeSolrServer.Close()
+
+	goldenFileIDs := eadtestutils.GetGoldenFileIDs(testutils.TestEAD)
+	for _, goldenFileID := range goldenFileIDs {
+		testAdd_successAdd(goldenFileID, t)
+	}
+}
+
+func testCommit_connectionRefusedError(t *testing.T) {
+	testPermanentConnectionRefusedRequest(t, func(solrClient SolrClient) error {
+		err := solrClient.Commit()
+		return err
+	})
+}
+
+func testCommit_success(t *testing.T) {
+	testName := testutils.GetErrorResponseCountsTestName()
+	testutils.ResetErrorResponseCounts(testName)
+
+	// Have to pass in `UpdateURLPathAndQuery` to `testutils` sub-package, which
+	// can't import its own parent package.
+	fakeSolrServer = testutils.MakeSolrFake(UpdateURLPathAndQuery, t)
+	defer fakeSolrServer.Close()
+
+	solrClientForCommitSuccessTests, err := NewSolrClient(fakeSolrServer.URL)
+	if err != nil {
+		t.Fatalf(`NewSolrClient() failed with error: %s`, err)
+	}
+
+	// The Solr fake returns almost all error responses immediately, so make
+	// these tests fast by shortening the retry intervals.
+	solrClientForCommitSuccessTests.backoffInitialInterval = 1 * time.Millisecond
+
+	err = solrClientForCommitSuccessTests.Commit()
+	if err != nil {
+		t.Errorf(`Expected no error for commit request, got: "%s".  Error shows`+
+			` commit request received, which does not match expected "%s",`,
+			err, testutils.ExpectedCommitRequest)
+
+		return
+	}
+}
+
+func testDelete_connectionRefusedError(t *testing.T) {
+	testPermanentConnectionRefusedRequest(t, func(solrClient SolrClient) error {
+		err := solrClient.Delete("doesnotmatter_1")
+		return err
+	})
+}
+
+func testDelete_success(t *testing.T) {
+	testName := testutils.GetErrorResponseCountsTestName()
+	testutils.ResetErrorResponseCounts(testName)
+
+	// Have to pass in `UpdateURLPathAndQuery` to `testutils` sub-package, which
+	// can't import its own parent package.
+	fakeSolrServer = testutils.MakeSolrFake(UpdateURLPathAndQuery, t)
+	defer fakeSolrServer.Close()
+
+	solrClientForDeleteSuccessTests, err := NewSolrClient(fakeSolrServer.URL)
+	if err != nil {
+		t.Fatalf(`NewSolrClient() failed with error: %s`, err)
+	}
+
+	// The Solr fake returns almost all error responses immediately, so make
+	// these tests fast by shortening the retry intervals.
+	solrClientForDeleteSuccessTests.backoffInitialInterval = 1 * time.Millisecond
+
+	err = solrClientForDeleteSuccessTests.Delete(testutils.EADIDForDeleteTest)
+	if err != nil {
+		t.Errorf(`Expected no error for "%s", got: "%s".  Error shows`+
+			` delete request received, which does not match expected "%s",`,
+			testutils.EADIDForDeleteTest, err, testutils.ExpectedDeleteRequest)
+
+		return
+	}
+}
+
+func testPermanentConnectionRefusedRequest(t *testing.T, requestFunction func(SolrClient) error) {
+	unusedLocalhostNetworkAddress := util.GetUnusedLocalhostNetworkAddress()
+
+	solrClient, err := NewSolrClient("http://" + unusedLocalhostNetworkAddress)
+	if err != nil {
+		t.Fatalf(`NewSolrClient() failed with error: %s`, err)
+	}
+
+	// All retries will fail, so execute them as quickly as possible.
+	solrClient.backoffInitialInterval = 1 * time.Nanosecond
+
+	err = requestFunction(solrClient)
+	if err == nil {
+		t.Errorf("Expected an error to be returned for a request" +
+			" made to an unused localhost port, but no error was returned")
+
+		return
+	}
+
+	var syscallErrno syscall.Errno
+	if errors.As(err, &syscallErrno) {
+		if errors.Is(err, syscall.ECONNREFUSED) {
+			return
+		}
+	}
+
+	t.Errorf("Expected a connection refused request to be returned, but"+
+		` got: "%s"`, err.Error())
+}
+
+func testSetSolrURLOrigin_errors(t *testing.T) {
+	testCases := []struct {
+		origin        string
+		expectedError string
+	}{
+		{
+			origin:        "",
+			expectedError: `parse "": empty url`,
+		},
+		{
+			origin:        "x",
+			expectedError: `parse "x": invalid URI for request`,
+		},
+		{
+			origin:        "ftp://solr-host.org",
+			expectedError: `setSolrURLOrigin("ftp://solr-host.org"): invalid scheme`,
+		},
+		{
+			origin:        "http://",
+			expectedError: `setSolrURLOrigin("http://"): host is empty`,
+		},
+		{
+			origin:        "https://",
+			expectedError: `setSolrURLOrigin("https://"): https is not currently supported`,
+		},
+		{
+			origin:        testutils.FakeSolrHostAndPort,
+			expectedError: `setSolrURLOrigin("` + testutils.FakeSolrHostAndPort + `"): invalid scheme`,
+		},
+	}
+
+	sc, err := NewSolrClient(solrClientDefaultForAddTests.GetSolrURLOrigin())
+	if err != nil {
+		t.Fatalf(`NewSolrClient() failed with error: %s`, err)
+	}
+
+	initialSolrURLOrigin := sc.GetSolrURLOrigin()
+
+	for _, testCase := range testCases {
+		actualError := sc.setSolrURLOrigin(testCase.origin)
+		var actualErrorString string
+		if actualError != nil {
+			actualErrorString = actualError.Error()
+		}
+
+		if actualErrorString == "" {
+			t.Errorf(`setSolrURLOrigin("%s") should have returned error "%s",`+
+				" but no error was returned", testCase.origin, testCase.expectedError)
+		} else if actualErrorString != testCase.expectedError {
+			t.Errorf(`setSolrURLOrigin("%s") should have returned error "%s",`+
+				` but instead returned error "%s"`, testCase.origin, testCase.expectedError,
+				actualErrorString)
+		}
+
+		actualOrigin := sc.GetSolrURLOrigin()
+		if actualOrigin != initialSolrURLOrigin {
+			t.Errorf("`GetSolrURLOrigin()` should have returned the"+
+				` unchanged initial value "%s", but it instead returned "%s"`,
+				initialSolrURLOrigin, actualOrigin)
+		}
+	}
+}
+
+func testSetSolrURLOrigin_normal(t *testing.T) {
+	testCases := []struct {
+		origin        string
+		expectedError string
+	}{
+		{
+			origin:        "http://" + testutils.FakeSolrHostAndPort,
+			expectedError: "",
+		},
+	}
+
+	sc, err := NewSolrClient("http://original-unchanged-url-origin.com")
+	if err != nil {
+		t.Fatalf(`NewSolrClient() failed with error: %s`, err)
+	}
+
+	for _, testCase := range testCases {
+		err := sc.setSolrURLOrigin(testCase.origin)
+		if err != nil {
+			t.Errorf(`setSolrURLOrigin("%s") should not have returned an error,`+
+				` but it returned error "%s"`, testCase.origin, err.Error())
+		}
+
+		actualOrigin := sc.GetSolrURLOrigin()
+		if actualOrigin != testCase.origin {
+			t.Errorf(`GetSolrURLOrigin() should have returned "%s",`+
+				` but it instead returned "%s"`, testCase.origin, actualOrigin)
+		}
+	}
+}
