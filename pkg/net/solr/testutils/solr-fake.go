@@ -278,7 +278,7 @@ func isValidSolrUpdateRequest(r *http.Request, updateURLPathAndQuery string) boo
 
 func makeErrorResponseID(testName string, errorResponseType ErrorResponseType, numErrorResponsesToReturn int) string {
 	if numErrorResponsesToReturn <= 0 {
-		panic("`MakeErrorResponseID()` requires a positive integer for `numErrorResponsesToReturn`")
+		panic("`makeErrorResponseID()` requires a positive integer for `numErrorResponsesToReturn`")
 	}
 
 	return errorResponseIDPrefix +
