@@ -33,7 +33,7 @@ func TestAdd(t *testing.T) {
 	// these tests fast by shortening the retry intervals.
 	solrClientDefaultForAddTests.backoffInitialInterval = 1 * time.Millisecond
 
-	t.Run("Do not retry indefinitely", testAdd_doNotRetryIndefinitely)
+	t.Run("Do not retry indefinitely", testAdd_doNotRetryMoreThanMaxRetries)
 	t.Run("Never retry certain HTTP errors", testAdd_neverRetryCertainHTTPErrors)
 	t.Run("Retry certain HTTP errors", testAdd_retryCertainHTTPErrors)
 	t.Run("Retry context deadline exceeded errors", testAdd_retryContextDeadlineExceeded)
@@ -63,7 +63,7 @@ func TestSetSolrURLOrigin(t *testing.T) {
 	t.Run("Successfully set URL origin", testSetSolrURLOrigin_normal)
 }
 
-func testAdd_doNotRetryIndefinitely(t *testing.T) {
+func testAdd_doNotRetryMoreThanMaxRetries(t *testing.T) {
 	testName := testutils.GetErrorResponseCountsTestName()
 	testutils.ResetErrorResponseCounts(testName)
 
