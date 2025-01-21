@@ -76,9 +76,7 @@ func GetErrorResponseCountsTestName() string {
 	pkg, function, err := util.GetCallerFunctionName(2)
 	if err != nil {
 		panic(fmt.Sprintf(`util.GetCallerFunctionName([SKIP]) failed with error`+
-			` "%s".  Please check the [SKIP] value.
-%s`,
-			err.Error()))
+			` "%s".  Please check the [SKIP] value.`, err.Error()))
 	}
 
 	if pkg != validPackage {
