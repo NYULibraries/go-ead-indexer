@@ -53,14 +53,16 @@ const errorResponseIDPrefix = "error_"
 
 const errorsTurnedOff = -1
 
-var errorResponseCounts = map[ErrorResponseType]int{}
+// Count of errors responses already returned for an error response type.
+// Separate counts are kept for each test name.
+var errorResponseCounts = map[string]map[ErrorResponseType]int{}
 
 var errorResponseTypeRegExp = regexp.MustCompile(errorResponseIDPrefix +
-	"([a-z0-9]+)" + "_" + "([0-9]+)")
+	"([a-z0-9]+)" + "_" + "([a-z0-9]+)" + "_" + "([0-9]+)")
 
-func MakeErrorResponseIDAndPostBody(errorResponseType ErrorResponseType,
+func MakeErrorResponseIDAndPostBody(testName string, errorResponseType ErrorResponseType,
 	numErrorResponsesToReturn int) (string, string) {
-	id := makeErrorResponseID(errorResponseType, numErrorResponsesToReturn)
+	id := makeErrorResponseID(testName, errorResponseType, numErrorResponsesToReturn)
 	postBody := []byte(fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8"?>
 <add>
   <doc>
@@ -139,16 +141,17 @@ func MakeSolrFake(updateURLPathAndQuery string, t *testing.T) *httptest.Server {
 	)
 }
 
-func ResetErrorResponseCounts() {
-	errorResponseCounts = map[ErrorResponseType]int{}
+func ResetErrorResponseCounts(testName string) {
+	delete(errorResponseCounts, testName)
 }
 
 func getErrorResponse(id string) (ErrorResponse, error) {
 	matches := errorResponseTypeRegExp.FindStringSubmatch(id)
 
-	if len(matches) > 2 {
-		errorResponseType := ErrorResponseType(matches[1])
-		numRetriesRequired, err := strconv.Atoi(matches[2])
+	if len(matches) > 3 {
+		testName := matches[1]
+		errorResponseType := ErrorResponseType(matches[2])
+		numRetriesRequired, err := strconv.Atoi(matches[3])
 		// An error should only be possible if `errorResponseTypeRegExp` is buggy,
 		// or if `MakeErrorResponseID()` does not limit the error count to int values.
 		if err != nil {
@@ -160,6 +163,7 @@ func getErrorResponse(id string) (ErrorResponse, error) {
 			return errorResponse, errors.New(
 				fmt.Sprintf(`No ErrorResponse found for ID "%s"`, id))
 		}
+		errorResponse.TestName = testName
 		errorResponse.NumRetriesRequired = numRetriesRequired
 		errorResponse.Type = errorResponseType
 
@@ -209,6 +213,7 @@ func handleErrorResponse(w http.ResponseWriter, id string) error {
 		return err
 	}
 
+	testName := errorResponse.TestName
 	errorResponseType := errorResponse.Type
 	numRetriesRequired := errorResponse.NumRetriesRequired
 
@@ -219,27 +224,33 @@ func handleErrorResponse(w http.ResponseWriter, id string) error {
 		sendErrorResponseFunction = sendHTTPErrorResponse
 	}
 
+	// Check if test already has an error response count map.  If not, initialize
+	// it.
+	if _, ok := errorResponseCounts[testName]; !ok {
+		errorResponseCounts[testName] = map[ErrorResponseType]int{}
+	}
+
 	// Check the number of times this error response type has been sent, and
-	// response accordingly to this current request.
-	if _, ok := errorResponseCounts[errorResponseType]; !ok {
+	// respond appropriately to this current request.
+	if _, ok := errorResponseCounts[testName][errorResponseType]; !ok {
 		// This is the first occurrence.  Start the count, and send the
 		// error response.
-		errorResponseCounts[errorResponseType] = 1
+		errorResponseCounts[testName][errorResponseType] = 1
 		err = sendErrorResponseFunction(w, errorResponse)
 	} else {
-		currentCount := errorResponseCounts[errorResponseType]
+		currentCount := errorResponseCounts[testName][errorResponseType]
 		if currentCount == numRetriesRequired {
 			// Send a 200 response, and don't response with an error for this
 			// error response type anymore.
 			err = send200Response(w)
-			errorResponseCounts[errorResponseType] = errorsTurnedOff
+			errorResponseCounts[testName][errorResponseType] = errorsTurnedOff
 		} else if currentCount == errorsTurnedOff {
 			// The error responses have been used up.  Send a 200 response.
 			err = send200Response(w)
 		} else {
 			// We've not used up the errors yet.
 			// Increment the error count and send an error response.
-			errorResponseCounts[errorResponseType] += 1
+			errorResponseCounts[testName][errorResponseType] += 1
 			err = sendErrorResponseFunction(w, errorResponse)
 		}
 	}
@@ -265,12 +276,17 @@ func isValidSolrUpdateRequest(r *http.Request, updateURLPathAndQuery string) boo
 	return true
 }
 
-func makeErrorResponseID(errorResponseType ErrorResponseType, numErrorResponsesToReturn int) string {
+func makeErrorResponseID(testName string, errorResponseType ErrorResponseType, numErrorResponsesToReturn int) string {
 	if numErrorResponsesToReturn <= 0 {
 		panic("`MakeErrorResponseID()` requires a positive integer for `numErrorResponsesToReturn`")
 	}
 
-	return errorResponseIDPrefix + string(errorResponseType) + "_" + strconv.Itoa(numErrorResponsesToReturn)
+	return errorResponseIDPrefix +
+		testName +
+		"_" +
+		string(errorResponseType) +
+		"_" +
+		strconv.Itoa(numErrorResponsesToReturn)
 }
 
 func send200Response(w http.ResponseWriter) error {

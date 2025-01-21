@@ -9,6 +9,7 @@ type ErrorResponse struct {
 	HTTPStatusCode     int
 	NumRetriesRequired int
 	ResponseBody       string
+	TestName           string
 	Type               ErrorResponseType
 }
 
