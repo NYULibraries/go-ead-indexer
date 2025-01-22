@@ -74,8 +74,7 @@ func GetCallerFunctionName(skip int) (string, string, error) {
 // https://unix.stackexchange.com/questions/180492/is-it-possible-to-connect-to-tcp-port-0
 func GetUnusedLocalhostNetworkAddress() string {
 	// Based on https://github.com/golang/go/blob/69234ded30614a471c35cef5d87b0e0d3c136cd9/src/net/http/httptest/server.go#L68-L73
-	//throwawayListener, err := net.Listen("tcp", "127.0.0.1:0")
-	throwawayListener, err := net.Listen("tcp", "127.0.0.1:60570")
+	throwawayListener, err := net.Listen("tcp", "127.0.0.1:0")
 	if err != nil {
 		if throwawayListener, err = net.Listen("tcp6", "[::1]:0"); err != nil {
 			panic(fmt.Sprintf("httptest: failed to listen on a port: %v", err))
