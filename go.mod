@@ -6,6 +6,7 @@ require (
 	github.com/go-git/go-git/v5 v5.13.1
 	github.com/lestrrat-go/libxml2 v0.0.0-20240905100032-c934e3fcb9d3
 	github.com/spf13/cobra v1.8.1
+	github.com/walle/targz v0.0.0-20140417120357-57fe4206da5a
 )
 
 require (
