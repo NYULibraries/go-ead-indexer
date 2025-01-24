@@ -7,38 +7,38 @@ package git
 * 153ee1db908614837afa8edd29aec69060f6574b 2025-01-23 19:36:17 -0500 | Updating file fales/mss_001.xml [jgpawletko]
  */
 
-// TODO: update simple repo with non-null files
-//       switch to using unpackit package https://github.com/c4milo/unpackit/blob/master/unpackit_test.go
-
 import (
 	"os"
 	"testing"
 
-	"github.com/walle/targz"
+	"github.com/c4milo/unpackit"
 )
 
 func TestListEADFilesForCommit(t *testing.T) {
-	err := extractRepo("testdata/simple-repo.tar.gz", "testdata/simple-repo")
+	err := extractRepo("testdata/simple-repo.tar.gz", "testdata")
 	if err != nil {
 		t.Fatal(err)
 	}
+	defer teardownRepo("testdata/simple-repo")
 
-	operations, err := ListEADFilesForCommit("testdata/simple-repo", "ba7d9b00023a8d6ed962e46465d800265a6d06b9")
+	operations, err := ListEADFilesForCommit("testdata/simple-repo", "b13375421fdfd7b417b5f3571bfeffea2d030547")
 	if err != nil {
 		t.Fatal(err)
 	}
 	if len(operations) != 4 {
-		t.Fatalf("expected 4 operations, got %d", len(operations))
+		t.Errorf("expected 4 operations, got %d", len(operations))
 	}
 
-	err = teardownRepo("testdata/simple-repo")
-	if err != nil {
-		t.Fatal(err)
-	}
 }
 
 func extractRepo(tarball, targetDir string) error {
-	err := targz.Extract(tarball, targetDir)
+	file, err := os.Open(tarball)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	err = unpackit.Unpack(file, targetDir)
 	if err != nil {
 		return err
 	}
