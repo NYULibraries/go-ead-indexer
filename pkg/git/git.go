@@ -1,8 +1,8 @@
 package git
 
 import (
+	"errors"
 	"fmt"
-	"strings"
 
 	gogit "github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/plumbing"
@@ -66,20 +66,20 @@ func ListEADFilesForCommit(repoPath string, thisCommitHashString string) (map[st
 		return nil, err
 	}
 
-	var estr []string
+	var errs []error
 	for _, fileChange := range patch.FilePatches() {
 		from, to := fileChange.Files()
 		k, v := classifyFileChange(from, to)
 		if v == Unknown {
 			// unable to determine the type of change
-			estr = append(estr, fmt.Sprintf("unable to determine file transition: commit %s, parent commit: %s; File: from '%s', to '%s'", thisCommitHashString, parentHash.String(), getPath(from), getPath(to)))
+			errs = append(errs, fmt.Errorf("unable to determine file transition: Commits: commit '%s', parent: '%s', Files: from '%s', to '%s'", thisCommitHashString, parentHash.String(), getPath(from), getPath(to)))
 			continue
 		}
 
 		operations[k] = v
 	}
-	if len(estr) != 0 {
-		return nil, fmt.Errorf("%s", strings.Join(estr, "\n"))
+	if len(errs) != 0 {
+		return nil, errors.Join(errs...)
 	}
 
 	return operations, nil
