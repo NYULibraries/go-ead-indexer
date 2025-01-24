@@ -1,6 +1,10 @@
 package git
 
 /*
+  PLEASE NOTE: if you regenerate the "simple-repo" via the testsupport/gen-repo.bash script
+               THE COMMIT HASHES WILL CHANGE! Therefore, you will need to update the hash
+               values in the "scenarios" slice below.
+
 * b13375421fdfd7b417b5f3571bfeffea2d030547 2025-01-23 19:36:18 -0500 | Updating file archives/mc_1.xml, Deleting file fales/mss_002.xml EADID=mss_002, Updating file fales/mss_005.xml, Updating file tamwag/aia_002.xml (HEAD -> main) [jgpawletko]
 * 58ba9870dcfd02a1ee95f30dcad9380e0bbf5f80 2025-01-23 19:36:18 -0500 | Updating file archives/cap_1.xml, Updating file fales/mss_004.xml, Updating file tamwag/aia_001.xml [jgpawletko]
 * 8cdbf6b645cd89db709ea8a5196fab9cba194826 2025-01-23 19:36:18 -0500 | Updating file fales/mss_002.xml, Updating file fales/mss_003.xml [jgpawletko]
