@@ -21,14 +21,36 @@ func TestListEADFilesForCommit(t *testing.T) {
 	}
 	defer teardownRepo("testdata/simple-repo")
 
-	operations, err := ListEADFilesForCommit("testdata/simple-repo", "b13375421fdfd7b417b5f3571bfeffea2d030547")
-	if err != nil {
-		t.Fatal(err)
-	}
-	if len(operations) != 4 {
-		t.Errorf("expected 4 operations, got %d", len(operations))
+	scenarios := []struct {
+		Hash       string
+		Operations map[string]IndexerOperation
+	}{
+		{"b13375421fdfd7b417b5f3571bfeffea2d030547", map[string]IndexerOperation{"archives/mc_1.xml": Add, "fales/mss_002.xml": Delete, "fales/mss_005.xml": Add, "tamwag/aia_002.xml": Add}},
+		{"58ba9870dcfd02a1ee95f30dcad9380e0bbf5f80", map[string]IndexerOperation{"archives/cap_1.xml": Add, "fales/mss_004.xml": Add, "tamwag/aia_001.xml": Add}},
+		{"8cdbf6b645cd89db709ea8a5196fab9cba194826", map[string]IndexerOperation{"fales/mss_002.xml": Add, "fales/mss_003.xml": Add}},
+		{"153ee1db908614837afa8edd29aec69060f6574b", map[string]IndexerOperation{"fales/mss_001.xml": Add}},
 	}
 
+	for _, scenario := range scenarios {
+		operations, err := ListEADFilesForCommit("testdata/simple-repo", scenario.Hash)
+		if err != nil {
+			t.Errorf("unexpected error: %v for commit hash %s", err, scenario.Hash)
+			continue
+		}
+		if len(operations) != len(scenario.Operations) {
+			t.Errorf("expected %d operations, got %d for commit hash %s", len(scenario.Operations), len(operations), scenario.Hash)
+			continue
+		}
+		for file, expectedOp := range scenario.Operations {
+			op, ok := operations[file]
+			if !ok {
+				t.Errorf("missing operation for file '%s' for commit hash '%s'", file, scenario.Hash)
+			}
+			if op != expectedOp {
+				t.Errorf("expected operation '%d' for file '%s', got '%d' for commit hash '%s'", expectedOp, file, op, scenario.Hash)
+			}
+		}
+	}
 }
 
 func extractRepo(tarball, targetDir string) error {
