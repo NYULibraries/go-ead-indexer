@@ -11,26 +11,31 @@
 # * ae25d50165da2befdfc21624ba52241ad36070de 2025-01-03 16:55:07 -0500 | Updating file fales/mss_002.xml, Updating file fales/mss_003.xml [jgpawletko]
 # * d9fa76ef7c89994d8d3ed458e5c06b2c5bb9f414 2025-01-03 16:54:16 -0500 | Updating file fales/mss_001.xml [jgpawletko]
 
+err_exit() {
+    echo "$@" 1>&2
+    exit 1
+}
+
 mkdir -p simple-repo/archives simple-repo/fales simple-repo/tamwag
-pushd simple-repo/archives
+pushd simple-repo/archives || err_exit "Failed to change directory to simple-repo/archives"
 for e in 'mc_1' 'cap_1' ; do
-    echo "$e" > ${e}.xml
+    echo "$e" > "${e}.xml"
 done
-popd
+popd || err_exit "Failed to popd after creating archives files"
 
-pushd simple-repo/fales
+pushd simple-repo/fales || err_exit "Failed to change directory to simple-repo/fales"
 for i in {1..5}; do
-    echo "mss_00${i}" > mss_00${i}.xml
+    echo "mss_00${i}" > "mss_00${i}.xml"
 done
-popd
+popd || err_exit "Failed to popd after creating fales files"
 
-pushd simple-repo/tamwag
+pushd simple-repo/tamwag || err_exit "Failed to change directory to simple-repo/tamwag"
 for i in {1..2}; do
-    echo "aia_00${i}" > aia_00${i}.xml
+    echo "aia_00${i}" > "aia_00${i}.xml"
 done
-popd
+popd || err_exit "Failed to popd after creating tamwag files"
 
-pushd simple-repo
+pushd simple-repo || err_exit "Failed to change directory to simple-repo"
 git init .
 
 git add fales/mss_001.xml
@@ -48,7 +53,14 @@ git add fales/mss_005.xml
 git add tamwag/aia_002.xml
 git commit -m 'Updating file archives/mc_1.xml, Deleting file fales/mss_002.xml EADID='mss_002', Updating file fales/mss_005.xml, Updating file tamwag/aia_002.xml'
 
-popd
+echo "mss_001 update" > fales/mss_001.xml
+git add fales/mss_001.xml
+git commit -m 'Updating file fales/mss_001.xml'
 
-tar cvfz simple-repo.tar.gz simple-repo/.
+popd || err_exit "Failed to popd after git operations"
+
+# NOTE: you MUST include the trailing /. or the .git directory will not be included in the tarball
+tar cvfz simple-repo.tar.gz simple-repo/. 
 rm -rf simple-repo
+
+exit 0
