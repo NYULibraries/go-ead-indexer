@@ -7,6 +7,9 @@ package git
 * d9fa76ef7c89994d8d3ed458e5c06b2c5bb9f414 2025-01-03 16:54:16 -0500 | Updating file fales/mss_001.xml [jgpawletko]
  */
 
+// TODO: update simple repo with non-null files
+//       switch to using unpackit package https://github.com/c4milo/unpackit/blob/master/unpackit_test.go
+
 import (
 	"os"
 	"testing"
@@ -20,12 +23,18 @@ func TestListEADFilesForCommit(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	//operations, err := ListEADFilesForCommit("testdata/simple-repo", "ba7d9b0")
+	operations, err := ListEADFilesForCommit("testdata/simple-repo", "ba7d9b00023a8d6ed962e46465d800265a6d06b9")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(operations) != 4 {
+		t.Fatalf("expected 4 operations, got %d", len(operations))
+	}
 
-	// err = teardownRepo("testdata/simple-repo")
-	// if err != nil {
-	// 	t.Fatal(err)
-	// }
+	err = teardownRepo("testdata/simple-repo")
+	if err != nil {
+		t.Fatal(err)
+	}
 }
 
 func extractRepo(tarball, targetDir string) error {
