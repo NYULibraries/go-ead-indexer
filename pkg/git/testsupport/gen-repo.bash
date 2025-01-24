@@ -17,6 +17,10 @@ err_exit() {
     exit 1
 }
 
+if [[ -d simple-repo ]]; then
+    err_exit "simple-repo directory already exists. Please remove it before running this script."
+fi
+
 mkdir -p simple-repo/archives simple-repo/fales simple-repo/tamwag
 pushd simple-repo/archives || err_exit "Failed to change directory to simple-repo/archives"
 for e in 'mc_1' 'cap_1' ; do
