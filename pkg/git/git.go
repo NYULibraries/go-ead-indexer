@@ -103,6 +103,9 @@ func classifyFileChange(from, to diff.File) (string, IndexerOperation) {
 				     to.Path() is nil
 	*/
 	switch {
+	case from == nil && to == nil:
+		// this shouldn't happen
+		return "", Unknown
 	case from == nil && to != nil:
 		return to.Path(), Add
 	case from != nil && to == nil:
