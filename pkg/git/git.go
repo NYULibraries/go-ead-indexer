@@ -9,12 +9,12 @@ import (
 	"github.com/go-git/go-git/v5/plumbing/format/diff"
 )
 
-type IndexerOperation int
+type IndexerOperation string
 
 const (
-	Add IndexerOperation = iota
-	Delete
-	Unknown
+	Add     IndexerOperation = "add"
+	Delete  IndexerOperation = "delete"
+	Unknown IndexerOperation = "unknown"
 )
 
 func ListEADFilesForCommit(repoPath string, thisCommitHashString string) (map[string]IndexerOperation, error) {
@@ -79,7 +79,7 @@ func ListEADFilesForCommit(repoPath string, thisCommitHashString string) (map[st
 		operations[k] = v
 	}
 	if len(estr) != 0 {
-		return nil, fmt.Errorf("%s", strings.Join(estr, ";"))
+		return nil, fmt.Errorf("%s", strings.Join(estr, "\n"))
 	}
 
 	return operations, nil

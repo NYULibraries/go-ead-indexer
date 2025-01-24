@@ -5,11 +5,11 @@ package git
                THE COMMIT HASHES WILL CHANGE! Therefore, you will need to update the hash
                values in the "scenarios" slice below.
 
-* ac3dde7f32f91ccca7dabb247e22ca131429f31d 2025-01-24 08:48:46 -0500 | Updating file fales/mss_001.xml (HEAD -> main) [jgpawletko]
-* 0c56161d1bc28581c69ae93729ec2039117c3f00 2025-01-24 08:48:46 -0500 | Updating file archives/mc_1.xml, Deleting file fales/mss_002.xml EADID=mss_002, Updating file fales/mss_005.xml, Updating file tamwag/aia_002.xml [jgpawletko]
-* bee0fd5241b8952fd1bca35cb0fc4314fb52652b 2025-01-24 08:48:46 -0500 | Updating file archives/cap_1.xml, Updating file fales/mss_004.xml, Updating file tamwag/aia_001.xml [jgpawletko]
-* f860b602eeb315d5d142228a9e1fe72a818b4c4c 2025-01-24 08:48:46 -0500 | Updating file fales/mss_002.xml, Updating file fales/mss_003.xml [jgpawletko]
-* 4565d2689e24beafee83e99652436f3de7eae738 2025-01-24 08:48:46 -0500 | Updating file fales/mss_001.xml [jgpawletko]
+ * 95f2f904ad261e7d31632021fa10768d2b4096c9 2025-01-24 17:10:44 -0500 | Updating file fales/mss_001.xml (HEAD -> main) [jgpawletko]
+ * aa58b2314e11ae5af61129ebfe1ceb07b49c2d33 2025-01-24 17:10:44 -0500 | Updating file archives/mc_1.xml, Deleting file fales/mss_002.xml EADID='mss_002', Updating file fales/mss_005.xml, Updating file tamwag/aia_002.xml [jgpawletko]
+ * 3dc6fabe0fcd990e95cdd3f88cff821196fccdbd 2025-01-24 17:10:44 -0500 | Updating file archives/cap_1.xml, Updating file fales/mss_004.xml, Updating file tamwag/aia_001.xml [jgpawletko]
+ * 7fe6de7c56d30149889f8d24eaf2fa66ed9f2e2d 2025-01-24 17:10:44 -0500 | Updating file fales/mss_002.xml, Updating file fales/mss_003.xml [jgpawletko]
+ * 155309f674b5acffd7473c1648f3647a2a3d242b 2025-01-24 17:10:44 -0500 | Updating file fales/mss_001.xml [jgpawletko]
 
 */
 
@@ -21,7 +21,13 @@ import (
 )
 
 func TestListEADFilesForCommit(t *testing.T) {
-	err := extractRepo("testdata/simple-repo.tar.gz", "testdata")
+	// cleanup any leftovers from interrupted tests
+	err := teardownRepo("testdata/simple-repo")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	err = extractRepo("testdata/simple-repo.tar.gz", "testdata")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -31,11 +37,11 @@ func TestListEADFilesForCommit(t *testing.T) {
 		Hash       string
 		Operations map[string]IndexerOperation
 	}{
-		{"ac3dde7f32f91ccca7dabb247e22ca131429f31d", map[string]IndexerOperation{"fales/mss_001.xml": Add}},
-		{"0c56161d1bc28581c69ae93729ec2039117c3f00", map[string]IndexerOperation{"archives/mc_1.xml": Add, "fales/mss_002.xml": Delete, "fales/mss_005.xml": Add, "tamwag/aia_002.xml": Add}},
-		{"bee0fd5241b8952fd1bca35cb0fc4314fb52652b", map[string]IndexerOperation{"archives/cap_1.xml": Add, "fales/mss_004.xml": Add, "tamwag/aia_001.xml": Add}},
-		{"f860b602eeb315d5d142228a9e1fe72a818b4c4c", map[string]IndexerOperation{"fales/mss_002.xml": Add, "fales/mss_003.xml": Add}},
-		{"4565d2689e24beafee83e99652436f3de7eae738", map[string]IndexerOperation{"fales/mss_001.xml": Add}},
+		{"95f2f904ad261e7d31632021fa10768d2b4096c9", map[string]IndexerOperation{"fales/mss_001.xml": Add}},
+		{"aa58b2314e11ae5af61129ebfe1ceb07b49c2d33", map[string]IndexerOperation{"archives/mc_1.xml": Add, "fales/mss_002.xml": Delete, "fales/mss_005.xml": Add, "tamwag/aia_002.xml": Add}},
+		{"3dc6fabe0fcd990e95cdd3f88cff821196fccdbd", map[string]IndexerOperation{"archives/cap_1.xml": Add, "fales/mss_004.xml": Add, "tamwag/aia_001.xml": Add}},
+		{"7fe6de7c56d30149889f8d24eaf2fa66ed9f2e2d", map[string]IndexerOperation{"fales/mss_002.xml": Add, "fales/mss_003.xml": Add}},
+		{"155309f674b5acffd7473c1648f3647a2a3d242b", map[string]IndexerOperation{"fales/mss_001.xml": Add}},
 	}
 
 	for _, scenario := range scenarios {
@@ -54,7 +60,7 @@ func TestListEADFilesForCommit(t *testing.T) {
 				t.Errorf("missing operation for file '%s' for commit hash '%s'", file, scenario.Hash)
 			}
 			if op != expectedOp {
-				t.Errorf("expected operation '%d' for file '%s', got '%d' for commit hash '%s'", expectedOp, file, op, scenario.Hash)
+				t.Errorf("expected operation '%s' for file '%s', got '%s' for commit hash '%s'", expectedOp, file, op, scenario.Hash)
 			}
 		}
 	}
