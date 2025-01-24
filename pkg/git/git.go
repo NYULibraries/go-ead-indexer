@@ -60,6 +60,7 @@ func ListEADFilesForCommit(repoPath string, thisCommitHashString string) (map[st
 		return nil, err
 	}
 
+	// Get the changes between the two commits
 	patch, err := parentCommit.Patch(thisCommit)
 	if err != nil {
 		return nil, err
