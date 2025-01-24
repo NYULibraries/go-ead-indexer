@@ -9,7 +9,7 @@ package git
 * 58ba9870dcfd02a1ee95f30dcad9380e0bbf5f80 2025-01-23 19:36:18 -0500 | Updating file archives/cap_1.xml, Updating file fales/mss_004.xml, Updating file tamwag/aia_001.xml [jgpawletko]
 * 8cdbf6b645cd89db709ea8a5196fab9cba194826 2025-01-23 19:36:18 -0500 | Updating file fales/mss_002.xml, Updating file fales/mss_003.xml [jgpawletko]
 * 153ee1db908614837afa8edd29aec69060f6574b 2025-01-23 19:36:17 -0500 | Updating file fales/mss_001.xml [jgpawletko]
- */
+*/
 
 import (
 	"os"
