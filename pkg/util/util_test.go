@@ -1,7 +1,10 @@
 package util
 
 import (
+	"fmt"
+	"os"
 	"slices"
+	"strings"
 	"testing"
 )
 
@@ -99,5 +102,34 @@ func testGetCallerFunctionNameSkip3_nestedFunc2(t *testing.T) {
 	if actualFunction != expectedFunction {
 		t.Errorf(`Expected function name "%s" for skip 3, but got "%s"`,
 			expectedFunction, actualFunction)
+	}
+}
+
+func TestGetRepoCode(t *testing.T) {
+	testCases := []struct {
+		input              string
+		expected           string
+		expectedErrMessage string
+	}{
+		{"", "", "EAD file path must have at least two non-empty components, the last of which is a .xml file: ''"},
+		{string(os.PathSeparator), "", fmt.Sprintf("EAD file path must have at least two non-empty components, the last of which is a .xml file: '%s'", string(os.PathSeparator))},
+		{strings.Join([]string{"a", "b"}, string(os.PathSeparator)), "", fmt.Sprintf("EAD file path must have at least two non-empty components, the last of which is a .xml file: '%s'", strings.Join([]string{"a", "b"}, string(os.PathSeparator)))},
+		{strings.Join([]string{"a", "b.xml"}, string(os.PathSeparator)), "a", ""},
+		{string(os.PathSeparator) + strings.Join([]string{"a", "b", "c", "d.xml"}, string(os.PathSeparator)), "c", ""},
+	}
+
+	for _, testCase := range testCases {
+		actual, err := GetRepoCode(testCase.input)
+		if err != nil {
+			if err.Error() != testCase.expectedErrMessage {
+				t.Errorf("Expected error message '%s' for input '%s', but got '%s'",
+					testCase.expectedErrMessage, testCase.input, err.Error())
+			}
+		} else {
+			if actual != testCase.expected {
+				t.Errorf("Expected repository code '%s' for input '%s', but got '%s'",
+					testCase.expected, testCase.input, actual)
+			}
+		}
 	}
 }
