@@ -19,9 +19,10 @@ type Level int
 const defaultSlogLevel = slog.LevelInfo
 
 // We are wrapping slog calls which take an initial argument that is always output
-// to `msg`, which doesn't really fit into our desired scheme for log output
-// as we'd like it to appear in Kibana.  For now, we'll just pass `msg` an empty
-// string.
+// to `msg`.  We don't know yet how or if we will be using `msg` key, so for now
+// just leave it empty.  This package was originally written for ariadne for
+// logging to our Kibana instance, which had certain constraints regarding use
+// of the `msg` key.
 const emptyMsg = ""
 
 var DefaultLevelStringOption = getLevelOptionStringForSlogLevel(defaultSlogLevel)
