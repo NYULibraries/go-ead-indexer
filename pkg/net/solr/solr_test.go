@@ -15,7 +15,7 @@ import (
 var fakeSolrServer *httptest.Server
 
 // Shared default Solr client for `Add()` tests
-var solrClientDefaultForAddTests SolrClient
+var solrClientDefaultForAddTests solrClient
 
 func TestAdd(t *testing.T) {
 	// Have to pass in `UpdateURLPathAndQuery` to `testutils` sub-package, which
@@ -24,9 +24,9 @@ func TestAdd(t *testing.T) {
 	defer fakeSolrServer.Close()
 
 	var err error
-	solrClientDefaultForAddTests, err = NewSolrClient(fakeSolrServer.URL)
+	solrClientDefaultForAddTests, err = newSolrClient(fakeSolrServer.URL)
 	if err != nil {
-		t.Fatalf(`NewSolrClient() failed with error: %s`, err)
+		t.Fatalf(`newSolrClient() failed with error: %s`, err)
 	}
 
 	// The Solr fake returns almost all error responses immediately, so make
@@ -40,7 +40,7 @@ func TestAdd(t *testing.T) {
 	t.Run("Successfully add", testAdd_successAdds)
 }
 
-// All requests made by `SolrClient` use the same retry logic in `sendRequest()`,
+// All requests made by `solrClient` use the same retry logic in `sendRequest()`,
 // so we don't bother with the complicated retry test suites already implemented
 // for `TestAdd()`.
 func TestCommit(t *testing.T) {
@@ -49,7 +49,7 @@ func TestCommit(t *testing.T) {
 	t.Run("Commit success", testCommit_success)
 }
 
-// All requests made by `SolrClient` use the same retry logic in `sendRequest()`,
+// All requests made by `solrClient` use the same retry logic in `sendRequest()`,
 // so we don't bother with the complicated retry test suites already implemented
 // for `TestAdd()`.
 func TestDelete(t *testing.T) {
@@ -356,7 +356,7 @@ func testAdd_successAdds(t *testing.T) {
 }
 
 func testCommit_connectionRefusedError(t *testing.T) {
-	testPermanentConnectionRefusedRequest(t, func(solrClient SolrClient) error {
+	testPermanentConnectionRefusedRequest(t, func(solrClient solrClient) error {
 		err := solrClient.Commit()
 		return err
 	})
@@ -371,9 +371,9 @@ func testCommit_success(t *testing.T) {
 	fakeSolrServer = testutils.MakeSolrFake(UpdateURLPathAndQuery, t)
 	defer fakeSolrServer.Close()
 
-	solrClientForCommitSuccessTests, err := NewSolrClient(fakeSolrServer.URL)
+	solrClientForCommitSuccessTests, err := newSolrClient(fakeSolrServer.URL)
 	if err != nil {
-		t.Fatalf(`NewSolrClient() failed with error: %s`, err)
+		t.Fatalf(`newSolrClient() failed with error: %s`, err)
 	}
 
 	// The Solr fake returns almost all error responses immediately, so make
@@ -391,7 +391,7 @@ func testCommit_success(t *testing.T) {
 }
 
 func testDelete_connectionRefusedError(t *testing.T) {
-	testPermanentConnectionRefusedRequest(t, func(solrClient SolrClient) error {
+	testPermanentConnectionRefusedRequest(t, func(solrClient solrClient) error {
 		err := solrClient.Delete("doesnotmatter_1")
 		return err
 	})
@@ -406,9 +406,9 @@ func testDelete_success(t *testing.T) {
 	fakeSolrServer = testutils.MakeSolrFake(UpdateURLPathAndQuery, t)
 	defer fakeSolrServer.Close()
 
-	solrClientForDeleteSuccessTests, err := NewSolrClient(fakeSolrServer.URL)
+	solrClientForDeleteSuccessTests, err := newSolrClient(fakeSolrServer.URL)
 	if err != nil {
-		t.Fatalf(`NewSolrClient() failed with error: %s`, err)
+		t.Fatalf(`newSolrClient() failed with error: %s`, err)
 	}
 
 	// The Solr fake returns almost all error responses immediately, so make
@@ -425,12 +425,12 @@ func testDelete_success(t *testing.T) {
 	}
 }
 
-func testPermanentConnectionRefusedRequest(t *testing.T, requestFunction func(SolrClient) error) {
+func testPermanentConnectionRefusedRequest(t *testing.T, requestFunction func(solrClient) error) {
 	unusedLocalhostNetworkAddress := util.GetUnusedLocalhostNetworkAddress()
 
-	solrClient, err := NewSolrClient("http://" + unusedLocalhostNetworkAddress)
+	solrClient, err := newSolrClient("http://" + unusedLocalhostNetworkAddress)
 	if err != nil {
-		t.Fatalf(`NewSolrClient() failed with error: %s`, err)
+		t.Fatalf(`newSolrClient() failed with error: %s`, err)
 	}
 
 	// All retries will fail, so execute them as quickly as possible.
@@ -486,9 +486,9 @@ func testSetSolrURLOrigin_errors(t *testing.T) {
 		},
 	}
 
-	sc, err := NewSolrClient(solrClientDefaultForAddTests.GetSolrURLOrigin())
+	sc, err := newSolrClient(solrClientDefaultForAddTests.GetSolrURLOrigin())
 	if err != nil {
-		t.Fatalf(`NewSolrClient() failed with error: %s`, err)
+		t.Fatalf(`newSolrClient() failed with error: %s`, err)
 	}
 
 	initialSolrURLOrigin := sc.GetSolrURLOrigin()
@@ -529,9 +529,9 @@ func testSetSolrURLOrigin_normal(t *testing.T) {
 		},
 	}
 
-	sc, err := NewSolrClient("http://original-unchanged-url-origin.com")
+	sc, err := newSolrClient("http://original-unchanged-url-origin.com")
 	if err != nil {
-		t.Fatalf(`NewSolrClient() failed with error: %s`, err)
+		t.Fatalf(`newSolrClient() failed with error: %s`, err)
 	}
 
 	for _, testCase := range testCases {
