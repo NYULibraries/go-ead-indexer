@@ -103,6 +103,8 @@ func TestNewWithBadEADXML(t *testing.T) {
 		if err == nil {
 			t.Errorf(`Expected an error to be returned by New("%s", "%s"), but no error was returned.`,
 				repositoryCode, testCase.eadXML)
+
+			continue
 		}
 
 		errorString := err.Error()
