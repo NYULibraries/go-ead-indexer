@@ -81,6 +81,39 @@ func TestComponentDocSolrAddMessage(t *testing.T) {
 	}
 }
 
+func TestNewWithBadEADXML(t *testing.T) {
+	testCases := []struct {
+		eadXML        string
+		expectedError string
+	}{
+		{
+			eadXML:        "",
+			expectedError: errorNoEADTagWithExpectedStructureFound,
+		},
+		{
+			eadXML:        "/path/to/ead/file/edip/mos_2024.xml",
+			expectedError: errorNoEADTagWithExpectedStructureFound,
+		},
+	}
+
+	const repositoryCode = "edip"
+
+	for _, testCase := range testCases {
+		_, err := New(repositoryCode, testCase.eadXML)
+		if err == nil {
+			t.Errorf(`Expected an error to be returned by New("%s", "%s"), but no error was returned.`,
+				repositoryCode, testCase.eadXML)
+		}
+
+		errorString := err.Error()
+		if errorString != testCase.expectedError {
+			t.Errorf(`Expected error "%s" to be returned by New("%s", "%s"),`+
+				` but got: "%s"`,
+				testCase.expectedError, repositoryCode, testCase.eadXML, errorString)
+		}
+	}
+}
+
 func clean() error {
 	err := os.RemoveAll(tmpFilesDirPath)
 	if err != nil {
