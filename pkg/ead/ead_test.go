@@ -103,6 +103,8 @@ func TestNewWithBadEADXML(t *testing.T) {
 		if err == nil {
 			t.Errorf(`Expected an error to be returned by New("%s", "%s"), but no error was returned.`,
 				repositoryCode, testCase.eadXML)
+
+			continue
 		}
 
 		errorString := err.Error()
@@ -110,6 +112,47 @@ func TestNewWithBadEADXML(t *testing.T) {
 			t.Errorf(`Expected error "%s" to be returned by New("%s", "%s"),`+
 				` but got: "%s"`,
 				testCase.expectedError, repositoryCode, testCase.eadXML, errorString)
+		}
+	}
+}
+
+// We don't have an official repository code format, but there is a comprehensive
+// list of repository codes:
+// https://jira.nyu.edu/browse/FADESIGN-65
+func TestNewWithInvalidRepositoryCode(t *testing.T) {
+	testCases := []struct {
+		repositoryCode string
+		expectedError  string
+	}{
+		{
+			repositoryCode: "",
+			expectedError:  `Invalid repository code: ""`,
+		},
+		{
+			repositoryCode: "!#$",
+			expectedError:  `Invalid repository code: "!#$"`,
+		},
+	}
+
+	eadXML, err := testutils.GetEADFixtureValue("edip/mos_2024")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	for _, testCase := range testCases {
+		_, err := New(testCase.repositoryCode, eadXML)
+		if err == nil {
+			t.Errorf(`Expected an error to be returned by New("%s", "..."), but no error was returned.`,
+				testCase.repositoryCode)
+
+			continue
+		}
+
+		errorString := err.Error()
+		if errorString != testCase.expectedError {
+			t.Errorf(`Expected error "%s" to be returned by New("%s", "..."),`+
+				` but got: "%s"`,
+				testCase.expectedError, testCase.repositoryCode, errorString)
 		}
 	}
 }
