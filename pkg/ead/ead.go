@@ -1,6 +1,7 @@
 package ead
 
 import (
+	"errors"
 	"fmt"
 	"github.com/lestrrat-go/libxml2/parser"
 	"github.com/lestrrat-go/libxml2/types"
@@ -9,17 +10,22 @@ import (
 	"regexp"
 )
 
-// We need to set `xmlns=""` to get the xpath queries working.  See code comment
-// in `New()` for more details.  `xmlns=""` is valid according to this post:
-// https://stackoverflow.com/questions/1587891/is-xmlns-a-valid-xml-namespace
-var namespaceRegexp = regexp.MustCompile(`<((?s)\s*)ead((?s).*)xmlns="(?U).*"`)
-
 type EAD struct {
 	CollectionDoc        collectiondoc.CollectionDoc `json:"collection_doc"`
 	Components           *[]component.Component      `json:"components"`
 	ModifiedFileContents string                      `json:"modified_file_contents"`
 	OriginalFileContents string                      `json:"original_file_contents"`
 }
+
+const errorNoEADTagWithExpectedStructureFound = "No <ead> tag with the expected structure was found"
+
+// This must be to the number of match groups in the regexp below.
+const numMatchGroupsInNamespaceRegexp = 3
+
+// We need to set `xmlns=""` to get the xpath queries working.  See code comment
+// in `New()` for more details.  `xmlns=""` is valid according to this post:
+// https://stackoverflow.com/questions/1587891/is-xmlns-a-valid-xml-namespace
+var namespaceRegexp = regexp.MustCompile(`<((?s)\s*)ead((?s).*)xmlns="(?U).*"`)
 
 // Note that the repository code historically is taken from the name of the
 // EAD file's parent directory, not from the anything in the contents of the file
@@ -49,6 +55,9 @@ func New(repositoryCode string, eadXML string) (EAD, error) {
 	// removing namespace stuff from all nodes using the standard library
 	// `encoding/xml` package.
 	matchGroups := namespaceRegexp.FindStringSubmatch(eadXML)
+	if len(matchGroups) < numMatchGroupsInNamespaceRegexp {
+		return ead, errors.New(errorNoEADTagWithExpectedStructureFound)
+	}
 	newString := fmt.Sprintf(`<%sead%sxmlns=""`, matchGroups[1], matchGroups[2])
 	modifiedEADXML := namespaceRegexp.ReplaceAllString(eadXML, newString)
 
