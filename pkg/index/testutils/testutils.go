@@ -3,6 +3,7 @@ package testutils
 import (
 	"crypto/md5"
 	"fmt"
+	"hash"
 	"io"
 	"net/http"
 	"os"
@@ -11,13 +12,13 @@ import (
 
 type SolrClientMock struct {
 	fileDir          string            // Directory containing the "golden files" for the test
-	goldenFileHashes map[string]string // Hashes of the golden files
+	GoldenFileHashes map[string]string // Hashes of the golden files
 }
 
 func GetSolrClientMock() *SolrClientMock {
 	return &SolrClientMock{
 		fileDir:          "",
-		goldenFileHashes: make(map[string]string),
+		GoldenFileHashes: make(map[string]string),
 	}
 }
 
@@ -44,16 +45,48 @@ func (sc *SolrClientMock) GetSolrURLOrigin() string {
 
 func (sc *SolrClientMock) Reset() {
 	// reset the solr client mock
-	clear(sc.goldenFileHashes)
+	clear(sc.GoldenFileHashes)
 	sc.fileDir = ""
 }
 
 func (sc *SolrClientMock) IsComplete() bool {
-	if len(sc.goldenFileHashes) != 0 {
-		return false
-	}
-	return true
+	return len(sc.GoldenFileHashes) == 0
 }
+
+// func (sc *SolrClientMock) SetupMock(goldenFileDir, suffix string) error {
+// 	// assumes all files in the directory are golden files
+// 	// and that all files will be consumed by the test
+// 	sc.fileDir = goldenFileDir
+
+// 	files, err := os.ReadDir(goldenFileDir)
+// 	if err != nil {
+// 		return err
+// 	}
+
+// 	// load the golden file hashes map
+// 	for _, file := range files {
+// 		// skip non-matching files
+// 		if !strings.HasSuffix(file.Name(), suffix) {
+// 			continue
+// 		}
+
+// 		filePath := filepath.Join(goldenFileDir, file.Name())
+
+// 		f, err := os.Open(filePath)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defer f.Close()
+
+// 		h := md5.New()
+// 		if _, err := io.Copy(h, f); err != nil {
+// 			return err
+// 		}
+// 		sc.GoldenFileHashes[string(h.Sum(nil))] = filePath
+// 	}
+
+// 	return nil
+// }
 
 func (sc *SolrClientMock) SetupMock(goldenFileDir string) error {
 	// assumes all files in the directory are golden files
@@ -66,6 +99,7 @@ func (sc *SolrClientMock) SetupMock(goldenFileDir string) error {
 	}
 
 	// load the golden file hashes map
+	h := md5.New()
 	for _, file := range files {
 		filePath := filepath.Join(goldenFileDir, file.Name())
 
@@ -75,11 +109,19 @@ func (sc *SolrClientMock) SetupMock(goldenFileDir string) error {
 		}
 		defer f.Close()
 
-		h := md5.New()
 		if _, err := io.Copy(h, f); err != nil {
 			return err
 		}
-		sc.goldenFileHashes[string(h.Sum(nil))] = filePath
+
+		sum := formattedHashSum(h)
+
+		// look for collisions
+		if sc.GoldenFileHashes[sum] != "" {
+			return fmt.Errorf("duplicate hash '%s' found in golden file hashes for file: %s, file already in hash: %s", sum, filePath, sc.GoldenFileHashes[sum])
+		}
+		// no collision, add the hash to the golden file hash map
+		sc.GoldenFileHashes[sum] = filePath
+		h.Reset()
 	}
 
 	return nil
@@ -89,11 +131,15 @@ func (sc *SolrClientMock) updateHash(xmlPostBody string) error {
 	h := md5.New()
 	io.WriteString(h, xmlPostBody)
 
-	hash := string(h.Sum(nil))
-	if _, ok := sc.goldenFileHashes[hash]; !ok {
-		return fmt.Errorf("hash '%s' not found in golden file hashes".hash)
+	hash := formattedHashSum(h)
+	if _, ok := sc.GoldenFileHashes[hash]; !ok {
+		return fmt.Errorf("hash '%s' not found in golden file hashes", hash)
 	}
 	// remove the hash from the golden file hash map
-	delete(sc.goldenFileHashes, hash)
+	delete(sc.GoldenFileHashes, hash)
 	return nil
+}
+
+func formattedHashSum(h hash.Hash) string {
+	return fmt.Sprintf("%x", h.Sum(nil))
 }
