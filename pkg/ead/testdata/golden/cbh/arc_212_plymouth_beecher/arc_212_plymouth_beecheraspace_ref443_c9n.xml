@@ -1,57 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<add>
-  <doc>
-    <field name="id">arc_212_plymouth_beecheraspace_ref443_c9n</field>
-    <field name="ead_ssi">arc_212_plymouth_beecher</field>
-    <field name="parent_ssi">aspace_ref441_46l</field>
-    <field name="parent_ssm">aspace_ref238_a85</field>
-    <field name="parent_ssm">aspace_ref441_46l</field>
-    <field name="parent_unittitles_ssm">Series 2: Plymouth Church</field>
-    <field name="parent_unittitles_ssm">
+<?xml version="1.0" encoding="UTF-8"?><add><doc><field name="id">arc_212_plymouth_beecheraspace_ref443_c9n</field><field name="ead_ssi">arc_212_plymouth_beecher</field><field name="parent_ssi">aspace_ref441_46l</field><field name="parent_ssm">aspace_ref238_a85</field><field name="parent_ssm">aspace_ref441_46l</field><field name="parent_unittitles_ssm">Series 2: Plymouth Church</field><field name="parent_unittitles_ssm">
       Section 8: Scrapbooks
-    </field>
-    <field name="parent_unittitles_teim">Series 2: Plymouth Church</field>
-    <field name="parent_unittitles_teim">
+    </field><field name="parent_unittitles_teim">Series 2: Plymouth Church</field><field name="parent_unittitles_teim">
       Section 8: Scrapbooks
-    </field>
-    <field name="component_level_isim">3</field>
-    <field name="component_children_bsi">false</field>
-    <field name="collection_sim">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field>
-    <field name="collection_ssm">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field>
-    <field name="collection_unitid_ssm">ARC.212</field>
-    <field name="level_sim">file</field>
-    <field name="unittitle_ssm">Scrapbook presented to Plymouth Church by Marie A. Freckelton in memory of her parents, May 9, 1943 - Brooklyn, Plymouth Church, Beecher, England trip, and miscellaneous newsclippings and ephemera.</field>
-    <field name="unittitle_teim">Scrapbook presented to Plymouth Church by Marie A. Freckelton in memory of her parents, May 9, 1943 - Brooklyn, Plymouth Church, Beecher, England trip, and miscellaneous newsclippings and ephemera.</field>
-    <field name="unitdate_normal_ssm">1863/1893</field>
-    <field name="unitdate_normal_teim">1863/1893</field>
-    <field name="unitdate_normal_sim">1863/1893</field>
-    <field name="unitdate_inclusive_teim">1863-1893</field>
-    <field name="ref_ssi">aspace_ref443_c9n</field>
-    <field name="repository_ssi">cbh</field>
-    <field name="repository_sim">cbh</field>
-    <field name="repository_ssm">cbh</field>
-    <field name="format_sim">Archival Object</field>
-    <field name="format_ssm">Archival Object</field>
-    <field name="location_ssm">Box: 62, item: 1</field>
-    <field name="location_si">Box: 62, item: 1</field>
-    <field name="collection_teim">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field>
-    <field name="collection_unitid_teim">ARC.212</field>
-    <field name="series_sim">Series 2: Plymouth Church</field>
-    <field name="series_sim">
+    </field><field name="component_level_isim">3</field><field name="component_children_bsi">false</field><field name="collection_sim">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field><field name="collection_ssm">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field><field name="collection_unitid_ssm">ARC.212</field><field name="level_sim">file</field><field name="unittitle_ssm">Scrapbook presented to Plymouth Church by Marie A. Freckelton in memory of her parents, May 9, 1943 - Brooklyn, Plymouth Church, Beecher, England trip, and miscellaneous newsclippings and ephemera.</field><field name="unittitle_teim">Scrapbook presented to Plymouth Church by Marie A. Freckelton in memory of her parents, May 9, 1943 - Brooklyn, Plymouth Church, Beecher, England trip, and miscellaneous newsclippings and ephemera.</field><field name="unitdate_normal_ssm">1863/1893</field><field name="unitdate_normal_teim">1863/1893</field><field name="unitdate_normal_sim">1863/1893</field><field name="unitdate_inclusive_teim">1863-1893</field><field name="ref_ssi">aspace_ref443_c9n</field><field name="repository_ssi">cbh</field><field name="repository_sim">cbh</field><field name="repository_ssm">cbh</field><field name="format_sim">Archival Object</field><field name="format_ssm">Archival Object</field><field name="location_ssm">Box: 62, item: 1</field><field name="location_si">Box: 62, item: 1</field><field name="collection_teim">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field><field name="collection_unitid_teim">ARC.212</field><field name="series_sim">Series 2: Plymouth Church</field><field name="series_sim">
       Section 8: Scrapbooks
-    </field>
-    <field name="series_si">Series 2: Plymouth Church &gt;&gt; 
+    </field><field name="series_si">Series 2: Plymouth Church &gt;&gt; 
       Section 8: Scrapbooks
-     &gt;&gt; Scrapbook presented to Plymouth Church by Marie A. Freckelton in memory of her parents, May 9, 1943 - Brooklyn, Plymouth Church, Beecher, England trip, and miscellaneous newsclippings and ephemera.</field>
-    <field name="heading_ssm">Scrapbook presented to Plymouth Church by Marie A. Freckelton in memory of her parents, May 9, 1943 - Brooklyn, Plymouth Church, Beecher, England trip, and miscellaneous newsclippings and ephemera.</field>
-    <field name="unitdate_start_sim">1863</field>
-    <field name="unitdate_start_ssm">1863</field>
-    <field name="unitdate_start_si">1863</field>
-    <field name="unitdate_end_sim">1893</field>
-    <field name="unitdate_end_ssm">1893</field>
-    <field name="unitdate_end_si">1893</field>
-    <field name="unitdate_ssm">Inclusive, 1863-1893</field>
-    <field name="date_range_sim">1801-1900</field>
-    <field name="sort_ii">423</field>
-  </doc>
-</add>
+     &gt;&gt; Scrapbook presented to Plymouth Church by Marie A. Freckelton in memory of her parents, May 9, 1943 - Brooklyn, Plymouth Church, Beecher, England trip, and miscellaneous newsclippings and ephemera.</field><field name="heading_ssm">Scrapbook presented to Plymouth Church by Marie A. Freckelton in memory of her parents, May 9, 1943 - Brooklyn, Plymouth Church, Beecher, England trip, and miscellaneous newsclippings and ephemera.</field><field name="unitdate_start_sim">1863</field><field name="unitdate_start_ssm">1863</field><field name="unitdate_start_si">1863</field><field name="unitdate_end_sim">1893</field><field name="unitdate_end_ssm">1893</field><field name="unitdate_end_si">1893</field><field name="unitdate_ssm">Inclusive, 1863-1893</field><field name="date_range_sim">1801-1900</field><field name="sort_ii">423</field></doc></add>

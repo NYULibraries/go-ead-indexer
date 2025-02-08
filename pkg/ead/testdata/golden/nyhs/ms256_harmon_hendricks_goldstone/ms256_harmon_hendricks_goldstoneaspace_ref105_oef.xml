@@ -1,55 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<add>
-  <doc>
-    <field name="id">ms256_harmon_hendricks_goldstoneaspace_ref105_oef</field>
-    <field name="ead_ssi">ms256_harmon_hendricks_goldstone</field>
-    <field name="parent_ssi">aspace_ref93_ztu</field>
-    <field name="parent_ssm">aspace_ref93_ztu</field>
-    <field name="parent_unittitles_ssm">Series VI. Books and Pamphlets</field>
-    <field name="parent_unittitles_teim">Series VI. Books and Pamphlets</field>
-    <field name="component_level_isim">2</field>
-    <field name="component_children_bsi">false</field>
-    <field name="collection_sim">Harmon Hendricks Goldstone Papers</field>
-    <field name="collection_ssm">Harmon Hendricks Goldstone Papers</field>
-    <field name="collection_unitid_ssm">MS 256</field>
-    <field name="level_sim">otherlevel</field>
-    <field name="unittitle_ssm">
+<?xml version="1.0" encoding="UTF-8"?><add><doc><field name="id">ms256_harmon_hendricks_goldstoneaspace_ref105_oef</field><field name="ead_ssi">ms256_harmon_hendricks_goldstone</field><field name="parent_ssi">aspace_ref93_ztu</field><field name="parent_ssm">aspace_ref93_ztu</field><field name="parent_unittitles_ssm">Series VI. Books and Pamphlets</field><field name="parent_unittitles_teim">Series VI. Books and Pamphlets</field><field name="component_level_isim">2</field><field name="component_children_bsi">false</field><field name="collection_sim">Harmon Hendricks Goldstone Papers</field><field name="collection_ssm">Harmon Hendricks Goldstone Papers</field><field name="collection_unitid_ssm">MS 256</field><field name="level_sim">otherlevel</field><field name="unittitle_ssm">
       &lt;em&gt;New York City Landmarks Preservation Commission Designation Reports, August 26, 1969 through April 19, 1973&lt;/em&gt;
-    </field>
-    <field name="unittitle_teim">
+    </field><field name="unittitle_teim">
       New York City Landmarks Preservation Commission Designation Reports, August 26, 1969 through April 19, 1973
-    </field>
-    <field name="unitdate_normal_ssm">1969/1973</field>
-    <field name="unitdate_normal_teim">1969/1973</field>
-    <field name="unitdate_normal_sim">1969/1973</field>
-    <field name="unitdate_inclusive_teim">1969-1973</field>
-    <field name="title_teim">New York City Landmarks Preservation Commission Designation Reports, August 26, 1969 through April 19, 1973</field>
-    <field name="title_ssm">New York City Landmarks Preservation Commission Designation Reports, August 26, 1969 through April 19, 1973</field>
-    <field name="ref_ssi">aspace_ref105_oef</field>
-    <field name="repository_ssi">nyhs</field>
-    <field name="repository_sim">nyhs</field>
-    <field name="repository_ssm">nyhs</field>
-    <field name="format_sim">Archival Object</field>
-    <field name="format_ssm">Archival Object</field>
-    <field name="location_ssm">Box: 14, object: unknown container</field>
-    <field name="location_si">Box: 14, object: unknown container</field>
-    <field name="collection_teim">Harmon Hendricks Goldstone Papers</field>
-    <field name="collection_unitid_teim">MS 256</field>
-    <field name="series_sim">Series VI. Books and Pamphlets</field>
-    <field name="series_si">Series VI. Books and Pamphlets &gt;&gt; 
+    </field><field name="unitdate_normal_ssm">1969/1973</field><field name="unitdate_normal_teim">1969/1973</field><field name="unitdate_normal_sim">1969/1973</field><field name="unitdate_inclusive_teim">1969-1973</field><field name="title_teim">New York City Landmarks Preservation Commission Designation Reports, August 26, 1969 through April 19, 1973</field><field name="title_ssm">New York City Landmarks Preservation Commission Designation Reports, August 26, 1969 through April 19, 1973</field><field name="ref_ssi">aspace_ref105_oef</field><field name="repository_ssi">nyhs</field><field name="repository_sim">nyhs</field><field name="repository_ssm">nyhs</field><field name="format_sim">Archival Object</field><field name="format_ssm">Archival Object</field><field name="location_ssm">Box: 14, object: unknown container</field><field name="location_si">Box: 14, object: unknown container</field><field name="collection_teim">Harmon Hendricks Goldstone Papers</field><field name="collection_unitid_teim">MS 256</field><field name="series_sim">Series VI. Books and Pamphlets</field><field name="series_si">Series VI. Books and Pamphlets &gt;&gt; 
       &lt;em&gt;New York City Landmarks Preservation Commission Designation Reports, August 26, 1969 through April 19, 1973&lt;/em&gt;
-    </field>
-    <field name="heading_ssm">
+    </field><field name="heading_ssm">
       New York City Landmarks Preservation Commission Designation Reports, August 26, 1969 through April 19, 1973
-    </field>
-    <field name="unitdate_start_sim">1969</field>
-    <field name="unitdate_start_ssm">1969</field>
-    <field name="unitdate_start_si">1969</field>
-    <field name="unitdate_end_sim">1973</field>
-    <field name="unitdate_end_ssm">1973</field>
-    <field name="unitdate_end_si">1973</field>
-    <field name="unitdate_ssm">Inclusive, 1969-1973</field>
-    <field name="date_range_sim">1901-2000</field>
-    <field name="sort_ii">78</field>
-  </doc>
-</add>
+    </field><field name="unitdate_start_sim">1969</field><field name="unitdate_start_ssm">1969</field><field name="unitdate_start_si">1969</field><field name="unitdate_end_sim">1973</field><field name="unitdate_end_ssm">1973</field><field name="unitdate_end_si">1973</field><field name="unitdate_ssm">Inclusive, 1969-1973</field><field name="date_range_sim">1901-2000</field><field name="sort_ii">78</field></doc></add>

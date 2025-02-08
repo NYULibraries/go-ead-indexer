@@ -1,40 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<add>
-  <doc>
-    <field name="id">arc_212_plymouth_beecheraspace_ref19_1pd</field>
-    <field name="ead_ssi">arc_212_plymouth_beecher</field>
-    <field name="parent_ssi">aspace_ref1_kpj</field>
-    <field name="parent_ssm">aspace_ref1_kpj</field>
-    <field name="parent_unittitles_ssm">Series 1: Henry Ward Beecher</field>
-    <field name="parent_unittitles_teim">Series 1: Henry Ward Beecher</field>
-    <field name="component_level_isim">2</field>
-    <field name="component_children_bsi">true</field>
-    <field name="collection_sim">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field>
-    <field name="collection_ssm">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field>
-    <field name="collection_unitid_ssm">ARC.212</field>
-    <field name="level_sim">subseries</field>
-    <field name="unittitle_ssm">
+<?xml version="1.0" encoding="UTF-8"?><add><doc><field name="id">arc_212_plymouth_beecheraspace_ref19_1pd</field><field name="ead_ssi">arc_212_plymouth_beecher</field><field name="parent_ssi">aspace_ref1_kpj</field><field name="parent_ssm">aspace_ref1_kpj</field><field name="parent_unittitles_ssm">Series 1: Henry Ward Beecher</field><field name="parent_unittitles_teim">Series 1: Henry Ward Beecher</field><field name="component_level_isim">2</field><field name="component_children_bsi">true</field><field name="collection_sim">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field><field name="collection_ssm">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field><field name="collection_unitid_ssm">ARC.212</field><field name="level_sim">subseries</field><field name="unittitle_ssm">
       &lt;strong&gt;Section 2: Personal and Familial Papers&lt;/strong&gt;
-    </field>
-    <field name="unittitle_teim">
+    </field><field name="unittitle_teim">
       Section 2: Personal and Familial Papers
-    </field>
-    <field name="ref_ssi">aspace_ref19_1pd</field>
-    <field name="repository_ssi">cbh</field>
-    <field name="repository_sim">cbh</field>
-    <field name="repository_ssm">cbh</field>
-    <field name="format_sim">Archival Series</field>
-    <field name="format_ssm">Archival Series</field>
-    <field name="collection_teim">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field>
-    <field name="collection_unitid_teim">ARC.212</field>
-    <field name="series_sim">Series 1: Henry Ward Beecher</field>
-    <field name="series_si">Series 1: Henry Ward Beecher &gt;&gt; 
+    </field><field name="ref_ssi">aspace_ref19_1pd</field><field name="repository_ssi">cbh</field><field name="repository_sim">cbh</field><field name="repository_ssm">cbh</field><field name="format_sim">Archival Series</field><field name="format_ssm">Archival Series</field><field name="collection_teim">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field><field name="collection_unitid_teim">ARC.212</field><field name="series_sim">Series 1: Henry Ward Beecher</field><field name="series_si">Series 1: Henry Ward Beecher &gt;&gt; 
       &lt;strong&gt;Section 2: Personal and Familial Papers&lt;/strong&gt;
-    </field>
-    <field name="heading_ssm">
+    </field><field name="heading_ssm">
       Section 2: Personal and Familial Papers
-    </field>
-    <field name="date_range_sim">undated &amp; other</field>
-    <field name="sort_ii">18</field>
-  </doc>
-</add>
+    </field><field name="date_range_sim">undated &amp; other</field><field name="sort_ii">18</field></doc></add>
