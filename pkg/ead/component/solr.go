@@ -325,13 +325,8 @@ func (component *Component) setSolrAddMessage() {
 func (solrAddMessage SolrAddMessage) String() string {
 	fields := getSolrFieldElementStringsInV1IndexerInsertionOrder(solrAddMessage)
 
-	return fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8"?>
-<add>
-  <doc>
-%s
-  </doc>
-</add>
-`, strings.Join(fields, "\n"))
+	return fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8"?><add><doc>%s</doc></add>`,
+		strings.Join(fields, ""))
 }
 
 // TODO: DLFA-238
