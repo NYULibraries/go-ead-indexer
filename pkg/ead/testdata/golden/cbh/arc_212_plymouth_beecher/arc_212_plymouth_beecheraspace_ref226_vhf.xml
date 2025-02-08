@@ -1,58 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<add>
-  <doc>
-    <field name="id">arc_212_plymouth_beecheraspace_ref226_vhf</field>
-    <field name="ead_ssi">arc_212_plymouth_beecher</field>
-    <field name="parent_ssi">aspace_ref199_dmn</field>
-    <field name="parent_ssm">aspace_ref1_kpj</field>
-    <field name="parent_ssm">aspace_ref199_dmn</field>
-    <field name="parent_unittitles_ssm">Series 1: Henry Ward Beecher</field>
-    <field name="parent_unittitles_ssm">
+<?xml version="1.0" encoding="UTF-8"?><add><doc><field name="id">arc_212_plymouth_beecheraspace_ref226_vhf</field><field name="ead_ssi">arc_212_plymouth_beecher</field><field name="parent_ssi">aspace_ref199_dmn</field><field name="parent_ssm">aspace_ref1_kpj</field><field name="parent_ssm">aspace_ref199_dmn</field><field name="parent_unittitles_ssm">Series 1: Henry Ward Beecher</field><field name="parent_unittitles_ssm">
       Section 10: Memorials
-    </field>
-    <field name="parent_unittitles_teim">Series 1: Henry Ward Beecher</field>
-    <field name="parent_unittitles_teim">
+    </field><field name="parent_unittitles_teim">Series 1: Henry Ward Beecher</field><field name="parent_unittitles_teim">
       Section 10: Memorials
-    </field>
-    <field name="component_level_isim">3</field>
-    <field name="component_children_bsi">false</field>
-    <field name="collection_sim">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field>
-    <field name="collection_ssm">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field>
-    <field name="collection_unitid_ssm">ARC.212</field>
-    <field name="level_sim">file</field>
-    <field name="unittitle_ssm">Printed reminiscences by Beecher's friends.</field>
-    <field name="unittitle_teim">Printed reminiscences by Beecher's friends.</field>
-    <field name="unitdate_normal_ssm">1887/1911</field>
-    <field name="unitdate_normal_teim">1887/1911</field>
-    <field name="unitdate_normal_sim">1887/1911</field>
-    <field name="unitdate_inclusive_teim">1887, 1910-11</field>
-    <field name="ref_ssi">aspace_ref226_vhf</field>
-    <field name="repository_ssi">cbh</field>
-    <field name="repository_sim">cbh</field>
-    <field name="repository_ssm">cbh</field>
-    <field name="format_sim">Archival Object</field>
-    <field name="format_ssm">Archival Object</field>
-    <field name="location_ssm">Box: 14, Folder: 5</field>
-    <field name="location_si">Box: 14, Folder: 5</field>
-    <field name="collection_teim">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field>
-    <field name="collection_unitid_teim">ARC.212</field>
-    <field name="series_sim">Series 1: Henry Ward Beecher</field>
-    <field name="series_sim">
+    </field><field name="component_level_isim">3</field><field name="component_children_bsi">false</field><field name="collection_sim">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field><field name="collection_ssm">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field><field name="collection_unitid_ssm">ARC.212</field><field name="level_sim">file</field><field name="unittitle_ssm">Printed reminiscences by Beecher's friends.</field><field name="unittitle_teim">Printed reminiscences by Beecher's friends.</field><field name="unitdate_normal_ssm">1887/1911</field><field name="unitdate_normal_teim">1887/1911</field><field name="unitdate_normal_sim">1887/1911</field><field name="unitdate_inclusive_teim">1887, 1910-11</field><field name="ref_ssi">aspace_ref226_vhf</field><field name="repository_ssi">cbh</field><field name="repository_sim">cbh</field><field name="repository_ssm">cbh</field><field name="format_sim">Archival Object</field><field name="format_ssm">Archival Object</field><field name="location_ssm">Box: 14, Folder: 5</field><field name="location_si">Box: 14, Folder: 5</field><field name="collection_teim">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field><field name="collection_unitid_teim">ARC.212</field><field name="series_sim">Series 1: Henry Ward Beecher</field><field name="series_sim">
       Section 10: Memorials
-    </field>
-    <field name="series_si">Series 1: Henry Ward Beecher &gt;&gt; 
+    </field><field name="series_si">Series 1: Henry Ward Beecher &gt;&gt; 
       Section 10: Memorials
-     &gt;&gt; Printed reminiscences by Beecher's friends.</field>
-    <field name="heading_ssm">Printed reminiscences by Beecher's friends.</field>
-    <field name="unitdate_start_sim">1887</field>
-    <field name="unitdate_start_ssm">1887</field>
-    <field name="unitdate_start_si">1887</field>
-    <field name="unitdate_end_sim">1911</field>
-    <field name="unitdate_end_ssm">1911</field>
-    <field name="unitdate_end_si">1911</field>
-    <field name="unitdate_ssm">Inclusive, 1887, 1910-11</field>
-    <field name="date_range_sim">1801-1900</field>
-    <field name="date_range_sim">1901-2000</field>
-    <field name="sort_ii">219</field>
-  </doc>
-</add>
+     &gt;&gt; Printed reminiscences by Beecher's friends.</field><field name="heading_ssm">Printed reminiscences by Beecher's friends.</field><field name="unitdate_start_sim">1887</field><field name="unitdate_start_ssm">1887</field><field name="unitdate_start_si">1887</field><field name="unitdate_end_sim">1911</field><field name="unitdate_end_ssm">1911</field><field name="unitdate_end_si">1911</field><field name="unitdate_ssm">Inclusive, 1887, 1910-11</field><field name="date_range_sim">1801-1900</field><field name="date_range_sim">1901-2000</field><field name="sort_ii">219</field></doc></add>

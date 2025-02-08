@@ -1,18 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<add>
-  <doc>
-    <field name="id">ms347_foundling_hospitalaspace_ref198_wv5</field>
-    <field name="ead_ssi">ms347_foundling_hospital</field>
-    <field name="component_level_isim">1</field>
-    <field name="component_children_bsi">true</field>
-    <field name="collection_sim">New York Foundling Hospital records</field>
-    <field name="collection_ssm">New York Foundling Hospital records</field>
-    <field name="collection_unitid_ssm">MS 347</field>
-    <field name="level_sim">series</field>
-    <field name="unittitle_ssm">Series XIV. Records of Children and Mothers &lt;strong&gt;(Restricted)&lt;/strong&gt;, 1869-1966</field>
-    <field name="unittitle_teim">Series XIV. Records of Children and Mothers (Restricted), 1869-1966</field>
-    <field name="scopecontent_teim">This series consists of 167 volumes tracking clients of the New York Foundling Hospital.  The series is divided into 9 subseries, each containing a different type of volume:</field>
-    <field name="scopecontent_teim">XIV.1 - Admissions/Children's Records
+<?xml version="1.0" encoding="UTF-8"?><add><doc><field name="id">ms347_foundling_hospitalaspace_ref198_wv5</field><field name="ead_ssi">ms347_foundling_hospital</field><field name="component_level_isim">1</field><field name="component_children_bsi">true</field><field name="collection_sim">New York Foundling Hospital records</field><field name="collection_ssm">New York Foundling Hospital records</field><field name="collection_unitid_ssm">MS 347</field><field name="level_sim">series</field><field name="unittitle_ssm">Series XIV. Records of Children and Mothers &lt;strong&gt;(Restricted)&lt;/strong&gt;, 1869-1966</field><field name="unittitle_teim">Series XIV. Records of Children and Mothers (Restricted), 1869-1966</field><field name="scopecontent_teim">This series consists of 167 volumes tracking clients of the New York Foundling Hospital.  The series is divided into 9 subseries, each containing a different type of volume:</field><field name="scopecontent_teim">XIV.1 - Admissions/Children's Records
 XIV.2 - Discharges
 XIV.3 - Baptisms
 XIV.4 - Boarding-Out/Foster Care Volumes
@@ -20,21 +6,4 @@ XIV.5 - Comptroller Volumes
 XIV.6 - St. Joseph's-by-the-Sea
 XIV.7 - Mother's Records
 XIV.8 - St. Ann's Maternity Hospital
-XIV.9 - Autopsies  </field>
-    <field name="scopecontent_teim">Every volume in this series is restricted. </field>
-    <field name="scopecontent_teim">Records labeled as "Restricted" in this finding aid contain personal information for children cared for by the New York Foundling Hospital. Access to information in these records is by permission of the New York Foundling Hospital only. Researchers may obtain contact information for a designated specialist at the New York Foundling Hospital from the Manuscript Department of the New-York Historical Society. Guidelines currently in place for family history research at the Foundling, as determined by legal restrictions on the accessibility of adoption and foster care records, will be followed. </field>
-    <field name="scopecontent_teim">Researchers who wish to view open materials will register as Manuscript users, and be allowed access to the unrestricted materials in the collection. </field>
-    <field name="ref_ssi">aspace_ref198_wv5</field>
-    <field name="repository_ssi">nyhs</field>
-    <field name="repository_sim">nyhs</field>
-    <field name="repository_ssm">nyhs</field>
-    <field name="format_sim">Archival Series</field>
-    <field name="format_ssm">Archival Series</field>
-    <field name="collection_teim">New York Foundling Hospital records</field>
-    <field name="collection_unitid_teim">MS 347</field>
-    <field name="series_si">Series XIV. Records of Children and Mothers &lt;strong&gt;(Restricted)&lt;/strong&gt;, 1869-1966</field>
-    <field name="heading_ssm">Series XIV. Records of Children and Mothers (Restricted), 1869-1966</field>
-    <field name="date_range_sim">undated &amp; other</field>
-    <field name="sort_ii">1021</field>
-  </doc>
-</add>
+XIV.9 - Autopsies  </field><field name="scopecontent_teim">Every volume in this series is restricted. </field><field name="scopecontent_teim">Records labeled as "Restricted" in this finding aid contain personal information for children cared for by the New York Foundling Hospital. Access to information in these records is by permission of the New York Foundling Hospital only. Researchers may obtain contact information for a designated specialist at the New York Foundling Hospital from the Manuscript Department of the New-York Historical Society. Guidelines currently in place for family history research at the Foundling, as determined by legal restrictions on the accessibility of adoption and foster care records, will be followed. </field><field name="scopecontent_teim">Researchers who wish to view open materials will register as Manuscript users, and be allowed access to the unrestricted materials in the collection. </field><field name="ref_ssi">aspace_ref198_wv5</field><field name="repository_ssi">nyhs</field><field name="repository_sim">nyhs</field><field name="repository_ssm">nyhs</field><field name="format_sim">Archival Series</field><field name="format_ssm">Archival Series</field><field name="collection_teim">New York Foundling Hospital records</field><field name="collection_unitid_teim">MS 347</field><field name="series_si">Series XIV. Records of Children and Mothers &lt;strong&gt;(Restricted)&lt;/strong&gt;, 1869-1966</field><field name="heading_ssm">Series XIV. Records of Children and Mothers (Restricted), 1869-1966</field><field name="date_range_sim">undated &amp; other</field><field name="sort_ii">1021</field></doc></add>
