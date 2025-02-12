@@ -46,7 +46,7 @@ func TestGetLevelOptionStringForLogLevel(t *testing.T) {
 		{name: "LevelInfo", expectedLevelOptionString: "info", level: LevelInfo},
 		{name: "LevelWarn", expectedLevelOptionString: "warn", level: LevelWarn},
 		{name: "LevelError", expectedLevelOptionString: "error", level: LevelError},
-		{name: "LevelDisabled", expectedLevelOptionString: "disabled", level: LevelDisabled},
+		{name: "LevelNone", expectedLevelOptionString: "none", level: LevelNone},
 	}
 
 	for _, testCase := range testCases {
@@ -66,7 +66,7 @@ func TestGetValidLevelOptionStrings(t *testing.T) {
 		"info",
 		"warn",
 		"error",
-		"disabled",
+		"none",
 	}, "\n")
 
 	actualLevelOptionStrings := strings.Join(GetValidLevelOptionStrings(), "\n")
@@ -103,7 +103,7 @@ func TestSetLevel(t *testing.T) {
 		{name: "Info", level: LevelInfo},
 		{name: "Warn", level: LevelWarn},
 		{name: "Error", level: LevelError},
-		{name: "Disabled", level: LevelDisabled},
+		{name: "None", level: LevelNone},
 	}
 
 	for i, testCase := range testCases {

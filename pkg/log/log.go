@@ -28,19 +28,19 @@ const emptyMsg = ""
 var DefaultLevelStringOption = getLevelOptionStringForSlogLevel(defaultSlogLevel)
 
 var (
-	LevelDebug    = Level(reflect.ValueOf(slog.LevelDebug).Int())
-	LevelInfo     = Level(reflect.ValueOf(slog.LevelInfo).Int())
-	LevelWarn     = Level(reflect.ValueOf(slog.LevelWarn).Int())
-	LevelError    = Level(reflect.ValueOf(slog.LevelError).Int())
-	LevelDisabled = Level(math.MaxInt)
+	LevelDebug = Level(reflect.ValueOf(slog.LevelDebug).Int())
+	LevelInfo  = Level(reflect.ValueOf(slog.LevelInfo).Int())
+	LevelWarn  = Level(reflect.ValueOf(slog.LevelWarn).Int())
+	LevelError = Level(reflect.ValueOf(slog.LevelError).Int())
+	LevelNone  = Level(math.MaxInt)
 )
 
 var logLevelStringOptions = map[string]Level{
-	"debug":    LevelDebug,
-	"info":     LevelInfo,
-	"warn":     LevelWarn,
-	"error":    LevelError,
-	"disabled": LevelDisabled,
+	"debug": LevelDebug,
+	"info":  LevelInfo,
+	"warn":  LevelWarn,
+	"error": LevelError,
+	"none":  LevelNone,
 }
 
 var programLevel = new(slog.LevelVar)
