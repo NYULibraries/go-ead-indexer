@@ -35,12 +35,14 @@ go-ead-indexer index --git-repo=[path] --commit=[hash] --logging-level="debug"`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println(fmt.Sprintf("`%s` called with args %v", cmd.Use, args))
 
+		logger := log.New()
+
 		normalizedLogLevel := strings.ToLower(loggingLevel)
-		err := log.SetLevelByString(normalizedLogLevel)
+		err := logger.SetLevelByString(normalizedLogLevel)
 		if err != nil {
-			log.Fatal("ERROR: couldn't set log level", err)
+			logger.Fatal("ERROR: couldn't set log level", err)
 		}
 
-		log.Info(index.MessageKey, fmt.Sprintf("Logging level set to \"%s\"", normalizedLogLevel))
+		logger.Info(index.MessageKey, fmt.Sprintf("Logging level set to \"%s\"", normalizedLogLevel))
 	},
 }
