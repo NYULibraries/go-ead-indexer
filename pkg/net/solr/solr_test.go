@@ -58,6 +58,15 @@ func TestDelete(t *testing.T) {
 	t.Run("Delete success", testDelete_success)
 }
 
+// All requests made by `solrClient` use the same retry logic in `sendRequest()`,
+// so we don't bother with the complicated retry test suites already implemented
+// for `TestAdd()`.
+func TestRollback(t *testing.T) {
+	t.Run("Rollback correctly returns an error",
+		testRollback_connectionRefusedError)
+	t.Run("Rollback success", testRollback_success)
+}
+
 func TestSetSolrURLOrigin(t *testing.T) {
 	t.Run("Errors", testSetSolrURLOrigin_errors)
 	t.Run("Successfully set URL origin", testSetSolrURLOrigin_normal)
@@ -453,6 +462,41 @@ func testPermanentConnectionRefusedRequest(t *testing.T, requestFunction func(so
 
 	t.Errorf("Expected a connection refused request to be returned, but"+
 		` got: "%s"`, err.Error())
+}
+
+func testRollback_connectionRefusedError(t *testing.T) {
+	testPermanentConnectionRefusedRequest(t, func(solrClient solrClient) error {
+		err := solrClient.Rollback()
+		return err
+	})
+}
+
+func testRollback_success(t *testing.T) {
+	testName := testutils.GetErrorResponseCountsTestName()
+	testutils.ResetErrorResponseCounts(testName)
+
+	// Have to pass in `UpdateURLPathAndQuery` to `testutils` sub-package, which
+	// can't import its own parent package.
+	fakeSolrServer = testutils.MakeSolrFake(UpdateURLPathAndQuery, t)
+	defer fakeSolrServer.Close()
+
+	solrClientForRollbackSuccessTests, err := newSolrClient(fakeSolrServer.URL)
+	if err != nil {
+		t.Fatalf(`newSolrClient() failed with error: %s`, err)
+	}
+
+	// The Solr fake returns almost all error responses immediately, so make
+	// these tests fast by shortening the retry intervals.
+	solrClientForRollbackSuccessTests.backoffInitialInterval = 1 * time.Millisecond
+
+	err = solrClientForRollbackSuccessTests.Rollback()
+	if err != nil {
+		t.Errorf(`Expected no error for rollback request, got: "%s".  Error shows`+
+			` rollback request received, which does not match expected "%s",`,
+			err, testutils.ExpectedRollbackRequest)
+
+		return
+	}
 }
 
 func testSetSolrURLOrigin_errors(t *testing.T) {
