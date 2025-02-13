@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"go-ead-indexer/pkg/ead/collectiondoc"
 	"go-ead-indexer/pkg/ead/component"
+	"go-ead-indexer/pkg/ead/eadutil"
 	"go-ead-indexer/pkg/ead/testutils"
 	"go-ead-indexer/pkg/util"
 	"os"
@@ -244,14 +245,26 @@ func testSolrAddMessageXML(testEAD string, fileID string,
 
 		goldenFile := testutils.GoldenFilePath(testEAD, fileID)
 		actualFile := tmpFile(testEAD, fileID)
-		diff, err := util.DiffFiles(goldenFile, actualFile)
+		goldenValue, err := testutils.GetGoldenFileValue(testEAD, fileID)
 		if err != nil {
-			t.Fatalf("Error diff'ing %s vs. %s: %s\n"+
+			t.Fatalf("Error fetching golden value for %s: %s\n"+
 				"Manually diff these files to determine the reasons for test failure.",
-				goldenFile, actualFile, err)
+				goldenFile, err)
+		}
+		actualValue, err := os.ReadFile(tmpFile(testEAD, fileID))
+		if err != nil {
+			t.Fatalf("Error fetching actual value for %s: %s\n"+
+				"Manually diff these files to determine the reasons for test failure.",
+				actualFile, err)
 		}
 
-		t.Errorf("golden and actual values for %s do not match:\n%s\n",
+		// Diff the prettified XML and not the minified XML in the files,
+		// to make it easier for a human to see the discrepancies.
+		diff := util.DiffStrings("golden XML (prettified -- NOT the original)",
+			eadutil.PrettifySolrAddMessageXML(goldenValue),
+			"actual (prettified -- NOT the original)",
+			eadutil.PrettifySolrAddMessageXML(string(actualValue)))
+		t.Errorf("golden and actual values for %s do not match:\n%s"+
 			fileID, diff)
 	}
 }

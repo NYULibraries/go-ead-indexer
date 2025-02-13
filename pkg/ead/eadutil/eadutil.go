@@ -311,6 +311,22 @@ func PadUnitTitleIfNeeded(xmlString string, value string) string {
 	return padValueIfNeeded(xmlString, value, unitTitleLeftPadString, unitTitleRightPadString)
 }
 
+// Using `strings.ReplaceAll` instead of full parsing of the XML should be safe
+// for `SolrAddMessage` XML strings, which are valid XML and therefore cannot have
+// unescaped "<" and ">" characters in text nodes or attribute values.
+func PrettifySolrAddMessageXML(xml string) string {
+	var xml1 = strings.ReplaceAll(xml, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
+		"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")
+	var xml2 = strings.ReplaceAll(xml1, "<add>", "<add>\n")
+	var xml3 = strings.ReplaceAll(xml2, "<doc>", "  <doc>\n")
+	var xml4 = strings.ReplaceAll(xml3, "<field name=", "    <field name=")
+	var xml5 = strings.ReplaceAll(xml4, "</field>", "</field>\n")
+	var xml6 = strings.ReplaceAll(xml5, "</doc>", "  </doc>\n")
+	var xml7 = strings.ReplaceAll(xml6, "</add>", "</add>\n")
+
+	return xml7
+}
+
 // Note that this function only removes child nodes, it does not recursively
 // remove all descendant notes which match `elementName`.
 //
