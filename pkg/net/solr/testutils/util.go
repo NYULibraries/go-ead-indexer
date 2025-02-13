@@ -22,6 +22,10 @@ var ExpectedDeleteRequest = fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8"?>
 </delete>
 `, EADIDForDeleteTest)
 
+var ExpectedRollbackRequest = `<?xml version="1.0" encoding="UTF-8"?>
+<rollback/>
+`
+
 var hostHeaderRegExp = regexp.MustCompile("Host: 127.0.0.1:[0-9]+")
 var addIdRegExp = regexp.MustCompile(`<field name="id">([a-z0-9_-]+)</field>`)
 var deleteIdRegExp = regexp.MustCompile(`<query>ead_ssi:"([a-z0-9_-]+)"</query>`)

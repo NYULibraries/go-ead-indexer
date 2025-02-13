@@ -19,6 +19,7 @@ type SolrClient interface {
 	Delete(string) error
 	GetPostRequest(string) (*http.Request, error)
 	GetSolrURLOrigin() string
+	Rollback() error
 }
 
 type solrClient struct {
@@ -94,6 +95,14 @@ func (sc *solrClient) GetPostRequest(xmlPostBody string) (*http.Request, error) 
 	postRequest.Header.Set("Content-Type", "text/xml")
 
 	return postRequest, nil
+}
+
+func (sc *solrClient) Rollback() error {
+	xmlPostBody := fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8"?>
+<rollback/>
+`)
+
+	return sc.solrRequest(xmlPostBody)
 }
 
 func (sc *solrClient) GetSolrURLOrigin() string {
