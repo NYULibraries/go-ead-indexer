@@ -123,6 +123,7 @@ func MakeComponents(collectionDocParts ComponentCollectionDocParts, node types.N
 	if err != nil {
 		return nil, err
 	}
+	defer xpathResult.Free()
 
 	// Note: can't do `&xpathResult.NodeList()`
 	// See https://groups.google.com/g/golang-nuts/c/reaIlFdibWU
