@@ -89,4 +89,11 @@ echo "cleaning up"
 echo "------------------------------------------------------------------------------"
 rm -rf simple-repo || err_exit "Failed to clean up simple-repo directory"
 
+echo "------------------------------------------------------------------------------"
+echo "NEXT STEPS:"
+echo "1. Copy simple-repo.tar.gz to pkg/git/testdata"
+echo "2. Update the git pkg test scenarios with the new commit hash values"
+echo "3. Run the git pkg tests"
+echo "------------------------------------------------------------------------------"
+
 exit 0
