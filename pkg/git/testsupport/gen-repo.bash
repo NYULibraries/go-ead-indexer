@@ -21,26 +21,33 @@ if [[ -d simple-repo ]]; then
     err_exit "simple-repo directory already exists. Please remove it before running this script."
 fi
 
+echo "------------------------------------------------------------------------------"
+echo "creating directory hierarchy and test files"
+echo "------------------------------------------------------------------------------"
 mkdir -p simple-repo/archives simple-repo/fales simple-repo/tamwag
-pushd simple-repo/archives || err_exit "Failed to change directory to simple-repo/archives"
+pushd simple-repo/archives &>/dev/null || err_exit "Failed to change directory to simple-repo/archives"
 for e in 'mc_1' 'cap_1' ; do
     echo "$e" > "${e}.xml"
 done
-popd || err_exit "Failed to popd after creating archives files"
+popd &>/dev/null || err_exit "Failed to popd after creating archives files"
 
-pushd simple-repo/fales || err_exit "Failed to change directory to simple-repo/fales"
+pushd simple-repo/fales &>/dev/null || err_exit "Failed to change directory to simple-repo/fales"
 for i in {1..5}; do
     echo "mss_00${i}" > "mss_00${i}.xml"
 done
-popd || err_exit "Failed to popd after creating fales files"
+popd &>/dev/null || err_exit "Failed to popd after creating fales files"
 
-pushd simple-repo/tamwag || err_exit "Failed to change directory to simple-repo/tamwag"
+pushd simple-repo/tamwag &>/dev/null || err_exit "Failed to change directory to simple-repo/tamwag"
 for i in {1..2}; do
     echo "aia_00${i}" > "aia_00${i}.xml"
 done
-popd || err_exit "Failed to popd after creating tamwag files"
+popd &>/dev/null || err_exit "Failed to popd after creating tamwag files"
 
-pushd simple-repo || err_exit "Failed to change directory to simple-repo"
+pushd simple-repo &>/dev/null || err_exit "Failed to change directory to simple-repo"
+
+echo "------------------------------------------------------------------------------"
+echo "setting up git repository"
+echo "------------------------------------------------------------------------------"
 git init .
 
 git add fales/mss_001.xml
@@ -62,10 +69,24 @@ echo "mss_001 update" > fales/mss_001.xml
 git add fales/mss_001.xml
 git commit -m 'Updating file fales/mss_001.xml'
 
-popd || err_exit "Failed to popd after git operations"
+# generate log information for the developer to use in updating tests:
+echo "------------------------------------------------------------------------------"
+echo "listing commit history so that hashes can be used in tests"
+echo "------------------------------------------------------------------------------"
+git log --pretty=format:"%H %ad | %s%d [%an]" --date=iso
+echo "------------------------------------------------------------------------------"
 
+popd &>/dev/null || err_exit "Failed to popd after git operations"
+
+echo "------------------------------------------------------------------------------"
+echo "creating tarball simple-repo.tar.gz"
+echo "------------------------------------------------------------------------------"
 # NOTE: you MUST include the trailing /. or the .git directory will not be included in the tarball
-tar cvfz simple-repo.tar.gz simple-repo/. 
-rm -rf simple-repo
+tar cvfz simple-repo.tar.gz simple-repo/. &>/dev/null || err_exit "Failed to create tarball simple-repo.tar.gz"
+
+echo "------------------------------------------------------------------------------"
+echo "cleaning up"
+echo "------------------------------------------------------------------------------"
+rm -rf simple-repo || err_exit "Failed to clean up simple-repo directory"
 
 exit 0
