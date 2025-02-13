@@ -19,6 +19,7 @@ func getAncestorUnitTitle(node types.Node) (string, error) {
 	if err != nil {
 		return ancestorUnitTitle, err
 	}
+	defer xpathResult.Free()
 
 	unitTitleNodes := xpathResult.NodeList()
 	if len(unitTitleNodes) > 0 {
@@ -48,6 +49,7 @@ func getAncestorUnitTitle(node types.Node) (string, error) {
 		if err != nil {
 			return ancestorUnitTitle, err
 		}
+		defer xpathResult.Free()
 
 		unitDateNodes := xpathResult.NodeList()
 		if len(unitDateNodes) > 0 {

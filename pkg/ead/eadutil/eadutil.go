@@ -190,6 +190,7 @@ func GetFirstNode(query string, node types.Node) (types.Node, error) {
 	if err != nil {
 		return nil, err
 	}
+	defer xpathResult.Free()
 
 	nodeList := xpathResult.NodeList()
 
@@ -221,6 +222,7 @@ func GetNodeList(query string, node types.Node) (types.NodeList, error) {
 	if err != nil {
 		return nil, err
 	}
+	defer xpathResult.Free()
 
 	return xpathResult.NodeList(), nil
 }
@@ -265,6 +267,7 @@ func GetNodeValuesAndXMLStrings(query string, node types.Node) ([]string, []stri
 	if err != nil {
 		return nil, nil, err
 	}
+	defer xpathResult.Free()
 
 	for _, resultNode := range xpathResult.NodeList() {
 		values = append(values, resultNode.NodeValue())
