@@ -325,13 +325,8 @@ func (component *Component) setSolrAddMessage() {
 func (solrAddMessage SolrAddMessage) String() string {
 	fields := getSolrFieldElementStringsInV1IndexerInsertionOrder(solrAddMessage)
 
-	return fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8"?>
-<add>
-  <doc>
-%s
-  </doc>
-</add>
-`, strings.Join(fields, "\n"))
+	return fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8"?><add><doc>%s</doc></add>`,
+		strings.Join(fields, ""))
 }
 
 // TODO: DLFA-238
@@ -343,6 +338,49 @@ func (solrAddMessage SolrAddMessage) String() string {
 // Normally we'd find a way to DRY this up (probably by using a `struct` param
 // instead of the `CollectionDoc.SolrAddMessage` and `Component.SolrAddMessage`
 // types, but since function is ephemeral, we just copy it.
+//
+// How it works: this function uses the `reflect` package to loop through the
+// fields in the `DocElement` of the passed in `solrAddMessage` object, with the
+// loop ordering of the fields determined by the order in which they are declared
+// in the struct.  For each struct field, a <field> XML element string is written
+// for each value and added to the returned slice.
+//
+// Example, for the passed in `SolrAddMessage.Add.Doc`, defined as:
+//
+// -----------------------------
+//
+//	type DocElement struct {
+//	    ID                     string   `xml:"id"`
+//	    EAD_ssi                string   `xml:"ead_ssi"`
+//	    Parent_ssi             string   `xml:"parent_ssi"`
+//
+// ...[LOTS OF FIELDS ELIDED]...
+//
+//	    Language_sim          string   `xml:"language_sim"`
+//	    Language_ssm          string   `xml:"language_ssm"`
+//	    Sort_ii               string   `xml:"sort_ii"`
+//	}
+//
+// -----------------------------
+
+// ...this slice of <field> strings is returned:
+//
+// -----------------------------
+//
+//	<field name="id">ad_mc_030aspace_ref148</field>`
+//	<field name="ead_ssi">ad_mc_030</field>
+//	<field name="component_level_isim">1</field>
+//
+// ...[LOTS OF FIELDS ELIDED]...
+//
+//	<field name="heading_ssm">Palestine - Bonfils, Zangaki, L. Fiorillo</field>
+//	<field name="date_range_sim">undated &amp; other</field>
+//	<field name="sort_ii">1</field>
+//
+// -----------------------------
+//
+// Note how the ordering of <field> element strings is determined by the struct field
+// declaration order.
 func getSolrFieldElementStringsInV1IndexerInsertionOrder(solrAddMessage SolrAddMessage) []string {
 	var fieldsInV1IndexerInsertionOrder []string
 

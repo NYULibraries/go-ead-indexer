@@ -52,6 +52,7 @@ type DocElement struct {
 	UnitDateNormal_ssm     []string `xml:"unitdate_normal_ssm"`
 	UnitDateNormal_teim    []string `xml:"unitdate_normal_teim"`
 	UnitDateNormal_sim     []string `xml:"unitdate_normal_sim"`
+	UnitDate_teim          []string `xml:"unitdate_teim"`
 	UnitDateBulk_teim      []string `xml:"unitdate_bulk_teim"`
 	UnitDateInclusive_teim []string `xml:"unitdate_inclusive_teim"`
 	ScopeContent_teim      []string `xml:"scopecontent_teim"`
@@ -132,11 +133,10 @@ type DocElement struct {
 	UnitDate_ssm      []string `xml:"unitdate_ssm"`
 	DateRange_sim     []string `xml:"date_range_sim"`
 	// Currently not in Omega golden file, so don't know where to place them.
-	Note_ssm      []string `xml:"note_ssm"`
-	Note_teim     []string `xml:"note_teim"`
-	UnitDate_teim []string `xml:"unitdate_teim"`
-	Language_sim  string   `xml:"language_sim"`
-	Language_ssm  string   `xml:"language_ssm"`
+	Note_ssm     []string `xml:"note_ssm"`
+	Note_teim    []string `xml:"note_teim"`
+	Language_sim string   `xml:"language_sim"`
+	Language_ssm string   `xml:"language_ssm"`
 }
 
 func (collectionDoc *CollectionDoc) setSolrAddMessage() {
@@ -322,13 +322,8 @@ func (collectionDoc *CollectionDoc) setSolrAddMessage() {
 func (solrAddMessage SolrAddMessage) String() string {
 	fields := getSolrFieldElementStringsInV1IndexerInsertionOrder(solrAddMessage)
 
-	return fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8"?>
-<add>
-  <doc>
-%s
-  </doc>
-</add>
-`, strings.Join(fields, "\n"))
+	return fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8"?><add><doc>%s</doc></add>`,
+		strings.Join(fields, ""))
 }
 
 // TODO: DLFA-238

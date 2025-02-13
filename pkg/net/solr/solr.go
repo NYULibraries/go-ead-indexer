@@ -13,7 +13,15 @@ import (
 	"time"
 )
 
-type SolrClient struct {
+type SolrClient interface {
+	Add(string) error
+	Commit() error
+	Delete(string) error
+	GetPostRequest(string) (*http.Request, error)
+	GetSolrURLOrigin() string
+}
+
+type solrClient struct {
 	backoffInitialInterval time.Duration
 	backoffMultiplier      time.Duration
 	client                 http.Client
@@ -32,7 +40,15 @@ const UpdateURLPathAndQuery = "/solr/findingaids/update?wt=json&indent=true"
 var maxRetries = 3
 
 func NewSolrClient(urlOrigin string) (SolrClient, error) {
-	solrClient := SolrClient{
+	solrClient, err := newSolrClient(urlOrigin)
+
+	return &solrClient, err
+}
+
+// This is used by the tests, which require access to private `solrClient`
+// data and methods.
+func newSolrClient(urlOrigin string) (solrClient, error) {
+	solrClient := solrClient{
 		backoffInitialInterval: DefaultBackoffInitialInterval,
 		backoffMultiplier:      DefaultBackoffMultiplier,
 		client: http.Client{
@@ -45,11 +61,11 @@ func NewSolrClient(urlOrigin string) (SolrClient, error) {
 	return solrClient, err
 }
 
-func (sc *SolrClient) Add(xmlPostBody string) error {
+func (sc *solrClient) Add(xmlPostBody string) error {
 	return sc.solrRequest(xmlPostBody)
 }
 
-func (sc *SolrClient) Commit() error {
+func (sc *solrClient) Commit() error {
 	xmlPostBody := fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8"?>
 <commit/>
 `)
@@ -57,7 +73,7 @@ func (sc *SolrClient) Commit() error {
 	return sc.solrRequest(xmlPostBody)
 }
 
-func (sc *SolrClient) Delete(eadID string) error {
+func (sc *solrClient) Delete(eadID string) error {
 	xmlPostBody := fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8"?>
 <delete>
   <query>ead_ssi:"%s"</query>
@@ -67,7 +83,7 @@ func (sc *SolrClient) Delete(eadID string) error {
 	return sc.solrRequest(xmlPostBody)
 }
 
-func (sc *SolrClient) GetPostRequest(xmlPostBody string) (*http.Request, error) {
+func (sc *solrClient) GetPostRequest(xmlPostBody string) (*http.Request, error) {
 	postRequest, err := http.NewRequest(http.MethodPost,
 		sc.GetSolrURLOrigin()+UpdateURLPathAndQuery,
 		bytes.NewReader([]byte(xmlPostBody)))
@@ -80,11 +96,11 @@ func (sc *SolrClient) GetPostRequest(xmlPostBody string) (*http.Request, error) 
 	return postRequest, nil
 }
 
-func (sc *SolrClient) GetSolrURLOrigin() string {
+func (sc *solrClient) GetSolrURLOrigin() string {
 	return sc.urlOrigin
 }
 
-func (sc *SolrClient) sendRequest(xmlPostBody string) (*http.Response, error) {
+func (sc *solrClient) sendRequest(xmlPostBody string) (*http.Response, error) {
 	request, err := sc.GetPostRequest(xmlPostBody)
 	if err != nil {
 		return nil, err
@@ -117,7 +133,7 @@ func (sc *SolrClient) sendRequest(xmlPostBody string) (*http.Response, error) {
 	return response, err
 }
 
-func (sc *SolrClient) setSolrURLOrigin(solrURLOriginArg string) error {
+func (sc *solrClient) setSolrURLOrigin(solrURLOriginArg string) error {
 	parsedURL, err := url.ParseRequestURI(solrURLOriginArg)
 	if err != nil {
 		return err
@@ -144,11 +160,11 @@ func (sc *SolrClient) setSolrURLOrigin(solrURLOriginArg string) error {
 	return nil
 }
 
-func (sc *SolrClient) setTimeout(timeoutArg time.Duration) {
+func (sc *solrClient) setTimeout(timeoutArg time.Duration) {
 	sc.client.Timeout = timeoutArg
 }
 
-func (sc *SolrClient) solrRequest(xmlPostBody string) error {
+func (sc *solrClient) solrRequest(xmlPostBody string) error {
 	response, err := sc.sendRequest(xmlPostBody)
 	if err != nil {
 		return err

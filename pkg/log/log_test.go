@@ -46,7 +46,7 @@ func TestGetLevelOptionStringForLogLevel(t *testing.T) {
 		{name: "LevelInfo", expectedLevelOptionString: "info", level: LevelInfo},
 		{name: "LevelWarn", expectedLevelOptionString: "warn", level: LevelWarn},
 		{name: "LevelError", expectedLevelOptionString: "error", level: LevelError},
-		{name: "LevelDisabled", expectedLevelOptionString: "disabled", level: LevelDisabled},
+		{name: "LevelNone", expectedLevelOptionString: "none", level: LevelNone},
 	}
 
 	for _, testCase := range testCases {
@@ -66,7 +66,7 @@ func TestGetValidLevelOptionStrings(t *testing.T) {
 		"info",
 		"warn",
 		"error",
-		"disabled",
+		"none",
 	}, "\n")
 
 	actualLevelOptionStrings := strings.Join(GetValidLevelOptionStrings(), "\n")
@@ -103,7 +103,7 @@ func TestSetLevel(t *testing.T) {
 		{name: "Info", level: LevelInfo},
 		{name: "Warn", level: LevelWarn},
 		{name: "Error", level: LevelError},
-		{name: "Disabled", level: LevelDisabled},
+		{name: "None", level: LevelNone},
 	}
 
 	for i, testCase := range testCases {
@@ -145,11 +145,11 @@ func getLogSeriesString(logOutput string) string {
 
 // Helper fixture function that issues a series of simple log commands in ascending
 // order of severity.
-func logSeries() {
-	Debug(messageKey, "debug")
-	Info(messageKey, "info")
-	Warn(messageKey, "warn")
-	Error(messageKey, "error")
+func logSeries(logger Logger) {
+	logger.Debug(messageKey, "debug")
+	logger.Info(messageKey, "info")
+	logger.Warn(messageKey, "warn")
+	logger.Error(messageKey, "error")
 }
 
 // Called in the main loop for `TestSetLevel()`.  It calls the workhorse test function
@@ -157,11 +157,14 @@ func logSeries() {
 // level without needing to know which setter to use and what level is being
 // specified.  In this case, the closure uses `SetLevel(Level)`.
 func testSetLevelByLevel(t *testing.T, testCaseName string, level Level, expectedLogSeriesForLevelString string) {
+	logger := New()
+
 	var setLevelClosure setLevelFunction
 	setLevelClosure = func() {
-		SetLevel(level)
+		logger.SetLevel(level)
 	}
-	testSetLevel(t, "SetLevel", setLevelClosure, testCaseName, expectedLogSeriesForLevelString)
+
+	testSetLevel(t, logger, "SetLevel", setLevelClosure, testCaseName, expectedLogSeriesForLevelString)
 }
 
 // Called in the main loop for `TestSetLevel()`.  It calls the workhorse test function
@@ -169,15 +172,18 @@ func testSetLevelByLevel(t *testing.T, testCaseName string, level Level, expecte
 // level without needing to know which setter to use and what level is being
 // specified.  In this case, the closure uses `SetLevelByLevelString(string)`.
 func testSetLevelByLevelString(t *testing.T, testCaseName string, levelString string, expectedLogSeriesForLevelString string) {
+	logger := New()
+
 	var setLevelClosure setLevelFunction
 	setLevelClosure = func() {
-		err := SetLevelByString(levelString)
+		err := logger.SetLevelByString(levelString)
 		if err != nil {
 			t.Fatalf("SetLevelByString(\"%s\") failed with error: %s",
 				levelString, err)
 		}
 	}
-	testSetLevel(t, "SetLevelByString", setLevelClosure, testCaseName, expectedLogSeriesForLevelString)
+
+	testSetLevel(t, logger, "SetLevelByString", setLevelClosure, testCaseName, expectedLogSeriesForLevelString)
 }
 
 // The actual workhorse test function.  Do a test using the provided `setLevelClosure`,
@@ -186,19 +192,19 @@ func testSetLevelByLevelString(t *testing.T, testCaseName string, levelString st
 // SetLevelByString("warn")
 // We implement it this way because we don't want to have two workhorse functions
 // that differ only by a single statement: e.g. `SetLevel(...)`vs. `SetLevelByString(...)`.
-func testSetLevel(t *testing.T, setLevelFunctionName string, setLevelClosure setLevelFunction,
-	testCaseName string, expectedLogSeriesString string) {
+func testSetLevel(t *testing.T, logger Logger, setLevelFunctionName string,
+	setLevelClosure setLevelFunction, testCaseName string, expectedLogSeriesString string) {
 	// Capture all log output in a `bytes.Buffer`.
 	var logOutput bytes.Buffer
 	logOutputWriter := bufio.NewWriter(&logOutput)
-	SetOutput(logOutputWriter)
+	logger.SetOutput(logOutputWriter)
 
 	// We've been provided a set level function which has been closed off with the
 	// desired level.  We just need to call it to set the package log level.
 	setLevelClosure()
 
 	// Logs simple messages for each testCase in ascending order of severity.
-	logSeries()
+	logSeries(logger)
 
 	// Must flush the writer to prevent risk truncation of `logOutput`
 	err := logOutputWriter.Flush()

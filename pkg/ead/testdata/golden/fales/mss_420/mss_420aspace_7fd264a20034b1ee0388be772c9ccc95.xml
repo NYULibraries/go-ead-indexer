@@ -1,49 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<add>
-  <doc>
-    <field name="id">mss_420aspace_7fd264a20034b1ee0388be772c9ccc95</field>
-    <field name="ead_ssi">mss_420</field>
-    <field name="parent_ssi">aspace_f4ab9d177f51cc8a94bfa72e13949ae0</field>
-    <field name="parent_ssm">aspace_f4ab9d177f51cc8a94bfa72e13949ae0</field>
-    <field name="parent_unittitles_ssm">Series II. Scripts</field>
-    <field name="parent_unittitles_teim">Series II. Scripts</field>
-    <field name="component_level_isim">2</field>
-    <field name="component_children_bsi">false</field>
-    <field name="collection_sim">Hot Peaches Records</field>
-    <field name="collection_ssm">Hot Peaches Records</field>
-    <field name="collection_unitid_ssm">MSS.420</field>
-    <field name="level_sim">file</field>
-    <field name="unittitle_ssm">
+<?xml version="1.0" encoding="UTF-8"?><add><doc><field name="id">mss_420aspace_7fd264a20034b1ee0388be772c9ccc95</field><field name="ead_ssi">mss_420</field><field name="parent_ssi">aspace_f4ab9d177f51cc8a94bfa72e13949ae0</field><field name="parent_ssm">aspace_f4ab9d177f51cc8a94bfa72e13949ae0</field><field name="parent_unittitles_ssm">Series II. Scripts</field><field name="parent_unittitles_teim">Series II. Scripts</field><field name="component_level_isim">2</field><field name="component_children_bsi">false</field><field name="collection_sim">Hot Peaches Records</field><field name="collection_ssm">Hot Peaches Records</field><field name="collection_unitid_ssm">MSS.420</field><field name="level_sim">file</field><field name="unittitle_ssm">
       &lt;em&gt;Crédule&lt;/em&gt;
-    </field>
-    <field name="unittitle_teim">
+    </field><field name="unittitle_teim">
       Crédule
-    </field>
-    <field name="unitid_teim">/repositories/3/archival_objects/971620</field>
-    <field name="unitid_ssm">/repositories/3/archival_objects/971620</field>
-    <field name="unitdate_normal_ssm">1964-06-16/1964-06-16</field>
-    <field name="unitdate_normal_teim">1964-06-16/1964-06-16</field>
-    <field name="unitdate_normal_sim">1964-06-16/1964-06-16</field>
-    <field name="unitdate_teim">June 16, 1964</field>
-    <field name="ref_ssi">aspace_7fd264a20034b1ee0388be772c9ccc95</field>
-    <field name="repository_ssi">fales</field>
-    <field name="repository_sim">fales</field>
-    <field name="repository_ssm">fales</field>
-    <field name="format_sim">Archival Object</field>
-    <field name="format_ssm">Archival Object</field>
-    <field name="location_ssm">Box: 6, Folder: 1</field>
-    <field name="location_si">Box: 6, Folder: 1</field>
-    <field name="collection_teim">Hot Peaches Records</field>
-    <field name="collection_unitid_teim">MSS.420</field>
-    <field name="series_sim">Series II. Scripts</field>
-    <field name="series_si">Series II. Scripts &gt;&gt; 
+    </field><field name="unitid_teim">/repositories/3/archival_objects/971620</field><field name="unitid_ssm">/repositories/3/archival_objects/971620</field><field name="unitdate_normal_ssm">1964-06-16/1964-06-16</field><field name="unitdate_normal_teim">1964-06-16/1964-06-16</field><field name="unitdate_normal_sim">1964-06-16/1964-06-16</field><field name="unitdate_teim">June 16, 1964</field><field name="ref_ssi">aspace_7fd264a20034b1ee0388be772c9ccc95</field><field name="repository_ssi">fales</field><field name="repository_sim">fales</field><field name="repository_ssm">fales</field><field name="format_sim">Archival Object</field><field name="format_ssm">Archival Object</field><field name="location_ssm">Box: 6, Folder: 1</field><field name="location_si">Box: 6, Folder: 1</field><field name="collection_teim">Hot Peaches Records</field><field name="collection_unitid_teim">MSS.420</field><field name="series_sim">Series II. Scripts</field><field name="series_si">Series II. Scripts &gt;&gt; 
       &lt;em&gt;Crédule&lt;/em&gt;
-    </field>
-    <field name="heading_ssm">
+    </field><field name="heading_ssm">
       Crédule
-    </field>
-    <field name="unitdate_ssm">June 16, 1964</field>
-    <field name="date_range_sim">undated &amp; other</field>
-    <field name="sort_ii">201</field>
-  </doc>
-</add>
+    </field><field name="unitdate_ssm">June 16, 1964</field><field name="date_range_sim">undated &amp; other</field><field name="sort_ii">201</field></doc></add>

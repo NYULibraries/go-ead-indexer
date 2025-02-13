@@ -14,57 +14,119 @@ import (
 
 type Level int
 
+type Logger interface {
+	Debug(args ...any)
+	Error(args ...any)
+	Fatal(args ...any)
+	Info(args ...any)
+	Warn(args ...any)
+
+	SetLevel(level Level)
+	SetLevelByString(levelStringArg string) error
+	SetOutput(logWriter io.Writer)
+}
+
+// Our default implementation of Logger.
+type SloggerLogger struct {
+	programLevel *slog.LevelVar
+	slogger      *slog.Logger
+}
+
 // Slog levels are internal, so we don't export this const.
 // We do export the string for the Level corresponding to this slog level.
 const defaultSlogLevel = slog.LevelInfo
 
 // We are wrapping slog calls which take an initial argument that is always output
-// to `msg`, which doesn't really fit into our desired scheme for log output
-// as we'd like it to appear in Kibana.  For now, we'll just pass `msg` an empty
-// string.
+// to `msg`.  We don't know yet how or if we will be using `msg` key, so for now
+// just leave it empty.  This package was originally written for ariadne for
+// logging to our Kibana instance, which had certain constraints regarding use
+// of the `msg` key.
 const emptyMsg = ""
 
-var DefaultLevelStringOption = getLevelOptionStringForSlogLevel(defaultSlogLevel)
+var DefaultLevelStringOption = GetLevelOptionStringForSlogLevel(defaultSlogLevel)
 
 var (
-	LevelDebug    = Level(reflect.ValueOf(slog.LevelDebug).Int())
-	LevelInfo     = Level(reflect.ValueOf(slog.LevelInfo).Int())
-	LevelWarn     = Level(reflect.ValueOf(slog.LevelWarn).Int())
-	LevelError    = Level(reflect.ValueOf(slog.LevelError).Int())
-	LevelDisabled = Level(math.MaxInt)
+	LevelDebug = Level(reflect.ValueOf(slog.LevelDebug).Int())
+	LevelInfo  = Level(reflect.ValueOf(slog.LevelInfo).Int())
+	LevelWarn  = Level(reflect.ValueOf(slog.LevelWarn).Int())
+	LevelError = Level(reflect.ValueOf(slog.LevelError).Int())
+	LevelNone  = Level(math.MaxInt)
 )
 
 var logLevelStringOptions = map[string]Level{
-	"debug":    LevelDebug,
-	"info":     LevelInfo,
-	"warn":     LevelWarn,
-	"error":    LevelError,
-	"disabled": LevelDisabled,
+	"debug": LevelDebug,
+	"info":  LevelInfo,
+	"warn":  LevelWarn,
+	"error": LevelError,
+	"none":  LevelNone,
 }
 
-var programLevel = new(slog.LevelVar)
-var slogger *slog.Logger
-
-func init() {
-	slogger = newDefaultSlogger()
+func New() Logger {
+	return &SloggerLogger{
+		programLevel: newDefaultSloggerProgramLevel(),
+		slogger:      newDefaultSlogger(),
+	}
 }
 
-func Debug(args ...any) {
-	slogger.Debug(emptyMsg, args...)
+func (sl *SloggerLogger) Debug(args ...any) {
+	sl.slogger.Debug(emptyMsg, args...)
 }
 
-func Error(args ...any) {
-	slogger.Error(emptyMsg, args...)
+func (sl *SloggerLogger) Error(args ...any) {
+	sl.slogger.Error(emptyMsg, args...)
 }
 
-func Fatal(args ...any) {
-	Error(fmt.Sprint(args...))
+func (sl *SloggerLogger) Fatal(args ...any) {
+	sl.Error(fmt.Sprint(args...))
+
 	os.Exit(1)
+}
+
+func (sl *SloggerLogger) Info(args ...any) {
+	sl.slogger.Info(emptyMsg, args...)
+}
+
+func (sl *SloggerLogger) SetLevel(level Level) {
+	sl.programLevel.Set(slog.Level(level))
+}
+
+// Useful for setting the level based on a string value set by a user via a flag
+// in CLI mode.
+func (sl *SloggerLogger) SetLevelByString(levelStringArg string) error {
+	level, ok := logLevelStringOptions[levelStringArg]
+	if ok {
+		sl.programLevel.Set(slog.Level(level))
+		return nil
+	} else {
+		return errors.New(fmt.Sprintf("\"%s\" is not a valid error string option.  Valid options: %s",
+			levelStringArg, strings.Join(GetValidLevelOptionStrings(), ", ")))
+	}
+}
+
+// Redirect output to another stream besides stdout, or to a bytes.Buffer for
+// testing.
+func (sl *SloggerLogger) SetOutput(logWriter io.Writer) {
+	handler := slog.NewJSONHandler(logWriter, &slog.HandlerOptions{Level: sl.programLevel})
+	sl.slogger = slog.New(handler)
+}
+
+func (sl *SloggerLogger) Warn(args ...any) {
+	sl.slogger.Warn(emptyMsg, args...)
 }
 
 func GetLevelOptionStringForLogLevel(levelArg Level) string {
 	for optionString, levelValue := range logLevelStringOptions {
 		if levelValue == levelArg {
+			return optionString
+		}
+	}
+
+	return ""
+}
+
+func GetLevelOptionStringForSlogLevel(levelArg slog.Level) string {
+	for optionString, levelValue := range logLevelStringOptions {
+		if levelValue == Level(reflect.ValueOf(levelArg).Int()) {
 			return optionString
 		}
 	}
@@ -99,51 +161,16 @@ func GetValidLevelOptionStrings() []string {
 	return orderedLevelOptionStrings
 }
 
-func Info(args ...any) {
-	slogger.Info(emptyMsg, args...)
-}
+func newDefaultSloggerProgramLevel() *slog.LevelVar {
+	newDefaultProgramLevel := new(slog.LevelVar)
+	newDefaultProgramLevel.Set(defaultSlogLevel)
 
-func SetLevel(level Level) {
-	programLevel.Set(slog.Level(level))
-}
-
-// Useful for setting the level based on a string value set by a user via a flag
-// in CLI mode.
-func SetLevelByString(levelStringArg string) error {
-	level, ok := logLevelStringOptions[levelStringArg]
-	if ok {
-		programLevel.Set(slog.Level(level))
-		return nil
-	} else {
-		return errors.New(fmt.Sprintf("\"%s\" is not a valid error string option.  Valid options: %s",
-			levelStringArg, strings.Join(GetValidLevelOptionStrings(), ", ")))
-	}
-}
-
-// Redirect output to another stream besides stdout, or to a bytes.Buffer for
-// testing.
-func SetOutput(logWriter io.Writer) {
-	handler := slog.NewJSONHandler(logWriter, &slog.HandlerOptions{Level: programLevel})
-	slogger = slog.New(handler)
-}
-
-func Warn(args ...any) {
-	slogger.Warn(emptyMsg, args...)
-}
-
-func getLevelOptionStringForSlogLevel(levelArg slog.Level) string {
-	for optionString, levelValue := range logLevelStringOptions {
-		if levelValue == Level(reflect.ValueOf(levelArg).Int()) {
-			return optionString
-		}
-	}
-
-	return ""
+	return newDefaultProgramLevel
 }
 
 func newDefaultSlogger() *slog.Logger {
-	programLevel.Set(defaultSlogLevel)
-	handler := slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{Level: programLevel})
+	handler := slog.NewJSONHandler(os.Stdout,
+		&slog.HandlerOptions{Level: newDefaultSloggerProgramLevel()})
 
 	return slog.New(handler)
 }

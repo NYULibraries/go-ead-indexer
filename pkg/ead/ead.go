@@ -1,6 +1,7 @@
 package ead
 
 import (
+	"errors"
 	"fmt"
 	"github.com/lestrrat-go/libxml2/parser"
 	"github.com/lestrrat-go/libxml2/types"
@@ -9,11 +10,6 @@ import (
 	"regexp"
 )
 
-// We need to set `xmlns=""` to get the xpath queries working.  See code comment
-// in `New()` for more details.  `xmlns=""` is valid according to this post:
-// https://stackoverflow.com/questions/1587891/is-xmlns-a-valid-xml-namespace
-var namespaceRegexp = regexp.MustCompile(`<((?s)\s*)ead((?s).*)xmlns="(?U).*"`)
-
 type EAD struct {
 	CollectionDoc        collectiondoc.CollectionDoc `json:"collection_doc"`
 	Components           *[]component.Component      `json:"components"`
@@ -21,12 +17,32 @@ type EAD struct {
 	OriginalFileContents string                      `json:"original_file_contents"`
 }
 
+const errorNoEADTagWithExpectedStructureFound = "No <ead> tag with the expected structure was found"
+
+// This must be to the number of match groups in the regexp below.
+const numMatchGroupsInNamespaceRegexp = 3
+
+// We need to set `xmlns=""` to get the xpath queries working.  See code comment
+// in `New()` for more details.  `xmlns=""` is valid according to this post:
+// https://stackoverflow.com/questions/1587891/is-xmlns-a-valid-xml-namespace
+var namespaceRegexp = regexp.MustCompile(`<((?s)\s*)ead((?s).*)xmlns="(?U).*"`)
+
+// We don't have an official repository code format, but there is a comprehensive
+// list of repository codes:
+// https://jira.nyu.edu/browse/FADESIGN-65
+var validRepositoryCodeRegex = regexp.MustCompile(`^[a-z]+$`)
+
 // Note that the repository code historically is taken from the name of the
 // EAD file's parent directory, not from the anything in the contents of the file
 // itself.  For now we are keeping file handling out of this package, so it is
 // up to the client to pass in the repository code.
 func New(repositoryCode string, eadXML string) (EAD, error) {
 	ead := EAD{}
+
+	if !validRepositoryCodeRegex.MatchString(repositoryCode) {
+		return ead, errors.New(fmt.Sprintf(`Invalid repository code: "%s"`,
+			repositoryCode))
+	}
 
 	// XPath queries fail if we don't set the namespace to empty string.
 	// Excepting the `xlink` prefix, the tags in the EAD files don't seem to use
@@ -49,6 +65,9 @@ func New(repositoryCode string, eadXML string) (EAD, error) {
 	// removing namespace stuff from all nodes using the standard library
 	// `encoding/xml` package.
 	matchGroups := namespaceRegexp.FindStringSubmatch(eadXML)
+	if len(matchGroups) < numMatchGroupsInNamespaceRegexp {
+		return ead, errors.New(errorNoEADTagWithExpectedStructureFound)
+	}
 	newString := fmt.Sprintf(`<%sead%sxmlns=""`, matchGroups[1], matchGroups[2])
 	modifiedEADXML := namespaceRegexp.ReplaceAllString(eadXML, newString)
 
