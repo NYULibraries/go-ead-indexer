@@ -2,11 +2,11 @@ package index
 
 import (
 	"fmt"
+	"github.com/nyulibraries/go-ead-indexer/pkg/index"
 	"github.com/spf13/cobra"
-	"go-ead-indexer/pkg/index"
 	"strings"
 
-	"go-ead-indexer/pkg/log"
+	"github.com/nyulibraries/go-ead-indexer/pkg/log"
 )
 
 var file string

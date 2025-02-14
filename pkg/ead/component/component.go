@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/lestrrat-go/libxml2/types"
-	"go-ead-indexer/pkg/ead/eadutil"
+	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
 )
 
 type Component struct {

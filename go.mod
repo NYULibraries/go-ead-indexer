@@ -1,4 +1,4 @@
-module go-ead-indexer
+module github.com/nyulibraries/go-ead-indexer
 
 go 1.23.1
 

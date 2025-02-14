@@ -1,6 +1,6 @@
 package main
 
-import "go-ead-indexer/pkg/cmd"
+import "github.com/nyulibraries/go-ead-indexer/pkg/cmd"
 
 func main() {
 	cmd.Execute()

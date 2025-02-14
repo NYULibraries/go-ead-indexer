@@ -2,8 +2,8 @@ package collectiondoc
 
 import (
 	"fmt"
-	"go-ead-indexer/pkg/ead/eadutil"
-	"go-ead-indexer/pkg/util"
+	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
+	"github.com/nyulibraries/go-ead-indexer/pkg/util"
 	"reflect"
 	"strings"
 )
