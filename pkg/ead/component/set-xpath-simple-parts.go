@@ -2,7 +2,7 @@ package component
 
 import (
 	"github.com/lestrrat-go/libxml2/types"
-	"go-ead-indexer/pkg/ead/eadutil"
+	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
 )
 
 // Even though `node` is technically a <c> element node, XPath expressions that

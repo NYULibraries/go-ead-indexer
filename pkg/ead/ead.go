@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"github.com/lestrrat-go/libxml2/parser"
 	"github.com/lestrrat-go/libxml2/types"
-	"go-ead-indexer/pkg/ead/collectiondoc"
-	"go-ead-indexer/pkg/ead/component"
+	"github.com/nyulibraries/go-ead-indexer/pkg/ead/collectiondoc"
+	"github.com/nyulibraries/go-ead-indexer/pkg/ead/component"
 	"regexp"
 )
 

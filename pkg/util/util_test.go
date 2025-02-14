@@ -55,7 +55,7 @@ func TestGetCallerFunctionNameError(t *testing.T) {
 }
 
 func TestGetCallerFunctionNameSkip1(t *testing.T) {
-	const expectedPackage = "go-ead-indexer/pkg/util"
+	const expectedPackage = "github.com/nyulibraries/go-ead-indexer/pkg/util"
 	const expectedFunction = "TestGetCallerFunctionNameSkip1"
 
 	actualPackage, actualFunction, err := GetCallerFunctionName(1)
@@ -83,7 +83,7 @@ func testGetCallerFunctionNameSkip3_nestedFunc1(t *testing.T) {
 }
 
 func testGetCallerFunctionNameSkip3_nestedFunc2(t *testing.T) {
-	const expectedPackage = "go-ead-indexer/pkg/util"
+	const expectedPackage = "github.com/nyulibraries/go-ead-indexer/pkg/util"
 	const expectedFunction = "TestGetCallerFunctionNameSkip3"
 
 	actualPackage, actualFunction, err := GetCallerFunctionName(3)

@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
-	"go-ead-indexer/pkg/util"
+	"github.com/nyulibraries/go-ead-indexer/pkg/util"
 	"io"
 	"net/http"
 	"net/http/httptest"
@@ -76,7 +76,7 @@ var errorResponseTypeRegExp = regexp.MustCompile(errorResponseIDPrefix +
 // This helper can only be called from a function whose name starts with "[Tt]est"
 // which is in the net/solr package of this module.
 func GetErrorResponseCountsTestName() string {
-	const validPackage = "go-ead-indexer/pkg/net/solr"
+	const validPackage = "github.com/nyulibraries/go-ead-indexer/pkg/net/solr"
 
 	pkg, function, err := util.GetCallerFunctionName(2)
 	if err != nil {

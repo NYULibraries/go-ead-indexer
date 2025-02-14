@@ -2,9 +2,9 @@ package solr
 
 import (
 	"errors"
-	eadtestutils "go-ead-indexer/pkg/ead/testutils"
-	"go-ead-indexer/pkg/net/solr/testutils"
-	"go-ead-indexer/pkg/util"
+	eadtestutils "github.com/nyulibraries/go-ead-indexer/pkg/ead/testutils"
+	"github.com/nyulibraries/go-ead-indexer/pkg/net/solr/testutils"
+	"github.com/nyulibraries/go-ead-indexer/pkg/util"
 	"net/http/httptest"
 	"strings"
 	"syscall"

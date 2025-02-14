@@ -4,8 +4,8 @@ import (
 	"errors"
 	"fmt"
 	"github.com/lestrrat-go/libxml2/types"
-	"go-ead-indexer/pkg/ead/eadutil"
-	"go-ead-indexer/pkg/sanitize"
+	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
+	"github.com/nyulibraries/go-ead-indexer/pkg/sanitize"
 )
 
 const noTitleAvailable = "[No title available]"

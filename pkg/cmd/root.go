@@ -6,8 +6,8 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"go-ead-indexer/pkg/cmd/debug"
-	"go-ead-indexer/pkg/cmd/index"
+	"github.com/nyulibraries/go-ead-indexer/pkg/cmd/debug"
+	"github.com/nyulibraries/go-ead-indexer/pkg/cmd/index"
 )
 
 // rootCmd represents the base command when called without any subcommands
