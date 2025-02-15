@@ -1879,6 +1879,29 @@
           </controlaccess>
         </c>
       </c>
+
+      <!-- Test case for <unitdate normal="[INVALID DATE FORMAT]" ... > -->
+      <!-- See https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11550822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11550822 -->
+      <!-- From archives/mos_2024.xml-->
+      <c id="aspace_14c7ab764c20a3d6960975f319b33a4e" level="file">
+        <did>
+          <unittitle>New York College of Dentistry Announcement</unittitle>
+          <unitid>cuid18334</unitid>
+          <unitid type="aspace_uri">/repositories/6/archival_objects/966266
+          </unitid>
+          <unitdate datechar="creation" normal="1911/2023-03-27"
+                    type="inclusive">1911-2023-03-27
+          </unitdate>
+          <container altrender="Manuscript box - Legal"
+                     id="aspace_dd5a64bb057db8dc2f8d3316ff85c7e7"
+                     label="Mixed Materials [31142062739506]" type="Box">80
+          </container>
+          <container id="aspace_b6ebca6224f7383da1a4711677df9cc0"
+                     parent="aspace_dd5a64bb057db8dc2f8d3316ff85c7e7"
+                     type="Folder">25
+          </container>
+        </did>
+      </c>
     </dsc>
   </archdesc>
 </ead>

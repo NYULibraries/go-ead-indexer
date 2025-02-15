@@ -44,6 +44,13 @@ var allowedHTMLTags = util.CompactStringSlicePreserveOrder(
 
 var datePartsRegexp = regexp.MustCompile(`^\s*(\d{4})\/(\d{4})\s*$`)
 
+// TODO: DLFA-238
+// Delete these and switch back to using `datePartsRegexp` after passing the
+// transition test and resolving this:
+// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11550822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11550822.
+var datePartsRegexpDLFA238Permissive = regexp.MustCompile(`\d{4}\/\d{4}`)
+var dateYearDLFA238Permissive = regexp.MustCompile(`^(\d+)`)
+
 var dateRangesCenturies = []DateRange{
 	{Display: "1101-1200", StartDate: 1101, EndDate: 1200},
 	{Display: "1201-1300", StartDate: 1201, EndDate: 1300},
@@ -133,7 +140,33 @@ func EscapeSolrFieldString(value string) string {
 	return escapedSolrFieldString
 }
 
+// TODO: DLFA-238
+// Delete this and rename `GetDatePartsStrict` to `GetDateParts` after passing
+// transition test and resolving this:
+// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11550822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11550822.
 func GetDateParts(dateString string) DateParts {
+	return GetDatePartsDLFA238Permissive(dateString)
+}
+
+// TODO: DLFA-238
+// Delete this after passing the transition test and resolving this:
+// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11550822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11550822.
+func GetDatePartsDLFA238Permissive(dateString string) DateParts {
+	dateParts := DateParts{}
+
+	if datePartsRegexpDLFA238Permissive.MatchString(dateString) {
+		matches := strings.Split(dateString, "/")
+		dateParts.Start = matches[0]
+		dateParts.End = matches[len(matches)-1]
+	}
+
+	return dateParts
+}
+
+// TODO: DLFA-238
+// Rename to `GetDateParts` after passing the transition test and resolving this:
+// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11550822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11550822.
+func GetDatePartsStrict(dateString string) DateParts {
 	dateParts := DateParts{}
 
 	matches := datePartsRegexp.FindStringSubmatch(dateString)
@@ -510,9 +543,19 @@ func convertEADTagsWithRenderAttributesToHTML(eadString string) (string, error) 
 	return htmlString, nil
 }
 
+// TODO: DLFA-238
+// Delete this and restore `isDateInRangeStrict()` back to `isDateInRange()`
+// after passing transition test and resolving this:
+// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11550822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11550822.
+func isDateInRange(dateString string, dateRange DateRange) bool {
+	return isDateInRangeDLFA238Permissive(dateString, dateRange)
+}
+
+// TODO: DLFA-238
+// Change this back to `isDateInRange()` after passing transition test.
 // `dateString` should be of the form "YYYY/YYYY", where the left "YYYY" is the
 // start date and the right "YYYY" is the end date.
-func isDateInRange(dateString string, dateRange DateRange) bool {
+func isDateInRangeStrict(dateString string, dateRange DateRange) bool {
 	dateParts := GetDateParts(dateString)
 
 	startDateInt, err := strconv.Atoi(dateParts.Start)
@@ -521,6 +564,42 @@ func isDateInRange(dateString string, dateRange DateRange) bool {
 	}
 
 	endDateInt, err := strconv.Atoi(dateParts.End)
+	if err != nil {
+		return false
+	}
+
+	return (startDateInt >= dateRange.StartDate && startDateInt <= dateRange.EndDate) ||
+		(endDateInt >= dateRange.StartDate && endDateInt <= dateRange.EndDate)
+}
+
+// TODO: DLFA-238
+// Delete this after passing the transition test.
+// This permissive is date in range function replicates:
+// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11550822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11550822.
+func isDateInRangeDLFA238Permissive(dateString string, dateRange DateRange) bool {
+	rubyStringToIntFunc := func(dateString string) (int, error) {
+		matches := dateYearDLFA238Permissive.FindAllString(dateString, 1)
+		if len(matches) == 1 {
+			yearIsh, err := strconv.Atoi(matches[0])
+			if err != nil {
+				return 0, err
+			}
+
+			return yearIsh, nil
+		} else {
+			return 0, errors.New(fmt.Sprintf(`Can't extract a year from date string "%s"`,
+				dateString))
+		}
+	}
+
+	dateParts := GetDateParts(dateString)
+
+	startDateInt, err := rubyStringToIntFunc(dateParts.Start)
+	if err != nil {
+		return false
+	}
+
+	endDateInt, err := rubyStringToIntFunc(dateParts.End)
 	if err != nil {
 		return false
 	}

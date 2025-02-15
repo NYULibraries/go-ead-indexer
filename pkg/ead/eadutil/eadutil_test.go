@@ -242,13 +242,29 @@ func TestGetDateParts(t *testing.T) {
 				End:   "2020",
 			},
 		},
+		// TODO: DLFA-238
+		// Delete this after passing the transition test and resolving this:
+		// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11550822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11550822.
 		{
-			"Returns empty `DateParts` for ambiguous date string",
-			"2016/2020/2024",
-			DateParts{},
+			"Gets start and end date for valid date string: allow yyyy-mm-dd",
+			// Value "1911/2023-03-27" appears in mc_286aspace_14c7ab764c20a3d6960975f319b33a4e
+			"1911/2023-03-27",
+			DateParts{
+				Start: "1911",
+				End:   "2023-03-27",
+			},
 		},
+		// TODO: DLFA-238
+		// Re-enable this test after passing transition test and resolving this
+		// v1 indexer bug which allows for the invalid date format in this test case:
+		// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11550822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11550822.
+		//{
+		//	"Returns empty `DateParts` for ambiguous date string",
+		//	"2016/2020/2024",
+		//	DateParts{},
+		//},
 		{
-			"Returns empty `DateParts` for date string with hypen",
+			"Returns empty `DateParts` for date string with hyphen",
 			"2016-2020",
 			DateParts{},
 		},
