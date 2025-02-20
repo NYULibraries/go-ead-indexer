@@ -49,7 +49,7 @@ var datePartsRegexp = regexp.MustCompile(`^\s*(\d{4})\/(\d{4})\s*$`)
 // transition test and resolving this:
 // https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11550822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11550822.
 var datePartsRegexpDLFA238Permissive = regexp.MustCompile(`\d{4}\/\d{4}`)
-var dateYearDLFA238Permissive = regexp.MustCompile(`^(\d+)`)
+var dateYearDLFA238Permissive = regexp.MustCompile(`^\s*(\d+)`)
 
 var dateRangesCenturies = []DateRange{
 	{Display: "1101-1200", StartDate: 1101, EndDate: 1200},
@@ -600,9 +600,9 @@ func isDateInRangeStrict(dateString string, dateRange DateRange) bool {
 // https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11550822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11550822.
 func isDateInRangeDLFA238Permissive(dateString string, dateRange DateRange) bool {
 	rubyStringToIntFunc := func(dateString string) (int, error) {
-		matches := dateYearDLFA238Permissive.FindAllString(dateString, 1)
-		if len(matches) == 1 {
-			yearIsh, err := strconv.Atoi(matches[0])
+		matches := dateYearDLFA238Permissive.FindStringSubmatch(dateString)
+		if len(matches) == 2 {
+			yearIsh, err := strconv.Atoi(matches[1])
 			if err != nil {
 				return 0, err
 			}
