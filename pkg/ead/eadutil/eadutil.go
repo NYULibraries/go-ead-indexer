@@ -94,6 +94,12 @@ var eadTagRenderAttributeToHTMLTagName = map[string]string{
 // https://github.com/NYULibraries/ead_indexer/blob/a367ab8cc791376f0d8a287cbcd5b6ee43d5c04f/lib/ead_indexer/behaviors.rb#L124
 var marcSubfieldDemarcator = regexp.MustCompile(`\|\w{1}`)
 
+// Go \s metachar is [\t\n\f\r ], and does not include NBSP.
+// Source: https://pkg.go.dev/regexp/syntax
+var multipleConsecutiveWhitespace = regexp.MustCompile(`[\s ]{2}\s*`)
+var leadingWhitespaceInFieldContent = regexp.MustCompile(`^[\s ]+`)
+var trailingWhitespaceInFieldContent = regexp.MustCompile(`[\s ]+$`)
+
 // These are not perfect regexps for open and close XML tags, but they are fine
 // for our constrained use cases.
 var closeTagRegExp = regexp.MustCompile("</[^>]+>$")
@@ -311,9 +317,25 @@ func GetNodeValuesAndXMLStrings(query string, node types.Node) ([]string, []stri
 }
 
 func MakeSolrAddMessageFieldElementString(fieldName string, fieldValue string) string {
-	escapedFieldValue := EscapeSolrFieldString(fieldValue)
+	massagedValue := fieldValue
 
-	return fmt.Sprintf(`<field name="%s">%s</field>`, fieldName, escapedFieldValue)
+	massagedValue = EscapeSolrFieldString(fieldValue)
+
+	// TODO: DLFA-238
+	// This is sort of a "unified" whitespace massage that's a way of compromising
+	// between the most correct way and the way we need to match DLFA-243 massaged
+	// DLFA-188 golden files.
+	// Re-work or remove this stuff after passing the transition test.  It might
+	// still make sense to keep some of it for a while after, depending on how
+	// we deal with embedded EAD tags like <lb/>.
+	massagedValue = strings.ReplaceAll(massagedValue, "\n", " ")
+	massagedValue = multipleConsecutiveWhitespace.ReplaceAllString(massagedValue, " ")
+	massagedValue = leadingWhitespaceInFieldContent.ReplaceAllString(
+		massagedValue, "")
+	massagedValue = trailingWhitespaceInFieldContent.ReplaceAllString(
+		massagedValue, "")
+
+	return fmt.Sprintf(`<field name="%s">%s</field>`, fieldName, massagedValue)
 }
 
 func MakeTitleHTML(unitTitle string) (string, error) {

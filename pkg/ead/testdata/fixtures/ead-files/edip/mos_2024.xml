@@ -1902,6 +1902,16 @@
           </container>
         </did>
       </c>
+
+      <!-- Test case for handling of a non-prettified component with a <unittitle>
+           that contains <lb/> tags.  We would not want pieces of text on either
+           side of these tags to be mashed together.  We also want to make sure
+           we are not inserting newlines such as v1 indexer does when it prettifies
+           the XML.
+           See https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506.
+           From archives/mc_110.xml
+      -->
+      <c id="aspace_ref782" level="file"><did><unittitle><title render="italic">Refractive Index of Sodium Vapor and Width of D1 in Absorptions: Apr. 1929</title><lb/><title render="italic">Dispersion and Absorption Line Width in the Alkali Vapors: Aug. 1929</title><lb/><title render="italic">A Sensitive Method for Determining Refractive Indices, SAK and J. Q. Stewart: Jun. 1930</title><lb/><title render="italic">Scattering of Light in Sodium Vapor: Jan. 1930</title><lb/><title render="italic">Distinction between Scattering and Absorption, SAK and John Q. Stewart: Jan. 1930</title></unittitle><unitdate datechar="creation" normal="1921/1930" type="inclusive">1921-1930</unitdate><container id="aspace_9e8963be1ccf11b413f53043140ddb57" label="Mixed Materials [31142042254139]" type="Box">7</container><container id="aspace_3f0d4dc6b48158ffd35337369e7b632a" parent="aspace_9e8963be1ccf11b413f53043140ddb57" type="Folder">14</container></did></c>
     </dsc>
   </archdesc>
 </ead>
