@@ -31,7 +31,7 @@ func ListEADFilesForCommit(repoPath string, thisCommitHashString string) (map[st
 	thisCommitHash := plumbing.NewHash(thisCommitHashString)
 	thisCommit, err := repo.CommitObject(thisCommitHash)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("problem getting commit object for commit hash %s: %s", thisCommitHash, err)
 	}
 
 	// handle the initial commit case
