@@ -66,6 +66,60 @@ func TestListEADFilesForCommit(t *testing.T) {
 	}
 }
 
+func TestListEADFilesForCommitBadHash(t *testing.T) {
+	// cleanup any leftovers from interrupted tests
+	err := teardownRepo("testdata/simple-repo")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	err = extractRepo("testdata/simple-repo.tar.gz", "testdata")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer teardownRepo("testdata/simple-repo")
+
+	scenarios := []struct {
+		Hash           string
+		ExpectedErrMsg string
+	}{
+		{"e2e97a13e88e7a13a7c85f2c96293c7c2714a801", "problem getting commit object for commit hash e2e97a13e88e7a13a7c85f2c96293c7c2714a801: object not found"},
+	}
+
+	for _, scenario := range scenarios {
+		_, err := ListEADFilesForCommit("testdata/simple-repo", scenario.Hash)
+		if err == nil {
+			t.Errorf("expected error but no error generated for commit hash %s", scenario.Hash)
+			continue
+		}
+		if err.Error() != scenario.ExpectedErrMsg {
+			t.Errorf("expected error message '%s' but got error message '%s' for hash '%s'", scenario.ExpectedErrMsg, err.Error(), scenario.Hash)
+			continue
+		}
+	}
+}
+
+func TestListEADFilesBadRepoPath(t *testing.T) {
+
+	scenarios := []struct {
+		ExpectedErrMsg string
+	}{
+		{"repository does not exist"},
+	}
+
+	for _, scenario := range scenarios {
+		_, err := ListEADFilesForCommit("this-is-not-a-real-path", "a5ca6cca30fc08cfc13e4f1492dbfbbf3ec7cf63")
+		if err == nil {
+			t.Errorf("expected error but no error generated")
+			continue
+		}
+		if err.Error() != scenario.ExpectedErrMsg {
+			t.Errorf("expected error message '%s' but got error message '%s'", scenario.ExpectedErrMsg, err.Error())
+			continue
+		}
+	}
+}
+
 func extractRepo(tarball, targetDir string) error {
 	file, err := os.Open(tarball)
 	if err != nil {
