@@ -502,11 +502,22 @@ func TestIsDateInRange(t *testing.T) {
 			DateRange{Display: "2001-2100", StartDate: 2001, EndDate: 2100},
 			false,
 		},
+		// TODO: DLFA-238
+		// Re-enable this and delete `true` expected result test after passing
+		// transition test and confirming from stakeholders that they don't want
+		// to pass date strings like this. Or, if they do wish this permissiveness
+		// then delete this and keep the `true` test.
+		//{
+		//	"Returns false for too many date years",
+		//	"2016/2017/2018/2019/2020",
+		//	DateRange{Display: "2001-2100", StartDate: 2001, EndDate: 2100},
+		//	false,
+		//},
 		{
-			"Returns false for too many date years",
+			"Returns true for string of years",
 			"2016/2017/2018/2019/2020",
 			DateRange{Display: "2001-2100", StartDate: 2001, EndDate: 2100},
-			false,
+			true,
 		},
 		{
 			"Returns false for not a date",
