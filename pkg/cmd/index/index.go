@@ -2,7 +2,6 @@ package index
 
 import (
 	"fmt"
-	"github.com/nyulibraries/go-ead-indexer/pkg/index"
 	"github.com/spf13/cobra"
 	"strings"
 
@@ -43,6 +42,6 @@ go-ead-indexer index --git-repo=[path] --commit=[hash] --logging-level="debug"`,
 			logger.Fatal("ERROR: couldn't set log level", err)
 		}
 
-		logger.Info(index.MessageKey, fmt.Sprintf("Logging level set to \"%s\"", normalizedLogLevel))
+		//logger.Info(index.MessageKey, fmt.Sprintf("Logging level set to \"%s\"", normalizedLogLevel))
 	},
 }
