@@ -11,8 +11,14 @@ import (
 )
 
 type SolrClientMock struct {
-	fileDir          string            // Directory containing the "golden files" for the test
-	GoldenFileHashes map[string]string // Hashes of the golden files
+	fileDir              string            // Directory containing the "golden files" for the test
+	GoldenFileHashes     map[string]string // Hashes of the golden files
+	NumberOfFilesToIndex int
+	CallCount            int
+	CommitCallOrder      int
+	DeleteCallOrder      int
+	RollbackCallOrder    int
+	DeleteArgument       string
 }
 
 func GetSolrClientMock() *SolrClientMock {
@@ -23,15 +29,20 @@ func GetSolrClientMock() *SolrClientMock {
 }
 
 func (sc *SolrClientMock) Add(xmlPostBody string) error {
+	sc.CallCount++
 	return sc.updateHash(xmlPostBody)
 }
 
 func (sc *SolrClientMock) Commit() error {
-	commitXML := `<?xml version="1.0" encoding="UTF-8"?><commit/>`
-	return sc.updateHash(commitXML)
+	sc.CallCount++
+	sc.CommitCallOrder = sc.CallCount
+	return nil
 }
 
-func (sc *SolrClientMock) Delete(string) error {
+func (sc *SolrClientMock) Delete(eadid string) error {
+	sc.CallCount++
+	sc.DeleteCallOrder = sc.CallCount
+	sc.DeleteArgument = eadid
 	return nil
 }
 
@@ -45,8 +56,25 @@ func (sc *SolrClientMock) GetSolrURLOrigin() string {
 
 func (sc *SolrClientMock) Reset() {
 	// reset the solr client mock
-	clear(sc.GoldenFileHashes)
 	sc.fileDir = ""
+	clear(sc.GoldenFileHashes)
+
+	// reset the call count
+	sc.CallCount = 0
+
+	// reset the call order values
+	sc.CommitCallOrder = -1
+	sc.DeleteCallOrder = -1
+	sc.RollbackCallOrder = -1
+
+	// reset the delete argument
+	sc.DeleteArgument = ""
+}
+
+func (sc *SolrClientMock) Rollback() error {
+	sc.CallCount++
+	sc.RollbackCallOrder = sc.CallCount
+	return nil
 }
 
 func (sc *SolrClientMock) IsComplete() bool {
@@ -89,6 +117,9 @@ func (sc *SolrClientMock) IsComplete() bool {
 // }
 
 func (sc *SolrClientMock) SetupMock(goldenFileDir string) error {
+
+	sc.Reset()
+
 	// assumes all files in the directory are golden files
 	// and that all files will be consumed by the test
 	sc.fileDir = goldenFileDir
@@ -124,6 +155,8 @@ func (sc *SolrClientMock) SetupMock(goldenFileDir string) error {
 		h.Reset()
 	}
 
+	// record the number of files to index
+	sc.NumberOfFilesToIndex = len(sc.GoldenFileHashes)
 	return nil
 }
 

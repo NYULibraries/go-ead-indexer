@@ -8,12 +8,15 @@ package index
 import (
 	"errors"
 	"fmt"
-	"go-ead-indexer/pkg/ead"
-	"go-ead-indexer/pkg/net/solr"
-	"go-ead-indexer/pkg/util"
 	"os"
 	"path/filepath"
+
+	"github.com/nyulibraries/go-ead-indexer/pkg/ead"
+	"github.com/nyulibraries/go-ead-indexer/pkg/net/solr"
+	"github.com/nyulibraries/go-ead-indexer/pkg/util"
 )
+
+const MessageKey = "index"
 
 var sc = solr.SolrClient(nil)
 
@@ -60,6 +63,12 @@ func IndexEADFile(eadPath string) []error {
 
 	// Parse the EAD file
 	EAD, err := ead.New(repoCode, string(eadXML))
+	if err != nil {
+		return append(errs, err)
+	}
+
+	// Delete the data for this EAD from Solr
+	err = sc.Delete(EAD.CollectionDoc.Parts.EADID.Values[0])
 	if err != nil {
 		return append(errs, err)
 	}
