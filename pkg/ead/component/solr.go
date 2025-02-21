@@ -210,7 +210,20 @@ func (component *Component) setSolrAddMessage() {
 	if len(component.Parts.Location.Values) > 0 {
 		docElement.Location_si = component.Parts.Location.Values[len(component.Parts.Location.Values)-1]
 	}
-	docElement.Location_ssm = component.Parts.Location.Values
+	// TODO: DLFA-238
+	// Delete this and uncomment the line below after passing the transition test
+	// and confirming that this is a v1 indexer bug:
+	// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11402814&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11402814
+	// Note that this must be done here and not in `Component.setLocation()`,
+	// because this would lead to a different value being stored in
+	// `docElement.Location_si`.  While it could very well be that doing this
+	// causes an incorrect value to be stored there, it is necessarily temporarily
+	// to pass the transition test.
+	docElement.Location_ssm = util.CompactStringSlicePreserveOrder(
+		component.Parts.Location.Values)
+	// TODO: DLFA-238
+	// Restore this and delete the line above.
+	//docElement.Location_ssm = component.Parts.Location.Values
 
 	docElement.MaterialType_sim = append(docElement.MaterialType_sim,
 		util.CompactStringSlicePreserveOrder(component.Parts.MaterialType.Values)...)
