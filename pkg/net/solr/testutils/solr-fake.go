@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
-	"go-ead-indexer/pkg/util"
+	"github.com/nyulibraries/go-ead-indexer/pkg/util"
 	"io"
 	"net/http"
 	"net/http/httptest"
@@ -59,6 +59,9 @@ const errorsTurnedOff = -1
 
 var nonAlphanumericRegExp = regexp.MustCompile("[^a-zA-Z0-9]")
 
+var commitRequestBodyRegExp = regexp.MustCompile("<commit/>")
+var rollbackRequestBodyRegExp = regexp.MustCompile("<rollback/>")
+
 // Count of errors responses already returned for an error response type.
 // Separate counts are kept for each test name.
 var errorResponseCounts = map[string]map[ErrorResponseType]int{}
@@ -73,7 +76,7 @@ var errorResponseTypeRegExp = regexp.MustCompile(errorResponseIDPrefix +
 // This helper can only be called from a function whose name starts with "[Tt]est"
 // which is in the net/solr package of this module.
 func GetErrorResponseCountsTestName() string {
-	const validPackage = "go-ead-indexer/pkg/net/solr"
+	const validPackage = "github.com/nyulibraries/go-ead-indexer/pkg/net/solr"
 
 	pkg, function, err := util.GetCallerFunctionName(2)
 	if err != nil {
@@ -138,11 +141,20 @@ func MakeSolrFake(updateURLPathAndQuery string, t *testing.T) *httptest.Server {
 				return
 			}
 
-			// Is this a test Commit() request?
+			// Is this a test Commit() or Rollback() request?
 			if id == "" {
-				err := handleCommitRequest(w, r)
-				if err != nil {
-					t.Errorf("handleCommitRequest() failed with error: %s", err)
+				if isCommitRequest(receivedRequest) {
+					err := handleCommitRequest(w, r)
+					if err != nil {
+						t.Errorf("handleCommitRequest() failed with error: %s", err)
+					}
+				} else if isRollbackRequest(receivedRequest) {
+					err := handleRollbackRequest(w, r)
+					if err != nil {
+						t.Errorf("handleRollbackRequest() failed with error: %s", err)
+					}
+				} else {
+					t.Errorf("Invalid request: %s", receivedRequest)
 				}
 
 				return
@@ -303,6 +315,31 @@ func handleErrorResponse(w http.ResponseWriter, id string) error {
 	}
 
 	return nil
+}
+
+func handleRollbackRequest(w http.ResponseWriter, r *http.Request) error {
+	receivedRequestBody, err := io.ReadAll(r.Body)
+	if err != nil {
+		return err
+	}
+	receivedRequestBodyString := string(receivedRequestBody)
+
+	if receivedRequestBodyString != ExpectedRollbackRequest {
+		err := sendResponse(w, http.StatusBadRequest, receivedRequestBodyString)
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+func isCommitRequest(requestBytes []byte) bool {
+	return commitRequestBodyRegExp.Match(requestBytes)
+}
+
+func isRollbackRequest(requestBytes []byte) bool {
+	return rollbackRequestBodyRegExp.Match(requestBytes)
 }
 
 func isErrorResponseID(id string) bool {

@@ -6,7 +6,7 @@ package diff
 
 import (
 	"bytes"
-	"go-ead-indexer/pkg/util/diff/txtar"
+	"github.com/nyulibraries/go-ead-indexer/pkg/util/diff/txtar"
 	"path/filepath"
 	"testing"
 )

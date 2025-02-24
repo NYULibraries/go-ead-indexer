@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/lestrrat-go/libxml2/types"
-	"go-ead-indexer/pkg/ead/eadutil"
+	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
 )
 
 type Component struct {
@@ -123,6 +123,7 @@ func MakeComponents(collectionDocParts ComponentCollectionDocParts, node types.N
 	if err != nil {
 		return nil, err
 	}
+	defer xpathResult.Free()
 
 	// Note: can't do `&xpathResult.NodeList()`
 	// See https://groups.google.com/g/golang-nuts/c/reaIlFdibWU

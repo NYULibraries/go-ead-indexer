@@ -3,8 +3,8 @@ package component
 import (
 	"errors"
 	"fmt"
-	"go-ead-indexer/pkg/ead/eadutil"
-	"go-ead-indexer/pkg/util"
+	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
+	"github.com/nyulibraries/go-ead-indexer/pkg/util"
 	"regexp"
 	"strings"
 )

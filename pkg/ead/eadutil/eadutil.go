@@ -5,9 +5,9 @@ import (
 	"errors"
 	"fmt"
 	"github.com/lestrrat-go/libxml2/types"
-	languageLib "go-ead-indexer/pkg/language"
-	"go-ead-indexer/pkg/sanitize"
-	"go-ead-indexer/pkg/util"
+	languageLib "github.com/nyulibraries/go-ead-indexer/pkg/language"
+	"github.com/nyulibraries/go-ead-indexer/pkg/sanitize"
+	"github.com/nyulibraries/go-ead-indexer/pkg/util"
 	"html"
 	"io"
 	"maps"
@@ -190,6 +190,7 @@ func GetFirstNode(query string, node types.Node) (types.Node, error) {
 	if err != nil {
 		return nil, err
 	}
+	defer xpathResult.Free()
 
 	nodeList := xpathResult.NodeList()
 
@@ -221,6 +222,7 @@ func GetNodeList(query string, node types.Node) (types.NodeList, error) {
 	if err != nil {
 		return nil, err
 	}
+	defer xpathResult.Free()
 
 	return xpathResult.NodeList(), nil
 }
@@ -265,6 +267,7 @@ func GetNodeValuesAndXMLStrings(query string, node types.Node) ([]string, []stri
 	if err != nil {
 		return nil, nil, err
 	}
+	defer xpathResult.Free()
 
 	for _, resultNode := range xpathResult.NodeList() {
 		values = append(values, resultNode.NodeValue())
@@ -309,6 +312,22 @@ func PadDAODescriptionParagraphIfNeeded(xmlString string, value string) string {
 // https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506
 func PadUnitTitleIfNeeded(xmlString string, value string) string {
 	return padValueIfNeeded(xmlString, value, unitTitleLeftPadString, unitTitleRightPadString)
+}
+
+// Using `strings.ReplaceAll` instead of full parsing of the XML should be safe
+// for `SolrAddMessage` XML strings, which are valid XML and therefore cannot have
+// unescaped "<" and ">" characters in text nodes or attribute values.
+func PrettifySolrAddMessageXML(xml string) string {
+	var xml1 = strings.ReplaceAll(xml, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
+		"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")
+	var xml2 = strings.ReplaceAll(xml1, "<add>", "<add>\n")
+	var xml3 = strings.ReplaceAll(xml2, "<doc>", "  <doc>\n")
+	var xml4 = strings.ReplaceAll(xml3, "<field name=", "    <field name=")
+	var xml5 = strings.ReplaceAll(xml4, "</field>", "</field>\n")
+	var xml6 = strings.ReplaceAll(xml5, "</doc>", "  </doc>\n")
+	var xml7 = strings.ReplaceAll(xml6, "</add>", "</add>\n")
+
+	return xml7
 }
 
 // Note that this function only removes child nodes, it does not recursively

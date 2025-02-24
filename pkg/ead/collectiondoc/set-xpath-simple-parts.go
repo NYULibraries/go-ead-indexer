@@ -2,7 +2,7 @@ package collectiondoc
 
 import (
 	"github.com/lestrrat-go/libxml2/types"
-	"go-ead-indexer/pkg/ead/eadutil"
+	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
 )
 
 func (collectionDoc *CollectionDoc) setXPathSimpleParts(node types.Node) error {

@@ -3,7 +3,7 @@ package util
 import (
 	"errors"
 	"fmt"
-	"go-ead-indexer/pkg/util/diff"
+	"github.com/nyulibraries/go-ead-indexer/pkg/util/diff"
 	"net"
 	"os"
 	"runtime"

@@ -9,6 +9,7 @@ func (component *Component) setContainersPart(node types.Node) error {
 	if err != nil {
 		return err
 	}
+	defer xpathResult.Free()
 
 	containerNodes := xpathResult.NodeList()
 	for _, containerNode := range containerNodes {
