@@ -39,7 +39,7 @@ const unitTitleRightPadString = "\n    "
 
 const undated = "undated & other"
 
-var allowedHTMLTags = util.CompactStringSlicePreserveOrder(
+var allowedConvertedEADToHTMLTags = util.CompactStringSlicePreserveOrder(
 	slices.Collect(maps.Values(eadTagRenderAttributeToHTMLTagName)))
 
 var datePartsRegexp = regexp.MustCompile(`^\s*(\d{4})\/(\d{4})\s*$`)
@@ -473,7 +473,7 @@ func StripTags(xmlString string) (string, error) {
 
 		switch token := token.(type) {
 		case xml.StartElement:
-			if !slices.Contains(allowedHTMLTags, token.Name.Local) {
+			if !slices.Contains(allowedConvertedEADToHTMLTags, token.Name.Local) {
 				continue
 			}
 
@@ -481,7 +481,7 @@ func StripTags(xmlString string) (string, error) {
 			strippedString += stringifyStartElementToken(token)
 
 		case xml.EndElement:
-			if !slices.Contains(allowedHTMLTags, token.Name.Local) {
+			if !slices.Contains(allowedConvertedEADToHTMLTags, token.Name.Local) {
 				continue
 			}
 
