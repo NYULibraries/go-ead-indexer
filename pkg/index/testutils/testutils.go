@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"runtime"
 )
 
 type SolrClientMock struct {
@@ -19,6 +20,13 @@ type SolrClientMock struct {
 	DeleteCallOrder      int
 	RollbackCallOrder    int
 	DeleteArgument       string
+	ErrorEvents          []ErrorEvent
+}
+
+type ErrorEvent struct {
+	CallerName   string
+	ErrorMessage string
+	CallCount    int
 }
 
 func GetSolrClientMock() *SolrClientMock {
@@ -43,7 +51,8 @@ func (sc *SolrClientMock) Delete(eadid string) error {
 	sc.CallCount++
 	sc.DeleteCallOrder = sc.CallCount
 	sc.DeleteArgument = eadid
-	return nil
+
+	return sc.checkForErrorEvent()
 }
 
 func (sc *SolrClientMock) GetPostRequest(string) (*http.Request, error) {
@@ -81,42 +90,9 @@ func (sc *SolrClientMock) IsComplete() bool {
 	return len(sc.GoldenFileHashes) == 0
 }
 
-// func (sc *SolrClientMock) SetupMock(goldenFileDir, suffix string) error {
-// 	// assumes all files in the directory are golden files
-// 	// and that all files will be consumed by the test
-// 	sc.fileDir = goldenFileDir
+//func (sc *SolrClientMock) SetError(function, message string) {
 
-// 	files, err := os.ReadDir(goldenFileDir)
-// 	if err != nil {
-// 		return err
-// 	}
-
-// 	// load the golden file hashes map
-// 	for _, file := range files {
-// 		// skip non-matching files
-// 		if !strings.HasSuffix(file.Name(), suffix) {
-// 			continue
-// 		}
-
-// 		filePath := filepath.Join(goldenFileDir, file.Name())
-
-// 		f, err := os.Open(filePath)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defer f.Close()
-
-// 		h := md5.New()
-// 		if _, err := io.Copy(h, f); err != nil {
-// 			return err
-// 		}
-// 		sc.GoldenFileHashes[string(h.Sum(nil))] = filePath
-// 	}
-
-// 	return nil
-// }
-
-func (sc *SolrClientMock) SetupMock(goldenFileDir string) error {
+func (sc *SolrClientMock) InitMock(goldenFileDir string) error {
 
 	sc.Reset()
 
@@ -175,4 +151,45 @@ func (sc *SolrClientMock) updateHash(xmlPostBody string) error {
 
 func formattedHashSum(h hash.Hash) string {
 	return fmt.Sprintf("%x", h.Sum(nil))
+}
+
+/*
+	type ErrorEvent struct {
+		CallerName string
+		ErrorMessage  string
+		CallCount int
+	}
+
+IsErrorEvent() error {
+// scan the error events to see if there is a match between the caller and CallerName
+// and the CallCount
+// if so, return the error message
+// iterate through range of ErrorEvents
+// if the caller name and call count match, return the error message
+// if no match, return nil
+}
+*/
+func (sc *SolrClientMock) checkForErrorEvent() error {
+	// scan the error events to see if there is a match between the caller and CallerName
+	// and the CallCount
+	// if so, return the error message
+	// iterate through range of ErrorEvents
+	// if the caller name and call count match, return the error message
+	// if no match, return nil
+	callerName := ""
+	pc, _, _, ok := runtime.Caller(1) // 1 means caller of the caller
+	if ok {
+		callerName = runtime.FuncForPC(pc).Name()
+	}
+
+	// iterate through the error events
+	// looking for a matching event
+	if callerName != "" {
+		for _, event := range sc.ErrorEvents {
+			if ("github.com/nyulibraries/go-ead-indexer/pkg/index/testutils.(*SolrClientMock)."+event.CallerName) == callerName && event.CallCount == sc.CallCount {
+				return fmt.Errorf(event.ErrorMessage)
+			}
+		}
+	}
+	return nil
 }

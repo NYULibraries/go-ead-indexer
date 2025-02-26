@@ -77,6 +77,7 @@ func IndexEADFile(eadPath string) []error {
 	xmlPostBody := EAD.CollectionDoc.SolrAddMessage.String()
 	err = sc.Add(string(xmlPostBody))
 	if err != nil {
+		sc.Rollback()
 		return append(errs, err)
 	}
 
@@ -90,6 +91,12 @@ func IndexEADFile(eadPath string) []error {
 		}
 	}
 
+	// Rollback if there were any errors
+	if errs != nil {
+		sc.Rollback()
+		return errs
+	}
+
 	// commit the documents to Solr
 	err = sc.Commit()
 	if err != nil {
@@ -97,6 +104,7 @@ func IndexEADFile(eadPath string) []error {
 	}
 
 	if len(errs) > 0 {
+		sc.Rollback()
 		return errs
 	}
 
