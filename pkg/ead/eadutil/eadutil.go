@@ -344,7 +344,7 @@ func MakeTitleHTML(unitTitle string) (string, error) {
 		return converted, err
 	}
 
-	titleHTML, err := StripTags(converted)
+	titleHTML, err := StripNonEADToHTMLTags(converted)
 	if err != nil {
 		return titleHTML, err
 	}
@@ -452,10 +452,11 @@ func StripOpenAndCloseTags(xmlString string) string {
 		closeTagRegExp.ReplaceAllString(xmlString, ""), "")
 }
 
-// TODO: If we end up keeping this instead of using a 3rd-party package, make it
-// general purpose by adding an `allowedHTMLTags` parameter instead of coupling
-// to the package-level `allowedHTMLTags` var.
-func StripTags(xmlString string) (string, error) {
+func StripNonEADToHTMLTags(xmlString string) (string, error) {
+	return StripTags(xmlString, &allowedConvertedEADToHTMLTags)
+}
+
+func StripTags(xmlString string, allowedTags *[]string) (string, error) {
 	var strippedString string
 
 	var startTagNames []string
@@ -473,7 +474,7 @@ func StripTags(xmlString string) (string, error) {
 
 		switch token := token.(type) {
 		case xml.StartElement:
-			if !slices.Contains(allowedConvertedEADToHTMLTags, token.Name.Local) {
+			if allowedTags == nil || !slices.Contains(*allowedTags, token.Name.Local) {
 				continue
 			}
 
@@ -481,7 +482,7 @@ func StripTags(xmlString string) (string, error) {
 			strippedString += stringifyStartElementToken(token)
 
 		case xml.EndElement:
-			if !slices.Contains(allowedConvertedEADToHTMLTags, token.Name.Local) {
+			if allowedTags == nil || !slices.Contains(*allowedTags, token.Name.Local) {
 				continue
 			}
 
