@@ -264,7 +264,7 @@ func testSolrAddMessageXML(testEAD string, fileID string,
 			eadutil.PrettifySolrAddMessageXML(goldenValue),
 			"actual (prettified -- NOT the original)",
 			eadutil.PrettifySolrAddMessageXML(string(actualValue)))
-		t.Errorf("golden and actual values for %s do not match:\n%s"+
+		t.Errorf("golden and actual values for fileID \"%s\" do not match:\n%s",
 			fileID, diff)
 	}
 }
