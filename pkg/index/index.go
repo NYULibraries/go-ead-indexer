@@ -31,6 +31,10 @@ func assertSolrClientSet() error {
 		return errors.New(errSolrClientNotSet)
 	}
 
+	if sc.GetSolrURLOrigin() == "" {
+		return errors.New("the SolrClient URL origin is not set")
+	}
+
 	return nil
 }
 
@@ -104,7 +108,6 @@ func IndexEADFile(eadPath string) []error {
 	}
 
 	if len(errs) > 0 {
-		sc.Rollback()
 		return errs
 	}
 

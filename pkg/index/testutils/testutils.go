@@ -30,21 +30,26 @@ type ErrorEvent struct {
 }
 
 func GetSolrClientMock() *SolrClientMock {
-	return &SolrClientMock{
-		fileDir:          "",
+	sc := &SolrClientMock{
 		GoldenFileHashes: make(map[string]string),
 	}
+	sc.Reset()
+	return sc
 }
 
 func (sc *SolrClientMock) Add(xmlPostBody string) error {
 	sc.CallCount++
-	return sc.updateHash(xmlPostBody)
+	err := sc.updateHash(xmlPostBody)
+	if err != nil {
+		return err
+	}
+	return sc.checkForErrorEvent()
 }
 
 func (sc *SolrClientMock) Commit() error {
 	sc.CallCount++
 	sc.CommitCallOrder = sc.CallCount
-	return nil
+	return sc.checkForErrorEvent()
 }
 
 func (sc *SolrClientMock) Delete(eadid string) error {
@@ -60,7 +65,7 @@ func (sc *SolrClientMock) GetPostRequest(string) (*http.Request, error) {
 }
 
 func (sc *SolrClientMock) GetSolrURLOrigin() string {
-	return ""
+	return "http://www.example.com"
 }
 
 func (sc *SolrClientMock) Reset() {
@@ -78,6 +83,7 @@ func (sc *SolrClientMock) Reset() {
 
 	// reset the delete argument
 	sc.DeleteArgument = ""
+	sc.ErrorEvents = []ErrorEvent{}
 }
 
 func (sc *SolrClientMock) Rollback() error {
@@ -153,22 +159,6 @@ func formattedHashSum(h hash.Hash) string {
 	return fmt.Sprintf("%x", h.Sum(nil))
 }
 
-/*
-	type ErrorEvent struct {
-		CallerName string
-		ErrorMessage  string
-		CallCount int
-	}
-
-IsErrorEvent() error {
-// scan the error events to see if there is a match between the caller and CallerName
-// and the CallCount
-// if so, return the error message
-// iterate through range of ErrorEvents
-// if the caller name and call count match, return the error message
-// if no match, return nil
-}
-*/
 func (sc *SolrClientMock) checkForErrorEvent() error {
 	// scan the error events to see if there is a match between the caller and CallerName
 	// and the CallCount
