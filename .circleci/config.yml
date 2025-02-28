@@ -10,10 +10,10 @@ auth_quay: &auth_quay
       docker login -u "$QUAY_USERNAME" -p "$QUAY_PASSWORD" quay.io
 
 hermes_deploy: &hermes_deploy
-    run:
-      name: Deploy via Hermes
-      command: |
-        docker run -e HERMES_HOST -e HERMES_SECRET quay.io/nyulibraries/hermesclient:master createJob -job=fake-cronjob
+  run:
+    name: Deploy via Hermes
+    command: |
+      docker run -e HERMES_HOST -e HERMES_SECRET quay.io/nyulibraries/hermesclient:experimental_affinity-rules-for-sequential-jobs createJob -job=fake-cronjob -uniqueJob=true
 
 
 version: 2.1
