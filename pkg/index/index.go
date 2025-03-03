@@ -79,6 +79,7 @@ func IndexEADFile(eadPath string) error {
 	// Delete the data for this EAD from Solr
 	err = sc.Delete(EAD.CollectionDoc.Parts.EADID.Values[0])
 	if err != nil {
+		sc.Rollback()
 		errs = append(errs, err)
 		return errors.Join(errs...)
 	}
