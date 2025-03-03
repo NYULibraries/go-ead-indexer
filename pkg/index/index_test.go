@@ -2,7 +2,6 @@ package index
 
 import (
 	"fmt"
-	"math/rand"
 	"path/filepath"
 	"testing"
 
@@ -68,7 +67,7 @@ func TestAdd(t *testing.T) {
 func TestRollbackOnBadAdd(t *testing.T) {
 
 	var testFixturePath string
-	numberOfErrorsToGenerate := 20
+	errorCallCounts := []int{11, 226, 333, 444, 555, 666, 777, 888, 999, 1000, 1208}
 	repositoryCode := "nyhs"
 	eadid := "ms347_foundling_hospital"
 
@@ -95,9 +94,8 @@ func TestRollbackOnBadAdd(t *testing.T) {
 	// setup error events
 	var errorEvents []testutils.ErrorEvent
 
-	// get random numbers to simulate errors during Add operations
-	for range numberOfErrorsToGenerate {
-		errorCallCount := rand.Intn(sc.NumberOfFilesToIndex) + 1
+	for _, errorCallCount := range errorCallCounts {
+		fmt.Printf("DEBUG: errorCallCount: %d\n", errorCallCount)
 		errorEvents = append(errorEvents, testutils.ErrorEvent{CallerName: "Add", ErrorMessage: fmt.Sprintf("error during Add: %d", errorCallCount), CallCount: errorCallCount})
 	}
 
