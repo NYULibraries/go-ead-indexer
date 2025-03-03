@@ -91,7 +91,7 @@ func IsNonEmptyString(value string) bool {
 	return len(strings.TrimSpace(value)) > 0
 }
 
-// GetRepoCode returns the repository code from the EAD file's absolute path.
+// GetRepositoryCode returns the repository code from the EAD file's absolute path.
 // The function assumes that the repository code is the name of the EAD file's parent directory.
 func GetRepositoryCode(eadPath string) (string, error) {
 	eStringTemplate := "EAD file path must have at least two non-empty components, the last of which is a .xml file: '%s'"
