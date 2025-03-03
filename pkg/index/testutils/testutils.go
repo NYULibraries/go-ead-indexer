@@ -7,10 +7,11 @@ import (
 	"io"
 	"math/rand"
 	"net/http"
-	"os"
 	"path/filepath"
 	"runtime"
 	"time"
+
+	eadtestutils "github.com/nyulibraries/go-ead-indexer/pkg/ead/testutils"
 )
 
 type SolrClientMock struct {
@@ -100,43 +101,35 @@ func (sc *SolrClientMock) IsComplete() bool {
 	return len(sc.GoldenFileHashes) == 0
 }
 
-func (sc *SolrClientMock) InitMock(goldenFileDir string) error {
+// testEAD = repositoryCode+filesystem separator+eadID (e.g. "fales/mss_460")
+func (sc *SolrClientMock) InitMock(testEAD string) error {
 
 	sc.Reset()
 
 	// assumes all files in the directory are golden files
 	// and that all files will be consumed by the test
-	sc.fileDir = goldenFileDir
-
-	files, err := os.ReadDir(goldenFileDir)
-	if err != nil {
-		return err
-	}
+	goldenFileIDs := eadtestutils.GetGoldenFileIDs(testEAD)
+	sc.fileDir = filepath.Dir(eadtestutils.GoldenFilePath(testEAD, goldenFileIDs[0]))
 
 	// load the golden file hashes map
 	h := md5.New()
-	for _, file := range files {
-		filePath := filepath.Join(goldenFileDir, file.Name())
-
-		f, err := os.Open(filePath)
+	for _, goldenFileID := range goldenFileIDs {
+		goldenFileContents, err := eadtestutils.GetGoldenFileValue(testEAD, goldenFileID)
 		if err != nil {
 			return err
 		}
-		defer f.Close()
 
-		if _, err := io.Copy(h, f); err != nil {
-			return err
-		}
-
+		h.Reset()
+		h.Write([]byte(goldenFileContents))
 		sum := formattedHashSum(h)
+		goldenFilePath := filepath.Join(sc.fileDir, goldenFileID)
 
 		// look for collisions
 		if sc.GoldenFileHashes[sum] != "" {
-			return fmt.Errorf("duplicate hash '%s' found in golden file hashes for file: %s, file already in hash: %s", sum, filePath, sc.GoldenFileHashes[sum])
+			return fmt.Errorf("duplicate hash '%s' found in golden file hashes for file: %s, file already in hash: %s", sum, goldenFilePath, sc.GoldenFileHashes[sum])
 		}
 		// no collision, add the hash to the golden file hash map
-		sc.GoldenFileHashes[sum] = filePath
-		h.Reset()
+		sc.GoldenFileHashes[sum] = goldenFilePath
 	}
 
 	// record the number of files to index

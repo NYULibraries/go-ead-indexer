@@ -7,6 +7,7 @@ import (
 	"strings"
 	"testing"
 
+	eadtestutils "github.com/nyulibraries/go-ead-indexer/pkg/ead/testutils"
 	"github.com/nyulibraries/go-ead-indexer/pkg/index/testutils"
 )
 
@@ -39,25 +40,15 @@ func TestEADFileDoesNotExist(t *testing.T) {
 
 func TestAdd(t *testing.T) {
 
-	var testFixturePath string
+	//	var testFixturePath string
 	repositoryCode := "fales"
 	eadid := "mss_460"
 
-	pwd, err := filepath.Abs(".")
-	if err != nil {
-		t.Errorf("Error getting absolute path for pwd: %s", err)
-		t.FailNow()
-	}
-
-	// pwd should be /root/path/to/go-ead-indexer/pkg/index/
-	// need to get to: /root/path/to/go-ead-indexer/pkg/ead/testdata/fixtures/
-	testFixturePath = filepath.Join(pwd, "..", "ead", "testdata")
-
-	var eadPath = filepath.Join(testFixturePath, "fixtures", "ead-files", repositoryCode, eadid+".xml")
-	var xmlDir = filepath.Join(testFixturePath, "golden", repositoryCode, eadid)
+	testEAD := filepath.Join(repositoryCode, eadid)
+	var eadPath = eadtestutils.EadFixturePath(testEAD)
 
 	sc := testutils.GetSolrClientMock()
-	err = sc.InitMock(xmlDir)
+	err := sc.InitMock(testEAD)
 	if err != nil {
 		t.Errorf("Error setting Solr client: %s", err)
 		t.FailNow()
@@ -95,26 +86,17 @@ func TestAdd(t *testing.T) {
 
 func TestRollbackOnBadAdd(t *testing.T) {
 
-	var testFixturePath string
+	// specify which calls to Add() will return an error
 	errorCallCounts := []int{11, 226, 333, 444, 555, 666, 777, 888, 999, 1000, 1208}
+
 	repositoryCode := "nyhs"
 	eadid := "ms347_foundling_hospital"
+	testEAD := filepath.Join(repositoryCode, eadid)
 
-	pwd, err := filepath.Abs(".")
-	if err != nil {
-		t.Errorf("Error getting absolute path for pwd: %s", err)
-		t.FailNow()
-	}
-
-	// pwd should be /root/path/to/go-ead-indexer/pkg/index/
-	// need to get to: /root/path/to/go-ead-indexer/pkg/ead/testdata/fixtures/
-	testFixturePath = filepath.Join(pwd, "..", "ead", "testdata")
-
-	var eadPath = filepath.Join(testFixturePath, "fixtures", "ead-files", repositoryCode, eadid+".xml")
-	var xmlDir = filepath.Join(testFixturePath, "golden", repositoryCode, eadid)
+	var eadPath = eadtestutils.EadFixturePath(testEAD)
 
 	sc := testutils.GetSolrClientMock()
-	err = sc.InitMock(xmlDir)
+	err := sc.InitMock(testEAD)
 	if err != nil {
 		t.Errorf("Error setting Solr client: %s", err)
 		t.FailNow()
