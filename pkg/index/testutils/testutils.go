@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"hash"
 	"io"
+	"math/rand"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -182,4 +183,21 @@ func (sc *SolrClientMock) checkForErrorEvent() error {
 		}
 	}
 	return nil
+}
+
+func GetRandomNumber(max int) int {
+	return rand.Intn(max)
+}
+
+func SortErrorEvents(events []ErrorEvent) []ErrorEvent {
+	// sort the error events by CallCount
+	// using bubble sort
+	for i := 0; i < len(events); i++ {
+		for j := 0; j < len(events)-1; j++ {
+			if events[j].CallCount > events[j+1].CallCount {
+				events[j], events[j+1] = events[j+1], events[j]
+			}
+		}
+	}
+	return events
 }
