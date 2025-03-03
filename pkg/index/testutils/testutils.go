@@ -45,12 +45,14 @@ func (sc *SolrClientMock) Add(xmlPostBody string) error {
 	if err != nil {
 		return err
 	}
+
 	return sc.checkForErrorEvent()
 }
 
 func (sc *SolrClientMock) Commit() error {
 	sc.CallCount++
 	sc.CommitCallOrder = sc.CallCount
+
 	return sc.checkForErrorEvent()
 }
 
@@ -97,8 +99,6 @@ func (sc *SolrClientMock) Rollback() error {
 func (sc *SolrClientMock) IsComplete() bool {
 	return len(sc.GoldenFileHashes) == 0
 }
-
-//func (sc *SolrClientMock) SetError(function, message string) {
 
 func (sc *SolrClientMock) InitMock(goldenFileDir string) error {
 
