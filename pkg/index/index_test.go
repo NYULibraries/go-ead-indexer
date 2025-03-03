@@ -3,11 +3,39 @@ package index
 import (
 	"fmt"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"testing"
 
 	"github.com/nyulibraries/go-ead-indexer/pkg/index/testutils"
 )
+
+func TestEADFileDoesNotExist(t *testing.T) {
+	sc := testutils.GetSolrClientMock()
+	SetSolrClient(sc)
+
+	_, filename, _, ok := runtime.Caller(0)
+	if !ok {
+		t.Errorf("ERROR: `runtime.Caller(0)` failed")
+		t.FailNow()
+	}
+
+	dir := filepath.Dir(filename)
+	eadPath := filepath.Join(dir, "this-file-does-not-exist.xml")
+
+	err := IndexEADFile(eadPath)
+	if err == nil {
+		t.Errorf("error: expected IndexEADFile to return an error, but nothing was returned: %v", err)
+	}
+	if !strings.Contains(err.Error(), "no such file or directory") {
+		t.Errorf("error: expected IndexEADFile to return an error with message containing 'no such file or directory', but got: %v", err)
+	}
+
+	if sc.CallCount != 0 {
+		t.Errorf("error: expected IndexEADFile to not call any SolrClient methods, but it did: %v", sc.CallCount)
+	}
+
+}
 
 func TestAdd(t *testing.T) {
 
