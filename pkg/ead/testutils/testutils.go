@@ -44,10 +44,11 @@ func GetEADFixtureValue(testEAD string) (string, error) {
 	return GetTestdataFileContents(EadFixturePath(testEAD))
 }
 
-func GetGoldenFileIDs(eadID string) []string {
+// A "testEAD" is a repository code + "/" + EAD ID.  Example: "edip/mos_2024"
+func GetGoldenFileIDs(testEAD string) []string {
 	goldenFileIDs := []string{}
 
-	err := filepath.WalkDir(filepath.Join(goldenFilesDirPath, eadID),
+	err := filepath.WalkDir(filepath.Join(goldenFilesDirPath, testEAD),
 		func(path string, dirEntry fs.DirEntry, err error) error {
 			if !dirEntry.IsDir() && filepath.Ext(path) == ".xml" {
 				goldenFileIDs = append(goldenFileIDs, strings.TrimSuffix(filepath.Base(path), filepath.Ext(path)))
