@@ -103,7 +103,7 @@ func IndexEADFile(eadPath string) error {
 		}
 	}
 
-	// Rollback if there were any errors
+	// Rollback if there were any errors during the component-level indexing
 	if errs != nil {
 		sc.Rollback()
 		return errors.Join(errs...)
@@ -112,10 +112,8 @@ func IndexEADFile(eadPath string) error {
 	// commit the documents to Solr
 	err = sc.Commit()
 	if err != nil {
+		sc.Rollback()
 		errs = append(errs, err)
-	}
-
-	if len(errs) > 0 {
 		return errors.Join(errs...)
 	}
 
