@@ -24,21 +24,7 @@ func (component *Component) setComplexParts() error {
 	component.setChronListComplex()
 	component.setCreatorComplex()
 	component.setDAO()
-
-	// TODO: DLFA-238
-	// Remove this override which adds  left- and right- padding for matching v1
-	// indexer bug behavior described here:
-	// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506
-	component.setDAODescriptionParagraph()
-
 	component.setDateRange()
-
-	// TODO: DLFA-238
-	// Remove this override which adds  left- and right- padding for matching v1
-	// indexer bug behavior described here:
-	// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506
-	component.setDIDUnitTitle()
-
 	component.setFormat()
 	component.setHeading()
 	component.setLanguage()
@@ -131,51 +117,9 @@ func (component *Component) setDAO() {
 	}
 }
 
-// TODO: DLFA-238
-// Remove this override which adds  left- and right- padding for matching v1
-// indexer bug behavior described here:
-// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506
-func (component *Component) setDAODescriptionParagraph() {
-	parts := &component.Parts
-
-	paddedDAODescriptionParagraph := []string{}
-	numDAODescriptionParagraph := len(parts.DAODescriptionParagraph.Values)
-	for i := 0; i < numDAODescriptionParagraph; i++ {
-		daoDescriptionParagraphXMLString := eadutil.StripOpenAndCloseTags(parts.DAODescriptionParagraph.XMLStrings[i])
-
-		daoDescriptionParagraphValue := eadutil.PadDAODescriptionParagraphIfNeeded(
-			daoDescriptionParagraphXMLString,
-			eadutil.StripOpenAndCloseTags(parts.DAODescriptionParagraph.Values[i]))
-
-		paddedDAODescriptionParagraph = append(paddedDAODescriptionParagraph, daoDescriptionParagraphValue)
-	}
-
-	parts.DAODescriptionParagraph.Values = paddedDAODescriptionParagraph
-}
-
 func (component *Component) setDateRange() {
 	component.Parts.DateRange.Values =
 		eadutil.GetDateRange(component.Parts.UnitDateNormal.Values)
-}
-
-// TODO: DLFA-238
-// Remove this override which adds  left- and right- padding for matching v1
-// indexer bug behavior described here:
-// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506
-func (component *Component) setDIDUnitTitle() {
-	parts := &component.Parts
-
-	paddedDIDUnitTitleValues := []string{}
-	numDIDUnitTitleValues := len(parts.DIDUnitTitle.Values)
-	for i := 0; i < numDIDUnitTitleValues; i++ {
-		unitTitleXMLString := eadutil.StripOpenAndCloseTags(parts.DIDUnitTitle.XMLStrings[i])
-		unitTitleValue := eadutil.PadUnitTitleIfNeeded(unitTitleXMLString,
-			eadutil.StripOpenAndCloseTags(parts.DIDUnitTitle.Values[i]))
-
-		paddedDIDUnitTitleValues = append(paddedDIDUnitTitleValues, unitTitleValue)
-	}
-
-	parts.DIDUnitTitle.Values = paddedDIDUnitTitleValues
 }
 
 func (component *Component) setFormat() {

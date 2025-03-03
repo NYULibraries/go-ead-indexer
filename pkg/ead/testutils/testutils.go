@@ -36,8 +36,12 @@ func init() {
 	goldenFilesDirPath = filepath.Join(testutilsPath, "..", "testdata", "golden")
 }
 
+func EadFixturePath(testEAD string) string {
+	return filepath.Join(eadFixturesDirPath, testEAD+".xml")
+}
+
 func GetEADFixtureValue(testEAD string) (string, error) {
-	return GetTestdataFileContents(eadFixturePath(testEAD))
+	return GetTestdataFileContents(EadFixturePath(testEAD))
 }
 
 func GetGoldenFileIDs(eadID string) []string {
@@ -103,8 +107,4 @@ func ParseRepositoryCode(testEAD string) string {
 
 func UpdateGoldenFile(testEAD string, fileID string, data string) error {
 	return os.WriteFile(GoldenFilePath(testEAD, fileID), []byte(data), 0644)
-}
-
-func eadFixturePath(testEAD string) string {
-	return filepath.Join(eadFixturesDirPath, testEAD+".xml")
 }

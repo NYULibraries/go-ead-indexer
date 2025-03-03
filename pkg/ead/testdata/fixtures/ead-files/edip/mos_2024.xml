@@ -1879,6 +1879,256 @@
           </controlaccess>
         </c>
       </c>
+
+      <!-- Test case for <unitdate normal="[INVALID DATE FORMAT]" ... > -->
+      <!-- See https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11550822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11550822 -->
+      <!-- From archives/mos_2024.xml-->
+      <c id="aspace_14c7ab764c20a3d6960975f319b33a4e" level="file">
+        <did>
+          <unittitle>New York College of Dentistry Announcement</unittitle>
+          <unitid>cuid18334</unitid>
+          <unitid type="aspace_uri">/repositories/6/archival_objects/966266
+          </unitid>
+          <unitdate datechar="creation" normal="1911/2023-03-27"
+                    type="inclusive">1911-2023-03-27
+          </unitdate>
+          <container altrender="Manuscript box - Legal"
+                     id="aspace_dd5a64bb057db8dc2f8d3316ff85c7e7"
+                     label="Mixed Materials [31142062739506]" type="Box">80
+          </container>
+          <container id="aspace_b6ebca6224f7383da1a4711677df9cc0"
+                     parent="aspace_dd5a64bb057db8dc2f8d3316ff85c7e7"
+                     type="Folder">25
+          </container>
+        </did>
+      </c>
+
+      <!-- TODO: DLFA-238
+           Remove this once it is confirmed that this is a bug in v1 indexer and
+           and should not be reproduced:
+           "[probable bug] `locations_ssm` is being deduped by generic deduping for multivalued Solr fields in ``Solrizer::FieldMapper.solr_names_and_values` - there are components with multiple same-level sibling `<container>` elements with identical values but unique `id` attribute values"
+           https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11402814&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11402814
+
+           This partial component is taken from tamwag/tam_630.xml. -->
+      <c id="aspace_21aea20629c1d3f4325853aa9ba54857" level="file">
+        <did>
+          <unittitle>Posters</unittitle>
+          <unitid type="aspace_uri">/repositories/2/archival_objects/766242
+          </unitid>
+          <unitdate datechar="creation" normal="2011/2012" type="inclusive">
+            2011-2012
+          </unitdate>
+          <container altrender="Flat OS Box 17"
+                     id="aspace_1d9a7e4b12a13e13c825e929851814e0"
+                     label="Mixed Materials [31142063411931]" type="Box">3
+          </container>
+          <container id="aspace_ad573c0bd583b4c0a670b1d3ab3393b7"
+                     parent="aspace_1d9a7e4b12a13e13c825e929851814e0"
+                     type="Folder">5-6
+          </container>
+          <container altrender="Flat OS 21"
+                     id="aspace_922d30b60c0dceb46290ee4ed51f0111"
+                     label="Mixed Materials [31142063010576]" type="Box">5
+          </container>
+          <container altrender="Flat OS 21"
+                     id="aspace_66b9dd18282245160d70ba292221afed"
+                     label="Mixed Materials [31142063010584]" type="Box">6
+          </container>
+          <container altrender="Flat OS 21"
+                     id="aspace_0ae112cc1fd411af186892de727047f0"
+                     label="Mixed Materials [31142063010485]" type="Box">7
+          </container>
+          <container altrender="Flat OS Box 17"
+                     id="aspace_571270503c3bf3a3b8f281424a05140c"
+                     label="Mixed Materials [31142063010527]" type="Box">10
+          </container>
+          <container altrender="Flat OS Box 17"
+                     id="aspace_5683b1ec7bb3eedb6bbe07b20eeaf731"
+                     label="Mixed Materials [31142063010501]" type="Box">11
+          </container>
+          <container altrender="Flat OS 21"
+                     id="aspace_822b9a433083123e7189bce076b1be12"
+                     label="Mixed Materials [31142063010493]" type="Box">12
+          </container>
+          <container altrender="Flat OS 21"
+                     id="aspace_2a03af39b50d33fcaad02ad7a0820126"
+                     label="Mixed Materials [31142063010592]" type="Box">13
+          </container>
+          <container altrender="OS Flat Box - 37.5 x 24.5"
+                     id="aspace_060af66aac680f566b041bf0ae6bdd37"
+                     label="Mixed Materials [31142063010550]" type="Box">14
+          </container>
+          <container altrender="OS Flat Box - 37.5 x 24.5"
+                     id="aspace_551c2ed7bb51af359287b5e2e6ba0124"
+                     label="Mixed Materials [31142063010535]" type="Box">15
+          </container>
+          <container altrender="OS Flat Box - 37.5 x 24.5"
+                     id="aspace_e3c05ff33228de94d995a97e2d200780"
+                     label="Mixed Materials [31142063010543]" type="Box">16
+          </container>
+          <container altrender="OS Flat Box - 37.5 x 24.5"
+                     id="aspace_cb6fd3f2a94cd861906600a017c99ce8"
+                     label="Mixed Materials [31142063010345]" type="Box">17
+          </container>
+          <container id="aspace_2df0691bba77e6cf6f36d76abe727b52"
+                     parent="aspace_cb6fd3f2a94cd861906600a017c99ce8"
+                     type="Folder">1-6
+          </container>
+          <container altrender="OS Flat Box - 37.5 x 24.5"
+                     id="aspace_13941c8f6c01b6688bf83397a2bba500"
+                     label="Mixed Materials [31142063010352]" type="Box">18
+          </container>
+          <container id="aspace_a593ea2c2d16f75d5032b03bf35b0fa1"
+                     parent="aspace_13941c8f6c01b6688bf83397a2bba500"
+                     type="Folder">4-5
+          </container>
+          <container altrender="Flat OS Box 17"
+                     id="aspace_e03da1cf8d0f65b834e573f61432591b"
+                     label="Mixed Materials [31142063010642]" type="Box">19
+          </container>
+          <container id="aspace_2cbbdf9a40cde111fa5c5b9153d76370"
+                     parent="aspace_e03da1cf8d0f65b834e573f61432591b"
+                     type="Folder">3-13
+          </container>
+          <container altrender="Flat OS Box - 23.25 x 31.25"
+                     id="aspace_1b3785adae7a84fb5c25294b515ffda1"
+                     label="Mixed Materials [31142063010378]" type="Box">20
+          </container>
+          <container altrender="Flat OS Box - 23.25 x 31.25"
+                     id="aspace_83267329595abc59916272a2adad28e3"
+                     label="Mixed Materials [31142063010568]" type="Box">21
+          </container>
+          <container altrender="Flat OS Box - 23.25 x 31.25"
+                     id="aspace_87b9afb373bb99ace1cc0d1f0d444eec"
+                     label="Mixed Materials [31142063010386]" type="Box">22
+          </container>
+          <container altrender="Flat OS Box 17"
+                     id="aspace_084bede444bf5f5d4835eaaab85ef0ba"
+                     label="Mixed Materials [31142063010519]" type="Box">23
+          </container>
+          <container altrender="Flat OS Box 17"
+                     id="aspace_dbad4bd02341e4b6c5c78aed2c777961"
+                     label="Mixed Materials [31142063010675]" type="Box">24
+          </container>
+          <container altrender="Flat OS 21"
+                     id="aspace_4b7326c61ddf7bc4b50283b95702e385"
+                     label="Mixed Materials [31142063010477]" type="Box">25
+          </container>
+          <container altrender="OS Box - 19.5 x 25.5"
+                     id="aspace_7183d6f728d7a878264786ac842f53b0"
+                     label="Mixed Materials [31142063010634]" type="Box">26
+          </container>
+          <container altrender="Flat OS Box 17"
+                     id="aspace_caf51f2c65e833a5dd6624130373df96"
+                     label="Mixed Materials [31142063010667]" type="Box">27
+          </container>
+          <container altrender="Flat OS Box - 23.25 x 31.25"
+                     id="aspace_db6327b8fb9d63b2f6ef44e23fd2dd5a"
+                     label="Mixed Materials [31142063010402]" type="Box">28
+          </container>
+          <container altrender="Flat OS Box - 23.25 x 31.25"
+                     id="aspace_6e1575cedbc17cffefaa14f3dbb608f8"
+                     label="Mixed Materials [31142063010394]" type="Box">29
+          </container>
+          <container altrender="Flat OS Box - 23.25 x 31.25"
+                     id="aspace_d07f06f03d14abc1a3ac429919cc45b0"
+                     label="Mixed Materials [31142063010360]" type="Box">30
+          </container>
+          <container altrender="OS Flat Box - 37.5 x 24.5"
+                     id="aspace_c413dc830ae6af54cfd0d4bf5e9fa335"
+                     label="Mixed Materials [31142063010444]" type="Box">31
+          </container>
+          <container id="aspace_ad2f148884da427db9c40dbf29cd407e"
+                     parent="aspace_c413dc830ae6af54cfd0d4bf5e9fa335"
+                     type="Folder">1-8
+          </container>
+          <container altrender="Flat Box 11.75 x 15.5"
+                     id="aspace_dbf30d5f2988fbf132263a919c1bbdd7"
+                     label="Mixed Materials [31142063010436]" type="Box">32
+          </container>
+          <container altrender="Flat OS 21"
+                     id="aspace_f9702f43e005399a927a0d3acb4053f6"
+                     label="Mixed Materials [31142063010683]" type="Box">33
+          </container>
+          <container altrender="Flat OS 21"
+                     id="aspace_595dd7f7cb7d1dc719481e9d428e6c08"
+                     label="Mixed Materials [31142063010691]" type="Box">34
+          </container>
+          <container id="aspace_4e125dbfc8a8e4e55c59d6a30892f25b"
+                     parent="aspace_595dd7f7cb7d1dc719481e9d428e6c08"
+                     type="Folder">1-10
+          </container>
+          <container altrender="Flat OS 21"
+                     id="aspace_6d1a1ca1fa9b35ebdffb3a5073f93841"
+                     label="Mixed Materials [31142063010600]" type="Box">35
+          </container>
+          <container id="aspace_65c51f3dcdf55a9b4afb9d8cb8b8b510"
+                     parent="aspace_6d1a1ca1fa9b35ebdffb3a5073f93841"
+                     type="Folder">1-6
+          </container>
+          <container altrender="Manuscript box - Legal"
+                     id="aspace_0e81e467bbb59479519ae64a59c083cd"
+                     label="Mixed Materials [31142063010626]" type="Box">36
+          </container>
+          <container id="aspace_ae7553af2c61ca99e350047e4c5a00e6"
+                     parent="aspace_0e81e467bbb59479519ae64a59c083cd"
+                     type="Folder">8-9
+          </container>
+          <container altrender="Manuscript box - Legal"
+                     id="aspace_53c8cdb080cd375ac868f70073810ded"
+                     label="Mixed Materials [31142063010618]" type="Box">37
+          </container>
+          <container altrender="Flat OS Box 17"
+                     id="aspace_2478fe492ce47ad3c9c304e368959e22"
+                     label="Mixed Materials [31142063010659]" type="Box">39
+          </container>
+          <container altrender="Oversize Folder - 40 x 30"
+                     id="aspace_a93733e4a0bb6578ae3f97ca3bbd71f1"
+                     label="Mixed Materials [31142063010303]"
+                     type="Flat-File-Folder">4
+          </container>
+          <container altrender="Oversize Folder - 40 x 30"
+                     id="aspace_ab36223075da0133d1fc5478aeb90af2"
+                     label="Mixed Materials [31142063010329]"
+                     type="Flat-File-Folder">1
+          </container>
+          <container altrender="Oversize folder 40 x 32"
+                     id="aspace_376ecefa5d4ea2515774050698279870"
+                     label="Mixed Materials [31142063002607]"
+                     type="Flat-File-Folder">4
+          </container>
+          <container altrender="Oversize folder 40 x 32"
+                     id="aspace_ede87cdaa2f3d6818afb9abb9b4bafcc"
+                     label="Mixed Materials [31142063002615]"
+                     type="Flat-File-Folder">4
+          </container>
+          <container altrender="Oversize folder 40 x 32"
+                     id="aspace_bc0986d28805c368fe8d256e6fdda6ab"
+                     label="Mixed Materials [31142063002623]"
+                     type="Flat-File-Folder">5
+          </container>
+          <container altrender="Oversize folder 40 x 32"
+                     id="aspace_6e0b9dc5f5318aec67eb258b99704c07"
+                     label="Mixed Materials [31142063002631]"
+                     type="Flat-File-Folder">6
+          </container>
+          <container altrender="Oversize folder 40 x 32"
+                     id="aspace_26c65ff6429be2429b61168e5f31fb08"
+                     label="Mixed Materials [31142063002649]"
+                     type="Flat-File-Folder">4
+          </container>
+        </did>
+      </c>
+
+      <!-- Test case for handling of a non-prettified component with a <unittitle>
+           that contains <lb/> tags.  We would not want pieces of text on either
+           side of these tags to be mashed together.  We also want to make sure
+           we are not inserting newlines such as v1 indexer does when it prettifies
+           the XML.
+           See https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506.
+           From archives/mc_110.xml
+      -->
+      <c id="aspace_ref782" level="file"><did><unittitle><title render="italic">Refractive Index of Sodium Vapor and Width of D1 in Absorptions: Apr. 1929</title><lb/><title render="italic">Dispersion and Absorption Line Width in the Alkali Vapors: Aug. 1929</title><lb/><title render="italic">A Sensitive Method for Determining Refractive Indices, SAK and J. Q. Stewart: Jun. 1930</title><lb/><title render="italic">Scattering of Light in Sodium Vapor: Jan. 1930</title><lb/><title render="italic">Distinction between Scattering and Absorption, SAK and John Q. Stewart: Jan. 1930</title></unittitle><unitdate datechar="creation" normal="1921/1930" type="inclusive">1921-1930</unitdate><container id="aspace_9e8963be1ccf11b413f53043140ddb57" label="Mixed Materials [31142042254139]" type="Box">7</container><container id="aspace_3f0d4dc6b48158ffd35337369e7b632a" parent="aspace_9e8963be1ccf11b413f53043140ddb57" type="Folder">14</container></did></c>
     </dsc>
   </archdesc>
 </ead>

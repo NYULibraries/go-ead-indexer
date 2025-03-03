@@ -242,13 +242,29 @@ func TestGetDateParts(t *testing.T) {
 				End:   "2020",
 			},
 		},
+		// TODO: DLFA-238
+		// Delete this after passing the transition test and resolving this:
+		// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11550822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11550822.
 		{
-			"Returns empty `DateParts` for ambiguous date string",
-			"2016/2020/2024",
-			DateParts{},
+			"Gets start and end date for valid date string: allow yyyy-mm-dd",
+			// Value "1911/2023-03-27" appears in mc_286aspace_14c7ab764c20a3d6960975f319b33a4e
+			"1911/2023-03-27",
+			DateParts{
+				Start: "1911",
+				End:   "2023-03-27",
+			},
 		},
+		// TODO: DLFA-238
+		// Re-enable this test after passing transition test and resolving this
+		// v1 indexer bug which allows for the invalid date format in this test case:
+		// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11550822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11550822.
+		//{
+		//	"Returns empty `DateParts` for ambiguous date string",
+		//	"2016/2020/2024",
+		//	DateParts{},
+		//},
 		{
-			"Returns empty `DateParts` for date string with hypen",
+			"Returns empty `DateParts` for date string with hyphen",
 			"2016-2020",
 			DateParts{},
 		},
@@ -486,11 +502,22 @@ func TestIsDateInRange(t *testing.T) {
 			DateRange{Display: "2001-2100", StartDate: 2001, EndDate: 2100},
 			false,
 		},
+		// TODO: DLFA-238
+		// Re-enable this and delete `true` expected result test after passing
+		// transition test and confirming from stakeholders that they don't want
+		// to pass date strings like this. Or, if they do wish this permissiveness
+		// then delete this and keep the `true` test.
+		//{
+		//	"Returns false for too many date years",
+		//	"2016/2017/2018/2019/2020",
+		//	DateRange{Display: "2001-2100", StartDate: 2001, EndDate: 2100},
+		//	false,
+		//},
 		{
-			"Returns false for too many date years",
+			"Returns true for string of years",
 			"2016/2017/2018/2019/2020",
 			DateRange{Display: "2001-2100", StartDate: 2001, EndDate: 2100},
-			false,
+			true,
 		},
 		{
 			"Returns false for not a date",
@@ -1081,12 +1108,12 @@ func TestStripOpenAndCloseTags(t *testing.T) {
 	}
 }
 
-func TestStripTags(t *testing.T) {
-	testStripTags_EmptyElements(t)
-	testStripTags_Specificity(t)
+func TestStripNonEADToHTMLTags(t *testing.T) {
+	testStripNonEADToHTMLTags_EmptyElements(t)
+	testStripNonEADToHTMLTags_Specificity(t)
 }
 
-func testStripTags_EmptyElements(t *testing.T) {
+func testStripNonEADToHTMLTags_EmptyElements(t *testing.T) {
 	testCases := []struct {
 		name               string
 		eadString          string
@@ -1110,7 +1137,7 @@ func testStripTags_EmptyElements(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		actual, err := StripTags(testCase.eadString)
+		actual, err := StripNonEADToHTMLTags(testCase.eadString)
 		if err != nil {
 			t.Errorf(`%s: expected no error, but got error: "%s"`, testCase.name,
 				err)
@@ -1123,7 +1150,7 @@ func testStripTags_EmptyElements(t *testing.T) {
 	}
 }
 
-func testStripTags_Specificity(t *testing.T) {
+func testStripNonEADToHTMLTags_Specificity(t *testing.T) {
 	eadStringTokens := []string{
 		"0",
 		"<title>TITLE</title>",
@@ -1171,7 +1198,102 @@ func testStripTags_Specificity(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		actual, err := StripTags(testCase.xmlString)
+		actual, err := StripNonEADToHTMLTags(testCase.xmlString)
+		if err != nil {
+			t.Errorf(`%s: expected no error, but got error: "%s"`, testCase.name,
+				err)
+		}
+
+		if actual != testCase.expectedHTMLString {
+			t.Errorf(`%s: expected XML string "%s" to be converted to HTML string "%s", but got "%s"`,
+				testCase.name, testCase.xmlString, testCase.expectedHTMLString, actual)
+		}
+	}
+}
+
+// StripTags() is also covered by TestStripNonEADToHTMLTags() and the golden file
+// tests for this package.  This unit test is mainly for ensuring that the no
+// allowed tags case works correctly, and StripTags() works with `allowedTags`
+// strings slices other than `allowedConvertedEADToHTMLTags`.
+func TestStripTags(t *testing.T) {
+	eadStringTokens := []string{
+		"0",
+		"<title>TITLE</title>",
+		"1",
+		`<em>EM</em>`,
+		"2",
+		"<lb/>",
+		"3",
+		"<br></br>",
+		"4",
+		`<date type="acquisition" normal="19880423">April 23, 1988.</date>`,
+		"5",
+		`<strong>STRONG</strong>`,
+		"6",
+	}
+	xmlString := strings.Join(eadStringTokens, "")
+
+	expectedHTMLStringTokensNoAllowedTags := []string{
+		"0",
+		"TITLE",
+		"1",
+		"EM",
+		"2",
+		"",
+		"3",
+		"",
+		"4",
+		`April 23, 1988.`,
+		"5",
+		"STRONG",
+		"6",
+	}
+	expectedHTMLStringNoAllowedTags := strings.Join(expectedHTMLStringTokensNoAllowedTags, "")
+
+	expectedHTMLStringTokensOnlyTitleAllowed := []string{
+		"0",
+		"<title>TITLE</title>",
+		"1",
+		"EM",
+		"2",
+		"",
+		"3",
+		"",
+		"4",
+		`April 23, 1988.`,
+		"5",
+		"STRONG",
+		"6",
+	}
+
+	testCases := []struct {
+		name               string
+		allowedTags        *[]string
+		xmlString          string
+		expectedHTMLString string
+	}{
+		{
+			name:               "`allowedTags` is `nil`",
+			allowedTags:        nil,
+			xmlString:          xmlString,
+			expectedHTMLString: expectedHTMLStringNoAllowedTags,
+		},
+		{
+			name:               "`allowedTags` is `[]string`",
+			allowedTags:        &[]string{},
+			xmlString:          xmlString,
+			expectedHTMLString: expectedHTMLStringNoAllowedTags,
+		},
+		{
+			name:               "`allowedTags` is `[]string{\"title\"}",
+			allowedTags:        &[]string{"title"},
+			xmlString:          xmlString,
+			expectedHTMLString: strings.Join(expectedHTMLStringTokensOnlyTitleAllowed, ""),
+		},
+	}
+
+	for _, testCase := range testCases {
+		actual, err := StripTags(testCase.xmlString, testCase.allowedTags)
 		if err != nil {
 			t.Errorf(`%s: expected no error, but got error: "%s"`, testCase.name,
 				err)

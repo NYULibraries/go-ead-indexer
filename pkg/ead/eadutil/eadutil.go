@@ -39,10 +39,17 @@ const unitTitleRightPadString = "\n    "
 
 const undated = "undated & other"
 
-var allowedHTMLTags = util.CompactStringSlicePreserveOrder(
+var allowedConvertedEADToHTMLTags = util.CompactStringSlicePreserveOrder(
 	slices.Collect(maps.Values(eadTagRenderAttributeToHTMLTagName)))
 
 var datePartsRegexp = regexp.MustCompile(`^\s*(\d{4})\/(\d{4})\s*$`)
+
+// TODO: DLFA-238
+// Delete these and switch back to using `datePartsRegexp` after passing the
+// transition test and resolving this:
+// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11550822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11550822.
+var datePartsRegexpDLFA238Permissive = regexp.MustCompile(`\d{4}\/\d{4}`)
+var dateYearDLFA238Permissive = regexp.MustCompile(`^\s*(\d+)`)
 
 var dateRangesCenturies = []DateRange{
 	{Display: "1101-1200", StartDate: 1101, EndDate: 1200},
@@ -86,6 +93,12 @@ var eadTagRenderAttributeToHTMLTagName = map[string]string{
 // This is the buggy regular expression which replicates the v1 indexer code here:
 // https://github.com/NYULibraries/ead_indexer/blob/a367ab8cc791376f0d8a287cbcd5b6ee43d5c04f/lib/ead_indexer/behaviors.rb#L124
 var marcSubfieldDemarcator = regexp.MustCompile(`\|\w{1}`)
+
+// Go \s metachar is [\t\n\f\r ], and does not include NBSP.
+// Source: https://pkg.go.dev/regexp/syntax
+var multipleConsecutiveWhitespace = regexp.MustCompile(`[\s ]{2}\s*`)
+var leadingWhitespaceInFieldContent = regexp.MustCompile(`^[\s ]+`)
+var trailingWhitespaceInFieldContent = regexp.MustCompile(`[\s ]+$`)
 
 // These are not perfect regexps for open and close XML tags, but they are fine
 // for our constrained use cases.
@@ -133,7 +146,33 @@ func EscapeSolrFieldString(value string) string {
 	return escapedSolrFieldString
 }
 
+// TODO: DLFA-238
+// Delete this and rename `GetDatePartsStrict` to `GetDateParts` after passing
+// transition test and resolving this:
+// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11550822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11550822.
 func GetDateParts(dateString string) DateParts {
+	return GetDatePartsDLFA238Permissive(dateString)
+}
+
+// TODO: DLFA-238
+// Delete this after passing the transition test and resolving this:
+// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11550822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11550822.
+func GetDatePartsDLFA238Permissive(dateString string) DateParts {
+	dateParts := DateParts{}
+
+	if datePartsRegexpDLFA238Permissive.MatchString(dateString) {
+		matches := strings.Split(dateString, "/")
+		dateParts.Start = matches[0]
+		dateParts.End = matches[len(matches)-1]
+	}
+
+	return dateParts
+}
+
+// TODO: DLFA-238
+// Rename to `GetDateParts` after passing the transition test and resolving this:
+// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11550822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11550822.
+func GetDatePartsStrict(dateString string) DateParts {
 	dateParts := DateParts{}
 
 	matches := datePartsRegexp.FindStringSubmatch(dateString)
@@ -278,9 +317,25 @@ func GetNodeValuesAndXMLStrings(query string, node types.Node) ([]string, []stri
 }
 
 func MakeSolrAddMessageFieldElementString(fieldName string, fieldValue string) string {
-	escapedFieldValue := EscapeSolrFieldString(fieldValue)
+	massagedValue := fieldValue
 
-	return fmt.Sprintf(`<field name="%s">%s</field>`, fieldName, escapedFieldValue)
+	massagedValue = EscapeSolrFieldString(fieldValue)
+
+	// TODO: DLFA-238
+	// This is sort of a "unified" whitespace massage that's a way of compromising
+	// between the most correct way and the way we need to match DLFA-243 massaged
+	// DLFA-188 golden files.
+	// Re-work or remove this stuff after passing the transition test.  It might
+	// still make sense to keep some of it for a while after, depending on how
+	// we deal with embedded EAD tags like <lb/>.
+	massagedValue = strings.ReplaceAll(massagedValue, "\n", " ")
+	massagedValue = multipleConsecutiveWhitespace.ReplaceAllString(massagedValue, " ")
+	massagedValue = leadingWhitespaceInFieldContent.ReplaceAllString(
+		massagedValue, "")
+	massagedValue = trailingWhitespaceInFieldContent.ReplaceAllString(
+		massagedValue, "")
+
+	return fmt.Sprintf(`<field name="%s">%s</field>`, fieldName, massagedValue)
 }
 
 func MakeTitleHTML(unitTitle string) (string, error) {
@@ -289,7 +344,7 @@ func MakeTitleHTML(unitTitle string) (string, error) {
 		return converted, err
 	}
 
-	titleHTML, err := StripTags(converted)
+	titleHTML, err := StripNonEADToHTMLTags(converted)
 	if err != nil {
 		return titleHTML, err
 	}
@@ -397,10 +452,11 @@ func StripOpenAndCloseTags(xmlString string) string {
 		closeTagRegExp.ReplaceAllString(xmlString, ""), "")
 }
 
-// TODO: If we end up keeping this instead of using a 3rd-party package, make it
-// general purpose by adding an `allowedHTMLTags` parameter instead of coupling
-// to the package-level `allowedHTMLTags` var.
-func StripTags(xmlString string) (string, error) {
+func StripNonEADToHTMLTags(xmlString string) (string, error) {
+	return StripTags(xmlString, &allowedConvertedEADToHTMLTags)
+}
+
+func StripTags(xmlString string, allowedTags *[]string) (string, error) {
 	var strippedString string
 
 	var startTagNames []string
@@ -418,7 +474,7 @@ func StripTags(xmlString string) (string, error) {
 
 		switch token := token.(type) {
 		case xml.StartElement:
-			if !slices.Contains(allowedHTMLTags, token.Name.Local) {
+			if allowedTags == nil || !slices.Contains(*allowedTags, token.Name.Local) {
 				continue
 			}
 
@@ -426,7 +482,7 @@ func StripTags(xmlString string) (string, error) {
 			strippedString += stringifyStartElementToken(token)
 
 		case xml.EndElement:
-			if !slices.Contains(allowedHTMLTags, token.Name.Local) {
+			if allowedTags == nil || !slices.Contains(*allowedTags, token.Name.Local) {
 				continue
 			}
 
@@ -510,9 +566,19 @@ func convertEADTagsWithRenderAttributesToHTML(eadString string) (string, error) 
 	return htmlString, nil
 }
 
+// TODO: DLFA-238
+// Delete this and restore `isDateInRangeStrict()` back to `isDateInRange()`
+// after passing transition test and resolving this:
+// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11550822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11550822.
+func isDateInRange(dateString string, dateRange DateRange) bool {
+	return isDateInRangeDLFA238Permissive(dateString, dateRange)
+}
+
+// TODO: DLFA-238
+// Change this back to `isDateInRange()` after passing transition test.
 // `dateString` should be of the form "YYYY/YYYY", where the left "YYYY" is the
 // start date and the right "YYYY" is the end date.
-func isDateInRange(dateString string, dateRange DateRange) bool {
+func isDateInRangeStrict(dateString string, dateRange DateRange) bool {
 	dateParts := GetDateParts(dateString)
 
 	startDateInt, err := strconv.Atoi(dateParts.Start)
@@ -521,6 +587,42 @@ func isDateInRange(dateString string, dateRange DateRange) bool {
 	}
 
 	endDateInt, err := strconv.Atoi(dateParts.End)
+	if err != nil {
+		return false
+	}
+
+	return (startDateInt >= dateRange.StartDate && startDateInt <= dateRange.EndDate) ||
+		(endDateInt >= dateRange.StartDate && endDateInt <= dateRange.EndDate)
+}
+
+// TODO: DLFA-238
+// Delete this after passing the transition test.
+// This permissive is date in range function replicates:
+// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11550822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11550822.
+func isDateInRangeDLFA238Permissive(dateString string, dateRange DateRange) bool {
+	rubyStringToIntFunc := func(dateString string) (int, error) {
+		matches := dateYearDLFA238Permissive.FindStringSubmatch(dateString)
+		if len(matches) == 2 {
+			yearIsh, err := strconv.Atoi(matches[1])
+			if err != nil {
+				return 0, err
+			}
+
+			return yearIsh, nil
+		} else {
+			return 0, errors.New(fmt.Sprintf(`Can't extract a year from date string "%s"`,
+				dateString))
+		}
+	}
+
+	dateParts := GetDateParts(dateString)
+
+	startDateInt, err := rubyStringToIntFunc(dateParts.Start)
+	if err != nil {
+		return false
+	}
+
+	endDateInt, err := rubyStringToIntFunc(dateParts.End)
 	if err != nil {
 		return false
 	}
