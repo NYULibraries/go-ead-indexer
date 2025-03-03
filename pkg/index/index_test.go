@@ -1,6 +1,7 @@
 package index
 
 import (
+	"fmt"
 	"math/rand"
 	"path/filepath"
 	"testing"
@@ -67,6 +68,7 @@ func TestAdd(t *testing.T) {
 func TestRollbackOnBadAdd(t *testing.T) {
 
 	var testFixturePath string
+	numberOfErrorsToGenerate := 20
 	repositoryCode := "nyhs"
 	eadid := "ms347_foundling_hospital"
 
@@ -90,15 +92,16 @@ func TestRollbackOnBadAdd(t *testing.T) {
 		t.FailNow()
 	}
 
-	// get a random number to simulate an error during Add
-	randomNumber := rand.Intn(sc.NumberOfFilesToIndex) + 1
-
 	// setup error events
 	var errorEvents []testutils.ErrorEvent
-	//	errorEvents = append(errorEvents, testutils.ErrorEvent{CallerName: "Delete", ErrorMessage: "error during initial Delete", CallCount: 1})
-	errorEvents = append(errorEvents, testutils.ErrorEvent{CallerName: "Add", ErrorMessage: "error during Add", CallCount: randomNumber})
-	errorEvents = append(errorEvents, testutils.ErrorEvent{CallerName: "Add", ErrorMessage: "error during Add", CallCount: randomNumber + 20})
-	sc.ErrorEvents = errorEvents
+
+	// get random numbers to simulate errors during Add operations
+	for range numberOfErrorsToGenerate {
+		errorCallCount := rand.Intn(sc.NumberOfFilesToIndex) + 1
+		errorEvents = append(errorEvents, testutils.ErrorEvent{CallerName: "Add", ErrorMessage: fmt.Sprintf("error during Add: %d", errorCallCount), CallCount: errorCallCount})
+	}
+
+	sc.ErrorEvents = testutils.SortErrorEvents(errorEvents)
 
 	// Set the Solr client
 	SetSolrClient(sc)
@@ -111,11 +114,10 @@ func TestRollbackOnBadAdd(t *testing.T) {
 	}
 
 	// check that the expected error message was returned
-	if errs[0].Error() != "error during Add" {
-		t.Errorf("error: expected IndexEADFile to return an error with message 'error during initial Delete', but got: %s", errs[0].Error())
-	}
-	if errs[1].Error() != "error during Add" {
-		t.Errorf("error: expected IndexEADFile to return an error with message 'error during initial Delete', but got: %s", errs[0].Error())
+	for i, err := range errs {
+		if err.Error() != errorEvents[i].ErrorMessage {
+			t.Errorf("error: expected IndexEADFile to return an error with message '%s', but got: '%s'", errorEvents[i].ErrorMessage, err.Error())
+		}
 	}
 
 	// check that delete was called first
@@ -130,6 +132,6 @@ func TestRollbackOnBadAdd(t *testing.T) {
 	// the mock increments the call count before storing the value
 	// so: delete + all Add() operations + rollback = Number of files to index + 2
 	if sc.RollbackCallOrder != sc.NumberOfFilesToIndex+2 {
-		t.Errorf("Rollback was not called at the expected time. Expected: 2, got: %d", sc.RollbackCallOrder)
+		t.Errorf("Rollback was not called at the expected time. Expected: %d, got: %d", sc.NumberOfFilesToIndex+2, sc.RollbackCallOrder)
 	}
 }
