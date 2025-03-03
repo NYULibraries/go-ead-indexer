@@ -3,6 +3,7 @@ package index
 import (
 	"fmt"
 	"path/filepath"
+	"strings"
 	"testing"
 
 	"github.com/nyulibraries/go-ead-indexer/pkg/index/testutils"
@@ -38,9 +39,9 @@ func TestAdd(t *testing.T) {
 	SetSolrClient(sc)
 
 	// Index the EAD file
-	errs := IndexEADFile(eadPath)
-	if len(errs) > 0 {
-		t.Errorf("Error indexing EAD file: %s", errs)
+	err = IndexEADFile(eadPath)
+	if err != nil {
+		t.Errorf("Error indexing EAD file: %s", err)
 	}
 
 	// Check if the operation is complete from the Solr client perspective
@@ -95,7 +96,6 @@ func TestRollbackOnBadAdd(t *testing.T) {
 	var errorEvents []testutils.ErrorEvent
 
 	for _, errorCallCount := range errorCallCounts {
-		fmt.Printf("DEBUG: errorCallCount: %d\n", errorCallCount)
 		errorEvents = append(errorEvents, testutils.ErrorEvent{CallerName: "Add", ErrorMessage: fmt.Sprintf("error during Add: %d", errorCallCount), CallCount: errorCallCount})
 	}
 
@@ -105,16 +105,16 @@ func TestRollbackOnBadAdd(t *testing.T) {
 	SetSolrClient(sc)
 
 	// Index the EAD file
-	errs := IndexEADFile(eadPath)
-	if len(errs) == 0 {
-		t.Errorf("error: expected IndexEADFile to return an error, but nothing was returned: %v", errs)
+	err = IndexEADFile(eadPath)
+	if err == nil {
+		t.Errorf("error: expected IndexEADFile to return an error, but nothing was returned: %v", err)
 		t.FailNow()
 	}
 
 	// check that the expected error message was returned
-	for i, err := range errs {
-		if err.Error() != errorEvents[i].ErrorMessage {
-			t.Errorf("error: expected IndexEADFile to return an error with message '%s', but got: '%s'", errorEvents[i].ErrorMessage, err.Error())
+	for i, errString := range strings.Split(err.Error(), "\n") {
+		if errString != errorEvents[i].ErrorMessage {
+			t.Errorf("error: expected IndexEADFile to return an error with message '%s', but got: '%s'", errorEvents[i].ErrorMessage, errString)
 		}
 	}
 

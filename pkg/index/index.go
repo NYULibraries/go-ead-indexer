@@ -38,43 +38,49 @@ func assertSolrClientSet() error {
 	return nil
 }
 
-func IndexEADFile(eadPath string) []error {
+func IndexEADFile(eadPath string) error {
 
 	var errs []error
 
 	// assert that the SolrClient has been set
 	err := assertSolrClientSet()
 	if err != nil {
-		return append(errs, err)
+		errs = append(errs, err)
+		return errors.Join(errs...)
 	}
 
 	// Check if the EAD file path is absolute
 	if !filepath.IsAbs(eadPath) {
-		return append(errs, fmt.Errorf("EAD file path must be absolute: %s", eadPath))
+		errs = append(errs, fmt.Errorf("EAD file path must be absolute: %s", eadPath))
+		return errors.Join(errs...)
 	}
 
 	// Get the EAD's repository code
 	repoCode, err := util.GetRepoCode(eadPath)
 	if err != nil {
-		return append(errs, err)
+		errs = append(errs, err)
+		return errors.Join(errs...)
 	}
 
 	// Read the EAD file
 	eadXML, err := os.ReadFile(eadPath)
 	if err != nil {
-		return append(errs, err)
+		errs = append(errs, err)
+		return errors.Join(errs...)
 	}
 
 	// Parse the EAD file
 	EAD, err := ead.New(repoCode, string(eadXML))
 	if err != nil {
-		return append(errs, err)
+		errs = append(errs, err)
+		return errors.Join(errs...)
 	}
 
 	// Delete the data for this EAD from Solr
 	err = sc.Delete(EAD.CollectionDoc.Parts.EADID.Values[0])
 	if err != nil {
-		return append(errs, err)
+		errs = append(errs, err)
+		return errors.Join(errs...)
 	}
 
 	// Add the EAD Collection-level document to Solr
@@ -82,7 +88,8 @@ func IndexEADFile(eadPath string) []error {
 	err = sc.Add(string(xmlPostBody))
 	if err != nil {
 		sc.Rollback()
-		return append(errs, err)
+		errs = append(errs, err)
+		return errors.Join(errs...)
 	}
 
 	// Add the EAD Component-level documents to Solr
@@ -98,7 +105,7 @@ func IndexEADFile(eadPath string) []error {
 	// Rollback if there were any errors
 	if errs != nil {
 		sc.Rollback()
-		return errs
+		return errors.Join(errs...)
 	}
 
 	// commit the documents to Solr
@@ -108,7 +115,7 @@ func IndexEADFile(eadPath string) []error {
 	}
 
 	if len(errs) > 0 {
-		return errs
+		return errors.Join(errs...)
 	}
 
 	return nil
