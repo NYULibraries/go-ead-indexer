@@ -105,7 +105,7 @@ func testGetCallerFunctionNameSkip3_nestedFunc2(t *testing.T) {
 	}
 }
 
-func TestGetRepoCode(t *testing.T) {
+func TestGetRepositoryCode(t *testing.T) {
 	testCases := []struct {
 		input              string
 		expected           string
@@ -119,7 +119,7 @@ func TestGetRepoCode(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		actual, err := GetRepoCode(testCase.input)
+		actual, err := GetRepositoryCode(testCase.input)
 		if err != nil {
 			if err.Error() != testCase.expectedErrMessage {
 				t.Errorf("Expected error message '%s' for input '%s', but got '%s'",

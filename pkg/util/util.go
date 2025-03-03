@@ -3,11 +3,12 @@ package util
 import (
 	"errors"
 	"fmt"
-	"github.com/nyulibraries/go-ead-indexer/pkg/util/diff"
 	"net"
 	"os"
 	"runtime"
 	"strings"
+
+	"github.com/nyulibraries/go-ead-indexer/pkg/util/diff"
 )
 
 // Replicate https://github.com/NYULibraries/ead_indexer/blob/a367ab8cc791376f0d8a287cbcd5b6ee43d5c04f/lib/ead_indexer/behaviors.rb#L137
@@ -92,7 +93,7 @@ func IsNonEmptyString(value string) bool {
 
 // GetRepoCode returns the repository code from the EAD file's absolute path.
 // The function assumes that the repository code is the name of the EAD file's parent directory.
-func GetRepoCode(eadPath string) (string, error) {
+func GetRepositoryCode(eadPath string) (string, error) {
 	eStringTemplate := "EAD file path must have at least two non-empty components, the last of which is a .xml file: '%s'"
 
 	// assert that the EAD file path has at least two components

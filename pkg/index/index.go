@@ -56,7 +56,7 @@ func IndexEADFile(eadPath string) error {
 	}
 
 	// Get the EAD's repository code
-	repoCode, err := util.GetRepoCode(eadPath)
+	repoCode, err := util.GetRepositoryCode(eadPath)
 	if err != nil {
 		errs = append(errs, err)
 		return errors.Join(errs...)
