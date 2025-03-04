@@ -4,6 +4,7 @@ import (
 	"encoding/xml"
 	"errors"
 	"fmt"
+	"github.com/lestrrat-go/libxml2/dom"
 	"github.com/lestrrat-go/libxml2/types"
 	languageLib "github.com/nyulibraries/go-ead-indexer/pkg/language"
 	"github.com/nyulibraries/go-ead-indexer/pkg/sanitize"
@@ -36,6 +37,8 @@ const daoDescriptionParagraphLeftPadString = "\n          "
 const daoDescriptionParagraphRightPadString = "\n        "
 const unitTitleLeftPadString = "\n      "
 const unitTitleRightPadString = "\n    "
+
+const eadLineBreakTag = "<lb/>"
 
 const undated = "undated & other"
 
@@ -309,8 +312,28 @@ func GetNodeValuesAndXMLStrings(query string, node types.Node) ([]string, []stri
 	defer xpathResult.Free()
 
 	for _, resultNode := range xpathResult.NodeList() {
-		values = append(values, resultNode.NodeValue())
-		xmlStrings = append(xmlStrings, resultNode.String())
+		xmlString := resultNode.String()
+
+		var value string
+		if resultNode.NodeType() == dom.ElementNode {
+			// We were originally using Node.NodeValue() for `values` slice, but
+			// it caused problems with element values containing <lb/> tags.
+			// We basically want everything we got from Node.NodeValue() but
+			// with <lb/> tags replaced with whitespace so that the text on
+			// either side of the <lb/> tags don't get fused together.
+			// Note that there is downstream whitespace processing that might alter
+			// the whitespace replacement choice we make here, but at this stage
+			// of processing we just do what seems most natural.
+			value, err = parseNodeValue(xmlString)
+			if err != nil {
+				return values, xmlStrings, err
+			}
+		} else {
+			value = resultNode.NodeValue()
+		}
+
+		values = append(values, value)
+		xmlStrings = append(xmlStrings, xmlString)
 	}
 
 	return values, xmlStrings, nil
@@ -646,6 +669,21 @@ func padValueIfNeeded(xmlString string, value string, leftPadString string, righ
 	} else {
 		return value
 	}
+}
+
+func parseNodeValue(xmlString string) (string, error) {
+	// We can't just strip <lb/> tags because many times the text on either side
+	// of the tags have no intervening whitespace, and so simple removal would
+	// cause the text on other side of the tags to be fused together.
+	value := strings.ReplaceAll(xmlString, eadLineBreakTag, "\n")
+
+	// All other tags must be removed.
+	value, err := StripTags(value, nil)
+	if err != nil {
+		return value, err
+	}
+
+	return value, nil
 }
 
 // TODO: fix the bug we've intentionally preserved here -- for details, see:
