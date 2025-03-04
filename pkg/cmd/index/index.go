@@ -25,8 +25,7 @@ var logger log.Logger   // logger
 
 // This init() function contains a subset of the full 'index' command functionality
 func init() {
-	IndexCmd.Flags().StringVarP(&file, "file", "f",
-		"", "path to EAD file")
+	IndexCmd.Flags().StringVarP(&file, "file", "f", "", "path to EAD file")
 	IndexCmd.Flags().StringVarP(&loggingLevel, "logging-level", "l",
 		log.DefaultLevelStringOption,
 		"Sets logging level: "+strings.Join(log.GetValidLevelOptionStrings(), ", ")+"")
@@ -36,36 +35,45 @@ var IndexCmd = &cobra.Command{
 	Use:     "index",
 	Short:   "Index EAD file",
 	Example: `go-ead-indexer index --file=[path to EAD file] --logging-level="debug"`,
-	Run:     runIndexCmd,
+	RunE:    runIndexCmd,
 }
 
 // runIndexCmd is the main function for the 'index' command
 // It initializes the logger and Solr client, then indexes the EAD file
 // It exits with a fatal error if any of these steps fail
 // It logs a message when the EAD file is successfully indexed
-func runIndexCmd(cmd *cobra.Command, args []string) {
+func runIndexCmd(cmd *cobra.Command, args []string) error {
 
+	// initialize logger
 	err := initLogger()
 	if err != nil {
-		logger.Fatal("ERROR: couldn't initialize logger", err)
+		emsg := fmt.Sprintf("ERROR: couldn't initialize logger: %s", err)
+		return logAndReturnError(emsg)
 	}
 
+	// check if EAD file path is set
 	if file == "" {
-		logger.Fatal("ERROR: EAD file path not set")
+		emsg := "ERROR: EAD file path not set"
+		return logAndReturnError(emsg)
 	}
 
+	// initialize Solr client
 	err = initSolrClient()
 	if err != nil {
-		logger.Fatal("ERROR: couldn't initialize Solr client", err)
+		emsg := fmt.Sprintf("ERROR: couldn't initialize Solr client: %s", err)
+		return logAndReturnError(emsg)
 	}
 
 	// index EAD file
 	err = index.IndexEADFile(file)
 	if err != nil {
-		logger.Fatal("ERROR: couldn't index EAD file", err)
+		emsg := fmt.Sprintf("ERROR: couldn't index EAD file: %s", err)
+		return logAndReturnError(emsg)
 	}
 
+	// log success message
 	logger.Info(index.MessageKey, fmt.Sprintf("SUCCESS: indexed EAD file: %s", file))
+	return nil
 }
 
 // initLogger initializes the logger in the pkg/cmd/index package
@@ -96,6 +104,11 @@ func initSolrClient() error {
 	index.SetSolrClient(sc)
 
 	return nil
+}
+
+func logAndReturnError(emsg string) error {
+	logger.Error(index.MessageKey, emsg)
+	return fmt.Errorf("%s", emsg)
 }
 
 //------------------------------------------------------------------------------
