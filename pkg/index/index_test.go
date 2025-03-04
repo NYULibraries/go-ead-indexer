@@ -54,6 +54,13 @@ func TestSuccessfulIndex(t *testing.T) {
 		t.FailNow()
 	}
 
+	// set up expected call orders
+	// the mock increments the call count before storing the value
+	// delete is always called first
+	expectedDeleteCallOrder := 1
+	// commit   = delete + number of files + commit + rollback = number of files + 2
+	expectedCommitCallOrder := sc.NumberOfFilesToIndex + 2
+
 	// Set the Solr client
 	SetSolrClient(sc)
 
@@ -69,7 +76,7 @@ func TestSuccessfulIndex(t *testing.T) {
 	}
 
 	// check that delete was called first
-	if sc.DeleteCallOrder != 1 {
+	if sc.DeleteCallOrder != expectedDeleteCallOrder {
 		t.Errorf("Delete was not called first. Call order: %d", sc.DeleteCallOrder)
 	}
 	if sc.DeleteArgument != eadid {
@@ -77,10 +84,8 @@ func TestSuccessfulIndex(t *testing.T) {
 	}
 
 	// check that commit was called in the expected sequence
-	// the mock increments the call count before storing the value
-	// so: delete + number of files + commit = number of files + 2
-	if sc.CommitCallOrder != sc.NumberOfFilesToIndex+2 {
-		t.Errorf("Commit was not called at the expected time. Expected: %d, got: %d", sc.NumberOfFilesToIndex+1, sc.CommitCallOrder)
+	if sc.CommitCallOrder != expectedCommitCallOrder {
+		t.Errorf("Commit was not called at the expected time. Expected: %d, got: %d", expectedCommitCallOrder, sc.CommitCallOrder)
 	}
 }
 
@@ -98,6 +103,13 @@ func TestRollbackOnBadDelete(t *testing.T) {
 		t.Errorf("Error setting Solr client: %s", err)
 		t.FailNow()
 	}
+
+	// set up expected call orders
+	// the mock increments the call count before storing the value
+	// delete is always called first
+	expectedDeleteCallOrder := 1
+	// rollback = delete + rollback = 2
+	expectedRollbackCallOrder := 2
 
 	// setup error events
 	var errorEvents []testutils.ErrorEvent
@@ -122,8 +134,8 @@ func TestRollbackOnBadDelete(t *testing.T) {
 		}
 	}
 
-	// check that delete was called first
-	if sc.DeleteCallOrder != 1 {
+	// check that delete was called in the expected sequence
+	if sc.DeleteCallOrder != expectedDeleteCallOrder {
 		t.Errorf("Delete was not called first. Call order: %d", sc.DeleteCallOrder)
 	}
 	if sc.DeleteArgument != eadid {
@@ -131,9 +143,7 @@ func TestRollbackOnBadDelete(t *testing.T) {
 	}
 
 	// check that rollback was called in the expected sequence
-	// the mock increments the call count before storing the value
-	// so: delete + rollback = 2
-	if sc.RollbackCallOrder != 2 {
+	if sc.RollbackCallOrder != expectedRollbackCallOrder {
 		t.Errorf("Rollback was not called at the expected time. Expected: %d, got: %d", 2, sc.RollbackCallOrder)
 	}
 }
@@ -152,6 +162,13 @@ func TestRollbackOnBadCollectionIndex(t *testing.T) {
 		t.Errorf("Error setting Solr client: %s", err)
 		t.FailNow()
 	}
+
+	// set up expected call orders
+	// the mock increments the call count before storing the value
+	// delete is always called first
+	expectedDeleteCallOrder := 1
+	// rollback = delete + Add(CollectionDoc) + rollback = 3
+	expectedRollbackCallOrder := 3
 
 	// setup error events
 	var errorEvents []testutils.ErrorEvent
@@ -176,8 +193,8 @@ func TestRollbackOnBadCollectionIndex(t *testing.T) {
 		}
 	}
 
-	// check that delete was called first
-	if sc.DeleteCallOrder != 1 {
+	// check that delete was called in the expected sequence
+	if sc.DeleteCallOrder != expectedDeleteCallOrder {
 		t.Errorf("Delete was not called first. Call order: %d", sc.DeleteCallOrder)
 	}
 	if sc.DeleteArgument != eadid {
@@ -185,9 +202,7 @@ func TestRollbackOnBadCollectionIndex(t *testing.T) {
 	}
 
 	// check that rollback was called in the expected sequence
-	// the mock increments the call count before storing the value
-	// so: delete + Add() + rollback = 3
-	if sc.RollbackCallOrder != 3 {
+	if sc.RollbackCallOrder != expectedRollbackCallOrder {
 		t.Errorf("Rollback was not called at the expected time. Expected: %d, got: %d", 3, sc.RollbackCallOrder)
 	}
 }
@@ -209,6 +224,13 @@ func TestRollbackOnBadAdd(t *testing.T) {
 		t.Errorf("Error setting Solr client: %s", err)
 		t.FailNow()
 	}
+
+	// set up expected call orders
+	// the mock increments the call count before storing the value
+	// delete is always called first
+	expectedDeleteCallOrder := 1
+	// rollback = delete + number of files + rollback = number of files + 2
+	expectedRollbackCallOrder := sc.NumberOfFilesToIndex + 2
 
 	// setup error events
 	var errorEvents []testutils.ErrorEvent
@@ -237,7 +259,7 @@ func TestRollbackOnBadAdd(t *testing.T) {
 	}
 
 	// check that delete was called first
-	if sc.DeleteCallOrder != 1 {
+	if sc.DeleteCallOrder != expectedDeleteCallOrder {
 		t.Errorf("Delete was not called first. Call order: %d", sc.DeleteCallOrder)
 	}
 	if sc.DeleteArgument != eadid {
@@ -245,10 +267,8 @@ func TestRollbackOnBadAdd(t *testing.T) {
 	}
 
 	// check that rollback was called in the expected sequence
-	// the mock increments the call count before storing the value
-	// so: delete + all Add() operations + rollback = Number of files to index + 2
-	if sc.RollbackCallOrder != sc.NumberOfFilesToIndex+2 {
-		t.Errorf("Rollback was not called at the expected time. Expected: %d, got: %d", sc.NumberOfFilesToIndex+2, sc.RollbackCallOrder)
+	if sc.RollbackCallOrder != expectedRollbackCallOrder {
+		t.Errorf("Rollback was not called at the expected time. Expected: %d, got: %d", expectedRollbackCallOrder, sc.RollbackCallOrder)
 	}
 }
 
