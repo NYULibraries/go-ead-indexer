@@ -490,12 +490,7 @@ func StripTags(xmlString string, allowedTags *[]string) (string, error) {
 			startTagNames = startTagNames[:len(startTagNames)-1]
 
 		case xml.CharData:
-			buffer := new(strings.Builder)
-			if err := EscapeText(buffer, token); err != nil {
-				return strippedString, err
-			}
-
-			strippedString += buffer.String()
+			strippedString += string(token)
 		}
 	}
 
@@ -554,6 +549,8 @@ func convertEADTagsWithRenderAttributesToHTML(eadString string) (string, error) 
 			startTagNames = startTagNames[:len(startTagNames)-1]
 
 		case xml.CharData:
+			// The XML has been unescaped, need to re-escape it since it needs
+			// to go back into XML again.
 			buffer := new(strings.Builder)
 			if err := EscapeText(buffer, token); err != nil {
 				return htmlString, err
