@@ -1,9 +1,12 @@
 package testutils
 
 import (
+	"fmt"
 	"io"
 	"log"
 	"os"
+	"path/filepath"
+	"runtime"
 	"strings"
 	"testing"
 
@@ -198,4 +201,12 @@ func CheckStringContains(t *testing.T, got, expected string) {
 	if !strings.Contains(got, expected) {
 		t.Errorf("Expected to contain: \n %v\nGot:\n %v\n", expected, got)
 	}
+}
+
+func GetCallingFileDirPath() (string, error) {
+	_, filename, _, ok := runtime.Caller(1)
+	if !ok {
+		return "", fmt.Errorf("could not get caller information")
+	}
+	return filepath.Dir(filename), nil
 }
