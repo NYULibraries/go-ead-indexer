@@ -89,7 +89,7 @@ func IndexEADFile(eadPath string) error {
 
 	// Add the EAD Collection-level document to Solr
 	xmlPostBody := EAD.CollectionDoc.SolrAddMessage.String()
-	err = sc.Add(string(xmlPostBody))
+	err = sc.Add(xmlPostBody)
 	if err != nil {
 		errs = append(errs, err)
 		err = sc.Rollback()
