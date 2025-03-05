@@ -173,7 +173,7 @@ func (sc *SolrClientMock) checkForErrorEvent() error {
 	return nil
 }
 
-func SortErrorEvents(events []ErrorEvent) []ErrorEvent {
+func SortErrorEventsByCallCount(events []ErrorEvent) []ErrorEvent {
 	// sort the error events by CallCount
 	// using bubble sort
 	for i := 0; i < len(events); i++ {

@@ -239,7 +239,7 @@ func TestRollbackOnBadAdd(t *testing.T) {
 		errorEvents = append(errorEvents, testutils.ErrorEvent{CallerName: "Add", ErrorMessage: fmt.Sprintf("error during Add: %d", errorCallCount), CallCount: errorCallCount})
 	}
 
-	sc.ErrorEvents = testutils.SortErrorEvents(errorEvents)
+	sc.ErrorEvents = testutils.SortErrorEventsByCallCount(errorEvents)
 
 	// Set the Solr client
 	SetSolrClient(sc)
@@ -299,7 +299,7 @@ func TestRollbackOnBadCommit(t *testing.T) {
 	// setup error events
 	var errorEvents []testutils.ErrorEvent
 	errorEvents = append(errorEvents, testutils.ErrorEvent{CallerName: "Commit", ErrorMessage: "error during Commit", CallCount: expectedCommitCallOrder})
-	sc.ErrorEvents = testutils.SortErrorEvents(errorEvents)
+	sc.ErrorEvents = testutils.SortErrorEventsByCallCount(errorEvents)
 
 	// Set the Solr client
 	SetSolrClient(sc)
