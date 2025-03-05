@@ -678,6 +678,53 @@ func TestMakeTitleHTML(t *testing.T) {
 	}
 }
 
+func TestParseEscapedTextContent(t *testing.T) {
+	testCases := []struct {
+		before string
+		after  string
+	}{
+		{
+			before: "Cars &amp; Maps",
+			after:  "Cars &amp; Maps",
+		},
+		{
+			before: "Dangerous &gt; character!",
+			after:  "Dangerous &gt; character!",
+		},
+		{
+			before: "Dangerous &lt; character!",
+			after:  "Dangerous &lt; character!",
+		},
+		{
+			before: "The quick brown fox jumped over the lazy dog.",
+			after:  "The quick brown fox jumped over the lazy dog.",
+		},
+	}
+
+	for _, testCase := range testCases {
+		xmlParser := parser.New()
+		xmlDoc, err := xmlParser.ParseString(
+			fmt.Sprintf(`<unittitle>%s</unittitle>`, testCase.before))
+		if err != nil {
+			t.Errorf(`xmlParser.ParseString("%s") failed with error: %s`,
+				testCase.before, err.Error())
+
+			continue
+		}
+
+		nodeToTest, err := xmlDoc.DocumentElement()
+		if err != nil {
+			t.Errorf(`xmlDoc.DocumentElement() failed with error: %s`, err.Error())
+		}
+
+		actual, _ := ParseEscapedNodeTextContent(nodeToTest)
+		if actual != testCase.after {
+			t.Errorf(`Expected ParseEscapedNodeTextContent("%s") to return "%s",`+
+				` but got "%s"`, testCase.before, testCase.after, actual)
+		}
+	}
+}
+
 func TestPrettifySolrAddMessageXML(t *testing.T) {
 	// https://github.com/NYULibraries/dlfa-188_v1-indexer-http-requests/blob/206386a464e2b1280021571cbd4e73218990c26c/http-requests/fales/mss_420/mss_420-add.txt
 	const inputXML = `<?xml version="1.0" encoding="UTF-8"?><add><doc><field name="author_teim">Laurainne Ojo-Ohikuare, 2015, and Stacey Flatt with the assistance of Madison DeLaere, 2023 </field><field name="author_ssm">Laurainne Ojo-Ohikuare, 2015, and Stacey Flatt with the assistance of Madison DeLaere, 2023 </field><field name="unittitle_teim">Hot Peaches Records</field><field name="unittitle_ssm">Hot Peaches Records</field><field name="unitid_teim">MSS.420</field><field name="unitid_ssm">MSS.420</field><field name="abstract_teim">Hot Peaches was a drag theater company founded in 1972 by writer and performer Jimmy Camicia. The group was known for their collaborative interactions with other drag performance groups and queer revolutionaries, including cast member Marsha P. Johnson. The group was based in New York City and performed shows regularly from the 1970s to the early 2000s not only in New York clubs, but also tours in Europe. Hot Peaches was often a platform for cast members' self-expression, as well as a nurturing queer community. The Hot Peaches Records contain material connected to their performances including scripts; press clippings; show production work books; digital and analog performance recordings; cast and performance photographs; and promotional announcements and posters. This collection also contains personal material created by Jimmy Camicia including school ephemera, writings, and journals dating from the late 1950s to 2012.</field><field name="abstract_ssm">Hot Peaches was a drag theater company founded in 1972 by writer and performer Jimmy Camicia. The group was known for their collaborative interactions with other drag performance groups and queer revolutionaries, including cast member Marsha P. Johnson. The group was based in New York City and performed shows regularly from the 1970s to the early 2000s not only in New York clubs, but also tours in Europe. Hot Peaches was often a platform for cast members' self-expression, as well as a nurturing queer community. The Hot Peaches Records contain material connected to their performances including scripts; press clippings; show production work books; digital and analog performance recordings; cast and performance photographs; and promotional announcements and posters. This collection also contains personal material created by Jimmy Camicia including school ephemera, writings, and journals dating from the late 1950s to 2012.</field><field name="creator_teim">Camicia, Jimmy</field><field name="creator_ssm">Camicia, Jimmy</field><field name="creator_ssm">Camicia, Jimmy</field><field name="unitdate_normal_ssm">1950/2016</field><field name="unitdate_normal_ssm">1971/1992</field><field name="unitdate_normal_teim">1950/2016</field><field name="unitdate_normal_teim">1971/1992</field><field name="unitdate_normal_sim">1950/2016</field><field name="unitdate_normal_sim">1971/1992</field><field name="unitdate_bulk_teim">1971-1992</field><field name="unitdate_inclusive_teim">1950s-2014, undated</field><field name="scopecontent_teim">The Hot Peaches Records (1971-2014) include analog and digital recordings, and paper material related to Hot Peaches, a New York City-based gay theater group who based their shows on political camp and were dominated by drag performers. The Hot Peaches Records document the theater company's artistic processes, as well as the broader context of avant-garde musical performance, male and female gay performers, and queer communities in New York City in the late 20th century.

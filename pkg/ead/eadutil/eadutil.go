@@ -392,6 +392,19 @@ func PadUnitTitleIfNeeded(xmlString string, value string) string {
 	return padValueIfNeeded(xmlString, value, unitTitleLeftPadString, unitTitleRightPadString)
 }
 
+// `node.TextContent()` might contain unescaped characters that would be dangerous
+// for XML processing, like "&", ">", or "<".
+func ParseEscapedNodeTextContent(node types.Node) (string, error) {
+	textContentBytes := []byte(node.TextContent())
+
+	escapedBuffer := new(strings.Builder)
+	if err := EscapeText(escapedBuffer, textContentBytes); err != nil {
+		return string(textContentBytes), err
+	}
+
+	return escapedBuffer.String(), nil
+}
+
 // Using `strings.ReplaceAll` instead of full parsing of the XML should be safe
 // for `SolrAddMessage` XML strings, which are valid XML and therefore cannot have
 // unescaped "<" and ">" characters in text nodes or attribute values.
