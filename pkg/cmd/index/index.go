@@ -57,6 +57,12 @@ func runIndexCmd(cmd *cobra.Command, args []string) error {
 		return logAndReturnError(emsg)
 	}
 
+	// check that the EAD file exists
+	if _, err := os.Stat(file); os.IsNotExist(err) {
+		emsg := fmt.Sprintf("ERROR: EAD file does not exist: %s", file)
+		return logAndReturnError(emsg)
+	}
+
 	// initialize Solr client
 	err = initSolrClient()
 	if err != nil {
