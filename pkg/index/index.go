@@ -79,8 +79,11 @@ func IndexEADFile(eadPath string) error {
 	// Delete the data for this EAD from Solr
 	err = sc.Delete(EAD.CollectionDoc.Parts.EADID.Values[0])
 	if err != nil {
-		sc.Rollback()
 		errs = append(errs, err)
+		err = sc.Rollback()
+		if err != nil {
+			errs = append(errs, err)
+		}
 		return errors.Join(errs...)
 	}
 
@@ -88,8 +91,12 @@ func IndexEADFile(eadPath string) error {
 	xmlPostBody := EAD.CollectionDoc.SolrAddMessage.String()
 	err = sc.Add(string(xmlPostBody))
 	if err != nil {
-		sc.Rollback()
 		errs = append(errs, err)
+		err = sc.Rollback()
+		if err != nil {
+			errs = append(errs, err)
+		}
+
 		return errors.Join(errs...)
 	}
 
@@ -105,15 +112,22 @@ func IndexEADFile(eadPath string) error {
 
 	// Rollback if there were any errors during the component-level indexing
 	if errs != nil {
-		sc.Rollback()
+		err = sc.Rollback()
+		if err != nil {
+			errs = append(errs, err)
+		}
+
 		return errors.Join(errs...)
 	}
 
 	// commit the documents to Solr
 	err = sc.Commit()
 	if err != nil {
-		sc.Rollback()
 		errs = append(errs, err)
+		err = sc.Rollback()
+		if err != nil {
+			errs = append(errs, err)
+		}
 		return errors.Join(errs...)
 	}
 
