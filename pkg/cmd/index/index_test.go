@@ -46,6 +46,25 @@ func TestLoggerLevelArgument(t *testing.T) {
 	testutils.CheckStringContains(t, gotStdOut, `Logging level set to \"none\"`)
 }
 
+func TestUnsetLoggingLevelArgument(t *testing.T) {
+	// ensure that the environment variable is set
+	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "http://www.example.com:8983/solr")
+	if err != nil {
+		t.Errorf("error setting environment variable: %v", err)
+		t.FailNow()
+	}
+
+	testutils.SetCmdFlag(IndexCmd, "file", "testdata/ead.xml")
+	testutils.SetCmdFlag(IndexCmd, "logging-level", "")
+	gotStdOut, _, _ := testutils.CaptureCmdStdoutStderrE(runIndexCmd, IndexCmd, []string{})
+
+	if gotStdOut == "" {
+		t.Errorf("expected data on StdOut but got nothing")
+	}
+
+	testutils.CheckStringContains(t, gotStdOut, `Logging level set to \"info\"`)
+}
+
 func TestMissingFileArgument(t *testing.T) {
 	// ensure that the environment variable is set
 	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "http://www.example.com:8983/solr")
