@@ -84,7 +84,14 @@ func runIndexCmd(cmd *cobra.Command, args []string) error {
 
 // initLogger initializes the logger in the pkg/cmd/index package
 func initLogger() error {
+
 	logger = log.New()
+
+	// set logging level if it was not specified on the command line
+	if loggingLevel == "" {
+		loggingLevel = log.DefaultLevelStringOption
+	}
+
 	normalizedLogLevel := strings.ToLower(loggingLevel)
 	err := logger.SetLevelByString(normalizedLogLevel)
 	if err != nil {
