@@ -5,10 +5,8 @@ import (
 	"fmt"
 	"hash"
 	"io"
-	"math/rand"
 	"net/http"
 	"runtime"
-	"time"
 
 	eadtestutils "github.com/nyulibraries/go-ead-indexer/pkg/ead/testutils"
 )
@@ -173,15 +171,6 @@ func (sc *SolrClientMock) checkForErrorEvent() error {
 		}
 	}
 	return nil
-}
-
-// Create a new random number generator using the source.
-var randomSeed = time.Now().UnixNano()
-var randomSource = rand.NewSource(randomSeed)
-var randomGenerator = rand.New(randomSource)
-
-func GetRandomNumber(max int) int {
-	return randomGenerator.Intn(max)
 }
 
 func SortErrorEvents(events []ErrorEvent) []ErrorEvent {
