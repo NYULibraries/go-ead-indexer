@@ -9,7 +9,11 @@ import (
 
 func TestInitLoggerError(t *testing.T) {
 	// ensure that the environment variable is set
-	os.Setenv("SOLR_ORIGIN_WITH_PORT", "http://www.example.com:8983/solr")
+	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "http://www.example.com:8983/solr")
+	if err != nil {
+		t.Errorf("error setting environment variable: %v", err)
+		t.FailNow()
+	}
 
 	testutils.SetCmdFlag(IndexCmd, "file", "testdata/ead.xml")
 	testutils.SetCmdFlag(IndexCmd, "logging-level", "INVALID-LOGGING-LEVEL")
@@ -24,7 +28,11 @@ func TestInitLoggerError(t *testing.T) {
 
 func TestMissingFileArgument(t *testing.T) {
 	// ensure that the environment variable is set
-	os.Setenv("SOLR_ORIGIN_WITH_PORT", "http://www.example.com:8983/solr")
+	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "http://www.example.com:8983/solr")
+	if err != nil {
+		t.Errorf("error setting environment variable: %v", err)
+		t.FailNow()
+	}
 
 	// clear the file flag
 	testutils.SetCmdFlag(IndexCmd, "file", "")
@@ -40,7 +48,11 @@ func TestMissingFileArgument(t *testing.T) {
 
 func TestInitSolrClientError(t *testing.T) {
 	// ensure that the environment variable is NOT set
-	os.Setenv("SOLR_ORIGIN_WITH_PORT", "")
+	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "")
+	if err != nil {
+		t.Errorf("error setting environment variable: %v", err)
+		t.FailNow()
+	}
 
 	testutils.SetCmdFlag(IndexCmd, "file", "testdata/ead.xml")
 	testutils.SetCmdFlag(IndexCmd, "logging-level", "debug")
@@ -54,7 +66,12 @@ func TestInitSolrClientError(t *testing.T) {
 }
 
 func TestIndexingError(t *testing.T) {
-	os.Setenv("SOLR_ORIGIN_WITH_PORT", "http://www.example.com:8983/solr")
+	// ensure that the environment variable is set
+	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "http://www.example.com:8983/solr")
+	if err != nil {
+		t.Errorf("error setting environment variable: %v", err)
+		t.FailNow()
+	}
 
 	testutils.SetCmdFlag(IndexCmd, "file", "testdata/ead.xml")
 	testutils.SetCmdFlag(IndexCmd, "logging-level", "debug")
