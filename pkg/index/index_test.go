@@ -291,7 +291,7 @@ func TestRollbackOnBadCommit(t *testing.T) {
 	// the mock increments the call count before storing the value
 	// delete is always called first
 	expectedDeleteCallOrder := 1
-	// commit   = delete + number of files + commit + rollback = number of files + 2
+	// commit   = delete + number of files + commit = number of files + 2
 	expectedCommitCallOrder := sc.NumberOfFilesToIndex + 2
 	// rollback = delete + number of files + commit + rollback = number of files + 3
 	expectedRollbackCallOrder := sc.NumberOfFilesToIndex + 3
