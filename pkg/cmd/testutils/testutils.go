@@ -11,55 +11,121 @@ import (
 )
 
 func CaptureCmdOutput(f func(*cobra.Command, []string), cmd *cobra.Command, args []string) string {
+	// save the current stdout
 	rescueStdout := os.Stdout
-	r, w, _ := os.Pipe()
+
+	// create a pipe
+	r, w, err := os.Pipe()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// map stdout to the write end of the pipe
 	os.Stdout = w
 
+	// execute the command
 	f(cmd, args)
 
-	w.Close()
-	out, _ := io.ReadAll(r)
+	// close the write end of the pipe
+	err = w.Close()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// read from the read end of the pipe
+	out, err := io.ReadAll(r)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// restore stdout
 	os.Stdout = rescueStdout
 	return string(out)
 }
 
 func CaptureCmdOutputE(f func(*cobra.Command, []string) error, cmd *cobra.Command, args []string) (string, error) {
+	// save the current stdout
 	rescueStdout := os.Stdout
-	r, w, _ := os.Pipe()
+
+	// create a pipe
+	r, w, err := os.Pipe()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// map stdout to the write end of the pipe
 	os.Stdout = w
 
-	err := f(cmd, args)
+	// execute the command
+	cmdErr := f(cmd, args)
 
-	w.Close()
-	out, _ := io.ReadAll(r)
+	// close the write end of the pipe
+	err = w.Close()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// read from the read end of the pipe
+	out, err := io.ReadAll(r)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// restore stdout
 	os.Stdout = rescueStdout
-	return string(out), err
+
+	return string(out), cmdErr
 }
 
 func CaptureCmdStdoutStderr(f func(*cobra.Command, []string), cmd *cobra.Command, args []string) (string, string) {
+	// save the current stdout and stderr
 	rescueStdout := os.Stdout
 	rescueStderr := os.Stderr
 
+	// create a pipe for stdout
 	stdoutR, stdoutW, err := os.Pipe()
 	if err != nil {
 		log.Fatal(err)
 	}
 
+	// create a pipe for stderr
 	stderrR, stderrW, err := os.Pipe()
 	if err != nil {
 		log.Fatal(err)
 	}
 
+	// map stdout and stderr to the write ends of the pipes
 	os.Stdout = stdoutW
 	os.Stderr = stderrW
 
+	// execute the command
 	f(cmd, args)
 
-	stdoutW.Close()
-	stderrW.Close()
+	// close the write end of the stdout pipe
+	err = stdoutW.Close()
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	stdout, _ := io.ReadAll(stdoutR)
-	stderr, _ := io.ReadAll(stderrR)
+	// close the write end of the stderr pipe
+	err = stderrW.Close()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// read from the read ends of the stdout pipe
+	stdout, err := io.ReadAll(stdoutR)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// read from the read ends of the stderr pipe
+	stderr, err := io.ReadAll(stderrR)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// restore stdout and stderr
 	os.Stdout = rescueStdout
 	os.Stderr = rescueStderr
 
@@ -67,33 +133,59 @@ func CaptureCmdStdoutStderr(f func(*cobra.Command, []string), cmd *cobra.Command
 }
 
 func CaptureCmdStdoutStderrE(f func(*cobra.Command, []string) error, cmd *cobra.Command, args []string) (string, string, error) {
+
+	// save the current stdout and stderr
 	rescueStdout := os.Stdout
 	rescueStderr := os.Stderr
 
+	// create a pipe for stdout
 	stdoutR, stdoutW, err := os.Pipe()
 	if err != nil {
 		log.Fatal(err)
 	}
 
+	// create a pipe for stderr
 	stderrR, stderrW, err := os.Pipe()
 	if err != nil {
 		log.Fatal(err)
 	}
 
+	// map stdout and stderr to the write ends of the pipes
 	os.Stdout = stdoutW
 	os.Stderr = stderrW
 
-	err = f(cmd, args)
+	// execute the command
+	cmdErr := f(cmd, args)
 
-	stdoutW.Close()
-	stderrW.Close()
+	// close the write end of the stdout pipe
+	err = stdoutW.Close()
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	stdout, _ := io.ReadAll(stdoutR)
-	stderr, _ := io.ReadAll(stderrR)
+	// close the write end of the stderr pipe
+	err = stderrW.Close()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// read from the read end of the stdout pipe
+	stdout, err := io.ReadAll(stdoutR)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// read from the read end of the stderr pipe
+	stderr, err := io.ReadAll(stderrR)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// restore stdout and stderr
 	os.Stdout = rescueStdout
 	os.Stderr = rescueStderr
 
-	return string(stdout), string(stderr), err
+	return string(stdout), string(stderr), cmdErr
 }
 
 func SetCmdFlag(f *cobra.Command, flag string, val string) {
