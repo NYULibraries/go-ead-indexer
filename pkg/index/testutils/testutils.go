@@ -7,7 +7,6 @@ import (
 	"io"
 	"math/rand"
 	"net/http"
-	"path/filepath"
 	"runtime"
 	"time"
 
@@ -15,7 +14,6 @@ import (
 )
 
 type SolrClientMock struct {
-	fileDir              string            // Directory containing the "golden files" for the test
 	GoldenFileHashes     map[string]string // Hashes of the golden files
 	NumberOfFilesToIndex int
 	CallCount            int
@@ -75,7 +73,6 @@ func (sc *SolrClientMock) GetSolrURLOrigin() string {
 
 func (sc *SolrClientMock) Reset() {
 	// reset the solr client mock
-	sc.fileDir = ""
 	clear(sc.GoldenFileHashes)
 
 	// reset the call count
@@ -109,7 +106,6 @@ func (sc *SolrClientMock) InitMock(testEAD string) error {
 	// assumes all files in the directory are golden files
 	// and that all files will be consumed by the test
 	goldenFileIDs := eadtestutils.GetGoldenFileIDs(testEAD)
-	sc.fileDir = filepath.Dir(eadtestutils.GoldenFilePath(testEAD, goldenFileIDs[0]))
 
 	// load the golden file hashes map
 	h := md5.New()
@@ -122,7 +118,7 @@ func (sc *SolrClientMock) InitMock(testEAD string) error {
 		h.Reset()
 		h.Write([]byte(goldenFileContents))
 		sum := formattedHashSum(h)
-		goldenFilePath := filepath.Join(sc.fileDir, goldenFileID)
+		goldenFilePath := eadtestutils.GoldenFilePath(testEAD, goldenFileID)
 
 		// look for collisions
 		if sc.GoldenFileHashes[sum] != "" {
