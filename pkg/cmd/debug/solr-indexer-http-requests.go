@@ -2,6 +2,7 @@ package debug
 
 import (
 	"fmt"
+	"github.com/nyulibraries/go-ead-indexer/pkg/debug"
 	"github.com/spf13/cobra"
 )
 
@@ -22,6 +23,33 @@ var indexerHTTPRequestsCmd = &cobra.Command{
 	Example: `go-ead-indexer debug solr indexer-http-requests --file=[path to EAD file]
 go-ead-indexer debug solr indexer-http-requests --git-repo=[path] --commit=[hash]`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println(fmt.Sprintf("`%s` called with args %v", cmd.Use, args))
+		if file != "" {
+			dumpedSolrIndexerHTTPRequests, err := debug.DumpSolrIndexerHTTPRequestsForEADFile(file)
+			if err != nil {
+				logger.Error(fmt.Sprintf(`debug.DumpSolrIndexerHTTPRequestsForEADFile("%s")`+
+					` failed with error: %s`, file, err.Error()))
+			}
+
+			fmt.Println(dumpedSolrIndexerHTTPRequests)
+		} else if gitCommit != "" {
+			if gitRepoPath != "" {
+				dumpedSolrIndexerHTTPRequests, err :=
+					debug.DumpSolrIndexerHTTPRequestsForGitCommit(gitRepoPath, gitCommit)
+				if err != nil {
+					logger.Error(fmt.Sprintf(`debug.DumpSolrIndexerHTTPRequestsForGitCommit("%s")`+
+						` against git repo "%s" failed with error: %s`,
+						gitCommit, gitRepoPath, err.Error()))
+				}
+
+				fmt.Println(dumpedSolrIndexerHTTPRequests)
+			} else {
+				logger.Error("Must specify --git-repo with --commit")
+			}
+		} else if gitRepoPath != "" {
+			logger.Error("Must specify --commit with --git-repo")
+		} else {
+			logger.Error(fmt.Sprintf("`%s` must be called with either --file or"+
+				" --commit & --git-repo", cmd.Use))
+		}
 	},
 }
