@@ -2,24 +2,39 @@ package testutils
 
 import (
 	"crypto/md5"
+	"errors"
 	"fmt"
 	"hash"
 	"io"
 	"net/http"
 	"runtime"
+	"strings"
 
 	eadtestutils "github.com/nyulibraries/go-ead-indexer/pkg/ead/testutils"
 )
 
+const IGNORE_CALL_ORDER = -1
+
+type CallOrder struct {
+	Commit   int
+	Delete   int
+	Rollback int
+}
+
 type SolrClientMock struct {
-	GoldenFileHashes     map[string]string // Hashes of the golden files
-	NumberOfFilesToIndex int
-	CallCount            int
-	CommitCallOrder      int
-	DeleteCallOrder      int
-	RollbackCallOrder    int
-	DeleteArgument       string
-	ErrorEvents          []ErrorEvent
+	GoldenFileHashes       map[string]string // Hashes of the golden files
+	NumberOfFilesToIndex   int
+	CallCount              int
+	ActualCallOrder        CallOrder
+	ExpectedCallOrder      CallOrder
+	CommitCallOrder        int
+	DeleteCallOrder        int
+	RollbackCallOrder      int
+	DeleteArgument         string
+	ActualDeleteArgument   string
+	ExpectedDeleteArgument string
+	ErrorEvents            []ErrorEvent
+	ActualError            error
 }
 
 type ErrorEvent struct {
@@ -49,7 +64,7 @@ func (sc *SolrClientMock) Add(xmlPostBody string) error {
 func (sc *SolrClientMock) Commit() error {
 	sc.CallCount++
 	sc.CommitCallOrder = sc.CallCount
-
+	sc.ActualCallOrder.Commit = sc.CallCount
 	return sc.checkForErrorEvent()
 }
 
@@ -57,6 +72,9 @@ func (sc *SolrClientMock) Delete(eadid string) error {
 	sc.CallCount++
 	sc.DeleteCallOrder = sc.CallCount
 	sc.DeleteArgument = eadid
+
+	sc.ActualCallOrder.Delete = sc.CallCount
+	sc.ActualDeleteArgument = eadid
 
 	return sc.checkForErrorEvent()
 }
@@ -77,11 +95,19 @@ func (sc *SolrClientMock) Reset() {
 	sc.CallCount = 0
 
 	// reset the call order values
-	sc.CommitCallOrder = -1
-	sc.DeleteCallOrder = -1
-	sc.RollbackCallOrder = -1
+	sc.CommitCallOrder = IGNORE_CALL_ORDER
+	sc.DeleteCallOrder = IGNORE_CALL_ORDER
+	sc.RollbackCallOrder = IGNORE_CALL_ORDER
+	sc.ActualCallOrder.Commit = IGNORE_CALL_ORDER
+	sc.ActualCallOrder.Delete = IGNORE_CALL_ORDER
+	sc.ActualCallOrder.Rollback = IGNORE_CALL_ORDER
+	sc.ExpectedCallOrder.Commit = IGNORE_CALL_ORDER
+	sc.ExpectedCallOrder.Delete = IGNORE_CALL_ORDER
+	sc.ExpectedCallOrder.Rollback = IGNORE_CALL_ORDER
 
-	// reset the delete argument
+	// reset the delete arguments
+	sc.ActualDeleteArgument = ""
+	sc.ExpectedDeleteArgument = ""
 	sc.DeleteArgument = ""
 	sc.ErrorEvents = []ErrorEvent{}
 }
@@ -89,7 +115,8 @@ func (sc *SolrClientMock) Reset() {
 func (sc *SolrClientMock) Rollback() error {
 	sc.CallCount++
 	sc.RollbackCallOrder = sc.CallCount
-	return nil
+	sc.ActualCallOrder.Rollback = sc.CallCount
+	return sc.checkForErrorEvent()
 }
 
 func (sc *SolrClientMock) IsComplete() bool {
@@ -118,7 +145,6 @@ func (sc *SolrClientMock) InitMockForIndexing(testEAD string) error {
 		sum := formattedHashSum(h)
 		goldenFilePath := eadtestutils.GoldenFilePath(testEAD, goldenFileID)
 
-		// look for collisions
 		if sc.GoldenFileHashes[sum] != "" {
 			return fmt.Errorf("duplicate hash '%s' found in golden file hashes for file: %s, file already in hash: %s", sum, goldenFilePath, sc.GoldenFileHashes[sum])
 		}
@@ -184,12 +210,76 @@ func (sc *SolrClientMock) checkForErrorEvent() error {
 func SortErrorEventsByCallCount(events []ErrorEvent) []ErrorEvent {
 	// sort the error events by CallCount
 	// using bubble sort
-	for i := 0; i < len(events); i++ {
-		for j := 0; j < len(events)-1; j++ {
+	for range events {
+		for j := range len(events) - 1 {
 			if events[j].CallCount > events[j+1].CallCount {
 				events[j], events[j+1] = events[j+1], events[j]
 			}
 		}
 	}
 	return events
+}
+
+func (sc *SolrClientMock) CheckAssertions() error {
+	errs := []error{}
+
+	// if an error was expected, and no error was found, return error
+	// if an error was NOT expected, and an error was found, return error
+	if len(sc.ErrorEvents) == 0 {
+		// no errors expected
+		if sc.ActualError != nil {
+			return fmt.Errorf("error: expected operation NOT to return an error, but an error was returned: %v", sc.ActualError)
+		}
+	} else {
+		// errors expected
+		if sc.ActualError == nil {
+			return fmt.Errorf("error: expected operation to return an error, but nothing was returned")
+		}
+	}
+
+	// If there were files to be indexed, assert that all were indexed
+	if sc.ExpectedCallOrder.Commit != IGNORE_CALL_ORDER && sc.NumberOfFilesToIndex > 0 {
+		if !sc.IsComplete() {
+			errs = append(errs, fmt.Errorf("not all files were added to the Solr index. Remaining values: %v", sc.GoldenFileHashes))
+		}
+	}
+
+	// Delete() calls
+	if sc.ExpectedCallOrder.Delete != IGNORE_CALL_ORDER {
+		if sc.ActualCallOrder.Delete != sc.ExpectedCallOrder.Delete {
+			errs = append(errs, fmt.Errorf("Delete() was not called in the correct sequence. Expected: %d Actual: %d", sc.ExpectedCallOrder.Delete, sc.ActualCallOrder.Delete))
+		}
+
+		if sc.ActualDeleteArgument != sc.ExpectedDeleteArgument {
+			errs = append(errs, fmt.Errorf("Delete() was not called with the correct argument. Expected: %s, got: %s", sc.ExpectedDeleteArgument, sc.ActualDeleteArgument))
+		}
+	}
+
+	// Commit() calls
+	if sc.ExpectedCallOrder.Commit != IGNORE_CALL_ORDER && sc.ActualCallOrder.Commit != sc.ExpectedCallOrder.Commit {
+		errs = append(errs, fmt.Errorf("Commit() was not called in the correct sequence. Expected: %d Actual: %d", sc.ExpectedCallOrder.Commit, sc.ActualCallOrder.Commit))
+	}
+
+	// Rollback() calls
+	if sc.ExpectedCallOrder.Rollback != IGNORE_CALL_ORDER && sc.ActualCallOrder.Rollback != sc.ExpectedCallOrder.Rollback {
+		errs = append(errs, fmt.Errorf("Rollback() was not called in the correct sequence. Expected: %d Actual: %d", sc.ExpectedCallOrder.Rollback, sc.ActualCallOrder.Rollback))
+	}
+
+	// if there were expected errors during the operation...
+	if len(sc.ErrorEvents) > 0 {
+		// check that the expected errors were returned
+		for i, errString := range strings.Split(sc.ActualError.Error(), "\n") {
+			if errString != sc.ErrorEvents[i].ErrorMessage {
+				errs = append(errs, fmt.Errorf("error: expected IndexEADFile to return an error with message '%s', but got: '%s'", sc.ErrorEvents[i].ErrorMessage, errString))
+			}
+		}
+	}
+
+	// Check for any failed assertions
+	if len(errs) > 0 {
+		return errors.Join(errs...)
+	}
+
+	// all assertions passed
+	return nil
 }
