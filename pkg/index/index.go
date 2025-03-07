@@ -77,7 +77,7 @@ func IndexEADFile(eadPath string) error {
 	}
 
 	// Delete the data for this EAD from Solr
-	err = sc.Delete(EAD.CollectionDoc.Parts.EADID.Values[0])
+	err = deleteEADFileDataFromIndex(EAD.CollectionDoc.Parts.EADID.Values[0])
 	if err != nil {
 		errs = append(errs, err)
 		err = sc.Rollback()
@@ -132,4 +132,24 @@ func IndexEADFile(eadPath string) error {
 	}
 
 	return nil
+}
+
+func DeleteEADFileDataFromIndex(eadid string) error {
+	var errs []error
+
+	err := deleteEADFileDataFromIndex(eadid)
+	if err != nil {
+		errs = append(errs, err)
+		err = sc.Rollback()
+		if err != nil {
+			errs = append(errs, err)
+		}
+		return errors.Join(errs...)
+	}
+	return nil
+}
+
+func deleteEADFileDataFromIndex(eadID string) error {
+	err := sc.Delete(eadID)
+	return err
 }

@@ -97,7 +97,7 @@ func (sc *SolrClientMock) IsComplete() bool {
 }
 
 // testEAD = repositoryCode+filesystem separator+eadID (e.g. "fales/mss_460")
-func (sc *SolrClientMock) InitMock(testEAD string) error {
+func (sc *SolrClientMock) InitMockForIndexing(testEAD string) error {
 
 	sc.Reset()
 
@@ -128,6 +128,14 @@ func (sc *SolrClientMock) InitMock(testEAD string) error {
 
 	// record the number of files to index
 	sc.NumberOfFilesToIndex = len(sc.GoldenFileHashes)
+	return nil
+}
+
+// function signature mirrors InitMockForIndexing()
+// in case we want to add more sophisticated logic
+// in the future
+func (sc *SolrClientMock) InitMockForDelete() error {
+	sc.Reset()
 	return nil
 }
 
