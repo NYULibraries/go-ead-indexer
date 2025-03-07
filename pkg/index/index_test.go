@@ -11,7 +11,7 @@ import (
 	"github.com/nyulibraries/go-ead-indexer/pkg/index/testutils"
 )
 
-func TestEADFileDoesNotExist(t *testing.T) {
+func TestIndexEADFile_EADFileDoesNotExist(t *testing.T) {
 
 	sc := testutils.GetSolrClientMock()
 	SetSolrClient(sc)
@@ -39,7 +39,7 @@ func TestEADFileDoesNotExist(t *testing.T) {
 
 }
 
-func TestSuccessfulIndex(t *testing.T) {
+func TestIndexEADFile_Success(t *testing.T) {
 
 	repositoryCode := "fales"
 	eadid := "mss_460"
@@ -80,7 +80,7 @@ func TestSuccessfulIndex(t *testing.T) {
 		t.Errorf("Delete was not called first. Call order: %d", sc.DeleteCallOrder)
 	}
 	if sc.DeleteArgument != eadid {
-		t.Errorf("Delete was not called with the correct argument. expected: %s, got: %s", eadid, sc.DeleteArgument)
+		t.Errorf("Delete was not called with the correct argument. Expected: %s, got: %s", eadid, sc.DeleteArgument)
 	}
 
 	// check that commit was called in the expected sequence
@@ -89,7 +89,7 @@ func TestSuccessfulIndex(t *testing.T) {
 	}
 }
 
-func TestRollbackOnBadDelete(t *testing.T) {
+func TestIndexEADFile_RollbackOnBadDelete(t *testing.T) {
 
 	repositoryCode := "fales"
 	eadid := "mss_460"
@@ -144,11 +144,11 @@ func TestRollbackOnBadDelete(t *testing.T) {
 
 	// check that rollback was called in the expected sequence
 	if sc.RollbackCallOrder != expectedRollbackCallOrder {
-		t.Errorf("Rollback was not called at the expected time. Expected: %d, got: %d", 2, sc.RollbackCallOrder)
+		t.Errorf("Rollback was not called at the expected time. Expected: %d, got: %d", expectedRollbackCallOrder, sc.RollbackCallOrder)
 	}
 }
 
-func TestRollbackOnBadCollectionIndex(t *testing.T) {
+func TestIndexEADFile_RollbackOnBadCollectionIndex(t *testing.T) {
 
 	repositoryCode := "fales"
 	eadid := "mss_460"
@@ -203,11 +203,11 @@ func TestRollbackOnBadCollectionIndex(t *testing.T) {
 
 	// check that rollback was called in the expected sequence
 	if sc.RollbackCallOrder != expectedRollbackCallOrder {
-		t.Errorf("Rollback was not called at the expected time. Expected: %d, got: %d", 3, sc.RollbackCallOrder)
+		t.Errorf("Rollback was not called at the expected time. Expected: %d, got: %d", expectedRollbackCallOrder, sc.RollbackCallOrder)
 	}
 }
 
-func TestRollbackOnBadAdd(t *testing.T) {
+func TestIndexEADFile_RollbackOnBadComponentIndex(t *testing.T) {
 
 	// specify which calls to Add() will return an error
 	errorCallCounts := []int{11, 226, 333, 444, 555, 666, 777, 888, 999, 1000, 1208}
@@ -272,7 +272,7 @@ func TestRollbackOnBadAdd(t *testing.T) {
 	}
 }
 
-func TestRollbackOnBadCommit(t *testing.T) {
+func TestIndexEADFile_RollbackOnBadCommit(t *testing.T) {
 
 	repositoryCode := "fales"
 	eadid := "mss_460"
@@ -331,11 +331,11 @@ func TestRollbackOnBadCommit(t *testing.T) {
 
 	// check that rollback was called in the expected sequence
 	if sc.RollbackCallOrder != expectedRollbackCallOrder {
-		t.Errorf("Rollback was not called at the expected time. Expected: %d, got: %d", sc.NumberOfFilesToIndex+3, sc.RollbackCallOrder)
+		t.Errorf("Rollback was not called at the expected time. Expected: %d, got: %d", expectedRollbackCallOrder, sc.RollbackCallOrder)
 	}
 }
 
-func TestDeleteEADFileDataFromIndexError(t *testing.T) {
+func TestDeleteEADFileDataFromIndex_RollbackOnBadDelete(t *testing.T) {
 
 	eadid := "mss_460"
 
