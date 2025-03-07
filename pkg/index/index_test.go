@@ -48,18 +48,18 @@ func TestIndexEADFile_Success(t *testing.T) {
 	var eadPath = eadtestutils.EadFixturePath(testEAD)
 
 	sc := testutils.GetSolrClientMock()
+
+	// load the Solr POST body expectations
 	err := sc.InitMockForIndexing(testEAD)
 	if err != nil {
 		t.Errorf("Error setting Solr client: %s", err)
 		t.FailNow()
 	}
 
-	// set up expected call orders
-	// the mock increments the call count before storing the value
-	// delete is always called first
-	expectedDeleteCallOrder := 1
-	// commit   = delete + number of files + commit + rollback = number of files + 2
-	expectedCommitCallOrder := sc.NumberOfFilesToIndex + 2
+	// set expectations
+	sc.ExpectedCallOrder.Delete = 1
+	sc.ExpectedCallOrder.Commit = sc.NumberOfFilesToIndex + 2
+	sc.ExpectedDeleteArgument = eadid
 
 	// Set the Solr client
 	SetSolrClient(sc)
@@ -70,22 +70,9 @@ func TestIndexEADFile_Success(t *testing.T) {
 		t.Errorf("Error indexing EAD file: %s", err)
 	}
 
-	// Check if the operation is complete from the Solr client perspective
-	if !sc.IsComplete() {
-		t.Errorf("Not all files were added to the Solr index. Remaining values: %v", sc.GoldenFileHashes)
-	}
-
-	// check that delete was called first
-	if sc.DeleteCallOrder != expectedDeleteCallOrder {
-		t.Errorf("Delete was not called first. Call order: %d", sc.DeleteCallOrder)
-	}
-	if sc.DeleteArgument != eadid {
-		t.Errorf("Delete was not called with the correct argument. Expected: %s, got: %s", eadid, sc.DeleteArgument)
-	}
-
-	// check that commit was called in the expected sequence
-	if sc.CommitCallOrder != expectedCommitCallOrder {
-		t.Errorf("Commit was not called at the expected time. Expected: %d, got: %d", expectedCommitCallOrder, sc.CommitCallOrder)
+	err = sc.CheckAssertions()
+	if err != nil {
+		t.Errorf("Assertions failed: %s", err)
 	}
 }
 
@@ -105,11 +92,9 @@ func TestIndexEADFile_RollbackOnBadDelete(t *testing.T) {
 	}
 
 	// set up expected call orders
-	// the mock increments the call count before storing the value
-	// delete is always called first
-	expectedDeleteCallOrder := 1
-	// rollback = delete + rollback = 2
-	expectedRollbackCallOrder := 2
+	sc.ExpectedCallOrder.Delete = 1   // delete is always called first
+	sc.ExpectedCallOrder.Rollback = 2 // rollback = delete + rollback = 2
+	sc.ExpectedDeleteArgument = eadid
 
 	// setup error events
 	var errorEvents []testutils.ErrorEvent
@@ -121,30 +106,12 @@ func TestIndexEADFile_RollbackOnBadDelete(t *testing.T) {
 	SetSolrClient(sc)
 
 	// Index the EAD file
-	err = IndexEADFile(eadPath)
-	if err == nil {
-		t.Errorf("error: expected IndexEADFile to return an error, but nothing was returned: %v", err)
-		t.FailNow()
-	}
+	sc.ActualError = IndexEADFile(eadPath)
 
-	// check that the expected error message was returned
-	for i, errString := range strings.Split(err.Error(), "\n") {
-		if errString != errorEvents[i].ErrorMessage {
-			t.Errorf("error: expected IndexEADFile to return an error with message '%s', but got: '%s'", errorEvents[i].ErrorMessage, errString)
-		}
-	}
-
-	// check that delete was called in the expected sequence
-	if sc.DeleteCallOrder != expectedDeleteCallOrder {
-		t.Errorf("Delete was not called first. Call order: %d", sc.DeleteCallOrder)
-	}
-	if sc.DeleteArgument != eadid {
-		t.Errorf("Delete was not called with the correct argument. expected: %s, got: %s", eadid, sc.DeleteArgument)
-	}
-
-	// check that rollback was called in the expected sequence
-	if sc.RollbackCallOrder != expectedRollbackCallOrder {
-		t.Errorf("Rollback was not called at the expected time. Expected: %d, got: %d", expectedRollbackCallOrder, sc.RollbackCallOrder)
+	// check that all expectations were met
+	err = sc.CheckAssertions()
+	if err != nil {
+		t.Errorf("Assertions failed: %s", err)
 	}
 }
 
@@ -164,11 +131,9 @@ func TestIndexEADFile_RollbackOnBadCollectionIndex(t *testing.T) {
 	}
 
 	// set up expected call orders
-	// the mock increments the call count before storing the value
-	// delete is always called first
-	expectedDeleteCallOrder := 1
-	// rollback = delete + Add(CollectionDoc) + rollback = 3
-	expectedRollbackCallOrder := 3
+	sc.ExpectedCallOrder.Delete = 1   // delete is always called first
+	sc.ExpectedCallOrder.Rollback = 3 // rollback = delete + Add(CollectionDoc) + rollback = 3
+	sc.ExpectedDeleteArgument = eadid
 
 	// setup error events
 	var errorEvents []testutils.ErrorEvent
@@ -180,30 +145,12 @@ func TestIndexEADFile_RollbackOnBadCollectionIndex(t *testing.T) {
 	SetSolrClient(sc)
 
 	// Index the EAD file
-	err = IndexEADFile(eadPath)
-	if err == nil {
-		t.Errorf("error: expected IndexEADFile to return an error, but nothing was returned: %v", err)
-		t.FailNow()
-	}
+	sc.ActualError = IndexEADFile(eadPath)
 
-	// check that the expected error message was returned
-	for i, errString := range strings.Split(err.Error(), "\n") {
-		if errString != errorEvents[i].ErrorMessage {
-			t.Errorf("error: expected IndexEADFile to return an error with message '%s', but got: '%s'", errorEvents[i].ErrorMessage, errString)
-		}
-	}
-
-	// check that delete was called in the expected sequence
-	if sc.DeleteCallOrder != expectedDeleteCallOrder {
-		t.Errorf("Delete was not called first. Call order: %d", sc.DeleteCallOrder)
-	}
-	if sc.DeleteArgument != eadid {
-		t.Errorf("Delete was not called with the correct argument. expected: %s, got: %s", eadid, sc.DeleteArgument)
-	}
-
-	// check that rollback was called in the expected sequence
-	if sc.RollbackCallOrder != expectedRollbackCallOrder {
-		t.Errorf("Rollback was not called at the expected time. Expected: %d, got: %d", expectedRollbackCallOrder, sc.RollbackCallOrder)
+	// check that all expectations were met
+	err = sc.CheckAssertions()
+	if err != nil {
+		t.Errorf("Assertions failed: %s", err)
 	}
 }
 
@@ -221,16 +168,15 @@ func TestIndexEADFile_RollbackOnBadComponentIndex(t *testing.T) {
 	sc := testutils.GetSolrClientMock()
 	err := sc.InitMockForIndexing(testEAD)
 	if err != nil {
-		t.Errorf("Error setting Solr client: %s", err)
+		t.Errorf("Error initializing Solr Client Mock: %s", err)
 		t.FailNow()
 	}
 
-	// set up expected call orders
-	// the mock increments the call count before storing the value
-	// delete is always called first
-	expectedDeleteCallOrder := 1
-	// rollback = delete + number of files + rollback = number of files + 2
-	expectedRollbackCallOrder := sc.NumberOfFilesToIndex + 2
+	// set expectations
+	// (note: Commit() is not called because there were errors during component-level indexing)
+	sc.ExpectedCallOrder.Delete = 1                             // delete is always called first
+	sc.ExpectedCallOrder.Rollback = sc.NumberOfFilesToIndex + 2 // rollback = delete + number of files + rollback = number of files + 2
+	sc.ExpectedDeleteArgument = eadid
 
 	// setup error events
 	var errorEvents []testutils.ErrorEvent
@@ -245,30 +191,11 @@ func TestIndexEADFile_RollbackOnBadComponentIndex(t *testing.T) {
 	SetSolrClient(sc)
 
 	// Index the EAD file
-	err = IndexEADFile(eadPath)
-	if err == nil {
-		t.Errorf("error: expected IndexEADFile to return an error, but nothing was returned: %v", err)
-		t.FailNow()
-	}
+	sc.ActualError = IndexEADFile(eadPath)
 
-	// check that the expected error message was returned
-	for i, errString := range strings.Split(err.Error(), "\n") {
-		if errString != errorEvents[i].ErrorMessage {
-			t.Errorf("error: expected IndexEADFile to return an error with message '%s', but got: '%s'", errorEvents[i].ErrorMessage, errString)
-		}
-	}
-
-	// check that delete was called first
-	if sc.DeleteCallOrder != expectedDeleteCallOrder {
-		t.Errorf("Delete was not called first. Call order: %d", sc.DeleteCallOrder)
-	}
-	if sc.DeleteArgument != eadid {
-		t.Errorf("Delete was not called with the correct argument. expected: %s, got: %s", eadid, sc.DeleteArgument)
-	}
-
-	// check that rollback was called in the expected sequence
-	if sc.RollbackCallOrder != expectedRollbackCallOrder {
-		t.Errorf("Rollback was not called at the expected time. Expected: %d, got: %d", expectedRollbackCallOrder, sc.RollbackCallOrder)
+	err = sc.CheckAssertions()
+	if err != nil {
+		t.Errorf("Assertions failed: %s", err)
 	}
 }
 
@@ -287,51 +214,27 @@ func TestIndexEADFile_RollbackOnBadCommit(t *testing.T) {
 		t.FailNow()
 	}
 
-	// set up expected call orders
-	// the mock increments the call count before storing the value
-	// delete is always called first
-	expectedDeleteCallOrder := 1
-	// commit   = delete + number of files + commit = number of files + 2
-	expectedCommitCallOrder := sc.NumberOfFilesToIndex + 2
-	// rollback = delete + number of files + commit + rollback = number of files + 3
-	expectedRollbackCallOrder := sc.NumberOfFilesToIndex + 3
+	// set expectations
+	sc.ExpectedCallOrder.Delete = 1                             // delete is always called first
+	sc.ExpectedCallOrder.Commit = sc.NumberOfFilesToIndex + 2   // commit   = delete + number of files + commit = number of files + 2
+	sc.ExpectedCallOrder.Rollback = sc.NumberOfFilesToIndex + 3 // rollback = delete + number of files + commit + rollback = number of files + 3
+	sc.ExpectedDeleteArgument = eadid
 
 	// setup error events
 	var errorEvents []testutils.ErrorEvent
-	errorEvents = append(errorEvents, testutils.ErrorEvent{CallerName: "Commit", ErrorMessage: "error during Commit", CallCount: expectedCommitCallOrder})
+	errorEvents = append(errorEvents, testutils.ErrorEvent{CallerName: "Commit", ErrorMessage: "error during Commit", CallCount: sc.ExpectedCallOrder.Commit})
 	sc.ErrorEvents = testutils.SortErrorEventsByCallCount(errorEvents)
 
 	// Set the Solr client
 	SetSolrClient(sc)
 
 	// Index the EAD file
-	err = IndexEADFile(eadPath)
-	if err == nil {
-		t.Errorf("error: expected IndexEADFile to return an error, but nothing was returned: %v", err)
-		t.FailNow()
-	}
+	sc.ActualError = IndexEADFile(eadPath)
 
-	// Check if the operation is complete from the Solr client perspective
-	if !sc.IsComplete() {
-		t.Errorf("Not all files were added to the Solr index. Remaining values: %v", sc.GoldenFileHashes)
-	}
-
-	// check that delete was called in the expected sequence
-	if sc.DeleteCallOrder != expectedDeleteCallOrder {
-		t.Errorf("Delete was not called first. Call order: %d", sc.DeleteCallOrder)
-	}
-	if sc.DeleteArgument != eadid {
-		t.Errorf("Delete was not called with the correct argument. expected: %s, got: %s", eadid, sc.DeleteArgument)
-	}
-
-	// check that commit was called in the expected sequence
-	if sc.CommitCallOrder != expectedCommitCallOrder {
-		t.Errorf("Commit was not called at the expected time. Expected: %d, got: %d", expectedCommitCallOrder, sc.CommitCallOrder)
-	}
-
-	// check that rollback was called in the expected sequence
-	if sc.RollbackCallOrder != expectedRollbackCallOrder {
-		t.Errorf("Rollback was not called at the expected time. Expected: %d, got: %d", expectedRollbackCallOrder, sc.RollbackCallOrder)
+	// check that all expectations were met
+	err = sc.CheckAssertions()
+	if err != nil {
+		t.Errorf("Assertions failed: %s", err)
 	}
 }
 
