@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"runtime"
 	"strings"
+	"testing"
 
 	eadtestutils "github.com/nyulibraries/go-ead-indexer/pkg/ead/testutils"
 )
@@ -270,4 +271,23 @@ func (sc *SolrClientMock) CheckAssertions() error {
 
 	// all assertions passed
 	return nil
+}
+
+func AssertError(t *testing.T, fname string, err error) {
+	if err == nil {
+		t.Errorf("error: expected '%s' to return an error, but nothing was returned", fname)
+	}
+}
+
+func AssertErrorMessageContainsString(t *testing.T, fname string, err error, str string) {
+	emsg := err.Error()
+	if !strings.Contains(emsg, str) {
+		t.Errorf("error: expected function '%s' to return an error with message containing '%s', but got: '%s'", fname, str, emsg)
+	}
+}
+
+func AssertCallCount(t *testing.T, expectedCallCount, actualCallCount int) {
+	if actualCallCount != expectedCallCount {
+		t.Errorf("error: actual CallCount '%d' does not match expected CallCount '%d'", actualCallCount, expectedCallCount)
+	}
 }
