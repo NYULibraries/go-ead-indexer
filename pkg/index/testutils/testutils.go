@@ -27,10 +27,6 @@ type SolrClientMock struct {
 	CallCount              int
 	ActualCallOrder        CallOrder
 	ExpectedCallOrder      CallOrder
-	CommitCallOrder        int
-	DeleteCallOrder        int
-	RollbackCallOrder      int
-	DeleteArgument         string
 	ActualDeleteArgument   string
 	ExpectedDeleteArgument string
 	ErrorEvents            []ErrorEvent
@@ -63,16 +59,12 @@ func (sc *SolrClientMock) Add(xmlPostBody string) error {
 
 func (sc *SolrClientMock) Commit() error {
 	sc.CallCount++
-	sc.CommitCallOrder = sc.CallCount
 	sc.ActualCallOrder.Commit = sc.CallCount
 	return sc.checkForErrorEvent()
 }
 
 func (sc *SolrClientMock) Delete(eadid string) error {
 	sc.CallCount++
-	sc.DeleteCallOrder = sc.CallCount
-	sc.DeleteArgument = eadid
-
 	sc.ActualCallOrder.Delete = sc.CallCount
 	sc.ActualDeleteArgument = eadid
 
@@ -95,9 +87,6 @@ func (sc *SolrClientMock) Reset() {
 	sc.CallCount = 0
 
 	// reset the call order values
-	sc.CommitCallOrder = IGNORE_CALL_ORDER
-	sc.DeleteCallOrder = IGNORE_CALL_ORDER
-	sc.RollbackCallOrder = IGNORE_CALL_ORDER
 	sc.ActualCallOrder.Commit = IGNORE_CALL_ORDER
 	sc.ActualCallOrder.Delete = IGNORE_CALL_ORDER
 	sc.ActualCallOrder.Rollback = IGNORE_CALL_ORDER
@@ -108,13 +97,12 @@ func (sc *SolrClientMock) Reset() {
 	// reset the delete arguments
 	sc.ActualDeleteArgument = ""
 	sc.ExpectedDeleteArgument = ""
-	sc.DeleteArgument = ""
+
 	sc.ErrorEvents = []ErrorEvent{}
 }
 
 func (sc *SolrClientMock) Rollback() error {
 	sc.CallCount++
-	sc.RollbackCallOrder = sc.CallCount
 	sc.ActualCallOrder.Rollback = sc.CallCount
 	return sc.checkForErrorEvent()
 }
