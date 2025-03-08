@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"path/filepath"
 	"runtime"
-	"strings"
 	"testing"
 
 	eadtestutils "github.com/nyulibraries/go-ead-indexer/pkg/ead/testutils"
@@ -12,6 +11,10 @@ import (
 )
 
 func TestIndexEADFile_EADFileDoesNotExist(t *testing.T) {
+
+	sut := "TestIndexEADFile"
+	expectedErrStringFragment := "no such file or directory"
+	expectedCallCount := 0
 
 	sc := testutils.GetSolrClientMock()
 	SetSolrClient(sc)
@@ -26,17 +29,51 @@ func TestIndexEADFile_EADFileDoesNotExist(t *testing.T) {
 	eadPath := filepath.Join(dir, "this-file-does-not-exist.xml")
 
 	err := IndexEADFile(eadPath)
-	if err == nil {
-		t.Errorf("error: expected IndexEADFile to return an error, but nothing was returned: %v", err)
-	}
-	if !strings.Contains(err.Error(), "no such file or directory") {
-		t.Errorf("error: expected IndexEADFile to return an error with message containing 'no such file or directory', but got: %v", err)
+
+	testutils.AssertError(t, sut, err)
+	testutils.AssertErrorMessageContainsString(t, sut, err, expectedErrStringFragment)
+	testutils.AssertCallCount(t, expectedCallCount, sc.CallCount)
+}
+
+func TestIndexEADFile_EADFilePathIsAbsolute(t *testing.T) {
+
+	sut := "TestIndexEADFile"
+	expectedErrStringFragment := "EAD file path must be absolute:"
+	expectedCallCount := 0
+
+	sc := testutils.GetSolrClientMock()
+	SetSolrClient(sc)
+
+	eadPath := filepath.Join(".", "this-file-does-not-exist.xml")
+
+	err := IndexEADFile(eadPath)
+	testutils.AssertError(t, sut, err)
+	testutils.AssertErrorMessageContainsString(t, sut, err, expectedErrStringFragment)
+	testutils.AssertCallCount(t, expectedCallCount, sc.CallCount)
+}
+
+func TestIndexEADFile_ErrorExtractingRepositoryCode(t *testing.T) {
+
+	sut := "TestIndexEADFile"
+	expectedErrStringFragment := "EAD file path must have at least two non-empty components"
+	expectedCallCount := 0
+
+	sc := testutils.GetSolrClientMock()
+	SetSolrClient(sc)
+
+	_, filename, _, ok := runtime.Caller(0)
+	if !ok {
+		t.Errorf("ERROR: `runtime.Caller(0)` failed")
+		t.FailNow()
 	}
 
-	if sc.CallCount != 0 {
-		t.Errorf("error: expected IndexEADFile to not call any SolrClient methods, but it did: %v", sc.CallCount)
-	}
+	dir := filepath.Dir(filename)
+	eadPath := filepath.Join(dir, "testdata", "fixtures", "edip", "test-file-for-bad-repo-extraction.empty")
 
+	err := IndexEADFile(eadPath)
+	testutils.AssertError(t, sut, err)
+	testutils.AssertErrorMessageContainsString(t, sut, err, expectedErrStringFragment)
+	testutils.AssertCallCount(t, expectedCallCount, sc.CallCount)
 }
 
 func TestIndexEADFile_Success(t *testing.T) {
@@ -52,7 +89,7 @@ func TestIndexEADFile_Success(t *testing.T) {
 	// load the Solr POST body expectations
 	err := sc.InitMockForIndexing(testEAD)
 	if err != nil {
-		t.Errorf("Error setting Solr client: %s", err)
+		t.Errorf("Error initializing the SolrClientMock: %s", err)
 		t.FailNow()
 	}
 
@@ -87,7 +124,7 @@ func TestIndexEADFile_RollbackOnBadDelete(t *testing.T) {
 	sc := testutils.GetSolrClientMock()
 	err := sc.InitMockForIndexing(testEAD)
 	if err != nil {
-		t.Errorf("Error setting Solr client: %s", err)
+		t.Errorf("Error initializing Solr Client Mock: %s", err)
 		t.FailNow()
 	}
 
@@ -126,7 +163,7 @@ func TestIndexEADFile_RollbackOnBadCollectionIndex(t *testing.T) {
 	sc := testutils.GetSolrClientMock()
 	err := sc.InitMockForIndexing(testEAD)
 	if err != nil {
-		t.Errorf("Error setting Solr client: %s", err)
+		t.Errorf("Error initializing Solr Client Mock: %s", err)
 		t.FailNow()
 	}
 
@@ -210,7 +247,7 @@ func TestIndexEADFile_RollbackOnBadCommit(t *testing.T) {
 	sc := testutils.GetSolrClientMock()
 	err := sc.InitMockForIndexing(testEAD)
 	if err != nil {
-		t.Errorf("Error setting Solr client: %s", err)
+		t.Errorf("Error initializing Solr Client Mock: %s", err)
 		t.FailNow()
 	}
 
