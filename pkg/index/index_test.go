@@ -249,12 +249,11 @@ func TestDeleteEADFileDataFromIndex_RollbackOnBadDelete(t *testing.T) {
 		t.FailNow()
 	}
 
-	// set up expected call orders
-	// the mock increments the call count before storing the value
-	// delete is always called first
-	expectedDeleteCallOrder := 1
-	// rollback = delete + rollback = 2
-	expectedRollbackCallOrder := 2
+	// set expectations
+	// (note: Commit() is not called because there were errors during component-level indexing)
+	sc.ExpectedCallOrder.Delete = 1   // delete is always called first
+	sc.ExpectedCallOrder.Rollback = 2 // rollback = delete + rollback = 2
+	sc.ExpectedDeleteArgument = eadid
 
 	// setup error events
 	var errorEvents []testutils.ErrorEvent
@@ -266,29 +265,11 @@ func TestDeleteEADFileDataFromIndex_RollbackOnBadDelete(t *testing.T) {
 	SetSolrClient(sc)
 
 	// Delete the data for the EADID
-	err = DeleteEADFileDataFromIndex(eadid)
-	if err == nil {
-		t.Errorf("error: expected DeleteEADFileDataFromIndex to return an error, but nothing was returned")
-		t.FailNow()
-	}
+	sc.ActualError = DeleteEADFileDataFromIndex(eadid)
 
-	// check that the expected error message was returned
-	for i, errString := range strings.Split(err.Error(), "\n") {
-		if errString != errorEvents[i].ErrorMessage {
-			t.Errorf("error: expected DeleteEADFileDataFromIndex to return an error with message '%s', but got: '%s'", errorEvents[i].ErrorMessage, errString)
-		}
-	}
-
-	// check that delete was called in the expected sequence
-	if sc.DeleteCallOrder != expectedDeleteCallOrder {
-		t.Errorf("Delete was not called first. Call order: %d", sc.DeleteCallOrder)
-	}
-	if sc.DeleteArgument != eadid {
-		t.Errorf("Delete was not called with the correct argument. expected: %s, got: %s", eadid, sc.DeleteArgument)
-	}
-
-	// check that rollback was called in the expected sequence
-	if sc.RollbackCallOrder != expectedRollbackCallOrder {
-		t.Errorf("Rollback was not called at the expected time. Expected: %d, got: %d", expectedRollbackCallOrder, sc.RollbackCallOrder)
+	// check that all expectations were met
+	err = sc.CheckAssertions()
+	if err != nil {
+		t.Errorf("Assertions failed: %s", err)
 	}
 }
