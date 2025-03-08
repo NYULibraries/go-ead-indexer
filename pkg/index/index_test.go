@@ -238,6 +238,34 @@ func TestIndexEADFile_RollbackOnBadCommit(t *testing.T) {
 	}
 }
 
+func TestDeleteEADFileDataFromIndex_Success(t *testing.T) {
+
+	eadid := "mss_460"
+
+	sc := testutils.GetSolrClientMock()
+	err := sc.InitMockForDelete()
+	if err != nil {
+		t.Errorf("Error initializing the Solr client for delete testing: %s", err)
+		t.FailNow()
+	}
+
+	// set expectations
+	sc.ExpectedCallOrder.Delete = 1 // delete is always called first
+	sc.ExpectedDeleteArgument = eadid
+
+	// Set the Solr client
+	SetSolrClient(sc)
+
+	// Delete the data for the EADID
+	sc.ActualError = DeleteEADFileDataFromIndex(eadid)
+
+	// check that all expectations were met
+	err = sc.CheckAssertions()
+	if err != nil {
+		t.Errorf("Assertions failed: %s", err)
+	}
+}
+
 func TestDeleteEADFileDataFromIndex_RollbackOnBadDelete(t *testing.T) {
 
 	eadid := "mss_460"
