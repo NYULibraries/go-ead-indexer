@@ -338,3 +338,28 @@ func TestDeleteEADFileDataFromIndex_RollbackOnBadDelete(t *testing.T) {
 		t.Errorf("Assertions failed: %s", err)
 	}
 }
+
+func TestDeleteEADFileDataFromIndex_BadEADID(t *testing.T) {
+
+	eadid := "waffles!@#%"
+	sut := "DeleteEADFileDataFromIndex"
+	expectedErrStringFragment := fmt.Sprintf("invalid EADID: %s", eadid)
+	expectedCallCount := 0
+
+	sc := testutils.GetSolrClientMock()
+	err := sc.InitMockForDelete()
+	if err != nil {
+		t.Errorf("Error initializing the Solr client for delete testing: %s", err)
+		t.FailNow()
+	}
+
+	// Set the Solr client
+	SetSolrClient(sc)
+
+	// Delete the data for the EADID
+	err = DeleteEADFileDataFromIndex(eadid)
+
+	testutils.AssertError(t, sut, err)
+	testutils.AssertErrorMessageContainsString(t, sut, err, expectedErrStringFragment)
+	testutils.AssertCallCount(t, expectedCallCount, sc.CallCount)
+}

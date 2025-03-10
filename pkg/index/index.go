@@ -12,6 +12,7 @@ import (
 	"path/filepath"
 
 	"github.com/nyulibraries/go-ead-indexer/pkg/ead"
+	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
 	"github.com/nyulibraries/go-ead-indexer/pkg/net/solr"
 	"github.com/nyulibraries/go-ead-indexer/pkg/util"
 )
@@ -72,7 +73,7 @@ func IndexEADFile(eadPath string) error {
 	}
 
 	// Delete the data for this EAD from Solr
-	err = deleteEADFileDataFromIndex(EAD.CollectionDoc.Parts.EADID.Values[0])
+	err = sc.Delete(EAD.CollectionDoc.Parts.EADID.Values[0])
 	if err != nil {
 		return appendErrIssueRollbackJoinErrs(errs, err)
 	}
@@ -111,14 +112,24 @@ func IndexEADFile(eadPath string) error {
 	return nil
 }
 
-func DeleteEADFileDataFromIndex(eadid string) error {
+func DeleteEADFileDataFromIndex(eadID string) error {
 	var errs []error
 
-	err := deleteEADFileDataFromIndex(eadid)
+	// assert that the EADID is valid
+	if !eadutil.IsValidEADID(eadID) {
+		return fmt.Errorf("invalid EADID: %s", eadID)
+	}
+
+	// assert that the SolrClient has been set
+	err := assertSolrClientSet()
+	if err != nil {
+		return err
+	}
+
+	err = sc.Delete(eadID)
 	if err != nil {
 		return appendErrIssueRollbackJoinErrs(errs, err)
 	}
-
 	return nil
 }
 
@@ -134,9 +145,4 @@ func appendErrIssueRollbackJoinErrs(errs []error, err error) error {
 		errs = append(errs, err)
 	}
 	return errors.Join(errs...)
-}
-
-func deleteEADFileDataFromIndex(eadID string) error {
-	err := sc.Delete(eadID)
-	return err
 }
