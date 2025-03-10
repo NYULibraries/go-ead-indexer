@@ -12,7 +12,7 @@ import (
 
 func TestIndexEADFile_EADFileDoesNotExist(t *testing.T) {
 
-	sut := "TestIndexEADFile"
+	sut := "IndexEADFile"
 	expectedErrStringFragment := "no such file or directory"
 	expectedCallCount := 0
 
@@ -37,7 +37,7 @@ func TestIndexEADFile_EADFileDoesNotExist(t *testing.T) {
 
 func TestIndexEADFile_EADFilePathIsAbsolute(t *testing.T) {
 
-	sut := "TestIndexEADFile"
+	sut := "IndexEADFile"
 	expectedErrStringFragment := "EAD file path must be absolute:"
 	expectedCallCount := 0
 
@@ -52,9 +52,26 @@ func TestIndexEADFile_EADFilePathIsAbsolute(t *testing.T) {
 	testutils.AssertCallCount(t, expectedCallCount, sc.CallCount)
 }
 
+func TestIndexEADFile_SolrClientNotSet(t *testing.T) {
+
+	sut := "IndexEADFile"
+	expectedErrStringFragment := "you must call `SetSolrClient()` before calling any indexing functions"
+
+	repositoryCode := "fales"
+	eadid := "mss_460"
+	testEAD := filepath.Join(repositoryCode, eadid)
+
+	var eadPath = eadtestutils.EadFixturePath(testEAD)
+
+	SetSolrClient(nil)
+	err := IndexEADFile(eadPath)
+
+	testutils.AssertError(t, sut, err)
+	testutils.AssertErrorMessageContainsString(t, sut, err, expectedErrStringFragment)
+}
 func TestIndexEADFile_ErrorExtractingRepositoryCode(t *testing.T) {
 
-	sut := "TestIndexEADFile"
+	sut := "IndexEADFile"
 	expectedErrStringFragment := "EAD file path must have at least two non-empty components"
 	expectedCallCount := 0
 
@@ -362,4 +379,19 @@ func TestDeleteEADFileDataFromIndex_BadEADID(t *testing.T) {
 	testutils.AssertError(t, sut, err)
 	testutils.AssertErrorMessageContainsString(t, sut, err, expectedErrStringFragment)
 	testutils.AssertCallCount(t, expectedCallCount, sc.CallCount)
+}
+
+func TestDeleteEADFileDataFromIndex_SolrClientNotSet(t *testing.T) {
+
+	sut := "DeleteEADFileDataFromIndex"
+	expectedErrStringFragment := "you must call `SetSolrClient()` before calling any indexing functions"
+	eadid := "mss_460"
+
+	SetSolrClient(nil)
+
+	// Delete the data for the EADID
+	err := DeleteEADFileDataFromIndex(eadid)
+
+	testutils.AssertError(t, sut, err)
+	testutils.AssertErrorMessageContainsString(t, sut, err, expectedErrStringFragment)
 }
