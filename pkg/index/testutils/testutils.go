@@ -32,6 +32,7 @@ type SolrClientMock struct {
 	ExpectedDeleteArgument string
 	ErrorEvents            []ErrorEvent
 	ActualError            error
+	urlOrigin              string
 }
 
 type ErrorEvent struct {
@@ -77,7 +78,11 @@ func (sc *SolrClientMock) GetPostRequest(string) (*http.Request, error) {
 }
 
 func (sc *SolrClientMock) GetSolrURLOrigin() string {
-	return "http://www.example.com"
+	return sc.urlOrigin
+}
+
+func (sc *SolrClientMock) SetSolrURLOrigin(url string) {
+	sc.urlOrigin = url
 }
 
 func (sc *SolrClientMock) Reset() {
@@ -100,6 +105,8 @@ func (sc *SolrClientMock) Reset() {
 	sc.ExpectedDeleteArgument = ""
 
 	sc.ErrorEvents = []ErrorEvent{}
+
+	sc.urlOrigin = "http://www.example.com"
 }
 
 func (sc *SolrClientMock) Rollback() error {
