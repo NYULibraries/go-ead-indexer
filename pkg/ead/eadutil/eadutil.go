@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/lestrrat-go/libxml2/dom"
 	"github.com/lestrrat-go/libxml2/types"
+	"github.com/nyulibraries/dlts-finding-aids-ead-go-packages/ead/validate"
 	languageLib "github.com/nyulibraries/go-ead-indexer/pkg/language"
 	"github.com/nyulibraries/go-ead-indexer/pkg/sanitize"
 	"github.com/nyulibraries/go-ead-indexer/pkg/util"
@@ -107,6 +108,8 @@ var trailingWhitespaceInFieldContent = regexp.MustCompile(`[\s ]+$`)
 // for our constrained use cases.
 var closeTagRegExp = regexp.MustCompile("</[^>]+>$")
 var openTagRegExp = regexp.MustCompile("^<[^>]+>")
+
+var validEADIDRegexp = regexp.MustCompile(validate.ValidEADIDRegexpString)
 
 func ConvertEADToHTML(eadString string) (string, error) {
 	htmlString, err := convertEADTagsWithRenderAttributesToHTML(eadString)
@@ -337,6 +340,16 @@ func GetNodeValuesAndXMLStrings(query string, node types.Node) ([]string, []stri
 	}
 
 	return values, xmlStrings, nil
+}
+
+// This is based on `validateEADID()`:
+// https://github.com/NYULibraries/dlts-finding-aids-ead-go-packages/blob/7baee7dfde24a01422ec8e6470fdc8a76d84b3fb/ead/validate/validate.go#L205-L244
+func IsValidEADID(eadid string) bool {
+	if len(eadid) > validate.MAXIMUM_EADID_LENGTH {
+		return false
+	}
+
+	return validEADIDRegexp.MatchString(eadid)
 }
 
 func MakeSolrAddMessageFieldElementString(fieldName string, fieldValue string) string {

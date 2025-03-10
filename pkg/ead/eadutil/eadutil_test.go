@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"github.com/lestrrat-go/libxml2/parser"
+	"github.com/nyulibraries/dlts-finding-aids-ead-go-packages/ead/validate"
 	languageLib "github.com/nyulibraries/go-ead-indexer/pkg/language"
 	"github.com/nyulibraries/go-ead-indexer/pkg/util"
 	"os"
@@ -532,6 +533,34 @@ func TestIsDateInRange(t *testing.T) {
 		if actual != testCase.expected {
 			t.Errorf(`%s: expected "%s" in "%s" to return %t, got %t`,
 				testCase.name, testCase.dateString, testCase.dateRange.Display, testCase.expected, actual)
+		}
+	}
+}
+
+// We rely mainly on the test coverage for `validate.ValidEADIDRegexpString`
+// provided by `TestValidEADIDRegexpString()` in the `validate` package:
+// `TestValidEADIDRegexpString():
+// https://github.com/NYULibraries/dlts-finding-aids-ead-go-packages/blob/7baee7dfde24a01422ec8e6470fdc8a76d84b3fb/ead/validate/validate_test.go
+// We might want to consider extracting the test cases in that test into exported
+// slices which could then be used here.  For now, we only test single use case
+// not covered by match against `validate.ValidEADIDRegexpString`.
+func TestIsValidEADID(t *testing.T) {
+	testCases := []struct {
+		name     string
+		eadid    string
+		expected bool
+	}{
+		{
+			name:     "Exceeds max length",
+			eadid:    strings.Repeat("x", validate.MAXIMUM_EADID_LENGTH) + "_1",
+			expected: false,
+		},
+	}
+
+	for _, testCase := range testCases {
+		actual := IsValidEADID(testCase.eadid)
+		if actual != testCase.expected {
+			t.Errorf(`"%s": expected %t, but got %t`, testCase.name, testCase.expected, actual)
 		}
 	}
 }
