@@ -117,6 +117,25 @@ func TestNewWithBadEADXML(t *testing.T) {
 	}
 }
 
+func TestNewWithInvalidEADID(t *testing.T) {
+	eadXML, err := testutils.GetEADFixtureValue("edip/mos_2024")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	const invalidEADID = "INVALID!"
+	var expectedError = fmt.Sprintf(errorFormatStringInvalidEADID, invalidEADID)
+	eadXMLWithInvalidEADID := strings.ReplaceAll(eadXML, "mos_2024", invalidEADID)
+
+	_, err = New("edip", eadXMLWithInvalidEADID)
+	if err == nil {
+		t.Errorf("Expected an error to be returned by New(), but no error was returned")
+	} else if err.Error() != expectedError {
+		t.Errorf(`New() should have returned error "%s", but instead returned "%s"`,
+			expectedError, err.Error())
+	}
+}
+
 // We don't have an official repository code format, but there is a comprehensive
 // list of repository codes:
 // https://jira.nyu.edu/browse/FADESIGN-65
