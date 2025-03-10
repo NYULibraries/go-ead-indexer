@@ -7,6 +7,7 @@ import (
 	"github.com/lestrrat-go/libxml2/types"
 	"github.com/nyulibraries/go-ead-indexer/pkg/ead/collectiondoc"
 	"github.com/nyulibraries/go-ead-indexer/pkg/ead/component"
+	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
 	"regexp"
 )
 
@@ -17,6 +18,7 @@ type EAD struct {
 	OriginalFileContents string                      `json:"original_file_contents"`
 }
 
+const errorFormatStringInvalidEADID = `"%s" is not a valid EAD ID`
 const errorNoEADTagWithExpectedStructureFound = "No <ead> tag with the expected structure was found"
 
 // This must be to the number of match groups in the regexp below.
@@ -88,6 +90,12 @@ func New(repositoryCode string, eadXML string) (EAD, error) {
 	ead.CollectionDoc, err = collectiondoc.MakeCollectionDoc(repositoryCode, rootNode)
 	if err != nil {
 		return ead, err
+	}
+
+	// At the moment values are in a slice, as is the case with most Parts.
+	var eadID = ead.CollectionDoc.Parts.EADID.Values[0]
+	if !eadutil.IsValidEADID(eadID) {
+		return ead, errors.New(fmt.Sprintf(errorFormatStringInvalidEADID, eadID))
 	}
 
 	collectionDocParts := component.ComponentCollectionDocParts{
