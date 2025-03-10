@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"github.com/lestrrat-go/libxml2/parser"
+	"github.com/nyulibraries/dlts-finding-aids-ead-go-packages/ead/validate"
 	languageLib "github.com/nyulibraries/go-ead-indexer/pkg/language"
 	"github.com/nyulibraries/go-ead-indexer/pkg/util"
 	"os"
@@ -536,6 +537,34 @@ func TestIsDateInRange(t *testing.T) {
 	}
 }
 
+// We rely mainly on the test coverage for `validate.ValidEADIDRegexpString`
+// provided by `TestValidEADIDRegexpString()` in the `validate` package:
+// `TestValidEADIDRegexpString():
+// https://github.com/NYULibraries/dlts-finding-aids-ead-go-packages/blob/7baee7dfde24a01422ec8e6470fdc8a76d84b3fb/ead/validate/validate_test.go
+// We might want to consider extracting the test cases in that test into exported
+// slices which could then be used here.  For now, we only test single use case
+// not covered by match against `validate.ValidEADIDRegexpString`.
+func TestIsValidEADID(t *testing.T) {
+	testCases := []struct {
+		name     string
+		eadid    string
+		expected bool
+	}{
+		{
+			name:     "Exceeds max length",
+			eadid:    strings.Repeat("x", validate.MAXIMUM_EADID_LENGTH) + "_1",
+			expected: false,
+		},
+	}
+
+	for _, testCase := range testCases {
+		actual := IsValidEADID(testCase.eadid)
+		if actual != testCase.expected {
+			t.Errorf(`"%s": expected %t, but got %t`, testCase.name, testCase.expected, actual)
+		}
+	}
+}
+
 // The `language` package has its own test suite, so we don't need to go crazy
 // with coverage here.
 func TestLanguage(t *testing.T) {
@@ -674,6 +703,53 @@ func TestMakeTitleHTML(t *testing.T) {
 		if actual != testCase.expectedHTMLString {
 			t.Errorf(`%s: expected EAD string "%s" to be converted to HTML string "%s", but got "%s"`,
 				testCase.name, testCase.eadString, testCase.expectedHTMLString, actual)
+		}
+	}
+}
+
+func TestParseEscapedTextContent(t *testing.T) {
+	testCases := []struct {
+		before string
+		after  string
+	}{
+		{
+			before: "Cars &amp; Maps",
+			after:  "Cars &amp; Maps",
+		},
+		{
+			before: "Dangerous &gt; character!",
+			after:  "Dangerous &gt; character!",
+		},
+		{
+			before: "Dangerous &lt; character!",
+			after:  "Dangerous &lt; character!",
+		},
+		{
+			before: "The quick brown fox jumped over the lazy dog.",
+			after:  "The quick brown fox jumped over the lazy dog.",
+		},
+	}
+
+	for _, testCase := range testCases {
+		xmlParser := parser.New()
+		xmlDoc, err := xmlParser.ParseString(
+			fmt.Sprintf(`<unittitle>%s</unittitle>`, testCase.before))
+		if err != nil {
+			t.Errorf(`xmlParser.ParseString("%s") failed with error: %s`,
+				testCase.before, err.Error())
+
+			continue
+		}
+
+		nodeToTest, err := xmlDoc.DocumentElement()
+		if err != nil {
+			t.Errorf(`xmlDoc.DocumentElement() failed with error: %s`, err.Error())
+		}
+
+		actual, _ := ParseEscapedNodeTextContent(nodeToTest)
+		if actual != testCase.after {
+			t.Errorf(`Expected ParseEscapedNodeTextContent("%s") to return "%s",`+
+				` but got "%s"`, testCase.before, testCase.after, actual)
 		}
 	}
 }

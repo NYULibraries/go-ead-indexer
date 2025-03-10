@@ -4,7 +4,9 @@ import (
 	"encoding/xml"
 	"errors"
 	"fmt"
+	"github.com/lestrrat-go/libxml2/dom"
 	"github.com/lestrrat-go/libxml2/types"
+	"github.com/nyulibraries/dlts-finding-aids-ead-go-packages/ead/validate"
 	languageLib "github.com/nyulibraries/go-ead-indexer/pkg/language"
 	"github.com/nyulibraries/go-ead-indexer/pkg/sanitize"
 	"github.com/nyulibraries/go-ead-indexer/pkg/util"
@@ -36,6 +38,8 @@ const daoDescriptionParagraphLeftPadString = "\n          "
 const daoDescriptionParagraphRightPadString = "\n        "
 const unitTitleLeftPadString = "\n      "
 const unitTitleRightPadString = "\n    "
+
+const eadLineBreakTag = "<lb/>"
 
 const undated = "undated & other"
 
@@ -104,6 +108,8 @@ var trailingWhitespaceInFieldContent = regexp.MustCompile(`[\s ]+$`)
 // for our constrained use cases.
 var closeTagRegExp = regexp.MustCompile("</[^>]+>$")
 var openTagRegExp = regexp.MustCompile("^<[^>]+>")
+
+var validEADIDRegexp = regexp.MustCompile(validate.ValidEADIDRegexpString)
 
 func ConvertEADToHTML(eadString string) (string, error) {
 	htmlString, err := convertEADTagsWithRenderAttributesToHTML(eadString)
@@ -309,11 +315,41 @@ func GetNodeValuesAndXMLStrings(query string, node types.Node) ([]string, []stri
 	defer xpathResult.Free()
 
 	for _, resultNode := range xpathResult.NodeList() {
-		values = append(values, resultNode.NodeValue())
-		xmlStrings = append(xmlStrings, resultNode.String())
+		xmlString := resultNode.String()
+
+		var value string
+		if resultNode.NodeType() == dom.ElementNode {
+			// We were originally using Node.NodeValue() for `values` slice, but
+			// it caused problems with element values containing <lb/> tags.
+			// We basically want everything we got from Node.NodeValue() but
+			// with <lb/> tags replaced with whitespace so that the text on
+			// either side of the <lb/> tags don't get fused together.
+			// Note that there is downstream whitespace processing that might alter
+			// the whitespace replacement choice we make here, but at this stage
+			// of processing we just do what seems most natural.
+			value, err = parseNodeValue(xmlString)
+			if err != nil {
+				return values, xmlStrings, err
+			}
+		} else {
+			value = resultNode.NodeValue()
+		}
+
+		values = append(values, value)
+		xmlStrings = append(xmlStrings, xmlString)
 	}
 
 	return values, xmlStrings, nil
+}
+
+// This is based on `validateEADID()`:
+// https://github.com/NYULibraries/dlts-finding-aids-ead-go-packages/blob/7baee7dfde24a01422ec8e6470fdc8a76d84b3fb/ead/validate/validate.go#L205-L244
+func IsValidEADID(eadid string) bool {
+	if len(eadid) > validate.MAXIMUM_EADID_LENGTH {
+		return false
+	}
+
+	return validEADIDRegexp.MatchString(eadid)
 }
 
 func MakeSolrAddMessageFieldElementString(fieldName string, fieldValue string) string {
@@ -367,6 +403,19 @@ func PadDAODescriptionParagraphIfNeeded(xmlString string, value string) string {
 // https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506
 func PadUnitTitleIfNeeded(xmlString string, value string) string {
 	return padValueIfNeeded(xmlString, value, unitTitleLeftPadString, unitTitleRightPadString)
+}
+
+// `node.TextContent()` might contain unescaped characters that would be dangerous
+// for XML processing, like "&", ">", or "<".
+func ParseEscapedNodeTextContent(node types.Node) (string, error) {
+	textContentBytes := []byte(node.TextContent())
+
+	escapedBuffer := new(strings.Builder)
+	if err := EscapeText(escapedBuffer, textContentBytes); err != nil {
+		return string(textContentBytes), err
+	}
+
+	return escapedBuffer.String(), nil
 }
 
 // Using `strings.ReplaceAll` instead of full parsing of the XML should be safe
@@ -490,12 +539,7 @@ func StripTags(xmlString string, allowedTags *[]string) (string, error) {
 			startTagNames = startTagNames[:len(startTagNames)-1]
 
 		case xml.CharData:
-			buffer := new(strings.Builder)
-			if err := EscapeText(buffer, token); err != nil {
-				return strippedString, err
-			}
-
-			strippedString += buffer.String()
+			strippedString += string(token)
 		}
 	}
 
@@ -554,6 +598,8 @@ func convertEADTagsWithRenderAttributesToHTML(eadString string) (string, error) 
 			startTagNames = startTagNames[:len(startTagNames)-1]
 
 		case xml.CharData:
+			// The XML has been unescaped, need to re-escape it since it needs
+			// to go back into XML again.
 			buffer := new(strings.Builder)
 			if err := EscapeText(buffer, token); err != nil {
 				return htmlString, err
@@ -649,6 +695,21 @@ func padValueIfNeeded(xmlString string, value string, leftPadString string, righ
 	} else {
 		return value
 	}
+}
+
+func parseNodeValue(xmlString string) (string, error) {
+	// We can't just strip <lb/> tags because many times the text on either side
+	// of the tags have no intervening whitespace, and so simple removal would
+	// cause the text on other side of the tags to be fused together.
+	value := strings.ReplaceAll(xmlString, eadLineBreakTag, "\n")
+
+	// All other tags must be removed.
+	value, err := StripTags(value, nil)
+	if err != nil {
+		return value, err
+	}
+
+	return value, nil
 }
 
 // TODO: fix the bug we've intentionally preserved here -- for details, see:

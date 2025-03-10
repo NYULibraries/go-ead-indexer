@@ -2120,6 +2120,48 @@
         </did>
       </c>
 
+      <!-- Test case for making ancestor unit title map where <unittitle> text
+           contains escaped characters dangerous for XML parsing when unescaped
+           This <c> tree is based on cbh/bcms_0005.xml
+      -->
+      <c id="aspace_a9494bd784a28ecc26e870469e977b34" level="series">
+        <did>
+          <unittitle>Cars &amp; Map</unittitle>
+        </did>
+        <c id="aspace_833c54609da07dc9a3a9d58f7024ad13" level="file">
+          <did>
+            <unittitle>Subway cars &gt;</unittitle>
+            <unitdate datechar="creation" normal="1947/1948"
+                      type="inclusive">1947-1948
+            </unitdate>
+            <container altrender="Full Manuscript Box Letter"
+                       id="aspace_2674f3e9c7066b79ab5dbb2e899ab100"
+                       label="Mixed Materials [34444506249762]"
+                       type="Box">1
+            </container>
+            <container id="aspace_0730d725ec6100a7fe56f03441b937fc"
+                       parent="aspace_2674f3e9c7066b79ab5dbb2e899ab100"
+                       type="Folder">27
+            </container>
+          </did>
+        </c>
+        <c id="aspace_9f9f4081f9e3dc19e7f890871a0e57ae" level="file">
+          <did>
+            <unittitle>Subway map &lt;</unittitle>
+            <unitdate datechar="creation">undated</unitdate>
+            <container altrender="Full Manuscript Box Letter"
+                       id="aspace_e859865a2fcbe06f1f38ade7da4060c5"
+                       label="Mixed Materials [34444506249762]"
+                       type="Box">1
+            </container>
+            <container id="aspace_ddf043a2095466e8ad67aad52eb02658"
+                       parent="aspace_e859865a2fcbe06f1f38ade7da4060c5"
+                       type="Folder">28
+            </container>
+          </did>
+        </c>
+      </c>
+
       <!-- Test case for handling of a non-prettified component with a <unittitle>
            that contains <lb/> tags.  We would not want pieces of text on either
            side of these tags to be mashed together.  We also want to make sure
