@@ -1,7 +1,9 @@
 package index
 
 import (
+	"errors"
 	"fmt"
+	"io/fs"
 	"os"
 	"strings"
 
@@ -110,7 +112,7 @@ func runIndexCmd(cmd *cobra.Command, args []string) error {
 	}
 
 	// check that the EAD file exists
-	if _, err := os.Stat(file); os.IsNotExist(err) {
+	if _, err := os.Stat(file); errors.Is(err, fs.ErrNotExist) {
 		emsg := fmt.Sprintf("ERROR: EAD file does not exist: %s", file)
 		return logAndReturnError(emsg)
 	}
