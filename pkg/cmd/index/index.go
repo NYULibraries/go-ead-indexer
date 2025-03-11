@@ -20,6 +20,7 @@ import (
 const originEnvVar = "SOLR_ORIGIN_WITH_PORT"
 
 var file string         // EAD file to be indexed
+var eadID string        // EADID value of EAD data to delete
 var loggingLevel string // logging level
 var logger log.Logger   // logger
 
@@ -29,6 +30,19 @@ func init() {
 	IndexCmd.Flags().StringVarP(&loggingLevel, "logging-level", "l",
 		log.DefaultLevelStringOption,
 		"Sets logging level: "+strings.Join(log.GetValidLevelOptionStrings(), ", ")+"")
+
+	DeleteCmd.Flags().StringVarP(&eadID, "eadid", "e", "", "EADID value of EAD data to delete")
+	DeleteCmd.Flags().StringVarP(&loggingLevel, "logging-level", "l",
+		log.DefaultLevelStringOption,
+		"Sets logging level: "+strings.Join(log.GetValidLevelOptionStrings(), ", ")+"")
+}
+
+var DeleteCmd = &cobra.Command{
+	Use:     "delete",
+	Short:   "Delete data by EADID",
+	Long:    "Delete data from the index using the EADID",
+	Example: `go-ead-indexer delete --eadid=[EADID] --logging-level="debug"`,
+	RunE:    runDeleteCmd,
 }
 
 var IndexCmd = &cobra.Command{
@@ -36,6 +50,44 @@ var IndexCmd = &cobra.Command{
 	Short:   "Index EAD file",
 	Example: `go-ead-indexer index --file=[path to EAD file] --logging-level="debug"`,
 	RunE:    runIndexCmd,
+}
+
+// runDeleteCmd is the main function for the 'delete' verb
+// It initializes the logger and Solr client, then deletes the data by EADID
+// It exits with a fatal error if any of these steps fail
+// It logs a message when the EAD data is successfully deleted
+func runDeleteCmd(cmd *cobra.Command, args []string) error {
+
+	// initialize logger
+	err := initLogger()
+	if err != nil {
+		emsg := fmt.Sprintf("ERROR: couldn't initialize logger: %s", err)
+		return logAndReturnError(emsg)
+	}
+
+	// check if EAD file path is set
+	if eadID == "" {
+		emsg := "ERROR: EADID is not set"
+		return logAndReturnError(emsg)
+	}
+
+	// initialize Solr client
+	err = initSolrClient()
+	if err != nil {
+		emsg := fmt.Sprintf("ERROR: couldn't initialize Solr client: %s", err)
+		return logAndReturnError(emsg)
+	}
+
+	// delete data associated with EADID
+	err = index.DeleteEADFileDataFromIndex(eadID)
+	if err != nil {
+		emsg := fmt.Sprintf("ERROR: couldn't delete data for EADID: %s error: %s", eadID, err)
+		return logAndReturnError(emsg)
+	}
+
+	// log success message
+	logger.Info(index.MessageKey, fmt.Sprintf("SUCCESS: deleted data for EADID: %s", eadID))
+	return nil
 }
 
 // runIndexCmd is the main function for the 'index' command
