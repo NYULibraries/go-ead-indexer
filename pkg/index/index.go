@@ -12,6 +12,7 @@ import (
 	"path/filepath"
 
 	"github.com/nyulibraries/go-ead-indexer/pkg/ead"
+	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
 	"github.com/nyulibraries/go-ead-indexer/pkg/net/solr"
 	"github.com/nyulibraries/go-ead-indexer/pkg/util"
 )
@@ -45,52 +46,43 @@ func IndexEADFile(eadPath string) error {
 	// assert that the SolrClient has been set
 	err := assertSolrClientSet()
 	if err != nil {
-		errs = append(errs, err)
-		return errors.Join(errs...)
+		return appendAndJoinErrs(errs, err)
 	}
 
 	// Check if the EAD file path is absolute
 	if !filepath.IsAbs(eadPath) {
-		errs = append(errs, fmt.Errorf("EAD file path must be absolute: %s", eadPath))
-		return errors.Join(errs...)
+		return appendAndJoinErrs(errs, fmt.Errorf("EAD file path must be absolute: %s", eadPath))
 	}
 
 	// Get the EAD's repository code
 	repoCode, err := util.GetRepositoryCode(eadPath)
 	if err != nil {
-		errs = append(errs, err)
-		return errors.Join(errs...)
+		return appendAndJoinErrs(errs, err)
 	}
 
 	// Read the EAD file
 	eadXML, err := os.ReadFile(eadPath)
 	if err != nil {
-		errs = append(errs, err)
-		return errors.Join(errs...)
+		return appendAndJoinErrs(errs, err)
 	}
 
 	// Parse the EAD file
 	EAD, err := ead.New(repoCode, string(eadXML))
 	if err != nil {
-		errs = append(errs, err)
-		return errors.Join(errs...)
+		return appendAndJoinErrs(errs, err)
 	}
 
 	// Delete the data for this EAD from Solr
 	err = sc.Delete(EAD.CollectionDoc.Parts.EADID.Values[0])
 	if err != nil {
-		sc.Rollback()
-		errs = append(errs, err)
-		return errors.Join(errs...)
+		return appendErrIssueRollbackJoinErrs(errs, err)
 	}
 
 	// Add the EAD Collection-level document to Solr
 	xmlPostBody := EAD.CollectionDoc.SolrAddMessage.String()
-	err = sc.Add(string(xmlPostBody))
+	err = sc.Add(xmlPostBody)
 	if err != nil {
-		sc.Rollback()
-		errs = append(errs, err)
-		return errors.Join(errs...)
+		return appendErrIssueRollbackJoinErrs(errs, err)
 	}
 
 	// Add the EAD Component-level documents to Solr
@@ -105,17 +97,52 @@ func IndexEADFile(eadPath string) error {
 
 	// Rollback if there were any errors during the component-level indexing
 	if errs != nil {
-		sc.Rollback()
-		return errors.Join(errs...)
+		// NOTE: in this scenario, there isn't a new error,
+		// but we still want to take advantage of the rollback functionality,
+		// so we pass "nil" as the error
+		return appendErrIssueRollbackJoinErrs(errs, nil)
 	}
 
 	// commit the documents to Solr
 	err = sc.Commit()
 	if err != nil {
-		sc.Rollback()
-		errs = append(errs, err)
-		return errors.Join(errs...)
+		return appendErrIssueRollbackJoinErrs(errs, err)
 	}
 
 	return nil
+}
+
+func DeleteEADFileDataFromIndex(eadID string) error {
+	var errs []error
+
+	// assert that the EADID is valid
+	if !eadutil.IsValidEADID(eadID) {
+		return fmt.Errorf("invalid EADID: %s", eadID)
+	}
+
+	// assert that the SolrClient has been set
+	err := assertSolrClientSet()
+	if err != nil {
+		return err
+	}
+
+	err = sc.Delete(eadID)
+	if err != nil {
+		return appendErrIssueRollbackJoinErrs(errs, err)
+	}
+	return nil
+}
+
+func appendAndJoinErrs(errs []error, err error) error {
+	errs = append(errs, err)
+	return errors.Join(errs...)
+}
+
+func appendErrIssueRollbackJoinErrs(errs []error, err error) error {
+	errs = append(errs, err)
+	err = sc.Rollback()
+	if err != nil {
+		errs = append(errs, err)
+	}
+	return errors.Join(errs...)
 }
