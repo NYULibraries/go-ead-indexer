@@ -230,3 +230,24 @@ func TestDeleteCancel(t *testing.T) {
 
 	testutils.CheckStringContains(t, gotStdOut, fmt.Sprintf("Deletion canceled for EADID: '%s'", eadID))
 }
+
+func TestDeleteCancelAfterBadInput(t *testing.T) {
+	// ensure that the environment variable is set
+	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "http://www.example.com:8983/solr")
+	if err != nil {
+		t.Errorf("error setting environment variable: %v", err)
+		t.FailNow()
+	}
+
+	testutils.SetCmdFlag(DeleteCmd, "eadid", "fales_mss460")
+	testutils.SetCmdFlag(DeleteCmd, "assume-yes", "false")
+
+	gotStdOut, _, _ := testutils.WriteToStdinCaptureCmdStdoutStderrE(runDeleteCmd, DeleteCmd, []string{}, "WAFFLES\nn\n")
+
+	if gotStdOut == "" {
+		t.Errorf("expected data on StdOut but got nothing")
+	}
+
+	testutils.CheckStringContains(t, gotStdOut, "Please enter 'y' or 'n':")
+	testutils.CheckStringContains(t, gotStdOut, fmt.Sprintf("Deletion canceled for EADID: '%s'", eadID))
+}
