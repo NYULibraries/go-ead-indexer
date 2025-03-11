@@ -23,6 +23,7 @@ const originEnvVar = "SOLR_ORIGIN_WITH_PORT"
 
 var file string         // EAD file to be indexed
 var eadID string        // EADID value of EAD data to delete
+var assumeYes bool      // flag to disable interactive mode
 var loggingLevel string // logging level
 var logger log.Logger   // logger
 
@@ -34,6 +35,7 @@ func init() {
 		"Sets logging level: "+strings.Join(log.GetValidLevelOptionStrings(), ", ")+"")
 
 	DeleteCmd.Flags().StringVarP(&eadID, "eadid", "e", "", "EADID value of EAD data to delete")
+	DeleteCmd.Flags().BoolVarP(&assumeYes, "assume-yes", "y", false, "disable interactive mode")
 	DeleteCmd.Flags().StringVarP(&loggingLevel, "logging-level", "l",
 		log.DefaultLevelStringOption,
 		"Sets logging level: "+strings.Join(log.GetValidLevelOptionStrings(), ", ")+"")
@@ -43,7 +45,7 @@ var DeleteCmd = &cobra.Command{
 	Use:     "delete",
 	Short:   "Delete data by EADID",
 	Long:    "Delete data from the index using the EADID",
-	Example: `go-ead-indexer delete --eadid=[EADID] --logging-level="debug"`,
+	Example: `go-ead-indexer delete --eadid=[EADID] --logging-level="debug --assume-yes"`,
 	RunE:    runDeleteCmd,
 }
 
@@ -71,6 +73,17 @@ func runDeleteCmd(cmd *cobra.Command, args []string) error {
 	if eadID == "" {
 		emsg := "ERROR: EADID is not set"
 		return logAndReturnError(emsg)
+	}
+
+	// request confirmation if interactive mode is enabled
+	if !assumeYes {
+		confirmed := confirmDelete(eadID)
+		if !confirmed {
+			msg := fmt.Sprintf("Deletion canceled for EADID: '%s'", eadID)
+			logger.Info(index.MessageKey, msg)
+			fmt.Println(msg)
+			return nil
+		}
 	}
 
 	// initialize Solr client
@@ -176,6 +189,22 @@ func initSolrClient() error {
 func logAndReturnError(emsg string) error {
 	logger.Error(index.MessageKey, emsg)
 	return fmt.Errorf("%s", emsg)
+}
+
+func confirmDelete(eadID string) bool {
+	var response string
+
+	fmt.Printf("Are you sure you want to delete data for EADID: %s? (y/n): ", eadID)
+	fmt.Scanln(&response)
+
+	lowercaseResponse := strings.ToLower(response)
+	for lowercaseResponse != "y" && lowercaseResponse != "n" {
+		fmt.Printf("Please enter 'y' or 'n': ")
+		fmt.Scanln(&response)
+		lowercaseResponse = strings.ToLower(response)
+	}
+
+	return lowercaseResponse == "y"
 }
 
 //------------------------------------------------------------------------------

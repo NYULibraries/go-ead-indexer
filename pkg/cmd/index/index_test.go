@@ -1,6 +1,7 @@
 package index
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
 	"testing"
@@ -199,6 +200,8 @@ func TestDeleteError(t *testing.T) {
 
 	testutils.SetCmdFlag(DeleteCmd, "eadid", "This#Is^Not!A(Valid*EADID")
 	testutils.SetCmdFlag(DeleteCmd, "logging-level", "debug")
+	testutils.SetCmdFlag(DeleteCmd, "assume-yes", "true")
+
 	gotStdOut, _, _ := testutils.CaptureCmdStdoutStderrE(runDeleteCmd, DeleteCmd, []string{})
 
 	if gotStdOut == "" {
@@ -206,4 +209,24 @@ func TestDeleteError(t *testing.T) {
 	}
 
 	testutils.CheckStringContains(t, gotStdOut, "ERROR: couldn't delete data for EADID: This#Is^Not!A(Valid*EADID error:")
+}
+
+func TestDeleteCancel(t *testing.T) {
+	// ensure that the environment variable is set
+	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "http://www.example.com:8983/solr")
+	if err != nil {
+		t.Errorf("error setting environment variable: %v", err)
+		t.FailNow()
+	}
+
+	testutils.SetCmdFlag(DeleteCmd, "eadid", "fales_mss460")
+	testutils.SetCmdFlag(DeleteCmd, "assume-yes", "false")
+
+	gotStdOut, _, _ := testutils.WriteToStdinCaptureCmdStdoutStderrE(runDeleteCmd, DeleteCmd, []string{}, "n\n")
+
+	if gotStdOut == "" {
+		t.Errorf("expected data on StdOut but got nothing")
+	}
+
+	testutils.CheckStringContains(t, gotStdOut, fmt.Sprintf("Deletion canceled for EADID: '%s'", eadID))
 }
