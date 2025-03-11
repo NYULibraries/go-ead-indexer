@@ -73,6 +73,7 @@ type DocElement struct {
 	GenreForm_ssm          []string `xml:"genreform_ssm"`
 	GeogName_teim          []string `xml:"geogname_teim"`
 	GeogName_ssm           []string `xml:"geogname_ssm"`
+	Name_ssm               []string `xml:"name_ssm"`
 	// TODO: DLFA-238
 	// Change back to having just `docElement.Name_teim`.  This splitting of the
 	// field into 1 and 2 and the conditional append is done to match the variable
@@ -81,7 +82,6 @@ type DocElement struct {
 	// go immediately after those Term-based fields, otherwise they go toward the
 	// end.
 	Name_1_teim     []string `xml:"name_teim"`
-	Name_ssm        []string `xml:"name_ssm"`
 	Occupation_teim []string `xml:"occupation_teim"`
 	Occupation_ssm  []string `xml:"occupation_ssm"`
 	PersName_teim   []string `xml:"persname_teim"`
@@ -117,6 +117,7 @@ type DocElement struct {
 	Place_sim             []string `xml:"place_sim"`
 	Subject_sim           []string `xml:"subject_sim"`
 	Collection_teim       string   `xml:"collection_teim"`
+	Author_teim           []string `xml:"author_teim"`
 	CollectionUnitID_teim string   `xml:"collection_unitid_teim"`
 	Series_sim            []string `xml:"series_sim"`
 	Series_si             string   `xml:"series_si"`
@@ -142,6 +143,8 @@ func (component *Component) setSolrAddMessage() {
 	docElement.Address_teim = component.Parts.Address.Values
 
 	docElement.Appraisal_teim = component.Parts.Appraisal.Values
+
+	docElement.Author_teim = component.Parts.Author
 
 	docElement.BiogHist_teim = component.Parts.BiogHist.Values
 
@@ -210,20 +213,8 @@ func (component *Component) setSolrAddMessage() {
 	if len(component.Parts.Location.Values) > 0 {
 		docElement.Location_si = component.Parts.Location.Values[len(component.Parts.Location.Values)-1]
 	}
-	// TODO: DLFA-238
-	// Delete this and uncomment the line below after passing the transition test
-	// and confirming that this is a v1 indexer bug:
-	// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11402814&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11402814
-	// Note that this must be done here and not in `Component.setLocation()`,
-	// because this would lead to a different value being stored in
-	// `docElement.Location_si`.  While it could very well be that doing this
-	// causes an incorrect value to be stored there, it is necessarily temporarily
-	// to pass the transition test.
 	docElement.Location_ssm = util.CompactStringSlicePreserveOrder(
 		component.Parts.Location.Values)
-	// TODO: DLFA-238
-	// Restore this and delete the line above.
-	//docElement.Location_ssm = component.Parts.Location.Values
 
 	docElement.MaterialType_sim = append(docElement.MaterialType_sim,
 		util.CompactStringSlicePreserveOrder(component.Parts.MaterialType.Values)...)
@@ -407,30 +398,14 @@ func getSolrFieldElementStringsInV1IndexerInsertionOrder(solrAddMessage SolrAddM
 		fieldTypeKind := field.Type().Kind()
 		if fieldTypeKind == reflect.Slice {
 			for _, fieldValue := range field.Interface().([]string) {
-				// TODO: DLFA-238
-				// Re-enable non-empty string checks.  v1 indexer does not filter
-				// out all whitespace values, it only filters out empty strings:
-				// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10840271&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10840271
-				// This is a DLFA-238 TODO within a function that is itself a DLFA-238 TODO.
-				// Putting this here in case any of the code ends up being copy-pasted
-				// into permanent functions.
-				// if util.IsNonEmptyString(fieldValue) {
-				if fieldValue != "" {
+				if util.IsNonEmptyString(fieldValue) {
 					fieldsInV1IndexerInsertionOrder = append(fieldsInV1IndexerInsertionOrder,
 						eadutil.MakeSolrAddMessageFieldElementString(fieldName, fieldValue))
 				}
 			}
 		} else if fieldTypeKind == reflect.String {
 			fieldValue := field.String()
-			/// TODO: DLFA-238
-			// Re-enable non-empty string checks.  v1 indexer does not filter
-			// out all whitespace values, it only filters out empty strings:
-			// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10840271&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10840271
-			// This is a DLFA-238 TODO within a function that is itself a DLFA-238 TODO.
-			// Putting this here in case any of the code ends up being copy-pasted
-			// into permanent functions.
-			// if util.IsNonEmptyString(fieldValue) {
-			if fieldValue != "" {
+			if util.IsNonEmptyString(fieldValue) {
 				fieldsInV1IndexerInsertionOrder = append(fieldsInV1IndexerInsertionOrder,
 					eadutil.MakeSolrAddMessageFieldElementString(fieldName, fieldValue))
 			}

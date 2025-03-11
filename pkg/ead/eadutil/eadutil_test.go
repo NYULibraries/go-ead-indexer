@@ -243,27 +243,11 @@ func TestGetDateParts(t *testing.T) {
 				End:   "2020",
 			},
 		},
-		// TODO: DLFA-238
-		// Delete this after passing the transition test and resolving this:
-		// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11550822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11550822.
 		{
-			"Gets start and end date for valid date string: allow yyyy-mm-dd",
-			// Value "1911/2023-03-27" appears in mc_286aspace_14c7ab764c20a3d6960975f319b33a4e
-			"1911/2023-03-27",
-			DateParts{
-				Start: "1911",
-				End:   "2023-03-27",
-			},
+			"Returns empty `DateParts` for ambiguous date string",
+			"2016/2020/2024",
+			DateParts{},
 		},
-		// TODO: DLFA-238
-		// Re-enable this test after passing transition test and resolving this
-		// v1 indexer bug which allows for the invalid date format in this test case:
-		// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11550822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11550822.
-		//{
-		//	"Returns empty `DateParts` for ambiguous date string",
-		//	"2016/2020/2024",
-		//	DateParts{},
-		//},
 		{
 			"Returns empty `DateParts` for date string with hyphen",
 			"2016-2020",
@@ -390,15 +374,6 @@ func TestGetUnitDateDisplay(t *testing.T) {
 			[]string{},
 			"Inclusive, 1910 - 1990",
 		},
-		// TODO: DLFA-238
-		// For now, preserve v1 indexer bug https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=8378822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-8378822
-		{
-			"`unitDateNoTypeAttribute` absent; `unitDateInclusive` absent and `unitDateBulk` present",
-			[]string{},
-			[]string{},
-			[]string{"1930-1990"},
-			"Inclusive,  ; 1930-1990",
-		},
 	}
 
 	for _, testCase := range testCases {
@@ -503,22 +478,11 @@ func TestIsDateInRange(t *testing.T) {
 			DateRange{Display: "2001-2100", StartDate: 2001, EndDate: 2100},
 			false,
 		},
-		// TODO: DLFA-238
-		// Re-enable this and delete `true` expected result test after passing
-		// transition test and confirming from stakeholders that they don't want
-		// to pass date strings like this. Or, if they do wish this permissiveness
-		// then delete this and keep the `true` test.
-		//{
-		//	"Returns false for too many date years",
-		//	"2016/2017/2018/2019/2020",
-		//	DateRange{Display: "2001-2100", StartDate: 2001, EndDate: 2100},
-		//	false,
-		//},
 		{
-			"Returns true for string of years",
+			"Returns false for too many date years",
 			"2016/2017/2018/2019/2020",
 			DateRange{Display: "2001-2100", StartDate: 2001, EndDate: 2100},
-			true,
+			false,
 		},
 		{
 			"Returns false for not a date",
