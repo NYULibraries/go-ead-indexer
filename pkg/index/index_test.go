@@ -479,3 +479,81 @@ func TestDeleteEADFileDataFromIndex_Success(t *testing.T) {
 		t.Errorf("Assertions failed: %s", err)
 	}
 }
+
+func TestIndexGitCommit_SolrClientNotSet(t *testing.T) {
+
+	sut := "IndexGitCommit"
+	expectedErrStringFragment := "you must call `SetSolrClient()` before calling any indexing functions"
+	repoPath := "/foo/bar"
+	commit := "a5ca6cca30fc08cfc13e4f1492dbfbbf3ec7cf63"
+
+	SetSolrClient(nil)
+
+	// trigger the error
+	err := IndexGitCommit(repoPath, commit)
+
+	testutils.AssertError(t, sut, err)
+	testutils.AssertErrorMessageContainsString(t, sut, err, expectedErrStringFragment)
+}
+
+func TestIndexGitCommit_SolrClientMissingOriginURL(t *testing.T) {
+
+	sut := "IndexGitCommit"
+	expectedErrStringFragment := "the SolrClient URL origin is not set"
+	repoPath := "/foo/bar"
+	commit := "a5ca6cca30fc08cfc13e4f1492dbfbbf3ec7cf63"
+
+	sc := testutils.GetSolrClientMock()
+	err := sc.InitMockForDelete()
+	if err != nil {
+		t.Errorf("Error initializing the Solr client for delete testing: %s", err)
+		t.FailNow()
+	}
+
+	sc.SetSolrURLOrigin("")
+	SetSolrClient(sc)
+
+	// trigger the error
+	err = IndexGitCommit(repoPath, commit)
+
+	testutils.AssertError(t, sut, err)
+	testutils.AssertErrorMessageContainsString(t, sut, err, expectedErrStringFragment)
+}
+
+// func TestIndexGitCommit_ErrorOnRollback(t *testing.T) {
+
+// 	repoPath := "/foo/bar"
+// 	commit := "a5ca6cca30fc08cfc13e4f1492dbfbbf3ec7cf63"
+
+// 	sc := testutils.GetSolrClientMock()
+// 	err := sc.InitMockForDelete()
+// 	if err != nil {
+// 		t.Errorf("Error initializing the Solr client for delete testing: %s", err)
+// 		t.FailNow()
+// 	}
+
+// 	// set expectations
+// 	// (note: Commit() is not called because there were errors during component-level indexing)
+// 	sc.ExpectedCallOrder.Delete = 1   // delete is always called first
+// 	sc.ExpectedCallOrder.Rollback = 2 // rollback = delete + rollback = 2
+// 	sc.ExpectedDeleteArgument = eadid
+
+// 	// setup error events
+// 	var errorEvents []testutils.ErrorEvent
+
+// 	errorEvents = append(errorEvents, testutils.ErrorEvent{CallerName: "Delete", ErrorMessage: "error during Delete", CallCount: 1})
+// 	errorEvents = append(errorEvents, testutils.ErrorEvent{CallerName: "Rollback", ErrorMessage: "error during Rollback", CallCount: 2})
+// 	sc.ErrorEvents = errorEvents
+
+// 	// Set the Solr client
+// 	SetSolrClient(sc)
+
+// 	// Delete the data for the EADID
+// 	sc.ActualError = DeleteEADFileDataFromIndex(eadid)
+
+// 	// check that all expectations were met
+// 	err = sc.CheckAssertions()
+// 	if err != nil {
+// 		t.Errorf("Assertions failed: %s", err)
+// 	}
+// }

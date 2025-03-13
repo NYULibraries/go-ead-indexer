@@ -13,6 +13,7 @@ import (
 
 	"github.com/nyulibraries/go-ead-indexer/pkg/ead"
 	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
+	"github.com/nyulibraries/go-ead-indexer/pkg/git"
 	"github.com/nyulibraries/go-ead-indexer/pkg/net/solr"
 	"github.com/nyulibraries/go-ead-indexer/pkg/util"
 )
@@ -111,6 +112,49 @@ func IndexEADFile(eadPath string) error {
 	err = sc.Commit()
 	if err != nil {
 		return appendErrIssueRollbackJoinErrs(errs, err)
+	}
+
+	return nil
+}
+
+func IndexGitCommit(repoPath, commit string) error {
+	var errs []error
+
+	// assert that the SolrClient has been set
+	err := assertSolrClientSet()
+	if err != nil {
+		return appendAndJoinErrs(errs, err)
+	}
+
+	// get the list of EAD files and their operations
+	indexerOperations, err := git.ListEADFilesForCommit(repoPath, commit)
+	if err != nil {
+		return appendAndJoinErrs(errs, err)
+	}
+
+	// iterate over the EAD files and their operations
+	for eadPath, operation := range indexerOperations {
+		switch operation {
+		case git.Add:
+			err = IndexEADFile(eadPath)
+			if err != nil {
+				return appendErrIssueRollbackJoinErrs(errs, err)
+			}
+
+		case git.Delete:
+			eadID, err := git.EADPathToEADID(eadPath)
+			if err != nil {
+				return appendAndJoinErrs(errs, err)
+			}
+
+			err = DeleteEADFileDataFromIndex(eadID)
+			if err != nil {
+				return appendErrIssueRollbackJoinErrs(errs, err)
+			}
+
+		default:
+			return appendAndJoinErrs(errs, fmt.Errorf("unknown operation: %s", operation))
+		}
 	}
 
 	return nil
