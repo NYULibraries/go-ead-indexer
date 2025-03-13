@@ -44,9 +44,7 @@ func TestGetLevelOptionStringForLogLevel(t *testing.T) {
 	}{
 		{name: "LevelDebug", expectedLevelOptionString: "debug", level: LevelDebug},
 		{name: "LevelInfo", expectedLevelOptionString: "info", level: LevelInfo},
-		{name: "LevelWarn", expectedLevelOptionString: "warn", level: LevelWarn},
 		{name: "LevelError", expectedLevelOptionString: "error", level: LevelError},
-		{name: "LevelNone", expectedLevelOptionString: "none", level: LevelNone},
 	}
 
 	for _, testCase := range testCases {
@@ -64,9 +62,7 @@ func TestGetValidLevelOptionStrings(t *testing.T) {
 	expectedLevelOptionStrings := strings.Join([]string{
 		"debug",
 		"info",
-		"warn",
 		"error",
-		"none",
 	}, "\n")
 
 	actualLevelOptionStrings := strings.Join(GetValidLevelOptionStrings(), "\n")
@@ -84,7 +80,6 @@ func TestSetLevel(t *testing.T) {
 	expectedLogSeriesFull := []string{
 		"DEBUG|debug",
 		"INFO|info",
-		"WARN|warn",
 		"ERROR|error",
 	}
 
@@ -101,9 +96,7 @@ func TestSetLevel(t *testing.T) {
 	}{
 		{name: "Debug", level: LevelDebug},
 		{name: "Info", level: LevelInfo},
-		{name: "Warn", level: LevelWarn},
 		{name: "Error", level: LevelError},
-		{name: "None", level: LevelNone},
 	}
 
 	for i, testCase := range testCases {
@@ -148,7 +141,6 @@ func getLogSeriesString(logOutput string) string {
 func logSeries(logger Logger) {
 	logger.Debug(messageKey, "debug")
 	logger.Info(messageKey, "info")
-	logger.Warn(messageKey, "warn")
 	logger.Error(messageKey, "error")
 }
 

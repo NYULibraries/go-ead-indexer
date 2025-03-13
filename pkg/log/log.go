@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"io"
 	"log/slog"
-	"math"
 	"os"
 	"reflect"
 	"sort"
@@ -17,9 +16,7 @@ type Level int
 type Logger interface {
 	Debug(args ...any)
 	Error(args ...any)
-	Fatal(args ...any)
 	Info(args ...any)
-	Warn(args ...any)
 
 	SetLevel(level Level)
 	SetLevelByString(levelStringArg string) error
@@ -48,17 +45,13 @@ var DefaultLevelStringOption = GetLevelOptionStringForSlogLevel(defaultSlogLevel
 var (
 	LevelDebug = Level(reflect.ValueOf(slog.LevelDebug).Int())
 	LevelInfo  = Level(reflect.ValueOf(slog.LevelInfo).Int())
-	LevelWarn  = Level(reflect.ValueOf(slog.LevelWarn).Int())
 	LevelError = Level(reflect.ValueOf(slog.LevelError).Int())
-	LevelNone  = Level(math.MaxInt)
 )
 
 var logLevelStringOptions = map[string]Level{
 	"debug": LevelDebug,
 	"info":  LevelInfo,
-	"warn":  LevelWarn,
 	"error": LevelError,
-	"none":  LevelNone,
 }
 
 func New() Logger {
@@ -74,12 +67,6 @@ func (sl *SloggerLogger) Debug(args ...any) {
 
 func (sl *SloggerLogger) Error(args ...any) {
 	sl.slogger.Error(emptyMsg, args...)
-}
-
-func (sl *SloggerLogger) Fatal(args ...any) {
-	sl.Error(fmt.Sprint(args...))
-
-	os.Exit(1)
 }
 
 func (sl *SloggerLogger) Info(args ...any) {
