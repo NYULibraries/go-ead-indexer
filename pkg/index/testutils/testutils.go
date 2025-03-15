@@ -29,10 +29,10 @@ type CallOrder struct {
 }
 
 type Event struct {
-	Args         []string
-	CallCount    int
-	ErrorMessage string
-	FuncName     FunctionName
+	Args      []string
+	CallCount int
+	Err       error
+	FuncName  FunctionName
 }
 
 type ErrorEvent struct {
@@ -65,22 +65,40 @@ func GetSolrClientMock() *SolrClientMock {
 
 func (sc *SolrClientMock) Add(xmlPostBody string) error {
 	sc.CallCount++
+
 	err := sc.updateHash(xmlPostBody)
 	if err != nil {
 		return err
 	}
 
-	return sc.checkForErrorEvent()
+	err = sc.checkForErrorEvent()
+	sc.updateEvents(Add, []string{xmlPostBody}, err)
+	return err
 }
 
 func (sc *SolrClientMock) Commit() error {
 	sc.CallCount++
+	// sc.Events = append(sc.Events, Event{
+	// 	Args:         nil,
+	// 	CallCount:    sc.CallCount,
+	// 	ErrorMessage: "",
+	// 	FuncName:     Commit,
+	// })
+
 	sc.ActualCallOrder.Commit = sc.CallCount
 	return sc.checkForErrorEvent()
 }
 
 func (sc *SolrClientMock) Delete(eadid string) error {
 	sc.CallCount++
+
+	// sc.Events = append(sc.Events, Event{
+	// 	Args:         nil,
+	// 	CallCount:    sc.CallCount,
+	// 	ErrorMessage: "",
+	// 	FuncName:     Delete,
+	// })
+
 	sc.ActualCallOrder.Delete = sc.CallCount
 	sc.ActualDeleteArgument = eadid
 
@@ -312,4 +330,14 @@ func AssertCallCount(t *testing.T, expectedCallCount, actualCallCount int) {
 	if actualCallCount != expectedCallCount {
 		t.Errorf("error: actual CallCount '%d' does not match expected CallCount '%d'", actualCallCount, expectedCallCount)
 	}
+}
+
+func (sc *SolrClientMock) updateEvents(funcName FunctionName, args []string, err error) {
+	event := Event{
+		Args:      args,
+		CallCount: sc.CallCount,
+		Err:       err,
+		FuncName:  funcName,
+	}
+	sc.Events = append(sc.Events, event)
 }
