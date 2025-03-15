@@ -14,7 +14,13 @@ import (
 	eadtestutils "github.com/nyulibraries/go-ead-indexer/pkg/ead/testutils"
 )
 
+type FunctionName string
+
 const IGNORE_CALL_ORDER = -1
+const Add = FunctionName("Add")
+const Commit = FunctionName("Commit")
+const Delete = FunctionName("Delete")
+const Rollback = FunctionName("Rollback")
 
 type CallOrder struct {
 	Commit   int
@@ -26,12 +32,12 @@ type Event struct {
 	Args         []string
 	CallCount    int
 	ErrorMessage string
-	FunctionName string
+	FuncName     FunctionName
 }
 
 type ErrorEvent struct {
 	CallCount    int
-	CallerName   string
+	FuncName     string
 	ErrorMessage string
 }
 
@@ -43,6 +49,7 @@ type SolrClientMock struct {
 	ExpectedCallOrder      CallOrder
 	ActualDeleteArgument   string
 	ExpectedDeleteArgument string
+	Events                 []Event
 	ErrorEvents            []ErrorEvent
 	ActualError            error
 	urlOrigin              string
@@ -154,6 +161,7 @@ func (sc *SolrClientMock) Reset() {
 	sc.ExpectedDeleteArgument = ""
 
 	sc.ErrorEvents = []ErrorEvent{}
+	sc.Events = []Event{}
 
 	sc.urlOrigin = "http://www.example.com"
 }
@@ -202,7 +210,7 @@ func (sc *SolrClientMock) checkForErrorEvent() error {
 	// looking for a matching event
 	if callerName != "" {
 		for _, event := range sc.ErrorEvents {
-			if ("github.com/nyulibraries/go-ead-indexer/pkg/index/testutils.(*SolrClientMock)."+event.CallerName) == callerName && event.CallCount == sc.CallCount {
+			if ("github.com/nyulibraries/go-ead-indexer/pkg/index/testutils.(*SolrClientMock)."+event.FuncName) == callerName && event.CallCount == sc.CallCount {
 				return fmt.Errorf(event.ErrorMessage)
 			}
 		}

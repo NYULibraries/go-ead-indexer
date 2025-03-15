@@ -30,7 +30,7 @@ func TestDeleteEADFileDataFromIndex_RollbackOnBadDelete(t *testing.T) {
 	// setup error events
 	var errorEvents []testutils.ErrorEvent
 
-	errorEvents = append(errorEvents, testutils.ErrorEvent{CallerName: "Delete", ErrorMessage: "error during Delete", CallCount: 1})
+	errorEvents = append(errorEvents, testutils.ErrorEvent{FuncName: "Delete", ErrorMessage: "error during Delete", CallCount: 1})
 	sc.ErrorEvents = errorEvents
 
 	// Set the Solr client
@@ -129,8 +129,8 @@ func TestDeleteEADFileDataFromIndex_ErrorOnRollback(t *testing.T) {
 	// setup error events
 	var errorEvents []testutils.ErrorEvent
 
-	errorEvents = append(errorEvents, testutils.ErrorEvent{CallerName: "Delete", ErrorMessage: "error during Delete", CallCount: 1})
-	errorEvents = append(errorEvents, testutils.ErrorEvent{CallerName: "Rollback", ErrorMessage: "error during Rollback", CallCount: 2})
+	errorEvents = append(errorEvents, testutils.ErrorEvent{FuncName: "Delete", ErrorMessage: "error during Delete", CallCount: 1})
+	errorEvents = append(errorEvents, testutils.ErrorEvent{FuncName: "Rollback", ErrorMessage: "error during Rollback", CallCount: 2})
 	sc.ErrorEvents = errorEvents
 
 	// Set the Solr client
@@ -313,7 +313,7 @@ func TestIndexEADFile_RollbackOnBadDelete(t *testing.T) {
 	// setup error events
 	var errorEvents []testutils.ErrorEvent
 
-	errorEvents = append(errorEvents, testutils.ErrorEvent{CallerName: "Delete", ErrorMessage: "error during Delete", CallCount: 1})
+	errorEvents = append(errorEvents, testutils.ErrorEvent{FuncName: "Delete", ErrorMessage: "error during Delete", CallCount: 1})
 	sc.ErrorEvents = errorEvents
 
 	// Set the Solr client
@@ -352,7 +352,7 @@ func TestIndexEADFile_RollbackOnBadCollectionIndex(t *testing.T) {
 	// setup error events
 	var errorEvents []testutils.ErrorEvent
 
-	errorEvents = append(errorEvents, testutils.ErrorEvent{CallerName: "Add", ErrorMessage: "error during Add", CallCount: 2})
+	errorEvents = append(errorEvents, testutils.ErrorEvent{FuncName: "Add", ErrorMessage: "error during Add", CallCount: 2})
 	sc.ErrorEvents = errorEvents
 
 	// Set the Solr client
@@ -396,7 +396,7 @@ func TestIndexEADFile_RollbackOnBadComponentIndex(t *testing.T) {
 	var errorEvents []testutils.ErrorEvent
 
 	for _, errorCallCount := range errorCallCounts {
-		errorEvents = append(errorEvents, testutils.ErrorEvent{CallerName: "Add", ErrorMessage: fmt.Sprintf("error during Add: %d", errorCallCount), CallCount: errorCallCount})
+		errorEvents = append(errorEvents, testutils.ErrorEvent{FuncName: "Add", ErrorMessage: fmt.Sprintf("error during Add: %d", errorCallCount), CallCount: errorCallCount})
 	}
 
 	sc.ErrorEvents = testutils.SortErrorEventsByCallCount(errorEvents)
@@ -436,7 +436,7 @@ func TestIndexEADFile_RollbackOnBadCommit(t *testing.T) {
 
 	// setup error events
 	var errorEvents []testutils.ErrorEvent
-	errorEvents = append(errorEvents, testutils.ErrorEvent{CallerName: "Commit", ErrorMessage: "error during Commit", CallCount: sc.ExpectedCallOrder.Commit})
+	errorEvents = append(errorEvents, testutils.ErrorEvent{FuncName: "Commit", ErrorMessage: "error during Commit", CallCount: sc.ExpectedCallOrder.Commit})
 	sc.ErrorEvents = testutils.SortErrorEventsByCallCount(errorEvents)
 
 	// Set the Solr client
@@ -541,8 +541,8 @@ func TestIndexGitCommit_SolrClientMissingOriginURL(t *testing.T) {
 // 	// setup error events
 // 	var errorEvents []testutils.ErrorEvent
 
-// 	errorEvents = append(errorEvents, testutils.ErrorEvent{CallerName: "Delete", ErrorMessage: "error during Delete", CallCount: 1})
-// 	errorEvents = append(errorEvents, testutils.ErrorEvent{CallerName: "Rollback", ErrorMessage: "error during Rollback", CallCount: 2})
+// 	errorEvents = append(errorEvents, testutils.ErrorEvent{FuncName: "Delete", ErrorMessage: "error during Delete", CallCount: 1})
+// 	errorEvents = append(errorEvents, testutils.ErrorEvent{FuncName: "Rollback", ErrorMessage: "error during Rollback", CallCount: 2})
 // 	sc.ErrorEvents = errorEvents
 
 // 	// Set the Solr client
