@@ -22,6 +22,9 @@ const Commit = FunctionName("Commit")
 const Delete = FunctionName("Delete")
 const Rollback = FunctionName("Rollback")
 
+// ------------------------------------------------------------------------------
+// type definitions
+// ------------------------------------------------------------------------------
 type CallOrder struct {
 	Commit   int
 	Delete   int
@@ -55,6 +58,29 @@ type SolrClientMock struct {
 	urlOrigin              string
 }
 
+// ------------------------------------------------------------------------------
+// public functions
+// ------------------------------------------------------------------------------
+
+func AssertCallCount(t *testing.T, expectedCallCount, actualCallCount int) {
+	if actualCallCount != expectedCallCount {
+		t.Errorf("error: actual CallCount '%d' does not match expected CallCount '%d'", actualCallCount, expectedCallCount)
+	}
+}
+
+func AssertError(t *testing.T, fname string, err error) {
+	if err == nil {
+		t.Errorf("error: expected '%s' to return an error, but nothing was returned", fname)
+	}
+}
+
+func AssertErrorMessageContainsString(t *testing.T, fname string, err error, str string) {
+	emsg := err.Error()
+	if !strings.Contains(emsg, str) {
+		t.Errorf("error: expected function '%s' to return an error with message containing '%s', but got: '%s'", fname, str, emsg)
+	}
+}
+
 func GetSolrClientMock() *SolrClientMock {
 	sc := &SolrClientMock{
 		GoldenFileHashes: make(map[string]string),
@@ -63,6 +89,22 @@ func GetSolrClientMock() *SolrClientMock {
 	return sc
 }
 
+func SortErrorEventsByCallCount(events []ErrorEvent) []ErrorEvent {
+	// sort the error events by CallCount
+	// using bubble sort
+	for range events {
+		for j := range len(events) - 1 {
+			if events[j].CallCount > events[j+1].CallCount {
+				events[j], events[j+1] = events[j+1], events[j]
+			}
+		}
+	}
+	return events
+}
+
+// ------------------------------------------------------------------------------
+// SolrClientMock methods
+// ------------------------------------------------------------------------------
 func (sc *SolrClientMock) Add(xmlPostBody string) error {
 	sc.CallCount++
 
@@ -76,33 +118,88 @@ func (sc *SolrClientMock) Add(xmlPostBody string) error {
 	return err
 }
 
+func (sc *SolrClientMock) CheckAssertions() error {
+	errs := []error{}
+
+	// if an error was expected, and no error was found, return error
+	// if an error was NOT expected, and an error was found, return error
+	if len(sc.ErrorEvents) == 0 {
+		// no errors expected
+		if sc.ActualError != nil {
+			return fmt.Errorf("error: expected operation NOT to return an error, but an error was returned: %v", sc.ActualError)
+		}
+	} else {
+		// errors expected
+		if sc.ActualError == nil {
+			return fmt.Errorf("error: expected operation to return an error, but nothing was returned")
+		}
+	}
+
+	// If there were files to be indexed, assert that all were indexed
+	if sc.ExpectedCallOrder.Commit != IGNORE_CALL_ORDER && sc.NumberOfFilesToIndex > 0 {
+		if !sc.IsComplete() {
+			errs = append(errs, fmt.Errorf("not all files were added to the Solr index. Remaining values: %v", sc.GoldenFileHashes))
+		}
+	}
+
+	// Delete() calls
+	if sc.ExpectedCallOrder.Delete != IGNORE_CALL_ORDER {
+		if sc.ActualCallOrder.Delete != sc.ExpectedCallOrder.Delete {
+			errs = append(errs, fmt.Errorf("Delete() was not called in the correct sequence. Expected: %d Actual: %d", sc.ExpectedCallOrder.Delete, sc.ActualCallOrder.Delete))
+		}
+
+		if sc.ActualDeleteArgument != sc.ExpectedDeleteArgument {
+			errs = append(errs, fmt.Errorf("Delete() was not called with the correct argument. Expected: %s, got: %s", sc.ExpectedDeleteArgument, sc.ActualDeleteArgument))
+		}
+	}
+
+	// Commit() calls
+	if sc.ExpectedCallOrder.Commit != IGNORE_CALL_ORDER && sc.ActualCallOrder.Commit != sc.ExpectedCallOrder.Commit {
+		errs = append(errs, fmt.Errorf("Commit() was not called in the correct sequence. Expected: %d Actual: %d", sc.ExpectedCallOrder.Commit, sc.ActualCallOrder.Commit))
+	}
+
+	// Rollback() calls
+	if sc.ExpectedCallOrder.Rollback != IGNORE_CALL_ORDER && sc.ActualCallOrder.Rollback != sc.ExpectedCallOrder.Rollback {
+		errs = append(errs, fmt.Errorf("Rollback() was not called in the correct sequence. Expected: %d Actual: %d", sc.ExpectedCallOrder.Rollback, sc.ActualCallOrder.Rollback))
+	}
+
+	// if there were expected errors during the operation...
+	if len(sc.ErrorEvents) > 0 {
+		// check that the expected errors were returned
+		for i, errString := range strings.Split(sc.ActualError.Error(), "\n") {
+			if errString != sc.ErrorEvents[i].ErrorMessage {
+				errs = append(errs, fmt.Errorf("error: expected IndexEADFile to return an error with message '%s', but got: '%s'", sc.ErrorEvents[i].ErrorMessage, errString))
+			}
+		}
+	}
+
+	// Check for any failed assertions
+	if len(errs) > 0 {
+		return errors.Join(errs...)
+	}
+
+	// all assertions passed
+	return nil
+}
+
 func (sc *SolrClientMock) Commit() error {
 	sc.CallCount++
-	// sc.Events = append(sc.Events, Event{
-	// 	Args:         nil,
-	// 	CallCount:    sc.CallCount,
-	// 	ErrorMessage: "",
-	// 	FuncName:     Commit,
-	// })
 
 	sc.ActualCallOrder.Commit = sc.CallCount
-	return sc.checkForErrorEvent()
+	err := sc.checkForErrorEvent()
+	sc.updateEvents(Commit, []string{}, err)
+	return err
 }
 
 func (sc *SolrClientMock) Delete(eadid string) error {
 	sc.CallCount++
 
-	// sc.Events = append(sc.Events, Event{
-	// 	Args:         nil,
-	// 	CallCount:    sc.CallCount,
-	// 	ErrorMessage: "",
-	// 	FuncName:     Delete,
-	// })
-
 	sc.ActualCallOrder.Delete = sc.CallCount
 	sc.ActualDeleteArgument = eadid
 
-	return sc.checkForErrorEvent()
+	err := sc.checkForErrorEvent()
+	sc.updateEvents(Add, []string{eadid}, err)
+	return err
 }
 
 func (sc *SolrClientMock) GetPostRequest(string) (*http.Request, error) {
@@ -187,13 +284,26 @@ func (sc *SolrClientMock) Reset() {
 func (sc *SolrClientMock) Rollback() error {
 	sc.CallCount++
 	sc.ActualCallOrder.Rollback = sc.CallCount
-	return sc.checkForErrorEvent()
+
+	err := sc.checkForErrorEvent()
+	sc.updateEvents(Rollback, []string{}, err)
+	return err
 }
 
 func (sc *SolrClientMock) SetSolrURLOrigin(url string) {
 	sc.urlOrigin = url
 }
 
+// ------------------------------------------------------------------------------
+// private functions
+// ------------------------------------------------------------------------------
+func formattedHashSum(h hash.Hash) string {
+	return fmt.Sprintf("%x", h.Sum(nil))
+}
+
+// ------------------------------------------------------------------------------
+// private SolrClientMock methods
+// ------------------------------------------------------------------------------
 func (sc *SolrClientMock) updateHash(xmlPostBody string) error {
 	h := md5.New()
 	io.WriteString(h, xmlPostBody)
@@ -205,10 +315,6 @@ func (sc *SolrClientMock) updateHash(xmlPostBody string) error {
 	// remove the hash from the golden file hash map
 	delete(sc.GoldenFileHashes, hash)
 	return nil
-}
-
-func formattedHashSum(h hash.Hash) string {
-	return fmt.Sprintf("%x", h.Sum(nil))
 }
 
 func (sc *SolrClientMock) checkForErrorEvent() error {
@@ -234,102 +340,6 @@ func (sc *SolrClientMock) checkForErrorEvent() error {
 		}
 	}
 	return nil
-}
-
-func SortErrorEventsByCallCount(events []ErrorEvent) []ErrorEvent {
-	// sort the error events by CallCount
-	// using bubble sort
-	for range events {
-		for j := range len(events) - 1 {
-			if events[j].CallCount > events[j+1].CallCount {
-				events[j], events[j+1] = events[j+1], events[j]
-			}
-		}
-	}
-	return events
-}
-
-func (sc *SolrClientMock) CheckAssertions() error {
-	errs := []error{}
-
-	// if an error was expected, and no error was found, return error
-	// if an error was NOT expected, and an error was found, return error
-	if len(sc.ErrorEvents) == 0 {
-		// no errors expected
-		if sc.ActualError != nil {
-			return fmt.Errorf("error: expected operation NOT to return an error, but an error was returned: %v", sc.ActualError)
-		}
-	} else {
-		// errors expected
-		if sc.ActualError == nil {
-			return fmt.Errorf("error: expected operation to return an error, but nothing was returned")
-		}
-	}
-
-	// If there were files to be indexed, assert that all were indexed
-	if sc.ExpectedCallOrder.Commit != IGNORE_CALL_ORDER && sc.NumberOfFilesToIndex > 0 {
-		if !sc.IsComplete() {
-			errs = append(errs, fmt.Errorf("not all files were added to the Solr index. Remaining values: %v", sc.GoldenFileHashes))
-		}
-	}
-
-	// Delete() calls
-	if sc.ExpectedCallOrder.Delete != IGNORE_CALL_ORDER {
-		if sc.ActualCallOrder.Delete != sc.ExpectedCallOrder.Delete {
-			errs = append(errs, fmt.Errorf("Delete() was not called in the correct sequence. Expected: %d Actual: %d", sc.ExpectedCallOrder.Delete, sc.ActualCallOrder.Delete))
-		}
-
-		if sc.ActualDeleteArgument != sc.ExpectedDeleteArgument {
-			errs = append(errs, fmt.Errorf("Delete() was not called with the correct argument. Expected: %s, got: %s", sc.ExpectedDeleteArgument, sc.ActualDeleteArgument))
-		}
-	}
-
-	// Commit() calls
-	if sc.ExpectedCallOrder.Commit != IGNORE_CALL_ORDER && sc.ActualCallOrder.Commit != sc.ExpectedCallOrder.Commit {
-		errs = append(errs, fmt.Errorf("Commit() was not called in the correct sequence. Expected: %d Actual: %d", sc.ExpectedCallOrder.Commit, sc.ActualCallOrder.Commit))
-	}
-
-	// Rollback() calls
-	if sc.ExpectedCallOrder.Rollback != IGNORE_CALL_ORDER && sc.ActualCallOrder.Rollback != sc.ExpectedCallOrder.Rollback {
-		errs = append(errs, fmt.Errorf("Rollback() was not called in the correct sequence. Expected: %d Actual: %d", sc.ExpectedCallOrder.Rollback, sc.ActualCallOrder.Rollback))
-	}
-
-	// if there were expected errors during the operation...
-	if len(sc.ErrorEvents) > 0 {
-		// check that the expected errors were returned
-		for i, errString := range strings.Split(sc.ActualError.Error(), "\n") {
-			if errString != sc.ErrorEvents[i].ErrorMessage {
-				errs = append(errs, fmt.Errorf("error: expected IndexEADFile to return an error with message '%s', but got: '%s'", sc.ErrorEvents[i].ErrorMessage, errString))
-			}
-		}
-	}
-
-	// Check for any failed assertions
-	if len(errs) > 0 {
-		return errors.Join(errs...)
-	}
-
-	// all assertions passed
-	return nil
-}
-
-func AssertError(t *testing.T, fname string, err error) {
-	if err == nil {
-		t.Errorf("error: expected '%s' to return an error, but nothing was returned", fname)
-	}
-}
-
-func AssertErrorMessageContainsString(t *testing.T, fname string, err error, str string) {
-	emsg := err.Error()
-	if !strings.Contains(emsg, str) {
-		t.Errorf("error: expected function '%s' to return an error with message containing '%s', but got: '%s'", fname, str, emsg)
-	}
-}
-
-func AssertCallCount(t *testing.T, expectedCallCount, actualCallCount int) {
-	if actualCallCount != expectedCallCount {
-		t.Errorf("error: actual CallCount '%d' does not match expected CallCount '%d'", actualCallCount, expectedCallCount)
-	}
 }
 
 func (sc *SolrClientMock) updateEvents(funcName FunctionName, args []string, err error) {
