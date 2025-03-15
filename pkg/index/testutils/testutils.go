@@ -22,6 +22,19 @@ type CallOrder struct {
 	Rollback int
 }
 
+type Event struct {
+	Args         []string
+	CallCount    int
+	ErrorMessage string
+	FunctionName string
+}
+
+type ErrorEvent struct {
+	CallCount    int
+	CallerName   string
+	ErrorMessage string
+}
+
 type SolrClientMock struct {
 	GoldenFileHashes       map[string]string // Hashes of the golden files
 	NumberOfFilesToIndex   int
@@ -33,12 +46,6 @@ type SolrClientMock struct {
 	ErrorEvents            []ErrorEvent
 	ActualError            error
 	urlOrigin              string
-}
-
-type ErrorEvent struct {
-	CallerName   string
-	ErrorMessage string
-	CallCount    int
 }
 
 func GetSolrClientMock() *SolrClientMock {
@@ -81,44 +88,6 @@ func (sc *SolrClientMock) GetSolrURLOrigin() string {
 	return sc.urlOrigin
 }
 
-func (sc *SolrClientMock) SetSolrURLOrigin(url string) {
-	sc.urlOrigin = url
-}
-
-func (sc *SolrClientMock) Reset() {
-	// reset the solr client mock
-	clear(sc.GoldenFileHashes)
-
-	// reset the call count
-	sc.CallCount = 0
-
-	// reset the call order values
-	sc.ActualCallOrder.Commit = IGNORE_CALL_ORDER
-	sc.ActualCallOrder.Delete = IGNORE_CALL_ORDER
-	sc.ActualCallOrder.Rollback = IGNORE_CALL_ORDER
-	sc.ExpectedCallOrder.Commit = IGNORE_CALL_ORDER
-	sc.ExpectedCallOrder.Delete = IGNORE_CALL_ORDER
-	sc.ExpectedCallOrder.Rollback = IGNORE_CALL_ORDER
-
-	// reset the delete arguments
-	sc.ActualDeleteArgument = ""
-	sc.ExpectedDeleteArgument = ""
-
-	sc.ErrorEvents = []ErrorEvent{}
-
-	sc.urlOrigin = "http://www.example.com"
-}
-
-func (sc *SolrClientMock) Rollback() error {
-	sc.CallCount++
-	sc.ActualCallOrder.Rollback = sc.CallCount
-	return sc.checkForErrorEvent()
-}
-
-func (sc *SolrClientMock) IsComplete() bool {
-	return len(sc.GoldenFileHashes) == 0
-}
-
 // testEAD = repositoryCode+filesystem separator+eadID (e.g. "fales/mss_460")
 func (sc *SolrClientMock) InitMockForIndexing(testEAD string) error {
 
@@ -159,6 +128,44 @@ func (sc *SolrClientMock) InitMockForIndexing(testEAD string) error {
 func (sc *SolrClientMock) InitMockForDelete() error {
 	sc.Reset()
 	return nil
+}
+
+func (sc *SolrClientMock) IsComplete() bool {
+	return len(sc.GoldenFileHashes) == 0
+}
+
+func (sc *SolrClientMock) Reset() {
+	// reset the solr client mock
+	clear(sc.GoldenFileHashes)
+
+	// reset the call count
+	sc.CallCount = 0
+
+	// reset the call order values
+	sc.ActualCallOrder.Commit = IGNORE_CALL_ORDER
+	sc.ActualCallOrder.Delete = IGNORE_CALL_ORDER
+	sc.ActualCallOrder.Rollback = IGNORE_CALL_ORDER
+	sc.ExpectedCallOrder.Commit = IGNORE_CALL_ORDER
+	sc.ExpectedCallOrder.Delete = IGNORE_CALL_ORDER
+	sc.ExpectedCallOrder.Rollback = IGNORE_CALL_ORDER
+
+	// reset the delete arguments
+	sc.ActualDeleteArgument = ""
+	sc.ExpectedDeleteArgument = ""
+
+	sc.ErrorEvents = []ErrorEvent{}
+
+	sc.urlOrigin = "http://www.example.com"
+}
+
+func (sc *SolrClientMock) Rollback() error {
+	sc.CallCount++
+	sc.ActualCallOrder.Rollback = sc.CallCount
+	return sc.checkForErrorEvent()
+}
+
+func (sc *SolrClientMock) SetSolrURLOrigin(url string) {
+	sc.urlOrigin = url
 }
 
 func (sc *SolrClientMock) updateHash(xmlPostBody string) error {
