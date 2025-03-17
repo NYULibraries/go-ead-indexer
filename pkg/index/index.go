@@ -60,7 +60,7 @@ func IndexEADFile(eadPath string) error {
 	}
 
 	// Get the EAD's repository code
-	repoCode, err := util.GetRepositoryCode(eadPath)
+	repositoryCode, err := util.GetRepositoryCode(eadPath)
 	if err != nil {
 		return appendAndJoinErrs(errs, err)
 	}
@@ -72,7 +72,7 @@ func IndexEADFile(eadPath string) error {
 	}
 
 	// Parse the EAD file
-	EAD, err := ead.New(repoCode, string(eadXML))
+	EAD, err := ead.New(repositoryCode, string(eadXML))
 	if err != nil {
 		return appendAndJoinErrs(errs, err)
 	}
