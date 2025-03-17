@@ -52,7 +52,8 @@ type SolrClientMock struct {
 	ExpectedCallOrder      CallOrder
 	ActualDeleteArgument   string
 	ExpectedDeleteArgument string
-	Events                 []Event
+	ActualEvents           []Event
+	ExpectedEvents         []Event
 	ErrorEvents            []ErrorEvent
 	ActualError            error
 	urlOrigin              string
@@ -121,8 +122,8 @@ func (sc *SolrClientMock) Add(xmlPostBody string) error {
 func (sc *SolrClientMock) CheckAssertions() error {
 	errs := []error{}
 
-	// if an error was expected, and no error was found, return error
 	// if an error was NOT expected, and an error was found, return error
+	// if an error was expected, and no error was found, return error
 	if len(sc.ErrorEvents) == 0 {
 		// no errors expected
 		if sc.ActualError != nil {
@@ -182,7 +183,31 @@ func (sc *SolrClientMock) CheckAssertions() error {
 	return nil
 }
 
+func (sc *SolrClientMock) CheckAssertionsViaEvents() error {
+	errs := []error{}
+
+	if len(sc.ExpectedEvents) != len(sc.ActualEvents) {
+		return fmt.Errorf("error: mismatched events array length: expected %d events, but got %d", len(sc.ExpectedEvents), len(sc.ActualEvents))
+	}
+
+	for i, expectedEvent := range sc.ExpectedEvents {
+		actualEvent := sc.ActualEvents[i]
+		eventErrs := assertEventMatch(expectedEvent, actualEvent)
+		if len(eventErrs) > 0 {
+			errs = append(errs, eventErrs...)
+		}
+	}
+
+	// Check for any failed assertions
+	if len(errs) > 0 {
+		return errors.Join(errs...)
+	}
+
+	// all assertions passed
+	return nil
+}
 func (sc *SolrClientMock) Commit() error {
+
 	sc.CallCount++
 
 	sc.ActualCallOrder.Commit = sc.CallCount
@@ -198,7 +223,7 @@ func (sc *SolrClientMock) Delete(eadid string) error {
 	sc.ActualDeleteArgument = eadid
 
 	err := sc.checkForErrorEvent()
-	sc.updateEvents(Add, []string{eadid}, err)
+	sc.updateEvents(Delete, []string{eadid}, err)
 	return err
 }
 
@@ -276,7 +301,9 @@ func (sc *SolrClientMock) Reset() {
 	sc.ExpectedDeleteArgument = ""
 
 	sc.ErrorEvents = []ErrorEvent{}
-	sc.Events = []Event{}
+	sc.ActualEvents = []Event{}
+	sc.ExpectedEvents = []Event{}
+	sc.ActualError = nil
 
 	sc.urlOrigin = "http://www.example.com"
 }
@@ -349,5 +376,48 @@ func (sc *SolrClientMock) updateEvents(funcName FunctionName, args []string, err
 		Err:       err,
 		FuncName:  funcName,
 	}
-	sc.Events = append(sc.Events, event)
+	sc.ActualEvents = append(sc.ActualEvents, event)
+}
+
+func assertEventMatch(expectedEvent Event, actualEvent Event) []error {
+	/*
+		check that the function name is the same
+		check that the call count is the same
+		check that all expected args are present, except for Add
+		check that all expected error substrings are present
+	*/
+
+	errs := []error{}
+
+	if expectedEvent.FuncName != actualEvent.FuncName {
+		errs = append(errs, fmt.Errorf("error: expected function '%s', but got '%s'", expectedEvent.FuncName, actualEvent.FuncName))
+	}
+	if expectedEvent.CallCount != actualEvent.CallCount {
+		errs = append(errs, fmt.Errorf("error: expected call count '%d', but got '%d'", expectedEvent.CallCount, actualEvent.CallCount))
+	}
+	if len(expectedEvent.Args) != len(actualEvent.Args) {
+		errs = append(errs, fmt.Errorf("error: expected %d args, but got %d", len(expectedEvent.Args), len(actualEvent.Args)))
+	}
+	// run argument comparisons for non-Add functions
+	if expectedEvent.FuncName != Add {
+		for i, expectedArg := range expectedEvent.Args {
+			if expectedArg != actualEvent.Args[i] {
+				errs = append(errs, fmt.Errorf("error: expected arg '%s', but got '%s'", expectedArg, actualEvent.Args[i]))
+			}
+		}
+	}
+
+	if expectedEvent.Err == nil && actualEvent.Err != nil {
+		errs = append(errs, fmt.Errorf("error: expected no error, but got '%v'", actualEvent.Err))
+	}
+
+	if expectedEvent.Err != nil && actualEvent.Err == nil {
+		errs = append(errs, fmt.Errorf("error: expected error '%v', but got none", expectedEvent.Err))
+	}
+
+	if expectedEvent.Err != nil && actualEvent.Err != nil && !strings.Contains(actualEvent.Err.Error(), expectedEvent.Err.Error()) {
+		errs = append(errs, fmt.Errorf("error: expected error '%v', but got '%v'", expectedEvent.Err, actualEvent.Err))
+	}
+
+	return errs
 }
