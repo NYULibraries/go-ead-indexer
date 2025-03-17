@@ -56,6 +56,7 @@ type SolrClientMock struct {
 	ExpectedEvents         []Event
 	ErrorEvents            []ErrorEvent
 	ActualError            error
+	sut                    string
 	urlOrigin              string
 }
 
@@ -187,12 +188,12 @@ func (sc *SolrClientMock) CheckAssertionsViaEvents() error {
 	errs := []error{}
 
 	if len(sc.ExpectedEvents) != len(sc.ActualEvents) {
-		return fmt.Errorf("error: mismatched events array length: expected %d events, but got %d", len(sc.ExpectedEvents), len(sc.ActualEvents))
+		return fmt.Errorf("error: %s : mismatched events array length: expected %d events, but got %d", sc.sut, len(sc.ExpectedEvents), len(sc.ActualEvents))
 	}
 
 	for i, expectedEvent := range sc.ExpectedEvents {
 		actualEvent := sc.ActualEvents[i]
-		eventErrs := assertEventMatch(expectedEvent, actualEvent)
+		eventErrs := assertEventMatch(expectedEvent, actualEvent, sc.sut)
 		if len(eventErrs) > 0 {
 			errs = append(errs, eventErrs...)
 		}
@@ -272,8 +273,9 @@ func (sc *SolrClientMock) InitMockForIndexing(testEAD string) error {
 // function signature mirrors InitMockForIndexing()
 // in case we want to add more sophisticated logic
 // in the future
-func (sc *SolrClientMock) InitMockForDelete() error {
+func (sc *SolrClientMock) InitMockForDelete(sut string) error {
 	sc.Reset()
+	sc.sut = sut
 	return nil
 }
 
@@ -304,6 +306,7 @@ func (sc *SolrClientMock) Reset() {
 	sc.ActualEvents = []Event{}
 	sc.ExpectedEvents = []Event{}
 	sc.ActualError = nil
+	sc.sut = ""
 
 	sc.urlOrigin = "http://www.example.com"
 }
@@ -379,7 +382,7 @@ func (sc *SolrClientMock) updateEvents(funcName FunctionName, args []string, err
 	sc.ActualEvents = append(sc.ActualEvents, event)
 }
 
-func assertEventMatch(expectedEvent Event, actualEvent Event) []error {
+func assertEventMatch(expectedEvent Event, actualEvent Event, sut string) []error {
 	/*
 		check that the function name is the same
 		check that the call count is the same
@@ -390,33 +393,33 @@ func assertEventMatch(expectedEvent Event, actualEvent Event) []error {
 	errs := []error{}
 
 	if expectedEvent.FuncName != actualEvent.FuncName {
-		errs = append(errs, fmt.Errorf("error: expected function '%s', but got '%s'", expectedEvent.FuncName, actualEvent.FuncName))
+		errs = append(errs, fmt.Errorf("error: %s : expected function '%s', but got '%s'", sut, expectedEvent.FuncName, actualEvent.FuncName))
 	}
 	if expectedEvent.CallCount != actualEvent.CallCount {
-		errs = append(errs, fmt.Errorf("error: expected call count '%d', but got '%d'", expectedEvent.CallCount, actualEvent.CallCount))
+		errs = append(errs, fmt.Errorf("error: %s : expected call count '%d', but got '%d'", sut, expectedEvent.CallCount, actualEvent.CallCount))
 	}
 	if len(expectedEvent.Args) != len(actualEvent.Args) {
-		errs = append(errs, fmt.Errorf("error: expected %d args, but got %d", len(expectedEvent.Args), len(actualEvent.Args)))
+		errs = append(errs, fmt.Errorf("error: %s : expected %d args, but got %d", sut, len(expectedEvent.Args), len(actualEvent.Args)))
 	}
 	// run argument comparisons for non-Add functions
 	if expectedEvent.FuncName != Add {
 		for i, expectedArg := range expectedEvent.Args {
 			if expectedArg != actualEvent.Args[i] {
-				errs = append(errs, fmt.Errorf("error: expected arg '%s', but got '%s'", expectedArg, actualEvent.Args[i]))
+				errs = append(errs, fmt.Errorf("error: %s : expected arg '%s', but got '%s'", sut, expectedArg, actualEvent.Args[i]))
 			}
 		}
 	}
 
 	if expectedEvent.Err == nil && actualEvent.Err != nil {
-		errs = append(errs, fmt.Errorf("error: expected no error, but got '%v'", actualEvent.Err))
+		errs = append(errs, fmt.Errorf("error: %s : expected no error, but got '%v'", sut, actualEvent.Err))
 	}
 
 	if expectedEvent.Err != nil && actualEvent.Err == nil {
-		errs = append(errs, fmt.Errorf("error: expected error '%v', but got none", expectedEvent.Err))
+		errs = append(errs, fmt.Errorf("error: %s : expected error '%v', but got none", sut, expectedEvent.Err))
 	}
 
 	if expectedEvent.Err != nil && actualEvent.Err != nil && !strings.Contains(actualEvent.Err.Error(), expectedEvent.Err.Error()) {
-		errs = append(errs, fmt.Errorf("error: expected error '%v', but got '%v'", expectedEvent.Err, actualEvent.Err))
+		errs = append(errs, fmt.Errorf("error: %s : expected error '%v', but got '%v'", sut, expectedEvent.Err, actualEvent.Err))
 	}
 
 	return errs
