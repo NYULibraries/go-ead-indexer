@@ -360,6 +360,14 @@ func MakeSolrAddMessageFieldElementString(fieldName string, fieldValue string) s
 
 	massagedValue = EscapeSolrFieldString(fieldValue)
 
+	// Values derived from processes that can involve multiple XML parsing steps
+	// can end up XML-escaped multiple times.  It would seem that the main risk
+	// assocaited with this are multiply-escaped ampersands (because the ampersand
+	// appears in the "&amp;" entity reference itself).  Examples of at-risk
+	// values are those that are built form ancestor unit titles, such as those
+	// for `parent_unittitles_*` and `series_*` Solr field.
+	massagedValue = undoMultipleAmpersandEscaping(massagedValue)
+
 	// TODO: DLFA-238
 	// This is sort of a "unified" whitespace massage that's a way of compromising
 	// between the most correct way and the way we need to match DLFA-243 massaged
