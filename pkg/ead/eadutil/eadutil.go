@@ -48,6 +48,9 @@ var allowedConvertedEADToHTMLTags = util.CompactStringSlicePreserveOrder(
 
 var datePartsRegexp = regexp.MustCompile(`^\s*(\d{4})\/(\d{4})\s*$`)
 
+// We assume lowercase entity references only because Go escaping uses lowercase.
+var multipleEscapedAmpersandRegexp = regexp.MustCompile(`(?:&amp;)+amp;`)
+
 // TODO: DLFA-238
 // Delete these and switch back to using `datePartsRegexp` after passing the
 // transition test and resolving this:
@@ -740,4 +743,9 @@ func stringifyStartElementToken(token xml.StartElement) string {
 	startTag += ">"
 
 	return startTag
+}
+
+// We assume lowercase entity references only because Go escaping uses lowercase.
+func undoMultipleAmpersandEscaping(str string) string {
+	return multipleEscapedAmpersandRegexp.ReplaceAllString(str, "&amp;")
 }
