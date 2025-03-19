@@ -29,6 +29,8 @@ func TestInitLoggerError(t *testing.T) {
 }
 
 func TestLoggerLevelArgument(t *testing.T) {
+	testLogLevel := "debug" // this value MUST BE DIFFERENT from the default logging level
+
 	// ensure that the environment variable is set
 	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "http://www.example.com:8983/solr")
 	if err != nil {
@@ -37,14 +39,14 @@ func TestLoggerLevelArgument(t *testing.T) {
 	}
 
 	testutils.SetCmdFlag(IndexCmd, "file", "testdata/ead.xml")
-	testutils.SetCmdFlag(IndexCmd, "logging-level", "none")
+	testutils.SetCmdFlag(IndexCmd, "logging-level", testLogLevel)
 	gotStdOut, _, _ := testutils.CaptureCmdStdoutStderrE(runIndexCmd, IndexCmd, []string{})
 
 	if gotStdOut == "" {
 		t.Errorf("expected data on StdOut but got nothing")
 	}
 
-	testutils.CheckStringContains(t, gotStdOut, `Logging level set to \"none\"`)
+	testutils.CheckStringContains(t, gotStdOut, fmt.Sprintf(`Logging level set to \"%s\"`, testLogLevel))
 }
 
 func TestUnsetLoggingLevelArgument(t *testing.T) {
