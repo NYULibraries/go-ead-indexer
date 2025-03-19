@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"io"
 	"log/slog"
-	"math"
 	"os"
 	"reflect"
 	"sort"
@@ -50,7 +49,6 @@ var (
 	LevelInfo  = Level(reflect.ValueOf(slog.LevelInfo).Int())
 	LevelWarn  = Level(reflect.ValueOf(slog.LevelWarn).Int())
 	LevelError = Level(reflect.ValueOf(slog.LevelError).Int())
-	LevelNone  = Level(math.MaxInt)
 )
 
 var logLevelStringOptions = map[string]Level{
@@ -58,7 +56,6 @@ var logLevelStringOptions = map[string]Level{
 	"info":  LevelInfo,
 	"warn":  LevelWarn,
 	"error": LevelError,
-	"none":  LevelNone,
 }
 
 func New() Logger {
