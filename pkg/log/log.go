@@ -1,7 +1,6 @@
 package log
 
 import (
-	"errors"
 	"fmt"
 	"io"
 	"log/slog"
@@ -95,8 +94,8 @@ func (sl *SloggerLogger) SetLevelByString(levelStringArg string) error {
 		sl.programLevel.Set(slog.Level(level))
 		return nil
 	} else {
-		return errors.New(fmt.Sprintf("\"%s\" is not a valid error string option.  Valid options: %s",
-			levelStringArg, strings.Join(GetValidLevelOptionStrings(), ", ")))
+		return fmt.Errorf("\"%s\" is not a valid error string option.  Valid options: %s",
+			levelStringArg, strings.Join(GetValidLevelOptionStrings(), ", "))
 	}
 }
 
