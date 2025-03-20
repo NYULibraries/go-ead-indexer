@@ -4,10 +4,23 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"slices"
 	"testing"
 
 	"github.com/nyulibraries/go-ead-indexer/pkg/cmd/testutils"
+	"github.com/nyulibraries/go-ead-indexer/pkg/log"
 )
+
+func TestLocalLogLevels(t *testing.T) {
+	// this is a regression test to ensure that the local log levels are still valid
+	// if this test fails, the local log levels need to be updated
+	loggerAvailableLevels := log.GetValidLevelOptionStrings()
+	for _, level := range localLogLevels {
+		if !slices.Contains(loggerAvailableLevels, level) {
+			t.Errorf("local log level '%s' is not a valid logger level", level)
+		}
+	}
+}
 
 func TestInitLoggerError(t *testing.T) {
 	// ensure that the environment variable is set
