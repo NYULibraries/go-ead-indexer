@@ -18,24 +18,28 @@ import (
 )
 
 const MessageKey = "index"
+const errSolrClientNotSet = "you must call `SetSolrClient()` before calling any indexing functions"
 
 var sc = solr.SolrClient(nil)
 
-func SetSolrClient(solrClient solr.SolrClient) {
-	sc = solrClient
-}
+func DeleteEADFileDataFromIndex(eadID string) error {
+	var errs []error
 
-const errSolrClientNotSet = "you must call `SetSolrClient()` before calling any indexing functions"
-
-func assertSolrClientSet() error {
-	if sc == nil {
-		return errors.New(errSolrClientNotSet)
+	// assert that the EADID is valid
+	if !eadutil.IsValidEADID(eadID) {
+		return fmt.Errorf("invalid EADID: %s", eadID)
 	}
 
-	if sc.GetSolrURLOrigin() == "" {
-		return errors.New("the SolrClient URL origin is not set")
+	// assert that the SolrClient has been set
+	err := assertSolrClientSet()
+	if err != nil {
+		return err
 	}
 
+	err = sc.Delete(eadID)
+	if err != nil {
+		return appendErrIssueRollbackJoinErrs(errs, err)
+	}
 	return nil
 }
 
@@ -112,25 +116,8 @@ func IndexEADFile(eadPath string) error {
 	return nil
 }
 
-func DeleteEADFileDataFromIndex(eadID string) error {
-	var errs []error
-
-	// assert that the EADID is valid
-	if !eadutil.IsValidEADID(eadID) {
-		return fmt.Errorf("invalid EADID: %s", eadID)
-	}
-
-	// assert that the SolrClient has been set
-	err := assertSolrClientSet()
-	if err != nil {
-		return err
-	}
-
-	err = sc.Delete(eadID)
-	if err != nil {
-		return appendErrIssueRollbackJoinErrs(errs, err)
-	}
-	return nil
+func SetSolrClient(solrClient solr.SolrClient) {
+	sc = solrClient
 }
 
 func appendAndJoinErrs(errs []error, err error) error {
@@ -145,4 +132,16 @@ func appendErrIssueRollbackJoinErrs(errs []error, err error) error {
 		errs = append(errs, err)
 	}
 	return errors.Join(errs...)
+}
+
+func assertSolrClientSet() error {
+	if sc == nil {
+		return errors.New(errSolrClientNotSet)
+	}
+
+	if sc.GetSolrURLOrigin() == "" {
+		return errors.New("the SolrClient URL origin is not set")
+	}
+
+	return nil
 }

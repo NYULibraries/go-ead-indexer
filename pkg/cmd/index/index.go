@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/fs"
 	"os"
+	"slices"
 	"strings"
 
 	"github.com/nyulibraries/go-ead-indexer/pkg/index"
@@ -21,6 +22,9 @@ import (
 // environment variable that holds the Solr origin with port information
 const originEnvVar = "SOLR_ORIGIN_WITH_PORT"
 
+// log levels used by this package, in increasing order of severity
+var localLogLevels = []string{"debug", "info", "error"}
+
 var file string         // EAD file to be indexed
 var eadID string        // EADID value of EAD data to delete
 var assumeYes bool      // flag to disable interactive mode
@@ -29,16 +33,17 @@ var logger log.Logger   // logger
 
 // This init() function contains a subset of the full 'index' command functionality
 func init() {
+
 	IndexCmd.Flags().StringVarP(&file, "file", "f", "", "path to EAD file")
 	IndexCmd.Flags().StringVarP(&loggingLevel, "logging-level", "l",
 		log.DefaultLevelStringOption,
-		"Sets logging level: "+strings.Join(log.GetValidLevelOptionStrings(), ", ")+"")
+		"Sets logging level: "+strings.Join(localLogLevels, ", ")+"")
 
 	DeleteCmd.Flags().StringVarP(&eadID, "eadid", "e", "", "EADID value of EAD data to delete")
 	DeleteCmd.Flags().BoolVarP(&assumeYes, "assume-yes", "y", false, "disable interactive mode")
 	DeleteCmd.Flags().StringVarP(&loggingLevel, "logging-level", "l",
 		log.DefaultLevelStringOption,
-		"Sets logging level: "+strings.Join(log.GetValidLevelOptionStrings(), ", ")+"")
+		"Sets logging level: "+strings.Join(localLogLevels, ", ")+"")
 }
 
 var DeleteCmd = &cobra.Command{
@@ -160,6 +165,10 @@ func initLogger() error {
 	}
 
 	normalizedLogLevel := strings.ToLower(loggingLevel)
+	if !slices.Contains(localLogLevels, normalizedLogLevel) {
+		return fmt.Errorf("ERROR: unsupported logging level: '%s'. Supported levels are: %s", normalizedLogLevel, strings.Join(localLogLevels, ", "))
+	}
+
 	err := logger.SetLevelByString(normalizedLogLevel)
 	if err != nil {
 		return fmt.Errorf("ERROR: couldn't set log level: %s", err)
