@@ -56,6 +56,7 @@ type SolrClientMock struct {
 	ExpectedEvents         []Event
 	ErrorEvents            []ErrorEvent
 	ActualError            error
+	expectedCallCount      int
 	sut                    string
 	urlOrigin              string
 }
@@ -238,9 +239,22 @@ func (sc *SolrClientMock) GetSolrURLOrigin() string {
 
 // testEAD = repositoryCode+filesystem separator+eadID (e.g. "fales/mss_460")
 func (sc *SolrClientMock) InitMockForIndexing(testEAD string) error {
-
+	// reset the solr client mock
 	sc.Reset()
 
+	// update the golden file hashes
+	err := sc.updateGoldenFileHashes(testEAD)
+	if err != nil {
+		return err
+	}
+
+	// record the number of files to index
+	sc.NumberOfFilesToIndex = len(sc.GoldenFileHashes)
+	return nil
+}
+
+func (sc *SolrClientMock) updateGoldenFileHashes(testEAD string) error {
+	// load the golden file IDs
 	// assumes all files in the directory are golden files
 	// and that all files will be consumed by the test
 	goldenFileIDs := eadtestutils.GetGoldenFileIDs(testEAD)
@@ -265,8 +279,6 @@ func (sc *SolrClientMock) InitMockForIndexing(testEAD string) error {
 		sc.GoldenFileHashes[sum] = goldenFilePath
 	}
 
-	// record the number of files to index
-	sc.NumberOfFilesToIndex = len(sc.GoldenFileHashes)
 	return nil
 }
 
@@ -289,6 +301,7 @@ func (sc *SolrClientMock) Reset() {
 
 	// reset the call count
 	sc.CallCount = 0
+	sc.expectedCallCount = 0
 
 	// reset the call order values
 	sc.ActualCallOrder.Commit = IGNORE_CALL_ORDER
@@ -322,6 +335,56 @@ func (sc *SolrClientMock) Rollback() error {
 
 func (sc *SolrClientMock) SetSolrURLOrigin(url string) {
 	sc.urlOrigin = url
+}
+
+func (sc *SolrClientMock) UpdateMockForIndexEADFile(testEAD, eadid string) error {
+
+	// snapshot the length of the golden file hashes before updating
+	initialGolenFileHashesLength := len(sc.GoldenFileHashes)
+	err := sc.updateGoldenFileHashes(testEAD)
+	if err != nil {
+		return err
+	}
+
+	// update the expected events
+	sc.addDeleteEvent(eadid)
+	for i := initialGolenFileHashesLength; i < len(sc.GoldenFileHashes); i++ {
+		sc.addAddEvent()
+	}
+
+	sc.addCommitEvent()
+	return nil
+}
+
+func (sc *SolrClientMock) addCommitEvent() {
+	sc.expectedCallCount++
+	sc.ExpectedEvents = append(sc.ExpectedEvents, Event{
+		FuncName:  "Commit",
+		Err:       nil,
+		CallCount: sc.expectedCallCount})
+}
+
+func (sc *SolrClientMock) addRollbackEvent() {
+	sc.expectedCallCount++
+	sc.ExpectedEvents = append(sc.ExpectedEvents, Event{
+		FuncName:  "Rollback",
+		Err:       nil,
+		CallCount: sc.expectedCallCount})
+}
+
+func (sc *SolrClientMock) addDeleteEvent(eadid string) {
+	sc.expectedCallCount++
+	sc.ExpectedEvents = append(sc.ExpectedEvents, Event{
+		Args:      []string{eadid},
+		CallCount: sc.expectedCallCount,
+		Err:       nil,
+		FuncName:  Delete,
+	})
+}
+
+func (sc *SolrClientMock) addAddEvent() {
+	sc.expectedCallCount++
+	sc.ExpectedEvents = append(sc.ExpectedEvents, Event{FuncName: "Add", CallCount: sc.expectedCallCount, Args: []string{"XMLPostBody"}})
 }
 
 // ------------------------------------------------------------------------------
