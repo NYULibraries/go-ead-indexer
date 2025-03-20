@@ -25,7 +25,7 @@ func TestInitLoggerError(t *testing.T) {
 		t.Errorf("expected data on StdOut but got nothing")
 	}
 
-	testutils.CheckStringContains(t, gotStdOut, "ERROR: couldn't initialize logger: ERROR: couldn't set log level:")
+	testutils.CheckStringContains(t, gotStdOut, "ERROR: couldn't initialize logger: ERROR: unsupported logging level:")
 }
 
 func TestLoggerLevelArgument(t *testing.T) {
