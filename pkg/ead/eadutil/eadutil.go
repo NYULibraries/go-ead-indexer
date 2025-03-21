@@ -48,6 +48,9 @@ var allowedConvertedEADToHTMLTags = util.CompactStringSlicePreserveOrder(
 
 var datePartsRegexp = regexp.MustCompile(`^\s*(\d{4})\/(\d{4})\s*$`)
 
+// We assume lowercase entity references only because Go escaping uses lowercase.
+var multipleEscapedAmpersandRegexp = regexp.MustCompile(`(?:&amp;)+amp;`)
+
 // TODO: DLFA-238
 // Delete these and switch back to using `datePartsRegexp` after passing the
 // transition test and resolving this:
@@ -356,6 +359,14 @@ func MakeSolrAddMessageFieldElementString(fieldName string, fieldValue string) s
 	massagedValue := fieldValue
 
 	massagedValue = EscapeSolrFieldString(fieldValue)
+
+	// Values derived from processes that can involve multiple XML parsing steps
+	// can end up XML-escaped multiple times.  It would seem that the main risk
+	// assocaited with this are multiply-escaped ampersands (because the ampersand
+	// appears in the "&amp;" entity reference itself).  Examples of at-risk
+	// values are those that are built form ancestor unit titles, such as those
+	// for `parent_unittitles_*` and `series_*` Solr field.
+	massagedValue = undoMultipleAmpersandEscaping(massagedValue)
 
 	// TODO: DLFA-238
 	// This is sort of a "unified" whitespace massage that's a way of compromising
@@ -740,4 +751,9 @@ func stringifyStartElementToken(token xml.StartElement) string {
 	startTag += ">"
 
 	return startTag
+}
+
+// We assume lowercase entity references only because Go escaping uses lowercase.
+func undoMultipleAmpersandEscaping(str string) string {
+	return multipleEscapedAmpersandRegexp.ReplaceAllString(str, "&amp;")
 }
