@@ -1,12 +1,26 @@
 package index
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
+	"slices"
 	"testing"
 
 	"github.com/nyulibraries/go-ead-indexer/pkg/cmd/testutils"
+	"github.com/nyulibraries/go-ead-indexer/pkg/log"
 )
+
+func TestLocalLogLevels(t *testing.T) {
+	// this is a regression test to ensure that the local log levels are still valid
+	// if this test fails, the local log levels need to be updated
+	loggerAvailableLevels := log.GetValidLevelOptionStrings()
+	for _, level := range localLogLevels {
+		if !slices.Contains(loggerAvailableLevels, level) {
+			t.Errorf("local log level '%s' is not a valid logger level", level)
+		}
+	}
+}
 
 func TestInitLoggerError(t *testing.T) {
 	// ensure that the environment variable is set
@@ -24,10 +38,12 @@ func TestInitLoggerError(t *testing.T) {
 		t.Errorf("expected data on StdOut but got nothing")
 	}
 
-	testutils.CheckStringContains(t, gotStdOut, "ERROR: couldn't initialize logger: ERROR: couldn't set log level:")
+	testutils.CheckStringContains(t, gotStdOut, "ERROR: couldn't initialize logger: ERROR: unsupported logging level:")
 }
 
 func TestLoggerLevelArgument(t *testing.T) {
+	testLogLevel := "debug" // this value MUST BE DIFFERENT from the default logging level
+
 	// ensure that the environment variable is set
 	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "http://www.example.com:8983/solr")
 	if err != nil {
@@ -36,14 +52,14 @@ func TestLoggerLevelArgument(t *testing.T) {
 	}
 
 	testutils.SetCmdFlag(IndexCmd, "file", "testdata/ead.xml")
-	testutils.SetCmdFlag(IndexCmd, "logging-level", "none")
+	testutils.SetCmdFlag(IndexCmd, "logging-level", testLogLevel)
 	gotStdOut, _, _ := testutils.CaptureCmdStdoutStderrE(runIndexCmd, IndexCmd, []string{})
 
 	if gotStdOut == "" {
 		t.Errorf("expected data on StdOut but got nothing")
 	}
 
-	testutils.CheckStringContains(t, gotStdOut, `Logging level set to \"none\"`)
+	testutils.CheckStringContains(t, gotStdOut, fmt.Sprintf(`Logging level set to \"%s\"`, testLogLevel))
 }
 
 func TestUnsetLoggingLevelArgument(t *testing.T) {
@@ -187,4 +203,66 @@ func TestIndexingError(t *testing.T) {
 	}
 
 	testutils.CheckStringContains(t, gotStdOut, "ERROR: couldn't index EAD file: No <ead> tag with the expected structure was found")
+}
+
+func TestDeleteError(t *testing.T) {
+	// ensure that the environment variable is set
+	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "http://www.example.com:8983/solr")
+	if err != nil {
+		t.Errorf("error setting environment variable: %v", err)
+		t.FailNow()
+	}
+
+	testutils.SetCmdFlag(DeleteCmd, "eadid", "This#Is^Not!A(Valid*EADID")
+	testutils.SetCmdFlag(DeleteCmd, "logging-level", "debug")
+	testutils.SetCmdFlag(DeleteCmd, "assume-yes", "true")
+
+	gotStdOut, _, _ := testutils.CaptureCmdStdoutStderrE(runDeleteCmd, DeleteCmd, []string{})
+
+	if gotStdOut == "" {
+		t.Errorf("expected data on StdOut but got nothing")
+	}
+
+	testutils.CheckStringContains(t, gotStdOut, "ERROR: couldn't delete data for EADID: This#Is^Not!A(Valid*EADID error:")
+}
+
+func TestDeleteCancel(t *testing.T) {
+	// ensure that the environment variable is set
+	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "http://www.example.com:8983/solr")
+	if err != nil {
+		t.Errorf("error setting environment variable: %v", err)
+		t.FailNow()
+	}
+
+	testutils.SetCmdFlag(DeleteCmd, "eadid", "fales_mss460")
+	testutils.SetCmdFlag(DeleteCmd, "assume-yes", "false")
+
+	gotStdOut, _, _ := testutils.WriteToStdinCaptureCmdStdoutStderrE(runDeleteCmd, DeleteCmd, []string{}, "n\n")
+
+	if gotStdOut == "" {
+		t.Errorf("expected data on StdOut but got nothing")
+	}
+
+	testutils.CheckStringContains(t, gotStdOut, fmt.Sprintf("Deletion canceled for EADID: '%s'", eadID))
+}
+
+func TestDeleteCancelAfterBadInput(t *testing.T) {
+	// ensure that the environment variable is set
+	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "http://www.example.com:8983/solr")
+	if err != nil {
+		t.Errorf("error setting environment variable: %v", err)
+		t.FailNow()
+	}
+
+	testutils.SetCmdFlag(DeleteCmd, "eadid", "fales_mss460")
+	testutils.SetCmdFlag(DeleteCmd, "assume-yes", "false")
+
+	gotStdOut, _, _ := testutils.WriteToStdinCaptureCmdStdoutStderrE(runDeleteCmd, DeleteCmd, []string{}, "WAFFLES\nn\n")
+
+	if gotStdOut == "" {
+		t.Errorf("expected data on StdOut but got nothing")
+	}
+
+	testutils.CheckStringContains(t, gotStdOut, "Please enter 'y' or 'n':")
+	testutils.CheckStringContains(t, gotStdOut, fmt.Sprintf("Deletion canceled for EADID: '%s'", eadID))
 }

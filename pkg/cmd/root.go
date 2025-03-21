@@ -26,4 +26,5 @@ func Execute() {
 func init() {
 	rootCmd.AddCommand(debug.DebugCmd)
 	rootCmd.AddCommand(index.IndexCmd)
+	rootCmd.AddCommand(index.DeleteCmd)
 }
