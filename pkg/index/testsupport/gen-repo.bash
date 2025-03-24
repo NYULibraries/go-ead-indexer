@@ -1,28 +1,49 @@
 #!/bin/bash
 set -uo pipefail
-# This script generates a git repo test fixture for use in the git package tests.
+
+# This script generates a git repo test fixture for use in the pkg/index IndexGitCommit() tests.
+# (Please see https://jira.nyu.edu/browse/DLFA-230 for details.)
+# 
 # The script creates a directory named 'git-repo', then generates and commits various files.
 # Finally, the script renames the 'git-repo/.git' directory to 'git-repo/dot-git'.
 # The git-repo directory can be moved into the pkg/git/testdata/fixtures directory 
 # for use in git pkg tests.
 
 # Commit history replicated in repo (NOTE: commit hashes WILL differ)
-# * 95f2f904ad261e7d31632021fa10768d2b4096c9 2025-01-24 17:10:44 -0500 | Updating file fales/mss_001.xml (HEAD -> main) [jgpawletko]
-# * aa58b2314e11ae5af61129ebfe1ceb07b49c2d33 2025-01-24 17:10:44 -0500 | Updating file archives/mc_1.xml, Deleting file fales/mss_002.xml EADID='mss_002', Updating file fales/mss_005.xml, Updating file tamwag/aia_002.xml [jgpawletko]
-# * 3dc6fabe0fcd990e95cdd3f88cff821196fccdbd 2025-01-24 17:10:44 -0500 | Updating file archives/cap_1.xml, Updating file fales/mss_004.xml, Updating file tamwag/aia_001.xml [jgpawletko]
-# * 7fe6de7c56d30149889f8d24eaf2fa66ed9f2e2d 2025-01-24 17:10:44 -0500 | Updating file fales/mss_002.xml, Updating file fales/mss_003.xml [jgpawletko]
-# * 155309f674b5acffd7473c1648f3647a2a3d242b 2025-01-24 17:10:44 -0500 | Updating file fales/mss_001.xml [jgpawletko]
+# e5c5336b63b109b68c495bbfea94d30ecbc1ef67 2025-03-24 19:53:31 -0400 | Updating akkasah/ad_mc_030.xml, Updating cbh/arc_212_plymouth_beecher.xml, Updating edip/mos_2024.xml, Deleting file nyuad/ad_mc_019.xml EADID='ad_mc_019', Deleting file tamwag/tam_143.xml EADID='tam_143' (HEAD -> main) [jgpawletko]
+# e4bfc536020c4477044633ac7a57242bb6f67cee 2025-03-24 19:53:30 -0400 | Updating nyuad/ad_mc_019.xml, Updating tamwag/tam_143.xml [jgpawletko]
+# 2fee15ffc217a86d19756a6c816f59ca86e23893 2025-03-24 19:53:30 -0400 | Deleting file fales/mss_460.xml EADID='mss_460' [jgpawletko]
+# fdd7ce5e54b88894460b52dd0dd27055ffb3bbdd 2025-03-24 19:53:30 -0400 | Updating fales/mss_460.xml [jgpawletko]
+# e4fe6008decb5f26382fae903de40a4f3470d509 2025-03-24 19:53:30 -0400 | Deleting file akkasah/ad_mc_030.xml EADID='ad_mc_030', Deleting file cbh/arc_212_plymouth_beecher.xml EADID='arc_212_plymouth_beecher', Deleting file edip/mos_2024.xml EADID='mos_2024', Deleting file fales/mss_420.xml EADID='mss_420', Deleting file fales/mss_460.xml EADID='mss_460', Deleting file nyhs/ms256_harmon_hendricks_goldstone.xml EADID='ms256_harmon_hendricks_goldstone', Deleting file nyhs/ms347_foundling_hospital.xml EADID='ms347_foundling_hospital', Deleting file nyuad/ad_mc_019.xml EADID='ad_mc_019', Deleting file tamwag/tam_143.xml EADID='tam_143' [jgpawletko]
+# 5546ffda27581c4933aeb4102f6a0107c3e522ff 2025-03-24 19:53:30 -0400 | Updating akkasah/ad_mc_030.xml, Updating cbh/arc_212_plymouth_beecher.xml, Updating edip/mos_2024.xml, Updating fales/mss_420.xml, Updating fales/mss_460.xml, Updating nyhs/ms256_harmon_hendricks_goldstone.xml, Updating nyhs/ms347_foundling_hospital.xml, Updating nyuad/ad_mc_019.xml, Updating tamwag/tam_143.xml [jgpawletko]
 
 err_exit() {
     echo "$@" 1>&2
     exit 1
 }
 
+
+# Plan:
+# create git-repo directory
+# init git repo
+# copy     all
+#   add    all
+#   delete all
+# copy     1
+#   add    1
+#   delete 1
+# copy     2
+#   add    2
+# copy     3
+#   add 3, delete 2
+# 
+
 #------------------------------------------------------------------------------
 # VARIABLES
 #------------------------------------------------------------------------------
 SCRIPT_ROOT=$(dirname "$(realpath "$0")") || err_exit "Failed to get script root"
-REPO_ROOT="${SCRIPT_ROOT}/git-repo"
+REPO_NAME="git-repo"
+REPO_ROOT="${SCRIPT_ROOT}/${REPO_NAME}"
 EAD_FILE_ROOT="${SCRIPT_ROOT}/../../ead/testdata/fixtures/ead-files"
 EAD_FILES='akkasah/ad_mc_030.xml
 cbh/arc_212_plymouth_beecher.xml
@@ -82,19 +103,6 @@ if [[ ! -d "$EAD_FILE_ROOT" ]]; then
     err_exit "EAD directory '$EAD_FILE_ROOT' does not exist. Please locate or set up the EAD directory hierarchy."
 fi
 
-# set EAD fixture root
-# set directories
-# copy     all
-#   add    all
-#   delete all
-# copy     1
-#   add    1
-#   delete 1
-# copy     2
-#   add    2
-# copy     3
-#   add 3, delete 2
-# 
 
 echo "------------------------------------------------------------------------------"
 echo "setting up git repository"
@@ -188,62 +196,9 @@ mv -nv "${REPO_ROOT}/.git" "${REPO_ROOT}/dot-git" &>/dev/null || err_exit "Faile
 
 echo "------------------------------------------------------------------------------"
 echo "NEXT STEPS:"
-echo "1. move git-repo to pkg/git/testdata/fixtures"
+echo "1. move ${REPO_NAME} to pkg/index/testdata/fixtures"
 echo "2. Update the git pkg test scenarios with the new commit hash values"
 echo "3. Run the git pkg tests"
 echo "------------------------------------------------------------------------------"
 
 exit 0
-
-# git add fales/mss_001.xml
-# git commit -m "Updating file fales/mss_001.xml"
-
-# git add fales/mss_002.xml fales/mss_003.xml
-# git commit -m "Updating file fales/mss_002.xml, Updating file fales/mss_003.xml"
-
-# git add archives/cap_1.xml fales/mss_004.xml tamwag/aia_001.xml
-# git commit -m "Updating file archives/cap_1.xml, Updating file fales/mss_004.xml, Updating file tamwag/aia_001.xml"
-
-# git add archives/mc_1.xml
-# git rm fales/mss_002.xml
-# git add fales/mss_005.xml
-# git add tamwag/aia_002.xml
-# git commit -m "Updating file archives/mc_1.xml, Deleting file fales/mss_002.xml EADID='mss_002', Updating file fales/mss_005.xml, Updating file tamwag/aia_002.xml"
-
-# echo "mss_001 update" > fales/mss_001.xml
-# git add fales/mss_001.xml
-# git commit -m 'Updating file fales/mss_001.xml'
-
-
-# echo "------------------------------------------------------------------------------"
-# echo "creating directory hierarchy and test files"
-# echo "------------------------------------------------------------------------------"
-# mkdir -p git-repo/archives git-repo/fales git-repo/tamwag
-# pushd git-repo/archives &>/dev/null || err_exit "Failed to change directory to git-repo/archives"
-# for e in 'mc_1' 'cap_1' ; do
-#     echo "$e" > "${e}.xml"
-# done
-# popd &>/dev/null || err_exit "Failed to popd after creating archives files"
-
-# pushd git-repo/fales &>/dev/null || err_exit "Failed to change directory to git-repo/fales"
-# for i in {1..5}; do
-#     echo "mss_00${i}" > "mss_00${i}.xml"
-# done
-# popd &>/dev/null || err_exit "Failed to popd after creating fales files"
-
-# pushd git-repo/tamwag &>/dev/null || err_exit "Failed to change directory to git-repo/tamwag"
-# for i in {1..2}; do
-#     echo "aia_00${i}" > "aia_00${i}.xml"
-# done
-# popd &>/dev/null || err_exit "Failed to popd after creating tamwag files"
-
-# create directory hierarchy
-# echo "------------------------------------------------------------------------------"
-# echo "creating directory hierarchy"
-# echo "------------------------------------------------------------------------------"
-# for f in $EAD_FILES; do
-#     dir=$(dirname "$f")
-#     tgt_dir="${REPO_ROOT}/${dir}"
-#     mkdir -p "${tgt_dir}" || err_exit "problem creating '$tgt_dir'"
-# done
-
