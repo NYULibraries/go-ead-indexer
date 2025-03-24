@@ -97,7 +97,7 @@ func TestCheckout(t *testing.T) {
 	}
 }
 
-func TestCheckoutBadHash(t *testing.T) {
+func TestCheckout_BadHash(t *testing.T) {
 	// cleanup any leftovers from interrupted tests
 	deleteTestGitRepo(t)
 
@@ -117,7 +117,7 @@ func TestCheckoutBadHash(t *testing.T) {
 	}
 }
 
-func TestCheckoutBadPath(t *testing.T) {
+func TestCheckout_BadPath(t *testing.T) {
 	err := Checkout("this-is-not-a-real-path", "33ac5f1415ac8fe611944bad4925528b62e845c8")
 	if err == nil {
 		t.Errorf("expected error but no error generated")
@@ -169,7 +169,7 @@ func TestListEADFilesForCommit(t *testing.T) {
 	}
 }
 
-func TestListEADFilesForCommitBadHash(t *testing.T) {
+func TestListEADFilesForCommit_BadHash(t *testing.T) {
 	// cleanup any leftovers from interrupted tests
 	deleteTestGitRepo(t)
 
@@ -196,7 +196,7 @@ func TestListEADFilesForCommitBadHash(t *testing.T) {
 	}
 }
 
-func TestListEADFilesBadRepoPath(t *testing.T) {
+func TestListEADFilesForCommit_BadRepoPath(t *testing.T) {
 
 	scenarios := []struct {
 		ExpectedErrMsg string
@@ -300,10 +300,12 @@ type diffFileMock struct {
 }
 
 func (f diffFileMock) Hash() plumbing.Hash {
+	// dummy value
 	return plumbing.NewHash("a5ca6cca30fc08cfc13e4f1492dbfbbf3ec7cf63")
 }
 
 func (f diffFileMock) Mode() filemode.FileMode {
+	// dummy value
 	return filemode.Regular
 }
 
