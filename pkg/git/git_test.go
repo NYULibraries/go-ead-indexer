@@ -18,6 +18,10 @@ import (
 	"path/filepath"
 	"runtime"
 	"testing"
+
+	"github.com/go-git/go-git/v5/plumbing"
+	"github.com/go-git/go-git/v5/plumbing/filemode"
+	"github.com/go-git/go-git/v5/plumbing/format/diff"
 )
 
 var thisPath string
@@ -141,6 +145,52 @@ func TestListEADFilesBadRepoPath(t *testing.T) {
 	}
 }
 
+func Test_classifyFileChange(t *testing.T) {
+
+	scenarios := []struct {
+		From         diff.File
+		To           diff.File
+		ExpectedOp   IndexerOperation
+		ExpectedPath string
+	}{
+		{nil, nil, "unknown", ""},
+		{nil, diffFileMock{ThisPath: "fales/mss_001.xml"}, "add", "fales/mss_001.xml"},
+		{diffFileMock{ThisPath: "fales/mss_001.xml"}, nil, "delete", "fales/mss_001.xml"},
+		{diffFileMock{ThisPath: "fales/mss_001.xml"}, diffFileMock{ThisPath: "fales/mss_001.xml"}, "add", "fales/mss_001.xml"},
+		{diffFileMock{ThisPath: "fales/mss_001.xml"}, diffFileMock{ThisPath: "fales/mss_002.xml"}, "unknown", ""},
+	}
+
+	for _, scenario := range scenarios {
+		result, indexerOp := classifyFileChange(scenario.From, scenario.To)
+		if indexerOp != scenario.ExpectedOp {
+			t.Errorf("expected operation '%s', got '%s'", scenario.ExpectedOp, indexerOp)
+		}
+		if result != scenario.ExpectedPath {
+			t.Errorf("expected path '%s', got '%s'", scenario.ExpectedPath, result)
+		}
+	}
+
+}
+
+func Test_getPath(t *testing.T) {
+
+	scenarios := []struct {
+		File         diff.File
+		ExpectedPath string
+	}{
+		{nil, ""},
+		{diffFileMock{ThisPath: "fales/mss_001.xml"}, "fales/mss_001.xml"},
+	}
+
+	for _, scenario := range scenarios {
+		result := getPath(scenario.File)
+		if result != scenario.ExpectedPath {
+			t.Errorf("expected path '%s', got '%s'", scenario.ExpectedPath, result)
+		}
+	}
+
+}
+
 // ------------------------------------------------------------------------------
 func createEnabledHiddenGitDirectory(t *testing.T) {
 	gitRepoDotGitDirectoryFS := os.DirFS(gitRepoDotGitDirectory)
@@ -161,4 +211,23 @@ func deleteEnabledHiddenGitDirectory(t *testing.T) {
 			err.Error(), gitRepoEnabledHiddenGitDirectory)
 		t.FailNow()
 	}
+}
+
+// ------------------------------------------------------------------------------
+// Mock type for testing classifyFileChange function
+// ------------------------------------------------------------------------------
+type diffFileMock struct {
+	ThisPath string
+}
+
+func (f diffFileMock) Hash() plumbing.Hash {
+	return plumbing.NewHash("a5ca6cca30fc08cfc13e4f1492dbfbbf3ec7cf63")
+}
+
+func (f diffFileMock) Mode() filemode.FileMode {
+	return filemode.Regular
+}
+
+func (f diffFileMock) Path() string {
+	return f.ThisPath
 }
