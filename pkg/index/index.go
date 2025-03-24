@@ -41,6 +41,13 @@ func DeleteEADFileDataFromIndex(eadID string) error {
 	if err != nil {
 		return appendErrIssueRollbackJoinErrs(errs, err)
 	}
+
+	// commit the change to Solr
+	err = sc.Commit()
+	if err != nil {
+		return appendErrIssueRollbackJoinErrs(errs, err)
+	}
+
 	return nil
 }
 
@@ -125,6 +132,8 @@ func IndexGitCommit(repoPath, commit string) error {
 	if err != nil {
 		return appendAndJoinErrs(errs, err)
 	}
+
+	// TODO: YOU MUST CHECKOUT THE GIT COMMIT
 
 	// get the list of EAD files and their operations
 	indexerOperations, err := git.ListEADFilesForCommit(repoPath, commit)
