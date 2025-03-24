@@ -15,23 +15,52 @@ a5ca6cca30fc08cfc13e4f1492dbfbbf3ec7cf63 2025-02-13 14:16:29 -0500 | Updating fi
 
 import (
 	"os"
+	"path/filepath"
+	"runtime"
 	"testing"
 
 	"github.com/c4milo/unpackit"
 )
 
-func TestListEADFilesForCommit(t *testing.T) {
-	// cleanup any leftovers from interrupted tests
-	err := teardownRepo("testdata/simple-repo")
-	if err != nil {
-		t.Fatal(err)
+var thisPath string
+var gitRepoPathAbsolute string
+var gitRepoPathRelative string
+var gitRepoDotGitDirectory string
+var gitRepoEnabledHiddenGitDirectory string
+
+// this code was copied from the debug package, written by David Arjanik
+// We need to get the absolute path to this package in order to enable the function
+// for golden file and fixture file retrieval to be called from other packages
+// which would not be able to resolve the hardcoded relative paths used here.
+func init() {
+	// The `filename` string is the absolute path to this source file, which should
+	// be located at the root of the package directory.
+	_, filename, _, ok := runtime.Caller(0)
+	if !ok {
+		panic("ERROR: `runtime.Caller(0)` failed")
 	}
 
-	err = extractRepo("testdata/simple-repo.tar.gz", "testdata")
-	if err != nil {
-		t.Fatal(err)
-	}
-	defer teardownRepo("testdata/simple-repo")
+	// Get the path to the parent directory of this file.  Again, this is assuming
+	// that this `init()` function is defined in a package top level file -- or
+	// more precisely, that this file is in the same directory at the `testdata/`
+	// directory that is referenced in the relative paths used in the functions
+	// defined in this file.
+	thisPath = filepath.Dir(filename)
+	// Get testdata directory paths
+	gitRepoPathAbsolute = filepath.Join(thisPath, "testdata", "fixtures", "git-repo")
+	// This could be done as a const at top level, but assigning it here to keep
+	// all this path stuff in one place.
+	gitRepoPathRelative = filepath.Join(".", "testdata", "fixtures", "git-repo")
+	gitRepoDotGitDirectory = filepath.Join(gitRepoPathAbsolute, "dot-git")
+	gitRepoEnabledHiddenGitDirectory = filepath.Join(gitRepoPathAbsolute, ".git")
+}
+
+func TestListEADFilesForCommit(t *testing.T) {
+	// cleanup any leftovers from interrupted tests
+	deleteEnabledHiddenGitDirectory(t)
+
+	createEnabledHiddenGitDirectory(t)
+	defer deleteEnabledHiddenGitDirectory(t)
 
 	scenarios := []struct {
 		Hash       string
@@ -45,7 +74,7 @@ func TestListEADFilesForCommit(t *testing.T) {
 	}
 
 	for _, scenario := range scenarios {
-		operations, err := ListEADFilesForCommit("testdata/simple-repo", scenario.Hash)
+		operations, err := ListEADFilesForCommit(gitRepoPathAbsolute, scenario.Hash)
 		if err != nil {
 			t.Errorf("unexpected error: %v for commit hash %s", err, scenario.Hash)
 			continue
@@ -141,4 +170,26 @@ func teardownRepo(targetDir string) error {
 		return err
 	}
 	return nil
+}
+
+// ------------------------------------------------------------------------------
+func createEnabledHiddenGitDirectory(t *testing.T) {
+	gitRepoDotGitDirectoryFS := os.DirFS(gitRepoDotGitDirectory)
+	err := os.CopyFS(gitRepoEnabledHiddenGitDirectory, gitRepoDotGitDirectoryFS)
+	if err != nil {
+		t.Errorf(
+			`Unexpected error returned by os.CopyFS(gitRepoEnabledHiddenGitDirectory, gitRepoDotGitDirectoryFS): %s`,
+			err.Error())
+		t.FailNow()
+	}
+}
+
+func deleteEnabledHiddenGitDirectory(t *testing.T) {
+	err := os.RemoveAll(gitRepoEnabledHiddenGitDirectory)
+	if err != nil {
+		t.Errorf(
+			`deleteEnabledHiddenGitDirectory() failed with error "%s", remove %s manually`,
+			err.Error(), gitRepoEnabledHiddenGitDirectory)
+		t.FailNow()
+	}
 }
