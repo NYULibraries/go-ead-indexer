@@ -26,7 +26,7 @@ import (
 )
 
 var thisPath string
-var gitRepoPathAbsolute string
+var gitSourceRepoPathAbsolute string
 var gitRepoTestGitRepoPathAbsolute string
 var gitRepoTestGitRepoPathRelative string
 var gitRepoTestGitRepoDotGitDirectory string
@@ -52,7 +52,7 @@ func init() {
 	thisPath = filepath.Dir(filename)
 
 	// Get testdata directory paths
-	gitRepoPathAbsolute = filepath.Join(thisPath, "testdata", "fixtures", "git-repo")
+	gitSourceRepoPathAbsolute = filepath.Join(thisPath, "testdata", "fixtures", "git-repo")
 
 	// This could be done as a const at top level, but assigning it here to keep
 	// all this path stuff in one place.
@@ -264,11 +264,11 @@ func Test_getPath(t *testing.T) {
 }
 
 func createTestGitRepo(t *testing.T) {
-	gitRepoPathAbsoluteFS := os.DirFS(gitRepoPathAbsolute)
-	err := os.CopyFS(gitRepoTestGitRepoPathAbsolute, gitRepoPathAbsoluteFS)
+	gitSourceRepoPathAbsoluteFS := os.DirFS(gitSourceRepoPathAbsolute)
+	err := os.CopyFS(gitRepoTestGitRepoPathAbsolute, gitSourceRepoPathAbsoluteFS)
 	if err != nil {
 		t.Errorf(
-			`Unexpected error returned by os.CopyFS(gitRepoPathAbsoluteFS, gitRepoTestGitRepoPathAbsolute): %s`,
+			`Unexpected error returned by os.CopyFS(gitSourceRepoPathAbsoluteFS, gitRepoTestGitRepoPathAbsolute): %s`,
 			err.Error())
 		t.FailNow()
 	}
