@@ -17,6 +17,27 @@ const (
 	Unknown IndexerOperation = "unknown"
 )
 
+func Checkout(repoPath string, commitHash string) error {
+	repo, err := gogit.PlainOpen(repoPath)
+	if err != nil {
+		return err
+	}
+
+	worktree, err := repo.Worktree()
+	if err != nil {
+		return err
+	}
+
+	err = worktree.Checkout(&gogit.CheckoutOptions{
+		Hash: plumbing.NewHash(commitHash),
+	})
+	if err != nil {
+		return fmt.Errorf("problem checking out hash '%s', error: '%s'", commitHash, err.Error())
+	}
+
+	return nil
+}
+
 func ListEADFilesForCommit(repoPath string, thisCommitHashString string) (map[string]IndexerOperation, error) {
 
 	operations := make(map[string]IndexerOperation)

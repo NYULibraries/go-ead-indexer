@@ -1,11 +1,12 @@
 #!/bin/bash
 
 # This script generates a git repo test fixture for use in the git package tests.
-# The script creates a directory named 'simple-repo', then generates and commits various files.
-# Finally, the script creates a tarball named 'simple-repo.tar.gz'.
-# The tarball can be copied into the pkg/git/testdata directory for use in git pkg tests.
+# The script creates a directory named 'git-repo', then generates and commits various files.
+# Finally, the script renames the 'git-repo/.git' directory to 'git-repo/dot-git'.
+# The git-repo directory can be moved into the pkg/git/testdata/fixtures directory 
+# for use in git pkg tests.
 
-# Commit history replicated in repo (NOTE: commit hashes may differ)
+# Commit history replicated in repo (NOTE: commit hashes WILL differ)
 # * 95f2f904ad261e7d31632021fa10768d2b4096c9 2025-01-24 17:10:44 -0500 | Updating file fales/mss_001.xml (HEAD -> main) [jgpawletko]
 # * aa58b2314e11ae5af61129ebfe1ceb07b49c2d33 2025-01-24 17:10:44 -0500 | Updating file archives/mc_1.xml, Deleting file fales/mss_002.xml EADID='mss_002', Updating file fales/mss_005.xml, Updating file tamwag/aia_002.xml [jgpawletko]
 # * 3dc6fabe0fcd990e95cdd3f88cff821196fccdbd 2025-01-24 17:10:44 -0500 | Updating file archives/cap_1.xml, Updating file fales/mss_004.xml, Updating file tamwag/aia_001.xml [jgpawletko]
@@ -17,33 +18,33 @@ err_exit() {
     exit 1
 }
 
-if [[ -d simple-repo ]]; then
-    err_exit "simple-repo directory already exists. Please remove it before running this script."
+if [[ -d git-repo ]]; then
+    err_exit "'git-repo' directory already exists. Please remove it before running this script."
 fi
 
 echo "------------------------------------------------------------------------------"
 echo "creating directory hierarchy and test files"
 echo "------------------------------------------------------------------------------"
-mkdir -p simple-repo/archives simple-repo/fales simple-repo/tamwag
-pushd simple-repo/archives &>/dev/null || err_exit "Failed to change directory to simple-repo/archives"
+mkdir -p git-repo/archives git-repo/fales git-repo/tamwag
+pushd git-repo/archives &>/dev/null || err_exit "Failed to change directory to git-repo/archives"
 for e in 'mc_1' 'cap_1' ; do
     echo "$e" > "${e}.xml"
 done
 popd &>/dev/null || err_exit "Failed to popd after creating archives files"
 
-pushd simple-repo/fales &>/dev/null || err_exit "Failed to change directory to simple-repo/fales"
+pushd git-repo/fales &>/dev/null || err_exit "Failed to change directory to git-repo/fales"
 for i in {1..5}; do
     echo "mss_00${i}" > "mss_00${i}.xml"
 done
 popd &>/dev/null || err_exit "Failed to popd after creating fales files"
 
-pushd simple-repo/tamwag &>/dev/null || err_exit "Failed to change directory to simple-repo/tamwag"
+pushd git-repo/tamwag &>/dev/null || err_exit "Failed to change directory to git-repo/tamwag"
 for i in {1..2}; do
     echo "aia_00${i}" > "aia_00${i}.xml"
 done
 popd &>/dev/null || err_exit "Failed to popd after creating tamwag files"
 
-pushd simple-repo &>/dev/null || err_exit "Failed to change directory to simple-repo"
+pushd git-repo &>/dev/null || err_exit "Failed to change directory to git-repo"
 
 echo "------------------------------------------------------------------------------"
 echo "setting up git repository"
@@ -79,19 +80,14 @@ echo "--------------------------------------------------------------------------
 popd &>/dev/null || err_exit "Failed to popd after git operations"
 
 echo "------------------------------------------------------------------------------"
-echo "creating tarball simple-repo.tar.gz"
+echo "renaming .git to dot-git"
 echo "------------------------------------------------------------------------------"
 # NOTE: you MUST include the trailing /. or the .git directory will not be included in the tarball
-tar cvfz simple-repo.tar.gz simple-repo/. &>/dev/null || err_exit "Failed to create tarball simple-repo.tar.gz"
-
-echo "------------------------------------------------------------------------------"
-echo "cleaning up"
-echo "------------------------------------------------------------------------------"
-rm -rf simple-repo || err_exit "Failed to clean up simple-repo directory"
+mv -nv git-repo/.git git-repo/dot-git &>/dev/null || err_exit "Failed to rename git-repo/.git to git-repo/dot-git"
 
 echo "------------------------------------------------------------------------------"
 echo "NEXT STEPS:"
-echo "1. Copy simple-repo.tar.gz to pkg/git/testdata"
+echo "1. move git-repo to pkg/git/testdata/fixtures"
 echo "2. Update the git pkg test scenarios with the new commit hash values"
 echo "3. Run the git pkg tests"
 echo "------------------------------------------------------------------------------"
