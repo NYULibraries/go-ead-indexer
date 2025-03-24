@@ -507,6 +507,40 @@ func TestIndexEADFile_Success(t *testing.T) {
 	}
 }
 
+func TestIndexEADFile_Success_Events(t *testing.T) {
+
+	repositoryCode := "fales"
+	eadid := "mss_460"
+	testEAD := filepath.Join(repositoryCode, eadid)
+	var eadPath = eadtestutils.EadFixturePath(testEAD)
+
+	sc := testutils.GetSolrClientMock()
+	sc.Reset()
+	err := sc.UpdateMockForIndexEADFile(testEAD, eadid)
+	if err != nil {
+		t.Errorf("Error updating the SolrClientMock: %s", err)
+		t.FailNow()
+	}
+
+	// Set the Solr client
+	SetSolrClient(sc)
+
+	// Index the EAD file
+	err = IndexEADFile(eadPath)
+	if err != nil {
+		t.Errorf("Error indexing EAD file: %s", err)
+	}
+
+	err = sc.CheckAssertionsViaEvents()
+	if err != nil {
+		t.Errorf("Assertions failed: %s", err)
+	}
+
+	if !sc.IsComplete() {
+		t.Errorf("not all files were added to the Solr index. Remaining values: %v", sc.GoldenFileHashes)
+	}
+}
+
 func TestIndexGitCommit_SolrClientNotSet(t *testing.T) {
 
 	sut := "IndexGitCommit"
@@ -545,6 +579,83 @@ func TestIndexGitCommit_SolrClientMissingOriginURL(t *testing.T) {
 
 	testutils.AssertError(t, sut, err)
 	testutils.AssertErrorMessageContainsString(t, sut, err, expectedErrStringFragment)
+}
+
+func TestIndexGitCommit_Success_Events(t *testing.T) {
+
+	/*
+		set up git repo
+		get absolute repo path
+		set up expectations
+		run transaction
+		check expectations
+
+		137ffbd75d5ac850b6d6145db64ff45893689dd5 2025-03-20 17:59:06 -0400 | Deleting file edip/mos_2024.xml EADID='mos_2024' (HEAD -> main) [jgpawletko]
+		6d863a32d5a294bedde2507f66a4ea0f5aa9e2de 2025-03-20 17:58:19 -0400 | Deleting file fales/mss_460.xml EADID='mss_460', Updating file edip/mos_2024.xml, Deleting file nyuad/ad_mc_019.xml EADID='ad_mc_019' [jgpawletko]
+		df57567afbf5900c74e280fee660083b06b7e221 2025-03-20 17:52:38 -0400 | Updating file nyuad/ad_mc_019.xml, Deleting file edip/mos_2024.xml EADID='mos_2024', Updating file fales/mss_460.xml [jgpawletko]
+		829d3e84a364eea3923531aa918db854131363b7 2025-03-20 17:50:32 -0400 | Updating file edip/mos_2024.xml [jgpawletko]
+
+	*/
+	sc := testutils.GetSolrClientMock()
+	sc.Reset()
+
+	repositoryCode := "fales"
+	eadid := "mss_460"
+	testEAD := filepath.Join(repositoryCode, eadid)
+	var eadPath = eadtestutils.EadFixturePath(testEAD)
+	eadPathFales := eadPath
+	err := sc.UpdateMockForIndexEADFile(testEAD, eadid)
+	if err != nil {
+		t.Errorf("Error updating the SolrClientMock: %s", err)
+		t.FailNow()
+	}
+
+	repositoryCode = "edip"
+	eadid = "mos_2024"
+	err = sc.UpdateMockForDeleteEADFileDataFromIndex(eadid)
+	if err != nil {
+		t.Errorf("Error updating the SolrClientMock: %s", err)
+		t.FailNow()
+	}
+
+	repositoryCode = "nyuad"
+	eadid = "ad_mc_019"
+	testEAD = filepath.Join(repositoryCode, eadid)
+	eadPath = eadtestutils.EadFixturePath(testEAD)
+	eadPathNYUAD := eadPath
+	err = sc.UpdateMockForIndexEADFile(testEAD, eadid)
+	if err != nil {
+		t.Errorf("Error updating the SolrClientMock: %s", err)
+		t.FailNow()
+	}
+
+	// Set the Solr client
+	SetSolrClient(sc)
+
+	// Index the EAD file
+	err = IndexEADFile(eadPathFales)
+	if err != nil {
+		t.Errorf("Error indexing EAD file: %s", err)
+	}
+
+	err = DeleteEADFileDataFromIndex("mos_2024")
+	if err != nil {
+		t.Errorf("Error deleting EADID data: %s", err)
+	}
+
+	err = IndexEADFile(eadPathNYUAD)
+	if err != nil {
+		t.Errorf("Error indexing EAD file: %s", err)
+	}
+
+	err = sc.CheckAssertionsViaEvents()
+	if err != nil {
+		t.Errorf("Assertions failed: %s", err)
+	}
+
+	if !sc.IsComplete() {
+		t.Errorf("not all files were added to the Solr index. Remaining values: \n%v", sc.GoldenFileHashesToString())
+	}
 }
 
 // func TestIndexGitCommit_ErrorOnRollback(t *testing.T) {
