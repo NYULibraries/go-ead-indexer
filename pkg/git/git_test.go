@@ -129,6 +129,40 @@ func TestCheckout_BadPath(t *testing.T) {
 	}
 }
 
+func TestEADPathToEADID(t *testing.T) {
+	scenarios := []struct {
+		Path          string
+		ExpectedEADID string
+	}{
+		{"fales/mss_001.xml", "mss_001"},
+		{"archives/mc_1.xml", "mc_1"},
+		{"fales/mss_002.xml", "mss_002"},
+		{"fales/mss_005.xml", "mss_005"},
+		{"tamwag/aia_002.xml", "aia_002"},
+	}
+
+	for _, scenario := range scenarios {
+		eadID, err := EADPathToEADID(scenario.Path)
+		if err != nil {
+			t.Errorf("unexpected error: %v for path %s", err, scenario.Path)
+			continue
+		}
+		if eadID != scenario.ExpectedEADID {
+			t.Errorf("expected EADID '%s', got '%s' for path '%s'", scenario.ExpectedEADID, eadID, scenario.Path)
+		}
+	}
+
+	_, err := EADPathToEADID("this-is-not-a-real-path")
+	if err == nil {
+		t.Errorf("expected error but no error generated")
+		return
+	}
+	exp := "unable to extract EADID from path 'this-is-not-a-real-path'"
+	if err.Error() != exp {
+		t.Errorf("expected error message '%s', got '%s'", exp, err.Error())
+	}
+}
+
 func TestListEADFilesForCommit(t *testing.T) {
 	// cleanup any leftovers from interrupted tests
 	deleteTestGitRepo(t)
