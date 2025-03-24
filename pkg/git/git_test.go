@@ -18,8 +18,6 @@ import (
 	"path/filepath"
 	"runtime"
 	"testing"
-
-	"github.com/c4milo/unpackit"
 )
 
 var thisPath string
@@ -97,16 +95,10 @@ func TestListEADFilesForCommit(t *testing.T) {
 
 func TestListEADFilesForCommitBadHash(t *testing.T) {
 	// cleanup any leftovers from interrupted tests
-	err := teardownRepo("testdata/simple-repo")
-	if err != nil {
-		t.Fatal(err)
-	}
+	deleteEnabledHiddenGitDirectory(t)
 
-	err = extractRepo("testdata/simple-repo.tar.gz", "testdata")
-	if err != nil {
-		t.Fatal(err)
-	}
-	defer teardownRepo("testdata/simple-repo")
+	createEnabledHiddenGitDirectory(t)
+	defer deleteEnabledHiddenGitDirectory(t)
 
 	scenarios := []struct {
 		Hash           string
@@ -116,7 +108,7 @@ func TestListEADFilesForCommitBadHash(t *testing.T) {
 	}
 
 	for _, scenario := range scenarios {
-		_, err := ListEADFilesForCommit("testdata/simple-repo", scenario.Hash)
+		_, err := ListEADFilesForCommit(gitRepoPathRelative, scenario.Hash)
 		if err == nil {
 			t.Errorf("expected error but no error generated for commit hash %s", scenario.Hash)
 			continue
@@ -147,29 +139,6 @@ func TestListEADFilesBadRepoPath(t *testing.T) {
 			continue
 		}
 	}
-}
-
-func extractRepo(tarball, targetDir string) error {
-	file, err := os.Open(tarball)
-	if err != nil {
-		return err
-	}
-	defer file.Close()
-
-	err = unpackit.Unpack(file, targetDir)
-	if err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func teardownRepo(targetDir string) error {
-	err := os.RemoveAll(targetDir)
-	if err != nil {
-		return err
-	}
-	return nil
 }
 
 // ------------------------------------------------------------------------------
