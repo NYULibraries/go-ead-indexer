@@ -26,11 +26,12 @@ import (
 
 var thisPath string
 var gitRepoPathAbsolute string
-var gitRepoPathRelative string
-var gitRepoDotGitDirectory string
-var gitRepoEnabledHiddenGitDirectory string
+var gitRepoTestGitRepoPathAbsolute string
+var gitRepoTestGitRepoPathRelative string
+var gitRepoTestGitRepoDotGitDirectory string
+var gitRepoTestGitRepoHiddenGitDirectory string
 
-// this code was copied from the debug package, written by David Arjanik
+// this code is based on that in the debug package, written by David Arjanik
 // We need to get the absolute path to this package in order to enable the function
 // for golden file and fixture file retrieval to be called from other packages
 // which would not be able to resolve the hardcoded relative paths used here.
@@ -48,21 +49,59 @@ func init() {
 	// directory that is referenced in the relative paths used in the functions
 	// defined in this file.
 	thisPath = filepath.Dir(filename)
+
 	// Get testdata directory paths
 	gitRepoPathAbsolute = filepath.Join(thisPath, "testdata", "fixtures", "git-repo")
+
 	// This could be done as a const at top level, but assigning it here to keep
 	// all this path stuff in one place.
-	gitRepoPathRelative = filepath.Join(".", "testdata", "fixtures", "git-repo")
-	gitRepoDotGitDirectory = filepath.Join(gitRepoPathAbsolute, "dot-git")
-	gitRepoEnabledHiddenGitDirectory = filepath.Join(gitRepoPathAbsolute, ".git")
+	gitRepoTestGitRepoPathAbsolute = filepath.Join(thisPath, "testdata", "fixtures", "test-git-repo")
+	gitRepoTestGitRepoPathRelative = filepath.Join(".", "testdata", "fixtures", "test-git-repo")
+	gitRepoTestGitRepoDotGitDirectory = filepath.Join(gitRepoTestGitRepoPathAbsolute, "dot-git")
+	gitRepoTestGitRepoHiddenGitDirectory = filepath.Join(gitRepoTestGitRepoPathAbsolute, ".git")
+}
+
+func TestCheckout(t *testing.T) {
+	// cleanup any leftovers from interrupted tests
+	deleteTestGitRepo(t)
+
+	createTestGitRepo(t)
+	defer deleteTestGitRepo(t)
+
+	scenarios := []struct {
+		Hash         string
+		FileRelPaths []string
+	}{
+		{"a5ca6cca30fc08cfc13e4f1492dbfbbf3ec7cf63", []string{"fales/mss_001.xml"}},
+		{"33ac5f1415ac8fe611944bad4925528b62e845c8", []string{"archives/mc_1.xml", "fales/mss_005.xml", "tamwag/aia_002.xml"}},
+		{"382c67e2ac64323e328506c85f97e229070a46cc", []string{"archives/cap_1.xml", "fales/mss_004.xml", "tamwag/aia_001.xml"}},
+		{"2f531fc31b82cb128428c83e11d1e3f79b0da394", []string{"fales/mss_002.xml", "fales/mss_003.xml"}},
+		{"7e65f35361c9a2d7fc48bece8f04856b358620bf", []string{"fales/mss_001.xml"}},
+	}
+
+	for _, scenario := range scenarios {
+		err := Checkout(gitRepoTestGitRepoPathAbsolute, scenario.Hash)
+		if err != nil {
+			t.Errorf("unexpected error: %v for commit hash %s", err, scenario.Hash)
+			continue
+		}
+
+		for _, fileRelPath := range scenario.FileRelPaths {
+			filePath := filepath.Join(gitRepoTestGitRepoPathAbsolute, fileRelPath)
+			_, err := os.Stat(filePath)
+			if err != nil {
+				t.Errorf("expected file '%s' to exist for commit hash '%s'", filePath, scenario.Hash)
+			}
+		}
+	}
 }
 
 func TestListEADFilesForCommit(t *testing.T) {
 	// cleanup any leftovers from interrupted tests
-	deleteEnabledHiddenGitDirectory(t)
+	deleteTestGitRepo(t)
 
-	createEnabledHiddenGitDirectory(t)
-	defer deleteEnabledHiddenGitDirectory(t)
+	createTestGitRepo(t)
+	defer deleteTestGitRepo(t)
 
 	scenarios := []struct {
 		Hash       string
@@ -76,7 +115,7 @@ func TestListEADFilesForCommit(t *testing.T) {
 	}
 
 	for _, scenario := range scenarios {
-		operations, err := ListEADFilesForCommit(gitRepoPathAbsolute, scenario.Hash)
+		operations, err := ListEADFilesForCommit(gitRepoTestGitRepoPathAbsolute, scenario.Hash)
 		if err != nil {
 			t.Errorf("unexpected error: %v for commit hash %s", err, scenario.Hash)
 			continue
@@ -99,10 +138,10 @@ func TestListEADFilesForCommit(t *testing.T) {
 
 func TestListEADFilesForCommitBadHash(t *testing.T) {
 	// cleanup any leftovers from interrupted tests
-	deleteEnabledHiddenGitDirectory(t)
+	deleteTestGitRepo(t)
 
-	createEnabledHiddenGitDirectory(t)
-	defer deleteEnabledHiddenGitDirectory(t)
+	createTestGitRepo(t)
+	defer deleteTestGitRepo(t)
 
 	scenarios := []struct {
 		Hash           string
@@ -112,7 +151,7 @@ func TestListEADFilesForCommitBadHash(t *testing.T) {
 	}
 
 	for _, scenario := range scenarios {
-		_, err := ListEADFilesForCommit(gitRepoPathRelative, scenario.Hash)
+		_, err := ListEADFilesForCommit(gitRepoTestGitRepoPathRelative, scenario.Hash)
 		if err == nil {
 			t.Errorf("expected error but no error generated for commit hash %s", scenario.Hash)
 			continue
@@ -191,24 +230,31 @@ func Test_getPath(t *testing.T) {
 
 }
 
-// ------------------------------------------------------------------------------
-func createEnabledHiddenGitDirectory(t *testing.T) {
-	gitRepoDotGitDirectoryFS := os.DirFS(gitRepoDotGitDirectory)
-	err := os.CopyFS(gitRepoEnabledHiddenGitDirectory, gitRepoDotGitDirectoryFS)
+func createTestGitRepo(t *testing.T) {
+	gitRepoPathAbsoluteFS := os.DirFS(gitRepoPathAbsolute)
+	err := os.CopyFS(gitRepoTestGitRepoPathAbsolute, gitRepoPathAbsoluteFS)
 	if err != nil {
 		t.Errorf(
-			`Unexpected error returned by os.CopyFS(gitRepoEnabledHiddenGitDirectory, gitRepoDotGitDirectoryFS): %s`,
+			`Unexpected error returned by os.CopyFS(gitRepoPathAbsoluteFS, gitRepoTestGitRepoPathAbsolute): %s`,
+			err.Error())
+		t.FailNow()
+	}
+
+	err = os.Rename(gitRepoTestGitRepoDotGitDirectory, gitRepoTestGitRepoHiddenGitDirectory)
+	if err != nil {
+		t.Errorf(
+			`Unexpected error returned by os.Rename(gitRepoTestGitRepoDotGitDirectory, gitRepoTestGitRepoHiddenGitDirectory): %s`,
 			err.Error())
 		t.FailNow()
 	}
 }
 
-func deleteEnabledHiddenGitDirectory(t *testing.T) {
-	err := os.RemoveAll(gitRepoEnabledHiddenGitDirectory)
+func deleteTestGitRepo(t *testing.T) {
+	err := os.RemoveAll(gitRepoTestGitRepoPathAbsolute)
 	if err != nil {
 		t.Errorf(
 			`deleteEnabledHiddenGitDirectory() failed with error "%s", remove %s manually`,
-			err.Error(), gitRepoEnabledHiddenGitDirectory)
+			err.Error(), gitRepoTestGitRepoPathAbsolute)
 		t.FailNow()
 	}
 }
