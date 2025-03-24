@@ -84,6 +84,14 @@ func AssertErrorMessageContainsString(t *testing.T, fname string, err error, str
 	}
 }
 
+func EventsToString(events []Event) string {
+	var str string
+	for _, e := range events {
+		str += fmt.Sprintf("%4d  %10s  %s\n", e.CallCount, e.FuncName, e.Err)
+	}
+	return str
+}
+
 func GetSolrClientMock() *SolrClientMock {
 	sc := &SolrClientMock{
 		GoldenFileHashes: make(map[string]string),
@@ -141,7 +149,7 @@ func (sc *SolrClientMock) CheckAssertions() error {
 	// If there were files to be indexed, assert that all were indexed
 	if sc.ExpectedCallOrder.Commit != IGNORE_CALL_ORDER && sc.NumberOfFilesToIndex > 0 {
 		if !sc.IsComplete() {
-			errs = append(errs, fmt.Errorf("not all files were added to the Solr index. Remaining values: %v", sc.GoldenFileHashes))
+			errs = append(errs, fmt.Errorf("not all files were added to the Solr index. Remaining values: \n%s", sc.GoldenFileHashesToString()))
 		}
 	}
 
@@ -188,6 +196,10 @@ func (sc *SolrClientMock) CheckAssertions() error {
 func (sc *SolrClientMock) CheckAssertionsViaEvents() error {
 	errs := []error{}
 
+	// fmt.Println("---------------------------------------------------------------")
+	// fmt.Printf("EXPECTED:\n%v\n", EventsToString(sc.ExpectedEvents))
+	// fmt.Printf("ACTUAL  :\n%v\n", EventsToString(sc.ActualEvents))
+
 	if len(sc.ExpectedEvents) != len(sc.ActualEvents) {
 		return fmt.Errorf("error: %s : mismatched events array length: expected %d events, but got %d", sc.sut, len(sc.ExpectedEvents), len(sc.ActualEvents))
 	}
@@ -208,6 +220,7 @@ func (sc *SolrClientMock) CheckAssertionsViaEvents() error {
 	// all assertions passed
 	return nil
 }
+
 func (sc *SolrClientMock) Commit() error {
 
 	sc.CallCount++
@@ -237,6 +250,14 @@ func (sc *SolrClientMock) GetSolrURLOrigin() string {
 	return sc.urlOrigin
 }
 
+func (sc *SolrClientMock) GoldenFileHashesToString() string {
+	var str string
+	for k, v := range sc.GoldenFileHashes {
+		str += fmt.Sprintf("%s  %s\n", k, v)
+	}
+	return str
+}
+
 // testEAD = repositoryCode+filesystem separator+eadID (e.g. "fales/mss_460")
 func (sc *SolrClientMock) InitMockForIndexing(testEAD string) error {
 	// reset the solr client mock
@@ -250,35 +271,6 @@ func (sc *SolrClientMock) InitMockForIndexing(testEAD string) error {
 
 	// record the number of files to index
 	sc.NumberOfFilesToIndex = len(sc.GoldenFileHashes)
-	return nil
-}
-
-func (sc *SolrClientMock) updateGoldenFileHashes(testEAD string) error {
-	// load the golden file IDs
-	// assumes all files in the directory are golden files
-	// and that all files will be consumed by the test
-	goldenFileIDs := eadtestutils.GetGoldenFileIDs(testEAD)
-
-	// load the golden file hashes map
-	h := md5.New()
-	for _, goldenFileID := range goldenFileIDs {
-		goldenFileContents, err := eadtestutils.GetGoldenFileValue(testEAD, goldenFileID)
-		if err != nil {
-			return err
-		}
-
-		h.Reset()
-		h.Write([]byte(goldenFileContents))
-		sum := formattedHashSum(h)
-		goldenFilePath := eadtestutils.GoldenFilePath(testEAD, goldenFileID)
-
-		if sc.GoldenFileHashes[sum] != "" {
-			return fmt.Errorf("duplicate hash '%s' found in golden file hashes for file: %s, file already in hash: %s", sum, goldenFilePath, sc.GoldenFileHashes[sum])
-		}
-		// no collision, add the hash to the golden file hash map
-		sc.GoldenFileHashes[sum] = goldenFilePath
-	}
-
 	return nil
 }
 
@@ -356,95 +348,16 @@ func (sc *SolrClientMock) UpdateMockForIndexEADFile(testEAD, eadid string) error
 	return nil
 }
 
-func (sc *SolrClientMock) addCommitEvent() {
-	sc.expectedCallCount++
-	sc.ExpectedEvents = append(sc.ExpectedEvents, Event{
-		FuncName:  "Commit",
-		Err:       nil,
-		CallCount: sc.expectedCallCount})
-}
-
-func (sc *SolrClientMock) addRollbackEvent() {
-	sc.expectedCallCount++
-	sc.ExpectedEvents = append(sc.ExpectedEvents, Event{
-		FuncName:  "Rollback",
-		Err:       nil,
-		CallCount: sc.expectedCallCount})
-}
-
-func (sc *SolrClientMock) addDeleteEvent(eadid string) {
-	sc.expectedCallCount++
-	sc.ExpectedEvents = append(sc.ExpectedEvents, Event{
-		Args:      []string{eadid},
-		CallCount: sc.expectedCallCount,
-		Err:       nil,
-		FuncName:  Delete,
-	})
-}
-
-func (sc *SolrClientMock) addAddEvent() {
-	sc.expectedCallCount++
-	sc.ExpectedEvents = append(sc.ExpectedEvents, Event{FuncName: "Add", CallCount: sc.expectedCallCount, Args: []string{"XMLPostBody"}})
+func (sc *SolrClientMock) UpdateMockForDeleteEADFileDataFromIndex(eadid string) error {
+	// update the expected events
+	sc.addDeleteEvent(eadid)
+	sc.addCommitEvent()
+	return nil
 }
 
 // ------------------------------------------------------------------------------
 // private functions
 // ------------------------------------------------------------------------------
-func formattedHashSum(h hash.Hash) string {
-	return fmt.Sprintf("%x", h.Sum(nil))
-}
-
-// ------------------------------------------------------------------------------
-// private SolrClientMock methods
-// ------------------------------------------------------------------------------
-func (sc *SolrClientMock) updateHash(xmlPostBody string) error {
-	h := md5.New()
-	io.WriteString(h, xmlPostBody)
-
-	hash := formattedHashSum(h)
-	if _, ok := sc.GoldenFileHashes[hash]; !ok {
-		return fmt.Errorf("hash '%s' not found in golden file hashes", hash)
-	}
-	// remove the hash from the golden file hash map
-	delete(sc.GoldenFileHashes, hash)
-	return nil
-}
-
-func (sc *SolrClientMock) checkForErrorEvent() error {
-	// scan the error events to see if there is a match between the caller and CallerName
-	// and the CallCount
-	// if so, return the error message
-	// iterate through range of ErrorEvents
-	// if the caller name and call count match, return the error message
-	// if no match, return nil
-	callerName := ""
-	pc, _, _, ok := runtime.Caller(1) // 1 means caller of the caller
-	if ok {
-		callerName = runtime.FuncForPC(pc).Name()
-	}
-
-	// iterate through the error events
-	// looking for a matching event
-	if callerName != "" {
-		for _, event := range sc.ErrorEvents {
-			if ("github.com/nyulibraries/go-ead-indexer/pkg/index/testutils.(*SolrClientMock)."+event.FuncName) == callerName && event.CallCount == sc.CallCount {
-				return fmt.Errorf(event.ErrorMessage)
-			}
-		}
-	}
-	return nil
-}
-
-func (sc *SolrClientMock) updateEvents(funcName FunctionName, args []string, err error) {
-	event := Event{
-		Args:      args,
-		CallCount: sc.CallCount,
-		Err:       err,
-		FuncName:  funcName,
-	}
-	sc.ActualEvents = append(sc.ActualEvents, event)
-}
-
 func assertEventMatch(expectedEvent Event, actualEvent Event, sut string) []error {
 	/*
 		check that the function name is the same
@@ -486,4 +399,126 @@ func assertEventMatch(expectedEvent Event, actualEvent Event, sut string) []erro
 	}
 
 	return errs
+}
+
+func formattedHashSum(h hash.Hash) string {
+	return fmt.Sprintf("%x", h.Sum(nil))
+}
+
+// ------------------------------------------------------------------------------
+// private SolrClientMock methods
+// ------------------------------------------------------------------------------
+func (sc *SolrClientMock) addAddEvent() {
+	sc.expectedCallCount++
+	sc.ExpectedEvents = append(sc.ExpectedEvents, Event{
+		Args:      []string{"XMLPostBody"},
+		CallCount: sc.expectedCallCount,
+		Err:       nil,
+		FuncName:  "Add",
+	})
+}
+
+func (sc *SolrClientMock) addCommitEvent() {
+	sc.expectedCallCount++
+	sc.ExpectedEvents = append(sc.ExpectedEvents, Event{
+		CallCount: sc.expectedCallCount,
+		Err:       nil,
+		FuncName:  "Commit",
+	})
+}
+
+func (sc *SolrClientMock) addDeleteEvent(eadid string) {
+	sc.expectedCallCount++
+	sc.ExpectedEvents = append(sc.ExpectedEvents, Event{
+		Args:      []string{eadid},
+		CallCount: sc.expectedCallCount,
+		Err:       nil,
+		FuncName:  Delete,
+	})
+}
+
+func (sc *SolrClientMock) addRollbackEvent() {
+	sc.expectedCallCount++
+	sc.ExpectedEvents = append(sc.ExpectedEvents, Event{
+		CallCount: sc.expectedCallCount,
+		Err:       nil,
+		FuncName:  "Rollback",
+	})
+}
+
+func (sc *SolrClientMock) checkForErrorEvent() error {
+	// scan the error events to see if there is a match between the caller and CallerName
+	// and the CallCount
+	// if so, return the error message
+	// iterate through range of ErrorEvents
+	// if the caller name and call count match, return the error message
+	// if no match, return nil
+	callerName := ""
+	pc, _, _, ok := runtime.Caller(1) // 1 means caller of the caller
+	if ok {
+		callerName = runtime.FuncForPC(pc).Name()
+	}
+
+	// iterate through the error events
+	// looking for a matching event
+	if callerName != "" {
+		for _, event := range sc.ErrorEvents {
+			if ("github.com/nyulibraries/go-ead-indexer/pkg/index/testutils.(*SolrClientMock)."+event.FuncName) == callerName && event.CallCount == sc.CallCount {
+				return fmt.Errorf(event.ErrorMessage)
+			}
+		}
+	}
+	return nil
+}
+
+func (sc *SolrClientMock) updateEvents(funcName FunctionName, args []string, err error) {
+	event := Event{
+		Args:      args,
+		CallCount: sc.CallCount,
+		Err:       err,
+		FuncName:  funcName,
+	}
+	sc.ActualEvents = append(sc.ActualEvents, event)
+}
+
+func (sc *SolrClientMock) updateGoldenFileHashes(testEAD string) error {
+	// load the golden file IDs
+	// assumes all files in the directory are golden files
+	// and that all files will be consumed by the test
+	goldenFileIDs := eadtestutils.GetGoldenFileIDs(testEAD)
+
+	// load the golden file hashes map
+	h := md5.New()
+	for _, goldenFileID := range goldenFileIDs {
+		goldenFileContents, err := eadtestutils.GetGoldenFileValue(testEAD, goldenFileID)
+		if err != nil {
+			return err
+		}
+
+		h.Reset()
+		h.Write([]byte(goldenFileContents))
+		sum := formattedHashSum(h)
+		goldenFilePath := eadtestutils.GoldenFilePath(testEAD, goldenFileID)
+
+		if sc.GoldenFileHashes[sum] != "" {
+			return fmt.Errorf("duplicate hash '%s' found in golden file hashes for file: %s, file already in hash: %s", sum, goldenFilePath, sc.GoldenFileHashes[sum])
+		}
+		// no collision, add the hash to the golden file hash map
+		sc.GoldenFileHashes[sum] = goldenFilePath
+	}
+
+	return nil
+}
+
+func (sc *SolrClientMock) updateHash(xmlPostBody string) error {
+	h := md5.New()
+	io.WriteString(h, xmlPostBody)
+
+	hash := formattedHashSum(h)
+	if _, ok := sc.GoldenFileHashes[hash]; !ok {
+		return fmt.Errorf("hash '%s' not found in golden file hashes", hash)
+	}
+	// remove the hash from the golden file hash map
+	delete(sc.GoldenFileHashes, hash)
+	return nil
 }
