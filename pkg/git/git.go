@@ -32,7 +32,7 @@ func Checkout(repoPath string, commitHash string) error {
 		Hash: plumbing.NewHash(commitHash),
 	})
 	if err != nil {
-		return err
+		return fmt.Errorf("problem checking out hash '%s', error: '%s'", commitHash, err.Error())
 	}
 
 	return nil

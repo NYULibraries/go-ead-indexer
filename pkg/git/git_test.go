@@ -14,6 +14,7 @@ a5ca6cca30fc08cfc13e4f1492dbfbbf3ec7cf63 2025-02-13 14:16:29 -0500 | Updating fi
 */
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
 	"runtime"
@@ -93,6 +94,38 @@ func TestCheckout(t *testing.T) {
 				t.Errorf("expected file '%s' to exist for commit hash '%s'", filePath, scenario.Hash)
 			}
 		}
+	}
+}
+
+func TestCheckoutBadHash(t *testing.T) {
+	// cleanup any leftovers from interrupted tests
+	deleteTestGitRepo(t)
+
+	createTestGitRepo(t)
+	defer deleteTestGitRepo(t)
+
+	badHash := "this is not a valid hash"
+	err := Checkout(gitRepoTestGitRepoPathAbsolute, badHash)
+	if err == nil {
+		t.Errorf("expected error but no error generated")
+		return
+	}
+
+	exp := fmt.Sprintf("problem checking out hash '%s', error: 'reference not found'", badHash)
+	if err.Error() != exp {
+		t.Errorf("expected error message '%s', got '%s'", exp, err.Error())
+	}
+}
+
+func TestCheckoutBadPath(t *testing.T) {
+	err := Checkout("this-is-not-a-real-path", "33ac5f1415ac8fe611944bad4925528b62e845c8")
+	if err == nil {
+		t.Errorf("expected error but no error generated")
+		return
+	}
+	exp := "repository does not exist"
+	if err.Error() != exp {
+		t.Errorf("expected error message '%s', got '%s'", exp, err.Error())
 	}
 }
 
