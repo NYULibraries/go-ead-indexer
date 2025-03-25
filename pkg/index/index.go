@@ -133,7 +133,11 @@ func IndexGitCommit(repoPath, commit string) error {
 		return appendAndJoinErrs(errs, err)
 	}
 
-	// TODO: YOU MUST CHECKOUT THE GIT COMMIT
+	// checkout the git commit
+	err = git.Checkout(repoPath, commit)
+	if err != nil {
+		return appendAndJoinErrs(errs, err)
+	}
 
 	// get the list of EAD files and their operations
 	indexerOperations, err := git.ListEADFilesForCommit(repoPath, commit)
@@ -145,7 +149,7 @@ func IndexGitCommit(repoPath, commit string) error {
 	for eadPath, operation := range indexerOperations {
 		switch operation {
 		case git.Add:
-			err = IndexEADFile(eadPath)
+			err = IndexEADFile(filepath.Join(repoPath, eadPath))
 			if err != nil {
 				return appendErrIssueRollbackJoinErrs(errs, err)
 			}
