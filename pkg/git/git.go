@@ -15,20 +15,16 @@ var regexpString = fmt.Sprintf("^.*%s(\\w+).xml$", string(filepath.Separator))
 var eadPathExtractEadIDRegExp = regexp.MustCompile(regexpString)
 
 type IndexerOperation string
+type IndexerStep struct {
+	Operation IndexerOperation
+	FilePath  string
+}
 
 const (
 	Add     IndexerOperation = "add"
 	Delete  IndexerOperation = "delete"
 	Unknown IndexerOperation = "unknown"
 )
-
-func EADPathToEADID(path string) (string, error) {
-	matches := eadPathExtractEadIDRegExp.FindStringSubmatch(path)
-	if len(matches) > 1 {
-		return matches[1], nil
-	}
-	return "", fmt.Errorf("unable to extract EADID from path '%s'", path)
-}
 
 func Checkout(repoPath string, commitHash string) error {
 	repo, err := gogit.PlainOpen(repoPath)
@@ -51,9 +47,17 @@ func Checkout(repoPath string, commitHash string) error {
 	return nil
 }
 
-func ListEADFilesForCommit(repoPath string, thisCommitHashString string) (map[string]IndexerOperation, error) {
+func EADPathToEADID(path string) (string, error) {
+	matches := eadPathExtractEadIDRegExp.FindStringSubmatch(path)
+	if len(matches) > 1 {
+		return matches[1], nil
+	}
+	return "", fmt.Errorf("unable to extract EADID from path '%s'", path)
+}
 
-	operations := make(map[string]IndexerOperation)
+func ListEADFilesForCommit(repoPath string, thisCommitHashString string) ([]IndexerStep, error) {
+
+	var steps []IndexerStep
 
 	// Opens an already existing repository.
 	repo, err := gogit.PlainOpen(repoPath)
@@ -82,9 +86,9 @@ func ListEADFilesForCommit(repoPath string, thisCommitHashString string) (map[st
 			if err != nil {
 				break
 			}
-			operations[file.Name] = Add
+			steps = append(steps, IndexerStep{Operation: Add, FilePath: file.Name})
 		}
-		return operations, nil
+		return steps, nil
 	}
 
 	// Get the parent commit
@@ -110,13 +114,14 @@ func ListEADFilesForCommit(repoPath string, thisCommitHashString string) (map[st
 			continue
 		}
 
-		operations[k] = v
+		steps = append(steps, IndexerStep{Operation: v, FilePath: k})
 	}
+
 	if len(errs) != 0 {
 		return nil, errors.Join(errs...)
 	}
 
-	return operations, nil
+	return steps, nil
 }
 
 func getPath(f diff.File) string {

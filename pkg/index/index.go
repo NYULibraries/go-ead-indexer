@@ -140,22 +140,22 @@ func IndexGitCommit(repoPath, commit string) error {
 	}
 
 	// get the list of EAD files and their operations
-	indexerOperations, err := git.ListEADFilesForCommit(repoPath, commit)
+	indexerSteps, err := git.ListEADFilesForCommit(repoPath, commit)
 	if err != nil {
 		return appendAndJoinErrs(errs, err)
 	}
 
 	// iterate over the EAD files and their operations
-	for eadPath, operation := range indexerOperations {
-		switch operation {
+	for _, step := range indexerSteps {
+		switch step.Operation {
 		case git.Add:
-			err = IndexEADFile(filepath.Join(repoPath, eadPath))
+			err = IndexEADFile(filepath.Join(repoPath, step.FilePath))
 			if err != nil {
 				return appendErrIssueRollbackJoinErrs(errs, err)
 			}
 
 		case git.Delete:
-			eadID, err := git.EADPathToEADID(eadPath)
+			eadID, err := git.EADPathToEADID(step.FilePath)
 			if err != nil {
 				return appendAndJoinErrs(errs, err)
 			}
@@ -166,7 +166,7 @@ func IndexGitCommit(repoPath, commit string) error {
 			}
 
 		default:
-			return appendAndJoinErrs(errs, fmt.Errorf("unknown operation: %s", operation))
+			return appendAndJoinErrs(errs, fmt.Errorf("unknown operation: %s", step.Operation))
 		}
 	}
 

@@ -619,72 +619,54 @@ func TestIndexGitCommit_SolrClientMissingOriginURL(t *testing.T) {
 	testutils.AssertErrorMessageContainsString(t, sut, err, expectedErrStringFragment)
 }
 
-func TestIndexGitCommit_Success_Events(t *testing.T) {
+func TestIndexGitCommit_AddAll(t *testing.T) {
+	// cleanup any leftovers from interrupted tests
+	deleteTestGitRepo(t)
+
+	createTestGitRepo(t)
+	defer deleteTestGitRepo(t)
 
 	/*
-		set up git repo
-		get absolute repo path
-		set up expectations
-		run transaction
-		check expectations
+			set up git repo
+			get absolute repo path
+			set up expectations
+			run transaction
+			check expectations
 
-		# Commit history replicated in repo (NOTE: commit hashes WILL differ)
-		# e5c5336b63b109b68c495bbfea94d30ecbc1ef67 2025-03-24 19:53:31 -0400 | Updating akkasah/ad_mc_030.xml, Updating cbh/arc_212_plymouth_beecher.xml, Updating edip/mos_2024.xml, Deleting file nyuad/ad_mc_019.xml EADID='ad_mc_019', Deleting file tamwag/tam_143.xml EADID='tam_143' (HEAD -> main) [jgpawletko]
-		# e4bfc536020c4477044633ac7a57242bb6f67cee 2025-03-24 19:53:30 -0400 | Updating nyuad/ad_mc_019.xml, Updating tamwag/tam_143.xml [jgpawletko]
-		# 2fee15ffc217a86d19756a6c816f59ca86e23893 2025-03-24 19:53:30 -0400 | Deleting file fales/mss_460.xml EADID='mss_460' [jgpawletko]
-		# fdd7ce5e54b88894460b52dd0dd27055ffb3bbdd 2025-03-24 19:53:30 -0400 | Updating fales/mss_460.xml [jgpawletko]
-		# e4fe6008decb5f26382fae903de40a4f3470d509 2025-03-24 19:53:30 -0400 | Deleting file akkasah/ad_mc_030.xml EADID='ad_mc_030', Deleting file cbh/arc_212_plymouth_beecher.xml EADID='arc_212_plymouth_beecher', Deleting file edip/mos_2024.xml EADID='mos_2024', Deleting file fales/mss_420.xml EADID='mss_420', Deleting file fales/mss_460.xml EADID='mss_460', Deleting file nyhs/ms256_harmon_hendricks_goldstone.xml EADID='ms256_harmon_hendricks_goldstone', Deleting file nyhs/ms347_foundling_hospital.xml EADID='ms347_foundling_hospital', Deleting file nyuad/ad_mc_019.xml EADID='ad_mc_019', Deleting file tamwag/tam_143.xml EADID='tam_143' [jgpawletko]
-		# 5546ffda27581c4933aeb4102f6a0107c3e522ff 2025-03-24 19:53:30 -0400 | Updating akkasah/ad_mc_030.xml, Updating cbh/arc_212_plymouth_beecher.xml, Updating edip/mos_2024.xml, Updating fales/mss_420.xml, Updating fales/mss_460.xml, Updating nyhs/ms256_harmon_hendricks_goldstone.xml, Updating nyhs/ms347_foundling_hospital.xml, Updating nyuad/ad_mc_019.xml, Updating tamwag/tam_143.xml [jgpawletko]
-
+			# Commit history replicated in repo (NOTE: commit hashes WILL differ)
+		    # 5546ffda27581c4933aeb4102f6a0107c3e522ff 2025-03-24 19:53:30 -0400 | Updating akkasah/ad_mc_030.xml, Updating cbh/arc_212_plymouth_beecher.xml, Updating edip/mos_2024.xml, Updating fales/mss_420.xml, Updating fales/mss_460.xml, Updating nyhs/ms256_harmon_hendricks_goldstone.xml, Updating nyhs/ms347_foundling_hospital.xml, Updating nyuad/ad_mc_019.xml, Updating tamwag/tam_143.xml [jgpawletko]
 	*/
 	sc := testutils.GetSolrClientMock()
 	sc.Reset()
 
-	repositoryCode := "fales"
-	eadid := "mss_460"
-	testEAD := filepath.Join(repositoryCode, eadid)
-	var eadPath = eadtestutils.EadFixturePath(testEAD)
-	eadPathFales := eadPath
-	err := sc.UpdateMockForIndexEADFile(testEAD, eadid)
-	if err != nil {
-		t.Errorf("Error updating the SolrClientMock: %s", err)
-		t.FailNow()
+	testEADs := [][]string{
+		{"akkasah", "ad_mc_030"},
+		{"cbh", "arc_212_plymouth_beecher"},
+		{"edip", "mos_2024"},
+		{"fales", "mss_420"},
+		{"fales", "mss_460"},
+		{"nyhs", "ms256_harmon_hendricks_goldstone"},
+		{"nyhs", "ms347_foundling_hospital"},
+		{"nyuad", "ad_mc_019"},
+		{"tamwag", "tam_143"},
 	}
 
-	repositoryCode = "edip"
-	eadid = "mos_2024"
-	err = sc.UpdateMockForDeleteEADFileDataFromIndex(eadid)
-	if err != nil {
-		t.Errorf("Error updating the SolrClientMock: %s", err)
-		t.FailNow()
-	}
-
-	repositoryCode = "nyuad"
-	eadid = "ad_mc_019"
-	testEAD = filepath.Join(repositoryCode, eadid)
-	eadPath = eadtestutils.EadFixturePath(testEAD)
-	eadPathNYUAD := eadPath
-	err = sc.UpdateMockForIndexEADFile(testEAD, eadid)
-	if err != nil {
-		t.Errorf("Error updating the SolrClientMock: %s", err)
-		t.FailNow()
+	for _, testEAD := range testEADs {
+		repositoryCode := testEAD[0]
+		eadid := testEAD[1]
+		testEAD := filepath.Join(repositoryCode, eadid)
+		err := sc.UpdateMockForIndexEADFile(testEAD, eadid)
+		if err != nil {
+			t.Errorf("Error updating the SolrClientMock: %s", err)
+			t.FailNow()
+		}
 	}
 
 	// Set the Solr client
 	SetSolrClient(sc)
 
 	// Index the EAD file
-	err = IndexEADFile(eadPathFales)
-	if err != nil {
-		t.Errorf("Error indexing EAD file: %s", err)
-	}
-
-	err = DeleteEADFileDataFromIndex("mos_2024")
-	if err != nil {
-		t.Errorf("Error deleting EADID data: %s", err)
-	}
-
-	err = IndexEADFile(eadPathNYUAD)
+	err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute, "5546ffda27581c4933aeb4102f6a0107c3e522ff")
 	if err != nil {
 		t.Errorf("Error indexing EAD file: %s", err)
 	}

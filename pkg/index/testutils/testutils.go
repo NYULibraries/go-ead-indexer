@@ -87,7 +87,18 @@ func AssertErrorMessageContainsString(t *testing.T, fname string, err error, str
 func EventsToString(events []Event) string {
 	var str string
 	for _, e := range events {
-		str += fmt.Sprintf("%4d  %10s  %s\n", e.CallCount, e.FuncName, e.Err)
+		if e.FuncName != Delete {
+			continue
+		}
+		args := ""
+		if e.FuncName != Add {
+			args = strings.Join(e.Args, ",")
+		}
+		err := ""
+		if e.Err != nil {
+			err = e.Err.Error()
+		}
+		str += fmt.Sprintf("%5d  %-8s  %-35s  %s\n", e.CallCount, e.FuncName, args, err)
 	}
 	return str
 }
