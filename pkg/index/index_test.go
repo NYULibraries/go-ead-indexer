@@ -11,6 +11,16 @@ import (
 	"github.com/nyulibraries/go-ead-indexer/pkg/index/testutils"
 )
 
+/*
+	# Commit history from test fixture (NOTE: double check commit hashes)
+	e5c5336b63b109b68c495bbfea94d30ecbc1ef67 2025-03-24 19:53:31 -0400 | Updating akkasah/ad_mc_030.xml, Updating cbh/arc_212_plymouth_beecher.xml, Updating edip/mos_2024.xml, Deleting file nyuad/ad_mc_019.xml EADID='ad_mc_019', Deleting file tamwag/tam_143.xml EADID='tam_143' (HEAD -> main) [jgpawletko]
+	e4bfc536020c4477044633ac7a57242bb6f67cee 2025-03-24 19:53:30 -0400 | Updating nyuad/ad_mc_019.xml, Updating tamwag/tam_143.xml [jgpawletko]
+	2fee15ffc217a86d19756a6c816f59ca86e23893 2025-03-24 19:53:30 -0400 | Deleting file fales/mss_460.xml EADID='mss_460' [jgpawletko]
+	fdd7ce5e54b88894460b52dd0dd27055ffb3bbdd 2025-03-24 19:53:30 -0400 | Updating fales/mss_460.xml [jgpawletko]
+	e4fe6008decb5f26382fae903de40a4f3470d509 2025-03-24 19:53:30 -0400 | Deleting file akkasah/ad_mc_030.xml EADID='ad_mc_030', Deleting file cbh/arc_212_plymouth_beecher.xml EADID='arc_212_plymouth_beecher', Deleting file edip/mos_2024.xml EADID='mos_2024', Deleting file fales/mss_420.xml EADID='mss_420', Deleting file fales/mss_460.xml EADID='mss_460', Deleting file nyhs/ms256_harmon_hendricks_goldstone.xml EADID='ms256_harmon_hendricks_goldstone', Deleting file nyhs/ms347_foundling_hospital.xml EADID='ms347_foundling_hospital', Deleting file nyuad/ad_mc_019.xml EADID='ad_mc_019', Deleting file tamwag/tam_143.xml EADID='tam_143' [jgpawletko]
+	5546ffda27581c4933aeb4102f6a0107c3e522ff 2025-03-24 19:53:30 -0400 | Updating akkasah/ad_mc_030.xml, Updating cbh/arc_212_plymouth_beecher.xml, Updating edip/mos_2024.xml, Updating fales/mss_420.xml, Updating fales/mss_460.xml, Updating nyhs/ms256_harmon_hendricks_goldstone.xml, Updating nyhs/ms347_foundling_hospital.xml, Updating nyuad/ad_mc_019.xml, Updating tamwag/tam_143.xml [jgpawletko]
+*/
+
 var thisPath string
 var gitSourceRepoPathAbsolute string
 var gitRepoTestGitRepoPathAbsolute string
@@ -579,46 +589,6 @@ func TestIndexEADFile_Success_Events(t *testing.T) {
 	}
 }
 
-func TestIndexGitCommit_SolrClientNotSet(t *testing.T) {
-
-	sut := "IndexGitCommit"
-	expectedErrStringFragment := "you must call `SetSolrClient()` before calling any indexing functions"
-	repoPath := "/foo/bar"
-	commit := "a5ca6cca30fc08cfc13e4f1492dbfbbf3ec7cf63"
-
-	SetSolrClient(nil)
-
-	// trigger the error
-	err := IndexGitCommit(repoPath, commit)
-
-	testutils.AssertError(t, sut, err)
-	testutils.AssertErrorMessageContainsString(t, sut, err, expectedErrStringFragment)
-}
-
-func TestIndexGitCommit_SolrClientMissingOriginURL(t *testing.T) {
-
-	sut := "IndexGitCommit"
-	expectedErrStringFragment := "the SolrClient URL origin is not set"
-	repoPath := "/foo/bar"
-	commit := "a5ca6cca30fc08cfc13e4f1492dbfbbf3ec7cf63"
-
-	sc := testutils.GetSolrClientMock()
-	err := sc.InitMockForDelete(sut)
-	if err != nil {
-		t.Errorf("Error initializing the Solr client for delete testing: %s", err)
-		t.FailNow()
-	}
-
-	sc.SetSolrURLOrigin("")
-	SetSolrClient(sc)
-
-	// trigger the error
-	err = IndexGitCommit(repoPath, commit)
-
-	testutils.AssertError(t, sut, err)
-	testutils.AssertErrorMessageContainsString(t, sut, err, expectedErrStringFragment)
-}
-
 func TestIndexGitCommit_AddAll(t *testing.T) {
 	// cleanup any leftovers from interrupted tests
 	deleteTestGitRepo(t)
@@ -773,6 +743,46 @@ func TestIndexGitCommit_DeleteOne(t *testing.T) {
 	if !sc.IsComplete() {
 		t.Errorf("not all files were added to the Solr index. Remaining values: \n%v", sc.GoldenFileHashesToString())
 	}
+}
+
+func TestIndexGitCommit_SolrClientNotSet(t *testing.T) {
+
+	sut := "IndexGitCommit"
+	expectedErrStringFragment := "you must call `SetSolrClient()` before calling any indexing functions"
+	repoPath := "/foo/bar"
+	commit := "a5ca6cca30fc08cfc13e4f1492dbfbbf3ec7cf63"
+
+	SetSolrClient(nil)
+
+	// trigger the error
+	err := IndexGitCommit(repoPath, commit)
+
+	testutils.AssertError(t, sut, err)
+	testutils.AssertErrorMessageContainsString(t, sut, err, expectedErrStringFragment)
+}
+
+func TestIndexGitCommit_SolrClientMissingOriginURL(t *testing.T) {
+
+	sut := "IndexGitCommit"
+	expectedErrStringFragment := "the SolrClient URL origin is not set"
+	repoPath := "/foo/bar"
+	commit := "a5ca6cca30fc08cfc13e4f1492dbfbbf3ec7cf63"
+
+	sc := testutils.GetSolrClientMock()
+	err := sc.InitMockForDelete(sut)
+	if err != nil {
+		t.Errorf("Error initializing the Solr client for delete testing: %s", err)
+		t.FailNow()
+	}
+
+	sc.SetSolrURLOrigin("")
+	SetSolrClient(sc)
+
+	// trigger the error
+	err = IndexGitCommit(repoPath, commit)
+
+	testutils.AssertError(t, sut, err)
+	testutils.AssertErrorMessageContainsString(t, sut, err, expectedErrStringFragment)
 }
 
 // func TestIndexGitCommit_ErrorOnRollback(t *testing.T) {
