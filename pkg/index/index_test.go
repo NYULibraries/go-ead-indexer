@@ -13,14 +13,23 @@ import (
 
 /*
 	# Commit history from test fixture (NOTE: double check commit hashes)
-	e5c5336b63b109b68c495bbfea94d30ecbc1ef67 2025-03-24 19:53:31 -0400 | Updating akkasah/ad_mc_030.xml, Updating cbh/arc_212_plymouth_beecher.xml, Updating edip/mos_2024.xml, Deleting file nyuad/ad_mc_019.xml EADID='ad_mc_019', Deleting file tamwag/tam_143.xml EADID='tam_143' (HEAD -> main) [jgpawletko]
-	e4bfc536020c4477044633ac7a57242bb6f67cee 2025-03-24 19:53:30 -0400 | Updating nyuad/ad_mc_019.xml, Updating tamwag/tam_143.xml [jgpawletko]
-	2fee15ffc217a86d19756a6c816f59ca86e23893 2025-03-24 19:53:30 -0400 | Deleting file fales/mss_460.xml EADID='mss_460' [jgpawletko]
-	fdd7ce5e54b88894460b52dd0dd27055ffb3bbdd 2025-03-24 19:53:30 -0400 | Updating fales/mss_460.xml [jgpawletko]
-	e4fe6008decb5f26382fae903de40a4f3470d509 2025-03-24 19:53:30 -0400 | Deleting file akkasah/ad_mc_030.xml EADID='ad_mc_030', Deleting file cbh/arc_212_plymouth_beecher.xml EADID='arc_212_plymouth_beecher', Deleting file edip/mos_2024.xml EADID='mos_2024', Deleting file fales/mss_420.xml EADID='mss_420', Deleting file fales/mss_460.xml EADID='mss_460', Deleting file nyhs/ms256_harmon_hendricks_goldstone.xml EADID='ms256_harmon_hendricks_goldstone', Deleting file nyhs/ms347_foundling_hospital.xml EADID='ms347_foundling_hospital', Deleting file nyuad/ad_mc_019.xml EADID='ad_mc_019', Deleting file tamwag/tam_143.xml EADID='tam_143' [jgpawletko]
-	5546ffda27581c4933aeb4102f6a0107c3e522ff 2025-03-24 19:53:30 -0400 | Updating akkasah/ad_mc_030.xml, Updating cbh/arc_212_plymouth_beecher.xml, Updating edip/mos_2024.xml, Updating fales/mss_420.xml, Updating fales/mss_460.xml, Updating nyhs/ms256_harmon_hendricks_goldstone.xml, Updating nyhs/ms347_foundling_hospital.xml, Updating nyuad/ad_mc_019.xml, Updating tamwag/tam_143.xml [jgpawletko]
+	b2456cf44f6ff4cefeb621ef2f4cde76218327d5 2025-03-25 20:36:43 -0400 | Updating akkasah/ad_mc_030.xml, Deleting file nyuad/ad_mc_019.xml EADID='ad_mc_019', Updating cbh/arc_212_plymouth_beecher.xml, Deleting file tamwag/tam_143.xml EADID='tam_143', Updating edip/mos_2024.xml (HEAD -> main) [jgpawletko]
+	2d92cc3b6044baa5f81f7dfea7f4ef62e9ad79f8 2025-03-25 20:36:43 -0400 | Updating nyuad/ad_mc_019.xml, Updating tamwag/tam_143.xml [jgpawletko]
+	d645dd85d30c34154859ebdf8cb6283d5d26f9ba 2025-03-25 20:36:43 -0400 | Deleting file fales/mss_460.xml EADID='mss_460' [jgpawletko]
+	4c05856d09a0e49dfd90b4a8e4cb22e63d763cd8 2025-03-25 20:36:43 -0400 | Updating fales/mss_460.xml [jgpawletko]
+	ab44066dc4620b8192cd7ca7635041ef7eeab182 2025-03-25 20:36:43 -0400 | Deleting file akkasah/ad_mc_030.xml EADID='ad_mc_030', Deleting file cbh/arc_212_plymouth_beecher.xml EADID='arc_212_plymouth_beecher', Deleting file edip/mos_2024.xml EADID='mos_2024', Deleting file fales/mss_420.xml EADID='mss_420', Deleting file fales/mss_460.xml EADID='mss_460', Deleting file nyhs/ms256_harmon_hendricks_goldstone.xml EADID='ms256_harmon_hendricks_goldstone', Deleting file nyhs/ms347_foundling_hospital.xml EADID='ms347_foundling_hospital', Deleting file nyuad/ad_mc_019.xml EADID='ad_mc_019', Deleting file tamwag/tam_143.xml EADID='tam_143' [jgpawletko]
+	efc4241323a6250b22ae4171547bf6f832e3d7d9 2025-03-25 20:36:42 -0400 | Updating akkasah/ad_mc_030.xml, Updating cbh/arc_212_plymouth_beecher.xml, Updating edip/mos_2024.xml, Updating fales/mss_420.xml, Updating fales/mss_460.xml, Updating nyhs/ms256_harmon_hendricks_goldstone.xml, Updating nyhs/ms347_foundling_hospital.xml, Updating nyuad/ad_mc_019.xml, Updating tamwag/tam_143.xml [jgpawletko]
 */
 
+// hashes from the git-repo fixture
+var addAllHash = "efc4241323a6250b22ae4171547bf6f832e3d7d9"
+var addOneHash = "4c05856d09a0e49dfd90b4a8e4cb22e63d763cd8"
+var addThreeDeleteTwoHash = "b2456cf44f6ff4cefeb621ef2f4cde76218327d5"
+var addTwoHash = "2d92cc3b6044baa5f81f7dfea7f4ef62e9ad79f8"
+var deleteAllHash = "ab44066dc4620b8192cd7ca7635041ef7eeab182"
+var deleteOneHash = "d645dd85d30c34154859ebdf8cb6283d5d26f9ba"
+
+// test git repo paths
 var thisPath string
 var gitSourceRepoPathAbsolute string
 var gitRepoTestGitRepoPathAbsolute string
@@ -593,7 +602,7 @@ func TestIndexGitCommit_AddAll(t *testing.T) {
 	SetSolrClient(sc)
 
 	// Index the EAD file
-	err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute, "5546ffda27581c4933aeb4102f6a0107c3e522ff")
+	err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute, addAllHash)
 	if err != nil {
 		t.Errorf("Error indexing EAD file: %s", err)
 	}
@@ -641,7 +650,124 @@ func TestIndexGitCommit_AddOne(t *testing.T) {
 	SetSolrClient(sc)
 
 	// Index the EAD file
-	err = IndexGitCommit(gitRepoTestGitRepoPathAbsolute, "fdd7ce5e54b88894460b52dd0dd27055ffb3bbdd")
+	err = IndexGitCommit(gitRepoTestGitRepoPathAbsolute, addOneHash)
+	if err != nil {
+		t.Errorf("Error indexing EAD file: %s", err)
+	}
+
+	err = sc.CheckAssertionsViaEvents()
+	if err != nil {
+		t.Errorf("Assertions failed: %s", err)
+	}
+
+	if !sc.IsComplete() {
+		t.Errorf("not all files were added to the Solr index. Remaining values: \n%v", sc.GoldenFileHashesToString())
+	}
+}
+func TestIndexGitCommit_AddThreeDeleteTwo(t *testing.T) {
+	/*
+	   # Commit history replicated in repo (NOTE: commit hashes WILL differ)
+	   # b2456cf44f6ff4cefeb621ef2f4cde76218327d5 2025-03-25 20:36:43 -0400 | Updating akkasah/ad_mc_030.xml, Deleting file nyuad/ad_mc_019.xml EADID='ad_mc_019', Updating cbh/arc_212_plymouth_beecher.xml, Deleting file tamwag/tam_143.xml EADID='tam_143', Updating edip/mos_2024.xml (HEAD -> main) [jgpawletko]
+	*/
+	// cleanup any leftovers from interrupted tests
+	deleteTestGitRepo(t)
+
+	createTestGitRepo(t)
+	defer deleteTestGitRepo(t)
+
+	sc := testutils.GetSolrClientMock()
+	sc.Reset()
+
+	// ops := [][]string{
+	// 	{"akkasah", "ad_mc_030", "Add"},
+	// 	{"nyuad", "ad_mc_019", "Delete"},
+	// 	{"cbh", "arc_212_plymouth_beecher", "Add"},
+	// 	{"tamwag", "tam_143", "Delete"},
+	// 	{"edip", "mos_2024", "Add"},
+	// }
+
+	ops := [][]string{
+		{"akkasah", "ad_mc_030", "Add"},
+		{"cbh", "arc_212_plymouth_beecher", "Add"},
+		{"edip", "mos_2024", "Add"},
+		{"nyuad", "ad_mc_019", "Delete"},
+		{"tamwag", "tam_143", "Delete"},
+	}
+
+	for _, op := range ops {
+		repositoryCode := op[0]
+		eadid := op[1]
+		testEAD := filepath.Join(repositoryCode, eadid)
+		if op[2] == "Add" {
+			err := sc.UpdateMockForIndexEADFile(testEAD, eadid)
+			if err != nil {
+				t.Errorf("Error updating the SolrClientMock: %s", err)
+				t.FailNow()
+			}
+		}
+		if op[2] == "Delete" {
+			err := sc.UpdateMockForDeleteEADFileDataFromIndex(eadid)
+			if err != nil {
+				t.Errorf("Error updating the SolrClientMock: %s", err)
+				t.FailNow()
+			}
+		}
+	}
+
+	// Set the Solr client
+	SetSolrClient(sc)
+
+	// Index the EAD file
+	err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute, addThreeDeleteTwoHash)
+	if err != nil {
+		t.Errorf("Error indexing EAD file: %s", err)
+	}
+
+	err = sc.CheckAssertionsViaEvents()
+	if err != nil {
+		t.Errorf("Assertions failed: %s", err)
+	}
+
+	if !sc.IsComplete() {
+		t.Errorf("not all files were added to the Solr index. Remaining values: \n%v", sc.GoldenFileHashesToString())
+	}
+}
+
+func TestIndexGitCommit_AddTwo(t *testing.T) {
+	/*
+	   # Commit history replicated in repo (NOTE: commit hashes WILL differ)
+	   # 2d92cc3b6044baa5f81f7dfea7f4ef62e9ad79f8 2025-03-25 20:36:43 -0400 | Updating nyuad/ad_mc_019.xml, Updating tamwag/tam_143.xml [jgpawletko]
+	*/
+	// cleanup any leftovers from interrupted tests
+	deleteTestGitRepo(t)
+
+	createTestGitRepo(t)
+	defer deleteTestGitRepo(t)
+
+	sc := testutils.GetSolrClientMock()
+	sc.Reset()
+
+	testEADs := [][]string{
+		{"nyuad", "ad_mc_019"},
+		{"tamwag", "tam_143"},
+	}
+
+	for _, testEAD := range testEADs {
+		repositoryCode := testEAD[0]
+		eadid := testEAD[1]
+		testEAD := filepath.Join(repositoryCode, eadid)
+		err := sc.UpdateMockForIndexEADFile(testEAD, eadid)
+		if err != nil {
+			t.Errorf("Error updating the SolrClientMock: %s", err)
+			t.FailNow()
+		}
+	}
+
+	// Set the Solr client
+	SetSolrClient(sc)
+
+	// Index the EAD file
+	err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute, addTwoHash)
 	if err != nil {
 		t.Errorf("Error indexing EAD file: %s", err)
 	}
@@ -695,7 +821,7 @@ func TestIndexGitCommit_DeleteAll(t *testing.T) {
 	SetSolrClient(sc)
 
 	// Index the EAD file
-	err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute, "e4fe6008decb5f26382fae903de40a4f3470d509")
+	err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute, deleteAllHash)
 	if err != nil {
 		t.Errorf("Error indexing EAD file: %s", err)
 	}
@@ -717,16 +843,6 @@ func TestIndexGitCommit_DeleteOne(t *testing.T) {
 	createTestGitRepo(t)
 	defer deleteTestGitRepo(t)
 
-	/*
-		set up git repo
-		get absolute repo path
-		set up expectations
-		run transaction
-		check expectations
-
-		# Commit history replicated in repo (NOTE: commit hashes WILL differ)
-		# fdd7ce5e54b88894460b52dd0dd27055ffb3bbdd 2025-03-24 19:53:30 -0400 | Updating fales/mss_460.xml [jgpawletko]
-	*/
 	sc := testutils.GetSolrClientMock()
 	sc.Reset()
 
@@ -741,7 +857,7 @@ func TestIndexGitCommit_DeleteOne(t *testing.T) {
 	SetSolrClient(sc)
 
 	// Index the EAD file
-	err = IndexGitCommit(gitRepoTestGitRepoPathAbsolute, "2fee15ffc217a86d19756a6c816f59ca86e23893")
+	err = IndexGitCommit(gitRepoTestGitRepoPathAbsolute, deleteOneHash)
 	if err != nil {
 		t.Errorf("Error indexing EAD file: %s", err)
 	}
