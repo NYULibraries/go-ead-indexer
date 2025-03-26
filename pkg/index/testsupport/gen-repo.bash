@@ -35,7 +35,7 @@ err_exit() {
 # copy     2
 #   add    2
 # copy     3
-#   add 3, delete 2
+#   add 1, delete 1, add 1, delete 1, add 1
 # 
 
 #------------------------------------------------------------------------------
@@ -56,8 +56,11 @@ nyuad/ad_mc_019.xml
 tamwag/tam_143.xml
 '
 ADD_AND_DELETE_ONE_EAD='fales/mss_460.xml'
-ADD_AND_DELETE_TWO_EADS='nyuad/ad_mc_019.xml tamwag/tam_143.xml'
-ADD_THREE_EADS='akkasah/ad_mc_030.xml cbh/arc_212_plymouth_beecher.xml edip/mos_2024.xml'
+ADD_AND_DELETE_TWO_EADS_NUM_01='nyuad/ad_mc_019.xml'
+ADD_AND_DELETE_TWO_EADS_NUM_02='tamwag/tam_143.xml'
+ADD_THREE_EADS_NUM_01='akkasah/ad_mc_030.xml'
+ADD_THREE_EADS_NUM_02='cbh/arc_212_plymouth_beecher.xml'
+ADD_THREE_EADS_NUM_03='edip/mos_2024.xml'
 
 #------------------------------------------------------------------------------
 # FUNCTIONS
@@ -83,7 +86,6 @@ cp_ead() {
     f="$1"
     dir=$(dirname "$f")
     tgt_dir="${REPO_ROOT}/${dir}"
-    pwd
     mkdir -p "${tgt_dir}" || err_exit "problem creating '$tgt_dir'"
     cp "${EAD_FILE_ROOT}/${f}"  "${tgt_dir}" || err_exit "problem copying EAD '$f'"
 }
@@ -154,7 +156,7 @@ echo "--------------------------------------------------------------------------
 echo "setting up 'add two' commit"
 echo "------------------------------------------------------------------------------"
 commit_str=""
-for f in $ADD_AND_DELETE_TWO_EADS; do
+for f in $ADD_AND_DELETE_TWO_EADS_NUM_01 $ADD_AND_DELETE_TWO_EADS_NUM_02; do
     cp_ead "$f"
     add_file "$f"
 done
@@ -167,15 +169,20 @@ echo "--------------------------------------------------------------------------
 echo "setting up 'add three and delete two' commit"
 echo "------------------------------------------------------------------------------"
 commit_str=""
-# process "add three" files
-for f in $ADD_THREE_EADS; do
-    cp_ead "$f"
-    add_file "$f"
-done
-# process "delete two" files
-for f in $ADD_AND_DELETE_TWO_EADS; do
-    rm_file "$f"
-done
+# INTERLEAVE ADD AND DELETE OPERATIONS
+cp_ead "$ADD_THREE_EADS_NUM_01"
+add_file "$ADD_THREE_EADS_NUM_01"
+
+rm_file "$ADD_AND_DELETE_TWO_EADS_NUM_01"
+
+cp_ead "$ADD_THREE_EADS_NUM_02"
+add_file "$ADD_THREE_EADS_NUM_02"
+
+rm_file "$ADD_AND_DELETE_TWO_EADS_NUM_02"
+
+cp_ead "$ADD_THREE_EADS_NUM_03"
+add_file "$ADD_THREE_EADS_NUM_03"
+
 strip_commit_str_trailing_comma_space
 git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
 
