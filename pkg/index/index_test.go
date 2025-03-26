@@ -678,6 +678,11 @@ func TestIndexGitCommit_AddThreeDeleteTwo(t *testing.T) {
 	sc := testutils.GetSolrClientMock()
 	sc.Reset()
 
+	// FIXME:
+	// for some reason, the operations returned by Go git are not in the same order as the commit message
+	// Therefore, we may need to add a guard in the Git Transactor to prevent rm and add operations for the same EAD
+	// in the same commit
+	//
 	// ops := [][]string{
 	// 	{"akkasah", "ad_mc_030", "Add"},
 	// 	{"nyuad", "ad_mc_019", "Delete"},
