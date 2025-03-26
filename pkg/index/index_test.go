@@ -523,43 +523,6 @@ func TestIndexEADFile_Success(t *testing.T) {
 	repositoryCode := "fales"
 	eadid := "mss_460"
 	testEAD := filepath.Join(repositoryCode, eadid)
-
-	var eadPath = eadtestutils.EadFixturePath(testEAD)
-
-	sc := testutils.GetSolrClientMock()
-
-	// load the Solr POST body expectations
-	err := sc.InitMockForIndexing(testEAD)
-	if err != nil {
-		t.Errorf("Error initializing the SolrClientMock: %s", err)
-		t.FailNow()
-	}
-
-	// set expectations
-	sc.ExpectedCallOrder.Delete = 1
-	sc.ExpectedCallOrder.Commit = sc.NumberOfFilesToIndex + 2
-	sc.ExpectedDeleteArgument = eadid
-
-	// Set the Solr client
-	SetSolrClient(sc)
-
-	// Index the EAD file
-	err = IndexEADFile(eadPath)
-	if err != nil {
-		t.Errorf("Error indexing EAD file: %s", err)
-	}
-
-	err = sc.CheckAssertions()
-	if err != nil {
-		t.Errorf("Assertions failed: %s", err)
-	}
-}
-
-func TestIndexEADFile_Success_Events(t *testing.T) {
-
-	repositoryCode := "fales"
-	eadid := "mss_460"
-	testEAD := filepath.Join(repositoryCode, eadid)
 	var eadPath = eadtestutils.EadFixturePath(testEAD)
 
 	sc := testutils.GetSolrClientMock()
