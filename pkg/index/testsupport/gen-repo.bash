@@ -10,12 +10,14 @@ set -uo pipefail
 # for use in git pkg tests.
 
 # Commit history replicated in repo (NOTE: commit hashes WILL differ)
-# e5c5336b63b109b68c495bbfea94d30ecbc1ef67 2025-03-24 19:53:31 -0400 | Updating akkasah/ad_mc_030.xml, Updating cbh/arc_212_plymouth_beecher.xml, Updating edip/mos_2024.xml, Deleting file nyuad/ad_mc_019.xml EADID='ad_mc_019', Deleting file tamwag/tam_143.xml EADID='tam_143' (HEAD -> main) [jgpawletko]
-# e4bfc536020c4477044633ac7a57242bb6f67cee 2025-03-24 19:53:30 -0400 | Updating nyuad/ad_mc_019.xml, Updating tamwag/tam_143.xml [jgpawletko]
-# 2fee15ffc217a86d19756a6c816f59ca86e23893 2025-03-24 19:53:30 -0400 | Deleting file fales/mss_460.xml EADID='mss_460' [jgpawletko]
-# fdd7ce5e54b88894460b52dd0dd27055ffb3bbdd 2025-03-24 19:53:30 -0400 | Updating fales/mss_460.xml [jgpawletko]
-# e4fe6008decb5f26382fae903de40a4f3470d509 2025-03-24 19:53:30 -0400 | Deleting file akkasah/ad_mc_030.xml EADID='ad_mc_030', Deleting file cbh/arc_212_plymouth_beecher.xml EADID='arc_212_plymouth_beecher', Deleting file edip/mos_2024.xml EADID='mos_2024', Deleting file fales/mss_420.xml EADID='mss_420', Deleting file fales/mss_460.xml EADID='mss_460', Deleting file nyhs/ms256_harmon_hendricks_goldstone.xml EADID='ms256_harmon_hendricks_goldstone', Deleting file nyhs/ms347_foundling_hospital.xml EADID='ms347_foundling_hospital', Deleting file nyuad/ad_mc_019.xml EADID='ad_mc_019', Deleting file tamwag/tam_143.xml EADID='tam_143' [jgpawletko]
-# 5546ffda27581c4933aeb4102f6a0107c3e522ff 2025-03-24 19:53:30 -0400 | Updating akkasah/ad_mc_030.xml, Updating cbh/arc_212_plymouth_beecher.xml, Updating edip/mos_2024.xml, Updating fales/mss_420.xml, Updating fales/mss_460.xml, Updating nyhs/ms256_harmon_hendricks_goldstone.xml, Updating nyhs/ms347_foundling_hospital.xml, Updating nyuad/ad_mc_019.xml, Updating tamwag/tam_143.xml [jgpawletko]
+# 00fd44a8e69285cf3789be3e7bc0e4e88d5f6dd8 2025-03-26 13:18:07 -0400 | Updating nyuad/ad_mc_019.xml, Deleting file tamwag/tam_143.xml EADID='tam_143', Updating edip/mos_2024.xml, Deleting file cbh/arc_212_plymouth_beecher.xml EADID='arc_212_plymouth_beecher', Updating akkasah/ad_mc_030.xml (HEAD -> main) [jgpawletko]
+# 5fec61740cb7e4f05bbfa77548b42be2003e278b 2025-03-26 13:18:07 -0400 | Updating tamwag/tam_143.xml, Updating cbh/arc_212_plymouth_beecher.xml [jgpawletko]
+# d8144b3136ef4a9abf0613a1302606644f90bd6c 2025-03-26 13:18:07 -0400 | Deleting file fales/mss_420.xml EADID='mss_420', Updating fales/mss_420.xml [jgpawletko]
+# 0afcf14e99bbd6e158f486090877fbd50370494c 2025-03-26 13:18:07 -0400 | Updating fales/mss_420.xml [jgpawletko]
+# aee0af16b6d92444326eea4847893844f3ca59ae 2025-03-26 13:18:07 -0400 | Deleting file fales/mss_460.xml EADID='mss_460' [jgpawletko]
+# e24960b1dc934c628d4475cb4537f7e21f54032c 2025-03-26 13:18:07 -0400 | Updating fales/mss_460.xml [jgpawletko]
+# 0fcdd54abaeb3b2f15b50f8eb5ef903ba2231896 2025-03-26 13:18:07 -0400 | Deleting file akkasah/ad_mc_030.xml EADID='ad_mc_030', Deleting file cbh/arc_212_plymouth_beecher.xml EADID='arc_212_plymouth_beecher', Deleting file edip/mos_2024.xml EADID='mos_2024', Deleting file fales/mss_420.xml EADID='mss_420', Deleting file fales/mss_460.xml EADID='mss_460', Deleting file nyhs/ms256_harmon_hendricks_goldstone.xml EADID='ms256_harmon_hendricks_goldstone', Deleting file nyhs/ms347_foundling_hospital.xml EADID='ms347_foundling_hospital', Deleting file nyuad/ad_mc_019.xml EADID='ad_mc_019', Deleting file tamwag/tam_143.xml EADID='tam_143' [jgpawletko]
+# 7fdb03f4ab09f0eddf9b3c0e77ba50f5d036b2e9 2025-03-26 13:18:07 -0400 | Updating akkasah/ad_mc_030.xml, Updating cbh/arc_212_plymouth_beecher.xml, Updating edip/mos_2024.xml, Updating fales/mss_420.xml, Updating fales/mss_460.xml, Updating nyhs/ms256_harmon_hendricks_goldstone.xml, Updating nyhs/ms347_foundling_hospital.xml, Updating nyuad/ad_mc_019.xml, Updating tamwag/tam_143.xml [jgpawletko]
 
 err_exit() {
     echo "$@" 1>&2
@@ -32,10 +34,22 @@ err_exit() {
 # copy     1
 #   add    1
 #   delete 1
+# copy     A
+#   add    A
+#   delete A
+#   recopy A
+#   modify A
+#   add    A
 # copy     2
 #   add    2
 # copy     3
 #   add 1, delete 1, add 1, delete 1, add 1
+# copy     A
+#   add    A
+#   delete A
+#   recopy A
+#   modify A
+#   add    A
 # 
 
 #------------------------------------------------------------------------------
@@ -55,12 +69,15 @@ nyhs/ms347_foundling_hospital.xml
 nyuad/ad_mc_019.xml
 tamwag/tam_143.xml
 '
+
+# EAD files for various scenarios, committed in reverse alphabetical order
+ADD_DELETE_MODIFY_ADD_ONE_EAD='fales/mss_420.xml'
 ADD_AND_DELETE_ONE_EAD='fales/mss_460.xml'
-ADD_AND_DELETE_TWO_EADS_NUM_01='nyuad/ad_mc_019.xml'
-ADD_AND_DELETE_TWO_EADS_NUM_02='tamwag/tam_143.xml'
-ADD_THREE_EADS_NUM_01='akkasah/ad_mc_030.xml'
-ADD_THREE_EADS_NUM_02='cbh/arc_212_plymouth_beecher.xml'
-ADD_THREE_EADS_NUM_03='edip/mos_2024.xml'
+ADD_AND_DELETE_TWO_EADS_NUM_01='tamwag/tam_143.xml'
+ADD_AND_DELETE_TWO_EADS_NUM_02='cbh/arc_212_plymouth_beecher.xml'
+ADD_THREE_EADS_NUM_01='nyuad/ad_mc_019.xml'
+ADD_THREE_EADS_NUM_02='edip/mos_2024.xml'
+ADD_THREE_EADS_NUM_03='akkasah/ad_mc_030.xml'
 
 #------------------------------------------------------------------------------
 # FUNCTIONS
@@ -148,6 +165,28 @@ git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
 
 commit_str=""
 rm_file "$ADD_AND_DELETE_ONE_EAD"
+strip_commit_str_trailing_comma_space
+git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
+
+
+echo "------------------------------------------------------------------------------"
+echo "setting up 'add A', 'delete A', 'modify A', 'add A' commit"
+echo "------------------------------------------------------------------------------"
+# add the file to the repo
+commit_str=""
+cp_ead "$ADD_DELETE_MODIFY_ADD_ONE_EAD"
+add_file "$ADD_DELETE_MODIFY_ADD_ONE_EAD"
+strip_commit_str_trailing_comma_space
+git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
+
+# git rm the file but do not commit yet
+commit_str=""
+rm_file "$ADD_DELETE_MODIFY_ADD_ONE_EAD"
+# copy, modify, and add the file back to the repo
+cp_ead "$ADD_DELETE_MODIFY_ADD_ONE_EAD"
+echo "   " >> "${REPO_ROOT}/${ADD_DELETE_MODIFY_ADD_ONE_EAD}"
+add_file "$ADD_DELETE_MODIFY_ADD_ONE_EAD"
+# commit the changes
 strip_commit_str_trailing_comma_space
 git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
 
