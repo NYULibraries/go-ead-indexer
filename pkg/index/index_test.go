@@ -846,8 +846,10 @@ func TestIndexGitCommit_DeleteModifyAdd(t *testing.T) {
 	sc := testutils.GetSolrClientMock()
 	sc.Reset()
 
-	// even though we are deleting the file, we are adding it back in the same commit
-	// therefore, the state of the Git staging area at the time of the commit only
+	// even though we are deleting the file during the commit-staging process
+	// (in the testsupport/gen-repo.bash script), the script adds a modified
+	// version of the file back to the staging area before the commit.
+	// Therefore, the state of the Git staging area at the time of the commit only
 	// contains the file in the "modified" state and the commit boils down to single
 	// "add" operation
 	ops := [][]string{
@@ -926,6 +928,80 @@ func TestIndexGitCommit_DeleteOne(t *testing.T) {
 
 	if !sc.IsComplete() {
 		t.Errorf("not all files were added to the Solr index. Remaining values: \n%v", sc.GoldenFileHashesToString())
+	}
+}
+
+func TestIndexGitCommit_FailFast(t *testing.T) {
+	/*
+	   # Commit history replicated in repo (NOTE: commit hashes WILL differ)
+	   # b2456cf44f6ff4cefeb621ef2f4cde76218327d5 2025-03-25 20:36:43 -0400 | Updating akkasah/ad_mc_030.xml, Deleting file nyuad/ad_mc_019.xml EADID='ad_mc_019', Updating cbh/arc_212_plymouth_beecher.xml, Deleting file tamwag/tam_143.xml EADID='tam_143', Updating edip/mos_2024.xml (HEAD -> main) [jgpawletko]
+	*/
+
+	errorEventCallCount := 300    // this is in the middle of the akkasah/ad_mc_030.xml file component indexing
+	errorRollbackCallCount := 630 // delete + collection + components + rollback
+
+	// cleanup any leftovers from interrupted tests
+	deleteTestGitRepo(t)
+
+	createTestGitRepo(t)
+	defer deleteTestGitRepo(t)
+
+	sc := testutils.GetSolrClientMock()
+	sc.Reset()
+
+	// NOTE: the commits will always be returned in alphabetical order by relative path
+	ops := [][]string{
+		{"akkasah", "ad_mc_030", "Add"},
+		{"cbh", "arc_212_plymouth_beecher", "Delete"},
+		{"edip", "mos_2024", "Add"},
+	}
+
+	for _, op := range ops {
+		repositoryCode := op[0]
+		eadid := op[1]
+		testEAD := filepath.Join(repositoryCode, eadid)
+		if op[2] == "Add" {
+			err := sc.UpdateMockForIndexEADFile(testEAD, eadid)
+			if err != nil {
+				t.Errorf("Error updating the SolrClientMock: %s", err)
+				t.FailNow()
+			}
+		}
+		if op[2] == "Delete" {
+			err := sc.UpdateMockForDeleteEADFileDataFromIndex(eadid)
+			if err != nil {
+				t.Errorf("Error updating the SolrClientMock: %s", err)
+				t.FailNow()
+			}
+		}
+	}
+
+	solrClientErrorEvents := []testutils.ErrorEvent{
+		{FuncName: "Add", ErrorMessage: "error during Add", CallCount: errorEventCallCount},
+	}
+	sc.ErrorEvents = solrClientErrorEvents
+
+	// Set the Solr client
+	SetSolrClient(sc)
+
+	// Index the EAD file
+	err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute, addThreeDeleteTwoHash)
+	if err == nil {
+		t.Errorf("Expected error from IndexGitCommit() but no error was returned.")
+	}
+
+	if err.Error() != "error during Add" {
+		t.Errorf("Expected error message 'error during Add' but got '%s'", err.Error())
+	}
+
+	// check that rollback was called
+	if sc.ActualEvents[errorRollbackCallCount].FuncName != "Rollback" {
+		t.Errorf("Expected Rollback() to be called at call count %d but it was no", errorRollbackCallCount)
+	}
+
+	// indexing should NOT have completed
+	if sc.IsComplete() {
+		t.Errorf("All files were added to the Solr index when indexing should have halted.")
 	}
 }
 
