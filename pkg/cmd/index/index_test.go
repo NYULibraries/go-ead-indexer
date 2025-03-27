@@ -11,32 +11,6 @@ import (
 	"github.com/nyulibraries/go-ead-indexer/pkg/log"
 )
 
-func TestIndexEAD_BadFileArgument(t *testing.T) {
-	// ensure that the environment variable is set
-	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "http://www.example.com:8983/solr")
-	if err != nil {
-		t.Errorf("error setting environment variable: %v", err)
-		t.FailNow()
-	}
-
-	dir, err := testutils.GetCallingFileDirPath()
-	if err != nil {
-		t.Errorf("error getting calling file directory: %v", err)
-		t.FailNow()
-	}
-
-	// set the file flag to a non-existent file
-	testutils.SetCmdFlag(IndexCmd, "file", filepath.Join(dir, "testdata", "fixtures", "edip", "no_file_here.xml"))
-	testutils.SetCmdFlag(IndexCmd, "logging-level", "debug")
-	gotStdOut, _, _ := testutils.CaptureCmdStdoutStderrE(runIndexCmd, IndexCmd, []string{})
-
-	if gotStdOut == "" {
-		t.Errorf("expected data on StdOut but got nothing")
-	}
-
-	testutils.CheckStringContains(t, gotStdOut, "ERROR: EAD file does not exist: ")
-}
-
 func TestDelete_Cancel(t *testing.T) {
 	// ensure that the environment variable is set
 	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "http://www.example.com:8983/solr")
@@ -97,6 +71,32 @@ func TestDelete_Error(t *testing.T) {
 	}
 
 	testutils.CheckStringContains(t, gotStdOut, "ERROR: couldn't delete data for EADID: This#Is^Not!A(Valid*EADID error:")
+}
+
+func TestIndexEAD_BadFileArgument(t *testing.T) {
+	// ensure that the environment variable is set
+	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "http://www.example.com:8983/solr")
+	if err != nil {
+		t.Errorf("error setting environment variable: %v", err)
+		t.FailNow()
+	}
+
+	dir, err := testutils.GetCallingFileDirPath()
+	if err != nil {
+		t.Errorf("error getting calling file directory: %v", err)
+		t.FailNow()
+	}
+
+	// set the file flag to a non-existent file
+	testutils.SetCmdFlag(IndexCmd, "file", filepath.Join(dir, "testdata", "fixtures", "edip", "no_file_here.xml"))
+	testutils.SetCmdFlag(IndexCmd, "logging-level", "debug")
+	gotStdOut, _, _ := testutils.CaptureCmdStdoutStderrE(runIndexCmd, IndexCmd, []string{})
+
+	if gotStdOut == "" {
+		t.Errorf("expected data on StdOut but got nothing")
+	}
+
+	testutils.CheckStringContains(t, gotStdOut, "ERROR: EAD file does not exist: ")
 }
 
 func TestIndexEAD_Error(t *testing.T) {
@@ -168,17 +168,6 @@ func TestIndexEAD_InitSolrClientError(t *testing.T) {
 	}
 
 	testutils.CheckStringContains(t, gotStdOut, `ERROR: couldn't initialize Solr client: error creating Solr client: parse \"this is not a valid url\": invalid URI for request`)
-}
-
-func TestLocalLogLevels(t *testing.T) {
-	// this is a regression test to ensure that the local log levels are still valid
-	// if this test fails, the local log levels need to be updated
-	loggerAvailableLevels := log.GetValidLevelOptionStrings()
-	for _, level := range localLogLevels {
-		if !slices.Contains(loggerAvailableLevels, level) {
-			t.Errorf("local log level '%s' is not a valid logger level", level)
-		}
-	}
 }
 
 func TestIndexEAD_LoggerLevelArgument(t *testing.T) {
@@ -265,4 +254,15 @@ func TestIndexEAD_UnsetLoggingLevelArgument(t *testing.T) {
 	}
 
 	testutils.CheckStringContains(t, gotStdOut, `Logging level set to \"info\"`)
+}
+
+func TestLocalLogLevels(t *testing.T) {
+	// this is a regression test to ensure that the local log levels are still valid
+	// if this test fails, the local log levels need to be updated
+	loggerAvailableLevels := log.GetValidLevelOptionStrings()
+	for _, level := range localLogLevels {
+		if !slices.Contains(loggerAvailableLevels, level) {
+			t.Errorf("local log level '%s' is not a valid logger level", level)
+		}
+	}
 }
