@@ -112,17 +112,17 @@ func TestIndex_ArgumentValidation(t *testing.T) {
 		testutils.SetCmdFlag(IndexCmd, fileFlag, scenario.File)
 		testutils.SetCmdFlag(IndexCmd, gitRepoFlag, scenario.GitRepoPath)
 		testutils.SetCmdFlag(IndexCmd, gitCommitFlag, scenario.GitCommit)
+
 		want = scenario.Want
 		got = indexCheckArgs(IndexCmd, args)
-		if want == "" && got != nil {
+
+		switch {
+		case want == "" && got != nil:
 			t.Errorf("expected no error but got: %v", got)
-		}
-		if want != "" {
-			if got == nil {
-				t.Errorf("expected an error but got nothing")
-			} else if got.Error() != want {
-				t.Errorf("expected error message: '%s', but got '%s'", want, got.Error())
-			}
+		case want != "" && got == nil:
+			t.Errorf("expected an error but got nothing")
+		case (want != "" && got != nil) && (got.Error() != want):
+			t.Errorf("expected error message: '%s', but got '%s'", want, got.Error())
 		}
 	}
 }
