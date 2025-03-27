@@ -26,6 +26,8 @@ const originEnvVar = "SOLR_ORIGIN_WITH_PORT"
 var localLogLevels = []string{"debug", "info", "error"}
 
 var file string         // EAD file to be indexed
+var gitCommit string    // commit to index
+var gitRepoPath string  // path to EAD files git repo
 var eadID string        // EADID value of EAD data to delete
 var assumeYes bool      // flag to disable interactive mode
 var loggingLevel string // logging level
@@ -33,14 +35,20 @@ var logger log.Logger   // logger
 
 // This init() function contains a subset of the full 'index' command functionality
 func init() {
-
-	IndexCmd.Flags().StringVarP(&file, "file", "f", "", "path to EAD file")
+	IndexCmd.Flags().StringVarP(&gitCommit, "commit", "c",
+		"", "hash of git commit")
+	IndexCmd.Flags().StringVarP(&file, "file", "f", "",
+		"path to EAD file")
+	IndexCmd.Flags().StringVarP(&gitRepoPath, "git-repo", "g", "",
+		"path to EAD files git repo")
 	IndexCmd.Flags().StringVarP(&loggingLevel, "logging-level", "l",
 		log.DefaultLevelStringOption,
 		"Sets logging level: "+strings.Join(localLogLevels, ", ")+"")
 
-	DeleteCmd.Flags().StringVarP(&eadID, "eadid", "e", "", "EADID value of EAD data to delete")
-	DeleteCmd.Flags().BoolVarP(&assumeYes, "assume-yes", "y", false, "disable interactive mode")
+	DeleteCmd.Flags().StringVarP(&eadID, "eadid", "e", "",
+		"EADID value of EAD data to delete")
+	DeleteCmd.Flags().BoolVarP(&assumeYes, "assume-yes", "y", false,
+		"disable interactive mode")
 	DeleteCmd.Flags().StringVarP(&loggingLevel, "logging-level", "l",
 		log.DefaultLevelStringOption,
 		"Sets logging level: "+strings.Join(localLogLevels, ", ")+"")
@@ -55,10 +63,12 @@ var DeleteCmd = &cobra.Command{
 }
 
 var IndexCmd = &cobra.Command{
-	Use:     "index",
-	Short:   "Index EAD file",
-	Example: `go-ead-indexer index --file=[path to EAD file] --logging-level="debug"`,
-	RunE:    runIndexCmd,
+	Use:   "index",
+	Short: "Index EAD file or commit",
+	Example: `go-ead-indexer index --file=[path to EAD file] --logging-level="debug"
+	go-ead-indexer index --git=[path] --commit=[hash] --logging-level="error"`,
+	Args: validateIndexArgs,
+	RunE: runIndexCmd,
 }
 
 // runDeleteCmd is the main function for the 'delete' verb
@@ -214,6 +224,27 @@ func confirmDelete(eadID string) bool {
 	}
 
 	return lowercaseResponse == "y"
+}
+
+func validateIndexArgs(cmd *cobra.Command, args []string) error {
+	if (file == "" && gitRepoPath == "") ||
+		(file != "" && gitRepoPath != "") {
+		return fmt.Errorf("one, but not both, of --file or --git-repo arguments must be specified")
+	}
+
+	if file != "" && gitCommit != "" {
+		return fmt.Errorf("the --commit arguments can only be used with the --git-repo argument")
+	}
+
+	if (gitRepoPath != "" && gitCommit == "") ||
+		(gitRepoPath == "" && gitCommit != "") {
+		return fmt.Errorf("missing argument: the --git-repo argument must be used with the --commit argument")
+	}
+
+	// arguments are OK so disable Cobra's usage output on error
+	cmd.SilenceUsage = true
+
+	return nil
 }
 
 //------------------------------------------------------------------------------
