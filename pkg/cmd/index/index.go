@@ -21,6 +21,9 @@ import (
 
 // environment variable that holds the Solr origin with port information
 const originEnvVar = "SOLR_ORIGIN_WITH_PORT"
+const eMsgCannotUseBothFileAndGitRepo = "one, but not both, of --file or --git-repo arguments must be specified"
+const eMsgCommitOnlyWithGitRepo = "the --commit argument can only be used with the --git-repo argument"
+const eMsgMissingCommitOrGitRepo = "missing argument: the --git-repo argument must be used with the --commit argument"
 
 // log levels used by this package, in increasing order of severity
 var localLogLevels = []string{"debug", "info", "error"}
@@ -67,7 +70,7 @@ var IndexCmd = &cobra.Command{
 	Short: "Index EAD file or commit",
 	Example: `go-ead-indexer index --file=[path to EAD file] --logging-level="debug"
 	go-ead-indexer index --git=[path] --commit=[hash] --logging-level="error"`,
-	Args: validateIndexArgs,
+	Args: indexCheckArgs,
 	RunE: runIndexCmd,
 }
 
@@ -226,19 +229,19 @@ func confirmDelete(eadID string) bool {
 	return lowercaseResponse == "y"
 }
 
-func validateIndexArgs(cmd *cobra.Command, args []string) error {
+func indexCheckArgs(cmd *cobra.Command, args []string) error {
 	if (file == "" && gitRepoPath == "") ||
 		(file != "" && gitRepoPath != "") {
-		return fmt.Errorf("one, but not both, of --file or --git-repo arguments must be specified")
+		return fmt.Errorf("%s", eMsgCannotUseBothFileAndGitRepo)
 	}
 
 	if file != "" && gitCommit != "" {
-		return fmt.Errorf("the --commit arguments can only be used with the --git-repo argument")
+		return fmt.Errorf("%s", eMsgCommitOnlyWithGitRepo)
 	}
 
 	if (gitRepoPath != "" && gitCommit == "") ||
 		(gitRepoPath == "" && gitCommit != "") {
-		return fmt.Errorf("missing argument: the --git-repo argument must be used with the --commit argument")
+		return fmt.Errorf("%s", eMsgMissingCommitOrGitRepo)
 	}
 
 	// arguments are OK so disable Cobra's usage output on error
