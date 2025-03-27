@@ -73,6 +73,60 @@ func TestDelete_Error(t *testing.T) {
 	testutils.CheckStringContains(t, gotStdOut, "ERROR: couldn't delete data for EADID: This#Is^Not!A(Valid*EADID error:")
 }
 
+func TestIndex_ArgumentValidation(t *testing.T) {
+	var want string
+	var got error
+	var args []string
+
+	fileFlag := "file"
+	gitRepoFlag := "git-repo"
+	gitCommitFlag := "commit"
+
+	// set up arguments
+	dir, err := testutils.GetCallingFileDirPath()
+	if err != nil {
+		t.Errorf("error getting calling file directory: %v", err)
+		t.FailNow()
+	}
+	file := filepath.Join(dir, "testdata", "fixtures", "edip", "mos_2024.xml")
+	gitRepoPath := filepath.Join(dir, "testdata", "fixtures", "edip")
+	gitCommit := "a5ca6cca30fc08cfc13e4f1492dbfbbf3ec7cf63"
+
+	scenarios := []struct {
+		File        string
+		GitRepoPath string
+		GitCommit   string
+		Want        string
+	}{
+		{"", "", "", eMsgNeedOneButNotBothFileAndGitRepo},            // neither the file nor the git-repo flag is set
+		{"", "", gitCommit, eMsgNeedOneButNotBothFileAndGitRepo},     // only the commit flag is set
+		{file, gitRepoPath, "", eMsgNeedOneButNotBothFileAndGitRepo}, // both file and git-repo flags are set
+		{file, "", gitCommit, eMsgCommitOnlyWithGitRepo},             // both file and commit flags are set
+		{file, "", "", ""},               // passing case: only the file is set
+		{"", gitRepoPath, gitCommit, ""}, // passing case: the git-repo and commit flags are set
+
+	}
+
+	for _, scenario := range scenarios {
+		// set the flags
+		testutils.SetCmdFlag(IndexCmd, fileFlag, scenario.File)
+		testutils.SetCmdFlag(IndexCmd, gitRepoFlag, scenario.GitRepoPath)
+		testutils.SetCmdFlag(IndexCmd, gitCommitFlag, scenario.GitCommit)
+		want = scenario.Want
+		got = indexCheckArgs(IndexCmd, args)
+		if want == "" && got != nil {
+			t.Errorf("expected no error but got: %v", got)
+		}
+		if want != "" {
+			if got == nil {
+				t.Errorf("expected an error but got nothing")
+			} else if got.Error() != want {
+				t.Errorf("expected error message: '%s', but got '%s'", want, got.Error())
+			}
+		}
+	}
+}
+
 func TestIndexEAD_BadFileArgument(t *testing.T) {
 	// ensure that the environment variable is set
 	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "http://www.example.com:8983/solr")
