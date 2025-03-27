@@ -11,7 +11,7 @@ import (
 	"github.com/nyulibraries/go-ead-indexer/pkg/log"
 )
 
-func TestBadFileArgument(t *testing.T) {
+func TestIndexEAD_BadFileArgument(t *testing.T) {
 	// ensure that the environment variable is set
 	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "http://www.example.com:8983/solr")
 	if err != nil {
@@ -37,7 +37,7 @@ func TestBadFileArgument(t *testing.T) {
 	testutils.CheckStringContains(t, gotStdOut, "ERROR: EAD file does not exist: ")
 }
 
-func TestDeleteCancel(t *testing.T) {
+func TestDelete_Cancel(t *testing.T) {
 	// ensure that the environment variable is set
 	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "http://www.example.com:8983/solr")
 	if err != nil {
@@ -57,7 +57,7 @@ func TestDeleteCancel(t *testing.T) {
 	testutils.CheckStringContains(t, gotStdOut, fmt.Sprintf("Deletion canceled for EADID: '%s'", eadID))
 }
 
-func TestDeleteCancelAfterBadInput(t *testing.T) {
+func TestDelete_CancelAfterBadInput(t *testing.T) {
 	// ensure that the environment variable is set
 	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "http://www.example.com:8983/solr")
 	if err != nil {
@@ -78,7 +78,7 @@ func TestDeleteCancelAfterBadInput(t *testing.T) {
 	testutils.CheckStringContains(t, gotStdOut, fmt.Sprintf("Deletion canceled for EADID: '%s'", eadID))
 }
 
-func TestDeleteError(t *testing.T) {
+func TestDelete_Error(t *testing.T) {
 	// ensure that the environment variable is set
 	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "http://www.example.com:8983/solr")
 	if err != nil {
@@ -99,7 +99,7 @@ func TestDeleteError(t *testing.T) {
 	testutils.CheckStringContains(t, gotStdOut, "ERROR: couldn't delete data for EADID: This#Is^Not!A(Valid*EADID error:")
 }
 
-func TestIndexingError(t *testing.T) {
+func TestIndexEAD_Error(t *testing.T) {
 	// ensure that the environment variable is set
 	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "http://www.example.com:8983/solr")
 	if err != nil {
@@ -125,7 +125,7 @@ func TestIndexingError(t *testing.T) {
 	testutils.CheckStringContains(t, gotStdOut, "ERROR: couldn't index EAD file: No <ead> tag with the expected structure was found")
 }
 
-func TestInitLoggerError(t *testing.T) {
+func TestIndexEAD_InitLoggerError(t *testing.T) {
 	// ensure that the environment variable is set
 	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "http://www.example.com:8983/solr")
 	if err != nil {
@@ -144,7 +144,7 @@ func TestInitLoggerError(t *testing.T) {
 	testutils.CheckStringContains(t, gotStdOut, "ERROR: couldn't initialize logger: ERROR: unsupported logging level:")
 }
 
-func TestInitSolrClientError(t *testing.T) {
+func TestIndexEAD_InitSolrClientError(t *testing.T) {
 	// ensure that the environment variable is NOT set
 	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "this is not a valid url")
 	if err != nil {
@@ -181,7 +181,7 @@ func TestLocalLogLevels(t *testing.T) {
 	}
 }
 
-func TestLoggerLevelArgument(t *testing.T) {
+func TestIndexEAD_LoggerLevelArgument(t *testing.T) {
 	testLogLevel := "debug" // this value MUST BE DIFFERENT from the default logging level
 
 	// ensure that the environment variable is set
@@ -202,7 +202,7 @@ func TestLoggerLevelArgument(t *testing.T) {
 	testutils.CheckStringContains(t, gotStdOut, fmt.Sprintf(`Logging level set to \"%s\"`, testLogLevel))
 }
 
-func TestMissingFileArgument(t *testing.T) {
+func TestIndexEAD_MissingFileArgument(t *testing.T) {
 	// ensure that the environment variable is set
 	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "http://www.example.com:8983/solr")
 	if err != nil {
@@ -222,7 +222,7 @@ func TestMissingFileArgument(t *testing.T) {
 	testutils.CheckStringContains(t, gotStdOut, "ERROR: EAD file path not set")
 }
 
-func TestMissingSolrOriginEnvVariableError(t *testing.T) {
+func TestIndexEAD_MissingSolrOriginEnvVariableError(t *testing.T) {
 	// ensure that the environment variable is NOT set
 	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "")
 	if err != nil {
@@ -248,7 +248,7 @@ func TestMissingSolrOriginEnvVariableError(t *testing.T) {
 	testutils.CheckStringContains(t, gotStdOut, "ERROR: couldn't initialize Solr client: 'SOLR_ORIGIN_WITH_PORT' environment variable not set")
 }
 
-func TestUnsetLoggingLevelArgument(t *testing.T) {
+func TestIndexEAD_UnsetLoggingLevelArgument(t *testing.T) {
 	// ensure that the environment variable is set
 	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "http://www.example.com:8983/solr")
 	if err != nil {
