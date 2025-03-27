@@ -21,7 +21,7 @@ import (
 
 // environment variable that holds the Solr origin with port information
 const originEnvVar = "SOLR_ORIGIN_WITH_PORT"
-const eMsgCannotUseBothFileAndGitRepo = "one, but not both, of --file or --git-repo arguments must be specified"
+const eMsgNeedOneButNotBothFileAndGitRepo = "one, but not both, of --file or --git-repo arguments must be specified"
 const eMsgCommitOnlyWithGitRepo = "the --commit argument can only be used with the --git-repo argument"
 const eMsgMissingCommitOrGitRepo = "missing argument: the --git-repo argument must be used with the --commit argument"
 
@@ -232,7 +232,7 @@ func confirmDelete(eadID string) bool {
 func indexCheckArgs(cmd *cobra.Command, args []string) error {
 	if (file == "" && gitRepoPath == "") ||
 		(file != "" && gitRepoPath != "") {
-		return fmt.Errorf("%s", eMsgCannotUseBothFileAndGitRepo)
+		return fmt.Errorf("%s", eMsgNeedOneButNotBothFileAndGitRepo)
 	}
 
 	if file != "" && gitCommit != "" {
