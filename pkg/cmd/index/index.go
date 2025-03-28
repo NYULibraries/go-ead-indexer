@@ -15,16 +15,15 @@ import (
 	"github.com/nyulibraries/go-ead-indexer/pkg/net/solr"
 )
 
-//------------------------------------------------------------------------------
-// THIS PACKAGE IS A WORK IN PROGRESS!!!
-//------------------------------------------------------------------------------
-
 // environment variable that holds the Solr origin with port information
 const originEnvVar = "SOLR_ORIGIN_WITH_PORT"
-const eMsgNeedOneButNotBothFileAndGitRepo = "one, but not both, of --file or --git-repo arguments must be specified"
+
+// error messages
 const eMsgCommitOnlyWithGitRepo = "the --commit argument can only be used with the --git-repo argument"
-const eMsgMissingCommitOrGitRepo = "missing argument: the --git-repo argument must be used with the --commit argument"
 const eMsgCouldNotDetermineIndexingCase = "could not determine indexing case"
+const eMsgEADIDNotSet = "EADID is not set"
+const eMsgMissingCommitOrGitRepo = "missing argument: the --git-repo argument must be used with the --commit argument"
+const eMsgNeedOneButNotBothFileAndGitRepo = "one, but not both, of --file or --git-repo arguments must be specified"
 
 // log levels used by this package, in increasing order of severity
 var localLogLevels = []string{"debug", "info", "error"}
@@ -98,7 +97,7 @@ func runDeleteCmd(cmd *cobra.Command, args []string) error {
 
 	// check if EAD file path is set
 	if eadID == "" {
-		emsg := "ERROR: EADID is not set"
+		emsg := eMsgEADIDNotSet
 		return logAndReturnError(emsg)
 	}
 
