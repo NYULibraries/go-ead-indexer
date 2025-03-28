@@ -98,13 +98,14 @@ func TestIndex_ArgumentValidation(t *testing.T) {
 		GitCommit   string
 		Want        string
 	}{
-		{"", "", "", eMsgNeedOneButNotBothFileAndGitRepo},            // neither the file nor the git-repo flag is set
-		{"", "", gitCommit, eMsgNeedOneButNotBothFileAndGitRepo},     // only the commit flag is set
-		{file, gitRepoPath, "", eMsgNeedOneButNotBothFileAndGitRepo}, // both file and git-repo flags are set
-		{file, "", gitCommit, eMsgCommitOnlyWithGitRepo},             // both file and commit flags are set
-		{file, "", "", ""},               // passing case: only the file is set
-		{"", gitRepoPath, gitCommit, ""}, // passing case: the git-repo and commit flags are set
-
+		{"", "", "", eMsgNeedOneButNotBothFileAndGitRepo},                   // fail: neither the file nor the git-repo flag is set
+		{"", "", gitCommit, eMsgNeedOneButNotBothFileAndGitRepo},            // fail: only the commit flag is set
+		{"", gitRepoPath, "", eMsgMissingCommitOrGitRepo},                   // fail: only the git-repo flag is set
+		{"", gitRepoPath, gitCommit, ""},                                    // pass: the git-repo and commit flags are set
+		{file, "", "", ""},                                                  // pass: only the file flag is set
+		{file, "", gitCommit, eMsgCommitOnlyWithGitRepo},                    // fail: both file and commit flags are set
+		{file, gitRepoPath, "", eMsgNeedOneButNotBothFileAndGitRepo},        // fail: both file and git-repo flags are set
+		{file, gitRepoPath, gitCommit, eMsgNeedOneButNotBothFileAndGitRepo}, // fail: all three flags are set
 	}
 
 	for _, scenario := range scenarios {
