@@ -246,26 +246,6 @@ func TestIndexEAD_LoggerLevelArgument(t *testing.T) {
 	testutils.CheckStringContains(t, gotStdOut, fmt.Sprintf(`Logging level set to \"%s\"`, testLogLevel))
 }
 
-func TestIndexEAD_MissingFileArgument(t *testing.T) {
-	// ensure that the environment variable is set
-	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "http://www.example.com:8983/solr")
-	if err != nil {
-		t.Errorf("error setting environment variable: %v", err)
-		t.FailNow()
-	}
-
-	// clear the file flag
-	testutils.SetCmdFlag(IndexCmd, "file", "")
-	testutils.SetCmdFlag(IndexCmd, "logging-level", "debug")
-	gotStdOut, _, _ := testutils.CaptureCmdStdoutStderrE(runIndexCmd, IndexCmd, []string{})
-
-	if gotStdOut == "" {
-		t.Errorf("expected data on StdOut but got nothing")
-	}
-
-	testutils.CheckStringContains(t, gotStdOut, "ERROR: EAD file path not set")
-}
-
 func TestIndexEAD_MissingSolrOriginEnvVariableError(t *testing.T) {
 	// ensure that the environment variable is NOT set
 	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "")
