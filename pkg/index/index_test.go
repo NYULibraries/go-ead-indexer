@@ -70,6 +70,46 @@ func init() {
 	gitRepoTestGitRepoHiddenGitDirectory = filepath.Join(gitRepoTestGitRepoPathAbsolute, ".git")
 }
 
+func TestDeleteEADFileDataFromIndex_RollbackOnBadCommit(t *testing.T) {
+
+	sut := "DeleteEADFileDataFromIndex"
+	eadid := "mss_460"
+
+	// set up the Solr client mock
+	sc := testutils.GetSolrClientMock()
+	err := sc.InitMockForDelete(sut)
+	if err != nil {
+		t.Errorf("Error initializing the Solr client for delete testing: %s", err)
+		t.FailNow()
+	}
+
+	// set up expected events
+	solrClientExpectedEvents := []testutils.Event{
+		{FuncName: "Delete", Args: []string{eadid}, CallCount: 1},
+		{FuncName: "Commit", CallCount: 2, Err: fmt.Errorf("error during Commit")},
+		{FuncName: "Rollback", CallCount: 3},
+	}
+	sc.ExpectedEvents = solrClientExpectedEvents
+
+	// setup error events
+	solrClientErrorEvents := []testutils.ErrorEvent{
+		{FuncName: "Commit", ErrorMessage: "error during Commit", CallCount: 2},
+	}
+	sc.ErrorEvents = solrClientErrorEvents
+
+	// Set the Solr client
+	SetSolrClient(sc)
+
+	// Delete the data for the EADID
+	DeleteEADFileDataFromIndex(eadid)
+
+	// check that all expectations were met
+	err = sc.CheckAssertionsViaEvents()
+	if err != nil {
+		t.Errorf("Assertions failed: %s", err)
+	}
+}
+
 func TestDeleteEADFileDataFromIndex_RollbackOnBadDelete(t *testing.T) {
 
 	sut := "DeleteEADFileDataFromIndex"
