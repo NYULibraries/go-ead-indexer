@@ -5,6 +5,7 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"strings"
 	"testing"
 
 	eadtestutils "github.com/nyulibraries/go-ead-indexer/pkg/ead/testutils"
@@ -135,6 +136,46 @@ func TestDeleteEADFileDataFromIndex_ErrorOnRollback(t *testing.T) {
 	}
 }
 
+func TestDeleteEADFileDataFromIndex_RollbackOnBadCommit(t *testing.T) {
+
+	sut := "DeleteEADFileDataFromIndex"
+	eadid := "mss_460"
+
+	// set up the Solr client mock
+	sc := testutils.GetSolrClientMock()
+	err := sc.InitMockForDelete(sut)
+	if err != nil {
+		t.Errorf("Error initializing the Solr client for delete testing: %s", err)
+		t.FailNow()
+	}
+
+	// set up expected events
+	solrClientExpectedEvents := []testutils.Event{
+		{FuncName: "Delete", Args: []string{eadid}, CallCount: 1},
+		{FuncName: "Commit", CallCount: 2, Err: fmt.Errorf("error during Commit")},
+		{FuncName: "Rollback", CallCount: 3},
+	}
+	sc.ExpectedEvents = solrClientExpectedEvents
+
+	// setup error events
+	solrClientErrorEvents := []testutils.ErrorEvent{
+		{FuncName: "Commit", ErrorMessage: "error during Commit", CallCount: 2},
+	}
+	sc.ErrorEvents = solrClientErrorEvents
+
+	// Set the Solr client
+	SetSolrClient(sc)
+
+	// Delete the data for the EADID
+	DeleteEADFileDataFromIndex(eadid)
+
+	// check that all expectations were met
+	err = sc.CheckAssertionsViaEvents()
+	if err != nil {
+		t.Errorf("Assertions failed: %s", err)
+	}
+}
+
 func TestDeleteEADFileDataFromIndex_RollbackOnBadDelete(t *testing.T) {
 
 	sut := "DeleteEADFileDataFromIndex"
@@ -210,6 +251,7 @@ func TestDeleteEADFileDataFromIndex_SolrClientNotSet(t *testing.T) {
 	testutils.AssertError(t, sut, err)
 	testutils.AssertErrorMessageContainsString(t, sut, err, expectedErrStringFragment)
 }
+
 func TestDeleteEADFileDataFromIndex_Success(t *testing.T) {
 
 	sut := "DeleteEADFileDataFromIndex"
@@ -778,6 +820,36 @@ func TestIndexGitCommit_AddTwo(t *testing.T) {
 	}
 }
 
+func TestIndexGitCommit_BadCommitCheckout(t *testing.T) {
+	// cleanup any leftovers from interrupted tests
+	deleteTestGitRepo(t)
+
+	createTestGitRepo(t)
+	defer deleteTestGitRepo(t)
+
+	sc := testutils.GetSolrClientMock()
+	sc.Reset()
+
+	err := sc.InitMockForDelete("IndexGitCommit")
+	if err != nil {
+		t.Errorf("Error initializing Solr Client Mock: %s", err)
+		t.FailNow()
+	}
+
+	// Set the Solr client
+	SetSolrClient(sc)
+
+	// Index the EAD file
+	err = IndexGitCommit(gitRepoTestGitRepoPathAbsolute, "this-is-a-bad-commit-hash")
+	if err == nil {
+		t.Errorf("Expected an error, but got nil")
+	}
+
+	if !strings.Contains(err.Error(), "problem checking out hash 'this-is-a-bad-commit-hash', error: 'reference not found'") {
+		t.Errorf("Expected error message to contain 'error checking out commit', but got: %s", err)
+	}
+}
+
 func TestIndexGitCommit_DeleteAll(t *testing.T) {
 	/*
 	   # Commit history replicated in repo (NOTE: commit hashes WILL differ)
@@ -1005,22 +1077,6 @@ func TestIndexGitCommit_FailFast(t *testing.T) {
 	}
 }
 
-func TestIndexGitCommit_SolrClientNotSet(t *testing.T) {
-
-	sut := "IndexGitCommit"
-	expectedErrStringFragment := "you must call `SetSolrClient()` before calling any indexing functions"
-	repoPath := "/foo/bar"
-	commit := "a5ca6cca30fc08cfc13e4f1492dbfbbf3ec7cf63"
-
-	SetSolrClient(nil)
-
-	// trigger the error
-	err := IndexGitCommit(repoPath, commit)
-
-	testutils.AssertError(t, sut, err)
-	testutils.AssertErrorMessageContainsString(t, sut, err, expectedErrStringFragment)
-}
-
 func TestIndexGitCommit_SolrClientMissingOriginURL(t *testing.T) {
 
 	sut := "IndexGitCommit"
@@ -1040,6 +1096,22 @@ func TestIndexGitCommit_SolrClientMissingOriginURL(t *testing.T) {
 
 	// trigger the error
 	err = IndexGitCommit(repoPath, commit)
+
+	testutils.AssertError(t, sut, err)
+	testutils.AssertErrorMessageContainsString(t, sut, err, expectedErrStringFragment)
+}
+
+func TestIndexGitCommit_SolrClientNotSet(t *testing.T) {
+
+	sut := "IndexGitCommit"
+	expectedErrStringFragment := "you must call `SetSolrClient()` before calling any indexing functions"
+	repoPath := "/foo/bar"
+	commit := "a5ca6cca30fc08cfc13e4f1492dbfbbf3ec7cf63"
+
+	SetSolrClient(nil)
+
+	// trigger the error
+	err := IndexGitCommit(repoPath, commit)
 
 	testutils.AssertError(t, sut, err)
 	testutils.AssertErrorMessageContainsString(t, sut, err, expectedErrStringFragment)
