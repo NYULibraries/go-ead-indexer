@@ -27,7 +27,6 @@ const eMsgMissingCommitOrGitRepo = "missing argument: the --git-repo argument mu
 
 // log levels used by this package, in increasing order of severity
 var localLogLevels = []string{"debug", "info", "error"}
-
 var file string         // EAD file to be indexed
 var gitCommit string    // commit to index
 var gitRepoPath string  // path to EAD files git repo
@@ -69,7 +68,7 @@ var IndexCmd = &cobra.Command{
 	Use:   "index",
 	Short: "Index EAD file or commit",
 	Example: `go-ead-indexer index --file=[path to EAD file] --logging-level="debug"
-	go-ead-indexer index --git=[path] --commit=[hash] --logging-level="error"`,
+	go-ead-indexer index --git-repo=[path] --commit=[hash] --logging-level="error"`,
 	Args: indexCheckArgs,
 	RunE: runIndexCmd,
 }
@@ -77,6 +76,10 @@ var IndexCmd = &cobra.Command{
 // determine if this is an 'index EAD' case
 func isIndexEADCase() bool {
 	return file != ""
+}
+
+func isIndexGitCommitCase() bool {
+	return (gitRepoPath != "" && gitCommit != "")
 }
 
 // runDeleteCmd is the main function for the 'delete' verb
@@ -148,11 +151,14 @@ func runIndexCmd(cmd *cobra.Command, args []string) error {
 		return logAndReturnError(emsg)
 	}
 
-	if isIndexEADCase() {
+	switch {
+	case isIndexEADCase():
 		return runIndexEAD()
+	case isIndexGitCommitCase():
+		return runIndexGitCommit()
+	default:
+		return fmt.Errorf("ERROR: couldn't determine indexing case")
 	}
-
-	return nil
 }
 
 // runIndexEAD is the main function for the 'index EAD' case
@@ -173,6 +179,19 @@ func runIndexEAD() error {
 
 	// log success message
 	logger.Info(index.MessageKey, fmt.Sprintf("SUCCESS: indexed EAD file: %s", file))
+	return nil
+}
+
+func runIndexGitCommit() error {
+	// index Git Commit
+	err := index.IndexGitCommit(gitRepoPath, gitCommit)
+	if err != nil {
+		emsg := fmt.Sprintf("ERROR: problem indexing git commit %s: %s", gitCommit, err)
+		return logAndReturnError(emsg)
+	}
+
+	// log success message
+	logger.Info(index.MessageKey, fmt.Sprintf("SUCCESS: indexed git commit: %s", gitCommit))
 	return nil
 }
 
