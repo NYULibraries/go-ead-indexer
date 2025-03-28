@@ -79,6 +79,72 @@ func TestDelete_Error(t *testing.T) {
 	testutils.CheckStringContains(t, gotStdOut, "ERROR: couldn't delete data for EADID: This#Is^Not!A(Valid*EADID error:")
 }
 
+func TestDelete_InitLoggerError(t *testing.T) {
+	resetDeleteArgs()
+
+	// ensure that the environment variable is set
+	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "http://www.example.com:8983/solr")
+	if err != nil {
+		t.Errorf("error setting environment variable: %v", err)
+		t.FailNow()
+	}
+
+	testutils.SetCmdFlag(DeleteCmd, "eadid", "fales_mss460")
+	testutils.SetCmdFlag(IndexCmd, "logging-level", "INVALID-LOGGING-LEVEL")
+	testutils.SetCmdFlag(DeleteCmd, "assume-yes", "true")
+
+	gotStdOut, _, _ := testutils.CaptureCmdStdoutStderrE(runDeleteCmd, DeleteCmd, []string{})
+	if gotStdOut == "" {
+		t.Errorf("expected data on StdOut but got nothing")
+	}
+
+	testutils.CheckStringContains(t, gotStdOut, "ERROR: couldn't initialize logger: ERROR: unsupported logging level:")
+}
+
+func TestDelete_InitSolrClientError(t *testing.T) {
+	resetDeleteArgs()
+
+	// ensure that the environment variable is NOT set
+	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "this is not a valid url")
+	if err != nil {
+		t.Errorf("error setting environment variable: %v", err)
+		t.FailNow()
+	}
+
+	testutils.SetCmdFlag(DeleteCmd, "eadid", "fales_mss460")
+	testutils.SetCmdFlag(DeleteCmd, "logging-level", "debug")
+	testutils.SetCmdFlag(DeleteCmd, "assume-yes", "true")
+
+	gotStdOut, _, _ := testutils.CaptureCmdStdoutStderrE(runDeleteCmd, DeleteCmd, []string{})
+	if gotStdOut == "" {
+		t.Errorf("expected data on StdOut but got nothing")
+	}
+
+	testutils.CheckStringContains(t, gotStdOut, `ERROR: couldn't initialize Solr client: error creating Solr client: parse \"this is not a valid url\": invalid URI for request`)
+}
+
+func TestDelete_MissingEADID(t *testing.T) {
+	resetDeleteArgs()
+
+	// ensure that the environment variable is set
+	err := os.Setenv("SOLR_ORIGIN_WITH_PORT", "http://www.example.com:8983/solr")
+	if err != nil {
+		t.Errorf("error setting environment variable: %v", err)
+		t.FailNow()
+	}
+
+	testutils.SetCmdFlag(DeleteCmd, "eadid", "")
+	testutils.SetCmdFlag(DeleteCmd, "assume-yes", "true")
+
+	gotStdOut, _, _ := testutils.CaptureCmdStdoutStderrE(runDeleteCmd, DeleteCmd, []string{})
+	if gotStdOut == "" {
+		t.Errorf("expected data on StdOut but got nothing")
+	}
+
+	testutils.CheckStringContains(t, gotStdOut, eMsgEADIDNotSet)
+
+}
+
 func TestIndex_ArgumentValidation(t *testing.T) {
 	var want string
 	var got error
