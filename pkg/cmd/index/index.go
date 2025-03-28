@@ -24,6 +24,7 @@ const originEnvVar = "SOLR_ORIGIN_WITH_PORT"
 const eMsgNeedOneButNotBothFileAndGitRepo = "one, but not both, of --file or --git-repo arguments must be specified"
 const eMsgCommitOnlyWithGitRepo = "the --commit argument can only be used with the --git-repo argument"
 const eMsgMissingCommitOrGitRepo = "missing argument: the --git-repo argument must be used with the --commit argument"
+const eMsgCouldNotDetermineIndexingCase = "could not determine indexing case"
 
 // log levels used by this package, in increasing order of severity
 var localLogLevels = []string{"debug", "info", "error"}
@@ -157,7 +158,8 @@ func runIndexCmd(cmd *cobra.Command, args []string) error {
 	case isIndexGitCommitCase():
 		return runIndexGitCommit()
 	default:
-		return fmt.Errorf("ERROR: couldn't determine indexing case")
+		emsg := eMsgCouldNotDetermineIndexingCase
+		return logAndReturnError(emsg)
 	}
 }
 
