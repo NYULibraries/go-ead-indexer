@@ -70,7 +70,32 @@ func init() {
 	gitRepoTestGitRepoHiddenGitDirectory = filepath.Join(gitRepoTestGitRepoPathAbsolute, ".git")
 }
 
-func TestDeleteEADFileDataFromIndex_RollbackOnBadCommit(t *testing.T) {
+func TestDeleteEADFileDataFromIndex_BadEADID(t *testing.T) {
+
+	eadid := "waffles!@#%"
+	sut := "DeleteEADFileDataFromIndex"
+	expectedErrStringFragment := fmt.Sprintf("invalid EADID: %s", eadid)
+	expectedCallCount := 0
+
+	sc := testutils.GetSolrClientMock()
+	err := sc.InitMockForDelete(sut)
+	if err != nil {
+		t.Errorf("Error initializing the Solr client for delete testing: %s", err)
+		t.FailNow()
+	}
+
+	// Set the Solr client
+	SetSolrClient(sc)
+
+	// Delete the data for the EADID
+	err = DeleteEADFileDataFromIndex(eadid)
+
+	testutils.AssertError(t, sut, err)
+	testutils.AssertErrorMessageContainsString(t, sut, err, expectedErrStringFragment)
+	testutils.AssertCallCount(t, expectedCallCount, sc.CallCount)
+}
+
+func TestDeleteEADFileDataFromIndex_ErrorOnRollback(t *testing.T) {
 
 	sut := "DeleteEADFileDataFromIndex"
 	eadid := "mss_460"
@@ -85,15 +110,15 @@ func TestDeleteEADFileDataFromIndex_RollbackOnBadCommit(t *testing.T) {
 
 	// set up expected events
 	solrClientExpectedEvents := []testutils.Event{
-		{FuncName: "Delete", Args: []string{eadid}, CallCount: 1},
-		{FuncName: "Commit", CallCount: 2, Err: fmt.Errorf("error during Commit")},
-		{FuncName: "Rollback", CallCount: 3},
+		{FuncName: "Delete", Args: []string{eadid}, CallCount: 1, Err: fmt.Errorf("error during Delete")},
+		{FuncName: "Rollback", CallCount: 2, Err: fmt.Errorf("error during Rollback")},
 	}
 	sc.ExpectedEvents = solrClientExpectedEvents
 
 	// setup error events
 	solrClientErrorEvents := []testutils.ErrorEvent{
-		{FuncName: "Commit", ErrorMessage: "error during Commit", CallCount: 2},
+		{FuncName: "Delete", ErrorMessage: "error during Delete", CallCount: 1},
+		{FuncName: "Rollback", ErrorMessage: "error during Rollback", CallCount: 2},
 	}
 	sc.ErrorEvents = solrClientErrorEvents
 
@@ -148,46 +173,6 @@ func TestDeleteEADFileDataFromIndex_RollbackOnBadDelete(t *testing.T) {
 		t.Errorf("Assertions failed: %s", err)
 	}
 }
-func TestDeleteEADFileDataFromIndex_BadEADID(t *testing.T) {
-
-	eadid := "waffles!@#%"
-	sut := "DeleteEADFileDataFromIndex"
-	expectedErrStringFragment := fmt.Sprintf("invalid EADID: %s", eadid)
-	expectedCallCount := 0
-
-	sc := testutils.GetSolrClientMock()
-	err := sc.InitMockForDelete(sut)
-	if err != nil {
-		t.Errorf("Error initializing the Solr client for delete testing: %s", err)
-		t.FailNow()
-	}
-
-	// Set the Solr client
-	SetSolrClient(sc)
-
-	// Delete the data for the EADID
-	err = DeleteEADFileDataFromIndex(eadid)
-
-	testutils.AssertError(t, sut, err)
-	testutils.AssertErrorMessageContainsString(t, sut, err, expectedErrStringFragment)
-	testutils.AssertCallCount(t, expectedCallCount, sc.CallCount)
-}
-
-func TestDeleteEADFileDataFromIndex_SolrClientNotSet(t *testing.T) {
-
-	sut := "DeleteEADFileDataFromIndex"
-	expectedErrStringFragment := "you must call `SetSolrClient()` before calling any indexing functions"
-	eadid := "mss_460"
-
-	SetSolrClient(nil)
-
-	// Delete the data for the EADID
-	err := DeleteEADFileDataFromIndex(eadid)
-
-	testutils.AssertError(t, sut, err)
-	testutils.AssertErrorMessageContainsString(t, sut, err, expectedErrStringFragment)
-}
-
 func TestDeleteEADFileDataFromIndex_SolrClientMissingOriginURL(t *testing.T) {
 
 	sut := "DeleteEADFileDataFromIndex"
@@ -211,46 +196,20 @@ func TestDeleteEADFileDataFromIndex_SolrClientMissingOriginURL(t *testing.T) {
 	testutils.AssertErrorMessageContainsString(t, sut, err, expectedErrStringFragment)
 }
 
-func TestDeleteEADFileDataFromIndex_ErrorOnRollback(t *testing.T) {
+func TestDeleteEADFileDataFromIndex_SolrClientNotSet(t *testing.T) {
 
 	sut := "DeleteEADFileDataFromIndex"
+	expectedErrStringFragment := "you must call `SetSolrClient()` before calling any indexing functions"
 	eadid := "mss_460"
 
-	// set up the Solr client mock
-	sc := testutils.GetSolrClientMock()
-	err := sc.InitMockForDelete(sut)
-	if err != nil {
-		t.Errorf("Error initializing the Solr client for delete testing: %s", err)
-		t.FailNow()
-	}
-
-	// set up expected events
-	solrClientExpectedEvents := []testutils.Event{
-		{FuncName: "Delete", Args: []string{eadid}, CallCount: 1, Err: fmt.Errorf("error during Delete")},
-		{FuncName: "Rollback", CallCount: 2, Err: fmt.Errorf("error during Rollback")},
-	}
-	sc.ExpectedEvents = solrClientExpectedEvents
-
-	// setup error events
-	solrClientErrorEvents := []testutils.ErrorEvent{
-		{FuncName: "Delete", ErrorMessage: "error during Delete", CallCount: 1},
-		{FuncName: "Rollback", ErrorMessage: "error during Rollback", CallCount: 2},
-	}
-	sc.ErrorEvents = solrClientErrorEvents
-
-	// Set the Solr client
-	SetSolrClient(sc)
+	SetSolrClient(nil)
 
 	// Delete the data for the EADID
-	DeleteEADFileDataFromIndex(eadid)
+	err := DeleteEADFileDataFromIndex(eadid)
 
-	// check that all expectations were met
-	err = sc.CheckAssertionsViaEvents()
-	if err != nil {
-		t.Errorf("Assertions failed: %s", err)
-	}
+	testutils.AssertError(t, sut, err)
+	testutils.AssertErrorMessageContainsString(t, sut, err, expectedErrStringFragment)
 }
-
 func TestDeleteEADFileDataFromIndex_Success(t *testing.T) {
 
 	sut := "DeleteEADFileDataFromIndex"
@@ -322,47 +281,6 @@ func TestIndexEADFile_EADFilePathIsAbsolute(t *testing.T) {
 	testutils.AssertCallCount(t, expectedCallCount, sc.CallCount)
 }
 
-func TestIndexEADFile_SolrClientNotSet(t *testing.T) {
-
-	sut := "IndexEADFile"
-	expectedErrStringFragment := "you must call `SetSolrClient()` before calling any indexing functions"
-
-	repositoryCode := "fales"
-	eadid := "mss_460"
-	testEAD := filepath.Join(repositoryCode, eadid)
-
-	var eadPath = eadtestutils.EadFixturePath(testEAD)
-
-	SetSolrClient(nil)
-	err := IndexEADFile(eadPath)
-
-	testutils.AssertError(t, sut, err)
-	testutils.AssertErrorMessageContainsString(t, sut, err, expectedErrStringFragment)
-}
-func TestIndexEADFile_ErrorExtractingRepositoryCode(t *testing.T) {
-
-	sut := "IndexEADFile"
-	expectedErrStringFragment := "EAD file path must have at least two non-empty components"
-	expectedCallCount := 0
-
-	sc := testutils.GetSolrClientMock()
-	SetSolrClient(sc)
-
-	_, filename, _, ok := runtime.Caller(0)
-	if !ok {
-		t.Errorf("ERROR: `runtime.Caller(0)` failed")
-		t.FailNow()
-	}
-
-	dir := filepath.Dir(filename)
-	eadPath := filepath.Join(dir, "testdata", "fixtures", "edip", "test-file-for-bad-repo-extraction.empty")
-
-	err := IndexEADFile(eadPath)
-	testutils.AssertError(t, sut, err)
-	testutils.AssertErrorMessageContainsString(t, sut, err, expectedErrStringFragment)
-	testutils.AssertCallCount(t, expectedCallCount, sc.CallCount)
-}
-
 func TestIndexEADFile_ErrorDuringEADParsing(t *testing.T) {
 
 	sut := "IndexEADFile"
@@ -387,45 +305,28 @@ func TestIndexEADFile_ErrorDuringEADParsing(t *testing.T) {
 	testutils.AssertCallCount(t, expectedCallCount, sc.CallCount)
 }
 
-func TestIndexEADFile_RollbackOnBadDelete(t *testing.T) {
+func TestIndexEADFile_ErrorExtractingRepositoryCode(t *testing.T) {
 
-	repositoryCode := "fales"
-	eadid := "mss_460"
-	testEAD := filepath.Join(repositoryCode, eadid)
-	var eadPath = eadtestutils.EadFixturePath(testEAD)
+	sut := "IndexEADFile"
+	expectedErrStringFragment := "EAD file path must have at least two non-empty components"
+	expectedCallCount := 0
 
-	// set up the Solr client mock
 	sc := testutils.GetSolrClientMock()
-	err := sc.InitMockForIndexing(testEAD)
-	if err != nil {
-		t.Errorf("Error initializing Solr Client Mock: %s", err)
+	SetSolrClient(sc)
+
+	_, filename, _, ok := runtime.Caller(0)
+	if !ok {
+		t.Errorf("ERROR: `runtime.Caller(0)` failed")
 		t.FailNow()
 	}
 
-	// setup expectations
-	solrClientExpectedEvents := []testutils.Event{
-		{FuncName: "Delete", Args: []string{eadid}, CallCount: 1, Err: fmt.Errorf("error during Delete")},
-		{FuncName: "Rollback", CallCount: 2},
-	}
-	sc.ExpectedEvents = solrClientExpectedEvents
+	dir := filepath.Dir(filename)
+	eadPath := filepath.Join(dir, "testdata", "fixtures", "edip", "test-file-for-bad-repo-extraction.empty")
 
-	// setup error events
-	solrClientErrorEvents := []testutils.ErrorEvent{
-		{FuncName: "Delete", ErrorMessage: "error during Delete", CallCount: 1},
-	}
-	sc.ErrorEvents = solrClientErrorEvents
-
-	// Set the Solr client
-	SetSolrClient(sc)
-
-	// Index the EAD file
-	IndexEADFile(eadPath)
-
-	// check that all expectations were met
-	err = sc.CheckAssertionsViaEvents()
-	if err != nil {
-		t.Errorf("Assertions failed: %s", err)
-	}
+	err := IndexEADFile(eadPath)
+	testutils.AssertError(t, sut, err)
+	testutils.AssertErrorMessageContainsString(t, sut, err, expectedErrStringFragment)
+	testutils.AssertCallCount(t, expectedCallCount, sc.CallCount)
 }
 
 func TestIndexEADFile_RollbackOnBadCollectionIndex(t *testing.T) {
@@ -465,6 +366,46 @@ func TestIndexEADFile_RollbackOnBadCollectionIndex(t *testing.T) {
 
 	// check that all expectations were met
 	err = sc.CheckAssertionsViaEvents()
+	if err != nil {
+		t.Errorf("Assertions failed: %s", err)
+	}
+}
+
+func TestIndexEADFile_RollbackOnBadCommit(t *testing.T) {
+
+	repositoryCode := "fales"
+	eadid := "mss_460"
+
+	testEAD := filepath.Join(repositoryCode, eadid)
+	var eadPath = eadtestutils.EadFixturePath(testEAD)
+
+	sc := testutils.GetSolrClientMock()
+	err := sc.InitMockForIndexing(testEAD)
+	if err != nil {
+		t.Errorf("Error initializing Solr Client Mock: %s", err)
+		t.FailNow()
+	}
+
+	// set expectations
+	sc.ExpectedCallOrder.Delete = 1                             // delete is always called first
+	sc.ExpectedCallOrder.Commit = sc.NumberOfFilesToIndex + 2   // commit   = delete + number of files + commit = number of files + 2
+	sc.ExpectedCallOrder.Rollback = sc.NumberOfFilesToIndex + 3 // rollback = delete + number of files + commit + rollback = number of files + 3
+	sc.ExpectedDeleteArgument = eadid
+
+	// setup error events
+	solrClientErrorEvents := []testutils.ErrorEvent{
+		{FuncName: "Commit", ErrorMessage: "error during Commit", CallCount: sc.ExpectedCallOrder.Commit},
+	}
+	sc.ErrorEvents = solrClientErrorEvents
+
+	// Set the Solr client
+	SetSolrClient(sc)
+
+	// Index the EAD file
+	sc.ActualError = IndexEADFile(eadPath)
+
+	// check that all expectations were met
+	err = sc.CheckAssertions()
 	if err != nil {
 		t.Errorf("Assertions failed: %s", err)
 	}
@@ -530,14 +471,14 @@ func TestIndexEADFile_RollbackOnBadComponentIndex(t *testing.T) {
 	}
 }
 
-func TestIndexEADFile_RollbackOnBadCommit(t *testing.T) {
+func TestIndexEADFile_RollbackOnBadDelete(t *testing.T) {
 
 	repositoryCode := "fales"
 	eadid := "mss_460"
-
 	testEAD := filepath.Join(repositoryCode, eadid)
 	var eadPath = eadtestutils.EadFixturePath(testEAD)
 
+	// set up the Solr client mock
 	sc := testutils.GetSolrClientMock()
 	err := sc.InitMockForIndexing(testEAD)
 	if err != nil {
@@ -545,15 +486,16 @@ func TestIndexEADFile_RollbackOnBadCommit(t *testing.T) {
 		t.FailNow()
 	}
 
-	// set expectations
-	sc.ExpectedCallOrder.Delete = 1                             // delete is always called first
-	sc.ExpectedCallOrder.Commit = sc.NumberOfFilesToIndex + 2   // commit   = delete + number of files + commit = number of files + 2
-	sc.ExpectedCallOrder.Rollback = sc.NumberOfFilesToIndex + 3 // rollback = delete + number of files + commit + rollback = number of files + 3
-	sc.ExpectedDeleteArgument = eadid
+	// setup expectations
+	solrClientExpectedEvents := []testutils.Event{
+		{FuncName: "Delete", Args: []string{eadid}, CallCount: 1, Err: fmt.Errorf("error during Delete")},
+		{FuncName: "Rollback", CallCount: 2},
+	}
+	sc.ExpectedEvents = solrClientExpectedEvents
 
 	// setup error events
 	solrClientErrorEvents := []testutils.ErrorEvent{
-		{FuncName: "Commit", ErrorMessage: "error during Commit", CallCount: sc.ExpectedCallOrder.Commit},
+		{FuncName: "Delete", ErrorMessage: "error during Delete", CallCount: 1},
 	}
 	sc.ErrorEvents = solrClientErrorEvents
 
@@ -561,13 +503,31 @@ func TestIndexEADFile_RollbackOnBadCommit(t *testing.T) {
 	SetSolrClient(sc)
 
 	// Index the EAD file
-	sc.ActualError = IndexEADFile(eadPath)
+	IndexEADFile(eadPath)
 
 	// check that all expectations were met
-	err = sc.CheckAssertions()
+	err = sc.CheckAssertionsViaEvents()
 	if err != nil {
 		t.Errorf("Assertions failed: %s", err)
 	}
+}
+
+func TestIndexEADFile_SolrClientNotSet(t *testing.T) {
+
+	sut := "IndexEADFile"
+	expectedErrStringFragment := "you must call `SetSolrClient()` before calling any indexing functions"
+
+	repositoryCode := "fales"
+	eadid := "mss_460"
+	testEAD := filepath.Join(repositoryCode, eadid)
+
+	var eadPath = eadtestutils.EadFixturePath(testEAD)
+
+	SetSolrClient(nil)
+	err := IndexEADFile(eadPath)
+
+	testutils.AssertError(t, sut, err)
+	testutils.AssertErrorMessageContainsString(t, sut, err, expectedErrStringFragment)
 }
 
 func TestIndexEADFile_Success(t *testing.T) {
