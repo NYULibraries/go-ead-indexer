@@ -74,6 +74,11 @@ var IndexCmd = &cobra.Command{
 	RunE: runIndexCmd,
 }
 
+// determine if this is an 'index EAD' case
+func isIndexEADCase() bool {
+	return file != ""
+}
+
 // runDeleteCmd is the main function for the 'delete' verb
 // It initializes the logger and Solr client, then deletes the data by EADID
 // It exits with a fatal error if any of these steps fail
@@ -136,18 +141,6 @@ func runIndexCmd(cmd *cobra.Command, args []string) error {
 		return logAndReturnError(emsg)
 	}
 
-	// check if EAD file path is set
-	if file == "" {
-		emsg := "ERROR: EAD file path not set"
-		return logAndReturnError(emsg)
-	}
-
-	// check that the EAD file exists
-	if _, err := os.Stat(file); errors.Is(err, fs.ErrNotExist) {
-		emsg := fmt.Sprintf("ERROR: EAD file does not exist: %s", file)
-		return logAndReturnError(emsg)
-	}
-
 	// initialize Solr client
 	err = initSolrClient()
 	if err != nil {
@@ -155,8 +148,24 @@ func runIndexCmd(cmd *cobra.Command, args []string) error {
 		return logAndReturnError(emsg)
 	}
 
+	if isIndexEADCase() {
+		return runIndexEAD()
+	}
+
+	return nil
+}
+
+// runIndexEAD is the main function for the 'index EAD' case
+func runIndexEAD() error {
+
+	// check that the EAD file exists
+	if _, err := os.Stat(file); errors.Is(err, fs.ErrNotExist) {
+		emsg := fmt.Sprintf("ERROR: EAD file does not exist: %s", file)
+		return logAndReturnError(emsg)
+	}
+
 	// index EAD file
-	err = index.IndexEADFile(file)
+	err := index.IndexEADFile(file)
 	if err != nil {
 		emsg := fmt.Sprintf("ERROR: couldn't index EAD file: %s", err)
 		return logAndReturnError(emsg)
@@ -249,34 +258,3 @@ func indexCheckArgs(cmd *cobra.Command, args []string) error {
 
 	return nil
 }
-
-//------------------------------------------------------------------------------
-// THIS PACKAGE IS A WORK IN PROGRESS!!!
-//
-// THE FOLLOWING CODE HAS BEEN COMMENTED OUT,
-// BUT REPRESENTS THE FULL FUNCTIONALITY OF THE 'index' COMMAND
-//------------------------------------------------------------------------------
-// git commit hash and path to EAD files git repo
-// var gitCommit string
-// var gitRepoPath string
-//
-// the following init() function contains the full implementation of the 'index' command
-// func init() {
-// 	IndexCmd.Flags().StringVarP(&gitCommit, "commit", "c",
-// 		"", "hash of git commit")
-// 	IndexCmd.Flags().StringVarP(&file, "file", "f",
-// 		"", "path to EAD file")
-// 	IndexCmd.Flags().StringVarP(&gitRepoPath, "git-repo", "g",
-// 		"", "path to EAD files git repo")
-// 	IndexCmd.Flags().StringVarP(&loggingLevel, "logging-level", "l",
-// 		log.DefaultLevelStringOption,
-// 		"Sets logging level: "+strings.Join(log.GetValidLevelOptionStrings(), ", ")+"")
-// }
-// var IndexCmd = &cobra.Command{
-// 	Use:     "index",
-// 	Short:   "Index EAD file",
-// 	Example: `go-ead-indexer index --file=[path to EAD file] --logging-level="debug"`,
-// 	go-ead-indexer index --git-repo=[path] --commit=[hash]
-// 	go-ead-indexer index --git-repo=[path] --commit=[hash] --logging-level="debug"`,
-// 	Run: runIndexCmd,
-// }
