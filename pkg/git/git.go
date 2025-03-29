@@ -8,7 +8,7 @@ import (
 
 	gogit "github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/plumbing"
-	"github.com/go-git/go-git/v5/plumbing/format/diff"
+	gitdiff "github.com/go-git/go-git/v5/plumbing/format/diff"
 )
 
 var regexpString = fmt.Sprintf("^.*%s(\\w+).xml$", string(filepath.Separator))
@@ -124,14 +124,14 @@ func ListEADFilesForCommit(repoPath string, thisCommitHashString string) ([]Inde
 	return steps, nil
 }
 
-func getPath(f diff.File) string {
+func getPath(f gitdiff.File) string {
 	if f == nil {
 		return ""
 	}
 	return f.Path()
 }
 
-func classifyFileChange(from, to diff.File) (string, IndexerOperation) {
+func classifyFileChange(from, to gitdiff.File) (string, IndexerOperation) {
 	/*
 		add    --> from.Path() is nil &&
 				     to.Path() is not nil
