@@ -8,8 +8,10 @@ package index
 import (
 	"errors"
 	"fmt"
+	"maps"
 	"os"
 	"path/filepath"
+	"slices"
 
 	"github.com/nyulibraries/go-ead-indexer/pkg/ead"
 	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
@@ -140,22 +142,23 @@ func IndexGitCommit(repoPath, commit string) error {
 	}
 
 	// get the list of EAD files and their operations
-	indexerSteps, err := git.ListEADFilesForCommit(repoPath, commit)
+	operations, err := git.ListEADFilesForCommit(repoPath, commit)
 	if err != nil {
 		return appendAndJoinErrs(errs, err)
 	}
 
-	// iterate over the EAD files and their operations
-	for _, step := range indexerSteps {
-		switch step.Operation {
+	for _, eadFileRelativePath := range slices.Sorted(maps.Keys(operations)) {
+		operation := operations[eadFileRelativePath]
+
+		switch operation {
 		case git.Add:
-			err = IndexEADFile(filepath.Join(repoPath, step.FilePath))
+			err = IndexEADFile(filepath.Join(repoPath, eadFileRelativePath))
 			if err != nil {
 				return appendErrIssueRollbackJoinErrs(errs, err)
 			}
 
 		case git.Delete:
-			eadID, err := git.EADPathToEADID(step.FilePath)
+			eadID, err := git.EADPathToEADID(eadFileRelativePath)
 			if err != nil {
 				return appendAndJoinErrs(errs, err)
 			}
@@ -166,7 +169,7 @@ func IndexGitCommit(repoPath, commit string) error {
 			}
 
 		default:
-			return appendAndJoinErrs(errs, fmt.Errorf("unknown operation: %s", step.Operation))
+			return appendAndJoinErrs(errs, fmt.Errorf("unknown operation: %s", operation))
 		}
 	}
 

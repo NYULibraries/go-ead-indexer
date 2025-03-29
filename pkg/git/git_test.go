@@ -170,32 +170,33 @@ func TestListEADFilesForCommit(t *testing.T) {
 	defer deleteTestGitRepo(t)
 
 	scenarios := []struct {
-		Hash  string
-		Steps []IndexerStep
+		Hash       string
+		Operations map[string]IndexerOperation
 	}{
-		{"a5ca6cca30fc08cfc13e4f1492dbfbbf3ec7cf63", []IndexerStep{{Add, "fales/mss_001.xml"}}},
-		{"33ac5f1415ac8fe611944bad4925528b62e845c8", []IndexerStep{{Add, "archives/mc_1.xml"}, {Delete, "fales/mss_002.xml"}, {Add, "fales/mss_005.xml"}, {Add, "tamwag/aia_002.xml"}}},
-		{"382c67e2ac64323e328506c85f97e229070a46cc", []IndexerStep{{Add, "archives/cap_1.xml"}, {Add, "fales/mss_004.xml"}, {Add, "tamwag/aia_001.xml"}}},
-		{"2f531fc31b82cb128428c83e11d1e3f79b0da394", []IndexerStep{{Add, "fales/mss_002.xml"}, {Add, "fales/mss_003.xml"}}},
-		{"7e65f35361c9a2d7fc48bece8f04856b358620bf", []IndexerStep{{Add, "fales/mss_001.xml"}}},
+		{"a5ca6cca30fc08cfc13e4f1492dbfbbf3ec7cf63", map[string]IndexerOperation{"fales/mss_001.xml": Add}},
+		{"33ac5f1415ac8fe611944bad4925528b62e845c8", map[string]IndexerOperation{"archives/mc_1.xml": Add, "fales/mss_002.xml": Delete, "fales/mss_005.xml": Add, "tamwag/aia_002.xml": Add}},
+		{"382c67e2ac64323e328506c85f97e229070a46cc", map[string]IndexerOperation{"archives/cap_1.xml": Add, "fales/mss_004.xml": Add, "tamwag/aia_001.xml": Add}},
+		{"2f531fc31b82cb128428c83e11d1e3f79b0da394", map[string]IndexerOperation{"fales/mss_002.xml": Add, "fales/mss_003.xml": Add}},
+		{"7e65f35361c9a2d7fc48bece8f04856b358620bf", map[string]IndexerOperation{"fales/mss_001.xml": Add}},
 	}
 
 	for _, scenario := range scenarios {
-		commitSteps, err := ListEADFilesForCommit(gitRepoTestGitRepoPathAbsolute, scenario.Hash)
+		operations, err := ListEADFilesForCommit(gitRepoTestGitRepoPathAbsolute, scenario.Hash)
 		if err != nil {
-			t.Errorf("unexpected error: %v for commit %s", err, scenario.Hash)
+			t.Errorf("unexpected error: %v for commit hash %s", err, scenario.Hash)
 			continue
 		}
-		if len(commitSteps) != len(scenario.Steps) {
-			t.Errorf("expected %d steps, got %d for commit hash %s", len(scenario.Steps), len(commitSteps), scenario.Hash)
+		if len(operations) != len(scenario.Operations) {
+			t.Errorf("expected %d operations, got %d for commit hash %s", len(scenario.Operations), len(operations), scenario.Hash)
 			continue
 		}
-		for i, scenarioStep := range scenario.Steps {
-			if scenarioStep.Operation != commitSteps[i].Operation {
-				t.Errorf("expected operation '%s', got '%s'", scenarioStep.Operation, commitSteps[i].Operation)
+		for file, expectedOp := range scenario.Operations {
+			op, ok := operations[file]
+			if !ok {
+				t.Errorf("missing operation for file '%s' for commit hash '%s'", file, scenario.Hash)
 			}
-			if scenarioStep.FilePath != commitSteps[i].FilePath {
-				t.Errorf("expected path '%s', got '%s'", scenarioStep.FilePath, commitSteps[i].FilePath)
+			if op != expectedOp {
+				t.Errorf("expected operation '%s' for file '%s', got '%s' for commit hash '%s'", expectedOp, file, op, scenario.Hash)
 			}
 		}
 	}

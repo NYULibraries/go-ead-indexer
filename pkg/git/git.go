@@ -15,10 +15,6 @@ var regexpString = fmt.Sprintf("^.*%s(\\w+).xml$", string(filepath.Separator))
 var eadPathExtractEadIDRegExp = regexp.MustCompile(regexpString)
 
 type IndexerOperation string
-type IndexerStep struct {
-	Operation IndexerOperation
-	FilePath  string
-}
 
 const (
 	Add     IndexerOperation = "add"
@@ -55,9 +51,9 @@ func EADPathToEADID(path string) (string, error) {
 	return "", fmt.Errorf("unable to extract EADID from path '%s'", path)
 }
 
-func ListEADFilesForCommit(repoPath string, thisCommitHashString string) ([]IndexerStep, error) {
+func ListEADFilesForCommit(repoPath string, thisCommitHashString string) (map[string]IndexerOperation, error) {
 
-	var steps []IndexerStep
+	operations := make(map[string]IndexerOperation)
 
 	// Opens an already existing repository.
 	repo, err := gogit.PlainOpen(repoPath)
@@ -86,9 +82,9 @@ func ListEADFilesForCommit(repoPath string, thisCommitHashString string) ([]Inde
 			if err != nil {
 				break
 			}
-			steps = append(steps, IndexerStep{Operation: Add, FilePath: file.Name})
+			operations[file.Name] = Add
 		}
-		return steps, nil
+		return operations, nil
 	}
 
 	// Get the parent commit
@@ -114,14 +110,13 @@ func ListEADFilesForCommit(repoPath string, thisCommitHashString string) ([]Inde
 			continue
 		}
 
-		steps = append(steps, IndexerStep{Operation: v, FilePath: k})
+		operations[k] = v
 	}
-
 	if len(errs) != 0 {
 		return nil, errors.Join(errs...)
 	}
 
-	return steps, nil
+	return operations, nil
 }
 
 func getPath(f gitdiff.File) string {
