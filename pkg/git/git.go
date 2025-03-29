@@ -37,7 +37,8 @@ func Checkout(repoPath string, commitHash string) error {
 		Hash: plumbing.NewHash(commitHash),
 	})
 	if err != nil {
-		return fmt.Errorf("problem checking out hash '%s', error: '%s'", commitHash, err.Error())
+		return fmt.Errorf("problem checking out hash '%s', error: '%s'",
+			commitHash, err.Error())
 	}
 
 	return nil
@@ -51,7 +52,8 @@ func EADPathToEADID(path string) (string, error) {
 	return "", fmt.Errorf("unable to extract EADID from path '%s'", path)
 }
 
-func ListEADFilesForCommit(repoPath string, thisCommitHashString string) (map[string]IndexerOperation, error) {
+func ListEADFilesForCommit(repoPath string,
+	thisCommitHashString string) (map[string]IndexerOperation, error) {
 
 	operations := make(map[string]IndexerOperation)
 
@@ -65,7 +67,9 @@ func ListEADFilesForCommit(repoPath string, thisCommitHashString string) (map[st
 	thisCommitHash := plumbing.NewHash(thisCommitHashString)
 	thisCommit, err := repo.CommitObject(thisCommitHash)
 	if err != nil {
-		return nil, fmt.Errorf("problem getting commit object for commit hash %s: %s", thisCommitHash, err)
+		return nil,
+			fmt.Errorf("problem getting commit object for commit hash %s: %s",
+				thisCommitHash, err)
 	}
 
 	// handle the initial commit case
@@ -106,7 +110,13 @@ func ListEADFilesForCommit(repoPath string, thisCommitHashString string) (map[st
 		k, v := classifyFileChange(from, to)
 		if v == Unknown {
 			// unable to determine the type of change
-			errs = append(errs, fmt.Errorf("unable to determine file transition: Commits: commit '%s', parent: '%s', Files: from '%s', to '%s'", thisCommitHashString, parentHash.String(), getPath(from), getPath(to)))
+			errs = append(errs,
+				fmt.Errorf("unable to determine file transition: Commits: "+
+					"commit '%s', parent: '%s', Files: from '%s', to '%s'",
+					thisCommitHashString,
+					parentHash.String(),
+					getPath(from),
+					getPath(to)))
 			continue
 		}
 
