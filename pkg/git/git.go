@@ -4,15 +4,13 @@ import (
 	"errors"
 	"fmt"
 	"path/filepath"
-	"regexp"
+	"strings"
 
 	gogit "github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/plumbing"
 	gitdiff "github.com/go-git/go-git/v5/plumbing/format/diff"
+	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
 )
-
-var regexpString = fmt.Sprintf("^.*%s(\\w+).xml$", string(filepath.Separator))
-var eadPathExtractEadIDRegExp = regexp.MustCompile(regexpString)
 
 type IndexerOperation string
 
@@ -45,11 +43,11 @@ func Checkout(repoPath string, commitHash string) error {
 }
 
 func EADPathToEADID(path string) (string, error) {
-	matches := eadPathExtractEadIDRegExp.FindStringSubmatch(path)
-	if len(matches) > 1 {
-		return matches[1], nil
+	eadID := strings.TrimSuffix(filepath.Base(path), filepath.Ext(path))
+	if !eadutil.IsValidEADID(eadID) {
+		return "", fmt.Errorf("invalid EADID: %s", eadID)
 	}
-	return "", fmt.Errorf("unable to extract EADID from path '%s'", path)
+	return eadID, nil
 }
 
 func ListEADFilesForCommit(repoPath string,

@@ -1,8 +1,10 @@
 package git
 
 /*
-  PLEASE NOTE: if you regenerate the "simple-repo" via the testsupport/gen-repo.bash script
-               THE COMMIT HASHES WILL CHANGE! Therefore, you will need to update the hash
+  PLEASE NOTE: if you regenerate the "simple-repo" via the
+               testsupport/gen-repo.bash script
+               THE COMMIT HASHES WILL CHANGE!
+			   Therefore, you will need to update the hash
                values in the "scenarios" slice below.
 
 a5ca6cca30fc08cfc13e4f1492dbfbbf3ec7cf63 2025-02-13 14:16:29 -0500 | Updating file fales/mss_001.xml (HEAD -> main) [jgpawletko]
@@ -32,12 +34,13 @@ var gitRepoTestGitRepoDotGitDirectory string
 var gitRepoTestGitRepoHiddenGitDirectory string
 
 // this code is based on that in the debug package, written by David Arjanik
-// We need to get the absolute path to this package in order to enable the function
-// for golden file and fixture file retrieval to be called from other packages
-// which would not be able to resolve the hardcoded relative paths used here.
+// We need to get the absolute path to this package in order to enable the
+// function for golden file and fixture file retrieval to be called from other
+// packages which would not be able to resolve the hardcoded relative paths
+// used here.
 func init() {
-	// The `filename` string is the absolute path to this source file, which should
-	// be located at the root of the package directory.
+	// The `filename` string is the absolute path to this source file,
+	// which should be located at the root of the package directory.
 	_, filename, _, ok := runtime.Caller(0)
 	if !ok {
 		panic("ERROR: `runtime.Caller(0)` failed")
@@ -53,8 +56,8 @@ func init() {
 	// Get testdata directory paths
 	gitSourceRepoPathAbsolute = filepath.Join(thisPath, "testdata", "fixtures", "git-repo")
 
-	// This could be done as a const at top level, but assigning it here to keep
-	// all this path stuff in one place.
+	// This could be done as a const at top level, but assigning it here to
+	// keep all this path stuff in one place.
 	gitRepoTestGitRepoPathAbsolute = filepath.Join(thisPath, "testdata", "fixtures", "test-git-repo")
 	gitRepoTestGitRepoPathRelative = filepath.Join(".", "testdata", "fixtures", "test-git-repo")
 	gitRepoTestGitRepoDotGitDirectory = filepath.Join(gitRepoTestGitRepoPathAbsolute, "dot-git")
@@ -73,7 +76,8 @@ func TestCheckout(t *testing.T) {
 		FileRelPaths []string
 	}{
 		{"a5ca6cca30fc08cfc13e4f1492dbfbbf3ec7cf63", []string{"fales/mss_001.xml"}},
-		{"33ac5f1415ac8fe611944bad4925528b62e845c8", []string{"archives/mc_1.xml", "fales/mss_005.xml", "tamwag/aia_002.xml"}},
+		{"33ac5f1415ac8fe611944bad4925528b62e845c8",
+			[]string{"archives/mc_1.xml", "fales/mss_005.xml", "tamwag/aia_002.xml"}},
 		{"382c67e2ac64323e328506c85f97e229070a46cc", []string{"archives/cap_1.xml", "fales/mss_004.xml", "tamwag/aia_001.xml"}},
 		{"2f531fc31b82cb128428c83e11d1e3f79b0da394", []string{"fales/mss_002.xml", "fales/mss_003.xml"}},
 		{"7e65f35361c9a2d7fc48bece8f04856b358620bf", []string{"fales/mss_001.xml"}},
@@ -156,9 +160,10 @@ func TestEADPathToEADID(t *testing.T) {
 		t.Errorf("expected error but no error generated")
 		return
 	}
-	exp := "unable to extract EADID from path 'this-is-not-a-real-path'"
-	if err.Error() != exp {
-		t.Errorf("expected error message '%s', got '%s'", exp, err.Error())
+	expectedError := "invalid EADID: this-is-not-a-real-path"
+	if err.Error() != expectedError {
+		t.Errorf("expected error message '%s', got '%s'",
+			expectedError, err.Error())
 	}
 }
 
