@@ -983,6 +983,7 @@ func TestIndexGitCommit_FailFast(t *testing.T) {
 	err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute, addThreeDeleteTwoHash)
 	if err == nil {
 		t.Errorf("Expected error from IndexGitCommit() but no error was returned.")
+		t.FailNow()
 	}
 
 	if err.Error() != "error during Add" {
