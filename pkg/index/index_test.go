@@ -36,7 +36,6 @@ var addThreeDeleteTwoHash = "00fd44a8e69285cf3789be3e7bc0e4e88d5f6dd8"
 var thisPath string
 var gitSourceRepoPathAbsolute string
 var gitRepoTestGitRepoPathAbsolute string
-var gitRepoTestGitRepoPathRelative string
 var gitRepoTestGitRepoDotGitDirectory string
 var gitRepoTestGitRepoHiddenGitDirectory string
 
@@ -65,7 +64,6 @@ func init() {
 	// This could be done as a const at top level, but assigning it here to keep
 	// all this path stuff in one place.
 	gitRepoTestGitRepoPathAbsolute = filepath.Join(thisPath, "testdata", "fixtures", "test-git-repo")
-	gitRepoTestGitRepoPathRelative = filepath.Join(".", "testdata", "fixtures", "test-git-repo")
 	gitRepoTestGitRepoDotGitDirectory = filepath.Join(gitRepoTestGitRepoPathAbsolute, "dot-git")
 	gitRepoTestGitRepoHiddenGitDirectory = filepath.Join(gitRepoTestGitRepoPathAbsolute, ".git")
 }
