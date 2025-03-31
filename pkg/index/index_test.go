@@ -1091,7 +1091,9 @@ func createTestGitRepo(t *testing.T) {
 	err := os.CopyFS(gitRepoTestGitRepoPathAbsolute, gitSourceRepoPathAbsoluteFS)
 	if err != nil {
 		t.Errorf(
-			`Unexpected error returned by os.CopyFS(gitSourceRepoPathAbsoluteFS, gitRepoTestGitRepoPathAbsolute): %s`,
+			`Unexpected error returned by `+
+				`os.CopyFS(gitRepoTestGitRepoPathAbsolute, `+
+				`gitSourceRepoPathAbsoluteFS): %s`,
 			err.Error())
 		t.FailNow()
 	}
@@ -1109,7 +1111,7 @@ func deleteTestGitRepo(t *testing.T) {
 	err := os.RemoveAll(gitRepoTestGitRepoPathAbsolute)
 	if err != nil {
 		t.Errorf(
-			`deleteEnabledHiddenGitDirectory() failed with error "%s", remove %s manually`,
+			`deleteTestGitRepo() failed with error "%s", remove %s manually`,
 			err.Error(), gitRepoTestGitRepoPathAbsolute)
 		t.FailNow()
 	}
