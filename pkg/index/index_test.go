@@ -100,7 +100,10 @@ func TestDeleteEADFileDataFromIndex_RollbackOnBadDelete(t *testing.T) {
 	SetSolrClient(sc)
 
 	// Delete the data for the EADID
-	DeleteEADFileDataFromIndex(eadid)
+	err = DeleteEADFileDataFromIndex(eadid)
+	if err == nil {
+		t.Errorf("Expected an error, but got nil")
+	}
 
 	// check that all expectations were met
 	err = sc.CheckAssertionsViaEvents()
@@ -202,7 +205,10 @@ func TestDeleteEADFileDataFromIndex_ErrorOnRollback(t *testing.T) {
 	SetSolrClient(sc)
 
 	// Delete the data for the EADID
-	DeleteEADFileDataFromIndex(eadid)
+	err = DeleteEADFileDataFromIndex(eadid)
+	if err == nil {
+		t.Errorf("Expected an error, but got nil")
+	}
 
 	// check that all expectations were met
 	err = sc.CheckAssertionsViaEvents()
