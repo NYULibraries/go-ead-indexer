@@ -48,22 +48,22 @@ func DumpSolrIndexerHTTPRequestsForGitCommit(repoPath string, commit string) (st
 		}
 	}
 
-	indexerSteps, err := git.ListEADFilesForCommit(repoPathAbsolute, commit)
+	eadFilesForCommit, err := git.ListEADFilesForCommit(repoPathAbsolute, commit)
 	if err != nil {
 		return "", err
 	}
 
 	dumpedSolrIndexerHTTPRequests := map[string]dumpedSolrIndexerHTTPRequestsForEADFile{}
-	for _, indexerStep := range indexerSteps {
-		if indexerStep.Operation == git.Add {
-			eadFileAbsolutePath := path.Join(repoPathAbsolute, indexerStep.FilePath)
+	for eadFileRelativePath := range eadFilesForCommit {
+		if eadFilesForCommit[eadFileRelativePath] == git.Add {
+			eadFileAbsolutePath := path.Join(repoPathAbsolute, eadFileRelativePath)
 			dumpedHTTPRequests, err :=
 				getDumpedSolrIndexerHTTPRequestsForEADFile(eadFileAbsolutePath)
 			if err != nil {
 				return "", err
 			}
 
-			dumpedSolrIndexerHTTPRequests[indexerStep.FilePath] = dumpedHTTPRequests
+			dumpedSolrIndexerHTTPRequests[eadFileRelativePath] = dumpedHTTPRequests
 		}
 	}
 

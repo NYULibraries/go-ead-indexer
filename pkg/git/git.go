@@ -4,21 +4,15 @@ import (
 	"errors"
 	"fmt"
 	"path/filepath"
-	"regexp"
+	"strings"
 
 	gogit "github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/plumbing"
-	"github.com/go-git/go-git/v5/plumbing/format/diff"
+	gitdiff "github.com/go-git/go-git/v5/plumbing/format/diff"
+	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
 )
 
-var regexpString = fmt.Sprintf("^.*%s(\\w+).xml$", string(filepath.Separator))
-var eadPathExtractEadIDRegExp = regexp.MustCompile(regexpString)
-
 type IndexerOperation string
-type IndexerStep struct {
-	Operation IndexerOperation
-	FilePath  string
-}
 
 const (
 	Add     IndexerOperation = "add"
@@ -26,7 +20,18 @@ const (
 	Unknown IndexerOperation = "unknown"
 )
 
-func Checkout(repoPath string, commitHash string) error {
+// CheckoutMergeReset checks out a commit hash in a git repository.
+//
+// WARNING:
+// This function uses the default "gogit.CheckoutOptions{Keep: false}".
+//
+// This means that:
+// 1.) if there are any files under version control with uncommitted changes,
+// the checkout will FAIL
+//
+// 2.) if there are any files in the git repo directory hierarchy that are
+// NOT under version control, THOSE FILES WILL BE DELETED ON CHECKOUT!
+func CheckoutMergeReset(repoPath string, commitHash string) error {
 	repo, err := gogit.PlainOpen(repoPath)
 	if err != nil {
 		return err
@@ -41,23 +46,25 @@ func Checkout(repoPath string, commitHash string) error {
 		Hash: plumbing.NewHash(commitHash),
 	})
 	if err != nil {
-		return fmt.Errorf("problem checking out hash '%s', error: '%s'", commitHash, err.Error())
+		return fmt.Errorf("problem checking out hash '%s', error: '%s'",
+			commitHash, err.Error())
 	}
 
 	return nil
 }
 
 func EADPathToEADID(path string) (string, error) {
-	matches := eadPathExtractEadIDRegExp.FindStringSubmatch(path)
-	if len(matches) > 1 {
-		return matches[1], nil
+	eadID := strings.TrimSuffix(filepath.Base(path), filepath.Ext(path))
+	if !eadutil.IsValidEADID(eadID) {
+		return "", fmt.Errorf("invalid EADID: %s", eadID)
 	}
-	return "", fmt.Errorf("unable to extract EADID from path '%s'", path)
+	return eadID, nil
 }
 
-func ListEADFilesForCommit(repoPath string, thisCommitHashString string) ([]IndexerStep, error) {
+func ListEADFilesForCommit(repoPath string,
+	thisCommitHashString string) (map[string]IndexerOperation, error) {
 
-	var steps []IndexerStep
+	operations := make(map[string]IndexerOperation)
 
 	// Opens an already existing repository.
 	repo, err := gogit.PlainOpen(repoPath)
@@ -69,7 +76,9 @@ func ListEADFilesForCommit(repoPath string, thisCommitHashString string) ([]Inde
 	thisCommitHash := plumbing.NewHash(thisCommitHashString)
 	thisCommit, err := repo.CommitObject(thisCommitHash)
 	if err != nil {
-		return nil, fmt.Errorf("problem getting commit object for commit hash %s: %s", thisCommitHash, err)
+		return nil,
+			fmt.Errorf("problem getting commit object for commit hash %s: %s",
+				thisCommitHash, err)
 	}
 
 	// handle the initial commit case
@@ -86,9 +95,9 @@ func ListEADFilesForCommit(repoPath string, thisCommitHashString string) ([]Inde
 			if err != nil {
 				break
 			}
-			steps = append(steps, IndexerStep{Operation: Add, FilePath: file.Name})
+			operations[file.Name] = Add
 		}
-		return steps, nil
+		return operations, nil
 	}
 
 	// Get the parent commit
@@ -110,28 +119,33 @@ func ListEADFilesForCommit(repoPath string, thisCommitHashString string) ([]Inde
 		k, v := classifyFileChange(from, to)
 		if v == Unknown {
 			// unable to determine the type of change
-			errs = append(errs, fmt.Errorf("unable to determine file transition: Commits: commit '%s', parent: '%s', Files: from '%s', to '%s'", thisCommitHashString, parentHash.String(), getPath(from), getPath(to)))
+			errs = append(errs,
+				fmt.Errorf("unable to determine file transition: Commits: "+
+					"commit '%s', parent: '%s', Files: from '%s', to '%s'",
+					thisCommitHashString,
+					parentHash.String(),
+					getPath(from),
+					getPath(to)))
 			continue
 		}
 
-		steps = append(steps, IndexerStep{Operation: v, FilePath: k})
+		operations[k] = v
 	}
-
 	if len(errs) != 0 {
 		return nil, errors.Join(errs...)
 	}
 
-	return steps, nil
+	return operations, nil
 }
 
-func getPath(f diff.File) string {
+func getPath(f gitdiff.File) string {
 	if f == nil {
 		return ""
 	}
 	return f.Path()
 }
 
-func classifyFileChange(from, to diff.File) (string, IndexerOperation) {
+func classifyFileChange(from, to gitdiff.File) (string, IndexerOperation) {
 	/*
 		add    --> from.Path() is nil &&
 				     to.Path() is not nil

@@ -37,7 +37,6 @@ var addThreeDeleteTwoHash = "00fd44a8e69285cf3789be3e7bc0e4e88d5f6dd8"
 var thisPath string
 var gitSourceRepoPathAbsolute string
 var gitRepoTestGitRepoPathAbsolute string
-var gitRepoTestGitRepoPathRelative string
 var gitRepoTestGitRepoDotGitDirectory string
 var gitRepoTestGitRepoHiddenGitDirectory string
 
@@ -66,7 +65,6 @@ func init() {
 	// This could be done as a const at top level, but assigning it here to keep
 	// all this path stuff in one place.
 	gitRepoTestGitRepoPathAbsolute = filepath.Join(thisPath, "testdata", "fixtures", "test-git-repo")
-	gitRepoTestGitRepoPathRelative = filepath.Join(".", "testdata", "fixtures", "test-git-repo")
 	gitRepoTestGitRepoDotGitDirectory = filepath.Join(gitRepoTestGitRepoPathAbsolute, "dot-git")
 	gitRepoTestGitRepoHiddenGitDirectory = filepath.Join(gitRepoTestGitRepoPathAbsolute, ".git")
 }
@@ -101,7 +99,10 @@ func TestDeleteEADFileDataFromIndex_RollbackOnBadDelete(t *testing.T) {
 	SetSolrClient(sc)
 
 	// Delete the data for the EADID
-	DeleteEADFileDataFromIndex(eadid)
+	err = DeleteEADFileDataFromIndex(eadid)
+	if err == nil {
+		t.Errorf("Expected an error, but got nil")
+	}
 
 	// check that all expectations were met
 	err = sc.CheckAssertionsViaEvents()
@@ -204,7 +205,10 @@ func TestDeleteEADFileDataFromIndex_ErrorOnRollback(t *testing.T) {
 	SetSolrClient(sc)
 
 	// Delete the data for the EADID
-	DeleteEADFileDataFromIndex(eadid)
+	err = DeleteEADFileDataFromIndex(eadid)
+	if err == nil {
+		t.Errorf("Expected an error, but got nil")
+	}
 
 	// check that all expectations were met
 	err = sc.CheckAssertionsViaEvents()
@@ -856,26 +860,17 @@ func TestIndexGitCommit_DeleteModifyAdd(t *testing.T) {
 	// contains the file in the "modified" state and the commit boils down to single
 	// "add" operation
 	ops := [][]string{
-		{"fales", "mss_420", "Add"},
+		{"fales", "mss_420"},
 	}
 
 	for _, op := range ops {
 		repositoryCode := op[0]
 		eadid := op[1]
 		testEAD := filepath.Join(repositoryCode, eadid)
-		if op[2] == "Add" {
-			err := sc.UpdateMockForIndexEADFile(testEAD, eadid)
-			if err != nil {
-				t.Errorf("Error updating the SolrClientMock: %s", err)
-				t.FailNow()
-			}
-		}
-		if op[2] == "Delete" {
-			err := sc.UpdateMockForDeleteEADFileDataFromIndex(eadid)
-			if err != nil {
-				t.Errorf("Error updating the SolrClientMock: %s", err)
-				t.FailNow()
-			}
+		err := sc.UpdateMockForIndexEADFile(testEAD, eadid)
+		if err != nil {
+			t.Errorf("Error updating the SolrClientMock: %s", err)
+			t.FailNow()
 		}
 	}
 
@@ -991,6 +986,7 @@ func TestIndexGitCommit_FailFast(t *testing.T) {
 	err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute, addThreeDeleteTwoHash)
 	if err == nil {
 		t.Errorf("Expected error from IndexGitCommit() but no error was returned.")
+		t.FailNow()
 	}
 
 	if err.Error() != "error during Add" {
@@ -1053,7 +1049,9 @@ func createTestGitRepo(t *testing.T) {
 	err := os.CopyFS(gitRepoTestGitRepoPathAbsolute, gitSourceRepoPathAbsoluteFS)
 	if err != nil {
 		t.Errorf(
-			`Unexpected error returned by os.CopyFS(gitSourceRepoPathAbsoluteFS, gitRepoTestGitRepoPathAbsolute): %s`,
+			`Unexpected error returned by `+
+				`os.CopyFS(gitRepoTestGitRepoPathAbsolute, `+
+				`gitSourceRepoPathAbsoluteFS): %s`,
 			err.Error())
 		t.FailNow()
 	}
@@ -1071,7 +1069,7 @@ func deleteTestGitRepo(t *testing.T) {
 	err := os.RemoveAll(gitRepoTestGitRepoPathAbsolute)
 	if err != nil {
 		t.Errorf(
-			`deleteEnabledHiddenGitDirectory() failed with error "%s", remove %s manually`,
+			`deleteTestGitRepo() failed with error "%s", remove %s manually`,
 			err.Error(), gitRepoTestGitRepoPathAbsolute)
 		t.FailNow()
 	}
