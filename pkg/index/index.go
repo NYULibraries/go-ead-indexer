@@ -136,7 +136,7 @@ func IndexGitCommit(repoPath, commit string) error {
 	}
 
 	// checkout the git commit
-	err = git.Checkout(repoPath, commit)
+	err = git.CheckoutMergeReset(repoPath, commit)
 	if err != nil {
 		return appendAndJoinErrs(errs, err)
 	}

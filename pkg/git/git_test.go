@@ -65,7 +65,7 @@ func init() {
 	gitRepoTestGitRepoHiddenGitDirectory = filepath.Join(gitRepoTestGitRepoPathAbsolute, ".git")
 }
 
-func TestCheckout(t *testing.T) {
+func TestCheckoutMergeReset(t *testing.T) {
 	// cleanup any leftovers from interrupted tests
 	deleteTestGitRepo(t)
 
@@ -129,7 +129,7 @@ func TestCheckout(t *testing.T) {
 	}
 
 	for _, scenario := range scenarios {
-		err := Checkout(gitRepoTestGitRepoPathAbsolute, scenario.Hash)
+		err := CheckoutMergeReset(gitRepoTestGitRepoPathAbsolute, scenario.Hash)
 		if err != nil {
 			t.Errorf("unexpected error: %v for commit hash %s", err,
 				scenario.Hash)
@@ -188,7 +188,7 @@ func TestCheckout_BadHash(t *testing.T) {
 	defer deleteTestGitRepo(t)
 
 	badHash := "this is not a valid hash"
-	err := Checkout(gitRepoTestGitRepoPathAbsolute, badHash)
+	err := CheckoutMergeReset(gitRepoTestGitRepoPathAbsolute, badHash)
 	if err == nil {
 		t.Errorf("expected error but no error generated")
 		return
@@ -201,7 +201,7 @@ func TestCheckout_BadHash(t *testing.T) {
 }
 
 func TestCheckout_BadPath(t *testing.T) {
-	err := Checkout("this-is-not-a-real-path", "33ac5f1415ac8fe611944bad4925528b62e845c8")
+	err := CheckoutMergeReset("this-is-not-a-real-path", "33ac5f1415ac8fe611944bad4925528b62e845c8")
 	if err == nil {
 		t.Errorf("expected error but no error generated")
 		return

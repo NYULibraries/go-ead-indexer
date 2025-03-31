@@ -20,7 +20,18 @@ const (
 	Unknown IndexerOperation = "unknown"
 )
 
-func Checkout(repoPath string, commitHash string) error {
+// CheckoutMergeReset checks out a commit hash in a git repository.
+//
+// WARNING:
+// This function uses the default "gogit.CheckoutOptions{Keep: false}".
+//
+// This means that:
+// 1.) if there are any files under version control with uncommitted changes,
+// the checkout will FAIL
+//
+// 2.) if there are any files in the git repo directory hierarchy that are
+// NOT under version control, THOSE FILES WILL BE DELETED ON CHECKOUT!
+func CheckoutMergeReset(repoPath string, commitHash string) error {
 	repo, err := gogit.PlainOpen(repoPath)
 	if err != nil {
 		return err
