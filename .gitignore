@@ -6,6 +6,8 @@
 # Ephemeral .git directory that only exists when running `debug_test.go` tests.
 # We ignore it just in case it doesn't get cleaned up.
 pkg/debug/testdata/fixtures/git-repo/.git
+pkg/git/testdata/fixtures/test-git-repo
+pkg/index/testdata/fixtures/test-git-repo
 
 # Temporary files for diff'ing of actual values against golden files.
 # `ead` package
