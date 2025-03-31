@@ -19,6 +19,7 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"strings"
 	"testing"
 
 	"github.com/go-git/go-git/v5/plumbing"
@@ -75,26 +76,105 @@ func TestCheckout(t *testing.T) {
 		Hash         string
 		FileRelPaths []string
 	}{
-		{"a5ca6cca30fc08cfc13e4f1492dbfbbf3ec7cf63", []string{"fales/mss_001.xml"}},
+		// files present at each commit
+		// * 33ac5f1 archives/cap_1.xml
+		// 			 archives/mc_1.xml
+		//           fales/mss_001.xml
+		// 			 fales/mss_003.xml
+		// 			 fales/mss_004.xml
+		//  		 fales/mss_005.xml
+		// 			 tamwag/aia_001.xml
+		// 			 tamwag/aia_002.xml
+		//
+		// * 382c67e archives/cap_1.xml
+		// 			 fales/mss_001.xml
+		// 			 fales/mss_002.xml
+		// 			 fales/mss_003.xml
+		// 			 fales/mss_004.xml
+		// 			 tamwag/aia_001.xml
+		//
+		// * 2f531fc fales/mss_001.xml
+		//   		 fales/mss_002.xml
+		// 			 fales/mss_003.xml
+		//
+		// * 7e65f35 fales/mss_001.xml
+
+		// NOTE: arrange the expected files in alphabetical order
 		{"33ac5f1415ac8fe611944bad4925528b62e845c8",
-			[]string{"archives/mc_1.xml", "fales/mss_005.xml", "tamwag/aia_002.xml"}},
-		{"382c67e2ac64323e328506c85f97e229070a46cc", []string{"archives/cap_1.xml", "fales/mss_004.xml", "tamwag/aia_001.xml"}},
-		{"2f531fc31b82cb128428c83e11d1e3f79b0da394", []string{"fales/mss_002.xml", "fales/mss_003.xml"}},
-		{"7e65f35361c9a2d7fc48bece8f04856b358620bf", []string{"fales/mss_001.xml"}},
+			[]string{"archives/cap_1.xml",
+				"archives/mc_1.xml",
+				"fales/mss_001.xml",
+				"fales/mss_003.xml",
+				"fales/mss_004.xml",
+				"fales/mss_005.xml",
+				"tamwag/aia_001.xml",
+				"tamwag/aia_002.xml"},
+		},
+		{"382c67e2ac64323e328506c85f97e229070a46cc",
+			[]string{"archives/cap_1.xml",
+				"fales/mss_001.xml",
+				"fales/mss_002.xml",
+				"fales/mss_003.xml",
+				"fales/mss_004.xml",
+				"tamwag/aia_001.xml"},
+		},
+		{"2f531fc31b82cb128428c83e11d1e3f79b0da394",
+			[]string{"fales/mss_001.xml",
+				"fales/mss_002.xml",
+				"fales/mss_003.xml"},
+		},
+		{"7e65f35361c9a2d7fc48bece8f04856b358620bf",
+			[]string{"fales/mss_001.xml"},
+		},
 	}
 
 	for _, scenario := range scenarios {
 		err := Checkout(gitRepoTestGitRepoPathAbsolute, scenario.Hash)
 		if err != nil {
-			t.Errorf("unexpected error: %v for commit hash %s", err, scenario.Hash)
+			t.Errorf("unexpected error: %v for commit hash %s", err,
+				scenario.Hash)
 			continue
 		}
 
-		for _, fileRelPath := range scenario.FileRelPaths {
-			filePath := filepath.Join(gitRepoTestGitRepoPathAbsolute, fileRelPath)
-			_, err := os.Stat(filePath)
-			if err != nil {
-				t.Errorf("expected file '%s' to exist for commit hash '%s'", filePath, scenario.Hash)
+		actualFileRelPaths := make([]string, 0)
+		err = filepath.Walk(gitRepoTestGitRepoPathAbsolute,
+			func(path string, info os.FileInfo, err error) error {
+				if info.IsDir() &&
+					path == gitRepoTestGitRepoHiddenGitDirectory {
+					return filepath.SkipDir
+				}
+				if !info.IsDir() {
+					relativePath, _ := strings.CutPrefix(path,
+						gitRepoTestGitRepoPathAbsolute+
+							string(os.PathSeparator))
+					actualFileRelPaths = append(actualFileRelPaths,
+						relativePath)
+				}
+				return nil
+			})
+
+		if err != nil {
+			t.Errorf("error walking directory: %v", err)
+			t.FailNow()
+		}
+
+		if len(actualFileRelPaths) != len(scenario.FileRelPaths) {
+			t.Errorf("expected %d files, got %d for commit hash %s",
+				len(scenario.FileRelPaths),
+				len(actualFileRelPaths),
+				scenario.Hash)
+			t.Errorf("expected files: %v", scenario.FileRelPaths)
+			t.Errorf("actual files: %v", actualFileRelPaths)
+			// use continue here to avoid a panic in the actual vs. expected
+			// file comparison below
+			continue
+		}
+
+		// compare the actual file paths to the expected file paths
+		for i, fileRelPath := range scenario.FileRelPaths {
+			if actualFileRelPaths[i] != fileRelPath {
+				t.Errorf("expected file '%s', got '%s' for commit hash '%s'",
+					fileRelPath, actualFileRelPaths[i], scenario.Hash)
 			}
 		}
 	}
