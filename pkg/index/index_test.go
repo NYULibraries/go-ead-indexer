@@ -857,26 +857,17 @@ func TestIndexGitCommit_DeleteModifyAdd(t *testing.T) {
 	// contains the file in the "modified" state and the commit boils down to single
 	// "add" operation
 	ops := [][]string{
-		{"fales", "mss_420", "Add"},
+		{"fales", "mss_420"},
 	}
 
 	for _, op := range ops {
 		repositoryCode := op[0]
 		eadid := op[1]
 		testEAD := filepath.Join(repositoryCode, eadid)
-		if op[2] == "Add" {
-			err := sc.UpdateMockForIndexEADFile(testEAD, eadid)
-			if err != nil {
-				t.Errorf("Error updating the SolrClientMock: %s", err)
-				t.FailNow()
-			}
-		}
-		if op[2] == "Delete" {
-			err := sc.UpdateMockForDeleteEADFileDataFromIndex(eadid)
-			if err != nil {
-				t.Errorf("Error updating the SolrClientMock: %s", err)
-				t.FailNow()
-			}
+		err := sc.UpdateMockForIndexEADFile(testEAD, eadid)
+		if err != nil {
+			t.Errorf("Error updating the SolrClientMock: %s", err)
+			t.FailNow()
 		}
 	}
 
