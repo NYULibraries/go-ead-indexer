@@ -404,7 +404,7 @@ func deleteTestGitRepo(t *testing.T) {
 	err := os.RemoveAll(gitRepoTestGitRepoPathAbsolute)
 	if err != nil {
 		t.Errorf(
-			`deleteEnabledHiddenGitDirectory() failed with error "%s", remove %s manually`,
+			`deleteTestGitRepo() failed with error "%s", remove %s manually`,
 			err.Error(), gitRepoTestGitRepoPathAbsolute)
 		t.FailNow()
 	}
