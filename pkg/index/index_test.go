@@ -1064,13 +1064,95 @@ func TestIndexGitCommit_FailFast(t *testing.T) {
 	}
 
 	// check that rollback was called
-	if sc.ActualEvents[errorRollbackCallCount].FuncName != "Rollback" {
-		t.Errorf("Expected Rollback() to be called at call count %d but it was no", errorRollbackCallCount)
+	idx := testutils.CallCountToIdx(errorRollbackCallCount)
+	if sc.ActualEvents[idx].FuncName != "Rollback" {
+		t.Errorf("Expected Rollback() to be called at call count %d but it was no",
+			errorRollbackCallCount)
 	}
 
 	// indexing should NOT have completed
 	if sc.IsComplete() {
 		t.Errorf("All files were added to the Solr index when indexing should have halted.")
+	}
+}
+
+func TestIndexGitCommit_RollbackOnBadDelete(t *testing.T) {
+	// cleanup any leftovers from interrupted tests
+	deleteTestGitRepo(t)
+
+	createTestGitRepo(t)
+	defer deleteTestGitRepo(t)
+
+	// NOTE: the commits are returned in alphabetical order by relative path
+	//       therefore, your ops should be in the same order
+	ops := [][]string{
+		{"akkasah", "ad_mc_030", "Add"},
+		{"cbh", "arc_212_plymouth_beecher", "Delete"},
+		{"edip", "mos_2024", "Add"},
+	}
+
+	errorEventCallCount := 631    // the arc_212_plymouth_beecher delete
+	errorRollbackCallCount := 632 // delete + rollback
+	solrClientErrorEvents := []testutils.ErrorEvent{
+		{FuncName: "Delete",
+			ErrorMessage: "error during Delete",
+			CallCount:    errorEventCallCount},
+	}
+
+	sc := testutils.GetSolrClientMock()
+	sc.Reset()
+
+	for _, op := range ops {
+		repositoryCode := op[0]
+		eadid := op[1]
+		testEAD := filepath.Join(repositoryCode, eadid)
+		if op[2] == "Add" {
+			err := sc.UpdateMockForIndexEADFile(testEAD, eadid)
+			if err != nil {
+				t.Errorf("Error updating the SolrClientMock: %s", err)
+				t.FailNow()
+			}
+		}
+		if op[2] == "Delete" {
+			err := sc.UpdateMockForDeleteEADFileDataFromIndex(eadid)
+			if err != nil {
+				t.Errorf("Error updating the SolrClientMock: %s", err)
+				t.FailNow()
+			}
+		}
+	}
+
+	sc.ErrorEvents = solrClientErrorEvents
+
+	// Set the Solr client
+	SetSolrClient(sc)
+
+	// Index the EAD file
+	err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute,
+		addThreeDeleteTwoHash)
+	if err == nil {
+		t.Errorf(`Expected error from IndexGitCommit() ` +
+			`but no error was returned.`)
+		t.FailNow()
+	}
+
+	expectedErr := "error during Delete"
+	if err.Error() != expectedErr {
+		t.Errorf("Expected error message '%s' but got '%s'",
+			expectedErr, err.Error())
+	}
+
+	// check that rollback was called
+	idx := testutils.CallCountToIdx(errorRollbackCallCount)
+	if sc.ActualEvents[idx].FuncName != "Rollback" {
+		t.Errorf(`Expected Rollback() to be called at call count %d `+
+			`but it was not`, errorRollbackCallCount)
+	}
+
+	// indexing should NOT have completed
+	if sc.IsComplete() {
+		t.Errorf(`All files were added to the Solr index but ` +
+			`indexing should have halted.`)
 	}
 }
 
