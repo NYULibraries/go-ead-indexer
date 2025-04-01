@@ -27,6 +27,8 @@ const eMsgNeedOneButNotBothFileAndGitRepo = "one, but not both, of --file or --g
 
 // log levels used by this package, in increasing order of severity
 var localLogLevels = []string{"debug", "info", "error"}
+var localDefaultLogLevel = "info"
+
 var file string         // EAD file to be indexed
 var gitCommit string    // commit to index
 var gitRepoPath string  // path to EAD files git repo
@@ -44,7 +46,7 @@ func init() {
 	IndexCmd.Flags().StringVarP(&gitRepoPath, "git-repo", "g", "",
 		"path to EAD files git repo")
 	IndexCmd.Flags().StringVarP(&loggingLevel, "logging-level", "l",
-		log.DefaultLevelStringOption,
+		localDefaultLogLevel,
 		"Sets logging level: "+strings.Join(localLogLevels, ", ")+"")
 
 	DeleteCmd.Flags().StringVarP(&eadID, "eadid", "e", "",
@@ -52,7 +54,7 @@ func init() {
 	DeleteCmd.Flags().BoolVarP(&assumeYes, "assume-yes", "y", false,
 		"disable interactive mode")
 	DeleteCmd.Flags().StringVarP(&loggingLevel, "logging-level", "l",
-		log.DefaultLevelStringOption,
+		localDefaultLogLevel,
 		"Sets logging level: "+strings.Join(localLogLevels, ", ")+"")
 }
 

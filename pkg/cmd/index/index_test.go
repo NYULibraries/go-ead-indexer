@@ -371,6 +371,10 @@ func TestIndexEAD_LoggerLevelArgument(t *testing.T) {
 
 	// this value MUST BE DIFFERENT from the default logging level
 	testLogLevel := "debug"
+	if testLogLevel == localDefaultLogLevel {
+		t.Errorf("test logging level is the same as the default logging level")
+		t.FailNow()
+	}
 
 	// ensure that the environment variable is set
 	err := os.Setenv("SOLR_ORIGIN_WITH_PORT",
