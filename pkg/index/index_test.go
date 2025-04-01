@@ -717,6 +717,97 @@ func TestIndexGitCommit_AddOne(t *testing.T) {
 		t.Errorf("not all files were added to the Solr index. Remaining values: \n%v", sc.GoldenFileHashesToString())
 	}
 }
+
+func TestIndexGitCommit_AddOneLogLevelDebug(t *testing.T) {
+	// init logger
+	logger = log.New()
+	var logOutput bytes.Buffer
+	logOutputWriter := bufio.NewWriter(&logOutput)
+	logger.SetOutput(logOutputWriter)
+
+	err := logger.SetLevelByString("debug")
+	if err != nil {
+		t.Errorf("ERROR: couldn't set log level: %s", err)
+		t.FailNow()
+	}
+
+	_ = InitLogger(logger)
+
+	// cleanup any leftovers from interrupted tests
+	deleteTestGitRepo(t)
+	createTestGitRepo(t)
+	defer deleteTestGitRepo(t)
+
+	sc := testutils.GetSolrClientMock()
+	sc.Reset()
+
+	repositoryCode := "fales"
+	eadid := "mss_460"
+	testEAD := filepath.Join(repositoryCode, eadid)
+	err = sc.UpdateMockForIndexEADFile(testEAD, eadid)
+	if err != nil {
+		t.Errorf("Error updating the SolrClientMock: %s", err)
+		t.FailNow()
+	}
+
+	// Set the Solr client
+	SetSolrClient(sc)
+
+	// Index the EAD file
+	err = IndexGitCommit(gitRepoTestGitRepoPathAbsolute, addOneHash)
+	if err != nil {
+		t.Errorf("Error indexing EAD file: %s", err)
+	}
+
+	// flush the log output
+	err = logOutputWriter.Flush()
+	if err != nil {
+		t.Fatalf("Error calling `logOutputWriter.Flush`: %s", err)
+	}
+
+	err = sc.CheckAssertionsViaEvents()
+	if err != nil {
+		t.Errorf("Assertions failed: %s", err)
+	}
+
+	if !sc.IsComplete() {
+		t.Errorf("not all files were added to the Solr index. Remaining values: \n%v", sc.GoldenFileHashesToString())
+	}
+
+	expectedLogString := []string{
+		fmt.Sprintf("IndexGitCommit(%s, %s)", gitRepoTestGitRepoPathAbsolute, addOneHash),
+		"assertSolrClientSet()",
+		"git.CheckoutMergeReset(",
+		"git.ListEADFilesForCommit(",
+		"IndexEADFile(",
+		"filepath.IsAbs(",
+		"util.GetRepositoryCode(",
+		"os.ReadFile(",
+		"ead.New(",
+		fmt.Sprintf("sc.Delete(%s)", eadid),
+		"collection-level: sc.Add(",
+		"component-level: sc.Add(",
+		"sc.Commit()",
+		"fales/mss_460.xml) started at",
+		"fales/mss_460.xml) ended at",
+		"fales/mss_460.xml) duration:",
+	}
+
+	// check that the expected strings are in the log output
+	didNotFindString := false
+	for _, expectedStr := range expectedLogString {
+		if !strings.Contains(logOutput.String(), expectedStr) {
+			t.Errorf("Expected log output to contain '%s', but it did not", expectedStr)
+			didNotFindString = true
+		}
+	}
+
+	// dump the output if a string was not found
+	if didNotFindString {
+		t.Errorf("\n%s", logOutput.String())
+	}
+}
+
 func TestIndexGitCommit_AddThreeDeleteTwo(t *testing.T) {
 	/*
 	   # Commit history replicated in repo (NOTE: commit hashes WILL differ)
@@ -779,7 +870,7 @@ func TestIndexGitCommit_AddThreeDeleteTwo(t *testing.T) {
 	}
 }
 
-func TestIndexGitCommit_AddThreeDeleteTwoWithInfoLogging(t *testing.T) {
+func TestIndexGitCommit_AddThreeDeleteTwoLogLevelInfo(t *testing.T) {
 	// init logger
 	logger = log.New()
 	var logOutput bytes.Buffer
