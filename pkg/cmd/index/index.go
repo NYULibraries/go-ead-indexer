@@ -219,6 +219,14 @@ func initLogger() error {
 	}
 
 	logger.Info(index.MessageKey, fmt.Sprintf("Logging level set to \"%s\"", normalizedLogLevel))
+
+	// initialize logger in the pkg/index package
+	err = index.InitLogger(logger)
+	if err != nil {
+		emsg := fmt.Sprintf("ERROR: couldn't initialize logger: %s", err)
+		return logAndReturnError(emsg)
+	}
+
 	return nil
 }
 

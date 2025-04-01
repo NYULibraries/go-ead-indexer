@@ -12,10 +12,12 @@ import (
 	"os"
 	"path/filepath"
 	"slices"
+	"time"
 
 	"github.com/nyulibraries/go-ead-indexer/pkg/ead"
 	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
 	"github.com/nyulibraries/go-ead-indexer/pkg/git"
+	"github.com/nyulibraries/go-ead-indexer/pkg/log"
 	"github.com/nyulibraries/go-ead-indexer/pkg/net/solr"
 	"github.com/nyulibraries/go-ead-indexer/pkg/util"
 )
@@ -24,8 +26,14 @@ const MessageKey = "index"
 const errSolrClientNotSet = "you must call `SetSolrClient()` before calling any indexing functions"
 
 var sc = solr.SolrClient(nil)
+var logger log.Logger
+var startTime, endTime time.Time
 
 func DeleteEADFileDataFromIndex(eadID string) error {
+	logString := fmt.Sprintf("DeleteEADFileDataFromIndex(%s)", eadID)
+	logStartTime(logString)
+	defer logEndTime(logString)
+
 	var errs []error
 
 	// assert that the EADID is valid
@@ -54,6 +62,9 @@ func DeleteEADFileDataFromIndex(eadID string) error {
 }
 
 func IndexEADFile(eadPath string) error {
+	logString := fmt.Sprintf("IndexEADFile(%s)", eadPath)
+	logStartTime(logString)
+	defer logEndTime(logString)
 
 	var errs []error
 
@@ -174,6 +185,11 @@ func IndexGitCommit(repoPath, commit string) error {
 	return nil
 }
 
+func InitLogger(l log.Logger) error {
+	logger = l
+	return nil
+}
+
 func SetSolrClient(solrClient solr.SolrClient) {
 	sc = solrClient
 }
@@ -202,4 +218,21 @@ func assertSolrClientSet() error {
 	}
 
 	return nil
+}
+
+func logStartTime(s string) {
+	if logger == nil {
+		return
+	}
+	startTime = time.Now()
+	logger.Info(MessageKey, fmt.Sprintf("%s started at %s", s, startTime))
+}
+
+func logEndTime(s string) {
+	if logger == nil {
+		return
+	}
+	endTime = time.Now()
+	logger.Info(MessageKey, fmt.Sprintf("%s ended at %s", s, endTime))
+	logger.Info(MessageKey, fmt.Sprintf("%s duration: %s", s, endTime.Sub(startTime)))
 }
