@@ -449,8 +449,8 @@ func (sc *SolrClientMock) addDeleteEvent(eadid string) {
 }
 
 func (sc *SolrClientMock) checkForErrorEvent() error {
-	// scan the error events to see if there is a match between the caller and CallerName
-	// and the CallCount
+	// scan the error events to see if there is a match between the caller
+	// and CallerName and the CallCount
 	// if so, return the error message
 	// iterate through range of ErrorEvents
 	// if the caller name and call count match, return the error message
@@ -461,11 +461,14 @@ func (sc *SolrClientMock) checkForErrorEvent() error {
 		callerName = runtime.FuncForPC(pc).Name()
 	}
 
+	pkgName := getPackageName()
+
 	// iterate through the error events
 	// looking for a matching event
 	if callerName != "" {
 		for _, event := range sc.ErrorEvents {
-			if ("github.com/nyulibraries/go-ead-indexer/pkg/index/testutils.(*SolrClientMock)."+event.FuncName) == callerName && event.CallCount == sc.CallCount {
+			fname := fmt.Sprintf("%s.%s", pkgName, event.FuncName)
+			if fname == callerName && event.CallCount == sc.CallCount {
 				return fmt.Errorf(event.ErrorMessage)
 			}
 		}
@@ -527,4 +530,17 @@ func (sc *SolrClientMock) updateHash(xmlPostBody string) error {
 
 func CallCountToIdx(callCount int) int {
 	return callCount - 1
+}
+
+func getPackageName() string {
+	pc, _, _, ok := runtime.Caller(1)
+	if !ok {
+		return "unknown"
+	}
+	funcName := runtime.FuncForPC(pc).Name()
+	parts := strings.Split(funcName, ".")
+	if len(parts) > 0 {
+		return strings.Join(parts[:len(parts)-1], ".")
+	}
+	return "unknown"
 }
