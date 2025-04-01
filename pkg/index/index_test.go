@@ -1,6 +1,8 @@
 package index
 
 import (
+	"bufio"
+	"bytes"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -10,6 +12,7 @@ import (
 
 	eadtestutils "github.com/nyulibraries/go-ead-indexer/pkg/ead/testutils"
 	"github.com/nyulibraries/go-ead-indexer/pkg/index/testutils"
+	"github.com/nyulibraries/go-ead-indexer/pkg/log"
 )
 
 /*
@@ -774,6 +777,117 @@ func TestIndexGitCommit_AddThreeDeleteTwo(t *testing.T) {
 	if !sc.IsComplete() {
 		t.Errorf("not all files were added to the Solr index. Remaining values: \n%v", sc.GoldenFileHashesToString())
 	}
+}
+
+func TestIndexGitCommit_AddThreeDeleteTwoWithLogging(t *testing.T) {
+	// init logger
+	logger = log.New()
+	var logOutput bytes.Buffer
+	logOutputWriter := bufio.NewWriter(&logOutput)
+	logger.SetOutput(logOutputWriter)
+
+	err := logger.SetLevelByString("info")
+	if err != nil {
+		t.Errorf("ERROR: couldn't set log level: %s", err)
+		t.FailNow()
+	}
+
+	_ = InitLogger(logger)
+
+	// cleanup any leftovers from interrupted tests
+	deleteTestGitRepo(t)
+	createTestGitRepo(t)
+	defer deleteTestGitRepo(t)
+
+	sc := testutils.GetSolrClientMock()
+	sc.Reset()
+
+	// NOTE: the commits will always be returned in alphabetical order by relative path
+	ops := [][]string{
+		{"akkasah", "ad_mc_030", "Add"},
+		{"cbh", "arc_212_plymouth_beecher", "Delete"},
+		{"edip", "mos_2024", "Add"},
+		{"nyuad", "ad_mc_019", "Add"},
+		{"tamwag", "tam_143", "Delete"},
+	}
+
+	for _, op := range ops {
+		repositoryCode := op[0]
+		eadid := op[1]
+		testEAD := filepath.Join(repositoryCode, eadid)
+		if op[2] == "Add" {
+			err := sc.UpdateMockForIndexEADFile(testEAD, eadid)
+			if err != nil {
+				t.Errorf("Error updating the SolrClientMock: %s", err)
+				t.FailNow()
+			}
+		}
+		if op[2] == "Delete" {
+			err := sc.UpdateMockForDeleteEADFileDataFromIndex(eadid)
+			if err != nil {
+				t.Errorf("Error updating the SolrClientMock: %s", err)
+				t.FailNow()
+			}
+		}
+	}
+
+	// Set the Solr client
+	SetSolrClient(sc)
+
+	// Index the EAD file
+	err = IndexGitCommit(gitRepoTestGitRepoPathAbsolute, addThreeDeleteTwoHash)
+	if err != nil {
+		t.Errorf("Error indexing EAD file: %s", err)
+	}
+
+	// flush the log output
+	err = logOutputWriter.Flush()
+	if err != nil {
+		t.Fatalf("Error calling `logOutputWriter.Flush`: %s", err)
+	}
+
+	err = sc.CheckAssertionsViaEvents()
+	if err != nil {
+		t.Errorf("Assertions failed: %s", err)
+	}
+
+	if !sc.IsComplete() {
+		t.Errorf("not all files were added to the Solr index. Remaining values: \n%v", sc.GoldenFileHashesToString())
+	}
+
+	// check the log output
+	// set up the expected log strings
+	expectedLogString := []string{"akkasah/ad_mc_030.xml) started at",
+		"akkasah/ad_mc_030.xml) ended at",
+		"akkasah/ad_mc_030.xml) duration:",
+		"DeleteEADFileDataFromIndex(arc_212_plymouth_beecher) started at",
+		"DeleteEADFileDataFromIndex(arc_212_plymouth_beecher) ended at",
+		"DeleteEADFileDataFromIndex(arc_212_plymouth_beecher) duration:",
+		"edip/mos_2024.xml) started at",
+		"edip/mos_2024.xml) ended at",
+		"edip/mos_2024.xml) duration:",
+		"nyuad/ad_mc_019.xml) started at",
+		"nyuad/ad_mc_019.xml) ended at",
+		"nyuad/ad_mc_019.xml) duration:",
+		"DeleteEADFileDataFromIndex(tam_143) started at",
+		"DeleteEADFileDataFromIndex(tam_143) ended at",
+		"DeleteEADFileDataFromIndex(tam_143) duration:",
+	}
+
+	// check that the expected strings are in the log output
+	didNotFindString := false
+	for _, expectedStr := range expectedLogString {
+		if !strings.Contains(logOutput.String(), expectedStr) {
+			t.Errorf("Expected log output to contain '%s', but it did not", expectedStr)
+			didNotFindString = true
+		}
+	}
+
+	// dump the output if a string was not found
+	if didNotFindString {
+		t.Errorf("\n%s", logOutput.String())
+	}
+
 }
 
 func TestIndexGitCommit_AddTwo(t *testing.T) {
