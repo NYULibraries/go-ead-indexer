@@ -779,7 +779,7 @@ func TestIndexGitCommit_AddThreeDeleteTwo(t *testing.T) {
 	}
 }
 
-func TestIndexGitCommit_AddThreeDeleteTwoWithLogging(t *testing.T) {
+func TestIndexGitCommit_AddThreeDeleteTwoWithInfoLogging(t *testing.T) {
 	// init logger
 	logger = log.New()
 	var logOutput bytes.Buffer
