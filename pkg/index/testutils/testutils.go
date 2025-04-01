@@ -448,15 +448,6 @@ func (sc *SolrClientMock) addDeleteEvent(eadid string) {
 	})
 }
 
-func (sc *SolrClientMock) addRollbackEvent() {
-	sc.expectedCallCount++
-	sc.ExpectedEvents = append(sc.ExpectedEvents, Event{
-		CallCount: sc.expectedCallCount,
-		Err:       nil,
-		FuncName:  "Rollback",
-	})
-}
-
 func (sc *SolrClientMock) checkForErrorEvent() error {
 	// scan the error events to see if there is a match between the caller and CallerName
 	// and the CallCount
@@ -532,4 +523,8 @@ func (sc *SolrClientMock) updateHash(xmlPostBody string) error {
 	// remove the hash from the golden file hash map
 	delete(sc.GoldenFileHashes, hash)
 	return nil
+}
+
+func CallCountToIdx(callCount int) int {
+	return callCount - 1
 }
