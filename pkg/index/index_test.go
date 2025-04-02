@@ -314,7 +314,7 @@ func TestIndexEADFile_EADFileDoesNotExist(t *testing.T) {
 	testutils.AssertCallCount(t, expectedCallCount, sc.CallCount)
 }
 
-func TestIndexEADFile_EADFilePathIsAbsolute(t *testing.T) {
+func TestIndexEADFile_EADFilePathIsNotAbsolute(t *testing.T) {
 
 	sut := "IndexEADFile"
 	expectedErrStringFragment := "EAD file path must be absolute:"
