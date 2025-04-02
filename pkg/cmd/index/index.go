@@ -69,8 +69,8 @@ var DeleteCmd = &cobra.Command{
 var IndexCmd = &cobra.Command{
 	Use:   "index",
 	Short: "Index EAD file or commit",
-	Example: `go-ead-indexer index --file=[path to EAD file] --logging-level="debug"
-	go-ead-indexer index --git-repo=[path] --commit=[hash] --logging-level="error"`,
+	Example: `  go-ead-indexer index --file=[path to EAD file] --logging-level="debug"
+  go-ead-indexer index --git-repo=[path] --commit=[hash] --logging-level="error"`,
 	Args: indexCheckArgs,
 	RunE: runIndexCmd,
 }
