@@ -62,7 +62,7 @@ var DeleteCmd = &cobra.Command{
 	Use:     "delete",
 	Short:   "Delete data by EADID",
 	Long:    "Delete data from the index using the EADID",
-	Example: `go-ead-indexer delete --eadid=[EADID] --logging-level="debug --assume-yes"`,
+	Example: `go-ead-indexer delete --eadid=[EADID] --logging-level="debug" --assume-yes`,
 	RunE:    runDeleteCmd,
 }
 
