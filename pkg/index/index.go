@@ -133,7 +133,7 @@ func IndexEADFile(eadPath string) error {
 			xmlPostBody = component.SolrAddMessage.String()
 			logDebug(fmt.Sprintf("component-level: sc.Add(%s)", xmlPostBody))
 
-			err = sc.Add(string(xmlPostBody))
+			err = sc.Add(xmlPostBody)
 			if err != nil {
 				logDebug("error: " + err.Error())
 				errs = append(errs, err)
