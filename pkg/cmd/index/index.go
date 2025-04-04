@@ -205,7 +205,7 @@ func initLogger() error {
 
 	// set logging level if it was not specified on the command line
 	if loggingLevel == "" {
-		loggingLevel = log.DefaultLevelStringOption
+		loggingLevel = localDefaultLogLevel
 	}
 
 	normalizedLogLevel := strings.ToLower(loggingLevel)
