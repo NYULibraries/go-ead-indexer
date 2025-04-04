@@ -128,14 +128,16 @@ func IndexEADFile(eadPath string) error {
 	}
 
 	// Add the EAD Component-level documents to Solr
-	for _, component := range *EAD.Components {
-		xmlPostBody = component.SolrAddMessage.String()
-		logDebug(fmt.Sprintf("component-level: sc.Add(%s)", xmlPostBody))
+	if EAD.Components != nil {
+		for _, component := range *EAD.Components {
+			xmlPostBody = component.SolrAddMessage.String()
+			logDebug(fmt.Sprintf("component-level: sc.Add(%s)", xmlPostBody))
 
-		err = sc.Add(string(xmlPostBody))
-		if err != nil {
-			logDebug("error: " + err.Error())
-			errs = append(errs, err)
+			err = sc.Add(string(xmlPostBody))
+			if err != nil {
+				logDebug("error: " + err.Error())
+				errs = append(errs, err)
+			}
 		}
 	}
 
