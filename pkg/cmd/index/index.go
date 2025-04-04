@@ -9,10 +9,9 @@ import (
 	"strings"
 
 	"github.com/nyulibraries/go-ead-indexer/pkg/index"
-	"github.com/spf13/cobra"
-
 	"github.com/nyulibraries/go-ead-indexer/pkg/log"
 	"github.com/nyulibraries/go-ead-indexer/pkg/net/solr"
+	"github.com/spf13/cobra"
 )
 
 // environment variable that holds the Solr origin with port information
