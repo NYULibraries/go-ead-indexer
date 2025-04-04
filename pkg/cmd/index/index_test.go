@@ -85,8 +85,7 @@ func TestDelete_Error(t *testing.T) {
 	}
 
 	testutils.CheckStringContains(t, gotStdOut,
-		`ERROR: couldn't delete data for EADID: `+
-			`This#Is^Not!A(Valid*EADID error:`)
+		`couldn't delete data for EADID: This#Is^Not!A(Valid*EADID`)
 }
 
 func TestDelete_InitLoggerError(t *testing.T) {
@@ -111,7 +110,7 @@ func TestDelete_InitLoggerError(t *testing.T) {
 	}
 
 	testutils.CheckStringContains(t, gotStdOut,
-		"ERROR: couldn't initialize logger: ERROR: unsupported logging level:")
+		"couldn't initialize logger: unsupported logging level:")
 }
 
 func TestDelete_InitSolrClientError(t *testing.T) {
@@ -135,7 +134,7 @@ func TestDelete_InitSolrClientError(t *testing.T) {
 	}
 
 	testutils.CheckStringContains(t, gotStdOut,
-		`ERROR: couldn't initialize Solr client: error creating Solr client: `+
+		`couldn't initialize Solr client: error creating Solr client: `+
 			`parse \"this is not a valid url\": invalid URI for request`)
 }
 
@@ -274,7 +273,7 @@ func TestIndexEAD_BadFileArgument(t *testing.T) {
 	}
 
 	testutils.CheckStringContains(t, gotStdOut,
-		"ERROR: EAD file does not exist: ")
+		"EAD file does not exist: ")
 }
 
 func TestIndexEAD_Error(t *testing.T) {
@@ -306,7 +305,7 @@ func TestIndexEAD_Error(t *testing.T) {
 	}
 
 	testutils.CheckStringContains(t, gotStdOut,
-		`ERROR: couldn't index EAD file: No <ead> tag `+
+		`couldn't index EAD file: No <ead> tag `+
 			`with the expected structure was found`)
 }
 
@@ -331,7 +330,7 @@ func TestIndexEAD_InitLoggerError(t *testing.T) {
 	}
 
 	testutils.CheckStringContains(t, gotStdOut,
-		"ERROR: couldn't initialize logger: ERROR: unsupported logging level:")
+		"couldn't initialize logger: unsupported logging level:")
 }
 
 func TestIndexEAD_InitSolrClientError(t *testing.T) {
@@ -362,7 +361,7 @@ func TestIndexEAD_InitSolrClientError(t *testing.T) {
 	}
 
 	testutils.CheckStringContains(t, gotStdOut,
-		`ERROR: couldn't initialize Solr client: error creating Solr client:`+
+		`couldn't initialize Solr client: error creating Solr client:`+
 			` parse \"this is not a valid url\": invalid URI for request`)
 }
 
@@ -425,7 +424,7 @@ func TestIndexEAD_MissingSolrOriginEnvVariableError(t *testing.T) {
 	}
 
 	testutils.CheckStringContains(t, gotStdOut,
-		`ERROR: couldn't initialize Solr client: `+
+		`couldn't initialize Solr client: `+
 			`'SOLR_ORIGIN_WITH_PORT' environment variable not set`)
 }
 

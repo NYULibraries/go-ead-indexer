@@ -93,7 +93,7 @@ func runDeleteCmd(cmd *cobra.Command, args []string) error {
 	// initialize logger
 	err := initLogger()
 	if err != nil {
-		emsg := fmt.Sprintf("ERROR: couldn't initialize logger: %s", err)
+		emsg := fmt.Sprintf("couldn't initialize logger: %s", err)
 		return logAndReturnError(emsg)
 	}
 
@@ -117,14 +117,14 @@ func runDeleteCmd(cmd *cobra.Command, args []string) error {
 	// initialize Solr client
 	err = initSolrClient()
 	if err != nil {
-		emsg := fmt.Sprintf("ERROR: couldn't initialize Solr client: %s", err)
+		emsg := fmt.Sprintf("couldn't initialize Solr client: %s", err)
 		return logAndReturnError(emsg)
 	}
 
 	// delete data associated with EADID
 	err = index.DeleteEADFileDataFromIndex(eadID)
 	if err != nil {
-		emsg := fmt.Sprintf("ERROR: couldn't delete data for EADID: %s error: %s", eadID, err)
+		emsg := fmt.Sprintf("couldn't delete data for EADID: %s %s", eadID, err)
 		return logAndReturnError(emsg)
 	}
 
@@ -142,14 +142,14 @@ func runIndexCmd(cmd *cobra.Command, args []string) error {
 	// initialize logger
 	err := initLogger()
 	if err != nil {
-		emsg := fmt.Sprintf("ERROR: couldn't initialize logger: %s", err)
+		emsg := fmt.Sprintf("couldn't initialize logger: %s", err)
 		return logAndReturnError(emsg)
 	}
 
 	// initialize Solr client
 	err = initSolrClient()
 	if err != nil {
-		emsg := fmt.Sprintf("ERROR: couldn't initialize Solr client: %s", err)
+		emsg := fmt.Sprintf("couldn't initialize Solr client: %s", err)
 		return logAndReturnError(emsg)
 	}
 
@@ -169,14 +169,14 @@ func runIndexEAD() error {
 
 	// check that the EAD file exists
 	if _, err := os.Stat(file); errors.Is(err, fs.ErrNotExist) {
-		emsg := fmt.Sprintf("ERROR: EAD file does not exist: %s", file)
+		emsg := fmt.Sprintf("EAD file does not exist: %s", file)
 		return logAndReturnError(emsg)
 	}
 
 	// index EAD file
 	err := index.IndexEADFile(file)
 	if err != nil {
-		emsg := fmt.Sprintf("ERROR: couldn't index EAD file: %s", err)
+		emsg := fmt.Sprintf("couldn't index EAD file: %s", err)
 		return logAndReturnError(emsg)
 	}
 
@@ -189,7 +189,7 @@ func runIndexGitCommit() error {
 	// index Git Commit
 	err := index.IndexGitCommit(gitRepoPath, gitCommit)
 	if err != nil {
-		emsg := fmt.Sprintf("ERROR: problem indexing git commit %s: %s", gitCommit, err)
+		emsg := fmt.Sprintf("problem indexing git commit %s: %s", gitCommit, err)
 		return logAndReturnError(emsg)
 	}
 
@@ -210,12 +210,12 @@ func initLogger() error {
 
 	normalizedLogLevel := strings.ToLower(loggingLevel)
 	if !slices.Contains(localLogLevels, normalizedLogLevel) {
-		return fmt.Errorf("ERROR: unsupported logging level: '%s'. Supported levels are: %s", normalizedLogLevel, strings.Join(localLogLevels, ", "))
+		return fmt.Errorf("unsupported logging level: '%s'. Supported levels are: %s", normalizedLogLevel, strings.Join(localLogLevels, ", "))
 	}
 
 	err := logger.SetLevelByString(normalizedLogLevel)
 	if err != nil {
-		return fmt.Errorf("ERROR: couldn't set log level: %s", err)
+		return fmt.Errorf("couldn't set log level: %s", err)
 	}
 
 	logger.Info(index.MessageKey, fmt.Sprintf("Logging level set to \"%s\"", normalizedLogLevel))
@@ -223,7 +223,7 @@ func initLogger() error {
 	// initialize logger in the pkg/index package
 	err = index.InitLogger(logger)
 	if err != nil {
-		emsg := fmt.Sprintf("ERROR: couldn't initialize logger: %s", err)
+		emsg := fmt.Sprintf("couldn't initialize logger: %s", err)
 		return logAndReturnError(emsg)
 	}
 
