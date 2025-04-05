@@ -129,6 +129,36 @@ func TestSetLevel(t *testing.T) {
 	}
 }
 
+// Do not use this for capturing log output in tests.  See
+func TestSetOutput(t *testing.T) {
+	logger := New()
+
+	// Capture all log output in a `bytes.Buffer`.
+	var logOutput bytes.Buffer
+	logOutputWriter := bufio.NewWriter(&logOutput)
+	logger.SetOutput(logOutputWriter)
+
+	errorMessage := "ERROR!"
+	key := "test"
+	logger.Error(key, errorMessage)
+
+	// Must flush the writer to prevent risk truncation of `logOutput`
+	err := logOutputWriter.Flush()
+	if err != nil {
+		t.Fatalf("Error calling `logOutputWriter.Flush`: %s", err)
+	}
+
+	timePlaceholder := `"time":"[TIME]"`
+	expectedLogOutput := fmt.Sprintf(`{%s,"level":"ERROR","msg":"","%s":"%s"}`+"\n",
+		timePlaceholder, key, errorMessage)
+
+	timeRegexp := regexp.MustCompile(`"time":"[^"]+"`)
+	actual := timeRegexp.ReplaceAllString(logOutput.String(), timePlaceholder)
+	if actual != expectedLogOutput {
+		t.Errorf(`Expected "%s" but got "%s"`, expectedLogOutput, actual)
+	}
+}
+
 // Helper function to generate a simple multiline string view of the log output JSON,
 // showing only the data of interest.
 //
