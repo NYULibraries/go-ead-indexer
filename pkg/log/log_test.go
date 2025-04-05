@@ -129,7 +129,6 @@ func TestSetLevel(t *testing.T) {
 	}
 }
 
-// Do not use this for capturing log output in tests.  See
 func TestSetOutput(t *testing.T) {
 	logger := New()
 
@@ -198,9 +197,6 @@ func logSeries(logger Logger) {
 	logger.Error(messageKey, "error")
 }
 
-// `os.Stdout` has to replaced before any of the `New()` calls in the `testSetLevelByLevel*`
-// helper functions running in the `testCases` loop below, so that the new default
-// loggers will use the fake stdout for their handlers.
 // See var comments for `stdoutFakeReadFile` and `stdoutFakeWriteFile` for more
 // details on why we use this method for capturing logger output rather than simply
 // using `SetOutput()`.
