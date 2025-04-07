@@ -195,7 +195,7 @@ func IndexGitCommit(repoPath, commit string) error {
 			}
 
 		case git.Delete:
-			eadID, err := git.EADPathToEADID(eadFileRelativePath)
+			eadID, err := eadutil.EADPathToEADID(eadFileRelativePath)
 			if err != nil {
 				return err
 			}
