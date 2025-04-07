@@ -3,13 +3,9 @@ package git
 import (
 	"errors"
 	"fmt"
-	"path/filepath"
-	"strings"
-
 	gogit "github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/plumbing"
 	gitdiff "github.com/go-git/go-git/v5/plumbing/format/diff"
-	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
 )
 
 type IndexerOperation string
@@ -51,14 +47,6 @@ func CheckoutMergeReset(repoPath string, commitHash string) error {
 	}
 
 	return nil
-}
-
-func EADPathToEADID(path string) (string, error) {
-	eadID := strings.TrimSuffix(filepath.Base(path), filepath.Ext(path))
-	if !eadutil.IsValidEADID(eadID) {
-		return "", fmt.Errorf("invalid EADID: %s", eadID)
-	}
-	return eadID, nil
 }
 
 func ListEADFilesForCommit(repoPath string,

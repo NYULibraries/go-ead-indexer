@@ -23,6 +23,7 @@ import (
 )
 
 const MessageKey = "index"
+const errLoggerIsNil = "`logger` == nil"
 const errSolrClientNotSet = "you must call `SetSolrClient()` before calling any indexing functions"
 
 var sc = solr.SolrClient(nil)
@@ -195,7 +196,7 @@ func IndexGitCommit(repoPath, commit string) error {
 			}
 
 		case git.Delete:
-			eadID, err := git.EADPathToEADID(eadFileRelativePath)
+			eadID, err := eadutil.EADPathToEADID(eadFileRelativePath)
 			if err != nil {
 				return err
 			}
@@ -255,6 +256,8 @@ func logStartTime(s string) {
 
 func logDebug(s string) {
 	if logger == nil {
+		_, _ = fmt.Fprintln(os.Stderr, "logDebug() error: "+errLoggerIsNil)
+
 		return
 	}
 	logger.Debug(MessageKey, s)
@@ -268,6 +271,8 @@ func logEndTime(s string) {
 
 func logInfo(s string) {
 	if logger == nil {
+		_, _ = fmt.Fprintln(os.Stderr, "logInfo() error: "+errLoggerIsNil)
+
 		return
 	}
 	logger.Info(MessageKey, s)

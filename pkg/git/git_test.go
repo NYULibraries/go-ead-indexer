@@ -25,6 +25,8 @@ import (
 	"github.com/go-git/go-git/v5/plumbing"
 	"github.com/go-git/go-git/v5/plumbing/filemode"
 	"github.com/go-git/go-git/v5/plumbing/format/diff"
+
+	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
 )
 
 var thisPath string
@@ -225,7 +227,7 @@ func TestEADPathToEADID(t *testing.T) {
 	}
 
 	for _, scenario := range scenarios {
-		eadID, err := EADPathToEADID(scenario.Path)
+		eadID, err := eadutil.EADPathToEADID(scenario.Path)
 		if err != nil {
 			t.Errorf("unexpected error: %v for path %s", err, scenario.Path)
 			continue
@@ -235,7 +237,7 @@ func TestEADPathToEADID(t *testing.T) {
 		}
 	}
 
-	_, err := EADPathToEADID("this-is-not-a-real-path")
+	_, err := eadutil.EADPathToEADID("this-is-not-a-real-path")
 	if err == nil {
 		t.Errorf("expected error but no error generated")
 		return
