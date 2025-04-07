@@ -111,7 +111,14 @@ func runDeleteCmd(cmd *cobra.Command, args []string) error {
 
 	// request confirmation if interactive mode is enabled
 	if !assumeYes {
-		confirmed := confirmDelete(eadID)
+		confirmed, err := confirmDelete(eadID)
+		if err != nil {
+			msg := fmt.Sprintf("Error when attempting to confirm deletion: '%s'", err)
+			logger.Error(index.MessageKey, msg)
+			fmt.Println(msg)
+			return nil
+		}
+
 		if !confirmed {
 			msg := fmt.Sprintf("Deletion canceled for EADID: '%s'", eadID)
 			logger.Info(index.MessageKey, msg)
@@ -265,20 +272,28 @@ func logAndReturnError(emsg string) error {
 	return fmt.Errorf("%s", emsg)
 }
 
-func confirmDelete(eadID string) bool {
+func confirmDelete(eadID string) (bool, error) {
+	const errorMessageTemplate = `fmt.Scanln() failed with error: %s`
 	var response string
 
 	fmt.Printf("Are you sure you want to delete data for EADID: %s? (y/n): ", eadID)
-	fmt.Scanln(&response)
+	_, err := fmt.Scanln(&response)
+	if err != nil {
+		return false, fmt.Errorf(errorMessageTemplate, err)
+	}
 
 	lowercaseResponse := strings.ToLower(response)
 	for lowercaseResponse != "y" && lowercaseResponse != "n" {
 		fmt.Printf("Please enter 'y' or 'n': ")
-		fmt.Scanln(&response)
+		_, err := fmt.Scanln(&response)
+		if err != nil {
+			return false, fmt.Errorf(errorMessageTemplate, err)
+		}
+
 		lowercaseResponse = strings.ToLower(response)
 	}
 
-	return lowercaseResponse == "y"
+	return lowercaseResponse == "y", nil
 }
 
 func indexCheckArgs(cmd *cobra.Command, args []string) error {
