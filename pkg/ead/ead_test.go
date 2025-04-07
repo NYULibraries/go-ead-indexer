@@ -71,13 +71,15 @@ func TestComponentDocSolrAddMessage(t *testing.T) {
 			}
 
 			componentIDs := []string{}
-			for _, component := range *eadToTest.Components {
-				componentIDs = append(componentIDs, component.ID)
-				testComponentSolrAddMessage(testEAD, component.ID,
-					component.SolrAddMessage, t)
-			}
+			if eadToTest.Components != nil {
+				for _, component := range *eadToTest.Components {
+					componentIDs = append(componentIDs, component.ID)
+					testComponentSolrAddMessage(testEAD, component.ID,
+						component.SolrAddMessage, t)
+				}
 
-			testNoMissingComponents(testEAD, componentIDs, t)
+				testNoMissingComponents(testEAD, componentIDs, t)
+			}
 		})
 	}
 }

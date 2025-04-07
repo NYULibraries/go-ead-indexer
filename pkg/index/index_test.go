@@ -2,6 +2,7 @@ package index
 
 import (
 	"fmt"
+	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
 	"io"
 	"os"
 	"path/filepath"
@@ -80,6 +81,14 @@ func init() {
 	// used for output capture
 	tmpFileDir = filepath.Join(thisPath, "testdata", "fixtures", "tmp")
 	stdoutRescue = os.Stdout
+
+	// silence "`logger` == nil" messages
+	logger = log.New()
+	logger.SetLevel(log.LevelError)
+	err := InitLogger(logger)
+	if err != nil {
+		panic(fmt.Sprintf(`InitLogger(logger) error: %s`, err))
+	}
 }
 
 func TestDeleteEADFileDataFromIndex_BadEADID(t *testing.T) {
@@ -591,36 +600,41 @@ func TestIndexEADFile_SolrClientNotSet(t *testing.T) {
 }
 
 func TestIndexEADFile_Success(t *testing.T) {
+	testEADs := eadtestutils.GetTestEADs()
 
-	repositoryCode := "fales"
-	eadid := "mss_460"
-	testEAD := filepath.Join(repositoryCode, eadid)
-	var eadPath = eadtestutils.EadFixturePath(testEAD)
+	for _, testEAD := range testEADs {
+		var eadPath = eadtestutils.EadFixturePath(testEAD)
+		var eadid, err = eadutil.EADPathToEADID(eadPath)
+		if err != nil {
+			t.Errorf(`Error getting EAD ID from testEAD "%s": %s`, testEAD, err)
+			t.FailNow()
+		}
 
-	sc := testutils.GetSolrClientMock()
-	sc.Reset()
-	err := sc.UpdateMockForIndexEADFile(testEAD, eadid)
-	if err != nil {
-		t.Errorf("Error updating the SolrClientMock: %s", err)
-		t.FailNow()
-	}
+		sc := testutils.GetSolrClientMock()
+		sc.Reset()
+		err = sc.UpdateMockForIndexEADFile(testEAD, eadid)
+		if err != nil {
+			t.Errorf("Error updating the SolrClientMock: %s", err)
+			t.FailNow()
+		}
 
-	// Set the Solr client
-	SetSolrClient(sc)
+		// Set the Solr client
+		SetSolrClient(sc)
 
-	// Index the EAD file
-	err = IndexEADFile(eadPath)
-	if err != nil {
-		t.Errorf("Error indexing EAD file: %s", err)
-	}
+		// Index the EAD file
+		err = IndexEADFile(eadPath)
+		if err != nil {
+			t.Errorf("Error indexing EAD file: %s", err)
+		}
 
-	err = sc.CheckAssertionsViaEvents()
-	if err != nil {
-		t.Errorf("Assertions failed: %s", err)
-	}
+		err = sc.CheckAssertionsViaEvents()
+		if err != nil {
+			t.Errorf("Assertions failed: %s", err)
+		}
 
-	if !sc.IsComplete() {
-		t.Errorf("not all files were added to the Solr index. Remaining values: %v", sc.GoldenFileHashes)
+		if !sc.IsComplete() {
+			t.Errorf("not all files were added to the Solr index. Remaining values: %v", sc.GoldenFileHashes)
+		}
 	}
 }
 
