@@ -3,15 +3,16 @@ package debug
 import (
 	"encoding/json"
 	"errors"
-	"github.com/nyulibraries/go-ead-indexer/pkg/ead"
-	"github.com/nyulibraries/go-ead-indexer/pkg/git"
-	"github.com/nyulibraries/go-ead-indexer/pkg/net/solr"
-	"github.com/nyulibraries/go-ead-indexer/pkg/util"
 	"io/fs"
 	"net/http/httputil"
 	"os"
 	"path"
 	"path/filepath"
+
+	"github.com/nyulibraries/go-ead-indexer/pkg/ead"
+	"github.com/nyulibraries/go-ead-indexer/pkg/git"
+	"github.com/nyulibraries/go-ead-indexer/pkg/net/solr"
+	"github.com/nyulibraries/go-ead-indexer/pkg/util"
 )
 
 type dumpedSolrIndexerHTTPRequestsForEADFile struct {
@@ -53,7 +54,7 @@ func DumpSolrIndexerHTTPRequestsForGitCommit(repoPath string, commit string) (st
 	}
 
 	dumpedSolrIndexerHTTPRequests := map[string]dumpedSolrIndexerHTTPRequestsForEADFile{}
-	for eadFileRelativePath, _ := range eadFilesForCommit {
+	for eadFileRelativePath := range eadFilesForCommit {
 		if eadFilesForCommit[eadFileRelativePath] == git.Add {
 			eadFileAbsolutePath := path.Join(repoPathAbsolute, eadFileRelativePath)
 			dumpedHTTPRequests, err :=

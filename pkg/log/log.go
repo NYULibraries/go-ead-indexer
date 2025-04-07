@@ -84,6 +84,8 @@ func (sl *SloggerLogger) Info(args ...any) {
 
 func (sl *SloggerLogger) SetLevel(level Level) {
 	sl.programLevel.Set(slog.Level(level))
+	handler := slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{Level: sl.programLevel})
+	sl.slogger = slog.New(handler)
 }
 
 // Useful for setting the level based on a string value set by a user via a flag
@@ -92,6 +94,9 @@ func (sl *SloggerLogger) SetLevelByString(levelStringArg string) error {
 	level, ok := logLevelStringOptions[levelStringArg]
 	if ok {
 		sl.programLevel.Set(slog.Level(level))
+		handler := slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{Level: sl.programLevel})
+		sl.slogger = slog.New(handler)
+
 		return nil
 	} else {
 		return fmt.Errorf("\"%s\" is not a valid error string option.  Valid options: %s",
