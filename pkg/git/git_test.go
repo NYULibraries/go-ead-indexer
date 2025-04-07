@@ -1,8 +1,10 @@
 package git
 
 /*
-  PLEASE NOTE: if you regenerate the "simple-repo" via the testsupport/gen-repo.bash script
-               THE COMMIT HASHES WILL CHANGE! Therefore, you will need to update the hash
+  PLEASE NOTE: if you regenerate the "simple-repo" via the
+               testsupport/gen-repo.bash script
+               THE COMMIT HASHES WILL CHANGE!
+			   Therefore, you will need to update the hash
                values in the "scenarios" slice below.
 
 a5ca6cca30fc08cfc13e4f1492dbfbbf3ec7cf63 2025-02-13 14:16:29 -0500 | Updating file fales/mss_001.xml (HEAD -> main) [jgpawletko]
@@ -10,7 +12,6 @@ a5ca6cca30fc08cfc13e4f1492dbfbbf3ec7cf63 2025-02-13 14:16:29 -0500 | Updating fi
 382c67e2ac64323e328506c85f97e229070a46cc 2025-02-13 14:16:29 -0500 | Updating file archives/cap_1.xml, Updating file fales/mss_004.xml, Updating file tamwag/aia_001.xml [jgpawletko]
 2f531fc31b82cb128428c83e11d1e3f79b0da394 2025-02-13 14:16:29 -0500 | Updating file fales/mss_002.xml, Updating file fales/mss_003.xml [jgpawletko]
 7e65f35361c9a2d7fc48bece8f04856b358620bf 2025-02-13 14:16:29 -0500 | Updating file fales/mss_001.xml [jgpawletko]
-
 */
 
 import (
@@ -18,11 +19,14 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"strings"
 	"testing"
 
 	"github.com/go-git/go-git/v5/plumbing"
 	"github.com/go-git/go-git/v5/plumbing/filemode"
 	"github.com/go-git/go-git/v5/plumbing/format/diff"
+
+	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
 )
 
 var thisPath string
@@ -33,12 +37,13 @@ var gitRepoTestGitRepoDotGitDirectory string
 var gitRepoTestGitRepoHiddenGitDirectory string
 
 // this code is based on that in the debug package, written by David Arjanik
-// We need to get the absolute path to this package in order to enable the function
-// for golden file and fixture file retrieval to be called from other packages
-// which would not be able to resolve the hardcoded relative paths used here.
+// We need to get the absolute path to this package in order to enable the
+// function for golden file and fixture file retrieval to be called from other
+// packages which would not be able to resolve the hardcoded relative paths
+// used here.
 func init() {
-	// The `filename` string is the absolute path to this source file, which should
-	// be located at the root of the package directory.
+	// The `filename` string is the absolute path to this source file,
+	// which should be located at the root of the package directory.
 	_, filename, _, ok := runtime.Caller(0)
 	if !ok {
 		panic("ERROR: `runtime.Caller(0)` failed")
@@ -54,15 +59,15 @@ func init() {
 	// Get testdata directory paths
 	gitSourceRepoPathAbsolute = filepath.Join(thisPath, "testdata", "fixtures", "git-repo")
 
-	// This could be done as a const at top level, but assigning it here to keep
-	// all this path stuff in one place.
+	// This could be done as a const at top level, but assigning it here to
+	// keep all this path stuff in one place.
 	gitRepoTestGitRepoPathAbsolute = filepath.Join(thisPath, "testdata", "fixtures", "test-git-repo")
 	gitRepoTestGitRepoPathRelative = filepath.Join(".", "testdata", "fixtures", "test-git-repo")
 	gitRepoTestGitRepoDotGitDirectory = filepath.Join(gitRepoTestGitRepoPathAbsolute, "dot-git")
 	gitRepoTestGitRepoHiddenGitDirectory = filepath.Join(gitRepoTestGitRepoPathAbsolute, ".git")
 }
 
-func TestCheckout(t *testing.T) {
+func TestCheckoutMergeReset(t *testing.T) {
 	// cleanup any leftovers from interrupted tests
 	deleteTestGitRepo(t)
 
@@ -73,25 +78,105 @@ func TestCheckout(t *testing.T) {
 		Hash         string
 		FileRelPaths []string
 	}{
-		{"a5ca6cca30fc08cfc13e4f1492dbfbbf3ec7cf63", []string{"fales/mss_001.xml"}},
-		{"33ac5f1415ac8fe611944bad4925528b62e845c8", []string{"archives/mc_1.xml", "fales/mss_005.xml", "tamwag/aia_002.xml"}},
-		{"382c67e2ac64323e328506c85f97e229070a46cc", []string{"archives/cap_1.xml", "fales/mss_004.xml", "tamwag/aia_001.xml"}},
-		{"2f531fc31b82cb128428c83e11d1e3f79b0da394", []string{"fales/mss_002.xml", "fales/mss_003.xml"}},
-		{"7e65f35361c9a2d7fc48bece8f04856b358620bf", []string{"fales/mss_001.xml"}},
+		// files present at each commit
+		// * 33ac5f1 archives/cap_1.xml
+		// 			 archives/mc_1.xml
+		//           fales/mss_001.xml
+		// 			 fales/mss_003.xml
+		// 			 fales/mss_004.xml
+		//  		 fales/mss_005.xml
+		// 			 tamwag/aia_001.xml
+		// 			 tamwag/aia_002.xml
+		//
+		// * 382c67e archives/cap_1.xml
+		// 			 fales/mss_001.xml
+		// 			 fales/mss_002.xml
+		// 			 fales/mss_003.xml
+		// 			 fales/mss_004.xml
+		// 			 tamwag/aia_001.xml
+		//
+		// * 2f531fc fales/mss_001.xml
+		//   		 fales/mss_002.xml
+		// 			 fales/mss_003.xml
+		//
+		// * 7e65f35 fales/mss_001.xml
+
+		// NOTE: arrange the expected files in alphabetical order
+		{"33ac5f1415ac8fe611944bad4925528b62e845c8",
+			[]string{"archives/cap_1.xml",
+				"archives/mc_1.xml",
+				"fales/mss_001.xml",
+				"fales/mss_003.xml",
+				"fales/mss_004.xml",
+				"fales/mss_005.xml",
+				"tamwag/aia_001.xml",
+				"tamwag/aia_002.xml"},
+		},
+		{"382c67e2ac64323e328506c85f97e229070a46cc",
+			[]string{"archives/cap_1.xml",
+				"fales/mss_001.xml",
+				"fales/mss_002.xml",
+				"fales/mss_003.xml",
+				"fales/mss_004.xml",
+				"tamwag/aia_001.xml"},
+		},
+		{"2f531fc31b82cb128428c83e11d1e3f79b0da394",
+			[]string{"fales/mss_001.xml",
+				"fales/mss_002.xml",
+				"fales/mss_003.xml"},
+		},
+		{"7e65f35361c9a2d7fc48bece8f04856b358620bf",
+			[]string{"fales/mss_001.xml"},
+		},
 	}
 
 	for _, scenario := range scenarios {
-		err := Checkout(gitRepoTestGitRepoPathAbsolute, scenario.Hash)
+		err := CheckoutMergeReset(gitRepoTestGitRepoPathAbsolute, scenario.Hash)
 		if err != nil {
-			t.Errorf("unexpected error: %v for commit hash %s", err, scenario.Hash)
+			t.Errorf("unexpected error: %v for commit hash %s", err,
+				scenario.Hash)
 			continue
 		}
 
-		for _, fileRelPath := range scenario.FileRelPaths {
-			filePath := filepath.Join(gitRepoTestGitRepoPathAbsolute, fileRelPath)
-			_, err := os.Stat(filePath)
-			if err != nil {
-				t.Errorf("expected file '%s' to exist for commit hash '%s'", filePath, scenario.Hash)
+		actualFileRelPaths := make([]string, 0)
+		err = filepath.Walk(gitRepoTestGitRepoPathAbsolute,
+			func(path string, info os.FileInfo, err error) error {
+				if info.IsDir() &&
+					path == gitRepoTestGitRepoHiddenGitDirectory {
+					return filepath.SkipDir
+				}
+				if !info.IsDir() {
+					relativePath, _ := strings.CutPrefix(path,
+						gitRepoTestGitRepoPathAbsolute+
+							string(os.PathSeparator))
+					actualFileRelPaths = append(actualFileRelPaths,
+						relativePath)
+				}
+				return nil
+			})
+
+		if err != nil {
+			t.Errorf("error walking directory: %v", err)
+			t.FailNow()
+		}
+
+		if len(actualFileRelPaths) != len(scenario.FileRelPaths) {
+			t.Errorf("expected %d files, got %d for commit hash %s",
+				len(scenario.FileRelPaths),
+				len(actualFileRelPaths),
+				scenario.Hash)
+			t.Errorf("expected files: %v", scenario.FileRelPaths)
+			t.Errorf("actual files: %v", actualFileRelPaths)
+			// use continue here to avoid a panic in the actual vs. expected
+			// file comparison below
+			continue
+		}
+
+		// compare the actual file paths to the expected file paths
+		for i, fileRelPath := range scenario.FileRelPaths {
+			if actualFileRelPaths[i] != fileRelPath {
+				t.Errorf("expected file '%s', got '%s' for commit hash '%s'",
+					fileRelPath, actualFileRelPaths[i], scenario.Hash)
 			}
 		}
 	}
@@ -105,7 +190,7 @@ func TestCheckout_BadHash(t *testing.T) {
 	defer deleteTestGitRepo(t)
 
 	badHash := "this is not a valid hash"
-	err := Checkout(gitRepoTestGitRepoPathAbsolute, badHash)
+	err := CheckoutMergeReset(gitRepoTestGitRepoPathAbsolute, badHash)
 	if err == nil {
 		t.Errorf("expected error but no error generated")
 		return
@@ -118,7 +203,7 @@ func TestCheckout_BadHash(t *testing.T) {
 }
 
 func TestCheckout_BadPath(t *testing.T) {
-	err := Checkout("this-is-not-a-real-path", "33ac5f1415ac8fe611944bad4925528b62e845c8")
+	err := CheckoutMergeReset("this-is-not-a-real-path", "33ac5f1415ac8fe611944bad4925528b62e845c8")
 	if err == nil {
 		t.Errorf("expected error but no error generated")
 		return
@@ -126,6 +211,41 @@ func TestCheckout_BadPath(t *testing.T) {
 	exp := "repository does not exist"
 	if err.Error() != exp {
 		t.Errorf("expected error message '%s', got '%s'", exp, err.Error())
+	}
+}
+
+func TestEADPathToEADID(t *testing.T) {
+	scenarios := []struct {
+		Path          string
+		ExpectedEADID string
+	}{
+		{"fales/mss_001.xml", "mss_001"},
+		{"archives/mc_1.xml", "mc_1"},
+		{"fales/mss_002.xml", "mss_002"},
+		{"fales/mss_005.xml", "mss_005"},
+		{"tamwag/aia_002.xml", "aia_002"},
+	}
+
+	for _, scenario := range scenarios {
+		eadID, err := eadutil.EADPathToEADID(scenario.Path)
+		if err != nil {
+			t.Errorf("unexpected error: %v for path %s", err, scenario.Path)
+			continue
+		}
+		if eadID != scenario.ExpectedEADID {
+			t.Errorf("expected EADID '%s', got '%s' for path '%s'", scenario.ExpectedEADID, eadID, scenario.Path)
+		}
+	}
+
+	_, err := eadutil.EADPathToEADID("this-is-not-a-real-path")
+	if err == nil {
+		t.Errorf("expected error but no error generated")
+		return
+	}
+	expectedError := "invalid EADID: this-is-not-a-real-path"
+	if err.Error() != expectedError {
+		t.Errorf("expected error message '%s', got '%s'",
+			expectedError, err.Error())
 	}
 }
 
@@ -286,7 +406,7 @@ func deleteTestGitRepo(t *testing.T) {
 	err := os.RemoveAll(gitRepoTestGitRepoPathAbsolute)
 	if err != nil {
 		t.Errorf(
-			`deleteEnabledHiddenGitDirectory() failed with error "%s", remove %s manually`,
+			`deleteTestGitRepo() failed with error "%s", remove %s manually`,
 			err.Error(), gitRepoTestGitRepoPathAbsolute)
 		t.FailNow()
 	}

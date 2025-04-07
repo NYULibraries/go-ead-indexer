@@ -13,6 +13,7 @@ import (
 	"html"
 	"io"
 	"maps"
+	"path/filepath"
 	"regexp"
 	"slices"
 	"strconv"
@@ -126,6 +127,14 @@ func ConvertEADToHTML(eadString string) (string, error) {
 func ConvertToFacetSlice(rawSlice []string) []string {
 	return util.CompactStringSlicePreserveOrder(
 		replaceMARCSubfieldDemarcatorsInSlice(rawSlice))
+}
+
+func EADPathToEADID(path string) (string, error) {
+	eadID := strings.TrimSuffix(filepath.Base(path), filepath.Ext(path))
+	if !IsValidEADID(eadID) {
+		return "", fmt.Errorf("invalid EADID: %s", eadID)
+	}
+	return eadID, nil
 }
 
 // No need to write tests for this, because once the DLFA-238 stuff is removed,

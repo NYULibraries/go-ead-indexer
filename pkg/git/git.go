@@ -3,10 +3,9 @@ package git
 import (
 	"errors"
 	"fmt"
-
 	gogit "github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/plumbing"
-	"github.com/go-git/go-git/v5/plumbing/format/diff"
+	gitdiff "github.com/go-git/go-git/v5/plumbing/format/diff"
 )
 
 type IndexerOperation string
@@ -17,7 +16,18 @@ const (
 	Unknown IndexerOperation = "unknown"
 )
 
-func Checkout(repoPath string, commitHash string) error {
+// CheckoutMergeReset checks out a commit hash in a git repository.
+//
+// WARNING:
+// This function uses the default "gogit.CheckoutOptions{Keep: false}".
+//
+// This means that:
+// 1.) if there are any files under version control with uncommitted changes,
+// the checkout will FAIL
+//
+// 2.) if there are any files in the git repo directory hierarchy that are
+// NOT under version control, THOSE FILES WILL BE DELETED ON CHECKOUT!
+func CheckoutMergeReset(repoPath string, commitHash string) error {
 	repo, err := gogit.PlainOpen(repoPath)
 	if err != nil {
 		return err
@@ -32,13 +42,15 @@ func Checkout(repoPath string, commitHash string) error {
 		Hash: plumbing.NewHash(commitHash),
 	})
 	if err != nil {
-		return fmt.Errorf("problem checking out hash '%s', error: '%s'", commitHash, err.Error())
+		return fmt.Errorf("problem checking out hash '%s', error: '%s'",
+			commitHash, err.Error())
 	}
 
 	return nil
 }
 
-func ListEADFilesForCommit(repoPath string, thisCommitHashString string) (map[string]IndexerOperation, error) {
+func ListEADFilesForCommit(repoPath string,
+	thisCommitHashString string) (map[string]IndexerOperation, error) {
 
 	operations := make(map[string]IndexerOperation)
 
@@ -52,7 +64,9 @@ func ListEADFilesForCommit(repoPath string, thisCommitHashString string) (map[st
 	thisCommitHash := plumbing.NewHash(thisCommitHashString)
 	thisCommit, err := repo.CommitObject(thisCommitHash)
 	if err != nil {
-		return nil, fmt.Errorf("problem getting commit object for commit hash %s: %s", thisCommitHash, err)
+		return nil,
+			fmt.Errorf("problem getting commit object for commit hash %s: %s",
+				thisCommitHash, err)
 	}
 
 	// handle the initial commit case
@@ -93,7 +107,13 @@ func ListEADFilesForCommit(repoPath string, thisCommitHashString string) (map[st
 		k, v := classifyFileChange(from, to)
 		if v == Unknown {
 			// unable to determine the type of change
-			errs = append(errs, fmt.Errorf("unable to determine file transition: Commits: commit '%s', parent: '%s', Files: from '%s', to '%s'", thisCommitHashString, parentHash.String(), getPath(from), getPath(to)))
+			errs = append(errs,
+				fmt.Errorf("unable to determine file transition: Commits: "+
+					"commit '%s', parent: '%s', Files: from '%s', to '%s'",
+					thisCommitHashString,
+					parentHash.String(),
+					getPath(from),
+					getPath(to)))
 			continue
 		}
 
@@ -106,14 +126,14 @@ func ListEADFilesForCommit(repoPath string, thisCommitHashString string) (map[st
 	return operations, nil
 }
 
-func getPath(f diff.File) string {
+func getPath(f gitdiff.File) string {
 	if f == nil {
 		return ""
 	}
 	return f.Path()
 }
 
-func classifyFileChange(from, to diff.File) (string, IndexerOperation) {
+func classifyFileChange(from, to gitdiff.File) (string, IndexerOperation) {
 	/*
 		add    --> from.Path() is nil &&
 				     to.Path() is not nil
