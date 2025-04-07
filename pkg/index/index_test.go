@@ -1536,7 +1536,6 @@ func redirectStdOutToTmpFile(t *testing.T) {
 
 // resetStdOut restores the original stdout and closes the fake pipe
 func resetStdOut(t *testing.T) {
-	var err error
 
 	// Restore the original stdout
 	if stdoutRescue != nil {
@@ -1545,25 +1544,16 @@ func resetStdOut(t *testing.T) {
 
 	// Close the ends of the pipe,
 	if stdoutFakeReadPipe != nil {
-		err = stdoutFakeReadPipe.Close()
-		if err != nil {
-			t.Fatalf("r.Close() failed with error: %s", err)
-		}
+		_ = stdoutFakeReadPipe.Close()
 	}
 
 	if stdoutFakeWritePipe != nil {
-		err = stdoutFakeWritePipe.Close()
-		if err != nil {
-			t.Fatalf("w.Close() failed with error: %s", err)
-		}
+		_ = stdoutFakeWritePipe.Close()
 	}
 
 	// Clean up the temporary file and directory
 	if tmpFile != nil {
-		err = tmpFile.Close()
-		if err != nil {
-			t.Fatalf("tmpFile.Close() failed with error: %s", err)
-		}
+		_ = tmpFile.Close()
 	}
 	cleanTmpDir(t)
 }
