@@ -93,6 +93,13 @@ func runDeleteCmd(cmd *cobra.Command, args []string) error {
 	err := initLogger()
 	if err != nil {
 		emsg := fmt.Sprintf("couldn't initialize logger: %s", err)
+		// It is almost certainly the case that we do actually have a working logger
+		// that can print something to logs, but that it's not been properly
+		// initialized and/or passed on to other packages that need it.
+		// So, the `logAndReturnError(emsg)` is a logical move because we can
+		// reasonably expect `emsg` to appear in the logs.  Just in case, though,
+		// we also print to stderr.
+		_, _ = fmt.Fprintln(os.Stderr, emsg)
 		return logAndReturnError(emsg)
 	}
 
@@ -142,6 +149,13 @@ func runIndexCmd(cmd *cobra.Command, args []string) error {
 	err := initLogger()
 	if err != nil {
 		emsg := fmt.Sprintf("couldn't initialize logger: %s", err)
+		// It is almost certainly the case that we do actually have a working logger
+		// that can print something to logs, but that it's not been properly
+		// initialized and/or passed on to other packages that need it.
+		// So, the `logAndReturnError(emsg)` is a logical move because we can
+		// reasonably expect `emsg` to appear in the logs.  Just in case, though,
+		// we also print to stderr.
+		_, _ = fmt.Fprintln(os.Stderr, emsg)
 		return logAndReturnError(emsg)
 	}
 
