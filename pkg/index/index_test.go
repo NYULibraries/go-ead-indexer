@@ -1,9 +1,8 @@
 package index
 
 import (
-	"bufio"
-	"bytes"
 	"fmt"
+	"io"
 	"os"
 	"path/filepath"
 	"runtime"
@@ -42,6 +41,13 @@ var gitSourceRepoPathAbsolute string
 var gitRepoTestGitRepoPathAbsolute string
 var gitRepoTestGitRepoDotGitDirectory string
 var gitRepoTestGitRepoHiddenGitDirectory string
+var tmpFileDir string
+var tmpFile *os.File
+
+// used for output capture
+var stdoutFakeReadPipe *os.File
+var stdoutFakeWritePipe *os.File
+var stdoutRescue *os.File
 
 // this code is based on that in the debug package, written by David Arjanik
 // We need to get the absolute path to this package in order to enable the function
@@ -70,6 +76,10 @@ func init() {
 	gitRepoTestGitRepoPathAbsolute = filepath.Join(thisPath, "testdata", "fixtures", "test-git-repo")
 	gitRepoTestGitRepoDotGitDirectory = filepath.Join(gitRepoTestGitRepoPathAbsolute, "dot-git")
 	gitRepoTestGitRepoHiddenGitDirectory = filepath.Join(gitRepoTestGitRepoPathAbsolute, ".git")
+
+	// used for output capture
+	tmpFileDir = filepath.Join(thisPath, "testdata", "fixtures", "tmp")
+	stdoutRescue = os.Stdout
 }
 
 func TestDeleteEADFileDataFromIndex_BadEADID(t *testing.T) {
@@ -721,9 +731,10 @@ func TestIndexGitCommit_AddOne(t *testing.T) {
 func TestIndexGitCommit_AddOneLogLevelDebug(t *testing.T) {
 	// init logger
 	logger = log.New()
-	var logOutput bytes.Buffer
-	logOutputWriter := bufio.NewWriter(&logOutput)
-	logger.SetOutput(logOutputWriter)
+
+	resetStdOut(t)
+	redirectStdOutToTmpFile(t)
+	defer resetStdOut(t)
 
 	err := logger.SetLevelByString("debug")
 	if err != nil {
@@ -759,12 +770,6 @@ func TestIndexGitCommit_AddOneLogLevelDebug(t *testing.T) {
 		t.Errorf("Error indexing EAD file: %s", err)
 	}
 
-	// flush the log output
-	err = logOutputWriter.Flush()
-	if err != nil {
-		t.Fatalf("Error calling `logOutputWriter.Flush`: %s", err)
-	}
-
 	err = sc.CheckAssertionsViaEvents()
 	if err != nil {
 		t.Errorf("Assertions failed: %s", err)
@@ -774,6 +779,7 @@ func TestIndexGitCommit_AddOneLogLevelDebug(t *testing.T) {
 		t.Errorf("not all files were added to the Solr index. Remaining values: \n%v", sc.GoldenFileHashesToString())
 	}
 
+	logOutput := getStdOutTmpFileData(t)
 	expectedLogString := []string{
 		fmt.Sprintf("IndexGitCommit(%s, %s)", gitRepoTestGitRepoPathAbsolute, addOneHash),
 		"assertSolrClientSet()",
@@ -796,7 +802,7 @@ func TestIndexGitCommit_AddOneLogLevelDebug(t *testing.T) {
 	// check that the expected strings are in the log output
 	didNotFindString := false
 	for _, expectedStr := range expectedLogString {
-		if !strings.Contains(logOutput.String(), expectedStr) {
+		if !strings.Contains(string(logOutput), expectedStr) {
 			t.Errorf("Expected log output to contain '%s', but it did not", expectedStr)
 			didNotFindString = true
 		}
@@ -804,7 +810,7 @@ func TestIndexGitCommit_AddOneLogLevelDebug(t *testing.T) {
 
 	// dump the output if a string was not found
 	if didNotFindString {
-		t.Errorf("\n%s", logOutput.String())
+		t.Errorf("\n%s", string(logOutput))
 	}
 }
 
@@ -873,9 +879,8 @@ func TestIndexGitCommit_AddThreeDeleteTwo(t *testing.T) {
 func TestIndexGitCommit_AddThreeDeleteTwoLogLevelInfo(t *testing.T) {
 	// init logger
 	logger = log.New()
-	var logOutput bytes.Buffer
-	logOutputWriter := bufio.NewWriter(&logOutput)
-	logger.SetOutput(logOutputWriter)
+	redirectStdOutToPipe(t)
+	defer resetStdOut(t)
 
 	err := logger.SetLevelByString("info")
 	if err != nil {
@@ -931,12 +936,6 @@ func TestIndexGitCommit_AddThreeDeleteTwoLogLevelInfo(t *testing.T) {
 		t.Errorf("Error indexing EAD file: %s", err)
 	}
 
-	// flush the log output
-	err = logOutputWriter.Flush()
-	if err != nil {
-		t.Fatalf("Error calling `logOutputWriter.Flush`: %s", err)
-	}
-
 	err = sc.CheckAssertionsViaEvents()
 	if err != nil {
 		t.Errorf("Assertions failed: %s", err)
@@ -947,6 +946,8 @@ func TestIndexGitCommit_AddThreeDeleteTwoLogLevelInfo(t *testing.T) {
 	}
 
 	// check the log output
+	logOutput := getStdOutPipeData(t)
+
 	// set up the expected log strings
 	expectedLogString := []string{"akkasah/ad_mc_030.xml) started at",
 		"akkasah/ad_mc_030.xml) ended at",
@@ -968,7 +969,7 @@ func TestIndexGitCommit_AddThreeDeleteTwoLogLevelInfo(t *testing.T) {
 	// check that the expected strings are in the log output
 	didNotFindString := false
 	for _, expectedStr := range expectedLogString {
-		if !strings.Contains(logOutput.String(), expectedStr) {
+		if !strings.Contains(string(logOutput), expectedStr) {
 			t.Errorf("Expected log output to contain '%s', but it did not", expectedStr)
 			didNotFindString = true
 		}
@@ -976,9 +977,8 @@ func TestIndexGitCommit_AddThreeDeleteTwoLogLevelInfo(t *testing.T) {
 
 	// dump the output if a string was not found
 	if didNotFindString {
-		t.Errorf("\n%s", logOutput.String())
+		t.Errorf("\n%s", string(logOutput))
 	}
-
 }
 
 func TestIndexGitCommit_AddTwo(t *testing.T) {
@@ -1401,33 +1401,169 @@ func TestIndexGitCommit_SolrClientNotSet(t *testing.T) {
 	testutils.AssertErrorMessageContainsString(t, sut, err, expectedErrStringFragment)
 }
 
+func cleanTmpDir(t *testing.T) {
+	var err error
+
+	files, err := os.ReadDir(tmpFileDir)
+	if err != nil {
+		t.Fatalf(
+			`Unexpected error returned by os.ReadDir(tmpFileDir) `+
+				`gitSourceRepoPathAbsoluteFS): %s`,
+			err.Error())
+	}
+
+	for _, file := range files {
+		// skip the .keep file
+		// this file is used to keep the directory in git
+		if file.Name() == ".keep" {
+			continue
+		}
+
+		filePath := filepath.Join(tmpFileDir, file.Name())
+		err = os.Remove(filePath)
+		if err != nil {
+			t.Fatalf(
+				`Unexpected error returned by os.Remove(%s): %s`, file.Name(),
+				err.Error())
+		}
+	}
+}
+
 func createTestGitRepo(t *testing.T) {
 	gitSourceRepoPathAbsoluteFS := os.DirFS(gitSourceRepoPathAbsolute)
 	err := os.CopyFS(gitRepoTestGitRepoPathAbsolute, gitSourceRepoPathAbsoluteFS)
 	if err != nil {
-		t.Errorf(
+		t.Fatalf(
 			`Unexpected error returned by `+
 				`os.CopyFS(gitRepoTestGitRepoPathAbsolute, `+
 				`gitSourceRepoPathAbsoluteFS): %s`,
 			err.Error())
-		t.FailNow()
 	}
 
 	err = os.Rename(gitRepoTestGitRepoDotGitDirectory, gitRepoTestGitRepoHiddenGitDirectory)
 	if err != nil {
-		t.Errorf(
-			`Unexpected error returned by os.Rename(gitRepoTestGitRepoDotGitDirectory, gitRepoTestGitRepoHiddenGitDirectory): %s`,
+		t.Fatalf(
+			`Unexpected error returned by os.Rename(gitRepoTestGitRepoDotGitDirectory, `+
+				`gitRepoTestGitRepoHiddenGitDirectory): %s`,
 			err.Error())
-		t.FailNow()
 	}
 }
 
 func deleteTestGitRepo(t *testing.T) {
 	err := os.RemoveAll(gitRepoTestGitRepoPathAbsolute)
 	if err != nil {
-		t.Errorf(
+		t.Fatalf(
 			`deleteTestGitRepo() failed with error "%s", remove %s manually`,
 			err.Error(), gitRepoTestGitRepoPathAbsolute)
-		t.FailNow()
 	}
+}
+
+// getStdOutFileData reads the data from tmp file
+func getStdOutTmpFileData(t *testing.T) []byte {
+	if tmpFile == nil {
+		t.Fatalf("tmpFile is nil when it should be non-nil")
+	}
+
+	err := tmpFile.Close()
+	if err != nil {
+		t.Fatalf("tmpFile.Close() failed with error: %s", err)
+	}
+
+	// Read the output from the tmp file
+	logOutput, err := os.ReadFile(tmpFile.Name())
+	if err != nil {
+		t.Fatalf("io.ReadFile(%s) failed with error: %s", tmpFile.Name(), err)
+	}
+
+	return logOutput
+}
+
+// getStdOutPipeData reads the data from the fake stdout pipe
+func getStdOutPipeData(t *testing.T) []byte {
+	// Close the fake write pipe to flush the output
+	err := stdoutFakeWritePipe.Close()
+	if err != nil {
+		t.Fatalf("w.Close() failed with error: %s", err)
+	}
+
+	// Read the output from the fake read pipe
+	logOutput, err := io.ReadAll(stdoutFakeReadPipe)
+	if err != nil {
+		t.Fatalf("io.ReadAll(r) failed with error: %s", err)
+	}
+
+	return logOutput
+}
+
+// redirectStdOutToPipe redirects the standard output to a pipe
+// and saves the original stdout to restore it later
+//
+// NOTE: THIS TECHNIQUE CAN ONLY BE USED WITH SMALL AMOUNTS OF DATA
+// because the write-end of the pipe has a limited size, e.g., 64 kB, and
+// therefore write operations will block until data is read from the read-end
+// of the pipe (e.g., by closing the pipe or reading from it)
+// Therefore, this technique is typically NOT suitable for DEBUG-logging tests
+func redirectStdOutToPipe(t *testing.T) {
+	var err error
+
+	stdoutRescue = os.Stdout
+	stdoutFakeReadPipe, stdoutFakeWritePipe, err = os.Pipe()
+	if err != nil {
+		t.Fatalf("os.Pipe() failed with error: %s", err)
+	}
+	os.Stdout = stdoutFakeWritePipe
+}
+
+// redirectStdOutToTmpFile redirects the standard output to a tmp file
+// and saves the original stdout to restore it later
+//
+// NOTE: This technique can be used with large amounts of data
+// because the data is written to a file instead of a pipe and is therefore
+// suitable for DEBUG-logging tests
+func redirectStdOutToTmpFile(t *testing.T) {
+	var err error
+	stdoutRescue = os.Stdout
+
+	tmpFile, err = os.CreateTemp(tmpFileDir, "test-")
+	if err != nil {
+		t.Fatalf(
+			`Unexpected error returned by os.CreateTemp(%s, "test-"): %s`,
+			tmpFileDir, err.Error())
+	}
+
+	os.Stdout = tmpFile
+}
+
+// resetStdOut restores the original stdout and closes the fake pipe
+func resetStdOut(t *testing.T) {
+	var err error
+
+	// Restore the original stdout
+	if stdoutRescue != nil {
+		os.Stdout = stdoutRescue
+	}
+
+	// Close the ends of the pipe,
+	if stdoutFakeReadPipe != nil {
+		err = stdoutFakeReadPipe.Close()
+		if err != nil {
+			t.Fatalf("r.Close() failed with error: %s", err)
+		}
+	}
+
+	if stdoutFakeWritePipe != nil {
+		err = stdoutFakeWritePipe.Close()
+		if err != nil {
+			t.Fatalf("w.Close() failed with error: %s", err)
+		}
+	}
+
+	// Clean up the temporary file and directory
+	if tmpFile != nil {
+		err = tmpFile.Close()
+		if err != nil {
+			t.Fatalf("tmpFile.Close() failed with error: %s", err)
+		}
+	}
+	cleanTmpDir(t)
 }
