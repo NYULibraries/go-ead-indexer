@@ -81,6 +81,14 @@ func init() {
 	// used for output capture
 	tmpFileDir = filepath.Join(thisPath, "testdata", "fixtures", "tmp")
 	stdoutRescue = os.Stdout
+
+	// silence "`logger` == nil" messages
+	logger = log.New()
+	logger.SetLevel(log.LevelError)
+	err := InitLogger(logger)
+	if err != nil {
+		panic(fmt.Sprintf(`InitLogger(logger) error: %s`, err))
+	}
 }
 
 func TestDeleteEADFileDataFromIndex_BadEADID(t *testing.T) {
