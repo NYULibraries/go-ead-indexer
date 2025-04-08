@@ -11,11 +11,12 @@ import (
 	"testing"
 )
 
-const commitHash = "cb2edf315b46e969b65f67806b6d9ce612d1e275"
+const testCommitHash = "b9cd08d511316cb311e0d9461aa29647c510087b"
 const forEADFileGoldenFile = "for-ead-file.json"
 const forGitCommitGoldenFile = "for-git-commit.json"
 
 var debugPath string
+var gitRepoSourcePath string
 var gitRepoPathAbsolute string
 var gitRepoPathRelative string
 var gitRepoDotGitDirectory string
@@ -42,16 +43,20 @@ func init() {
 	// defined in this file.
 	debugPath = filepath.Dir(filename)
 	// Get testdata directory paths
-	gitRepoPathAbsolute = filepath.Join(debugPath, "testdata", "fixtures", "git-repo")
+	gitRepoSourcePath = filepath.Join(debugPath, "testdata", "fixtures", "git-repo-source")
+	gitRepoPathAbsolute = filepath.Join(debugPath, "testdata", "fixtures", "test-git-repo")
 	// This could be done as a const at top level, but assigning it here to keep
 	// all this path stuff in one place.
-	gitRepoPathRelative = filepath.Join(".", "testdata", "fixtures", "git-repo")
+	gitRepoPathRelative = filepath.Join(".", "testdata", "fixtures", "test-git-repo")
 	gitRepoDotGitDirectory = filepath.Join(gitRepoPathAbsolute, "dot-git")
 	gitRepoEnabledHiddenGitDirectory = filepath.Join(gitRepoPathAbsolute, ".git")
 	goldenFileDirPath = filepath.Join(debugPath, "testdata", "golden")
 }
 
 func TestDumpSolrIndexerHTTPRequestsForEADFile(t *testing.T) {
+	resetRepo(t)
+	defer func() { deleteRepo(t) }()
+
 	eadFilePath := eadtestutils.EadFixturePath("edip/mos_2024")
 
 	goldenFilePath := path.Join(goldenFileDirPath, forEADFileGoldenFile)
@@ -87,24 +92,21 @@ func TestDumpSolrIndexerHTTPRequestsForEADFile(t *testing.T) {
 }
 
 func TestDumpSolrIndexerHTTPRequestsForGitCommit(t *testing.T) {
-	deleteEnabledHiddenGitDirectory(t)
-
-	createEnabledHiddenGitDirectory(t)
-
 	t.Run("Absolute git repo path", func(t *testing.T) {
 		testDumpSolrIndexerHTTPRequestsForGitCommit(gitRepoPathAbsolute, t)
 	})
 	t.Run("Relative git repo path", func(t *testing.T) {
 		testDumpSolrIndexerHTTPRequestsForGitCommit(gitRepoPathRelative, t)
 	})
-
-	deleteEnabledHiddenGitDirectory(t)
 }
 
 func testDumpSolrIndexerHTTPRequestsForGitCommit(gitRepoPath string, t *testing.T) {
+	resetRepo(t)
+	defer func() { deleteRepo(t) }()
+
 	goldenFilePath := path.Join(goldenFileDirPath, forGitCommitGoldenFile)
 
-	actual, err := DumpSolrIndexerHTTPRequestsForGitCommit(gitRepoPath, commitHash)
+	actual, err := DumpSolrIndexerHTTPRequestsForGitCommit(gitRepoPath, testCommitHash)
 	if err != nil {
 		t.Errorf(`Unexpected error returned by DumpSolrIndexerHTTPRequestsForGitCommit(): %s`,
 			err.Error())
@@ -134,23 +136,36 @@ func testDumpSolrIndexerHTTPRequestsForGitCommit(gitRepoPath string, t *testing.
 	}
 }
 
-func createEnabledHiddenGitDirectory(t *testing.T) {
-	gitRepoDotGitDirectoryFS := os.DirFS(gitRepoDotGitDirectory)
-	err := os.CopyFS(gitRepoEnabledHiddenGitDirectory, gitRepoDotGitDirectoryFS)
+func createRepo(t *testing.T) {
+	gitRepoSourcePathFS := os.DirFS(gitRepoSourcePath)
+	err := os.CopyFS(gitRepoPathAbsolute, gitRepoSourcePathFS)
 	if err != nil {
 		t.Errorf(
-			`Unexpected error returned by os.CopyFS(gitRepoEnabledHiddenGitDirectory, gitRepoDotGitDirectoryFS): %s`,
+			`Unexpected error returned by os.CopyFS(gitRepoPathAbsolute, gitRepoSourcePathFS): %s`,
+			err.Error())
+		t.FailNow()
+	}
+
+	err = os.Rename(gitRepoDotGitDirectory, gitRepoEnabledHiddenGitDirectory)
+	if err != nil {
+		t.Errorf(
+			`Unexpected error returned by os.Rename(gitRepoDotGitDirectory, gitRepoEnabledHiddenGitDirectory): %s`,
 			err.Error())
 		t.FailNow()
 	}
 }
 
-func deleteEnabledHiddenGitDirectory(t *testing.T) {
-	err := os.RemoveAll(gitRepoEnabledHiddenGitDirectory)
+func deleteRepo(t *testing.T) {
+	err := os.RemoveAll(gitRepoPathAbsolute)
 	if err != nil {
 		t.Errorf(
-			`deleteEnabledHiddenGitDirectory() failed with error "%s", remove %s manually`,
-			err.Error(), gitRepoEnabledHiddenGitDirectory)
+			`deleteRepo() failed with error "%s", remove %s manually`,
+			err.Error(), gitRepoPathAbsolute)
 		t.FailNow()
 	}
+}
+
+func resetRepo(t *testing.T) {
+	deleteRepo(t)
+	createRepo(t)
 }
