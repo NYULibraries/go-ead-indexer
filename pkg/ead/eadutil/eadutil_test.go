@@ -188,15 +188,23 @@ func testConvertEADToHTML_Specificity(t *testing.T) {
 	}
 	eadString := strings.Join(eadStringTokens, "")
 
+	// Note that the quotation marks in the "text nodes" of the XML strings between
+	// "2" and "3" and "3" and "4" were are into entity references by the standard
+	// library `xml.EscapeText()` method, probably because quotes are not valid
+	// inside XML attributes.  They are valid inside text nodes, but for some
+	// reason `xml.EscapeText()` escapes all quotes and does not make distinctions.
+	// Perhaps this is because the conversion from quotes to their entity
+	// reference is considered innocuous.  Or, perhaps the validity of quotes
+	// is not defined in an absolute way in XML specifications.
 	expectedHTMLStringTokens := []string{
 		"0",
 		`<date type="acquisition" normal="19880423">April 23, 1988.</date>`,
 		"1",
 		"<title>TITLE [no attributes]</title>",
 		"2",
-		`<em id="underline" altrender="bold">EMPH [render="underline"]</em>`,
+		`<em id="underline" altrender="bold">EMPH [render=&#34;underline&#34;]</em>`,
 		"3",
-		`<emph id="underline" altrender="bold">EMPH [id="underline" altrender="bold"]</emph>`,
+		`<emph id="underline" altrender="bold">EMPH [id=&#34;underline&#34; altrender=&#34;bold&#34;]</emph>`,
 		"4",
 		`Thomson, John.  Arabia, Egypt, Abyssinia, Red Sea &amp;c.`,
 		"5",
