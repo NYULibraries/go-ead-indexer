@@ -3,6 +3,7 @@ package debug
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"io/fs"
 	"net/http/httputil"
 	"os"
@@ -46,6 +47,11 @@ func DumpSolrIndexerHTTPRequestsForGitCommit(repoPath string, commit string) (st
 		if err != nil {
 			return "", err
 		}
+	}
+
+	err := git.CheckoutMergeReset(repoPathAbsolute, commit)
+	if err != nil {
+		return "", fmt.Errorf(`git.CheckoutMergeReset(repoPath, commit) failed with error: "%s"`, err)
 	}
 
 	eadFilesForCommit, err := git.ListEADFilesForCommit(repoPathAbsolute, commit)
