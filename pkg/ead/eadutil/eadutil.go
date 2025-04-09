@@ -13,6 +13,7 @@ import (
 	"html"
 	"io"
 	"maps"
+	"path/filepath"
 	"regexp"
 	"slices"
 	"strconv"
@@ -30,6 +31,15 @@ type DateRange struct {
 	EndDate   int
 }
 
+// TODO: DLFA-238
+// Remove these `consts` for left- and right- padding for matching v1
+// indexer bug behavior described here:
+// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506
+const daoDescriptionParagraphLeftPadString = "\n          "
+const daoDescriptionParagraphRightPadString = "\n        "
+const unitTitleLeftPadString = "\n      "
+const unitTitleRightPadString = "\n    "
+
 const eadLineBreakTag = "<lb/>"
 
 const undated = "undated & other"
@@ -38,6 +48,9 @@ var allowedConvertedEADToHTMLTags = util.CompactStringSlicePreserveOrder(
 	slices.Collect(maps.Values(eadTagRenderAttributeToHTMLTagName)))
 
 var datePartsRegexp = regexp.MustCompile(`^\s*(\d{4})\/(\d{4})\s*$`)
+
+// We assume lowercase entity references only because Go escaping uses lowercase.
+var multipleEscapedAmpersandRegexp = regexp.MustCompile(`(?:&amp;)+amp;`)
 
 var dateRangesCenturies = []DateRange{
 	{Display: "1101-1200", StartDate: 1101, EndDate: 1200},
@@ -98,6 +111,14 @@ func ConvertEADToHTML(eadString string) (string, error) {
 func ConvertToFacetSlice(rawSlice []string) []string {
 	return util.CompactStringSlicePreserveOrder(
 		replaceMARCSubfieldDemarcatorsInSlice(rawSlice))
+}
+
+func EADPathToEADID(path string) (string, error) {
+	eadID := strings.TrimSuffix(filepath.Base(path), filepath.Ext(path))
+	if !IsValidEADID(eadID) {
+		return "", fmt.Errorf("invalid EADID: %s", eadID)
+	}
+	return eadID, nil
 }
 
 func GetDateParts(dateString string) DateParts {
@@ -552,4 +573,9 @@ func stringifyStartElementToken(token xml.StartElement) string {
 	startTag += ">"
 
 	return startTag
+}
+
+// We assume lowercase entity references only because Go escaping uses lowercase.
+func undoMultipleAmpersandEscaping(str string) string {
+	return multipleEscapedAmpersandRegexp.ReplaceAllString(str, "&amp;")
 }

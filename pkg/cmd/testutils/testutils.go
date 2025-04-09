@@ -191,6 +191,85 @@ func CaptureCmdStdoutStderrE(f func(*cobra.Command, []string) error, cmd *cobra.
 	return string(stdout), string(stderr), cmdErr
 }
 
+func WriteToStdinCaptureCmdStdoutStderrE(f func(*cobra.Command, []string) error, cmd *cobra.Command, args []string, stdInput string) (string, string, error) {
+
+	// save the current stdin, stdout and stderr
+	rescueStdin := os.Stdin
+	rescueStdout := os.Stdout
+	rescueStderr := os.Stderr
+
+	// create a pipe for stdin
+	stdinR, stdinW, err := os.Pipe()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// create a pipe for stdout
+	stdoutR, stdoutW, err := os.Pipe()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// create a pipe for stderr
+	stderrR, stderrW, err := os.Pipe()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// map stdin to the read end of the pipe
+	// map stdout and stderr to the write ends of the pipes
+	os.Stdin = stdinR
+	os.Stdout = stdoutW
+	os.Stderr = stderrW
+
+	// load the input into stdin
+	fmt.Fprint(stdinW, stdInput)
+
+	// execute the command
+	cmdErr := f(cmd, args)
+
+	// close the read and writes end of the stdin pipe
+	err = stdinR.Close()
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = stdinW.Close()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// close the write end of the stdout pipe
+	err = stdoutW.Close()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// close the write end of the stderr pipe
+	err = stderrW.Close()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// read from the read end of the stdout pipe
+	stdout, err := io.ReadAll(stdoutR)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// read from the read end of the stderr pipe
+	stderr, err := io.ReadAll(stderrR)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// restore stdin, stdout and stderr
+	os.Stdin = rescueStdin
+	os.Stdout = rescueStdout
+	os.Stderr = rescueStderr
+
+	return string(stdout), string(stderr), cmdErr
+}
+
 func SetCmdFlag(f *cobra.Command, flag string, val string) {
 	f.Flags().Set(flag, val)
 }

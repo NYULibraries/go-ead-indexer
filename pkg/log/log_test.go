@@ -5,6 +5,7 @@ import (
 	"bytes"
 	"flag"
 	"fmt"
+	"io"
 	"os"
 	"regexp"
 	"strings"
@@ -26,6 +27,16 @@ var simpleLogEntryStringRegexp = regexp.MustCompile(
 	`.*"level":"([A-Z]+)","msg":"","message":"([a-z]+)"}`,
 )
 
+// Originally used `logger.SetOutput([a *bufio.Writer])` in `testSetLevel()`
+// to capture log output, but this hid bugs in  the `SetLevel*` methods,
+// which were not replacing `sl.slogger` with a new `*slog.Logger` that had
+// the new logging level set.  `SetOutput()` was correctly replacing `sl.slogger`
+// with the appropriate new `*slog.Logger`, which is why `testSetLevel()` always passed.
+// We now use the same method employed in pkg/log/cmd/testutils.Capture* functions
+// (written by Joe) to replace `os.Stdout`.
+var stdoutFakeReadFile *os.File
+var stdoutFakeWriteFile *os.File
+
 const messageKey = "message"
 
 func TestMain(m *testing.M) {
@@ -46,7 +57,6 @@ func TestGetLevelOptionStringForLogLevel(t *testing.T) {
 		{name: "LevelInfo", expectedLevelOptionString: "info", level: LevelInfo},
 		{name: "LevelWarn", expectedLevelOptionString: "warn", level: LevelWarn},
 		{name: "LevelError", expectedLevelOptionString: "error", level: LevelError},
-		{name: "LevelNone", expectedLevelOptionString: "none", level: LevelNone},
 	}
 
 	for _, testCase := range testCases {
@@ -66,7 +76,6 @@ func TestGetValidLevelOptionStrings(t *testing.T) {
 		"info",
 		"warn",
 		"error",
-		"none",
 	}, "\n")
 
 	actualLevelOptionStrings := strings.Join(GetValidLevelOptionStrings(), "\n")
@@ -103,13 +112,49 @@ func TestSetLevel(t *testing.T) {
 		{name: "Info", level: LevelInfo},
 		{name: "Warn", level: LevelWarn},
 		{name: "Error", level: LevelError},
-		{name: "None", level: LevelNone},
 	}
+
+	// `os.Stdout` will be replaced by a fake `*File` by the `testSetLevelByLevel*`
+	// functions in the loop below.  Save the original now and restore it after all
+	// tests have completed.
+	origStdout := os.Stdout
+	defer func() {
+		os.Stdout = origStdout
+	}()
 
 	for i, testCase := range testCases {
 		expectedLogSeriesForLevelString := strings.Join(expectedLogSeriesFull[i:], "\n")
 		testSetLevelByLevel(t, testCase.name, testCase.level, expectedLogSeriesForLevelString)
 		testSetLevelByLevelString(t, testCase.name, strings.ToLower(testCase.name), expectedLogSeriesForLevelString)
+	}
+}
+
+func TestSetOutput(t *testing.T) {
+	logger := New()
+
+	// Capture all log output in a `bytes.Buffer`.
+	var logOutput bytes.Buffer
+	logOutputWriter := bufio.NewWriter(&logOutput)
+	logger.SetOutput(logOutputWriter)
+
+	errorMessage := "ERROR!"
+	key := "test"
+	logger.Error(key, errorMessage)
+
+	// Must flush the writer to prevent risk truncation of `logOutput`
+	err := logOutputWriter.Flush()
+	if err != nil {
+		t.Fatalf("Error calling `logOutputWriter.Flush`: %s", err)
+	}
+
+	timePlaceholder := `"time":"[TIME]"`
+	expectedLogOutput := fmt.Sprintf(`{%s,"level":"ERROR","msg":"","%s":"%s"}`+"\n",
+		timePlaceholder, key, errorMessage)
+
+	timeRegexp := regexp.MustCompile(`"time":"[^"]+"`)
+	actual := timeRegexp.ReplaceAllString(logOutput.String(), timePlaceholder)
+	if actual != expectedLogOutput {
+		t.Errorf(`Expected "%s" but got "%s"`, expectedLogOutput, actual)
 	}
 }
 
@@ -152,11 +197,27 @@ func logSeries(logger Logger) {
 	logger.Error(messageKey, "error")
 }
 
+// See var comments for `stdoutFakeReadFile` and `stdoutFakeWriteFile` for more
+// details on why we use this method for capturing logger output rather than simply
+// using `SetOutput()`.
+func resetStdoutFake(t *testing.T) {
+	var err error
+	stdoutFakeReadFile, stdoutFakeWriteFile, err = os.Pipe()
+	if err != nil {
+		t.Fatalf("os.Pipe() failed with error: %s", err)
+	}
+	os.Stdout = stdoutFakeWriteFile
+}
+
 // Called in the main loop for `TestSetLevel()`.  It calls the workhorse test function
 // `testSetLevel()`, passing in a closure allowing `testSetLevel()` to set the
 // level without needing to know which setter to use and what level is being
 // specified.  In this case, the closure uses `SetLevel(Level)`.
 func testSetLevelByLevel(t *testing.T, testCaseName string, level Level, expectedLogSeriesForLevelString string) {
+	// This has to be done before `New()` so that the new logger will output to
+	// the stdout fake.
+	resetStdoutFake(t)
+
 	logger := New()
 
 	var setLevelClosure setLevelFunction
@@ -172,6 +233,10 @@ func testSetLevelByLevel(t *testing.T, testCaseName string, level Level, expecte
 // level without needing to know which setter to use and what level is being
 // specified.  In this case, the closure uses `SetLevelByLevelString(string)`.
 func testSetLevelByLevelString(t *testing.T, testCaseName string, levelString string, expectedLogSeriesForLevelString string) {
+	// This has to be done before `New()` so that the new logger will output to
+	// the stdout fake.
+	resetStdoutFake(t)
+
 	logger := New()
 
 	var setLevelClosure setLevelFunction
@@ -194,11 +259,6 @@ func testSetLevelByLevelString(t *testing.T, testCaseName string, levelString st
 // that differ only by a single statement: e.g. `SetLevel(...)`vs. `SetLevelByString(...)`.
 func testSetLevel(t *testing.T, logger Logger, setLevelFunctionName string,
 	setLevelClosure setLevelFunction, testCaseName string, expectedLogSeriesString string) {
-	// Capture all log output in a `bytes.Buffer`.
-	var logOutput bytes.Buffer
-	logOutputWriter := bufio.NewWriter(&logOutput)
-	logger.SetOutput(logOutputWriter)
-
 	// We've been provided a set level function which has been closed off with the
 	// desired level.  We just need to call it to set the package log level.
 	setLevelClosure()
@@ -206,10 +266,15 @@ func testSetLevel(t *testing.T, logger Logger, setLevelFunctionName string,
 	// Logs simple messages for each testCase in ascending order of severity.
 	logSeries(logger)
 
-	// Must flush the writer to prevent risk truncation of `logOutput`
-	err := logOutputWriter.Flush()
+	// `os.Stdout` was already replaced by `stdoutFakeWriteFile` earlier on.
+	// Close it and get everything that was logged to it.
+	err := stdoutFakeWriteFile.Close()
 	if err != nil {
-		t.Fatalf("Error calling `logOutputWriter.Flush`: %s", err)
+		t.Fatalf("w.Close() failed with error: %s", err)
+	}
+	logOutput, err := io.ReadAll(stdoutFakeReadFile)
+	if err != nil {
+		t.Fatalf("io.ReadAll(r) failed with error: %s", err)
 	}
 
 	// Example of actual log series string to be compared against the expected log series string:
@@ -218,7 +283,7 @@ func testSetLevel(t *testing.T, logger Logger, setLevelFunctionName string,
 	// INFO|info
 	// WARN|warn
 	// ERROR|error
-	actualLogSeriesString := getLogSeriesString(logOutput.String())
+	actualLogSeriesString := getLogSeriesString(string(logOutput))
 
 	// Example output for a bug where LevelError is accidentally mapped to slog.LevelWarn
 	// (this is a real bug that was caught by this test):

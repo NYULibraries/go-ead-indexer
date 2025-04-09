@@ -3,9 +3,11 @@
 # MacOS
 .DS_Store
 
-# Ephemeral .git directory that only exists when running `debug_test.go` tests.
-# We ignore it just in case it doesn't get cleaned up.
-pkg/debug/testdata/fixtures/git-repo/.git
+# Ephemeral test fixtures that are ignored here in case they
+# are not cleaned up because of an interrupted test.
+pkg/debug/testdata/fixtures/test-git-repo
+pkg/git/testdata/fixtures/test-git-repo
+pkg/index/testdata/fixtures/test-git-repo
 
 # Temporary files for diff'ing of actual values against golden files.
 # `ead` package

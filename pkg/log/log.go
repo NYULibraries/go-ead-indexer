@@ -1,11 +1,9 @@
 package log
 
 import (
-	"errors"
 	"fmt"
 	"io"
 	"log/slog"
-	"math"
 	"os"
 	"reflect"
 	"sort"
@@ -50,7 +48,6 @@ var (
 	LevelInfo  = Level(reflect.ValueOf(slog.LevelInfo).Int())
 	LevelWarn  = Level(reflect.ValueOf(slog.LevelWarn).Int())
 	LevelError = Level(reflect.ValueOf(slog.LevelError).Int())
-	LevelNone  = Level(math.MaxInt)
 )
 
 var logLevelStringOptions = map[string]Level{
@@ -58,7 +55,6 @@ var logLevelStringOptions = map[string]Level{
 	"info":  LevelInfo,
 	"warn":  LevelWarn,
 	"error": LevelError,
-	"none":  LevelNone,
 }
 
 func New() Logger {
@@ -88,6 +84,8 @@ func (sl *SloggerLogger) Info(args ...any) {
 
 func (sl *SloggerLogger) SetLevel(level Level) {
 	sl.programLevel.Set(slog.Level(level))
+	handler := slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{Level: sl.programLevel})
+	sl.slogger = slog.New(handler)
 }
 
 // Useful for setting the level based on a string value set by a user via a flag
@@ -96,10 +94,13 @@ func (sl *SloggerLogger) SetLevelByString(levelStringArg string) error {
 	level, ok := logLevelStringOptions[levelStringArg]
 	if ok {
 		sl.programLevel.Set(slog.Level(level))
+		handler := slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{Level: sl.programLevel})
+		sl.slogger = slog.New(handler)
+
 		return nil
 	} else {
-		return errors.New(fmt.Sprintf("\"%s\" is not a valid error string option.  Valid options: %s",
-			levelStringArg, strings.Join(GetValidLevelOptionStrings(), ", ")))
+		return fmt.Errorf("\"%s\" is not a valid error string option.  Valid options: %s",
+			levelStringArg, strings.Join(GetValidLevelOptionStrings(), ", "))
 	}
 }
 

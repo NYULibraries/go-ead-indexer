@@ -1346,6 +1346,77 @@ func TestStripTags(t *testing.T) {
 	}
 }
 
+func TestUndoMultipleAmpersandEscaping(t *testing.T) {
+	testCases := []struct {
+		testString string
+		expected   string
+	}{
+		{
+			testString: "Series III: Agendas &amp;amp; Minutes",
+			expected:   "Series III: Agendas &amp; Minutes",
+		},
+		{
+			testString: "&amp;amp; [AT THE BEGINNING]",
+			expected:   "&amp; [AT THE BEGINNING]",
+		},
+		{
+			testString: "[AT THE END] &amp;amp;",
+			expected:   "[AT THE END] &amp;",
+		},
+		{
+			testString: "&amp;amp; [MULTIPLE] &amp;amp; [OCCURRENCES] &amp;amp;",
+			expected:   "&amp; [MULTIPLE] &amp; [OCCURRENCES] &amp;",
+		},
+		{
+			testString: "&amp;&amp;&amp;&amp;&amp;&amp;&amp;amp; [MANY LEVELS OF ESCAPING]",
+			expected:   "&amp; [MANY LEVELS OF ESCAPING]",
+		},
+		{
+			testString: "[DON'T UNESCAPE] &amp;",
+			expected:   "[DON'T UNESCAPE] &amp;",
+		},
+		{
+			testString: "[DON'T UNESCAPE] &amp;",
+			expected:   "[DON'T UNESCAPE] &amp;",
+		},
+		{
+			testString: "[WE WILL PROBABLY NEVER HAVE A REAL AMPERSAND BUT JUST IN CASE] &",
+			expected:   "[WE WILL PROBABLY NEVER HAVE A REAL AMPERSAND BUT JUST IN CASE] &",
+		},
+		{
+			testString: "[NEWLINES]\n&amp;amp;\n&amp;amp;",
+			expected:   "[NEWLINES]\n&amp;\n&amp;",
+		},
+		{
+			testString: "<SHOULD NEVER HAVE THIS BUT JUST IN CASE> &amp;amp;",
+			expected:   "<SHOULD NEVER HAVE THIS BUT JUST IN CASE> &amp;",
+		},
+		{
+			testString: "JAMMED&amp;&amp;amp;TOGETHER",
+			expected:   "JAMMED&amp;TOGETHER",
+		},
+		{
+			testString: "[SEQUENCE OF ESCAPED AMPERSANDS] &amp;&amp;&amp;",
+			expected:   "[SEQUENCE OF ESCAPED AMPERSANDS] &amp;&amp;&amp;",
+		},
+		{
+			testString: "[NOT ACTUAL ESCAPED AMPERSAND] volt&amp",
+			expected:   "[NOT ACTUAL ESCAPED AMPERSAND] volt&amp",
+		},
+		{
+			testString: "",
+			expected:   "",
+		},
+	}
+
+	for _, testCase := range testCases {
+		actual := undoMultipleAmpersandEscaping(testCase.testString)
+		if actual != testCase.expected {
+			t.Errorf(`Expected "%s" but got "%s"`, testCase.expected, actual)
+		}
+	}
+}
+
 // TODO: Consolidate fixture/helper/diff code with `pkg/ead/testutils/`?
 // Note the that latter was designed to be EAD file specific, and also was
 // written in anticipation of potentially lifting out of the `ead` package
