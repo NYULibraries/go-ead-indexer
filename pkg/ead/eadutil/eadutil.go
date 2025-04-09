@@ -31,15 +31,6 @@ type DateRange struct {
 	EndDate   int
 }
 
-// TODO: DLFA-238
-// Remove these `consts` for left- and right- padding for matching v1
-// indexer bug behavior described here:
-// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506
-const daoDescriptionParagraphLeftPadString = "\n          "
-const daoDescriptionParagraphRightPadString = "\n        "
-const unitTitleLeftPadString = "\n      "
-const unitTitleRightPadString = "\n    "
-
 const eadLineBreakTag = "<lb/>"
 
 const undated = "undated & other"
