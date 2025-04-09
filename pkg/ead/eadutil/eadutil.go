@@ -545,11 +545,8 @@ func parseNodeValue(xmlString string) (string, error) {
 	return value, nil
 }
 
-// TODO: fix the bug we've intentionally preserved here -- for details, see:
-// * https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10154897&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10154897
-// * https://jira.nyu.edu/browse/DLFA-229?focusedCommentId=10153922&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10153922
 func replaceMARCSubfieldDemarcators(str string) string {
-	return marcSubfieldDemarcator.ReplaceAllString(str, "--")
+	return marcSubfieldDemarcator.ReplaceAllString(str, "-- ")
 }
 
 func replaceMARCSubfieldDemarcatorsInSlice(stringSlice []string) []string {
