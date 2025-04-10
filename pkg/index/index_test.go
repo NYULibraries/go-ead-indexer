@@ -1067,9 +1067,11 @@ func TestIndexGitCommit_BadCommitCheckout(t *testing.T) {
 	err = IndexGitCommit(gitRepoTestGitRepoPathAbsolute, "this-is-a-bad-commit-hash")
 	if err == nil {
 		t.Errorf("Expected an error, but got nil")
+		t.FailNow()
 	}
 
-	if !strings.Contains(err.Error(), "problem checking out hash 'this-is-a-bad-commit-hash', error: 'reference not found'") {
+	if !strings.Contains(err.Error(),
+		`"this-is-a-bad-commit-hash" is not a valid commit hash string`) {
 		t.Errorf("Expected error message to contain 'error checking out commit', but got: %s", err)
 	}
 }

@@ -3,10 +3,10 @@ set -uo pipefail
 
 # This script generates a git repo test fixture for use in the pkg/index IndexGitCommit() tests.
 # (Please see https://jira.nyu.edu/browse/DLFA-230 for details.)
-# 
+#
 # The script creates a directory named 'git-repo', then generates and commits various files.
 # Finally, the script renames the 'git-repo/.git' directory to 'git-repo/dot-git'.
-# The git-repo directory can be moved into the pkg/git/testdata/fixtures directory 
+# The git-repo directory can be moved into the pkg/git/testdata/fixtures directory
 # for use in git pkg tests.
 
 # Commit history replicated in repo (NOTE: commit hashes WILL differ)
@@ -50,7 +50,7 @@ err_exit() {
 #   recopy A
 #   modify A
 #   add    A
-# 
+#
 
 #------------------------------------------------------------------------------
 # VARIABLES
@@ -98,7 +98,7 @@ rm_file() {
 }
 
 cp_ead() {
-    local f 
+    local f
 
     f="$1"
     dir=$(dirname "$f")
@@ -224,6 +224,14 @@ add_file "$ADD_THREE_EADS_NUM_03"
 
 strip_commit_str_trailing_comma_space
 git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
+
+
+# Need to do this to prevent https://jira.nyu.edu/browse/DLFA-276 bug:
+# "`git\.CheckoutMergeReset` will silently check out a default commit if `commitHash` is not a valid commit hash string"
+echo "------------------------------------------------------------------------------"
+echo "setting branch name to 'master' (see https://jira.nyu.edu/browse/DLFA-276)"
+echo "------------------------------------------------------------------------------"
+git branch -m master || err_exit "problem renaming branch to master"
 
 
 # generate log information for the developer to use in updating tests:

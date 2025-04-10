@@ -16,6 +16,8 @@ const (
 	Unknown IndexerOperation = "unknown"
 )
 
+const errNotAValidCommitHashStringTemplate = `"%s" is not a valid commit hash string`
+
 // CheckoutMergeReset checks out a commit hash in a git repository.
 //
 // WARNING:
@@ -28,6 +30,15 @@ const (
 // 2.) if there are any files in the git repo directory hierarchy that are
 // NOT under version control, THOSE FILES WILL BE DELETED ON CHECKOUT!
 func CheckoutMergeReset(repoPath string, commitHash string) error {
+	// We need to test this before the `worktree.Checkout()` call below, because if
+	// an invalid commit hash string is passed to `plumbing.NewHash()` the result
+	// is a zero hash, and in such cases undesirable behavior can result.  We cannot
+	// rely on `worktree.NewHash()` error handling to do what we would like.
+	// For details, see https://jira.nyu.edu/browse/DLFA-276.
+	if !plumbing.IsHash(commitHash) {
+		return fmt.Errorf(errNotAValidCommitHashStringTemplate, commitHash)
+	}
+
 	repo, err := gogit.PlainOpen(repoPath)
 	if err != nil {
 		return err
@@ -38,7 +49,14 @@ func CheckoutMergeReset(repoPath string, commitHash string) error {
 		return err
 	}
 
+	// Note if both Hash and Branch are empty, the Branch defaults to "master".
+	// Source: https://github.com/go-git/go-git/blob/v5.13.1/options.go#L353
+	// This includes if `plumbing.NewHash(commitHash)` returns an empty Hash.
+	// If Hash is empty, undesirable things will happen, which is why we test
+	// `commitHash` before this call.
+	// For details, see https://jira.nyu.edu/browse/DLFA-276.
 	err = worktree.Checkout(&gogit.CheckoutOptions{
+		// `plumbing.NewHash()` will return an empty hash if `commitHash` is not a valid hexadecimal string.
 		Hash: plumbing.NewHash(commitHash),
 	})
 	if err != nil {
