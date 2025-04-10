@@ -196,7 +196,7 @@ func TestCheckout_BadHash(t *testing.T) {
 		return
 	}
 
-	exp := fmt.Sprintf("problem checking out hash '%s', error: 'reference not found'", badHash)
+	exp := fmt.Sprintf(errNotAValidCommitHashStringTemplate, badHash)
 	if err.Error() != exp {
 		t.Errorf("expected error message '%s', got '%s'", exp, err.Error())
 	}
@@ -209,6 +209,26 @@ func TestCheckout_BadPath(t *testing.T) {
 		return
 	}
 	exp := "repository does not exist"
+	if err.Error() != exp {
+		t.Errorf("expected error message '%s', got '%s'", exp, err.Error())
+	}
+}
+
+func TestCheckout_CommitHashNotFound(t *testing.T) {
+	// cleanup any leftovers from interrupted tests
+	deleteTestGitRepo(t)
+
+	createTestGitRepo(t)
+	defer deleteTestGitRepo(t)
+
+	commitHashNotFound := "1111111111111111111111111111111111111111"
+	err := CheckoutMergeReset(gitRepoTestGitRepoPathAbsolute, commitHashNotFound)
+	if err == nil {
+		t.Errorf("expected error but no error generated")
+		return
+	}
+
+	exp := "problem checking out hash '1111111111111111111111111111111111111111', error: 'object not found'"
 	if err.Error() != exp {
 		t.Errorf("expected error message '%s', got '%s'", exp, err.Error())
 	}
