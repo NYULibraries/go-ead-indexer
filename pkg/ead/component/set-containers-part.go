@@ -1,6 +1,11 @@
 package component
 
-import "github.com/lestrrat-go/libxml2/types"
+import (
+	"fmt"
+	"log"
+
+	"github.com/lestrrat-go/libxml2/types"
+)
 
 func (component *Component) setContainersPart(node types.Node) error {
 	containers := []Container{}
@@ -15,7 +20,8 @@ func (component *Component) setContainersPart(node types.Node) error {
 	for _, containerNode := range containerNodes {
 		container, err := makeContainer(containerNode)
 		if err != nil {
-			return err
+			log.Printf("Warning: Skipping problematic container: %v", err)
+			return fmt.Errorf("error creating container: %v", err)
 		}
 		containers = append(containers, container)
 	}
@@ -42,7 +48,8 @@ func makeContainer(containerNode types.Node) (Container, error) {
 	if err == nil {
 		container.Type = typeAttributeNode.Value()
 	} else {
-		return container, err
+		log.Printf("Error getting container type - Container ID: %s, XML: %s, Error: %v", container.ID, container.XMLString, err)
+		return container, fmt.Errorf("missing required 'type' attribute for container ID %s: %v", container.ID, err)
 	}
 
 	parentAttributeNode, err := containerNode.(types.Element).GetAttribute("parent")
