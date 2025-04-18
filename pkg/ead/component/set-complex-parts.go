@@ -182,12 +182,13 @@ func (component *Component) getLocationValues() ([]string, error) {
 	}
 
 	for _, rootContainer := range rootContainersSlice {
-		locationValue := fmt.Sprintf("%s: %s", rootContainer.Type, rootContainer.Value)
+		locationValue := makeLocationValuePartForContainer(rootContainer.Type, rootContainer.Value)
 		currentParentID := rootContainer.ID
 		for {
 			childContainer, ok := parentChildContainerMap[currentParentID]
 			if ok {
-				locationValue += fmt.Sprintf(", %s: %s", childContainer.Type, childContainer.Value)
+				locationValue += fmt.Sprintf(", %s",
+					makeLocationValuePartForContainer(childContainer.Type, childContainer.Value))
 				currentParentID = childContainer.ID
 			} else {
 				break
@@ -210,6 +211,8 @@ func (component *Component) getLocationValuesInOccurrenceOrder() ([]string, erro
 
 	currentLocationValue := ""
 	for _, container := range parts.Containers {
+		locationValuePartForContainer := makeLocationValuePartForContainer(container.Type, container.Value)
+
 		// This is a root <container>.  Commit the in-progress location value,
 		// if any, and start up a new one.
 		if container.Parent == "" {
@@ -218,9 +221,9 @@ func (component *Component) getLocationValuesInOccurrenceOrder() ([]string, erro
 				currentLocationValue = ""
 			}
 
-			currentLocationValue += fmt.Sprintf("%s: %s", container.Type, container.Value)
+			currentLocationValue += locationValuePartForContainer
 		} else {
-			currentLocationValue += fmt.Sprintf(", %s: %s", container.Type, container.Value)
+			currentLocationValue += fmt.Sprintf(", %s", locationValuePartForContainer)
 		}
 	}
 
@@ -338,4 +341,15 @@ func (component *Component) setUnitTitleHTML() error {
 	parts.UnitTitleHTML.Values = unitTitleHTMLValues
 
 	return nil
+}
+
+// TODO: DLFA-238
+// See long comment in `makeContainer()` in set-containers-part.go for more details.
+func makeLocationValuePartForContainer(containerType string, containerValue string) string {
+	containerTypeIntro := ""
+	if containerType != "" {
+		containerTypeIntro = containerType + ": "
+	}
+
+	return fmt.Sprintf("%s%s", containerTypeIntro, containerValue)
 }
