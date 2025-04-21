@@ -174,12 +174,13 @@ func (component *Component) getLocationValues() ([]string, error) {
 	}
 
 	for _, rootContainer := range rootContainersSlice {
-		locationValue := fmt.Sprintf("%s: %s", rootContainer.Type, rootContainer.Value)
+		locationValue := makeLocationValuePartForContainer(rootContainer.Type, rootContainer.Value)
 		currentParentID := rootContainer.ID
 		for {
 			childContainer, ok := parentChildContainerMap[currentParentID]
 			if ok {
-				locationValue += fmt.Sprintf(", %s: %s", childContainer.Type, childContainer.Value)
+				locationValue += fmt.Sprintf(", %s",
+					makeLocationValuePartForContainer(childContainer.Type, childContainer.Value))
 				currentParentID = childContainer.ID
 			} else {
 				break
@@ -277,4 +278,13 @@ func (component *Component) setUnitTitleHTML() error {
 	parts.UnitTitleHTML.Values = unitTitleHTMLValues
 
 	return nil
+}
+
+func makeLocationValuePartForContainer(containerType string, containerValue string) string {
+	containerTypeIntro := ""
+	if containerType != "" {
+		containerTypeIntro = containerType + ": "
+	}
+
+	return fmt.Sprintf("%s%s", containerTypeIntro, containerValue)
 }
