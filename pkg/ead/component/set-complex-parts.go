@@ -152,18 +152,10 @@ func (component *Component) setLanguage() []error {
 	return nil
 }
 
-// TODO: DLFA-238
-// Change this from <container> hierarchy based on occurrence order of elements
-// to using `parent` attribute linking to the `id` attribute of direct parent
-// <container>.
 func (component *Component) setLocation() error {
 	parts := &component.Parts
 
-	// TODO: DLFA-238
-	// Delete this:
-	locationValues, err := component.getLocationValuesInOccurrenceOrder()
-	// ...and uncomment this:
-	//locationValues, err := component.getLocationValues()
+	locationValues, err := component.getLocationValues()
 	if err != nil {
 		return err
 	} else {
@@ -198,45 +190,6 @@ func (component *Component) getLocationValues() ([]string, error) {
 		locationValues = append(locationValues, locationValue)
 	}
 
-	return locationValues, nil
-}
-
-// TODO: DLFA-238
-// Remove this after passing the DLFA-201 acceptance test.  See function header
-// for `Component.setLocation()` above.
-func (component *Component) getLocationValuesInOccurrenceOrder() ([]string, error) {
-	parts := &component.Parts
-
-	locationValues := []string{}
-
-	currentLocationValue := ""
-	for _, container := range parts.Containers {
-		locationValuePartForContainer := makeLocationValuePartForContainer(container.Type, container.Value)
-
-		// This is a root <container>.  Commit the in-progress location value,
-		// if any, and start up a new one.
-		if container.Parent == "" {
-			if currentLocationValue != "" {
-				locationValues = append(locationValues, currentLocationValue)
-				currentLocationValue = ""
-			}
-
-			currentLocationValue += locationValuePartForContainer
-		} else {
-			currentLocationValue += fmt.Sprintf(", %s", locationValuePartForContainer)
-		}
-	}
-
-	// Commit the in-progress location value, if any.
-	if currentLocationValue != "" {
-		locationValues = append(locationValues, currentLocationValue)
-		currentLocationValue = ""
-	}
-
-	// This function can't really return an error, but when we switch over
-	// to the permanent `getLocationValues()` we'll need to trap errors in
-	// mapping parent to child containers, so we match its signature to make
-	// transition easier and faster.
 	return locationValues, nil
 }
 
@@ -319,22 +272,6 @@ func (component *Component) setUnitTitleHTML() error {
 			return err
 		}
 
-		// TODO: DLFA-238
-		// Remove this left- and right- padding for matching v1 indexer bug
-		// behavior described here:
-		// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506
-		unitTitleHTMLValue = eadutil.PadUnitTitleIfNeeded(unitTitleContents, unitTitleHTMLValue)
-
-		// TODO: DLFA-238
-		// This is tough one to call.  Not sure if this absolutely needs to be
-		// removed or not.  Go's `xml.EscapeText()` automatically escapes single
-		// and double-quotes because they could potentially break tag attributes,
-		// but these <unittitle> values are never going to be in attributes.
-		// If there's no harm in letting them stay escaped, however, probably
-		// better to not undo it.
-		unitTitleHTMLValue = strings.ReplaceAll(unitTitleHTMLValue, "&#39;", "'")
-		unitTitleHTMLValue = strings.ReplaceAll(unitTitleHTMLValue, "&#34;", `"`)
-
 		unitTitleHTMLValues = append(unitTitleHTMLValues, unitTitleHTMLValue)
 	}
 
@@ -343,8 +280,6 @@ func (component *Component) setUnitTitleHTML() error {
 	return nil
 }
 
-// TODO: DLFA-238
-// See long comment in `makeContainer()` in set-containers-part.go for more details.
 func makeLocationValuePartForContainer(containerType string, containerValue string) string {
 	containerTypeIntro := ""
 	if containerType != "" {

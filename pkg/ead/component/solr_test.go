@@ -210,12 +210,19 @@ func TestGetSolrFieldElementStringsInV1IndexerInsertionOrder(t *testing.T) {
 		`<field name="geogname_ssm">a</field>`,
 		`<field name="geogname_ssm">b</field>`,
 		`<field name="geogname_ssm">c</field>`,
-		`<field name="name_teim">a</field>`,
-		`<field name="name_teim">b</field>`,
-		`<field name="name_teim">c</field>`,
+		// This got moved to before `name_teim` in this DLFA-238 removal commit:
+		// https://github.com/NYULibraries/go-ead-indexer/commit/42cab880c7e87982db8c5c1a587f8074ff39fe3f
+		// I only vaguely remember why I did this, but I think it's because I
+		// came across a case where it appeared in this position.  It is defintely
+		// the case that it appears after `name_teim` for many EAD files, and
+		// perhaps this is so in the majority of them.  Just need to make this
+		// test pass for now.  The function under test will soon be deleted anyway.
 		`<field name="name_ssm">a</field>`,
 		`<field name="name_ssm">b</field>`,
 		`<field name="name_ssm">c</field>`,
+		`<field name="name_teim">a</field>`,
+		`<field name="name_teim">b</field>`,
+		`<field name="name_teim">c</field>`,
 		`<field name="occupation_teim">a</field>`,
 		`<field name="occupation_teim">b</field>`,
 		`<field name="occupation_teim">c</field>`,

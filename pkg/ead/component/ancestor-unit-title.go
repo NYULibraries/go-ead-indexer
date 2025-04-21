@@ -6,6 +6,7 @@ import (
 	"github.com/lestrrat-go/libxml2/types"
 	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
 	"github.com/nyulibraries/go-ead-indexer/pkg/sanitize"
+	"github.com/nyulibraries/go-ead-indexer/pkg/util"
 )
 
 const noTitleAvailable = "[No title available]"
@@ -29,22 +30,12 @@ func getAncestorUnitTitle(node types.Node) (string, error) {
 				fmt.Sprintf(`eadutil.ParseEscapedNodeTextContent(unitTitleNodes[0]) error: %s`, err.Error()))
 		}
 
-		// TODO: DLFA-238
-		// Replace this with `util.IsNonEmptyString(unitDateContents)`
-		if unitTitleContents != "" {
+		if util.IsNonEmptyString(unitTitleContents) {
 			// TODO: Find out if `sanitize.Clean()` is necessary.
 			// We are doing this because v1 indexer seems to suggest it might be
 			// necessary.  See `get_title()` in this comment:
 			// https://jira.nyu.edu/browse/DLFA-212?focusedCommentId=8495151&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-8495151
 			ancestorUnitTitle = sanitize.Clean(unitTitleContents)
-
-			// TODO: DLFA-238
-			// Remove this left- and right- padding for matching v1 indexer bug
-			// behavior described here:
-			// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506
-			ancestorUnitTitle = eadutil.PadUnitTitleIfNeeded(
-				eadutil.StripOpenAndCloseTags(unitTitleNodes[0].String()),
-				ancestorUnitTitle)
 		}
 	}
 
@@ -59,22 +50,12 @@ func getAncestorUnitTitle(node types.Node) (string, error) {
 		unitDateNodes := xpathResult.NodeList()
 		if len(unitDateNodes) > 0 {
 			unitDateContents := unitDateNodes[0].TextContent()
-			// TODO: DLFA-238
-			// Replace this with `util.IsNonEmptyString(unitDateContents)`
-			if unitDateContents != "" {
+			if util.IsNonEmptyString(unitDateContents) {
 				// TODO: Find out if `sanitize.Clean()` is necessary.
 				// We are doing this because v1 indexer seems to suggest it might be
 				// necessary.  See `get_title()` in this comment:
 				// https://jira.nyu.edu/browse/DLFA-212?focusedCommentId=8495151&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-8495151
 				ancestorUnitTitle = sanitize.Clean(unitDateContents)
-
-				// TODO: DLFA-238
-				// Remove this left- and right- padding for matching v1 indexer bug
-				// behavior described here:
-				// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506
-				ancestorUnitTitle = eadutil.PadUnitTitleIfNeeded(
-					eadutil.StripOpenAndCloseTags(unitDateNodes[0].String()),
-					ancestorUnitTitle)
 			}
 		}
 	}
