@@ -1069,8 +1069,22 @@ func TestIndexGitCommit_BadCommitCheckout(t *testing.T) {
 		t.Errorf("Expected an error, but got nil")
 	}
 
-	if !strings.Contains(err.Error(), "problem checking out hash 'this-is-a-bad-commit-hash', error: 'reference not found'") {
-		t.Errorf("Expected error message to contain 'error checking out commit', but got: %s", err)
+	// See https://jira.nyu.edu/browse/DLFA-276:
+	// "`git.CheckoutMergeReset` will silently check out a default commit if `commitHash` is not a valid commit hash string"
+	// The "reference not found" error that this test used to check for was actually
+	// being returned by `go-git` as a result of looking for branch "master" and
+	// not finding it in the original test git repo.  We need to use "master" to
+	// for the EAD files repo, so we should use the same branch name in tests,
+	// because as we see in DLFA-276, the name of the default branch matters and
+	// can make or break a `go-git` operation.
+	// Note that this code is about to get overwritten by a merge from parent
+	// branch, so this is the only commit in which this comment and these new
+	// error strings will appear.  It is worth doing for documentation purposes
+	// and also to make sure anyone checking out this commit will get working and
+	// coherent tests.
+	expectedError := "problem getting commit object for commit hash 0000000000000000000000000000000000000000: object not found"
+	if err.Error() != expectedError {
+		t.Errorf(`Expected error message to contain "%s", but got: "%s"`, expectedError, err)
 	}
 }
 
