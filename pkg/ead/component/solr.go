@@ -165,11 +165,6 @@ func (component *Component) setSolrAddMessage() {
 
 	docElement.Creator_sim = append(docElement.Creator_sim,
 		util.CompactStringSlicePreserveOrder(component.Parts.CreatorComplex.Values)...)
-	// See 2nd `Creator_ssm` append below.
-	docElement.Creator_ssm = append(docElement.Creator_ssm,
-		component.Parts.Creator.Values...)
-	// TODO: is this duplication done in v1 indexer a bug that needs to be added
-	// to https://jira.nyu.edu/browse/DLFA-211?
 	docElement.Creator_ssm = append(docElement.Creator_ssm,
 		util.CompactStringSlicePreserveOrder(component.Parts.CreatorComplex.Values)...)
 	docElement.Creator_teim = append(docElement.Creator_teim,
