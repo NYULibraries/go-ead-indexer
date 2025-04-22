@@ -32,23 +32,15 @@ type AddElement struct {
 // the struct tags for `DocElement` below are mandatory.  They are used for the
 // field name in the Solr HTTP request XML body.
 type DocElement struct {
-	Author_teim    []string `xml:"author_teim"`
-	Author_ssm     []string `xml:"author_ssm"`
-	UnitTitle_teim []string `xml:"unittitle_teim"`
-	UnitTitle_ssm  []string `xml:"unittitle_ssm"`
-	UnitID_teim    []string `xml:"unitid_teim"`
-	UnitID_ssm     []string `xml:"unitid_ssm"`
-	Abstract_teim  []string `xml:"abstract_teim"`
-	Abstract_ssm   []string `xml:"abstract_ssm"`
-	Creator_teim   []string `xml:"creator_teim"`
-	// TODO: DLFA-238
-	// Change back to having just `docElement.Creator_ssm`.  This splitting of the
-	// field into 1 and 2 and the conditional append is done to match the variable
-	// positioning of the `creator_ssm` fields.  If there exist OM Term generated
-	// `creator_ssm` fields, the `get_ead_creators()` generated `creator_ssm` fields
-	// go immediately after those Term-based fields, otherwise they go toward the
-	// end.
-	Creator_1_ssm          []string `xml:"creator_ssm"`
+	Author_teim            []string `xml:"author_teim"`
+	Author_ssm             []string `xml:"author_ssm"`
+	UnitTitle_teim         []string `xml:"unittitle_teim"`
+	UnitTitle_ssm          []string `xml:"unittitle_ssm"`
+	UnitID_teim            []string `xml:"unitid_teim"`
+	UnitID_ssm             []string `xml:"unitid_ssm"`
+	Abstract_teim          []string `xml:"abstract_teim"`
+	Abstract_ssm           []string `xml:"abstract_ssm"`
+	Creator_teim           []string `xml:"creator_teim"`
 	UnitDateNormal_ssm     []string `xml:"unitdate_normal_ssm"`
 	UnitDateNormal_teim    []string `xml:"unitdate_normal_teim"`
 	UnitDateNormal_sim     []string `xml:"unitdate_normal_sim"`
@@ -100,16 +92,9 @@ type DocElement struct {
 	Format_sim      string   `xml:"format_sim"`
 	Format_ssm      string   `xml:"format_ssm"`
 	Format_ii       string   `xml:"format_ii"`
-	// TODO: DLFA-238
-	// Change back to having just `docElement.Creator_ssm`.  This splitting of the
-	// field into 1 and 2 and the conditional append is done to match the variable
-	// positioning of the `creator_ssm` fields.  If there exist OM Term generated
-	// `creator_ssm` fields, the `get_ead_creators()` generated `creator_ssm` fields
-	// go immediately after those Term-based fields, otherwise they go toward the
-	// end.
-	Creator_2_ssm []string `xml:"creator_ssm"`
-	Creator_sim   []string `xml:"creator_sim"`
-	Name_sim      []string `xml:"name_sim"`
+	Creator_ssm     []string `xml:"creator_ssm"`
+	Creator_sim     []string `xml:"creator_sim"`
+	Name_sim        []string `xml:"name_sim"`
 	// TODO: DLFA-238
 	// Change back to having just `docElement.Name_teim`.  This splitting of the
 	// field into 1 and 2 and the conditional append is done to match the variable
@@ -165,23 +150,8 @@ func (collectionDoc *CollectionDoc) setSolrAddMessage() {
 
 	docElement.Creator_sim = append(docElement.Creator_sim,
 		util.CompactStringSlicePreserveOrder(collectionDoc.Parts.CreatorComplex.Values)...)
-	docElement.Creator_1_ssm = append(docElement.Creator_1_ssm, collectionDoc.Parts.Creator.Values...)
-	// TODO: is this duplication of `creator_ssm` in v1 indexer a bug that needs to be added
-	// to https://jira.nyu.edu/browse/DLFA-211?
-	// TODO: DLFA-238
-	// Change back to having just `docElement.Creator_ssm`.  This splitting of the
-	// field into 1 and 2 and the conditional append is done to match the variable
-	// positioning of the `creator_ssm` fields.  If there exist OM Term generated
-	// `creator_ssm` fields, the `get_ead_creators()` generated `creator_ssm` fields
-	// go immediately after those Term-based fields, otherwise they go toward the
-	// end.
-	if len(docElement.Creator_1_ssm) > 0 {
-		docElement.Creator_1_ssm = append(docElement.Creator_1_ssm,
-			util.CompactStringSlicePreserveOrder(collectionDoc.Parts.CreatorComplex.Values)...)
-	} else {
-		docElement.Creator_2_ssm = append(docElement.Creator_2_ssm,
-			util.CompactStringSlicePreserveOrder(collectionDoc.Parts.CreatorComplex.Values)...)
-	}
+	docElement.Creator_ssm = append(docElement.Creator_ssm,
+		util.CompactStringSlicePreserveOrder(collectionDoc.Parts.CreatorComplex.Values)...)
 	docElement.Creator_teim = append(docElement.Creator_teim, collectionDoc.Parts.Creator.Values...)
 
 	docElement.CustodHist_teim = append(docElement.CustodHist_teim, collectionDoc.Parts.CustodHist.Values...)

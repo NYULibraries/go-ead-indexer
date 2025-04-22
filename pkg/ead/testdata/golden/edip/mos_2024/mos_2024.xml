@@ -3,21 +3,7 @@
  It has a
           title in it.</field><field name="abstract_ssm">This is the abstract.
  It has a
-          title in it.</field><field name="creator_teim"> Megan O&#39;Shea</field><field name="creator_teim">Belfrage family</field><field name="creator_teim"> Weatherly Stephan</field><field name="creator_ssm"> Megan O&#39;Shea</field><field name="creator_ssm">Belfrage family</field><field name="creator_ssm"> Weatherly Stephan</field><field name="creator_ssm">80 Washington Square East
-              Galleries</field><field name="creator_ssm">9 to 5, National
-                Association of Working Women (U.S.)</field><field name="creator_ssm">Yivo Institute for Jewish
-                  Research</field><field name="creator_ssm">World Trade Center
-                    (New York, N.Y.)</field><field name="creator_ssm">Workers&#39; Party of
-                      Ireland</field><field name="creator_ssm">Belfrage family</field><field name="creator_ssm">Blaustein
-            Family</field><field name="creator_ssm">Chen family</field><field name="creator_ssm">Pinsof
-                  family</field><field name="creator_ssm">Draper
-                  family</field><field name="creator_ssm">Blaustein
-                    Family</field><field name="creator_ssm"> Megan O&#39;Shea</field><field name="creator_ssm"> Weatherly Stephan</field><field name="creator_ssm">Aaron,
-            Florence</field><field name="creator_ssm">Adams, B.
-                O.</field><field name="creator_ssm">Zwillinger,
-                Rhonda</field><field name="creator_ssm">Yonge, Charlotte Mary,
-                    1823-1901</field><field name="creator_ssm">Alum, Rolando
-                    A.</field><field name="unitdate_normal_ssm">2016/2021</field><field name="unitdate_normal_ssm">2020/2021</field><field name="unitdate_normal_teim">2016/2021</field><field name="unitdate_normal_teim">2020/2021</field><field name="unitdate_normal_sim">2016/2021</field><field name="unitdate_normal_sim">2020/2021</field><field name="unitdate_bulk_teim">2020-2021, undated</field><field name="unitdate_inclusive_teim">2016-2021, undated</field><field name="scopecontent_teim">This is the Scope and Content note.</field><field name="bioghist_teim">This is the Biographical note.</field><field name="acqinfo_teim">This is the Immediate Source of Acquisition note.</field><field name="custodhist_teim">This is the Custodial History note.</field><field name="appraisal_teim">This is the Appraisal note.</field><field name="phystech_teim">This is the Physical Characteristics and Technical Requirements note.</field><field name="chronlist_teim">1939</field><field name="chronlist_teim">The</field><field name="chronlist_teim">New York State Legislature</field><field name="chronlist_teim">enacted Section
+          title in it.</field><field name="creator_teim"> Megan O&#39;Shea</field><field name="creator_teim">Belfrage family</field><field name="creator_teim"> Weatherly Stephan</field><field name="unitdate_normal_ssm">2016/2021</field><field name="unitdate_normal_ssm">2020/2021</field><field name="unitdate_normal_teim">2016/2021</field><field name="unitdate_normal_teim">2020/2021</field><field name="unitdate_normal_sim">2016/2021</field><field name="unitdate_normal_sim">2020/2021</field><field name="unitdate_bulk_teim">2020-2021, undated</field><field name="unitdate_inclusive_teim">2016-2021, undated</field><field name="scopecontent_teim">This is the Scope and Content note.</field><field name="bioghist_teim">This is the Biographical note.</field><field name="acqinfo_teim">This is the Immediate Source of Acquisition note.</field><field name="custodhist_teim">This is the Custodial History note.</field><field name="appraisal_teim">This is the Appraisal note.</field><field name="phystech_teim">This is the Physical Characteristics and Technical Requirements note.</field><field name="chronlist_teim">1939</field><field name="chronlist_teim">The</field><field name="chronlist_teim">New York State Legislature</field><field name="chronlist_teim">enacted Section
                 12-a of the</field><field name="chronlist_teim">Civil Service Law</field><field name="chronlist_teim">which provided in substance that &#34;no
                 person shall be appointed to or retained in the public service nor in any public
                 educational institution who becomes a member of any organization which advocates the
@@ -49,7 +35,21 @@
               of Archival Organization</field><field name="title_ssm">Essais sur l&#39;histoire d&#39;Haiti</field><field name="title_ssm">High Rise.</field><field name="title_ssm">Essais sur l&#39;histoire d&#39;Haiti</field><field name="title_ssm">New York Nichibei.</field><field name="collection_sim">Megan O&#39;Shea&#39;s &#34;One Resource to 
  Rule Them All&#34;</field><field name="collection_ssm">Megan O&#39;Shea&#39;s &#34;One Resource to 
  Rule Them All&#34;</field><field name="collection_teim">Megan O&#39;Shea&#39;s &#34;One Resource to 
- Rule Them All&#34;</field><field name="id">mos_2024</field><field name="ead_ssi">mos_2024</field><field name="repository_ssi">edip</field><field name="repository_sim">edip</field><field name="repository_ssm">edip</field><field name="format_sim">Archival Collection</field><field name="format_ssm">Archival Collection</field><field name="format_ii">0</field><field name="creator_sim">80 Washington Square East
+ Rule Them All&#34;</field><field name="id">mos_2024</field><field name="ead_ssi">mos_2024</field><field name="repository_ssi">edip</field><field name="repository_sim">edip</field><field name="repository_ssm">edip</field><field name="format_sim">Archival Collection</field><field name="format_ssm">Archival Collection</field><field name="format_ii">0</field><field name="creator_ssm">80 Washington Square East
+              Galleries</field><field name="creator_ssm">9 to 5, National
+                Association of Working Women (U.S.)</field><field name="creator_ssm">Yivo Institute for Jewish
+                  Research</field><field name="creator_ssm">World Trade Center
+                    (New York, N.Y.)</field><field name="creator_ssm">Workers&#39; Party of
+                      Ireland</field><field name="creator_ssm">Belfrage family</field><field name="creator_ssm">Blaustein
+            Family</field><field name="creator_ssm">Chen family</field><field name="creator_ssm">Pinsof
+                  family</field><field name="creator_ssm">Draper
+                  family</field><field name="creator_ssm">Blaustein
+                    Family</field><field name="creator_ssm"> Megan O&#39;Shea</field><field name="creator_ssm"> Weatherly Stephan</field><field name="creator_ssm">Aaron,
+            Florence</field><field name="creator_ssm">Adams, B.
+                O.</field><field name="creator_ssm">Zwillinger,
+                Rhonda</field><field name="creator_ssm">Yonge, Charlotte Mary,
+                    1823-1901</field><field name="creator_ssm">Alum, Rolando
+                    A.</field><field name="creator_sim">80 Washington Square East
               Galleries</field><field name="creator_sim">9 to 5, National
                 Association of Working Women (U.S.)</field><field name="creator_sim">Yivo Institute for Jewish
                   Research</field><field name="creator_sim">World Trade Center
