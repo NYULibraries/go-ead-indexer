@@ -10,11 +10,32 @@ import (
 	"os"
 	"path"
 	"path/filepath"
+	"reflect"
 	"runtime"
 	"slices"
 	"strings"
 	"testing"
 )
+
+// This is stand-in for `ead/collectiondoc.DocElement` and ead/component.DocElement`
+// types.  The field names are intentionally declared not in alphabetical order.
+type docElement struct {
+	FieldE []string `xml:"field_e"`
+	FieldB string   `xml:"field_b"`
+	FieldA []string `xml:"field_a"`
+	FieldC []string `xml:"field_c"`
+	FieldD string   `xml:"field_d"`
+}
+
+// Assign values intentionally in non-alphabetic order and also not in the
+// order in which the fields are declared in the type definition.
+var testDocElement = docElement{
+	FieldE: []string{"E1", "E2", "E3"},
+	FieldD: "D1",
+	FieldC: []string{"C1", "C2"},
+	FieldB: "B1",
+	FieldA: []string{"A1"},
+}
 
 var fixturesDirPath string
 var goldenFilesDirPath string
@@ -603,6 +624,29 @@ func TestLanguage(t *testing.T) {
 					actualErrorStrings)
 			}
 		}
+	}
+}
+
+// This covers both `MakeSolrAddMessageFieldElementStrings` and `GetDocElementFieldsInAlphabeticalOrder`.
+// Making a test for `GetDocElementFieldsInAlphabeticalOrder` would be more of a
+// pain given the `reflect` stuff that would be needed to unpack the values.
+func TestMakeSolrAddMessageFieldElementStrings(t *testing.T) {
+	expectedFieldElementStrings := []string{
+		`<field name="field_a">A1</field>`,
+		`<field name="field_b">B1</field>`,
+		`<field name="field_c">C1</field>`,
+		`<field name="field_c">C2</field>`,
+		`<field name="field_d">D1</field>`,
+		`<field name="field_e">E1</field>`,
+		`<field name="field_e">E2</field>`,
+		`<field name="field_e">E3</field>`,
+	}
+
+	docElementFields := GetDocElementFieldsInAlphabeticalOrder(testDocElement)
+	actualFieldElementStrings := MakeSolrAddMessageFieldElementStrings(docElementFields)
+
+	if !reflect.DeepEqual(actualFieldElementStrings, expectedFieldElementStrings) {
+		t.Errorf("Expected %v, got %v", expectedFieldElementStrings, actualFieldElementStrings)
 	}
 }
 

@@ -14,6 +14,7 @@ import (
 	"io"
 	"maps"
 	"path/filepath"
+	"reflect"
 	"regexp"
 	"slices"
 	"strconv"
@@ -29,6 +30,11 @@ type DateRange struct {
 	Display   string
 	StartDate int
 	EndDate   int
+}
+
+type DocElementField struct {
+	FieldName string
+	Field     reflect.Value
 }
 
 const eadLineBreakTag = "<lb/>"
@@ -164,6 +170,30 @@ func GetDateRange(unitDates []string) []string {
 	return dateRange
 }
 
+func GetDocElementFieldsInAlphabeticalOrder(docElement any) []DocElementField {
+	docElementFields := []DocElementField{}
+
+	docElementStructType := reflect.TypeOf(docElement)
+	docElementStructValue := reflect.ValueOf(docElement)
+
+	numFields := docElementStructValue.NumField()
+	for i := 0; i < numFields; i++ {
+		field := docElementStructValue.Field(i)
+		fieldName := strings.Split(docElementStructType.Field(i).Tag.Get("xml"), ",")[0]
+		docElementField := DocElementField{
+			FieldName: fieldName,
+			Field:     field,
+		}
+		docElementFields = append(docElementFields, docElementField)
+	}
+
+	slices.SortFunc(docElementFields, func(def1, def2 DocElementField) int {
+		return strings.Compare(strings.ToLower(def1.FieldName), strings.ToLower(def2.FieldName))
+	})
+
+	return docElementFields
+}
+
 func GetFirstNode(query string, node types.Node) (types.Node, error) {
 	xpathResult, err := node.Find(query)
 	if err != nil {
@@ -281,6 +311,40 @@ func MakeSolrAddMessageFieldElementString(fieldName string, fieldValue string) s
 	massagedValue = html.EscapeString(fieldValue)
 
 	return fmt.Sprintf(`<field name="%s">%s</field>`, fieldName, massagedValue)
+}
+
+func MakeSolrAddMessageFieldElementStrings(docElementFields []DocElementField) []string {
+	fieldElementStrings := []string{}
+	for _, docElementField := range docElementFields {
+		field := docElementField.Field
+		fieldName := docElementField.FieldName
+		fieldTypeKind := field.Type().Kind()
+		if fieldTypeKind == reflect.Slice {
+			for _, fieldValue := range field.Interface().([]string) {
+				if util.IsNonEmptyString(fieldValue) {
+					fieldElementStrings = append(fieldElementStrings,
+						MakeSolrAddMessageFieldElementString(fieldName, fieldValue))
+				}
+			}
+		} else if fieldTypeKind == reflect.String {
+			fieldValue := field.String()
+			if util.IsNonEmptyString(fieldValue) {
+				fieldElementStrings = append(fieldElementStrings,
+					MakeSolrAddMessageFieldElementString(fieldName, fieldValue))
+			}
+		} else {
+			// Should never get here!
+			// This is the only place where we `panic` instead of return an error.
+			// This function is called by String() methods which don't themselves
+			// return errors, so there would be no way to signal to package clients
+			// that they need to abort.
+			// In any case, if this branch is hit, there is something seriously
+			// wrong with this code, and it should be looked at right away.
+			panic("Unrecognized `reflect.Type.Kind`: " + fieldTypeKind.String())
+		}
+	}
+
+	return fieldElementStrings
 }
 
 func MakeTitleHTML(unitTitle string) (string, error) {

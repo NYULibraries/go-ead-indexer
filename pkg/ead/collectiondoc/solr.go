@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
 	"github.com/nyulibraries/go-ead-indexer/pkg/util"
-	"reflect"
 	"strings"
 )
 
@@ -18,110 +17,84 @@ type AddElement struct {
 	Doc DocElement `xml:"doc"`
 }
 
-// TODO: DLFA-238
-// This struct definition replicates the order in which the v1 indexer writes
-// out the Solr field elements in the HTTP request to Solr.  We are generating
-// the XML request body by using the `reflect` package to loop through the
-// struct fields in the order they are defined here (at least that's how it
-// seems in the current Go version).
-// After we pass the DLFA-201 acceptance test, we need to implement the
-// permanent `String()` or custom marshaling that will be free of the need to
-// match v1 indexer's ordering, and restore the alphabetical ordering of the field
-// definitions in this struct.
 // Note that unlike the struct tags used for `SolrAddMessage` and `AddElement`,
 // the struct tags for `DocElement` below are mandatory.  They are used for the
 // field name in the Solr HTTP request XML body.
 type DocElement struct {
-	Author_teim            []string `xml:"author_teim"`
-	Author_ssm             []string `xml:"author_ssm"`
-	UnitTitle_teim         []string `xml:"unittitle_teim"`
-	UnitTitle_ssm          []string `xml:"unittitle_ssm"`
-	UnitID_teim            []string `xml:"unitid_teim"`
-	UnitID_ssm             []string `xml:"unitid_ssm"`
-	Abstract_teim          []string `xml:"abstract_teim"`
 	Abstract_ssm           []string `xml:"abstract_ssm"`
+	Abstract_teim          []string `xml:"abstract_teim"`
+	AcqInfo_teim           []string `xml:"acqinfo_teim"`
+	Appraisal_teim         []string `xml:"appraisal_teim"`
+	Author_ssm             []string `xml:"author_ssm"`
+	Author_teim            []string `xml:"author_teim"`
+	BiogHist_teim          []string `xml:"bioghist_teim"`
+	ChronList_teim         []string `xml:"chronlist_teim"`
+	Collection_sim         []string `xml:"collection_sim"`
+	Collection_ssm         []string `xml:"collection_ssm"`
+	Collection_teim        []string `xml:"collection_teim"`
+	CorpName_ssm           []string `xml:"corpname_ssm"`
+	CorpName_teim          []string `xml:"corpname_teim"`
+	Creator_sim            []string `xml:"creator_sim"`
+	Creator_ssm            []string `xml:"creator_ssm"`
 	Creator_teim           []string `xml:"creator_teim"`
+	CustodHist_teim        []string `xml:"custodhist_teim"`
+	DAO_sim                string   `xml:"dao_sim"`
+	DateRange_sim          []string `xml:"date_range_sim"`
+	EAD_ssi                string   `xml:"ead_ssi"`
+	FamName_ssm            []string `xml:"famname_ssm"`
+	FamName_teim           []string `xml:"famname_teim"`
+	Format_ii              string   `xml:"format_ii"`
+	Format_sim             string   `xml:"format_sim"`
+	Format_ssm             string   `xml:"format_ssm"`
+	Function_ssm           []string `xml:"function_ssm"`
+	Function_teim          []string `xml:"function_teim"`
+	GenreForm_ssm          []string `xml:"genreform_ssm"`
+	GenreForm_teim         []string `xml:"genreform_teim"`
+	GeogName_ssm           []string `xml:"geogname_ssm"`
+	GeogName_teim          []string `xml:"geogname_teim"`
+	Heading_ssm            []string `xml:"heading_ssm"`
+	ID                     string   `xml:"id"`
+	Language_sim           string   `xml:"language_sim"`
+	Language_ssm           string   `xml:"language_ssm"`
+	MaterialType_sim       []string `xml:"material_type_sim"`
+	MaterialType_ssm       []string `xml:"material_type_ssm"`
+	Name_sim               []string `xml:"name_sim"`
+	Name_ssm               []string `xml:"name_ssm"`
+	Name_teim              []string `xml:"name_teim"`
+	Note_ssm               []string `xml:"note_ssm"`
+	Note_teim              []string `xml:"note_teim"`
+	Occupation_ssm         []string `xml:"occupation_ssm"`
+	Occupation_teim        []string `xml:"occupation_teim"`
+	PersName_ssm           []string `xml:"persname_ssm"`
+	PersName_teim          []string `xml:"persname_teim"`
+	PhysTech_teim          []string `xml:"phystech_teim"`
+	Place_sim              []string `xml:"place_sim"`
+	Repository_sim         string   `xml:"repository_sim"`
+	Repository_ssi         string   `xml:"repository_ssi"`
+	Repository_ssm         string   `xml:"repository_ssm"`
+	ScopeContent_teim      []string `xml:"scopecontent_teim"`
+	Subject_sim            []string `xml:"subject_sim"`
+	Subject_ssm            []string `xml:"subject_ssm"`
+	Subject_teim           []string `xml:"subject_teim"`
+	Title_ssm              []string `xml:"title_ssm"`
+	Title_teim             []string `xml:"title_teim"`
+	UnitDateBulk_teim      []string `xml:"unitdate_bulk_teim"`
+	UnitDateEnd_si         string   `xml:"unitdate_end_si"`
+	UnitDateEnd_sim        []string `xml:"unitdate_end_sim"`
+	UnitDateEnd_ssm        []string `xml:"unitdate_end_ssm"`
+	UnitDateInclusive_teim []string `xml:"unitdate_inclusive_teim"`
+	UnitDateNormal_sim     []string `xml:"unitdate_normal_sim"`
 	UnitDateNormal_ssm     []string `xml:"unitdate_normal_ssm"`
 	UnitDateNormal_teim    []string `xml:"unitdate_normal_teim"`
-	UnitDateNormal_sim     []string `xml:"unitdate_normal_sim"`
+	UnitDateStart_si       string   `xml:"unitdate_start_si"`
+	UnitDateStart_sim      []string `xml:"unitdate_start_sim"`
+	UnitDateStart_ssm      []string `xml:"unitdate_start_ssm"`
+	UnitDate_ssm           []string `xml:"unitdate_ssm"`
 	UnitDate_teim          []string `xml:"unitdate_teim"`
-	UnitDateBulk_teim      []string `xml:"unitdate_bulk_teim"`
-	UnitDateInclusive_teim []string `xml:"unitdate_inclusive_teim"`
-	ScopeContent_teim      []string `xml:"scopecontent_teim"`
-	BiogHist_teim          []string `xml:"bioghist_teim"`
-	AcqInfo_teim           []string `xml:"acqinfo_teim"`
-	CustodHist_teim        []string `xml:"custodhist_teim"`
-	Appraisal_teim         []string `xml:"appraisal_teim"`
-	PhysTech_teim          []string `xml:"phystech_teim"`
-	ChronList_teim         []string `xml:"chronlist_teim"`
-	CorpName_teim          []string `xml:"corpname_teim"`
-	CorpName_ssm           []string `xml:"corpname_ssm"`
-	FamName_teim           []string `xml:"famname_teim"`
-	FamName_ssm            []string `xml:"famname_ssm"`
-	Function_teim          []string `xml:"function_teim"`
-	Function_ssm           []string `xml:"function_ssm"`
-	GenreForm_teim         []string `xml:"genreform_teim"`
-	GenreForm_ssm          []string `xml:"genreform_ssm"`
-	GeogName_teim          []string `xml:"geogname_teim"`
-	GeogName_ssm           []string `xml:"geogname_ssm"`
-	// TODO: DLFA-238
-	// Change back to having just `docElement.Name_teim`.  This splitting of the
-	// field into 1 and 2 and the conditional append is done to match the variable
-	// positioning of the `name_teim` fields.  If there exist OM Term generated
-	// `name_teim` fields, the `get_ead_names()` generated `name_teim` fields
-	// go immediately after those Term-based fields, otherwise they go toward the
-	// end.
-	Name_1_teim     []string `xml:"name_teim"`
-	Name_ssm        []string `xml:"name_ssm"`
-	Occupation_teim []string `xml:"occupation_teim"`
-	Occupation_ssm  []string `xml:"occupation_ssm"`
-	PersName_teim   []string `xml:"persname_teim"`
-	PersName_ssm    []string `xml:"persname_ssm"`
-	Subject_teim    []string `xml:"subject_teim"`
-	Subject_ssm     []string `xml:"subject_ssm"`
-	Title_teim      []string `xml:"title_teim"`
-	Title_ssm       []string `xml:"title_ssm"`
-	Collection_sim  []string `xml:"collection_sim"`
-	Collection_ssm  []string `xml:"collection_ssm"`
-	Collection_teim []string `xml:"collection_teim"`
-	ID              string   `xml:"id"`
-	EAD_ssi         string   `xml:"ead_ssi"`
-	Repository_ssi  string   `xml:"repository_ssi"`
-	Repository_sim  string   `xml:"repository_sim"`
-	Repository_ssm  string   `xml:"repository_ssm"`
-	Format_sim      string   `xml:"format_sim"`
-	Format_ssm      string   `xml:"format_ssm"`
-	Format_ii       string   `xml:"format_ii"`
-	Creator_ssm     []string `xml:"creator_ssm"`
-	Creator_sim     []string `xml:"creator_sim"`
-	Name_sim        []string `xml:"name_sim"`
-	// TODO: DLFA-238
-	// Change back to having just `docElement.Name_teim`.  This splitting of the
-	// field into 1 and 2 and the conditional append is done to match the variable
-	// positioning of the `name_teim` fields.  If there exist OM Term generated
-	// `name_teim` fields, the `get_ead_names()` generated `name_teim` fields
-	// go immediately after those Term-based fields, otherwise they go toward the
-	// end.
-	Name_2_teim       []string `xml:"name_teim"`
-	Place_sim         []string `xml:"place_sim"`
-	Subject_sim       []string `xml:"subject_sim"`
-	DAO_sim           string   `xml:"dao_sim"`
-	MaterialType_sim  []string `xml:"material_type_sim"`
-	MaterialType_ssm  []string `xml:"material_type_ssm"`
-	Heading_ssm       []string `xml:"heading_ssm"`
-	UnitDateStart_sim []string `xml:"unitdate_start_sim"`
-	UnitDateStart_ssm []string `xml:"unitdate_start_ssm"`
-	UnitDateStart_si  string   `xml:"unitdate_start_si"`
-	UnitDateEnd_sim   []string `xml:"unitdate_end_sim"`
-	UnitDateEnd_ssm   []string `xml:"unitdate_end_ssm"`
-	UnitDateEnd_si    string   `xml:"unitdate_end_si"`
-	UnitDate_ssm      []string `xml:"unitdate_ssm"`
-	DateRange_sim     []string `xml:"date_range_sim"`
-	// Currently not in Omega golden file, so don't know where to place them.
-	Note_ssm     []string `xml:"note_ssm"`
-	Note_teim    []string `xml:"note_teim"`
-	Language_sim string   `xml:"language_sim"`
-	Language_ssm string   `xml:"language_ssm"`
+	UnitID_ssm             []string `xml:"unitid_ssm"`
+	UnitID_teim            []string `xml:"unitid_teim"`
+	UnitTitle_ssm          []string `xml:"unittitle_ssm"`
+	UnitTitle_teim         []string `xml:"unittitle_teim"`
 }
 
 func (collectionDoc *CollectionDoc) setSolrAddMessage() {
@@ -199,21 +172,9 @@ func (collectionDoc *CollectionDoc) setSolrAddMessage() {
 	docElement.Name_sim = append(docElement.Name_sim,
 		util.CompactStringSlicePreserveOrder(collectionDoc.Parts.Name.Values)...)
 	docElement.Name_ssm = append(docElement.Name_ssm, collectionDoc.Parts.NameNotInDSC.Values...)
-	// TODO: DLFA-238
-	// Change back to having just `docElement.Name_teim`.  This splitting of the
-	// field into 1 and 2 and the conditional append is done to match the variable
-	// positioning of the `name_teim` fields.  If there exist OM Term generated
-	// `name_teim` fields, the `get_ead_names()` generated `name_teim` fields
-	// go immediately after those Term-based fields, otherwise they go toward the
-	// end.
-	docElement.Name_1_teim = append(docElement.Name_1_teim, collectionDoc.Parts.NameNotInDSC.Values...)
-	if len(docElement.Name_1_teim) > 0 {
-		docElement.Name_1_teim = append(docElement.Name_1_teim,
-			util.CompactStringSlicePreserveOrder(collectionDoc.Parts.Name.Values)...)
-	} else {
-		docElement.Name_2_teim = append(docElement.Name_2_teim,
-			util.CompactStringSlicePreserveOrder(collectionDoc.Parts.Name.Values)...)
-	}
+	docElement.Name_teim = append(docElement.Name_teim, collectionDoc.Parts.NameNotInDSC.Values...)
+	docElement.Name_teim = append(docElement.Name_teim,
+		util.CompactStringSlicePreserveOrder(collectionDoc.Parts.Name.Values)...)
 
 	docElement.Note_ssm = append(docElement.Note_ssm, collectionDoc.Parts.NoteNotInDSC.Values...)
 	docElement.Note_teim = append(docElement.Note_teim, collectionDoc.Parts.NoteNotInDSC.Values...)
@@ -284,56 +245,10 @@ func (collectionDoc *CollectionDoc) setSolrAddMessage() {
 	docElement.UnitTitle_teim = append(docElement.UnitTitle_teim, collectionDoc.Parts.UnitTitle.Values...)
 }
 
-// TODO: DLFA-238
-// This replicates the order in which the v1 indexer writes out the Solr
-// field elements in the HTTP request to Solr.  After we pass the DLFA-201
-// acceptance test, we need to implement the permanent `String()` or custom
-// marshaling that will be free of the need to match v1 indexer's ordering.
 func (solrAddMessage SolrAddMessage) String() string {
-	fields := getSolrFieldElementStringsInV1IndexerInsertionOrder(solrAddMessage)
+	fields := eadutil.GetDocElementFieldsInAlphabeticalOrder(solrAddMessage.Add.Doc)
+	fieldElementStrings := eadutil.MakeSolrAddMessageFieldElementStrings(fields)
 
 	return fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8"?><add><doc>%s</doc></add>`,
-		strings.Join(fields, ""))
-}
-
-// TODO: DLFA-238
-// This replicates the order in which the v1 indexer writes out the Solr
-// field elements in the HTTP request to Solr.  After we pass the DLFA-201
-// acceptance test, we need to implement the permanent `String()` or custom
-// marshaling that will be free of the need to match v1 indexer's ordering.
-// Note that this function is duplicated in the `collection` and `component` packages.
-// Normally we'd find a way to DRY this up (probably by using a `struct` param
-// instead of the `CollectionDoc.SolrAddMessage` and `Component.SolrAddMessage`
-// types, but since function is ephemeral, we just copy it.
-func getSolrFieldElementStringsInV1IndexerInsertionOrder(solrAddMessage SolrAddMessage) []string {
-	var fieldsInV1IndexerInsertionOrder []string
-
-	docElementStructType := reflect.TypeOf(solrAddMessage.Add.Doc)
-	docElementStructValue := reflect.ValueOf(solrAddMessage.Add.Doc)
-
-	numFields := docElementStructValue.NumField()
-	for i := 0; i < numFields; i++ {
-		field := docElementStructValue.Field(i)
-		fieldName := strings.Split(docElementStructType.Field(i).Tag.Get("xml"), ",")[0]
-		fieldTypeKind := field.Type().Kind()
-		if fieldTypeKind == reflect.Slice {
-			for _, fieldValue := range field.Interface().([]string) {
-				if util.IsNonEmptyString(fieldValue) {
-					fieldsInV1IndexerInsertionOrder = append(fieldsInV1IndexerInsertionOrder,
-						eadutil.MakeSolrAddMessageFieldElementString(fieldName, fieldValue))
-				}
-			}
-		} else if fieldTypeKind == reflect.String {
-			fieldValue := field.String()
-			if util.IsNonEmptyString(fieldValue) {
-				fieldsInV1IndexerInsertionOrder = append(fieldsInV1IndexerInsertionOrder,
-					eadutil.MakeSolrAddMessageFieldElementString(fieldName, fieldValue))
-			}
-		} else {
-			// Should never get here!
-			panic("Unrecognized `reflect.Type.Kind`: " + fieldTypeKind.String())
-		}
-	}
-
-	return fieldsInV1IndexerInsertionOrder
+		strings.Join(fieldElementStrings, ""))
 }
