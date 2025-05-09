@@ -31,6 +31,36 @@ const sampleXML = `<ead>
 			<c id="component_3_level_2">
 			</c>
 		</c>
+		<c id="component_4_level_1">
+			<did><unittitle>Component #4, level 1</unittitle></did>
+			<c id="component_4_level_2_subcomponent_a_level_1">
+				<did><unittitle>Component #4, level 2, Subcomponent A, level 1</unittitle></did>
+				<c id="component_4_level_2_subcomponent_a_subcomponent_a_level1">
+					<did><unittitle>Component #4, level 2, Subcomponent A, Subcomponent A, level 1</unittitle></did>
+				</c>
+				<c id="component_4_level_2_subcomponent_a_subcomponent_b_level1">
+					<did><unittitle>Component #4, level 2, Subcomponent A, Subcomponent B, level 1</unittitle></did>
+					<c id="component_4_level_2_subcomponent_a_subcomponent_b_level2">
+						<did><unittitle>Component #4, level 2, Subcomponent A, Subcomponent B, level 2</unittitle></did>
+					</c>
+				</c>
+			</c>
+			<c id="component_4_level_2_subcomponent_b_level_1">
+				<did><unittitle>Component #4, level 2, Subcomponent B, level 1</unittitle></did>
+			</c>
+			<c id="component_4_level_2_subcomponent_c_level_1">
+				<did><unittitle>Component #4, level 2, Subcomponent C, level 1</unittitle></did>
+				<c id="component_4_level_2_subcomponent_c_subcomponent_a_level1">
+					<did><unittitle>Component #4, level 2, Subcomponent C, Subcomponent A, level 1</unittitle></did>
+				</c>
+				<c id="component_4_level_2_subcomponent_c_subcomponent_b_level1">
+					<did><unittitle>Component #4, level 2, Subcomponent C, Subcomponent B, level 1</unittitle></did>
+					<c id="component_4_level_2_subcomponent_c_subcomponent_b_level2">
+						<did><unittitle>Component #4, level 2, Subcomponent C, Subcomponent B, level 2</unittitle></did>
+					</c>
+				</c>
+			</c>
+		</c>
 	</dsc>
 </ead>
 `
@@ -58,6 +88,44 @@ var expectedAncestorUnitTitleListMap = map[string][]string{
 	"component_3_level_1": {},
 	"component_3_level_2": {
 		noTitleAvailable,
+	},
+	// Component #4: hierarchy with sibling subcomponents
+	// Regression test case for https://jira.nyu.edu/browse/DLFA-282.
+	"component_4_level_1": {},
+	"component_4_level_2_subcomponent_a_level_1": {
+		"Component #4, level 1",
+	},
+	"component_4_level_2_subcomponent_a_subcomponent_a_level1": {
+		"Component #4, level 1",
+		"Component #4, level 2, Subcomponent A, level 1",
+	},
+	"component_4_level_2_subcomponent_a_subcomponent_b_level1": {
+		"Component #4, level 1",
+		"Component #4, level 2, Subcomponent A, level 1",
+	},
+	"component_4_level_2_subcomponent_a_subcomponent_b_level2": {
+		"Component #4, level 1",
+		"Component #4, level 2, Subcomponent A, level 1",
+		"Component #4, level 2, Subcomponent A, Subcomponent B, level 1",
+	},
+	"component_4_level_2_subcomponent_b_level_1": {
+		"Component #4, level 1",
+	},
+	"component_4_level_2_subcomponent_c_level_1": {
+		"Component #4, level 1",
+	},
+	"component_4_level_2_subcomponent_c_subcomponent_a_level1": {
+		"Component #4, level 1",
+		"Component #4, level 2, Subcomponent C, level 1",
+	},
+	"component_4_level_2_subcomponent_c_subcomponent_b_level1": {
+		"Component #4, level 1",
+		"Component #4, level 2, Subcomponent C, level 1",
+	},
+	"component_4_level_2_subcomponent_c_subcomponent_b_level2": {
+		"Component #4, level 1",
+		"Component #4, level 2, Subcomponent C, level 1",
+		"Component #4, level 2, Subcomponent C, Subcomponent B, level 1",
 	},
 }
 
