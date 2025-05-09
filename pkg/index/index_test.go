@@ -17,24 +17,24 @@ import (
 
 /*
 	# Commit history from test fixture
-	68c97bd7904254e4e12403b662e4933c1947cb5e 2025-04-09 18:44:26 -0400 | Updating nyuad/ad_mc_019.xml, Deleting file tamwag/tam_143.xml EADID='tam_143', Updating edip/mos_2024.xml, Deleting file cbh/arc_212_plymouth_beecher.xml EADID='arc_212_plymouth_beecher', Updating akkasah/ad_mc_030.xml (HEAD -> master) [David]
-	01dac0e51dbabdc4f992128543b077e6d697695e 2025-04-09 18:44:26 -0400 | Updating tamwag/tam_143.xml, Updating cbh/arc_212_plymouth_beecher.xml [David]
-	528631e49f7beec6a6974a0d0fd9379e2a8d0657 2025-04-09 18:44:25 -0400 | Deleting file fales/mss_420.xml EADID='mss_420', Updating fales/mss_420.xml [David]
-	af14664ba0d646a9d2bc469fdcf22f8cd98a2817 2025-04-09 18:44:25 -0400 | Updating fales/mss_420.xml [David]
-	b94e795318ee530cd01c3de53e1b13baaab544e9 2025-04-09 18:44:25 -0400 | Deleting file fales/mss_460.xml EADID='mss_460' [David]
-	558f71882f692a1f81837b6ebb7d471d0fa5e7b9 2025-04-09 18:44:25 -0400 | Updating fales/mss_460.xml [David]
-	813b1d1bac5952b42a7c5948bb2639815b5f8ef9 2025-04-09 18:44:24 -0400 | Deleting file akkasah/ad_mc_030.xml EADID='ad_mc_030', Deleting file cbh/arc_212_plymouth_beecher.xml EADID='arc_212_plymouth_beecher', Deleting file edip/mos_2024.xml EADID='mos_2024', Deleting file fales/mss_420.xml EADID='mss_420', Deleting file fales/mss_460.xml EADID='mss_460', Deleting file nyhs/ms256_harmon_hendricks_goldstone.xml EADID='ms256_harmon_hendricks_goldstone', Deleting file nyhs/ms347_foundling_hospital.xml EADID='ms347_foundling_hospital', Deleting file nyuad/ad_mc_019.xml EADID='ad_mc_019', Deleting file tamwag/tam_143.xml EADID='tam_143' [David]
-	6a55143f450bd07cb9d07de109e423a1e8f3689c 2025-04-09 18:44:24 -0400 | Updating akkasah/ad_mc_030.xml, Updating cbh/arc_212_plymouth_beecher.xml, Updating edip/mos_2024.xml, Updating fales/mss_420.xml, Updating fales/mss_460.xml, Updating nyhs/ms256_harmon_hendricks_goldstone.xml, Updating nyhs/ms347_foundling_hospital.xml, Updating nyuad/ad_mc_019.xml, Updating tamwag/tam_143.xml [David]
+	91bee740e0a2d80072264bf960e38d60dfbed2b3 2025-05-09 19:41:50 -0400 | Updating nyuad/ad_mc_019.xml, Deleting file tamwag/tam_143.xml EADID='tam_143', Updating edip/mos_2024.xml, Deleting file cbh/arc_212_plymouth_beecher.xml EADID='arc_212_plymouth_beecher', Updating akkasah/ad_mc_030.xml (HEAD -> master) [David]
+	3effc68f1e059604251ac754e3200aefb33bd354 2025-05-09 19:41:50 -0400 | Updating tamwag/tam_143.xml, Updating cbh/arc_212_plymouth_beecher.xml [David]
+	ade6593ec60e6c9b7db328cc9bb5b76f0d4adfb0 2025-05-09 19:41:50 -0400 | Deleting file fales/mss_420.xml EADID='mss_420', Updating fales/mss_420.xml [David]
+	aa75b88bf7c4b84d2d0dc050ba16e201132e7184 2025-05-09 19:41:49 -0400 | Updating fales/mss_420.xml [David]
+	675721b215971865d096ea88feda6c48c215cfd1 2025-05-09 19:41:49 -0400 | Deleting file fales/mss_460.xml EADID='mss_460' [David]
+	a8fd43f8d9cbfc61569eea4faf62cade51bc90f3 2025-05-09 19:41:49 -0400 | Updating fales/mss_460.xml [David]
+	445975c893fdfbcd03a4893c14c79bc66c77eccc 2025-05-09 19:41:49 -0400 | Deleting file akkasah/ad_mc_030.xml EADID='ad_mc_030', Deleting file cbh/arc_212_plymouth_beecher.xml EADID='arc_212_plymouth_beecher', Deleting file edip/mos_2024.xml EADID='mos_2024', Deleting file fales/mss_420.xml EADID='mss_420', Deleting file fales/mss_460.xml EADID='mss_460', Deleting file nyhs/ms256_harmon_hendricks_goldstone.xml EADID='ms256_harmon_hendricks_goldstone', Deleting file nyhs/ms347_foundling_hospital.xml EADID='ms347_foundling_hospital', Deleting file nyuad/ad_mc_019.xml EADID='ad_mc_019', Deleting file tamwag/tam_143.xml EADID='tam_143' [David]
+	873cd3486d6522e449a6bf436eba560be2f7d528 2025-05-09 19:41:49 -0400 | Updating akkasah/ad_mc_030.xml, Updating cbh/arc_212_plymouth_beecher.xml, Updating edip/mos_2024.xml, Updating fales/mss_420.xml, Updating fales/mss_460.xml, Updating nyhs/ms256_harmon_hendricks_goldstone.xml, Updating nyhs/ms347_foundling_hospital.xml, Updating nyuad/ad_mc_019.xml, Updating tamwag/tam_143.xml [David]
 */
 
 // hashes from the git-repo fixture (in order of commits)
-var addAllHash = "6a55143f450bd07cb9d07de109e423a1e8f3689c"
-var deleteAllHash = "813b1d1bac5952b42a7c5948bb2639815b5f8ef9"
-var addOneHash = "558f71882f692a1f81837b6ebb7d471d0fa5e7b9"
-var deleteOneHash = "b94e795318ee530cd01c3de53e1b13baaab544e9"
-var deleteModifyAddHash = "528631e49f7beec6a6974a0d0fd9379e2a8d0657"
-var addTwoHash = "01dac0e51dbabdc4f992128543b077e6d697695e"
-var addThreeDeleteTwoHash = "68c97bd7904254e4e12403b662e4933c1947cb5e"
+var addAllHash = "873cd3486d6522e449a6bf436eba560be2f7d528"
+var deleteAllHash = "445975c893fdfbcd03a4893c14c79bc66c77eccc"
+var addOneHash = "a8fd43f8d9cbfc61569eea4faf62cade51bc90f3"
+var deleteOneHash = "675721b215971865d096ea88feda6c48c215cfd1"
+var deleteModifyAddHash = "ade6593ec60e6c9b7db328cc9bb5b76f0d4adfb0"
+var addTwoHash = "3effc68f1e059604251ac754e3200aefb33bd354"
+var addThreeDeleteTwoHash = "91bee740e0a2d80072264bf960e38d60dfbed2b3"
 
 // test git repo paths
 var thisPath string

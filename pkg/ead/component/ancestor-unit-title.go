@@ -130,8 +130,15 @@ func makeAncestorUnitTitleListMap_add(ancestorUnitTitleListMap map[string][]stri
 	}
 
 	for _, childCNode := range childCNodes {
+		// Each sibling <c> needs its own copy of `ancestorUnitTitleList`,
+		// otherwise they overwrite each other's map entry values.
+		// https://jira.nyu.edu/browse/DLFA-282
+		// "Incorrect values in `parent_unittitle_{sim,teim}` and `series_{si,sim}` in component Solr HTTP add requests"
+		ancestorUnitTitleListCopy := make([]string, len(ancestorUnitTitleList))
+		copy(ancestorUnitTitleListCopy, ancestorUnitTitleList)
+
 		err = makeAncestorUnitTitleListMap_add(ancestorUnitTitleListMap,
-			ancestorUnitTitleList, childCNode)
+			ancestorUnitTitleListCopy, childCNode)
 		if err != nil {
 			return err
 		}
