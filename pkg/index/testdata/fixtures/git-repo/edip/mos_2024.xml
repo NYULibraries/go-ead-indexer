@@ -1945,6 +1945,233 @@
         </c>
       </c>
 
+      <!-- Regression test case for ancestor unit title map creation bug that caused this problem:
+           https://jira.nyu.edu/browse/DLFA-283
+           "Identify which DLFA-269 differences actually manifest in the FAB and document examples"
+      -->
+      <c id="aspace_ref1838" level="series">
+        <did>
+          <unittitle>Series IV: Russell D. Niles</unittitle>
+          <unitid type="aspace_uri">
+            /repositories/6/archival_objects/684240
+          </unitid>
+          <langmaterial><language langcode="eng">English</language>.
+          </langmaterial>
+        </did>
+        <scopecontent id="aspace_e2e7779020fe6ba75a3f3de0194b391c">
+          <head>Scope and Contents note</head>
+          <p>The administrative records of Russell D. Niles measure 11
+            linear feet and span the years 1964-1966. The material
+            has been processed into three chronological series
+            representing each of the academic years of Niles' term,
+            and a fourth series consists of administrative topics,
+            Deans' Council minutes and mission statements originally
+            set apart from the chronological series. The first
+            series contains a small number of records from the final
+            months of the George Stoddard administration. The third
+            series, covering the academic year 1965-1966, was
+            insufficiently processed by a student in the fall of
+            1987 and the finding aid to that series is not, in its
+            present state, reliable. The excessive bulk in the Niles
+            collection can be attributed, to a large extent, to the
+            processing problems in series III. It must also be noted
+            that the subseries on all-university departments in
+            series II contains material spanning Niles' first two
+            academic years, 1963-1964 and 1964-1965. Some files
+            covering student grievances, the transfer of faculty
+            members from one school to another, and specific faculty
+            student relations are restricted.
+          </p>
+          <p>In relation to the previous subgroups, Niles' records
+            contain a substantial number of files composed of
+            material on spaces and buildings (most notably in series
+            III, subseries IV), reflecting the many proposed and
+            actual physical changes taking place at NYU at this
+            time. A file on the President of the University refers
+            to NYU's attempt to acquire the Worlds Fair Spanish
+            Pavilion and the Astor estate in Rhinebeck, New York.
+            There are signs indicating the pending shutdown of the
+            University Heights Campus and the subsequent need to
+            strengthen Washington Square.
+          </p>
+          <p>The files record changes that resulted from the
+            Self-Study Final Report and the Ford Foundation study,
+            such as the upgrading of admissions and efforts to
+            achieve increased centralization. Mission statements
+            (series IV, subseries III) demonstrate how well the
+            schools and divisions meet the recommendations of the
+            Self Study in planning their futures. Of particular
+            interest are a series of files on "Project Apex," a
+            program designed to train high-school students to teach
+            in poverty stricken areas. In addition, the first series
+            contains a report on early experiments with LSD.
+          </p>
+          <p>Niles was committed to building a strong central core
+            around the arts and sciences at NYU, making
+            undergraduate schools his priority. The files attest to
+            his goals and movement toward centralization that the
+            Office of Chancellor and Executive Vice President was
+            largely responsible for promoting. Niles' administrative
+            records show him to be in touch with all aspects of
+            University operations and demonstrates the growth of the
+            position since the first years of David Henry's term.
+          </p>
+        </scopecontent>
+        <c id="aspace_ref1839" level="subseries">
+          <did>
+            <unittitle>Subseries A: 1963 - 1964 (Includes Records of
+              George Stoddard)
+            </unittitle>
+            <unitid type="aspace_uri">
+              /repositories/6/archival_objects/684241
+            </unitid>
+            <langmaterial><language langcode="eng">
+              English</language>.
+            </langmaterial>
+          </did>
+          <c id="aspace_ref2050" level="otherlevel"
+             otherlevel="unspecified">
+            <did>
+              <unittitle>Sub-Subseries E: Space</unittitle>
+              <unitid type="aspace_uri">
+                /repositories/6/archival_objects/684314
+              </unitid>
+              <langmaterial><language langcode="eng">
+                English</language>.
+              </langmaterial>
+            </did>
+            <c id="aspace_ref2051" level="file">
+              <did>
+                <unittitle>Space - Miscellaneous</unittitle>
+                <unitid type="aspace_uri">
+                  /repositories/6/archival_objects/684315
+                </unitid>
+                <unitdate datechar="creation" normal="1961/1963"
+                          type="inclusive">1961-1963
+                </unitdate>
+                <container
+                        id="aspace_f18d0e47339c1eedcb30cb6b9da39ef4"
+                        label="Mixed Materials [31142042255045]"
+                        type="Box">30
+                </container>
+                <container
+                        id="aspace_a6c1b148d42945c4fd11a703aa73af04"
+                        parent="aspace_f18d0e47339c1eedcb30cb6b9da39ef4"
+                        type="Folder">8
+                </container>
+              </did>
+              <c id="aspace_ref3020" level="item">
+                <did>
+                  <unittitle>Letter from Martin L. Beck to
+                    Marcel Breuer
+                  </unittitle>
+                  <unitid type="aspace_uri">
+                    /repositories/6/archival_objects/684316
+                  </unitid>
+                  <unitdate datechar="creation">1963
+                  </unitdate>
+                  <langmaterial><language langcode="eng">
+                    English</language>.
+                  </langmaterial>
+                  <container
+                          id="aspace_78295616e53c8bddbcb35d35c2f2b87d"
+                          label="Mixed Materials [31142042255045]"
+                          type="Box">30
+                  </container>
+                  <dao xlink:actuate="onLoad"
+                       xlink:href="https://hdl.handle.net/2333.1/zpc869wr"
+                       xlink:role="image-service"
+                       xlink:show="new"
+                       xlink:title="Letter from Martin L. Beck to Marcel Breuer"
+                       xlink:type="simple">
+                    <daodesc>
+                      <p>Letter from Martin L. Beck to
+                        Marcel Breuer: 1963
+                      </p>
+                    </daodesc>
+                  </dao>
+                </did>
+              </c>
+            </c>
+            <c id="aspace_ref2060" level="file">
+              <did>
+                <unittitle>Space - University Heights
+                </unittitle>
+                <unitid type="aspace_uri">
+                  /repositories/6/archival_objects/684319
+                </unitid>
+                <unitdate datechar="creation" normal="1964/1964"
+                          type="inclusive">1964
+                </unitdate>
+                <container
+                        id="aspace_6d23c8f223094032bdeb573345951bae"
+                        label="Mixed Materials [31142042255045]"
+                        type="Box">30
+                </container>
+                <container
+                        id="aspace_b60aeb0e208073ec2f45c8275f7d0529"
+                        parent="aspace_6d23c8f223094032bdeb573345951bae"
+                        type="Folder">11
+                </container>
+              </did>
+              <c id="aspace_ref3021" level="item">
+                <did>
+                  <unittitle>Letter from Martin L. Beck to
+                    Hamilton Smith
+                  </unittitle>
+                  <unitid type="aspace_uri">
+                    /repositories/6/archival_objects/684320
+                  </unitid>
+                  <unitdate datechar="creation">1964
+                  </unitdate>
+                  <langmaterial><language langcode="eng">
+                    English</language>.
+                  </langmaterial>
+                  <container
+                          id="aspace_f2b0a38d8598e4ba7b5cfdbbcda23500"
+                          label="Mixed Materials [31142042255045]"
+                          type="Box">30
+                  </container>
+                  <dao xlink:actuate="onLoad"
+                       xlink:href="https://hdl.handle.net/2333.1/tx95x9cg"
+                       xlink:role="image-service"
+                       xlink:show="new"
+                       xlink:title="Letter from Martin L. Beck to Hamilton Smith"
+                       xlink:type="simple">
+                    <daodesc>
+                      <p>Letter from Martin L. Beck to
+                        Hamilton Smith: 1964
+                      </p>
+                    </daodesc>
+                  </dao>
+                </did>
+              </c>
+            </c>
+            <c id="aspace_ref2063" level="file">
+              <did>
+                <unittitle>Space - Washington Square</unittitle>
+                <unitid type="aspace_uri">
+                  /repositories/6/archival_objects/684321
+                </unitid>
+                <unitdate datechar="creation" normal="1963/1964"
+                          type="inclusive">1963-1964
+                </unitdate>
+                <container
+                        id="aspace_3193901ca49741dcc35b43651a071eed"
+                        label="Mixed Materials [31142042255045]"
+                        type="Box">30
+                </container>
+                <container
+                        id="aspace_228e91615f89f0051d9b846fa2258e41"
+                        parent="aspace_3193901ca49741dcc35b43651a071eed"
+                        type="Folder">12
+                </container>
+              </did>
+            </c>
+          </c>
+        </c>
+      </c>
+
       <!-- Test case for handling of a non-prettified component with a <unittitle>
            that contains <lb/> tags.  We would not want pieces of text on either
            side of these tags to be mashed together.  We also want to make sure
