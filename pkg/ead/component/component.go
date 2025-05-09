@@ -26,11 +26,6 @@ type ComponentParts struct {
 }
 
 type ComponentCollectionDocParts struct {
-	// TODO: DLFA-238
-	// We collect this Author information but don't include it in `SolrAddMessage`.
-	// See: "Solr field `author` in Component Solr doc is never populated"
-	// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=8577864&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-8577864
-	// After passing DLFA-201 add `author` to `SolrAddMessage`.
 	Author           []string `json:"author"`
 	Collection       string   `json:"collection"`
 	CollectionUnitID string   `json:"collection_unit_id"`

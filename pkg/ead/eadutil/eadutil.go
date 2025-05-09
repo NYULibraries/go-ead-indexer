@@ -14,6 +14,7 @@ import (
 	"io"
 	"maps"
 	"path/filepath"
+	"reflect"
 	"regexp"
 	"slices"
 	"strconv"
@@ -31,14 +32,10 @@ type DateRange struct {
 	EndDate   int
 }
 
-// TODO: DLFA-238
-// Remove these `consts` for left- and right- padding for matching v1
-// indexer bug behavior described here:
-// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506
-const daoDescriptionParagraphLeftPadString = "\n          "
-const daoDescriptionParagraphRightPadString = "\n        "
-const unitTitleLeftPadString = "\n      "
-const unitTitleRightPadString = "\n    "
+type DocElementField struct {
+	FieldName string
+	Field     reflect.Value
+}
 
 const eadLineBreakTag = "<lb/>"
 
@@ -51,13 +48,6 @@ var datePartsRegexp = regexp.MustCompile(`^\s*(\d{4})\/(\d{4})\s*$`)
 
 // We assume lowercase entity references only because Go escaping uses lowercase.
 var multipleEscapedAmpersandRegexp = regexp.MustCompile(`(?:&amp;)+amp;`)
-
-// TODO: DLFA-238
-// Delete these and switch back to using `datePartsRegexp` after passing the
-// transition test and resolving this:
-// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11550822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11550822.
-var datePartsRegexpDLFA238Permissive = regexp.MustCompile(`\d{4}\/\d{4}`)
-var dateYearDLFA238Permissive = regexp.MustCompile(`^\s*(\d+)`)
 
 var dateRangesCenturies = []DateRange{
 	{Display: "1101-1200", StartDate: 1101, EndDate: 1200},
@@ -91,16 +81,7 @@ var eadTagRenderAttributeToHTMLTagName = map[string]string{
 	"underline":       "em",
 }
 
-// TODO: DLFA-238
-// Fix the bug we've intentionally preserved in MARC subfield demarcation replacement.
-// For details, see:
-//
-//   - https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10154897&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10154897
-//   - https://jira.nyu.edu/browse/DLFA-229?focusedCommentId=10153922&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10153922
-//
-// This is the buggy regular expression which replicates the v1 indexer code here:
-// https://github.com/NYULibraries/ead_indexer/blob/a367ab8cc791376f0d8a287cbcd5b6ee43d5c04f/lib/ead_indexer/behaviors.rb#L124
-var marcSubfieldDemarcator = regexp.MustCompile(`\|\w{1}`)
+var marcSubfieldDemarcator = regexp.MustCompile(`\|\w{1}\s`)
 
 // Go \s metachar is [\t\n\f\r ], and does not include NBSP.
 // Source: https://pkg.go.dev/regexp/syntax
@@ -137,60 +118,7 @@ func EADPathToEADID(path string) (string, error) {
 	return eadID, nil
 }
 
-// No need to write tests for this, because once the DLFA-238 stuff is removed,
-// this is just a wrapper for a one-line call to a standard library function.
-// Most likely once the DLFA-238 temporary code is cleared, we will just inline
-// this function.
-func EscapeSolrFieldString(value string) string {
-	// TODO: Should we do HTML escaping or XML escaping?  The body of the
-	// HTTP request to Solr is XML, but `unitTitleHTMLValue` is for HTML
-	// display.  The documentation for `html.EscapeString()` explicitly lists
-	// the characters that are transformed, whereas `xml.EscapeText()`
-	// documentation simply states that it writes the "the properly escaped
-	// XML equivalent".  Also, `xml.EscapeText()` returns an error which we
-	// would have to deal with.  Is it worth it, considering the source data
-	// is from valid XML to begin with?
-	escapedSolrFieldString := html.EscapeString(value)
-
-	// TODO: DLFA-238
-	// v1 indexer does not escape single or double-quotes.
-	// See "Encoding of special characters in Nokogiri nodes" in DLFA-212:
-	// https://jira.nyu.edu/browse/DLFA-212?focusedCommentId=10525776&page=com.atlassian.jira.plugin.system.issuetabpanels%3Acomment-tabpanel#comment-10525776
-	// After passing the DLFA-201 acceptance/transition test, remove these
-	// un-escaping steps.
-	escapedSolrFieldString = strings.ReplaceAll(escapedSolrFieldString, "&#39;", "'")
-	escapedSolrFieldString = strings.ReplaceAll(escapedSolrFieldString, "&#34;", `"`)
-
-	return escapedSolrFieldString
-}
-
-// TODO: DLFA-238
-// Delete this and rename `GetDatePartsStrict` to `GetDateParts` after passing
-// transition test and resolving this:
-// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11550822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11550822.
 func GetDateParts(dateString string) DateParts {
-	return GetDatePartsDLFA238Permissive(dateString)
-}
-
-// TODO: DLFA-238
-// Delete this after passing the transition test and resolving this:
-// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11550822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11550822.
-func GetDatePartsDLFA238Permissive(dateString string) DateParts {
-	dateParts := DateParts{}
-
-	if datePartsRegexpDLFA238Permissive.MatchString(dateString) {
-		matches := strings.Split(dateString, "/")
-		dateParts.Start = matches[0]
-		dateParts.End = matches[len(matches)-1]
-	}
-
-	return dateParts
-}
-
-// TODO: DLFA-238
-// Rename to `GetDateParts` after passing the transition test and resolving this:
-// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11550822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11550822.
-func GetDatePartsStrict(dateString string) DateParts {
 	dateParts := DateParts{}
 
 	matches := datePartsRegexp.FindStringSubmatch(dateString)
@@ -242,6 +170,30 @@ func GetDateRange(unitDates []string) []string {
 	return dateRange
 }
 
+func GetDocElementFieldsInAlphabeticalOrder(docElement any) []DocElementField {
+	docElementFields := []DocElementField{}
+
+	docElementStructType := reflect.TypeOf(docElement)
+	docElementStructValue := reflect.ValueOf(docElement)
+
+	numFields := docElementStructValue.NumField()
+	for i := 0; i < numFields; i++ {
+		field := docElementStructValue.Field(i)
+		fieldName := strings.Split(docElementStructType.Field(i).Tag.Get("xml"), ",")[0]
+		docElementField := DocElementField{
+			FieldName: fieldName,
+			Field:     field,
+		}
+		docElementFields = append(docElementFields, docElementField)
+	}
+
+	slices.SortFunc(docElementFields, func(def1, def2 DocElementField) int {
+		return strings.Compare(strings.ToLower(def1.FieldName), strings.ToLower(def2.FieldName))
+	})
+
+	return docElementFields
+}
+
 func GetFirstNode(query string, node types.Node) (types.Node, error) {
 	xpathResult, err := node.Find(query)
 	if err != nil {
@@ -284,11 +236,6 @@ func GetNodeList(query string, node types.Node) (types.NodeList, error) {
 	return xpathResult.NodeList(), nil
 }
 
-// TODO: DLFA-238
-// This method preserves probable v1 indexer bug for the purposes of passing the
-// DLFA-201 transition acceptance test -- the bug:
-// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=8378822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-8378822
-// Fix this bug after we've completed the transition.
 func GetUnitDateDisplay(unitDateNoTypeAttribute []string, unitDateInclusive []string,
 	unitDateBulk []string) string {
 	partsUnitDateDisplay := []string{}
@@ -298,14 +245,8 @@ func GetUnitDateDisplay(unitDateNoTypeAttribute []string, unitDateInclusive []st
 		// Do nothing
 	} else {
 		partsUnitDateDisplay = append(partsUnitDateDisplay, "Inclusive,")
-		// TODO: DLFA-238
-		// Replace this with just the `if` condition statement.
-		// This hack is just to get the later `strings.Join()` to add a trailing
-		// space to match v1 indexer.
 		if len(unitDateInclusive) > 0 {
 			partsUnitDateDisplay = append(partsUnitDateDisplay, unitDateInclusive...)
-		} else {
-			partsUnitDateDisplay = append(partsUnitDateDisplay, "")
 		}
 		if len(unitDateBulk) > 0 {
 			partsUnitDateDisplay = append(partsUnitDateDisplay, ";")
@@ -367,31 +308,43 @@ func IsValidEADID(eadid string) bool {
 func MakeSolrAddMessageFieldElementString(fieldName string, fieldValue string) string {
 	massagedValue := fieldValue
 
-	massagedValue = EscapeSolrFieldString(fieldValue)
-
-	// Values derived from processes that can involve multiple XML parsing steps
-	// can end up XML-escaped multiple times.  It would seem that the main risk
-	// assocaited with this are multiply-escaped ampersands (because the ampersand
-	// appears in the "&amp;" entity reference itself).  Examples of at-risk
-	// values are those that are built form ancestor unit titles, such as those
-	// for `parent_unittitles_*` and `series_*` Solr field.
-	massagedValue = undoMultipleAmpersandEscaping(massagedValue)
-
-	// TODO: DLFA-238
-	// This is sort of a "unified" whitespace massage that's a way of compromising
-	// between the most correct way and the way we need to match DLFA-243 massaged
-	// DLFA-188 golden files.
-	// Re-work or remove this stuff after passing the transition test.  It might
-	// still make sense to keep some of it for a while after, depending on how
-	// we deal with embedded EAD tags like <lb/>.
-	massagedValue = strings.ReplaceAll(massagedValue, "\n", " ")
-	massagedValue = multipleConsecutiveWhitespace.ReplaceAllString(massagedValue, " ")
-	massagedValue = leadingWhitespaceInFieldContent.ReplaceAllString(
-		massagedValue, "")
-	massagedValue = trailingWhitespaceInFieldContent.ReplaceAllString(
-		massagedValue, "")
+	massagedValue = html.EscapeString(fieldValue)
 
 	return fmt.Sprintf(`<field name="%s">%s</field>`, fieldName, massagedValue)
+}
+
+func MakeSolrAddMessageFieldElementStrings(docElementFields []DocElementField) []string {
+	fieldElementStrings := []string{}
+	for _, docElementField := range docElementFields {
+		field := docElementField.Field
+		fieldName := docElementField.FieldName
+		fieldTypeKind := field.Type().Kind()
+		if fieldTypeKind == reflect.Slice {
+			for _, fieldValue := range field.Interface().([]string) {
+				if util.IsNonEmptyString(fieldValue) {
+					fieldElementStrings = append(fieldElementStrings,
+						MakeSolrAddMessageFieldElementString(fieldName, fieldValue))
+				}
+			}
+		} else if fieldTypeKind == reflect.String {
+			fieldValue := field.String()
+			if util.IsNonEmptyString(fieldValue) {
+				fieldElementStrings = append(fieldElementStrings,
+					MakeSolrAddMessageFieldElementString(fieldName, fieldValue))
+			}
+		} else {
+			// Should never get here!
+			// This is the only place where we `panic` instead of return an error.
+			// This function is called by String() methods which don't themselves
+			// return errors, so there would be no way to signal to package clients
+			// that they need to abort.
+			// In any case, if this branch is hit, there is something seriously
+			// wrong with this code, and it should be looked at right away.
+			panic("Unrecognized `reflect.Type.Kind`: " + fieldTypeKind.String())
+		}
+	}
+
+	return fieldElementStrings
 }
 
 func MakeTitleHTML(unitTitle string) (string, error) {
@@ -408,30 +361,13 @@ func MakeTitleHTML(unitTitle string) (string, error) {
 	return titleHTML, nil
 }
 
-// TODO: DLFA-238
-// Remove this left- and right- padding for matching v1 indexer bug
-// behavior described here:
-// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506
-func PadDAODescriptionParagraphIfNeeded(xmlString string, value string) string {
-	return padValueIfNeeded(xmlString, value, daoDescriptionParagraphLeftPadString,
-		daoDescriptionParagraphRightPadString)
-}
-
-// TODO: DLFA-238
-// Remove this left- and right- padding for matching v1 indexer bug
-// behavior described here:
-// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506
-func PadUnitTitleIfNeeded(xmlString string, value string) string {
-	return padValueIfNeeded(xmlString, value, unitTitleLeftPadString, unitTitleRightPadString)
-}
-
 // `node.TextContent()` might contain unescaped characters that would be dangerous
 // for XML processing, like "&", ">", or "<".
 func ParseEscapedNodeTextContent(node types.Node) (string, error) {
 	textContentBytes := []byte(node.TextContent())
 
 	escapedBuffer := new(strings.Builder)
-	if err := EscapeText(escapedBuffer, textContentBytes); err != nil {
+	if err := xml.EscapeText(escapedBuffer, textContentBytes); err != nil {
 		return string(textContentBytes), err
 	}
 
@@ -621,7 +557,7 @@ func convertEADTagsWithRenderAttributesToHTML(eadString string) (string, error) 
 			// The XML has been unescaped, need to re-escape it since it needs
 			// to go back into XML again.
 			buffer := new(strings.Builder)
-			if err := EscapeText(buffer, token); err != nil {
+			if err := xml.EscapeText(buffer, token); err != nil {
 				return htmlString, err
 			}
 
@@ -632,19 +568,7 @@ func convertEADTagsWithRenderAttributesToHTML(eadString string) (string, error) 
 	return htmlString, nil
 }
 
-// TODO: DLFA-238
-// Delete this and restore `isDateInRangeStrict()` back to `isDateInRange()`
-// after passing transition test and resolving this:
-// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11550822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11550822.
 func isDateInRange(dateString string, dateRange DateRange) bool {
-	return isDateInRangeDLFA238Permissive(dateString, dateRange)
-}
-
-// TODO: DLFA-238
-// Change this back to `isDateInRange()` after passing transition test.
-// `dateString` should be of the form "YYYY/YYYY", where the left "YYYY" is the
-// start date and the right "YYYY" is the end date.
-func isDateInRangeStrict(dateString string, dateRange DateRange) bool {
 	dateParts := GetDateParts(dateString)
 
 	startDateInt, err := strconv.Atoi(dateParts.Start)
@@ -659,62 +583,6 @@ func isDateInRangeStrict(dateString string, dateRange DateRange) bool {
 
 	return (startDateInt >= dateRange.StartDate && startDateInt <= dateRange.EndDate) ||
 		(endDateInt >= dateRange.StartDate && endDateInt <= dateRange.EndDate)
-}
-
-// TODO: DLFA-238
-// Delete this after passing the transition test.
-// This permissive is date in range function replicates:
-// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11550822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11550822.
-func isDateInRangeDLFA238Permissive(dateString string, dateRange DateRange) bool {
-	rubyStringToIntFunc := func(dateString string) (int, error) {
-		matches := dateYearDLFA238Permissive.FindStringSubmatch(dateString)
-		if len(matches) == 2 {
-			yearIsh, err := strconv.Atoi(matches[1])
-			if err != nil {
-				return 0, err
-			}
-
-			return yearIsh, nil
-		} else {
-			return 0, errors.New(fmt.Sprintf(`Can't extract a year from date string "%s"`,
-				dateString))
-		}
-	}
-
-	dateParts := GetDateParts(dateString)
-
-	startDateInt, err := rubyStringToIntFunc(dateParts.Start)
-	if err != nil {
-		return false
-	}
-
-	endDateInt, err := rubyStringToIntFunc(dateParts.End)
-	if err != nil {
-		return false
-	}
-
-	return (startDateInt >= dateRange.StartDate && startDateInt <= dateRange.EndDate) ||
-		(endDateInt >= dateRange.StartDate && endDateInt <= dateRange.EndDate)
-}
-
-// TODO: DLFA-238
-// Remove this left- and right- padding for matching v1 indexer bug
-// behavior described here:
-// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506
-func padValueIfNeeded(xmlString string, value string, leftPadString string, rightPadString string) string {
-	// Determine if the <unittitle> contents is wrapped in a single EAD tag:
-	//     <emph render="italic">A Christmas Card</emph>
-	// ...as opposed to something like this:
-	//     <emph render="italic">A Christmas Card</emph>, Also Known As <emph render="italic">X-mas Cards</emph>
-	// This is not an optimal or risk-free method, but this is a temporary
-	// function, and we want it to be fast (to pass the DLFA-201 1M+ test).
-	if strings.HasPrefix(xmlString, "<") &&
-		strings.HasSuffix(xmlString, ">") &&
-		(strings.Count(xmlString[1:len(xmlString)-1], "<") == 1) {
-		return leftPadString + value + rightPadString
-	} else {
-		return value
-	}
 }
 
 func parseNodeValue(xmlString string) (string, error) {
@@ -732,11 +600,8 @@ func parseNodeValue(xmlString string) (string, error) {
 	return value, nil
 }
 
-// TODO: fix the bug we've intentionally preserved here -- for details, see:
-// * https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10154897&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10154897
-// * https://jira.nyu.edu/browse/DLFA-229?focusedCommentId=10153922&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10153922
 func replaceMARCSubfieldDemarcators(str string) string {
-	return marcSubfieldDemarcator.ReplaceAllString(str, "--")
+	return marcSubfieldDemarcator.ReplaceAllString(str, "-- ")
 }
 
 func replaceMARCSubfieldDemarcatorsInSlice(stringSlice []string) []string {

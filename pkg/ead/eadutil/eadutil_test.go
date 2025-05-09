@@ -10,11 +10,32 @@ import (
 	"os"
 	"path"
 	"path/filepath"
+	"reflect"
 	"runtime"
 	"slices"
 	"strings"
 	"testing"
 )
+
+// This is stand-in for `ead/collectiondoc.DocElement` and ead/component.DocElement`
+// types.  The field names are intentionally declared not in alphabetical order.
+type docElement struct {
+	FieldE []string `xml:"field_e"`
+	FieldB string   `xml:"field_b"`
+	FieldA []string `xml:"field_a"`
+	FieldC []string `xml:"field_c"`
+	FieldD string   `xml:"field_d"`
+}
+
+// Assign values intentionally in non-alphabetic order and also not in the
+// order in which the fields are declared in the type definition.
+var testDocElement = docElement{
+	FieldE: []string{"E1", "E2", "E3"},
+	FieldD: "D1",
+	FieldC: []string{"C1", "C2"},
+	FieldB: "B1",
+	FieldA: []string{"A1"},
+}
 
 var fixturesDirPath string
 var goldenFilesDirPath string
@@ -188,15 +209,23 @@ func testConvertEADToHTML_Specificity(t *testing.T) {
 	}
 	eadString := strings.Join(eadStringTokens, "")
 
+	// Note that the quotation marks in the "text nodes" of the XML strings between
+	// "2" and "3" and "3" and "4" were are into entity references by the standard
+	// library `xml.EscapeText()` method, probably because quotes are not valid
+	// inside XML attributes.  They are valid inside text nodes, but for some
+	// reason `xml.EscapeText()` escapes all quotes and does not make distinctions.
+	// Perhaps this is because the conversion from quotes to their entity
+	// reference is considered innocuous.  Or, perhaps the validity of quotes
+	// is not defined in an absolute way in XML specifications.
 	expectedHTMLStringTokens := []string{
 		"0",
 		`<date type="acquisition" normal="19880423">April 23, 1988.</date>`,
 		"1",
 		"<title>TITLE [no attributes]</title>",
 		"2",
-		`<em id="underline" altrender="bold">EMPH [render="underline"]</em>`,
+		`<em id="underline" altrender="bold">EMPH [render=&#34;underline&#34;]</em>`,
 		"3",
-		`<emph id="underline" altrender="bold">EMPH [id="underline" altrender="bold"]</emph>`,
+		`<emph id="underline" altrender="bold">EMPH [id=&#34;underline&#34; altrender=&#34;bold&#34;]</emph>`,
 		"4",
 		`Thomson, John.  Arabia, Egypt, Abyssinia, Red Sea &amp;c.`,
 		"5",
@@ -243,27 +272,11 @@ func TestGetDateParts(t *testing.T) {
 				End:   "2020",
 			},
 		},
-		// TODO: DLFA-238
-		// Delete this after passing the transition test and resolving this:
-		// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11550822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11550822.
 		{
-			"Gets start and end date for valid date string: allow yyyy-mm-dd",
-			// Value "1911/2023-03-27" appears in mc_286aspace_14c7ab764c20a3d6960975f319b33a4e
-			"1911/2023-03-27",
-			DateParts{
-				Start: "1911",
-				End:   "2023-03-27",
-			},
+			"Returns empty `DateParts` for ambiguous date string",
+			"2016/2020/2024",
+			DateParts{},
 		},
-		// TODO: DLFA-238
-		// Re-enable this test after passing transition test and resolving this
-		// v1 indexer bug which allows for the invalid date format in this test case:
-		// https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=11550822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-11550822.
-		//{
-		//	"Returns empty `DateParts` for ambiguous date string",
-		//	"2016/2020/2024",
-		//	DateParts{},
-		//},
 		{
 			"Returns empty `DateParts` for date string with hyphen",
 			"2016-2020",
@@ -390,15 +403,6 @@ func TestGetUnitDateDisplay(t *testing.T) {
 			[]string{},
 			"Inclusive, 1910 - 1990",
 		},
-		// TODO: DLFA-238
-		// For now, preserve v1 indexer bug https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=8378822&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-8378822
-		{
-			"`unitDateNoTypeAttribute` absent; `unitDateInclusive` absent and `unitDateBulk` present",
-			[]string{},
-			[]string{},
-			[]string{"1930-1990"},
-			"Inclusive,  ; 1930-1990",
-		},
 	}
 
 	for _, testCase := range testCases {
@@ -503,22 +507,11 @@ func TestIsDateInRange(t *testing.T) {
 			DateRange{Display: "2001-2100", StartDate: 2001, EndDate: 2100},
 			false,
 		},
-		// TODO: DLFA-238
-		// Re-enable this and delete `true` expected result test after passing
-		// transition test and confirming from stakeholders that they don't want
-		// to pass date strings like this. Or, if they do wish this permissiveness
-		// then delete this and keep the `true` test.
-		//{
-		//	"Returns false for too many date years",
-		//	"2016/2017/2018/2019/2020",
-		//	DateRange{Display: "2001-2100", StartDate: 2001, EndDate: 2100},
-		//	false,
-		//},
 		{
-			"Returns true for string of years",
+			"Returns false for too many date years",
 			"2016/2017/2018/2019/2020",
 			DateRange{Display: "2001-2100", StartDate: 2001, EndDate: 2100},
-			true,
+			false,
 		},
 		{
 			"Returns false for not a date",
@@ -631,6 +624,29 @@ func TestLanguage(t *testing.T) {
 					actualErrorStrings)
 			}
 		}
+	}
+}
+
+// This covers both `MakeSolrAddMessageFieldElementStrings` and `GetDocElementFieldsInAlphabeticalOrder`.
+// Making a test for `GetDocElementFieldsInAlphabeticalOrder` would be more of a
+// pain given the `reflect` stuff that would be needed to unpack the values.
+func TestMakeSolrAddMessageFieldElementStrings(t *testing.T) {
+	expectedFieldElementStrings := []string{
+		`<field name="field_a">A1</field>`,
+		`<field name="field_b">B1</field>`,
+		`<field name="field_c">C1</field>`,
+		`<field name="field_c">C2</field>`,
+		`<field name="field_d">D1</field>`,
+		`<field name="field_e">E1</field>`,
+		`<field name="field_e">E2</field>`,
+		`<field name="field_e">E3</field>`,
+	}
+
+	docElementFields := GetDocElementFieldsInAlphabeticalOrder(testDocElement)
+	actualFieldElementStrings := MakeSolrAddMessageFieldElementStrings(docElementFields)
+
+	if !reflect.DeepEqual(actualFieldElementStrings, expectedFieldElementStrings) {
+		t.Errorf("Expected %v, got %v", expectedFieldElementStrings, actualFieldElementStrings)
 	}
 }
 
