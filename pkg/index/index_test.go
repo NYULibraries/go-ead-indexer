@@ -2,13 +2,14 @@ package index
 
 import (
 	"fmt"
-	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
 	"io"
 	"os"
 	"path/filepath"
 	"runtime"
 	"strings"
 	"testing"
+
+	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
 
 	eadtestutils "github.com/nyulibraries/go-ead-indexer/pkg/ead/testutils"
 	"github.com/nyulibraries/go-ead-indexer/pkg/index/testutils"
@@ -294,6 +295,7 @@ func TestDeleteEADFileDataFromIndex_Success(t *testing.T) {
 	// set expectations
 	sc.ExpectedCallOrder.Delete = 1 // delete is always called first
 	sc.ExpectedDeleteArgument = eadid
+	sc.ExpectedCallOrder.Commit = 2
 
 	// Set the Solr client
 	SetSolrClient(sc)

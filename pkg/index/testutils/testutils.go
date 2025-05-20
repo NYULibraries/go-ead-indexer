@@ -456,7 +456,7 @@ func (sc *SolrClientMock) checkForErrorEvent() error {
 	// if the caller name and call count match, return the error message
 	// if no match, return nil
 	callerName := ""
-	pc, _, _, ok := runtime.Caller(1) // 1 means caller of the caller
+	pc, _, _, ok := runtime.Caller(1) // 1 means caller of this function
 	if ok {
 		callerName = runtime.FuncForPC(pc).Name()
 	}
