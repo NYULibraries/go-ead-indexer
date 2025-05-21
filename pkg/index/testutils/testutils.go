@@ -455,24 +455,28 @@ func (sc *SolrClientMock) checkForErrorEvent() error {
 	// iterate through range of ErrorEvents
 	// if the caller name and call count match, return the error message
 	// if no match, return nil
+	fullyQualifiedCallerName := ""
 	callerName := ""
 	pc, _, _, ok := runtime.Caller(1) // 1 means caller of this function
 	if ok {
-		callerName = runtime.FuncForPC(pc).Name()
+		fullyQualifiedCallerName = runtime.FuncForPC(pc).Name()
+		parts := strings.Split(fullyQualifiedCallerName, ".")
+		if len(parts) > 0 {
+			callerName = parts[len(parts)-1]
+		}
 	}
-
-	pkgName := getPackageName()
+	if callerName == "" {
+		return fmt.Errorf("unable to determine caller name from %s", fullyQualifiedCallerName)
+	}
 
 	// iterate through the error events
 	// looking for a matching event
-	if callerName != "" {
-		for _, event := range sc.ErrorEvents {
-			fname := fmt.Sprintf("%s.%s", pkgName, event.FuncName)
-			if fname == callerName && event.CallCount == sc.CallCount {
-				return fmt.Errorf(event.ErrorMessage)
-			}
+	for _, event := range sc.ErrorEvents {
+		if event.FuncName == callerName && event.CallCount == sc.CallCount {
+			return fmt.Errorf(event.ErrorMessage)
 		}
 	}
+
 	return nil
 }
 
@@ -530,17 +534,4 @@ func (sc *SolrClientMock) updateHash(xmlPostBody string) error {
 
 func CallCountToIdx(callCount int) int {
 	return callCount - 1
-}
-
-func getPackageName() string {
-	pc, _, _, ok := runtime.Caller(1)
-	if !ok {
-		return "unknown"
-	}
-	funcName := runtime.FuncForPC(pc).Name()
-	parts := strings.Split(funcName, ".")
-	if len(parts) > 0 {
-		return strings.Join(parts[:len(parts)-1], ".")
-	}
-	return "unknown"
 }
