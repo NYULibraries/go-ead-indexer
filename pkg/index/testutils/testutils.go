@@ -343,7 +343,7 @@ func (sc *SolrClientMock) SetSolrURLOrigin(url string) {
 func (sc *SolrClientMock) UpdateMockForIndexEADFile(testEAD, eadid string) error {
 
 	// snapshot the length of the golden file hashes before updating
-	initialGolenFileHashesLength := len(sc.GoldenFileHashes)
+	initialGoldenFileHashesLength := len(sc.GoldenFileHashes)
 	err := sc.updateGoldenFileHashes(testEAD)
 	if err != nil {
 		return err
@@ -351,7 +351,7 @@ func (sc *SolrClientMock) UpdateMockForIndexEADFile(testEAD, eadid string) error
 
 	// update the expected events
 	sc.addDeleteEvent(eadid)
-	for i := initialGolenFileHashesLength; i < len(sc.GoldenFileHashes); i++ {
+	for i := initialGoldenFileHashesLength; i < len(sc.GoldenFileHashes); i++ {
 		sc.addAddEvent()
 	}
 
