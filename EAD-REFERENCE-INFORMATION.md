@@ -4,7 +4,7 @@ Jira Ticket: https://jira.nyu.edu/projects/DLFA/issues/DLFA-241
 
 ## References:
 [ArchivesSpace Manual for Local Usage at NYU](https://docs.google.com/document/d/11kWxbFTazB6q5fDNBWDHJxMf3wdVsp8cd7HzjEhE-ao/edit?tab=t.0)  
-[EAD Validation Criteria for Publishing Finding Aids](PENDING)  
+[EAD Validation Criteria for Publishing Finding Aids](https://github.com/nyudlts/findingaids_docs/blob/main/user/EAD_Validation_Criteria_for_Publishing.md)  
 [Finding Aids Publishing Service documentation](https://github.com/nyudlts/findingaids_docs)  
 
 
