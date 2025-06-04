@@ -15,7 +15,7 @@ No, only EAD tags should be used. Occasionally in the past an ArchivesSpace user
 **Question:** `What does the first token in EAD IDs (also used for filenames) denote? E.g. The "photos" prefix in the tamwag/photos_223.xml file.`  
 It is a legacy practice of using a prefix label for a collecting area. In the past there were prefixes based on format, such as "buttons". This naming practice became unwieldy after a while. There is still some adherence to the prefix system, but in general, when there is discussion it's the repositories that tend to be referred to more. The prefixes are treated as something incidental. 
 
-(For official EADID construction rules, see FADESIGN-20, and EAD Validation Criteria for Publishing Finding Aids in References below)
+(For official EADID construction rules, see [FADESIGN-20](https://jira.nyu.edu/browse/FADESIGN-20), and [EAD Validation Criteria for Publishing Finding Aids](https://github.com/nyudlts/findingaids_docs/blob/main/user/EAD_Validation_Criteria_for_Publishing.md))
 
 **Question:** `Can the level attribute of <archdesc> ever have a value other than "collection"?`  
 It's not supposed to. Technically it's possible to set it to something else via the ArchivesSpace dropdown, but it would be an error to select anything but "collection" for a record whose EAD file is used in Special Collections. 
