@@ -1,1 +1,39 @@
-<?xml version="1.0" encoding="UTF-8"?><add><doc><field name="author_teim">Rebecca Altermatt</field><field name="collection_sim">Archives of Irish America County Societies Collection</field><field name="collection_ssm">Archives of Irish America County Societies Collection</field><field name="collection_teim">Archives of Irish America County Societies Collection</field><field name="collection_unitid_ssm">AIA.003</field><field name="collection_unitid_teim">AIA.003</field><field name="component_children_bsi">false</field><field name="component_level_isim">2</field><field name="date_range_sim">undated &amp; other</field><field name="ead_ssi">aia_003</field><field name="format_sim">Archival Object</field><field name="format_ssm">Archival Object</field><field name="heading_ssm">Photographs</field><field name="id">aia_003aspace_ref377</field><field name="level_sim">file</field><field name="location_si">Box: 3, Folder: 30</field><field name="location_ssm">Box: 3, Folder: 30</field><field name="parent_ssi">aspace_ref14</field><field name="parent_ssm">aspace_ref14</field><field name="parent_unittitles_ssm">V. Clare</field><field name="parent_unittitles_teim">V. Clare</field><field name="ref_ssi">aspace_ref377</field><field name="repository_sim">tamwag</field><field name="repository_ssi">tamwag</field><field name="repository_ssm">tamwag</field><field name="series_si">V. Clare &gt;&gt; Photographs</field><field name="series_sim">V. Clare</field><field name="sort_ii">99</field><field name="unitdate_ssm">undated </field><field name="unitdate_teim">undated </field><field name="unitid_ssm">/repositories/2/archival_objects/377</field><field name="unitid_teim">/repositories/2/archival_objects/377</field><field name="unittitle_ssm">Photographs</field><field name="unittitle_teim">Photographs</field></doc></add>
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Rebecca Altermatt</field>
+    <field name="collection_sim">Archives of Irish America County Societies Collection</field>
+    <field name="collection_ssm">Archives of Irish America County Societies Collection</field>
+    <field name="collection_teim">Archives of Irish America County Societies Collection</field>
+    <field name="collection_unitid_ssm">AIA.003</field>
+    <field name="collection_unitid_teim">AIA.003</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">aia_003</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Photographs</field>
+    <field name="id">aia_003aspace_ref377</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 3, Folder: 30</field>
+    <field name="location_ssm">Box: 3, Folder: 30</field>
+    <field name="parent_ssi">aspace_ref14</field>
+    <field name="parent_ssm">aspace_ref14</field>
+    <field name="parent_unittitles_ssm">V. Clare</field>
+    <field name="parent_unittitles_teim">V. Clare</field>
+    <field name="ref_ssi">aspace_ref377</field>
+    <field name="repository_sim">tamwag</field>
+    <field name="repository_ssi">tamwag</field>
+    <field name="repository_ssm">tamwag</field>
+    <field name="series_si">V. Clare &gt;&gt; Photographs</field>
+    <field name="series_sim">V. Clare</field>
+    <field name="sort_ii">99</field>
+    <field name="unitdate_ssm">undated </field>
+    <field name="unitdate_teim">undated </field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/377</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/377</field>
+    <field name="unittitle_ssm">Photographs</field>
+    <field name="unittitle_teim">Photographs</field>
+  </doc>
+</add>

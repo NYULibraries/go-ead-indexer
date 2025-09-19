@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?><add><doc><field name="author_teim">Valerie Paley and Jan Hilley, with later assistance by Alison Barr. </field><field name="collection_sim">Harmon Hendricks Goldstone Papers</field><field name="collection_ssm">Harmon Hendricks Goldstone Papers</field><field name="collection_teim">Harmon Hendricks Goldstone Papers</field><field name="collection_unitid_ssm">MS 256</field><field name="collection_unitid_teim">MS 256</field><field name="component_children_bsi">false</field><field name="component_level_isim">2</field><field name="date_range_sim">1901-2000</field><field name="ead_ssi">ms256_harmon_hendricks_goldstone</field><field name="format_sim">Archival Object</field><field name="format_ssm">Archival Object</field><field name="heading_ssm">Landmarks Preservation Commission Reports (Sept-Nov 1974): 
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Valerie Paley and Jan Hilley, with later assistance by Alison Barr. </field>
+    <field name="collection_sim">Harmon Hendricks Goldstone Papers</field>
+    <field name="collection_ssm">Harmon Hendricks Goldstone Papers</field>
+    <field name="collection_teim">Harmon Hendricks Goldstone Papers</field>
+    <field name="collection_unitid_ssm">MS 256</field>
+    <field name="collection_unitid_teim">MS 256</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">ms256_harmon_hendricks_goldstone</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Landmarks Preservation Commission Reports (Sept-Nov 1974): 
 
 The Lambs Club, 128 West 44th Street, Manhattan 
 
@@ -30,7 +45,35 @@ Lyceum Theatre, 149-157 West 45th Street, Manhattan
 
 Andrew Freeman Home, 1125 Grand Concourse, Bronx 
 
-Hamilton Heights Historic District, Manhattan</field><field name="id">ms256_harmon_hendricks_goldstoneaspace_ref24_e8b</field><field name="level_sim">otherlevel</field><field name="location_si">Box: 3, Folder: 5</field><field name="location_ssm">Box: 3, Folder: 5</field><field name="parent_ssi">aspace_ref19_j4r</field><field name="parent_ssm">aspace_ref19_j4r</field><field name="parent_unittitles_ssm">Series II. Reports</field><field name="parent_unittitles_teim">Series II. Reports</field><field name="ref_ssi">aspace_ref24_e8b</field><field name="repository_sim">nyhs</field><field name="repository_ssi">nyhs</field><field name="repository_ssm">nyhs</field><field name="series_si">Series II. Reports &gt;&gt; Landmarks Preservation Commission Reports (Sept-Nov 1974): &lt;strong&gt;The Lambs Club&lt;/strong&gt;, 128 West 44th Street, Manhattan &lt;strong&gt;Kingsbridge Armory&lt;/strong&gt;, 29 West Kingsbridge Road, Bronx &lt;strong&gt;Fort Tompkins&lt;/strong&gt;, Hudson Road, Fort Wadsworth Reservation, Richmond &lt;strong&gt;The Dorilton&lt;/strong&gt;, 171 West 71st Street, Manhattan &lt;strong&gt;The Frick Collection&lt;/strong&gt;, 1,5,7 and 9 East 70th Street, Manhattan &lt;strong&gt;Bryant Park&lt;/strong&gt;, 40th to 42nd Street from the Avenue of the Americas to the New York Public Library, Manhattan &lt;strong&gt;Gage &amp; Tollner&lt;/strong&gt;, 372 Fulton Street, Brooklyn &lt;strong&gt;The Register/Jamaica Arts Center&lt;/strong&gt;, 161-04 Jamaica Avenue, Queens &lt;strong&gt;Jamaica Savings Bank&lt;/strong&gt;, 161-02 Jamaica Avenue, Queens &lt;strong&gt;First Houses&lt;/strong&gt; 29, 31, 33-35, 37, 39 and 41 Avenue A; 112-114, 118-120, 124-126, 130-132 and 136-138 3rd Street, Manhattan &lt;strong&gt;American Radiator Building&lt;/strong&gt;, 40 West 40th Street, Manhattan &lt;strong&gt;New York Public Library&lt;/strong&gt;, 476 Fifth Avenue, Manhattan &lt;strong&gt;85 Leonard Street Building&lt;/strong&gt;, Manhattan &lt;strong&gt;Lyceum Theatre&lt;/strong&gt;, 149-157 West 45th Street, Manhattan &lt;strong&gt;Andrew Freeman Home&lt;/strong&gt;, 1125 Grand Concourse, Bronx &lt;strong&gt;Hamilton Heights Historic District&lt;/strong&gt;, Manhattan</field><field name="series_sim">Series II. Reports</field><field name="sort_ii">9</field><field name="unitdate_end_si">1974</field><field name="unitdate_end_sim">1974</field><field name="unitdate_end_ssm">1974</field><field name="unitdate_inclusive_teim">1974</field><field name="unitdate_normal_sim">1974/1974</field><field name="unitdate_normal_ssm">1974/1974</field><field name="unitdate_normal_teim">1974/1974</field><field name="unitdate_ssm">Inclusive, 1974</field><field name="unitdate_start_si">1974</field><field name="unitdate_start_sim">1974</field><field name="unitdate_start_ssm">1974</field><field name="unittitle_ssm">Landmarks Preservation Commission Reports (Sept-Nov 1974): &lt;strong&gt;The Lambs Club&lt;/strong&gt;, 128 West 44th Street, Manhattan &lt;strong&gt;Kingsbridge Armory&lt;/strong&gt;, 29 West Kingsbridge Road, Bronx &lt;strong&gt;Fort Tompkins&lt;/strong&gt;, Hudson Road, Fort Wadsworth Reservation, Richmond &lt;strong&gt;The Dorilton&lt;/strong&gt;, 171 West 71st Street, Manhattan &lt;strong&gt;The Frick Collection&lt;/strong&gt;, 1,5,7 and 9 East 70th Street, Manhattan &lt;strong&gt;Bryant Park&lt;/strong&gt;, 40th to 42nd Street from the Avenue of the Americas to the New York Public Library, Manhattan &lt;strong&gt;Gage &amp; Tollner&lt;/strong&gt;, 372 Fulton Street, Brooklyn &lt;strong&gt;The Register/Jamaica Arts Center&lt;/strong&gt;, 161-04 Jamaica Avenue, Queens &lt;strong&gt;Jamaica Savings Bank&lt;/strong&gt;, 161-02 Jamaica Avenue, Queens &lt;strong&gt;First Houses&lt;/strong&gt; 29, 31, 33-35, 37, 39 and 41 Avenue A; 112-114, 118-120, 124-126, 130-132 and 136-138 3rd Street, Manhattan &lt;strong&gt;American Radiator Building&lt;/strong&gt;, 40 West 40th Street, Manhattan &lt;strong&gt;New York Public Library&lt;/strong&gt;, 476 Fifth Avenue, Manhattan &lt;strong&gt;85 Leonard Street Building&lt;/strong&gt;, Manhattan &lt;strong&gt;Lyceum Theatre&lt;/strong&gt;, 149-157 West 45th Street, Manhattan &lt;strong&gt;Andrew Freeman Home&lt;/strong&gt;, 1125 Grand Concourse, Bronx &lt;strong&gt;Hamilton Heights Historic District&lt;/strong&gt;, Manhattan</field><field name="unittitle_teim">Landmarks Preservation Commission Reports (Sept-Nov 1974): 
+Hamilton Heights Historic District, Manhattan</field>
+    <field name="id">ms256_harmon_hendricks_goldstoneaspace_ref24_e8b</field>
+    <field name="level_sim">otherlevel</field>
+    <field name="location_si">Box: 3, Folder: 5</field>
+    <field name="location_ssm">Box: 3, Folder: 5</field>
+    <field name="parent_ssi">aspace_ref19_j4r</field>
+    <field name="parent_ssm">aspace_ref19_j4r</field>
+    <field name="parent_unittitles_ssm">Series II. Reports</field>
+    <field name="parent_unittitles_teim">Series II. Reports</field>
+    <field name="ref_ssi">aspace_ref24_e8b</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="series_si">Series II. Reports &gt;&gt; Landmarks Preservation Commission Reports (Sept-Nov 1974): &lt;strong&gt;The Lambs Club&lt;/strong&gt;, 128 West 44th Street, Manhattan &lt;strong&gt;Kingsbridge Armory&lt;/strong&gt;, 29 West Kingsbridge Road, Bronx &lt;strong&gt;Fort Tompkins&lt;/strong&gt;, Hudson Road, Fort Wadsworth Reservation, Richmond &lt;strong&gt;The Dorilton&lt;/strong&gt;, 171 West 71st Street, Manhattan &lt;strong&gt;The Frick Collection&lt;/strong&gt;, 1,5,7 and 9 East 70th Street, Manhattan &lt;strong&gt;Bryant Park&lt;/strong&gt;, 40th to 42nd Street from the Avenue of the Americas to the New York Public Library, Manhattan &lt;strong&gt;Gage &amp; Tollner&lt;/strong&gt;, 372 Fulton Street, Brooklyn &lt;strong&gt;The Register/Jamaica Arts Center&lt;/strong&gt;, 161-04 Jamaica Avenue, Queens &lt;strong&gt;Jamaica Savings Bank&lt;/strong&gt;, 161-02 Jamaica Avenue, Queens &lt;strong&gt;First Houses&lt;/strong&gt; 29, 31, 33-35, 37, 39 and 41 Avenue A; 112-114, 118-120, 124-126, 130-132 and 136-138 3rd Street, Manhattan &lt;strong&gt;American Radiator Building&lt;/strong&gt;, 40 West 40th Street, Manhattan &lt;strong&gt;New York Public Library&lt;/strong&gt;, 476 Fifth Avenue, Manhattan &lt;strong&gt;85 Leonard Street Building&lt;/strong&gt;, Manhattan &lt;strong&gt;Lyceum Theatre&lt;/strong&gt;, 149-157 West 45th Street, Manhattan &lt;strong&gt;Andrew Freeman Home&lt;/strong&gt;, 1125 Grand Concourse, Bronx &lt;strong&gt;Hamilton Heights Historic District&lt;/strong&gt;, Manhattan</field>
+    <field name="series_sim">Series II. Reports</field>
+    <field name="sort_ii">9</field>
+    <field name="unitdate_end_si">1974</field>
+    <field name="unitdate_end_sim">1974</field>
+    <field name="unitdate_end_ssm">1974</field>
+    <field name="unitdate_inclusive_teim">1974</field>
+    <field name="unitdate_normal_sim">1974/1974</field>
+    <field name="unitdate_normal_ssm">1974/1974</field>
+    <field name="unitdate_normal_teim">1974/1974</field>
+    <field name="unitdate_ssm">Inclusive, 1974</field>
+    <field name="unitdate_start_si">1974</field>
+    <field name="unitdate_start_sim">1974</field>
+    <field name="unitdate_start_ssm">1974</field>
+    <field name="unittitle_ssm">Landmarks Preservation Commission Reports (Sept-Nov 1974): &lt;strong&gt;The Lambs Club&lt;/strong&gt;, 128 West 44th Street, Manhattan &lt;strong&gt;Kingsbridge Armory&lt;/strong&gt;, 29 West Kingsbridge Road, Bronx &lt;strong&gt;Fort Tompkins&lt;/strong&gt;, Hudson Road, Fort Wadsworth Reservation, Richmond &lt;strong&gt;The Dorilton&lt;/strong&gt;, 171 West 71st Street, Manhattan &lt;strong&gt;The Frick Collection&lt;/strong&gt;, 1,5,7 and 9 East 70th Street, Manhattan &lt;strong&gt;Bryant Park&lt;/strong&gt;, 40th to 42nd Street from the Avenue of the Americas to the New York Public Library, Manhattan &lt;strong&gt;Gage &amp; Tollner&lt;/strong&gt;, 372 Fulton Street, Brooklyn &lt;strong&gt;The Register/Jamaica Arts Center&lt;/strong&gt;, 161-04 Jamaica Avenue, Queens &lt;strong&gt;Jamaica Savings Bank&lt;/strong&gt;, 161-02 Jamaica Avenue, Queens &lt;strong&gt;First Houses&lt;/strong&gt; 29, 31, 33-35, 37, 39 and 41 Avenue A; 112-114, 118-120, 124-126, 130-132 and 136-138 3rd Street, Manhattan &lt;strong&gt;American Radiator Building&lt;/strong&gt;, 40 West 40th Street, Manhattan &lt;strong&gt;New York Public Library&lt;/strong&gt;, 476 Fifth Avenue, Manhattan &lt;strong&gt;85 Leonard Street Building&lt;/strong&gt;, Manhattan &lt;strong&gt;Lyceum Theatre&lt;/strong&gt;, 149-157 West 45th Street, Manhattan &lt;strong&gt;Andrew Freeman Home&lt;/strong&gt;, 1125 Grand Concourse, Bronx &lt;strong&gt;Hamilton Heights Historic District&lt;/strong&gt;, Manhattan</field>
+    <field name="unittitle_teim">Landmarks Preservation Commission Reports (Sept-Nov 1974): 
 
 The Lambs Club, 128 West 44th Street, Manhattan 
 
@@ -62,4 +105,6 @@ Lyceum Theatre, 149-157 West 45th Street, Manhattan
 
 Andrew Freeman Home, 1125 Grand Concourse, Bronx 
 
-Hamilton Heights Historic District, Manhattan</field></doc></add>
+Hamilton Heights Historic District, Manhattan</field>
+  </doc>
+</add>

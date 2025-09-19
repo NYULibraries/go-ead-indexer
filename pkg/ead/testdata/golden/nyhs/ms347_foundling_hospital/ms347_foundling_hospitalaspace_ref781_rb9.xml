@@ -1,1 +1,41 @@
-<?xml version="1.0" encoding="UTF-8"?><add><doc><field name="author_teim">Cherie Acierno</field><field name="collection_sim">New York Foundling Hospital records</field><field name="collection_ssm">New York Foundling Hospital records</field><field name="collection_teim">New York Foundling Hospital records</field><field name="collection_unitid_ssm">MS 347</field><field name="collection_unitid_teim">MS 347</field><field name="component_children_bsi">false</field><field name="component_level_isim">3</field><field name="date_range_sim">undated &amp; other</field><field name="ead_ssi">ms347_foundling_hospital</field><field name="format_sim">Archival Object</field><field name="format_ssm">Archival Object</field><field name="heading_ssm">Westchester Office - photographic prints, clipping</field><field name="id">ms347_foundling_hospitalaspace_ref781_rb9</field><field name="level_sim">file</field><field name="location_si">Offsite-Box: 43, Folder: 14</field><field name="location_ssm">Offsite-Box: 43, Folder: 14</field><field name="parent_ssi">aspace_ref744_53k</field><field name="parent_ssm">aspace_ref4_l87</field><field name="parent_ssm">aspace_ref744_53k</field><field name="parent_unittitles_ssm">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008</field><field name="parent_unittitles_ssm">Subseries IV.47. Westchester Office, circa 1965</field><field name="parent_unittitles_teim">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008</field><field name="parent_unittitles_teim">Subseries IV.47. Westchester Office, circa 1965</field><field name="ref_ssi">aspace_ref781_rb9</field><field name="repository_sim">nyhs</field><field name="repository_ssi">nyhs</field><field name="repository_ssm">nyhs</field><field name="series_si">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008 &gt;&gt; Subseries IV.47. Westchester Office, circa 1965 &gt;&gt; Westchester Office - photographic prints, clipping</field><field name="series_sim">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008</field><field name="series_sim">Subseries IV.47. Westchester Office, circa 1965</field><field name="sort_ii">700</field><field name="unitdate_ssm">circa 1965</field><field name="unitdate_teim">circa 1965</field><field name="unittitle_ssm">Westchester Office - photographic prints, clipping</field><field name="unittitle_teim">Westchester Office - photographic prints, clipping</field></doc></add>
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Cherie Acierno</field>
+    <field name="collection_sim">New York Foundling Hospital records</field>
+    <field name="collection_ssm">New York Foundling Hospital records</field>
+    <field name="collection_teim">New York Foundling Hospital records</field>
+    <field name="collection_unitid_ssm">MS 347</field>
+    <field name="collection_unitid_teim">MS 347</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms347_foundling_hospital</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Westchester Office - photographic prints, clipping</field>
+    <field name="id">ms347_foundling_hospitalaspace_ref781_rb9</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Offsite-Box: 43, Folder: 14</field>
+    <field name="location_ssm">Offsite-Box: 43, Folder: 14</field>
+    <field name="parent_ssi">aspace_ref744_53k</field>
+    <field name="parent_ssm">aspace_ref4_l87</field>
+    <field name="parent_ssm">aspace_ref744_53k</field>
+    <field name="parent_unittitles_ssm">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008</field>
+    <field name="parent_unittitles_ssm">Subseries IV.47. Westchester Office, circa 1965</field>
+    <field name="parent_unittitles_teim">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008</field>
+    <field name="parent_unittitles_teim">Subseries IV.47. Westchester Office, circa 1965</field>
+    <field name="ref_ssi">aspace_ref781_rb9</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="series_si">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008 &gt;&gt; Subseries IV.47. Westchester Office, circa 1965 &gt;&gt; Westchester Office - photographic prints, clipping</field>
+    <field name="series_sim">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008</field>
+    <field name="series_sim">Subseries IV.47. Westchester Office, circa 1965</field>
+    <field name="sort_ii">700</field>
+    <field name="unitdate_ssm">circa 1965</field>
+    <field name="unitdate_teim">circa 1965</field>
+    <field name="unittitle_ssm">Westchester Office - photographic prints, clipping</field>
+    <field name="unittitle_teim">Westchester Office - photographic prints, clipping</field>
+  </doc>
+</add>

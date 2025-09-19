@@ -1,1 +1,42 @@
-<?xml version="1.0" encoding="UTF-8"?><add><doc><field name="author_teim">Laurainne Ojo-Ohikuare, 2015, and Stacey Flatt with the assistance of Madison DeLaere, 2023 </field><field name="collection_sim">Hot Peaches Records</field><field name="collection_ssm">Hot Peaches Records</field><field name="collection_teim">Hot Peaches Records</field><field name="collection_unitid_ssm">MSS.420</field><field name="collection_unitid_teim">MSS.420</field><field name="component_children_bsi">false</field><field name="component_level_isim">2</field><field name="date_range_sim">undated &amp; other</field><field name="ead_ssi">mss_420</field><field name="format_sim">Archival Object</field><field name="format_ssm">Archival Object</field><field name="heading_ssm">Harvest Moon Garden Party</field><field name="id">mss_420aspace_3d610d5bfecc5bbaa32c899fb38b2bb5</field><field name="level_sim">file</field><field name="location_si">Box: 2, VHS: 420.083</field><field name="location_ssm">Box: 2, VHS: 420.083</field><field name="parent_ssi">aspace_ade9deb88b6e2ec824ec693eb0011149</field><field name="parent_ssm">aspace_ade9deb88b6e2ec824ec693eb0011149</field><field name="parent_unittitles_ssm">Series I. Recordings</field><field name="parent_unittitles_teim">Series I. Recordings</field><field name="ref_ssi">aspace_3d610d5bfecc5bbaa32c899fb38b2bb5</field><field name="repository_sim">fales</field><field name="repository_ssi">fales</field><field name="repository_ssm">fales</field><field name="series_si">Series I. Recordings &gt;&gt; Harvest Moon Garden Party</field><field name="series_sim">Series I. Recordings</field><field name="sort_ii">65</field><field name="unitdate_normal_sim">1984-09-30/1984-09-30</field><field name="unitdate_normal_ssm">1984-09-30/1984-09-30</field><field name="unitdate_normal_teim">1984-09-30/1984-09-30</field><field name="unitdate_ssm">September 30, 1984</field><field name="unitdate_teim">September 30, 1984</field><field name="unitid_ssm">/repositories/3/archival_objects/971215</field><field name="unitid_teim">/repositories/3/archival_objects/971215</field><field name="unittitle_ssm">Harvest Moon Garden Party</field><field name="unittitle_teim">Harvest Moon Garden Party</field></doc></add>
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Laurainne Ojo-Ohikuare, 2015, and Stacey Flatt with the assistance of Madison DeLaere, 2023 </field>
+    <field name="collection_sim">Hot Peaches Records</field>
+    <field name="collection_ssm">Hot Peaches Records</field>
+    <field name="collection_teim">Hot Peaches Records</field>
+    <field name="collection_unitid_ssm">MSS.420</field>
+    <field name="collection_unitid_teim">MSS.420</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">mss_420</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Harvest Moon Garden Party</field>
+    <field name="id">mss_420aspace_3d610d5bfecc5bbaa32c899fb38b2bb5</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 2, VHS: 420.083</field>
+    <field name="location_ssm">Box: 2, VHS: 420.083</field>
+    <field name="parent_ssi">aspace_ade9deb88b6e2ec824ec693eb0011149</field>
+    <field name="parent_ssm">aspace_ade9deb88b6e2ec824ec693eb0011149</field>
+    <field name="parent_unittitles_ssm">Series I. Recordings</field>
+    <field name="parent_unittitles_teim">Series I. Recordings</field>
+    <field name="ref_ssi">aspace_3d610d5bfecc5bbaa32c899fb38b2bb5</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="series_si">Series I. Recordings &gt;&gt; Harvest Moon Garden Party</field>
+    <field name="series_sim">Series I. Recordings</field>
+    <field name="sort_ii">65</field>
+    <field name="unitdate_normal_sim">1984-09-30/1984-09-30</field>
+    <field name="unitdate_normal_ssm">1984-09-30/1984-09-30</field>
+    <field name="unitdate_normal_teim">1984-09-30/1984-09-30</field>
+    <field name="unitdate_ssm">September 30, 1984</field>
+    <field name="unitdate_teim">September 30, 1984</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/971215</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/971215</field>
+    <field name="unittitle_ssm">Harvest Moon Garden Party</field>
+    <field name="unittitle_teim">Harvest Moon Garden Party</field>
+  </doc>
+</add>

@@ -1,1 +1,37 @@
-<?xml version="1.0" encoding="UTF-8"?><add><doc><field name="author_teim">Cherie Acierno</field><field name="collection_sim">New York Foundling Hospital records</field><field name="collection_ssm">New York Foundling Hospital records</field><field name="collection_teim">New York Foundling Hospital records</field><field name="collection_unitid_ssm">MS 347</field><field name="collection_unitid_teim">MS 347</field><field name="component_children_bsi">true</field><field name="component_level_isim">2</field><field name="date_range_sim">undated &amp; other</field><field name="ead_ssi">ms347_foundling_hospital</field><field name="format_sim">Archival Series</field><field name="format_ssm">Archival Series</field><field name="heading_ssm">Subseries IV.34. Pediatric Center/Health-Related Facility, circa 1972-2005</field><field name="id">ms347_foundling_hospitalaspace_ref540_9js</field><field name="level_sim">subseries</field><field name="parent_ssi">aspace_ref4_l87</field><field name="parent_ssm">aspace_ref4_l87</field><field name="parent_unittitles_ssm">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008</field><field name="parent_unittitles_teim">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008</field><field name="ref_ssi">aspace_ref540_9js</field><field name="repository_sim">nyhs</field><field name="repository_ssi">nyhs</field><field name="repository_ssm">nyhs</field><field name="scopecontent_teim">Materials in the subseries include pamphlets, brochures, memos, correspondence, reports, and circa 100 photographic prints.</field><field name="scopecontent_teim">For related material, see IV.21-Infant Stimulation Program, and V-St. Agatha Home.</field><field name="scopecontent_teim">The Unit of Special Services was founded in 1973 to centralize the Foundling&#39;s residential services for children with disabilities.  In 1976 this unit became the Health Related Facility, providing medical care and a range of therapies and social services.  The program continued to evolve, and in 1987 the Sisters of Charity restructured and renamed it the Pediatric Center (aka the Medical Center for Pediatrics and Rehabilitation, or the New York Foundling Hospital Center for Pediatric, Medical, and Rehabilitative Care), an affiliate of the Foundling, located in the Foundling&#39;s building.  </field><field name="scopecontent_teim">In 2005, now fully independent from the Foundling, the Pediatric Center was renamed the Elizabeth Seton Pediatric Center.  It has continued to expand and to decentralize, while temporarily leasing space in the Foundling&#39;s building.  As it is not administered by the Foundling, the records of the Elizabeth Seton Pediatric Center are not part of this collection.</field><field name="series_si">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008 &gt;&gt; Subseries IV.34. Pediatric Center/Health-Related Facility, circa 1972-2005</field><field name="series_sim">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008</field><field name="sort_ii">604</field><field name="unittitle_ssm">Subseries IV.34. Pediatric Center/Health-Related Facility, circa 1972-2005</field><field name="unittitle_teim">Subseries IV.34. Pediatric Center/Health-Related Facility, circa 1972-2005</field></doc></add>
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Cherie Acierno</field>
+    <field name="collection_sim">New York Foundling Hospital records</field>
+    <field name="collection_ssm">New York Foundling Hospital records</field>
+    <field name="collection_teim">New York Foundling Hospital records</field>
+    <field name="collection_unitid_ssm">MS 347</field>
+    <field name="collection_unitid_teim">MS 347</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms347_foundling_hospital</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Subseries IV.34. Pediatric Center/Health-Related Facility, circa 1972-2005</field>
+    <field name="id">ms347_foundling_hospitalaspace_ref540_9js</field>
+    <field name="level_sim">subseries</field>
+    <field name="parent_ssi">aspace_ref4_l87</field>
+    <field name="parent_ssm">aspace_ref4_l87</field>
+    <field name="parent_unittitles_ssm">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008</field>
+    <field name="parent_unittitles_teim">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008</field>
+    <field name="ref_ssi">aspace_ref540_9js</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="scopecontent_teim">Materials in the subseries include pamphlets, brochures, memos, correspondence, reports, and circa 100 photographic prints.</field>
+    <field name="scopecontent_teim">For related material, see IV.21-Infant Stimulation Program, and V-St. Agatha Home.</field>
+    <field name="scopecontent_teim">The Unit of Special Services was founded in 1973 to centralize the Foundling&#39;s residential services for children with disabilities.  In 1976 this unit became the Health Related Facility, providing medical care and a range of therapies and social services.  The program continued to evolve, and in 1987 the Sisters of Charity restructured and renamed it the Pediatric Center (aka the Medical Center for Pediatrics and Rehabilitation, or the New York Foundling Hospital Center for Pediatric, Medical, and Rehabilitative Care), an affiliate of the Foundling, located in the Foundling&#39;s building.  </field>
+    <field name="scopecontent_teim">In 2005, now fully independent from the Foundling, the Pediatric Center was renamed the Elizabeth Seton Pediatric Center.  It has continued to expand and to decentralize, while temporarily leasing space in the Foundling&#39;s building.  As it is not administered by the Foundling, the records of the Elizabeth Seton Pediatric Center are not part of this collection.</field>
+    <field name="series_si">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008 &gt;&gt; Subseries IV.34. Pediatric Center/Health-Related Facility, circa 1972-2005</field>
+    <field name="series_sim">Series IV. Centers, Programs and Departments, Alphabetical, 1869-2008</field>
+    <field name="sort_ii">604</field>
+    <field name="unittitle_ssm">Subseries IV.34. Pediatric Center/Health-Related Facility, circa 1972-2005</field>
+    <field name="unittitle_teim">Subseries IV.34. Pediatric Center/Health-Related Facility, circa 1972-2005</field>
+  </doc>
+</add>

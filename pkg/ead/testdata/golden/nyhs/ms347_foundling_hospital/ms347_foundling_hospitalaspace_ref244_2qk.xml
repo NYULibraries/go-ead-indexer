@@ -1,1 +1,37 @@
-<?xml version="1.0" encoding="UTF-8"?><add><doc><field name="author_teim">Cherie Acierno</field><field name="collection_sim">New York Foundling Hospital records</field><field name="collection_ssm">New York Foundling Hospital records</field><field name="collection_teim">New York Foundling Hospital records</field><field name="collection_unitid_ssm">MS 347</field><field name="collection_unitid_teim">MS 347</field><field name="component_children_bsi">false</field><field name="component_level_isim">2</field><field name="date_range_sim">undated &amp; other</field><field name="ead_ssi">ms347_foundling_hospital</field><field name="format_sim">Archival Object</field><field name="format_ssm">Archival Object</field><field name="heading_ssm">Department of Public Charities Report of Inspection of the Foundling</field><field name="id">ms347_foundling_hospitalaspace_ref244_2qk</field><field name="level_sim">file</field><field name="location_si">Offsite-Box: 14, Folder: 6</field><field name="location_ssm">Offsite-Box: 14, Folder: 6</field><field name="parent_ssi">aspace_ref3_uv9</field><field name="parent_ssm">aspace_ref3_uv9</field><field name="parent_unittitles_ssm">Series III. Administrative Records, Chronological, 1869-2004</field><field name="parent_unittitles_teim">Series III. Administrative Records, Chronological, 1869-2004</field><field name="ref_ssi">aspace_ref244_2qk</field><field name="repository_sim">nyhs</field><field name="repository_ssi">nyhs</field><field name="repository_ssm">nyhs</field><field name="series_si">Series III. Administrative Records, Chronological, 1869-2004 &gt;&gt; Department of Public Charities Report of Inspection of the Foundling</field><field name="series_sim">Series III. Administrative Records, Chronological, 1869-2004</field><field name="sort_ii">202</field><field name="unitdate_ssm">1916 November 21 - December 13</field><field name="unitdate_teim">1916 November 21 - December 13</field><field name="unittitle_ssm">Department of Public Charities Report of Inspection of the Foundling</field><field name="unittitle_teim">Department of Public Charities Report of Inspection of the Foundling</field></doc></add>
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Cherie Acierno</field>
+    <field name="collection_sim">New York Foundling Hospital records</field>
+    <field name="collection_ssm">New York Foundling Hospital records</field>
+    <field name="collection_teim">New York Foundling Hospital records</field>
+    <field name="collection_unitid_ssm">MS 347</field>
+    <field name="collection_unitid_teim">MS 347</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms347_foundling_hospital</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Department of Public Charities Report of Inspection of the Foundling</field>
+    <field name="id">ms347_foundling_hospitalaspace_ref244_2qk</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Offsite-Box: 14, Folder: 6</field>
+    <field name="location_ssm">Offsite-Box: 14, Folder: 6</field>
+    <field name="parent_ssi">aspace_ref3_uv9</field>
+    <field name="parent_ssm">aspace_ref3_uv9</field>
+    <field name="parent_unittitles_ssm">Series III. Administrative Records, Chronological, 1869-2004</field>
+    <field name="parent_unittitles_teim">Series III. Administrative Records, Chronological, 1869-2004</field>
+    <field name="ref_ssi">aspace_ref244_2qk</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="series_si">Series III. Administrative Records, Chronological, 1869-2004 &gt;&gt; Department of Public Charities Report of Inspection of the Foundling</field>
+    <field name="series_sim">Series III. Administrative Records, Chronological, 1869-2004</field>
+    <field name="sort_ii">202</field>
+    <field name="unitdate_ssm">1916 November 21 - December 13</field>
+    <field name="unitdate_teim">1916 November 21 - December 13</field>
+    <field name="unittitle_ssm">Department of Public Charities Report of Inspection of the Foundling</field>
+    <field name="unittitle_teim">Department of Public Charities Report of Inspection of the Foundling</field>
+  </doc>
+</add>

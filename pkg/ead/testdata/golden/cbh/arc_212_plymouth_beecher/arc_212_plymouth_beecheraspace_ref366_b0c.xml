@@ -1,1 +1,33 @@
-<?xml version="1.0" encoding="UTF-8"?><add><doc><field name="author_teim">C. Dierdre Phelps (1984). Revised by Teresa Mora and Mae Pan, Project Archivists, with edits by Dr. Marilyn H. Pettit, Project Consultant (1999)</field><field name="collection_sim">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field><field name="collection_ssm">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field><field name="collection_teim">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field><field name="collection_unitid_ssm">ARC.212</field><field name="collection_unitid_teim">ARC.212</field><field name="component_children_bsi">true</field><field name="component_level_isim">2</field><field name="date_range_sim">undated &amp; other</field><field name="ead_ssi">arc_212_plymouth_beecher</field><field name="format_sim">Archival Series</field><field name="format_ssm">Archival Series</field><field name="heading_ssm">Section 5d: Pastors - L. Wendell Fifield</field><field name="id">arc_212_plymouth_beecheraspace_ref366_b0c</field><field name="level_sim">subseries</field><field name="parent_ssi">aspace_ref238_a85</field><field name="parent_ssm">aspace_ref238_a85</field><field name="parent_unittitles_ssm">Series 2: Plymouth Church</field><field name="parent_unittitles_teim">Series 2: Plymouth Church</field><field name="ref_ssi">aspace_ref366_b0c</field><field name="repository_sim">cbh</field><field name="repository_ssi">cbh</field><field name="repository_ssm">cbh</field><field name="series_si">Series 2: Plymouth Church &gt;&gt; &lt;strong&gt;Section 5d: Pastors - L. Wendell Fifield&lt;/strong&gt;</field><field name="series_sim">Series 2: Plymouth Church</field><field name="sort_ii">358</field><field name="unittitle_ssm">&lt;strong&gt;Section 5d: Pastors - L. Wendell Fifield&lt;/strong&gt;</field><field name="unittitle_teim">Section 5d: Pastors - L. Wendell Fifield</field></doc></add>
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">C. Dierdre Phelps (1984). Revised by Teresa Mora and Mae Pan, Project Archivists, with edits by Dr. Marilyn H. Pettit, Project Consultant (1999)</field>
+    <field name="collection_sim">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field>
+    <field name="collection_ssm">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field>
+    <field name="collection_teim">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field>
+    <field name="collection_unitid_ssm">ARC.212</field>
+    <field name="collection_unitid_teim">ARC.212</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">arc_212_plymouth_beecher</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Section 5d: Pastors - L. Wendell Fifield</field>
+    <field name="id">arc_212_plymouth_beecheraspace_ref366_b0c</field>
+    <field name="level_sim">subseries</field>
+    <field name="parent_ssi">aspace_ref238_a85</field>
+    <field name="parent_ssm">aspace_ref238_a85</field>
+    <field name="parent_unittitles_ssm">Series 2: Plymouth Church</field>
+    <field name="parent_unittitles_teim">Series 2: Plymouth Church</field>
+    <field name="ref_ssi">aspace_ref366_b0c</field>
+    <field name="repository_sim">cbh</field>
+    <field name="repository_ssi">cbh</field>
+    <field name="repository_ssm">cbh</field>
+    <field name="series_si">Series 2: Plymouth Church &gt;&gt; &lt;strong&gt;Section 5d: Pastors - L. Wendell Fifield&lt;/strong&gt;</field>
+    <field name="series_sim">Series 2: Plymouth Church</field>
+    <field name="sort_ii">358</field>
+    <field name="unittitle_ssm">&lt;strong&gt;Section 5d: Pastors - L. Wendell Fifield&lt;/strong&gt;</field>
+    <field name="unittitle_teim">Section 5d: Pastors - L. Wendell Fifield</field>
+  </doc>
+</add>

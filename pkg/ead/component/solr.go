@@ -283,6 +283,8 @@ func (solrAddMessage SolrAddMessage) String() string {
 	fields := eadutil.GetDocElementFieldsInAlphabeticalOrder(solrAddMessage.Add.Doc)
 	fieldElementStrings := eadutil.MakeSolrAddMessageFieldElementStrings(fields)
 
-	return fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8"?><add><doc>%s</doc></add>`,
-		strings.Join(fieldElementStrings, ""))
+	return eadutil.PrettifySolrAddMessageXML(
+		fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8"?><add><doc>%s</doc></add>`,
+			strings.Join(fieldElementStrings, "")),
+	)
 }

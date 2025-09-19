@@ -1,1 +1,50 @@
-<?xml version="1.0" encoding="UTF-8"?><add><doc><field name="author_teim">C. Dierdre Phelps (1984). Revised by Teresa Mora and Mae Pan, Project Archivists, with edits by Dr. Marilyn H. Pettit, Project Consultant (1999)</field><field name="collection_sim">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field><field name="collection_ssm">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field><field name="collection_teim">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field><field name="collection_unitid_ssm">ARC.212</field><field name="collection_unitid_teim">ARC.212</field><field name="component_children_bsi">false</field><field name="component_level_isim">3</field><field name="date_range_sim">1801-1900</field><field name="ead_ssi">arc_212_plymouth_beecher</field><field name="format_sim">Archival Object</field><field name="format_ssm">Archival Object</field><field name="heading_ssm">New York news clippings reporting on trip.</field><field name="id">arc_212_plymouth_beecheraspace_ref22_tih</field><field name="level_sim">file</field><field name="location_si">Box: 1, Folder: 17</field><field name="location_ssm">Box: 1, Folder: 17</field><field name="parent_ssi">aspace_ref19_1pd</field><field name="parent_ssm">aspace_ref1_kpj</field><field name="parent_ssm">aspace_ref19_1pd</field><field name="parent_unittitles_ssm">Series 1: Henry Ward Beecher</field><field name="parent_unittitles_ssm">Section 2: Personal and Familial Papers</field><field name="parent_unittitles_teim">Series 1: Henry Ward Beecher</field><field name="parent_unittitles_teim">Section 2: Personal and Familial Papers</field><field name="ref_ssi">aspace_ref22_tih</field><field name="repository_sim">cbh</field><field name="repository_ssi">cbh</field><field name="repository_ssm">cbh</field><field name="series_si">Series 1: Henry Ward Beecher &gt;&gt; Section 2: Personal and Familial Papers &gt;&gt; New York news clippings reporting on trip.</field><field name="series_sim">Series 1: Henry Ward Beecher</field><field name="series_sim">Section 2: Personal and Familial Papers</field><field name="sort_ii">21</field><field name="unitdate_end_si">1886</field><field name="unitdate_end_sim">1886</field><field name="unitdate_end_ssm">1886</field><field name="unitdate_inclusive_teim">1886</field><field name="unitdate_normal_sim">1886/1886</field><field name="unitdate_normal_ssm">1886/1886</field><field name="unitdate_normal_teim">1886/1886</field><field name="unitdate_ssm">Inclusive, 1886</field><field name="unitdate_start_si">1886</field><field name="unitdate_start_sim">1886</field><field name="unitdate_start_ssm">1886</field><field name="unittitle_ssm">New York news clippings reporting on trip.</field><field name="unittitle_teim">New York news clippings reporting on trip.</field></doc></add>
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">C. Dierdre Phelps (1984). Revised by Teresa Mora and Mae Pan, Project Archivists, with edits by Dr. Marilyn H. Pettit, Project Consultant (1999)</field>
+    <field name="collection_sim">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field>
+    <field name="collection_ssm">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field>
+    <field name="collection_teim">Plymouth Church of the Pilgrims and Henry Ward Beecher collection</field>
+    <field name="collection_unitid_ssm">ARC.212</field>
+    <field name="collection_unitid_teim">ARC.212</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">1801-1900</field>
+    <field name="ead_ssi">arc_212_plymouth_beecher</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">New York news clippings reporting on trip.</field>
+    <field name="id">arc_212_plymouth_beecheraspace_ref22_tih</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 1, Folder: 17</field>
+    <field name="location_ssm">Box: 1, Folder: 17</field>
+    <field name="parent_ssi">aspace_ref19_1pd</field>
+    <field name="parent_ssm">aspace_ref1_kpj</field>
+    <field name="parent_ssm">aspace_ref19_1pd</field>
+    <field name="parent_unittitles_ssm">Series 1: Henry Ward Beecher</field>
+    <field name="parent_unittitles_ssm">Section 2: Personal and Familial Papers</field>
+    <field name="parent_unittitles_teim">Series 1: Henry Ward Beecher</field>
+    <field name="parent_unittitles_teim">Section 2: Personal and Familial Papers</field>
+    <field name="ref_ssi">aspace_ref22_tih</field>
+    <field name="repository_sim">cbh</field>
+    <field name="repository_ssi">cbh</field>
+    <field name="repository_ssm">cbh</field>
+    <field name="series_si">Series 1: Henry Ward Beecher &gt;&gt; Section 2: Personal and Familial Papers &gt;&gt; New York news clippings reporting on trip.</field>
+    <field name="series_sim">Series 1: Henry Ward Beecher</field>
+    <field name="series_sim">Section 2: Personal and Familial Papers</field>
+    <field name="sort_ii">21</field>
+    <field name="unitdate_end_si">1886</field>
+    <field name="unitdate_end_sim">1886</field>
+    <field name="unitdate_end_ssm">1886</field>
+    <field name="unitdate_inclusive_teim">1886</field>
+    <field name="unitdate_normal_sim">1886/1886</field>
+    <field name="unitdate_normal_ssm">1886/1886</field>
+    <field name="unitdate_normal_teim">1886/1886</field>
+    <field name="unitdate_ssm">Inclusive, 1886</field>
+    <field name="unitdate_start_si">1886</field>
+    <field name="unitdate_start_sim">1886</field>
+    <field name="unitdate_start_ssm">1886</field>
+    <field name="unittitle_ssm">New York news clippings reporting on trip.</field>
+    <field name="unittitle_teim">New York news clippings reporting on trip.</field>
+  </doc>
+</add>

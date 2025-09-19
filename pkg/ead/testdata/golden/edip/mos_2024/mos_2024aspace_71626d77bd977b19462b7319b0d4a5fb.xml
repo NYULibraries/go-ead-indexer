@@ -1,7 +1,45 @@
-<?xml version="1.0" encoding="UTF-8"?><add><doc><field name="author_teim">Megan O&#39;Shea</field><field name="collection_sim">Megan O&#39;Shea&#39;s &#34;One Resource to 
- Rule Them All&#34;</field><field name="collection_ssm">Megan O&#39;Shea&#39;s &#34;One Resource to 
- Rule Them All&#34;</field><field name="collection_teim">Megan O&#39;Shea&#39;s &#34;One Resource to 
- Rule Them All&#34;</field><field name="collection_unitid_ssm">MOS.2021</field><field name="collection_unitid_teim">MOS.2021</field><field name="component_children_bsi">false</field><field name="component_level_isim">6</field><field name="date_range_sim">undated &amp; other</field><field name="ead_ssi">mos_2024</field><field name="format_sim">Archival Object</field><field name="format_ssm">Archival Object</field><field name="heading_ssm">A File Nested Within a File, No Container</field><field name="id">mos_2024aspace_71626d77bd977b19462b7319b0d4a5fb</field><field name="level_sim">file</field><field name="parent_ssi">aspace_bb018068fcbef8e42d90b29434d476d6</field><field name="parent_ssm">aspace_499449c48c751a22b7c222d3ce2c2879</field><field name="parent_ssm">aspace_68fd22d28746c12f37e250728431c61d</field><field name="parent_ssm">aspace_f35efa0f6a068b57a2d396067e4f7427</field><field name="parent_ssm">aspace_a8e8b321d84febb7aee747f54e624fc4</field><field name="parent_ssm">aspace_bb018068fcbef8e42d90b29434d476d6</field><field name="parent_unittitles_ssm">Level 2 Series I. Megan&amp;#xA;              O&amp;#39;Shea&amp;#xA;            Rolodex on New York University Here is a&amp;#xA;              title</field><field name="parent_unittitles_ssm">Level 3 Series I. Megan&amp;#xA;                O&amp;#39;Shea&amp;#xA;              Rolodex on New York University Here is a&amp;#xA;                title</field><field name="parent_unittitles_ssm">Level 4 Series I. Megan&amp;#xA;                  O&amp;#39;Shea&amp;#xA;                Rolodex on New York University Here is a&amp;#xA;                  title</field><field name="parent_unittitles_ssm">Level 5 Series I. Megan&amp;#xA;                    O&amp;#39;Shea&amp;#xA;                  Rolodex&amp;#xA;                  on New York University Here is a&amp;#xA;                  title</field><field name="parent_unittitles_ssm">Level 6 Series I. Megan&amp;#xA;                      O&amp;#39;Shea&amp;#xA;                    Rolodex on New York University Here is a&amp;#xA;                      title</field><field name="parent_unittitles_teim">Level 2 Series I. Megan&amp;#xA;              O&amp;#39;Shea&amp;#xA;            Rolodex on New York University Here is a&amp;#xA;              title</field><field name="parent_unittitles_teim">Level 3 Series I. Megan&amp;#xA;                O&amp;#39;Shea&amp;#xA;              Rolodex on New York University Here is a&amp;#xA;                title</field><field name="parent_unittitles_teim">Level 4 Series I. Megan&amp;#xA;                  O&amp;#39;Shea&amp;#xA;                Rolodex on New York University Here is a&amp;#xA;                  title</field><field name="parent_unittitles_teim">Level 5 Series I. Megan&amp;#xA;                    O&amp;#39;Shea&amp;#xA;                  Rolodex&amp;#xA;                  on New York University Here is a&amp;#xA;                  title</field><field name="parent_unittitles_teim">Level 6 Series I. Megan&amp;#xA;                      O&amp;#39;Shea&amp;#xA;                    Rolodex on New York University Here is a&amp;#xA;                      title</field><field name="ref_ssi">aspace_71626d77bd977b19462b7319b0d4a5fb</field><field name="repository_sim">edip</field><field name="repository_ssi">edip</field><field name="repository_ssm">edip</field><field name="series_si">Level 2 Series I. Megan
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Megan O&#39;Shea</field>
+    <field name="collection_sim">Megan O&#39;Shea&#39;s &#34;One Resource to 
+ Rule Them All&#34;</field>
+    <field name="collection_ssm">Megan O&#39;Shea&#39;s &#34;One Resource to 
+ Rule Them All&#34;</field>
+    <field name="collection_teim">Megan O&#39;Shea&#39;s &#34;One Resource to 
+ Rule Them All&#34;</field>
+    <field name="collection_unitid_ssm">MOS.2021</field>
+    <field name="collection_unitid_teim">MOS.2021</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">6</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">mos_2024</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">A File Nested Within a File, No Container</field>
+    <field name="id">mos_2024aspace_71626d77bd977b19462b7319b0d4a5fb</field>
+    <field name="level_sim">file</field>
+    <field name="parent_ssi">aspace_bb018068fcbef8e42d90b29434d476d6</field>
+    <field name="parent_ssm">aspace_499449c48c751a22b7c222d3ce2c2879</field>
+    <field name="parent_ssm">aspace_68fd22d28746c12f37e250728431c61d</field>
+    <field name="parent_ssm">aspace_f35efa0f6a068b57a2d396067e4f7427</field>
+    <field name="parent_ssm">aspace_a8e8b321d84febb7aee747f54e624fc4</field>
+    <field name="parent_ssm">aspace_bb018068fcbef8e42d90b29434d476d6</field>
+    <field name="parent_unittitles_ssm">Level 2 Series I. Megan&amp;#xA;              O&amp;#39;Shea&amp;#xA;            Rolodex on New York University Here is a&amp;#xA;              title</field>
+    <field name="parent_unittitles_ssm">Level 3 Series I. Megan&amp;#xA;                O&amp;#39;Shea&amp;#xA;              Rolodex on New York University Here is a&amp;#xA;                title</field>
+    <field name="parent_unittitles_ssm">Level 4 Series I. Megan&amp;#xA;                  O&amp;#39;Shea&amp;#xA;                Rolodex on New York University Here is a&amp;#xA;                  title</field>
+    <field name="parent_unittitles_ssm">Level 5 Series I. Megan&amp;#xA;                    O&amp;#39;Shea&amp;#xA;                  Rolodex&amp;#xA;                  on New York University Here is a&amp;#xA;                  title</field>
+    <field name="parent_unittitles_ssm">Level 6 Series I. Megan&amp;#xA;                      O&amp;#39;Shea&amp;#xA;                    Rolodex on New York University Here is a&amp;#xA;                      title</field>
+    <field name="parent_unittitles_teim">Level 2 Series I. Megan&amp;#xA;              O&amp;#39;Shea&amp;#xA;            Rolodex on New York University Here is a&amp;#xA;              title</field>
+    <field name="parent_unittitles_teim">Level 3 Series I. Megan&amp;#xA;                O&amp;#39;Shea&amp;#xA;              Rolodex on New York University Here is a&amp;#xA;                title</field>
+    <field name="parent_unittitles_teim">Level 4 Series I. Megan&amp;#xA;                  O&amp;#39;Shea&amp;#xA;                Rolodex on New York University Here is a&amp;#xA;                  title</field>
+    <field name="parent_unittitles_teim">Level 5 Series I. Megan&amp;#xA;                    O&amp;#39;Shea&amp;#xA;                  Rolodex&amp;#xA;                  on New York University Here is a&amp;#xA;                  title</field>
+    <field name="parent_unittitles_teim">Level 6 Series I. Megan&amp;#xA;                      O&amp;#39;Shea&amp;#xA;                    Rolodex on New York University Here is a&amp;#xA;                      title</field>
+    <field name="ref_ssi">aspace_71626d77bd977b19462b7319b0d4a5fb</field>
+    <field name="repository_sim">edip</field>
+    <field name="repository_ssi">edip</field>
+    <field name="repository_ssm">edip</field>
+    <field name="series_si">Level 2 Series I. Megan
               O&#39;Shea
             Rolodex on New York University Here is a
               title &gt;&gt; Level 3 Series I. Megan
@@ -17,4 +55,19 @@
                   title &gt;&gt; Level 6 Series I. Megan
                       O&#39;Shea
                     Rolodex on New York University Here is a
-                      title &gt;&gt; A File Nested Within a File, No Container</field><field name="series_sim">Level 2 Series I. Megan&amp;#xA;              O&amp;#39;Shea&amp;#xA;            Rolodex on New York University Here is a&amp;#xA;              title</field><field name="series_sim">Level 3 Series I. Megan&amp;#xA;                O&amp;#39;Shea&amp;#xA;              Rolodex on New York University Here is a&amp;#xA;                title</field><field name="series_sim">Level 4 Series I. Megan&amp;#xA;                  O&amp;#39;Shea&amp;#xA;                Rolodex on New York University Here is a&amp;#xA;                  title</field><field name="series_sim">Level 5 Series I. Megan&amp;#xA;                    O&amp;#39;Shea&amp;#xA;                  Rolodex&amp;#xA;                  on New York University Here is a&amp;#xA;                  title</field><field name="series_sim">Level 6 Series I. Megan&amp;#xA;                      O&amp;#39;Shea&amp;#xA;                    Rolodex on New York University Here is a&amp;#xA;                      title</field><field name="sort_ii">6</field><field name="unitdate_normal_sim">1981-08-31/1981-08-31</field><field name="unitdate_normal_ssm">1981-08-31/1981-08-31</field><field name="unitdate_normal_teim">1981-08-31/1981-08-31</field><field name="unitdate_ssm">1981-08-31</field><field name="unitdate_teim">1981-08-31</field><field name="unittitle_ssm">A File Nested Within a File, No Container</field><field name="unittitle_teim">A File Nested Within a File, No Container</field></doc></add>
+                      title &gt;&gt; A File Nested Within a File, No Container</field>
+    <field name="series_sim">Level 2 Series I. Megan&amp;#xA;              O&amp;#39;Shea&amp;#xA;            Rolodex on New York University Here is a&amp;#xA;              title</field>
+    <field name="series_sim">Level 3 Series I. Megan&amp;#xA;                O&amp;#39;Shea&amp;#xA;              Rolodex on New York University Here is a&amp;#xA;                title</field>
+    <field name="series_sim">Level 4 Series I. Megan&amp;#xA;                  O&amp;#39;Shea&amp;#xA;                Rolodex on New York University Here is a&amp;#xA;                  title</field>
+    <field name="series_sim">Level 5 Series I. Megan&amp;#xA;                    O&amp;#39;Shea&amp;#xA;                  Rolodex&amp;#xA;                  on New York University Here is a&amp;#xA;                  title</field>
+    <field name="series_sim">Level 6 Series I. Megan&amp;#xA;                      O&amp;#39;Shea&amp;#xA;                    Rolodex on New York University Here is a&amp;#xA;                      title</field>
+    <field name="sort_ii">6</field>
+    <field name="unitdate_normal_sim">1981-08-31/1981-08-31</field>
+    <field name="unitdate_normal_ssm">1981-08-31/1981-08-31</field>
+    <field name="unitdate_normal_teim">1981-08-31/1981-08-31</field>
+    <field name="unitdate_ssm">1981-08-31</field>
+    <field name="unitdate_teim">1981-08-31</field>
+    <field name="unittitle_ssm">A File Nested Within a File, No Container</field>
+    <field name="unittitle_teim">A File Nested Within a File, No Container</field>
+  </doc>
+</add>
