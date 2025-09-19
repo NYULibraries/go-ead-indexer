@@ -1,1 +1,46 @@
-<?xml version="1.0" encoding="UTF-8"?><add><doc><field name="author_teim">Valerie Paley and Jan Hilley, with later assistance by Alison Barr. </field><field name="collection_sim">Harmon Hendricks Goldstone Papers</field><field name="collection_ssm">Harmon Hendricks Goldstone Papers</field><field name="collection_teim">Harmon Hendricks Goldstone Papers</field><field name="collection_unitid_ssm">MS 256</field><field name="collection_unitid_teim">MS 256</field><field name="component_children_bsi">false</field><field name="component_level_isim">2</field><field name="date_range_sim">1901-2000</field><field name="ead_ssi">ms256_harmon_hendricks_goldstone</field><field name="format_sim">Archival Object</field><field name="format_ssm">Archival Object</field><field name="heading_ssm">&#34;A Guide to New York City Landmarks&#34;</field><field name="id">ms256_harmon_hendricks_goldstoneaspace_ref97_4pt</field><field name="level_sim">otherlevel</field><field name="location_si">Box: 14, Folder: 3</field><field name="location_ssm">Box: 14, Folder: 3</field><field name="parent_ssi">aspace_ref93_ztu</field><field name="parent_ssm">aspace_ref93_ztu</field><field name="parent_unittitles_ssm">Series VI. Books and Pamphlets</field><field name="parent_unittitles_teim">Series VI. Books and Pamphlets</field><field name="ref_ssi">aspace_ref97_4pt</field><field name="repository_sim">nyhs</field><field name="repository_ssi">nyhs</field><field name="repository_ssm">nyhs</field><field name="series_si">Series VI. Books and Pamphlets &gt;&gt; &#34;A Guide to New York City Landmarks&#34;</field><field name="series_sim">Series VI. Books and Pamphlets</field><field name="sort_ii">70</field><field name="unitdate_end_si">1979</field><field name="unitdate_end_sim">1979</field><field name="unitdate_end_ssm">1979</field><field name="unitdate_inclusive_teim">1979</field><field name="unitdate_normal_sim">1979/1979</field><field name="unitdate_normal_ssm">1979/1979</field><field name="unitdate_normal_teim">1979/1979</field><field name="unitdate_ssm">Inclusive, 1979</field><field name="unitdate_start_si">1979</field><field name="unitdate_start_sim">1979</field><field name="unitdate_start_ssm">1979</field><field name="unittitle_ssm">&#34;A Guide to New York City Landmarks&#34;</field><field name="unittitle_teim">&#34;A Guide to New York City Landmarks&#34;</field></doc></add>
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Valerie Paley and Jan Hilley, with later assistance by Alison Barr. </field>
+    <field name="collection_sim">Harmon Hendricks Goldstone Papers</field>
+    <field name="collection_ssm">Harmon Hendricks Goldstone Papers</field>
+    <field name="collection_teim">Harmon Hendricks Goldstone Papers</field>
+    <field name="collection_unitid_ssm">MS 256</field>
+    <field name="collection_unitid_teim">MS 256</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">ms256_harmon_hendricks_goldstone</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">&#34;A Guide to New York City Landmarks&#34;</field>
+    <field name="id">ms256_harmon_hendricks_goldstoneaspace_ref97_4pt</field>
+    <field name="level_sim">otherlevel</field>
+    <field name="location_si">Box: 14, Folder: 3</field>
+    <field name="location_ssm">Box: 14, Folder: 3</field>
+    <field name="parent_ssi">aspace_ref93_ztu</field>
+    <field name="parent_ssm">aspace_ref93_ztu</field>
+    <field name="parent_unittitles_ssm">Series VI. Books and Pamphlets</field>
+    <field name="parent_unittitles_teim">Series VI. Books and Pamphlets</field>
+    <field name="ref_ssi">aspace_ref97_4pt</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="series_si">Series VI. Books and Pamphlets &gt;&gt; &#34;A Guide to New York City Landmarks&#34;</field>
+    <field name="series_sim">Series VI. Books and Pamphlets</field>
+    <field name="sort_ii">70</field>
+    <field name="unitdate_end_si">1979</field>
+    <field name="unitdate_end_sim">1979</field>
+    <field name="unitdate_end_ssm">1979</field>
+    <field name="unitdate_inclusive_teim">1979</field>
+    <field name="unitdate_normal_sim">1979/1979</field>
+    <field name="unitdate_normal_ssm">1979/1979</field>
+    <field name="unitdate_normal_teim">1979/1979</field>
+    <field name="unitdate_ssm">Inclusive, 1979</field>
+    <field name="unitdate_start_si">1979</field>
+    <field name="unitdate_start_sim">1979</field>
+    <field name="unitdate_start_ssm">1979</field>
+    <field name="unittitle_ssm">&#34;A Guide to New York City Landmarks&#34;</field>
+    <field name="unittitle_teim">&#34;A Guide to New York City Landmarks&#34;</field>
+  </doc>
+</add>

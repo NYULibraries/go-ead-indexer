@@ -1,1 +1,37 @@
-<?xml version="1.0" encoding="UTF-8"?><add><doc><field name="author_teim">Cherie Acierno</field><field name="collection_sim">New York Foundling Hospital records</field><field name="collection_ssm">New York Foundling Hospital records</field><field name="collection_teim">New York Foundling Hospital records</field><field name="collection_unitid_ssm">MS 347</field><field name="collection_unitid_teim">MS 347</field><field name="component_children_bsi">false</field><field name="component_level_isim">2</field><field name="date_range_sim">undated &amp; other</field><field name="ead_ssi">ms347_foundling_hospital</field><field name="format_sim">Archival Object</field><field name="format_ssm">Archival Object</field><field name="heading_ssm">Correspondence - Sister Marilda Joseph Aiello to Sister Marie Catherine Blaine et.al. - folder 3 of 5</field><field name="id">ms347_foundling_hospitalaspace_ref329_442</field><field name="level_sim">file</field><field name="location_si">Offsite-Box: 18, Folder: 11</field><field name="location_ssm">Offsite-Box: 18, Folder: 11</field><field name="parent_ssi">aspace_ref3_uv9</field><field name="parent_ssm">aspace_ref3_uv9</field><field name="parent_unittitles_ssm">Series III. Administrative Records, Chronological, 1869-2004</field><field name="parent_unittitles_teim">Series III. Administrative Records, Chronological, 1869-2004</field><field name="ref_ssi">aspace_ref329_442</field><field name="repository_sim">nyhs</field><field name="repository_ssi">nyhs</field><field name="repository_ssm">nyhs</field><field name="series_si">Series III. Administrative Records, Chronological, 1869-2004 &gt;&gt; Correspondence - Sister Marilda Joseph Aiello to Sister Marie Catherine Blaine et.al. - folder 3 of 5</field><field name="series_sim">Series III. Administrative Records, Chronological, 1869-2004</field><field name="sort_ii">293</field><field name="unitdate_ssm">1989 January 2 - 1989 April 29</field><field name="unitdate_teim">1989 January 2 - 1989 April 29</field><field name="unittitle_ssm">Correspondence - Sister Marilda Joseph Aiello to Sister Marie Catherine Blaine et.al. - folder 3 of 5</field><field name="unittitle_teim">Correspondence - Sister Marilda Joseph Aiello to Sister Marie Catherine Blaine et.al. - folder 3 of 5</field></doc></add>
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Cherie Acierno</field>
+    <field name="collection_sim">New York Foundling Hospital records</field>
+    <field name="collection_ssm">New York Foundling Hospital records</field>
+    <field name="collection_teim">New York Foundling Hospital records</field>
+    <field name="collection_unitid_ssm">MS 347</field>
+    <field name="collection_unitid_teim">MS 347</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms347_foundling_hospital</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Correspondence - Sister Marilda Joseph Aiello to Sister Marie Catherine Blaine et.al. - folder 3 of 5</field>
+    <field name="id">ms347_foundling_hospitalaspace_ref329_442</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Offsite-Box: 18, Folder: 11</field>
+    <field name="location_ssm">Offsite-Box: 18, Folder: 11</field>
+    <field name="parent_ssi">aspace_ref3_uv9</field>
+    <field name="parent_ssm">aspace_ref3_uv9</field>
+    <field name="parent_unittitles_ssm">Series III. Administrative Records, Chronological, 1869-2004</field>
+    <field name="parent_unittitles_teim">Series III. Administrative Records, Chronological, 1869-2004</field>
+    <field name="ref_ssi">aspace_ref329_442</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="series_si">Series III. Administrative Records, Chronological, 1869-2004 &gt;&gt; Correspondence - Sister Marilda Joseph Aiello to Sister Marie Catherine Blaine et.al. - folder 3 of 5</field>
+    <field name="series_sim">Series III. Administrative Records, Chronological, 1869-2004</field>
+    <field name="sort_ii">293</field>
+    <field name="unitdate_ssm">1989 January 2 - 1989 April 29</field>
+    <field name="unitdate_teim">1989 January 2 - 1989 April 29</field>
+    <field name="unittitle_ssm">Correspondence - Sister Marilda Joseph Aiello to Sister Marie Catherine Blaine et.al. - folder 3 of 5</field>
+    <field name="unittitle_teim">Correspondence - Sister Marilda Joseph Aiello to Sister Marie Catherine Blaine et.al. - folder 3 of 5</field>
+  </doc>
+</add>

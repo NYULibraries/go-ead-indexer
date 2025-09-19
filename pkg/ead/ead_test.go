@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"github.com/nyulibraries/go-ead-indexer/pkg/ead/collectiondoc"
 	"github.com/nyulibraries/go-ead-indexer/pkg/ead/component"
-	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
 	"github.com/nyulibraries/go-ead-indexer/pkg/ead/testutils"
 	"github.com/nyulibraries/go-ead-indexer/pkg/util"
 	"os"
@@ -279,12 +278,7 @@ func testSolrAddMessageXML(testEAD string, fileID string,
 				actualFile, err)
 		}
 
-		// Diff the prettified XML and not the minified XML in the files,
-		// to make it easier for a human to see the discrepancies.
-		diff := util.DiffStrings("golden XML (prettified -- NOT the original)",
-			eadutil.PrettifySolrAddMessageXML(goldenValue),
-			"actual (prettified -- NOT the original)",
-			eadutil.PrettifySolrAddMessageXML(string(actualValue)))
+		diff := util.DiffStrings("golden XML", goldenValue, "actual", string(actualValue))
 		t.Errorf("golden and actual values for fileID \"%s\" do not match:\n%s",
 			fileID, diff)
 	}

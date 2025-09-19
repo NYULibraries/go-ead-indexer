@@ -1,1 +1,48 @@
-<?xml version="1.0" encoding="UTF-8"?><add><doc><field name="author_teim">Rebecca Altermatt</field><field name="collection_sim">Archives of Irish America County Societies Collection</field><field name="collection_ssm">Archives of Irish America County Societies Collection</field><field name="collection_teim">Archives of Irish America County Societies Collection</field><field name="collection_unitid_ssm">AIA.003</field><field name="collection_unitid_teim">AIA.003</field><field name="component_children_bsi">false</field><field name="component_level_isim">2</field><field name="date_range_sim">1901-2000</field><field name="ead_ssi">aia_003</field><field name="format_sim">Archival Object</field><field name="format_ssm">Archival Object</field><field name="heading_ssm">Carlow Assocation of New York: Correspondence</field><field name="id">aia_003aspace_ref53</field><field name="level_sim">file</field><field name="location_si">Box: 1, Folder: 8</field><field name="location_ssm">Box: 1, Folder: 8</field><field name="parent_ssi">aspace_ref12</field><field name="parent_ssm">aspace_ref12</field><field name="parent_unittitles_ssm">III. Carlow</field><field name="parent_unittitles_teim">III. Carlow</field><field name="ref_ssi">aspace_ref53</field><field name="repository_sim">tamwag</field><field name="repository_ssi">tamwag</field><field name="repository_ssm">tamwag</field><field name="series_si">III. Carlow &gt;&gt; Carlow Assocation of New York: Correspondence</field><field name="series_sim">III. Carlow</field><field name="sort_ii">29</field><field name="unitdate_end_si">1993</field><field name="unitdate_end_sim">1993</field><field name="unitdate_end_ssm">1993</field><field name="unitdate_inclusive_teim">1957, 1991-1993</field><field name="unitdate_normal_sim">1957/1993</field><field name="unitdate_normal_ssm">1957/1993</field><field name="unitdate_normal_teim">1957/1993</field><field name="unitdate_ssm">Inclusive, 1957, 1991-1993</field><field name="unitdate_start_si">1957</field><field name="unitdate_start_sim">1957</field><field name="unitdate_start_ssm">1957</field><field name="unitid_ssm">/repositories/2/archival_objects/311</field><field name="unitid_teim">/repositories/2/archival_objects/311</field><field name="unittitle_ssm">Carlow Assocation of New York: Correspondence</field><field name="unittitle_teim">Carlow Assocation of New York: Correspondence</field></doc></add>
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Rebecca Altermatt</field>
+    <field name="collection_sim">Archives of Irish America County Societies Collection</field>
+    <field name="collection_ssm">Archives of Irish America County Societies Collection</field>
+    <field name="collection_teim">Archives of Irish America County Societies Collection</field>
+    <field name="collection_unitid_ssm">AIA.003</field>
+    <field name="collection_unitid_teim">AIA.003</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">aia_003</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Carlow Assocation of New York: Correspondence</field>
+    <field name="id">aia_003aspace_ref53</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 1, Folder: 8</field>
+    <field name="location_ssm">Box: 1, Folder: 8</field>
+    <field name="parent_ssi">aspace_ref12</field>
+    <field name="parent_ssm">aspace_ref12</field>
+    <field name="parent_unittitles_ssm">III. Carlow</field>
+    <field name="parent_unittitles_teim">III. Carlow</field>
+    <field name="ref_ssi">aspace_ref53</field>
+    <field name="repository_sim">tamwag</field>
+    <field name="repository_ssi">tamwag</field>
+    <field name="repository_ssm">tamwag</field>
+    <field name="series_si">III. Carlow &gt;&gt; Carlow Assocation of New York: Correspondence</field>
+    <field name="series_sim">III. Carlow</field>
+    <field name="sort_ii">29</field>
+    <field name="unitdate_end_si">1993</field>
+    <field name="unitdate_end_sim">1993</field>
+    <field name="unitdate_end_ssm">1993</field>
+    <field name="unitdate_inclusive_teim">1957, 1991-1993</field>
+    <field name="unitdate_normal_sim">1957/1993</field>
+    <field name="unitdate_normal_ssm">1957/1993</field>
+    <field name="unitdate_normal_teim">1957/1993</field>
+    <field name="unitdate_ssm">Inclusive, 1957, 1991-1993</field>
+    <field name="unitdate_start_si">1957</field>
+    <field name="unitdate_start_sim">1957</field>
+    <field name="unitdate_start_ssm">1957</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/311</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/311</field>
+    <field name="unittitle_ssm">Carlow Assocation of New York: Correspondence</field>
+    <field name="unittitle_teim">Carlow Assocation of New York: Correspondence</field>
+  </doc>
+</add>

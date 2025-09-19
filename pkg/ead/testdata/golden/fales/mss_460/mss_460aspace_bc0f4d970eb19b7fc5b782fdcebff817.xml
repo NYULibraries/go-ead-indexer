@@ -1,1 +1,55 @@
-<?xml version="1.0" encoding="UTF-8"?><add><doc><field name="author_teim">Megan O&#39;Shea and Bess Pittman</field><field name="collection_sim">Adele Fournet Papers on the Bit Rosie Web Series</field><field name="collection_ssm">Adele Fournet Papers on the Bit Rosie Web Series</field><field name="collection_teim">Adele Fournet Papers on the Bit Rosie Web Series</field><field name="collection_unitid_ssm">MSS.460</field><field name="collection_unitid_teim">MSS.460</field><field name="component_children_bsi">false</field><field name="component_level_isim">3</field><field name="dao_sim">Online Access</field><field name="dao_ssm">Dion McKenzie  -- Full-length interview: 2016-</field><field name="dao_teim">Dion McKenzie  -- Full-length interview: 2016-</field><field name="date_range_sim">2001-2100</field><field name="ead_ssi">mss_460</field><field name="format_sim">Archival Object</field><field name="format_ssm">Archival Object</field><field name="heading_ssm">McKenzie, Dion -- Full-length interview</field><field name="id">mss_460aspace_bc0f4d970eb19b7fc5b782fdcebff817</field><field name="level_sim">item</field><field name="location_si">E-records: FA_MSS_460, object: FA_MSS_460_ER_25 </field><field name="location_ssm">E-records: FA_MSS_460, object: FA_MSS_460_ER_25 </field><field name="parent_ssi">aspace_2f903e908706a81cf4bd4aafa1fa2cd4</field><field name="parent_ssm">aspace_7951feea619b6c41436c556e0674d1c8</field><field name="parent_ssm">aspace_2f903e908706a81cf4bd4aafa1fa2cd4</field><field name="parent_unittitles_ssm">Adele Fournet Papers on the Bit Rosie Web Series</field><field name="parent_unittitles_ssm">McKenzie, Dion</field><field name="parent_unittitles_teim">Adele Fournet Papers on the Bit Rosie Web Series</field><field name="parent_unittitles_teim">McKenzie, Dion</field><field name="ref_ssi">aspace_bc0f4d970eb19b7fc5b782fdcebff817</field><field name="repository_sim">fales</field><field name="repository_ssi">fales</field><field name="repository_ssm">fales</field><field name="series_si">Adele Fournet Papers on the Bit Rosie Web Series &gt;&gt; McKenzie, Dion &gt;&gt; McKenzie, Dion -- Full-length interview</field><field name="series_sim">Adele Fournet Papers on the Bit Rosie Web Series</field><field name="series_sim">McKenzie, Dion</field><field name="sort_ii">33</field><field name="unitdate_end_si">2016</field><field name="unitdate_end_sim">2016</field><field name="unitdate_end_ssm">2016</field><field name="unitdate_normal_sim">2016/2016</field><field name="unitdate_normal_ssm">2016/2016</field><field name="unitdate_normal_teim">2016/2016</field><field name="unitdate_ssm">2016</field><field name="unitdate_start_si">2016</field><field name="unitdate_start_sim">2016</field><field name="unitdate_start_ssm">2016</field><field name="unitdate_teim">2016</field><field name="unitid_ssm">cuid5763</field><field name="unitid_teim">cuid5763</field><field name="unittitle_ssm">McKenzie, Dion -- Full-length interview</field><field name="unittitle_teim">McKenzie, Dion -- Full-length interview</field></doc></add>
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Megan O&#39;Shea and Bess Pittman</field>
+    <field name="collection_sim">Adele Fournet Papers on the Bit Rosie Web Series</field>
+    <field name="collection_ssm">Adele Fournet Papers on the Bit Rosie Web Series</field>
+    <field name="collection_teim">Adele Fournet Papers on the Bit Rosie Web Series</field>
+    <field name="collection_unitid_ssm">MSS.460</field>
+    <field name="collection_unitid_teim">MSS.460</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="dao_sim">Online Access</field>
+    <field name="dao_ssm">Dion McKenzie  -- Full-length interview: 2016-</field>
+    <field name="dao_teim">Dion McKenzie  -- Full-length interview: 2016-</field>
+    <field name="date_range_sim">2001-2100</field>
+    <field name="ead_ssi">mss_460</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">McKenzie, Dion -- Full-length interview</field>
+    <field name="id">mss_460aspace_bc0f4d970eb19b7fc5b782fdcebff817</field>
+    <field name="level_sim">item</field>
+    <field name="location_si">E-records: FA_MSS_460, object: FA_MSS_460_ER_25 </field>
+    <field name="location_ssm">E-records: FA_MSS_460, object: FA_MSS_460_ER_25 </field>
+    <field name="parent_ssi">aspace_2f903e908706a81cf4bd4aafa1fa2cd4</field>
+    <field name="parent_ssm">aspace_7951feea619b6c41436c556e0674d1c8</field>
+    <field name="parent_ssm">aspace_2f903e908706a81cf4bd4aafa1fa2cd4</field>
+    <field name="parent_unittitles_ssm">Adele Fournet Papers on the Bit Rosie Web Series</field>
+    <field name="parent_unittitles_ssm">McKenzie, Dion</field>
+    <field name="parent_unittitles_teim">Adele Fournet Papers on the Bit Rosie Web Series</field>
+    <field name="parent_unittitles_teim">McKenzie, Dion</field>
+    <field name="ref_ssi">aspace_bc0f4d970eb19b7fc5b782fdcebff817</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="series_si">Adele Fournet Papers on the Bit Rosie Web Series &gt;&gt; McKenzie, Dion &gt;&gt; McKenzie, Dion -- Full-length interview</field>
+    <field name="series_sim">Adele Fournet Papers on the Bit Rosie Web Series</field>
+    <field name="series_sim">McKenzie, Dion</field>
+    <field name="sort_ii">33</field>
+    <field name="unitdate_end_si">2016</field>
+    <field name="unitdate_end_sim">2016</field>
+    <field name="unitdate_end_ssm">2016</field>
+    <field name="unitdate_normal_sim">2016/2016</field>
+    <field name="unitdate_normal_ssm">2016/2016</field>
+    <field name="unitdate_normal_teim">2016/2016</field>
+    <field name="unitdate_ssm">2016</field>
+    <field name="unitdate_start_si">2016</field>
+    <field name="unitdate_start_sim">2016</field>
+    <field name="unitdate_start_ssm">2016</field>
+    <field name="unitdate_teim">2016</field>
+    <field name="unitid_ssm">cuid5763</field>
+    <field name="unitid_teim">cuid5763</field>
+    <field name="unittitle_ssm">McKenzie, Dion -- Full-length interview</field>
+    <field name="unittitle_teim">McKenzie, Dion -- Full-length interview</field>
+  </doc>
+</add>

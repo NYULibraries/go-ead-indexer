@@ -1,1 +1,42 @@
-<?xml version="1.0" encoding="UTF-8"?><add><doc><field name="author_teim">Brad Bauer</field><field name="collection_sim">Map Collection, NYU Abu Dhabi Library</field><field name="collection_ssm">Map Collection, NYU Abu Dhabi Library</field><field name="collection_teim">Map Collection, NYU Abu Dhabi Library</field><field name="collection_unitid_ssm">AD.MC.019</field><field name="collection_unitid_teim">AD.MC.019</field><field name="component_children_bsi">true</field><field name="component_level_isim">1</field><field name="date_range_sim">1901-2000</field><field name="date_range_sim">2001-2100</field><field name="ead_ssi">ad_mc_019</field><field name="format_sim">Archival Series</field><field name="format_ssm">Archival Series</field><field name="heading_ssm">Tübingen Atlas des Vorderen Orients (TAVO) = Atlas of the Near and Middle East.</field><field name="id">ad_mc_019aspace_a68a762e2aca52933dedc66002022f44</field><field name="level_sim">series</field><field name="phystech_teim">Publication data:  Wiesbaden : L. Reichert ; Berlin : Distributed by Kai-Henning Gerlach</field><field name="phystech_teim">Library call number:  F2205 .T8</field><field name="ref_ssi">aspace_a68a762e2aca52933dedc66002022f44</field><field name="repository_sim">nyuad</field><field name="repository_ssi">nyuad</field><field name="repository_ssm">nyuad</field><field name="series_si">Tübingen Atlas des Vorderen Orients (TAVO) = Atlas of the Near and Middle East.</field><field name="sort_ii">66</field><field name="unitdate_end_si">2003</field><field name="unitdate_end_sim">2003</field><field name="unitdate_end_ssm">2003</field><field name="unitdate_inclusive_teim">1994-2003</field><field name="unitdate_normal_sim">1994/2003</field><field name="unitdate_normal_ssm">1994/2003</field><field name="unitdate_normal_teim">1994/2003</field><field name="unitdate_ssm">Inclusive, 1994-2003</field><field name="unitdate_start_si">1994</field><field name="unitdate_start_sim">1994</field><field name="unitdate_start_ssm">1994</field><field name="unittitle_ssm">Tübingen Atlas des Vorderen Orients (TAVO) = Atlas of the Near and Middle East.</field><field name="unittitle_teim">Tübingen Atlas des Vorderen Orients (TAVO) = Atlas of the Near and Middle East.</field></doc></add>
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">Map Collection, NYU Abu Dhabi Library</field>
+    <field name="collection_ssm">Map Collection, NYU Abu Dhabi Library</field>
+    <field name="collection_teim">Map Collection, NYU Abu Dhabi Library</field>
+    <field name="collection_unitid_ssm">AD.MC.019</field>
+    <field name="collection_unitid_teim">AD.MC.019</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="date_range_sim">2001-2100</field>
+    <field name="ead_ssi">ad_mc_019</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Tübingen Atlas des Vorderen Orients (TAVO) = Atlas of the Near and Middle East.</field>
+    <field name="id">ad_mc_019aspace_a68a762e2aca52933dedc66002022f44</field>
+    <field name="level_sim">series</field>
+    <field name="phystech_teim">Publication data:  Wiesbaden : L. Reichert ; Berlin : Distributed by Kai-Henning Gerlach</field>
+    <field name="phystech_teim">Library call number:  F2205 .T8</field>
+    <field name="ref_ssi">aspace_a68a762e2aca52933dedc66002022f44</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Tübingen Atlas des Vorderen Orients (TAVO) = Atlas of the Near and Middle East.</field>
+    <field name="sort_ii">66</field>
+    <field name="unitdate_end_si">2003</field>
+    <field name="unitdate_end_sim">2003</field>
+    <field name="unitdate_end_ssm">2003</field>
+    <field name="unitdate_inclusive_teim">1994-2003</field>
+    <field name="unitdate_normal_sim">1994/2003</field>
+    <field name="unitdate_normal_ssm">1994/2003</field>
+    <field name="unitdate_normal_teim">1994/2003</field>
+    <field name="unitdate_ssm">Inclusive, 1994-2003</field>
+    <field name="unitdate_start_si">1994</field>
+    <field name="unitdate_start_sim">1994</field>
+    <field name="unitdate_start_ssm">1994</field>
+    <field name="unittitle_ssm">Tübingen Atlas des Vorderen Orients (TAVO) = Atlas of the Near and Middle East.</field>
+    <field name="unittitle_teim">Tübingen Atlas des Vorderen Orients (TAVO) = Atlas of the Near and Middle East.</field>
+  </doc>
+</add>
