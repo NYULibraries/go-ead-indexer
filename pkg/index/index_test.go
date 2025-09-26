@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"runtime"
 	"strings"
@@ -830,6 +831,52 @@ func TestIndexGitCommit_AddOneLogLevelDebug(t *testing.T) {
 	}
 }
 
+func TestIndexGitCommit_NoEADFiles(t *testing.T) {
+	logger = log.New()
+	redirectStdOutToPipe(t)
+	defer resetStdOut(t)
+
+	if err := logger.SetLevelByString("info"); err != nil {
+		t.Fatalf("ERROR: couldn't set log level: %s", err)
+	}
+
+	_ = InitLogger(logger)
+
+	repoPath := t.TempDir()
+
+	runGitCommand(t, repoPath, "init")
+	runGitCommand(t, repoPath, "config", "user.name", "Index Test")
+	runGitCommand(t, repoPath, "config", "user.email", "index@example.com")
+
+	readmePath := filepath.Join(repoPath, "README.md")
+	if err := os.WriteFile(readmePath, []byte("Test repository with no EAD files\n"), 0o644); err != nil {
+		t.Fatalf("could not write README.md: %s", err)
+	}
+
+	runGitCommand(t, repoPath, "add", "README.md")
+	runGitCommand(t, repoPath, "commit", "-m", "Add documentation")
+
+	commitHash := strings.TrimSpace(runGitCommand(t, repoPath, "rev-parse", "HEAD"))
+
+	sc := testutils.GetSolrClientMock()
+	sc.Reset()
+	SetSolrClient(sc)
+
+	if err := IndexGitCommit(repoPath, commitHash); err != nil {
+		t.Fatalf("IndexGitCommit() returned error for commit with no EAD files: %s", err)
+	}
+
+	if sc.CallCount != 0 {
+		t.Fatalf("expected Solr client not to be called, but CallCount was %d", sc.CallCount)
+	}
+
+	logOutput := string(getStdOutPipeData(t))
+	expectedSubstring := fmt.Sprintf("No EAD files to index for commit: %s", commitHash)
+	if !strings.Contains(logOutput, expectedSubstring) {
+		t.Fatalf("expected log output to contain %q, but it did not. Output: %s", expectedSubstring, logOutput)
+	}
+}
+
 func TestIndexGitCommit_AddThreeDeleteTwo(t *testing.T) {
 	/*
 	   # Commit history replicated in repo (NOTE: commit hashes WILL differ)
@@ -1473,6 +1520,26 @@ func deleteTestGitRepo(t *testing.T) {
 			`deleteTestGitRepo() failed with error "%s", remove %s manually`,
 			err.Error(), gitRepoTestGitRepoPathAbsolute)
 	}
+}
+
+func runGitCommand(t *testing.T, dir string, args ...string) string {
+	t.Helper()
+
+	cmd := exec.Command("git", args...)
+	cmd.Dir = dir
+	cmd.Env = append(os.Environ(),
+		"GIT_AUTHOR_NAME=Index Tester",
+		"GIT_AUTHOR_EMAIL=index.tester@example.com",
+		"GIT_COMMITTER_NAME=Index Tester",
+		"GIT_COMMITTER_EMAIL=index.tester@example.com",
+	)
+
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		t.Fatalf("git %s failed: %s (output: %s)", strings.Join(args, " "), err, string(output))
+	}
+
+	return string(output)
 }
 
 // getStdOutFileData reads the data from tmp file
