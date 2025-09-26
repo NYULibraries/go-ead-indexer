@@ -185,6 +185,11 @@ func IndexGitCommit(repoPath, commit string) error {
 		return err
 	}
 
+	if len(operations) == 0 {
+		logInfo(fmt.Sprintf("No EAD files to index for commit: %s", commit))
+		return nil
+	}
+
 	for _, eadFileRelativePath := range slices.Sorted(maps.Keys(operations)) {
 		operation := operations[eadFileRelativePath]
 
