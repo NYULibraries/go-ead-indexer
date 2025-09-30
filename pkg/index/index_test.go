@@ -18,24 +18,26 @@ import (
 
 /*
 	# Commit history from test fixture
-	91bee740e0a2d80072264bf960e38d60dfbed2b3 2025-05-09 19:41:50 -0400 | Updating nyuad/ad_mc_019.xml, Deleting file tamwag/tam_143.xml EADID='tam_143', Updating edip/mos_2024.xml, Deleting file cbh/arc_212_plymouth_beecher.xml EADID='arc_212_plymouth_beecher', Updating akkasah/ad_mc_030.xml (HEAD -> master) [David]
-	3effc68f1e059604251ac754e3200aefb33bd354 2025-05-09 19:41:50 -0400 | Updating tamwag/tam_143.xml, Updating cbh/arc_212_plymouth_beecher.xml [David]
-	ade6593ec60e6c9b7db328cc9bb5b76f0d4adfb0 2025-05-09 19:41:50 -0400 | Deleting file fales/mss_420.xml EADID='mss_420', Updating fales/mss_420.xml [David]
-	aa75b88bf7c4b84d2d0dc050ba16e201132e7184 2025-05-09 19:41:49 -0400 | Updating fales/mss_420.xml [David]
-	675721b215971865d096ea88feda6c48c215cfd1 2025-05-09 19:41:49 -0400 | Deleting file fales/mss_460.xml EADID='mss_460' [David]
-	a8fd43f8d9cbfc61569eea4faf62cade51bc90f3 2025-05-09 19:41:49 -0400 | Updating fales/mss_460.xml [David]
-	445975c893fdfbcd03a4893c14c79bc66c77eccc 2025-05-09 19:41:49 -0400 | Deleting file akkasah/ad_mc_030.xml EADID='ad_mc_030', Deleting file cbh/arc_212_plymouth_beecher.xml EADID='arc_212_plymouth_beecher', Deleting file edip/mos_2024.xml EADID='mos_2024', Deleting file fales/mss_420.xml EADID='mss_420', Deleting file fales/mss_460.xml EADID='mss_460', Deleting file nyhs/ms256_harmon_hendricks_goldstone.xml EADID='ms256_harmon_hendricks_goldstone', Deleting file nyhs/ms347_foundling_hospital.xml EADID='ms347_foundling_hospital', Deleting file nyuad/ad_mc_019.xml EADID='ad_mc_019', Deleting file tamwag/tam_143.xml EADID='tam_143' [David]
-	873cd3486d6522e449a6bf436eba560be2f7d528 2025-05-09 19:41:49 -0400 | Updating akkasah/ad_mc_030.xml, Updating cbh/arc_212_plymouth_beecher.xml, Updating edip/mos_2024.xml, Updating fales/mss_420.xml, Updating fales/mss_460.xml, Updating nyhs/ms256_harmon_hendricks_goldstone.xml, Updating nyhs/ms347_foundling_hospital.xml, Updating nyuad/ad_mc_019.xml, Updating tamwag/tam_143.xml [David]
+	6696e0513a6dcb38e14a1da46ac7ba44611c6f90 Updating README.md (HEAD -> master)
+	598ce06b5bf534e9dec0db5fd64bee88020c6571 Updating nyuad/ad_mc_019.xml, Deleting file tamwag/tam_143.xml EADID='tam_143', Updating edip/mos_2024.xml, Deleting file cbh/arc_212_plymouth_beecher.xml EADID='arc_212_plymouth_beecher', Updating akkasah/ad_mc_030.xml
+	50fc07058d893854b2eab1ce6285aa98d6596a16 Updating tamwag/tam_143.xml, Updating cbh/arc_212_plymouth_beecher.xml
+	244e53e7827640496ead934516ccb68d5d25cb96 Deleting file fales/mss_420.xml EADID='mss_420', Updating fales/mss_420.xml
+	dc63b18f64864f2bdcaffee758e4c590dac8f5ab Updating fales/mss_420.xml
+	cb2d1300d7c5572bed7a6f2ec5aa67f023fe087c Deleting file fales/mss_460.xml EADID='mss_460'
+	52ac657cc70005670c2ba97c23fba68ce8f1f9de Updating fales/mss_460.xml
+	6c82536efc4149599c6d341e34dcc1255131c365 Deleting file akkasah/ad_mc_030.xml EADID='ad_mc_030', Deleting file cbh/arc_212_plymouth_beecher.xml EADID='arc_212_plymouth_beecher', Deleting file edip/mos_2024.xml EADID='mos_2024', Deleting file fales/mss_420.xml EADID='mss_420', Deleting file fales/mss_460.xml EADID='mss_460', Deleting file nyhs/ms256_harmon_hendricks_goldstone.xml EADID='ms256_harmon_hendricks_goldstone', Deleting file nyhs/ms347_foundling_hospital.xml EADID='ms347_foundling_hospital', Deleting file nyuad/ad_mc_019.xml EADID='ad_mc_019', Deleting file tamwag/tam_143.xml EADID='tam_143'
+	6c814c9836fc2abfa89d49f548fcd9cb11eae78a Updating akkasah/ad_mc_030.xml, Updating cbh/arc_212_plymouth_beecher.xml, Updating edip/mos_2024.xml, Updating fales/mss_420.xml, Updating fales/mss_460.xml, Updating nyhs/ms256_harmon_hendricks_goldstone.xml, Updating nyhs/ms347_foundling_hospital.xml, Updating nyuad/ad_mc_019.xml, Updating tamwag/tam_143.xml
 */
 
 // hashes from the git-repo fixture (in order of commits)
-var addAllHash = "873cd3486d6522e449a6bf436eba560be2f7d528"
-var deleteAllHash = "445975c893fdfbcd03a4893c14c79bc66c77eccc"
-var addOneHash = "a8fd43f8d9cbfc61569eea4faf62cade51bc90f3"
-var deleteOneHash = "675721b215971865d096ea88feda6c48c215cfd1"
-var deleteModifyAddHash = "ade6593ec60e6c9b7db328cc9bb5b76f0d4adfb0"
-var addTwoHash = "3effc68f1e059604251ac754e3200aefb33bd354"
-var addThreeDeleteTwoHash = "91bee740e0a2d80072264bf960e38d60dfbed2b3"
+var addAllHash = "6c814c9836fc2abfa89d49f548fcd9cb11eae78a"
+var deleteAllHash = "6c82536efc4149599c6d341e34dcc1255131c365"
+var addOneHash = "52ac657cc70005670c2ba97c23fba68ce8f1f9de"
+var deleteOneHash = "cb2d1300d7c5572bed7a6f2ec5aa67f023fe087c"
+var deleteModifyAddHash = "244e53e7827640496ead934516ccb68d5d25cb96"
+var addTwoHash = "50fc07058d893854b2eab1ce6285aa98d6596a16"
+var addThreeDeleteTwoHash = "598ce06b5bf534e9dec0db5fd64bee88020c6571"
+var noEADFilesInCommitHash = "6696e0513a6dcb38e14a1da46ac7ba44611c6f90"
 
 // test git repo paths
 var thisPath string
@@ -1295,6 +1297,33 @@ func TestIndexGitCommit_FailFast(t *testing.T) {
 	// indexing should NOT have completed
 	if sc.IsComplete() {
 		t.Errorf("All files were added to the Solr index when indexing should have halted.")
+	}
+}
+
+func TestIndexGitCommit_NoEADFilesInCommit(t *testing.T) {
+	// cleanup any leftovers from interrupted tests
+	deleteTestGitRepo(t)
+
+	createTestGitRepo(t)
+	defer deleteTestGitRepo(t)
+
+	sc := testutils.GetSolrClientMock()
+
+	// Set the Solr client
+	SetSolrClient(sc)
+
+	numIndexerOperations, err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute, noEADFilesInCommitHash)
+	if err != nil {
+		t.Errorf("Unexpected error calling IndexGitCommit(): %s", err)
+	}
+
+	if numIndexerOperations > 0 {
+		t.Errorf("Expected number of indexer operations for git commit to be 0,"+
+			" but it was %d", numIndexerOperations)
+	}
+
+	if sc.CallCount > 0 {
+		t.Errorf("Expected SolrClientMock.CallCount to be 0, but the call count was %d", sc.CallCount)
 	}
 }
 

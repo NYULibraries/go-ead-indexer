@@ -79,6 +79,9 @@ ADD_THREE_EADS_NUM_01='nyuad/ad_mc_019.xml'
 ADD_THREE_EADS_NUM_02='edip/mos_2024.xml'
 ADD_THREE_EADS_NUM_03='akkasah/ad_mc_030.xml'
 
+# Non-EAD file
+README='README.md'
+
 #------------------------------------------------------------------------------
 # FUNCTIONS
 #------------------------------------------------------------------------------
@@ -221,6 +224,18 @@ rm_file "$ADD_AND_DELETE_TWO_EADS_NUM_02"
 
 cp_ead "$ADD_THREE_EADS_NUM_03"
 add_file "$ADD_THREE_EADS_NUM_03"
+
+strip_commit_str_trailing_comma_space
+git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
+
+
+echo "------------------------------------------------------------------------------"
+echo "setting up 'no EAD files to index'"
+echo "------------------------------------------------------------------------------"
+commit_str=""
+
+echo 'README.md' > $README
+add_file "$README"
 
 strip_commit_str_trailing_comma_space
 git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
