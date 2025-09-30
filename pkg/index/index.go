@@ -161,7 +161,7 @@ func IndexEADFile(eadPath string) error {
 }
 
 func IndexGitCommit(repoPath, commit string) (int, error) {
-	numIndexOperations := 0
+	numIndexerOperations := 0
 
 	logString := fmt.Sprintf("IndexGitCommit(%s, %s)", repoPath, commit)
 	logDebug(logString)
@@ -170,24 +170,24 @@ func IndexGitCommit(repoPath, commit string) (int, error) {
 	logDebug("assertSolrClientSet()")
 	err := assertSolrClientSet()
 	if err != nil {
-		return numIndexOperations, err
+		return numIndexerOperations, err
 	}
 
 	// checkout the git commit
 	logDebug(fmt.Sprintf("git.CheckoutMergeReset(%s, %s)", repoPath, commit))
 	err = git.CheckoutMergeReset(repoPath, commit)
 	if err != nil {
-		return numIndexOperations, err
+		return numIndexerOperations, err
 	}
 
 	// get the list of EAD files and their operations
 	logDebug(fmt.Sprintf("git.ListEADFilesForCommit(%s, %s)", repoPath, commit))
 	operations, err := git.ListEADFilesForCommit(repoPath, commit)
 	if err != nil {
-		return numIndexOperations, err
+		return numIndexerOperations, err
 	}
 
-	numIndexOperations = len(operations)
+	numIndexerOperations = len(operations)
 
 	for _, eadFileRelativePath := range slices.Sorted(maps.Keys(operations)) {
 		operation := operations[eadFileRelativePath]
@@ -196,26 +196,26 @@ func IndexGitCommit(repoPath, commit string) (int, error) {
 		case git.Add:
 			err = IndexEADFile(filepath.Join(repoPath, eadFileRelativePath))
 			if err != nil {
-				return numIndexOperations, err
+				return numIndexerOperations, err
 			}
 
 		case git.Delete:
 			eadID, err := eadutil.EADPathToEADID(eadFileRelativePath)
 			if err != nil {
-				return numIndexOperations, err
+				return numIndexerOperations, err
 			}
 
 			err = DeleteEADFileDataFromIndex(eadID)
 			if err != nil {
-				return numIndexOperations, err
+				return numIndexerOperations, err
 			}
 
 		default:
-			return numIndexOperations, fmt.Errorf("unknown operation: %s", operation)
+			return numIndexerOperations, fmt.Errorf("unknown operation: %s", operation)
 		}
 	}
 
-	return numIndexOperations, nil
+	return numIndexerOperations, nil
 }
 
 func InitLogger(l log.Logger) error {
