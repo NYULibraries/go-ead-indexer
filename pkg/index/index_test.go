@@ -680,10 +680,10 @@ func TestIndexGitCommit_AddAll(t *testing.T) {
 	// Set the Solr client
 	SetSolrClient(sc)
 
-	// Index the EAD file
+	// Index the git commit
 	_, err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute, addAllHash)
 	if err != nil {
-		t.Errorf("Error indexing EAD file: %s", err)
+		t.Errorf("Error indexing git commit: %s", err)
 	}
 
 	err = sc.CheckAssertionsViaEvents()
@@ -728,10 +728,10 @@ func TestIndexGitCommit_AddOne(t *testing.T) {
 	// Set the Solr client
 	SetSolrClient(sc)
 
-	// Index the EAD file
+	// Index the git commit
 	_, err = IndexGitCommit(gitRepoTestGitRepoPathAbsolute, addOneHash)
 	if err != nil {
-		t.Errorf("Error indexing EAD file: %s", err)
+		t.Errorf("Error indexing git commit: %s", err)
 	}
 
 	err = sc.CheckAssertionsViaEvents()
@@ -780,10 +780,10 @@ func TestIndexGitCommit_AddOneLogLevelDebug(t *testing.T) {
 	// Set the Solr client
 	SetSolrClient(sc)
 
-	// Index the EAD file
+	// Index the git commit
 	_, err = IndexGitCommit(gitRepoTestGitRepoPathAbsolute, addOneHash)
 	if err != nil {
-		t.Errorf("Error indexing EAD file: %s", err)
+		t.Errorf("Error indexing git commit: %s", err)
 	}
 
 	err = sc.CheckAssertionsViaEvents()
@@ -876,10 +876,10 @@ func TestIndexGitCommit_AddThreeDeleteTwo(t *testing.T) {
 	// Set the Solr client
 	SetSolrClient(sc)
 
-	// Index the EAD file
+	// Index the git commit
 	_, err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute, addThreeDeleteTwoHash)
 	if err != nil {
-		t.Errorf("Error indexing EAD file: %s", err)
+		t.Errorf("Error indexing git commit: %s", err)
 	}
 
 	err = sc.CheckAssertionsViaEvents()
@@ -946,10 +946,10 @@ func TestIndexGitCommit_AddThreeDeleteTwoLogLevelInfo(t *testing.T) {
 	// Set the Solr client
 	SetSolrClient(sc)
 
-	// Index the EAD file
+	// Index the git commit
 	_, err = IndexGitCommit(gitRepoTestGitRepoPathAbsolute, addThreeDeleteTwoHash)
 	if err != nil {
-		t.Errorf("Error indexing EAD file: %s", err)
+		t.Errorf("Error indexing git commit: %s", err)
 	}
 
 	err = sc.CheckAssertionsViaEvents()
@@ -1030,10 +1030,10 @@ func TestIndexGitCommit_AddTwo(t *testing.T) {
 	// Set the Solr client
 	SetSolrClient(sc)
 
-	// Index the EAD file
+	// Index the git commit
 	_, err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute, addTwoHash)
 	if err != nil {
-		t.Errorf("Error indexing EAD file: %s", err)
+		t.Errorf("Error indexing git commit: %s", err)
 	}
 
 	err = sc.CheckAssertionsViaEvents()
@@ -1065,7 +1065,7 @@ func TestIndexGitCommit_BadCommitCheckout(t *testing.T) {
 	// Set the Solr client
 	SetSolrClient(sc)
 
-	// Index the EAD file
+	// Index the git commit
 	_, err = IndexGitCommit(gitRepoTestGitRepoPathAbsolute, "this-is-a-bad-commit-hash")
 	if err == nil {
 		t.Errorf("Expected an error, but got nil")
@@ -1115,10 +1115,10 @@ func TestIndexGitCommit_DeleteAll(t *testing.T) {
 	// Set the Solr client
 	SetSolrClient(sc)
 
-	// Index the EAD file
+	// Index the git commit
 	_, err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute, deleteAllHash)
 	if err != nil {
-		t.Errorf("Error indexing EAD file: %s", err)
+		t.Errorf("Error indexing git commit: %s", err)
 	}
 
 	err = sc.CheckAssertionsViaEvents()
@@ -1169,10 +1169,10 @@ func TestIndexGitCommit_DeleteModifyAdd(t *testing.T) {
 	// Set the Solr client
 	SetSolrClient(sc)
 
-	// Index the EAD file
+	// Index the git commit
 	_, err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute, deleteModifyAddHash)
 	if err != nil {
-		t.Errorf("Error indexing EAD file: %s", err)
+		t.Errorf("Error indexing git commit: %s", err)
 	}
 
 	err = sc.CheckAssertionsViaEvents()
@@ -1205,10 +1205,10 @@ func TestIndexGitCommit_DeleteOne(t *testing.T) {
 	// Set the Solr client
 	SetSolrClient(sc)
 
-	// Index the EAD file
+	// Index the git commit
 	_, err = IndexGitCommit(gitRepoTestGitRepoPathAbsolute, deleteOneHash)
 	if err != nil {
-		t.Errorf("Error indexing EAD file: %s", err)
+		t.Errorf("Error indexing git commit: %s", err)
 	}
 
 	err = sc.CheckAssertionsViaEvents()
@@ -1274,7 +1274,7 @@ func TestIndexGitCommit_FailFast(t *testing.T) {
 	// Set the Solr client
 	SetSolrClient(sc)
 
-	// Index the EAD file
+	// Index the git commit
 	_, err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute, addThreeDeleteTwoHash)
 	if err == nil {
 		t.Errorf("Expected error from IndexGitCommit() but no error was returned.")
@@ -1349,7 +1349,7 @@ func TestIndexGitCommit_RollbackOnBadDelete(t *testing.T) {
 	// Set the Solr client
 	SetSolrClient(sc)
 
-	// Index the EAD file
+	// Index the git commit
 	_, err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute,
 		addThreeDeleteTwoHash)
 	if err == nil {
