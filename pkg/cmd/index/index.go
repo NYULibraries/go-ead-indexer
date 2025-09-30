@@ -207,14 +207,16 @@ func runIndexEAD() error {
 
 func runIndexGitCommit() error {
 	// index Git Commit
-	err := index.IndexGitCommit(gitRepoPath, gitCommit)
+	numIndexerOperations, err := index.IndexGitCommit(gitRepoPath, gitCommit)
 	if err != nil {
 		emsg := fmt.Sprintf("problem indexing git commit %s: %s", gitCommit, err)
 		return logAndReturnError(emsg)
 	}
 
 	// log success message
-	logger.Info(index.MessageKey, fmt.Sprintf("SUCCESS: indexed git commit: %s", gitCommit))
+	logger.Info(index.MessageKey, fmt.Sprintf(
+		"SUCCESS: %d index operations carried out for git commit: %s",
+		numIndexerOperations, gitCommit))
 	return nil
 }
 
