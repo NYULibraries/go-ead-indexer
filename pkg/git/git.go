@@ -140,10 +140,13 @@ func ListEADFilesForCommit(repoPath string,
 
 		for {
 			file, err := files.Next()
-			if err != nil || !isValidFilepath(file.Name) {
+			if err != nil {
 				break
 			}
-			operations[file.Name] = Add
+
+			if isValidFilepath(file.Name) {
+				operations[file.Name] = Add
+			}
 		}
 		return operations, nil
 	}
