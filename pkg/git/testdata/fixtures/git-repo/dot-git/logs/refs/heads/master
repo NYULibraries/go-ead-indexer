@@ -1,9 +1,7 @@
-0000000000000000000000000000000000000000 b9643747231f043fecc4dbd2fbfc9cf74d4b2411 David <da70@nyu.edu> 1758831368 -0400	commit (initial): Initial commit of README.md and .circle/config.yml
-b9643747231f043fecc4dbd2fbfc9cf74d4b2411 6fd1aa5fc2b926e172a0f1eac7bb9b25c8492f05 David <da70@nyu.edu> 1758831368 -0400	commit: Updating file fales/mss_001.xml
-6fd1aa5fc2b926e172a0f1eac7bb9b25c8492f05 02527c547193bc6cdf350982d6fdc414d3eb7da2 David <da70@nyu.edu> 1758831368 -0400	commit: Updating file fales/mss_002.xml, Updating file fales/mss_003.xml
-02527c547193bc6cdf350982d6fdc414d3eb7da2 7e56b7bb91a1d6bbe7c1e33f7eb9b505c015e211 David <da70@nyu.edu> 1758831368 -0400	commit: Updating file archives/cap_1.xml, Updating file fales/mss_004.xml, Updating file tamwag/aia_001.xml
-7e56b7bb91a1d6bbe7c1e33f7eb9b505c015e211 30bc19d0b6c81c122da68d09402663828ec4531f David <da70@nyu.edu> 1758831368 -0400	commit: Updating file archives/mc_1.xml, Deleting file fales/mss_002.xml EADID='mss_002', Updating file fales/mss_005.xml, Updating file tamwag/aia_002.xml
-30bc19d0b6c81c122da68d09402663828ec4531f 3f73d608bbec55a238f681e0ad03146f8c1e07cd David <da70@nyu.edu> 1758831368 -0400	commit: Updating file fales/mss_001.xml
-3f73d608bbec55a238f681e0ad03146f8c1e07cd 194d03ab56b9e31214f9d3584263903f93fbbeb4 David <da70@nyu.edu> 1758831369 -0400	commit: Updating README.md with [whatever]
-194d03ab56b9e31214f9d3584263903f93fbbeb4 d3380b931fcd4cd2b0f1c2c56de33c1a23341e79 David <da70@nyu.edu> 1758831369 -0400	commit: Updating .circleci/config.yml with [whatever]
-d3380b931fcd4cd2b0f1c2c56de33c1a23341e79 6eecccce69111335d35eb2723c5cd78954119bb3 David <da70@nyu.edu> 1758831369 -0400	commit: [Do something special to] archives/mc_1.xml and add note about it to README.md
+0000000000000000000000000000000000000000 3c20e78557fbf11e77b7fb9e551b7c1b2d508261 David <da70@nyu.edu> 1759787432 -0400	commit (initial): Initial commit of fales/mss_001.xml, README.md, and .circle/config.yml
+3c20e78557fbf11e77b7fb9e551b7c1b2d508261 80301c37ccc2998fd2a8b021a731296273d37467 David <da70@nyu.edu> 1759787433 -0400	commit: Updating file fales/mss_002.xml, Updating file fales/mss_003.xml
+80301c37ccc2998fd2a8b021a731296273d37467 2a5cc008d17384ab183dba69190251e0503fa315 David <da70@nyu.edu> 1759787433 -0400	commit: Updating file archives/cap_1.xml, Updating file fales/mss_004.xml, Updating file tamwag/aia_001.xml
+2a5cc008d17384ab183dba69190251e0503fa315 f34cf26e0a8c70511b7941921ee5016c4fcf3fce David <da70@nyu.edu> 1759787433 -0400	commit: Updating file archives/mc_1.xml, Deleting file fales/mss_002.xml EADID='mss_002', Updating file fales/mss_005.xml, Updating file tamwag/aia_002.xml
+f34cf26e0a8c70511b7941921ee5016c4fcf3fce df2bfddf4a599e4a24373320e91366df90dc708a David <da70@nyu.edu> 1759787433 -0400	commit: Updating file fales/mss_001.xml
+df2bfddf4a599e4a24373320e91366df90dc708a e6af7e810b8002761077a943689529405d558697 David <da70@nyu.edu> 1759787433 -0400	commit: Updating README.md with [whatever] and .circleci/config.yml with [whatever]
+e6af7e810b8002761077a943689529405d558697 8adb38c5f05fce5ef8ef9b97b4721b5a962057ea David <da70@nyu.edu> 1759787433 -0400	commit: [Do something special to] archives/mc_1.xml and add note about it to README.md

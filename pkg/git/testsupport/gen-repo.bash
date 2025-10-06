@@ -6,16 +6,14 @@
 # The git-repo directory can be moved into the pkg/git/testdata/fixtures directory
 # for use in git pkg tests.
 
-# Commit history replicated in repo (NOTE: commit hashes WILL differ)
-# 039021182a1d291b7d0638b19e1a3cd91a0eace9 2025-09-25 15:19:56 -0400 | Rename archives/mc_1.xml -> archives/mc_0.xml and add note about it to README.md (HEAD -> master) [David]
-# 49e0b399e657d626c7d5e6a6cf937e0aa8481863 2025-09-25 15:19:56 -0400 | Updating .circleci/config.yml with [whatever] [David]
-# 51d8153c9fee66173b7dd926f460d1bf34f647cb 2025-09-25 15:19:56 -0400 | Updating README.md with [whatever] [David]
-# 60d7bc6b81bd415154b5cb8a4ef7f132dbb10733 2025-09-25 15:19:56 -0400 | Updating file fales/mss_001.xml [David]
-# 161c00ae8a330d03b0e7c374a81ef05e12ea7084 2025-09-25 15:19:56 -0400 | Updating file archives/mc_1.xml, Deleting file fales/mss_002.xml EADID='mss_002', Updating file fales/mss_005.xml, Updating file tamwag/aia_002.xml [David]
-# 8667d870f483e13d08abcaccd5908d6103e430a8 2025-09-25 15:19:55 -0400 | Updating file archives/cap_1.xml, Updating file fales/mss_004.xml, Updating file tamwag/aia_001.xml [David]
-# 0b3d154283e14443874c2c743ac93666b84ce4ab 2025-09-25 15:19:55 -0400 | Updating file fales/mss_002.xml, Updating file fales/mss_003.xml [David]
-# c4ef6e204f4e7da3f72c1c0798759d0d7780da83 2025-09-25 15:19:55 -0400 | Updating file fales/mss_001.xml [David]
-# e0c4b58339f58250e0ec86cc19a8a41aa1910fbb 2025-09-25 15:19:55 -0400 | Initial commit of README.md and .circle/config.yml [David]
+# Commit history replicated in repo
+# 8adb38c5f05fce5ef8ef9b97b4721b5a962057ea 2025-10-06 17:50:33 -0400 | [Do something special to] archives/mc_1.xml and add note about it to README.md (HEAD -> master)
+# e6af7e810b8002761077a943689529405d558697 2025-10-06 17:50:33 -0400 | Updating README.md with [whatever] and .circleci/config.yml with [whatever]
+# df2bfddf4a599e4a24373320e91366df90dc708a 2025-10-06 17:50:33 -0400 | Updating file fales/mss_001.xml
+# f34cf26e0a8c70511b7941921ee5016c4fcf3fce 2025-10-06 17:50:33 -0400 | Updating file archives/mc_1.xml, Deleting file fales/mss_002.xml EADID='mss_002', Updating file fales/mss_005.xml, Updating file tamwag/aia_002.xml
+# 2a5cc008d17384ab183dba69190251e0503fa315 2025-10-06 17:50:33 -0400 | Updating file archives/cap_1.xml, Updating file fales/mss_004.xml, Updating file tamwag/aia_001.xml
+# 80301c37ccc2998fd2a8b021a731296273d37467 2025-10-06 17:50:33 -0400 | Updating file fales/mss_002.xml, Updating file fales/mss_003.xml
+# 3c20e78557fbf11e77b7fb9e551b7c1b2d508261 2025-10-06 17:50:32 -0400 | Initial commit of fales/mss_001.xml, README.md, and .circle/config.yml
 
 err_exit() {
     echo "$@" 1>&2
@@ -64,8 +62,26 @@ echo "setting up git repository"
 echo "------------------------------------------------------------------------------"
 git init .
 
-git add README.md .circleci/config.yml
-git commit -m "Initial commit of README.md and .circle/config.yml"
+# It is required that this test repo initial commit have a mix of at least one
+# EAD file to index and one non-EAD file, with at least one EAD file sorting
+# lexicographically after at least one non-EAD file.
+# (Joe established that `go-git` sorts files affected in a commit
+# lexicographically-- see this Jira comment:
+# https://nyu.atlassian.net/browse/DLFA-222?focusedCommentId=52815).
+# The reason for this requirement is that when this initial test repo commit was
+# originally added for https://nyu.atlassian.net/browse/DLFA-302, it had only
+# the README.md and .circleci/config.yml file in it, and the appropriate test
+# was added to ensure that commits with no EAD files to index did not get
+# processed.  However, the test for the bugfix itself had a bug:
+# https://github.com/NYULibraries/go-ead-indexer/blob/8e4495f8130f9d155d642ffa4cc2dba935c277e5/pkg/git/git.go#L143
+# ...which only manifested an error if the initial test repo commit contained an
+# EAD file to index after a non-EAD file, which unfortunately wasn't the case.
+# The bug has been fixed and we have updated this test repo initial commit
+# accordingly.  This condition must be maintained going forward.
+# For details, see this comment in the bug ticket:
+# https://nyu.atlassian.net/browse/DLFA-302?focusedCommentId=222897
+git add fales/mss_001.xml README.md .circleci/config.yml
+git commit -m "Initial commit of fales/mss_001.xml, README.md, and .circle/config.yml"
 
 git add fales/mss_001.xml
 git commit -m "Updating file fales/mss_001.xml"
@@ -87,12 +103,10 @@ git add fales/mss_001.xml
 git commit -m 'Updating file fales/mss_001.xml'
 
 echo 'README.md update' > README.md
-git add README.md
-git commit -m 'Updating README.md with [whatever]'
-
 echo 'config.yml update' > .circleci/config.yml
+git add README.md
 git add .circleci/config.yml
-git commit -m 'Updating .circleci/config.yml with [whatever]'
+git commit -m 'Updating README.md with [whatever] and .circleci/config.yml with [whatever]'
 
 echo 'README.md [had to do something special to archives/mc_1.xml' > README.md
 git add README.md
@@ -104,7 +118,7 @@ git commit -m '[Do something special to] archives/mc_1.xml and add note about it
 echo "------------------------------------------------------------------------------"
 echo "listing commit history so that hashes can be used in tests"
 echo "------------------------------------------------------------------------------"
-git log --pretty=format:"%H %ad | %s%d [%an]" --date=iso
+git log --pretty=format:"%H %ad | %s%d" --date=iso
 echo "------------------------------------------------------------------------------"
 
 popd &>/dev/null || err_exit "Failed to popd after git operations"
