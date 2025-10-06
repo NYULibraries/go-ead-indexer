@@ -5,9 +5,12 @@
 
 # Ephemeral test fixtures that are ignored here in case they
 # are not cleaned up because of an interrupted test.
+pkg/cmd/index/testdata/fixtures/test-git-repo
 pkg/debug/testdata/fixtures/test-git-repo
 pkg/git/testdata/fixtures/test-git-repo
+pkg/git/testsupport/git-repo
 pkg/index/testdata/fixtures/test-git-repo
+pkg/index/testsupport/git-repo
 
 # Temporary files for diff'ing of actual values against golden files.
 # `ead` package

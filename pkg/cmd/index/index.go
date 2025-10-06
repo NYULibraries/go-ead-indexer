@@ -24,6 +24,8 @@ const eMsgEADIDNotSet = "EADID is not set"
 const eMsgMissingCommitOrGitRepo = "missing argument: the --git-repo argument must be used with the --commit argument"
 const eMsgNeedOneButNotBothFileAndGitRepo = "one, but not both, of --file or --git-repo arguments must be specified"
 
+const wMsgNoIndexerOperationsForGitCommit = "WARNING: there were no indexer operations to be carried out for git commit"
+
 // log levels used by this package, in increasing order of severity
 var localLogLevels = []string{"debug", "info", "error"}
 var localDefaultLogLevel = "info"
@@ -207,15 +209,24 @@ func runIndexEAD() error {
 
 func runIndexGitCommit() error {
 	// index Git Commit
-	err := index.IndexGitCommit(gitRepoPath, gitCommit)
+	numIndexerOperations, err := index.IndexGitCommit(gitRepoPath, gitCommit)
 	if err != nil {
 		emsg := fmt.Sprintf("problem indexing git commit %s: %s", gitCommit, err)
 		return logAndReturnError(emsg)
 	}
 
-	// log success message
-	logger.Info(index.MessageKey, fmt.Sprintf("SUCCESS: indexed git commit: %s", gitCommit))
-	return nil
+	if numIndexerOperations > 0 {
+		// log success message
+		logger.Info(index.MessageKey, fmt.Sprintf(
+			"SUCCESS: %d indexer operation(s) carried out for git commit: %s",
+			numIndexerOperations, gitCommit))
+		return nil
+	} else {
+		logger.Info(index.MessageKey, fmt.Sprintf(
+			wMsgNoIndexerOperationsForGitCommit+": %s",
+			gitCommit))
+		return nil
+	}
 }
 
 // initLogger initializes the logger in the pkg/cmd/index package

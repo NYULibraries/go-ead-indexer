@@ -79,7 +79,9 @@ func TestCheckoutMergeReset(t *testing.T) {
 		FileRelPaths []string
 	}{
 		// files present at each commit
-		// * 33ac5f1 archives/cap_1.xml
+		// * 30bc19d .circleci/config.yml
+		//           README.md
+		//			 archives/cap_1.xml
 		// 			 archives/mc_1.xml
 		//           fales/mss_001.xml
 		// 			 fales/mss_003.xml
@@ -88,22 +90,30 @@ func TestCheckoutMergeReset(t *testing.T) {
 		// 			 tamwag/aia_001.xml
 		// 			 tamwag/aia_002.xml
 		//
-		// * 382c67e archives/cap_1.xml
+		// * 7e56b7b .circleci/config.yml
+		//		     README.md
+		//	     	 archives/cap_1.xml
 		// 			 fales/mss_001.xml
 		// 			 fales/mss_002.xml
 		// 			 fales/mss_003.xml
 		// 			 fales/mss_004.xml
 		// 			 tamwag/aia_001.xml
 		//
-		// * 2f531fc fales/mss_001.xml
+		// * 02527c5 .circleci/config.yml
+		//		     README.md
+		//		     fales/mss_001.xml
 		//   		 fales/mss_002.xml
 		// 			 fales/mss_003.xml
 		//
-		// * 7e65f35 fales/mss_001.xml
+		// * 6fd1aa5 .circleci/config.yml
+		//			 README.md
+		//		     fales/mss_001.xml
 
 		// NOTE: arrange the expected files in alphabetical order
-		{"33ac5f1415ac8fe611944bad4925528b62e845c8",
-			[]string{"archives/cap_1.xml",
+		{"30bc19d0b6c81c122da68d09402663828ec4531f",
+			[]string{".circleci/config.yml",
+				"README.md",
+				"archives/cap_1.xml",
 				"archives/mc_1.xml",
 				"fales/mss_001.xml",
 				"fales/mss_003.xml",
@@ -112,21 +122,27 @@ func TestCheckoutMergeReset(t *testing.T) {
 				"tamwag/aia_001.xml",
 				"tamwag/aia_002.xml"},
 		},
-		{"382c67e2ac64323e328506c85f97e229070a46cc",
-			[]string{"archives/cap_1.xml",
+		{"7e56b7bb91a1d6bbe7c1e33f7eb9b505c015e211",
+			[]string{".circleci/config.yml",
+				"README.md",
+				"archives/cap_1.xml",
 				"fales/mss_001.xml",
 				"fales/mss_002.xml",
 				"fales/mss_003.xml",
 				"fales/mss_004.xml",
 				"tamwag/aia_001.xml"},
 		},
-		{"2f531fc31b82cb128428c83e11d1e3f79b0da394",
-			[]string{"fales/mss_001.xml",
+		{"02527c547193bc6cdf350982d6fdc414d3eb7da2",
+			[]string{".circleci/config.yml",
+				"README.md",
+				"fales/mss_001.xml",
 				"fales/mss_002.xml",
 				"fales/mss_003.xml"},
 		},
-		{"7e65f35361c9a2d7fc48bece8f04856b358620bf",
-			[]string{"fales/mss_001.xml"},
+		{"6fd1aa5fc2b926e172a0f1eac7bb9b25c8492f05",
+			[]string{".circleci/config.yml",
+				"README.md",
+				"fales/mss_001.xml"},
 		},
 	}
 
@@ -280,11 +296,15 @@ func TestListEADFilesForCommit(t *testing.T) {
 		Hash       string
 		Operations map[string]IndexerOperation
 	}{
-		{"a5ca6cca30fc08cfc13e4f1492dbfbbf3ec7cf63", map[string]IndexerOperation{"fales/mss_001.xml": Add}},
-		{"33ac5f1415ac8fe611944bad4925528b62e845c8", map[string]IndexerOperation{"archives/mc_1.xml": Add, "fales/mss_002.xml": Delete, "fales/mss_005.xml": Add, "tamwag/aia_002.xml": Add}},
-		{"382c67e2ac64323e328506c85f97e229070a46cc", map[string]IndexerOperation{"archives/cap_1.xml": Add, "fales/mss_004.xml": Add, "tamwag/aia_001.xml": Add}},
-		{"2f531fc31b82cb128428c83e11d1e3f79b0da394", map[string]IndexerOperation{"fales/mss_002.xml": Add, "fales/mss_003.xml": Add}},
-		{"7e65f35361c9a2d7fc48bece8f04856b358620bf", map[string]IndexerOperation{"fales/mss_001.xml": Add}},
+		{"6eecccce69111335d35eb2723c5cd78954119bb3", map[string]IndexerOperation{"archives/mc_1.xml": Add}},
+		{"d3380b931fcd4cd2b0f1c2c56de33c1a23341e79", map[string]IndexerOperation{}},
+		{"194d03ab56b9e31214f9d3584263903f93fbbeb4", map[string]IndexerOperation{}},
+		{"3f73d608bbec55a238f681e0ad03146f8c1e07cd", map[string]IndexerOperation{"fales/mss_001.xml": Add}},
+		{"30bc19d0b6c81c122da68d09402663828ec4531f", map[string]IndexerOperation{"archives/mc_1.xml": Add, "fales/mss_002.xml": Delete, "fales/mss_005.xml": Add, "tamwag/aia_002.xml": Add}},
+		{"7e56b7bb91a1d6bbe7c1e33f7eb9b505c015e211", map[string]IndexerOperation{"archives/cap_1.xml": Add, "fales/mss_004.xml": Add, "tamwag/aia_001.xml": Add}},
+		{"02527c547193bc6cdf350982d6fdc414d3eb7da2", map[string]IndexerOperation{"fales/mss_002.xml": Add, "fales/mss_003.xml": Add}},
+		{"6fd1aa5fc2b926e172a0f1eac7bb9b25c8492f05", map[string]IndexerOperation{"fales/mss_001.xml": Add}},
+		{"b9643747231f043fecc4dbd2fbfc9cf74d4b2411", map[string]IndexerOperation{}},
 	}
 
 	for _, scenario := range scenarios {

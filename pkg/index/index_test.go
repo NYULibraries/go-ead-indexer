@@ -16,27 +16,6 @@ import (
 	"github.com/nyulibraries/go-ead-indexer/pkg/log"
 )
 
-/*
-	# Commit history from test fixture
-	91bee740e0a2d80072264bf960e38d60dfbed2b3 2025-05-09 19:41:50 -0400 | Updating nyuad/ad_mc_019.xml, Deleting file tamwag/tam_143.xml EADID='tam_143', Updating edip/mos_2024.xml, Deleting file cbh/arc_212_plymouth_beecher.xml EADID='arc_212_plymouth_beecher', Updating akkasah/ad_mc_030.xml (HEAD -> master) [David]
-	3effc68f1e059604251ac754e3200aefb33bd354 2025-05-09 19:41:50 -0400 | Updating tamwag/tam_143.xml, Updating cbh/arc_212_plymouth_beecher.xml [David]
-	ade6593ec60e6c9b7db328cc9bb5b76f0d4adfb0 2025-05-09 19:41:50 -0400 | Deleting file fales/mss_420.xml EADID='mss_420', Updating fales/mss_420.xml [David]
-	aa75b88bf7c4b84d2d0dc050ba16e201132e7184 2025-05-09 19:41:49 -0400 | Updating fales/mss_420.xml [David]
-	675721b215971865d096ea88feda6c48c215cfd1 2025-05-09 19:41:49 -0400 | Deleting file fales/mss_460.xml EADID='mss_460' [David]
-	a8fd43f8d9cbfc61569eea4faf62cade51bc90f3 2025-05-09 19:41:49 -0400 | Updating fales/mss_460.xml [David]
-	445975c893fdfbcd03a4893c14c79bc66c77eccc 2025-05-09 19:41:49 -0400 | Deleting file akkasah/ad_mc_030.xml EADID='ad_mc_030', Deleting file cbh/arc_212_plymouth_beecher.xml EADID='arc_212_plymouth_beecher', Deleting file edip/mos_2024.xml EADID='mos_2024', Deleting file fales/mss_420.xml EADID='mss_420', Deleting file fales/mss_460.xml EADID='mss_460', Deleting file nyhs/ms256_harmon_hendricks_goldstone.xml EADID='ms256_harmon_hendricks_goldstone', Deleting file nyhs/ms347_foundling_hospital.xml EADID='ms347_foundling_hospital', Deleting file nyuad/ad_mc_019.xml EADID='ad_mc_019', Deleting file tamwag/tam_143.xml EADID='tam_143' [David]
-	873cd3486d6522e449a6bf436eba560be2f7d528 2025-05-09 19:41:49 -0400 | Updating akkasah/ad_mc_030.xml, Updating cbh/arc_212_plymouth_beecher.xml, Updating edip/mos_2024.xml, Updating fales/mss_420.xml, Updating fales/mss_460.xml, Updating nyhs/ms256_harmon_hendricks_goldstone.xml, Updating nyhs/ms347_foundling_hospital.xml, Updating nyuad/ad_mc_019.xml, Updating tamwag/tam_143.xml [David]
-*/
-
-// hashes from the git-repo fixture (in order of commits)
-var addAllHash = "873cd3486d6522e449a6bf436eba560be2f7d528"
-var deleteAllHash = "445975c893fdfbcd03a4893c14c79bc66c77eccc"
-var addOneHash = "a8fd43f8d9cbfc61569eea4faf62cade51bc90f3"
-var deleteOneHash = "675721b215971865d096ea88feda6c48c215cfd1"
-var deleteModifyAddHash = "ade6593ec60e6c9b7db328cc9bb5b76f0d4adfb0"
-var addTwoHash = "3effc68f1e059604251ac754e3200aefb33bd354"
-var addThreeDeleteTwoHash = "91bee740e0a2d80072264bf960e38d60dfbed2b3"
-
 // test git repo paths
 var thisPath string
 var gitSourceRepoPathAbsolute string
@@ -680,10 +659,10 @@ func TestIndexGitCommit_AddAll(t *testing.T) {
 	// Set the Solr client
 	SetSolrClient(sc)
 
-	// Index the EAD file
-	err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute, addAllHash)
+	// Index the git commit
+	_, err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute, testutils.AddAllHash)
 	if err != nil {
-		t.Errorf("Error indexing EAD file: %s", err)
+		t.Errorf("Error indexing git commit: %s", err)
 	}
 
 	err = sc.CheckAssertionsViaEvents()
@@ -728,10 +707,10 @@ func TestIndexGitCommit_AddOne(t *testing.T) {
 	// Set the Solr client
 	SetSolrClient(sc)
 
-	// Index the EAD file
-	err = IndexGitCommit(gitRepoTestGitRepoPathAbsolute, addOneHash)
+	// Index the git commit
+	_, err = IndexGitCommit(gitRepoTestGitRepoPathAbsolute, testutils.AddOneHash)
 	if err != nil {
-		t.Errorf("Error indexing EAD file: %s", err)
+		t.Errorf("Error indexing git commit: %s", err)
 	}
 
 	err = sc.CheckAssertionsViaEvents()
@@ -780,10 +759,10 @@ func TestIndexGitCommit_AddOneLogLevelDebug(t *testing.T) {
 	// Set the Solr client
 	SetSolrClient(sc)
 
-	// Index the EAD file
-	err = IndexGitCommit(gitRepoTestGitRepoPathAbsolute, addOneHash)
+	// Index the git commit
+	_, err = IndexGitCommit(gitRepoTestGitRepoPathAbsolute, testutils.AddOneHash)
 	if err != nil {
-		t.Errorf("Error indexing EAD file: %s", err)
+		t.Errorf("Error indexing git commit: %s", err)
 	}
 
 	err = sc.CheckAssertionsViaEvents()
@@ -797,7 +776,7 @@ func TestIndexGitCommit_AddOneLogLevelDebug(t *testing.T) {
 
 	logOutput := getStdOutTmpFileData(t)
 	expectedLogString := []string{
-		fmt.Sprintf("IndexGitCommit(%s, %s)", gitRepoTestGitRepoPathAbsolute, addOneHash),
+		fmt.Sprintf("IndexGitCommit(%s, %s)", gitRepoTestGitRepoPathAbsolute, testutils.AddOneHash),
 		"assertSolrClientSet()",
 		"git.CheckoutMergeReset(",
 		"git.ListEADFilesForCommit(",
@@ -876,10 +855,10 @@ func TestIndexGitCommit_AddThreeDeleteTwo(t *testing.T) {
 	// Set the Solr client
 	SetSolrClient(sc)
 
-	// Index the EAD file
-	err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute, addThreeDeleteTwoHash)
+	// Index the git commit
+	_, err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute, testutils.AddThreeDeleteTwoHash)
 	if err != nil {
-		t.Errorf("Error indexing EAD file: %s", err)
+		t.Errorf("Error indexing git commit: %s", err)
 	}
 
 	err = sc.CheckAssertionsViaEvents()
@@ -946,10 +925,10 @@ func TestIndexGitCommit_AddThreeDeleteTwoLogLevelInfo(t *testing.T) {
 	// Set the Solr client
 	SetSolrClient(sc)
 
-	// Index the EAD file
-	err = IndexGitCommit(gitRepoTestGitRepoPathAbsolute, addThreeDeleteTwoHash)
+	// Index the git commit
+	_, err = IndexGitCommit(gitRepoTestGitRepoPathAbsolute, testutils.AddThreeDeleteTwoHash)
 	if err != nil {
-		t.Errorf("Error indexing EAD file: %s", err)
+		t.Errorf("Error indexing git commit: %s", err)
 	}
 
 	err = sc.CheckAssertionsViaEvents()
@@ -1030,10 +1009,10 @@ func TestIndexGitCommit_AddTwo(t *testing.T) {
 	// Set the Solr client
 	SetSolrClient(sc)
 
-	// Index the EAD file
-	err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute, addTwoHash)
+	// Index the git commit
+	_, err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute, testutils.AddTwoHash)
 	if err != nil {
-		t.Errorf("Error indexing EAD file: %s", err)
+		t.Errorf("Error indexing git commit: %s", err)
 	}
 
 	err = sc.CheckAssertionsViaEvents()
@@ -1065,8 +1044,8 @@ func TestIndexGitCommit_BadCommitCheckout(t *testing.T) {
 	// Set the Solr client
 	SetSolrClient(sc)
 
-	// Index the EAD file
-	err = IndexGitCommit(gitRepoTestGitRepoPathAbsolute, "this-is-a-bad-commit-hash")
+	// Index the git commit
+	_, err = IndexGitCommit(gitRepoTestGitRepoPathAbsolute, "this-is-a-bad-commit-hash")
 	if err == nil {
 		t.Errorf("Expected an error, but got nil")
 	}
@@ -1115,10 +1094,10 @@ func TestIndexGitCommit_DeleteAll(t *testing.T) {
 	// Set the Solr client
 	SetSolrClient(sc)
 
-	// Index the EAD file
-	err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute, deleteAllHash)
+	// Index the git commit
+	_, err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute, testutils.DeleteAllHash)
 	if err != nil {
-		t.Errorf("Error indexing EAD file: %s", err)
+		t.Errorf("Error indexing git commit: %s", err)
 	}
 
 	err = sc.CheckAssertionsViaEvents()
@@ -1169,10 +1148,10 @@ func TestIndexGitCommit_DeleteModifyAdd(t *testing.T) {
 	// Set the Solr client
 	SetSolrClient(sc)
 
-	// Index the EAD file
-	err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute, deleteModifyAddHash)
+	// Index the git commit
+	_, err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute, testutils.DeleteModifyAddHash)
 	if err != nil {
-		t.Errorf("Error indexing EAD file: %s", err)
+		t.Errorf("Error indexing git commit: %s", err)
 	}
 
 	err = sc.CheckAssertionsViaEvents()
@@ -1205,10 +1184,10 @@ func TestIndexGitCommit_DeleteOne(t *testing.T) {
 	// Set the Solr client
 	SetSolrClient(sc)
 
-	// Index the EAD file
-	err = IndexGitCommit(gitRepoTestGitRepoPathAbsolute, deleteOneHash)
+	// Index the git commit
+	_, err = IndexGitCommit(gitRepoTestGitRepoPathAbsolute, testutils.DeleteOneHash)
 	if err != nil {
-		t.Errorf("Error indexing EAD file: %s", err)
+		t.Errorf("Error indexing git commit: %s", err)
 	}
 
 	err = sc.CheckAssertionsViaEvents()
@@ -1274,8 +1253,8 @@ func TestIndexGitCommit_FailFast(t *testing.T) {
 	// Set the Solr client
 	SetSolrClient(sc)
 
-	// Index the EAD file
-	err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute, addThreeDeleteTwoHash)
+	// Index the git commit
+	_, err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute, testutils.AddThreeDeleteTwoHash)
 	if err == nil {
 		t.Errorf("Expected error from IndexGitCommit() but no error was returned.")
 		t.FailNow()
@@ -1295,6 +1274,33 @@ func TestIndexGitCommit_FailFast(t *testing.T) {
 	// indexing should NOT have completed
 	if sc.IsComplete() {
 		t.Errorf("All files were added to the Solr index when indexing should have halted.")
+	}
+}
+
+func TestIndexGitCommit_NoEADFilesInCommit(t *testing.T) {
+	// cleanup any leftovers from interrupted tests
+	deleteTestGitRepo(t)
+
+	createTestGitRepo(t)
+	defer deleteTestGitRepo(t)
+
+	sc := testutils.GetSolrClientMock()
+
+	// Set the Solr client
+	SetSolrClient(sc)
+
+	numIndexerOperations, err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute, testutils.NoEADFilesInCommitHash)
+	if err != nil {
+		t.Errorf("Unexpected error calling IndexGitCommit(): %s", err)
+	}
+
+	if numIndexerOperations > 0 {
+		t.Errorf("Expected number of indexer operations for git commit to be 0,"+
+			" but it was %d", numIndexerOperations)
+	}
+
+	if sc.CallCount > 0 {
+		t.Errorf("Expected SolrClientMock.CallCount to be 0, but the call count was %d", sc.CallCount)
 	}
 }
 
@@ -1349,9 +1355,9 @@ func TestIndexGitCommit_RollbackOnBadDelete(t *testing.T) {
 	// Set the Solr client
 	SetSolrClient(sc)
 
-	// Index the EAD file
-	err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute,
-		addThreeDeleteTwoHash)
+	// Index the git commit
+	_, err := IndexGitCommit(gitRepoTestGitRepoPathAbsolute,
+		testutils.AddThreeDeleteTwoHash)
 	if err == nil {
 		t.Errorf(`Expected error from IndexGitCommit() ` +
 			`but no error was returned.`)
@@ -1396,7 +1402,7 @@ func TestIndexGitCommit_SolrClientMissingOriginURL(t *testing.T) {
 	SetSolrClient(sc)
 
 	// trigger the error
-	err = IndexGitCommit(repoPath, commit)
+	_, err = IndexGitCommit(repoPath, commit)
 
 	testutils.AssertError(t, sut, err)
 	testutils.AssertErrorMessageContainsString(t, sut, err, expectedErrStringFragment)
@@ -1412,7 +1418,7 @@ func TestIndexGitCommit_SolrClientNotSet(t *testing.T) {
 	SetSolrClient(nil)
 
 	// trigger the error
-	err := IndexGitCommit(repoPath, commit)
+	_, err := IndexGitCommit(repoPath, commit)
 
 	testutils.AssertError(t, sut, err)
 	testutils.AssertErrorMessageContainsString(t, sut, err, expectedErrStringFragment)

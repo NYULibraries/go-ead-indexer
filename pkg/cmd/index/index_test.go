@@ -4,12 +4,49 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"runtime"
 	"slices"
 	"testing"
 
 	"github.com/nyulibraries/go-ead-indexer/pkg/cmd/testutils"
+	indextestutils "github.com/nyulibraries/go-ead-indexer/pkg/index/testutils"
 	"github.com/nyulibraries/go-ead-indexer/pkg/log"
 )
+
+// test git repo paths
+var thisPath string
+var gitSourceRepoPathAbsolute string
+var gitRepoTestGitRepoPathAbsolute string
+var gitRepoTestGitRepoDotGitDirectory string
+var gitRepoTestGitRepoHiddenGitDirectory string
+
+// Copied this from `pkg/index` and `pkg/git` package tests in order to use the git
+// repo fixture for `pkg/index` tests.  In fact, there is only one test that
+// needs to use that repo: `TestIndexGitCommit_NoEADFilesInCommit`.
+func init() {
+	// The `filename` string is the absolute path to this source file, which should
+	// be located at the root of the package directory.
+	_, filename, _, ok := runtime.Caller(0)
+	if !ok {
+		panic("ERROR: `runtime.Caller(0)` failed")
+	}
+
+	// Get the path to the parent directory of this file.  Again, this is assuming
+	// that this `init()` function is defined in a package top level file -- or
+	// more precisely, that this file is in the same directory at the `testdata/`
+	// directory that is referenced in the relative paths used in the functions
+	// defined in this file.
+	thisPath = filepath.Dir(filename)
+
+	// Get testdata directory paths
+	gitSourceRepoPathAbsolute = filepath.Join(thisPath, "testdata", "fixtures", "git-repo")
+
+	// This could be done as a const at top level, but assigning it here to keep
+	// all this path stuff in one place.
+	gitRepoTestGitRepoPathAbsolute = filepath.Join(thisPath, "testdata", "fixtures", "test-git-repo")
+	gitRepoTestGitRepoDotGitDirectory = filepath.Join(gitRepoTestGitRepoPathAbsolute, "dot-git")
+	gitRepoTestGitRepoHiddenGitDirectory = filepath.Join(gitRepoTestGitRepoPathAbsolute, ".git")
+}
 
 func TestDelete_Cancel(t *testing.T) {
 	resetDeleteArgs()
@@ -486,6 +523,35 @@ func TestIndexGitCommit_BadGitRepoArgument(t *testing.T) {
 	testutils.CheckStringContains(t, gotStdOut, "repository does not exist")
 }
 
+func TestIndexGitCommit_NoEADFilesInCommit(t *testing.T) {
+	resetIndexArgs()
+
+	// ensure that the environment variable is set
+	err := os.Setenv("SOLR_ORIGIN_WITH_PORT",
+		"http://www.example.com:8983/solr")
+	if err != nil {
+		t.Errorf("error setting environment variable: %v", err)
+		t.FailNow()
+	}
+
+	// cleanup any leftovers from interrupted tests
+	deleteTestGitRepo(t)
+	createTestGitRepo(t)
+	defer deleteTestGitRepo(t)
+
+	testutils.SetCmdFlag(IndexCmd, "git-repo", gitRepoTestGitRepoPathAbsolute)
+	testutils.SetCmdFlag(IndexCmd, "commit", indextestutils.NoEADFilesInCommitHash)
+	testutils.SetCmdFlag(IndexCmd, "logging-level", "info")
+	gotStdOut, _, _ := testutils.CaptureCmdStdoutStderrE(runIndexCmd,
+		IndexCmd, []string{})
+
+	if gotStdOut == "" {
+		t.Errorf("expected data on StdOut but got nothing")
+	}
+
+	testutils.CheckStringContains(t, gotStdOut, wMsgNoIndexerOperationsForGitCommit)
+}
+
 func TestLocalLogLevels(t *testing.T) {
 	// this is a regression test to ensure that the local log levels are still
 	// valid if this test fails, the local log levels need to be updated
@@ -494,6 +560,35 @@ func TestLocalLogLevels(t *testing.T) {
 		if !slices.Contains(loggerAvailableLevels, level) {
 			t.Errorf("local log level '%s' is not a valid logger level", level)
 		}
+	}
+}
+
+func createTestGitRepo(t *testing.T) {
+	gitSourceRepoPathAbsoluteFS := os.DirFS(gitSourceRepoPathAbsolute)
+	err := os.CopyFS(gitRepoTestGitRepoPathAbsolute, gitSourceRepoPathAbsoluteFS)
+	if err != nil {
+		t.Fatalf(
+			`Unexpected error returned by `+
+				`os.CopyFS(gitRepoTestGitRepoPathAbsolute, `+
+				`gitSourceRepoPathAbsoluteFS): %s`,
+			err.Error())
+	}
+
+	err = os.Rename(gitRepoTestGitRepoDotGitDirectory, gitRepoTestGitRepoHiddenGitDirectory)
+	if err != nil {
+		t.Fatalf(
+			`Unexpected error returned by os.Rename(gitRepoTestGitRepoDotGitDirectory, `+
+				`gitRepoTestGitRepoHiddenGitDirectory): %s`,
+			err.Error())
+	}
+}
+
+func deleteTestGitRepo(t *testing.T) {
+	err := os.RemoveAll(gitRepoTestGitRepoPathAbsolute)
+	if err != nil {
+		t.Fatalf(
+			`deleteTestGitRepo() failed with error "%s", remove %s manually`,
+			err.Error(), gitRepoTestGitRepoPathAbsolute)
 	}
 }
 
