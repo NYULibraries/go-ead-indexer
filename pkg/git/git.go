@@ -72,7 +72,7 @@ func CheckoutMergeReset(repoPath string, commitHash string) error {
 // See long comment before filter helper function definition.
 func ListEADFilesForCommit(repoPath string,
 	thisCommitHashString string) (map[string]IndexerOperation, error) {
-	// This is ahelper function to prevent accidental inclusion of README.md and
+	// This is a helper function to prevent accidental inclusion of README.md and
 	// .circleci/config.yml files.  See https://nyu.atlassian.net/browse/DLFA-302.
 	//
 	// Ideally, we want to only include EAD files that we would like to
