@@ -8,8 +8,10 @@
 pkg/cmd/index/testdata/fixtures/test-git-repo
 pkg/debug/testdata/fixtures/test-git-repo
 pkg/git/testdata/fixtures/test-git-repo
+pkg/git/testsupport/commit-hashes.go
 pkg/git/testsupport/git-repo
 pkg/index/testdata/fixtures/test-git-repo
+pkg/index/testsupport/commit-hashes.go
 pkg/index/testsupport/git-repo
 
 # Temporary files for diff'ing of actual values against golden files.
