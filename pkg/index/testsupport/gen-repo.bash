@@ -316,6 +316,6 @@ EOF
 
 echo -en "$commit_history_from_test_fixture_code_comment*/\n\n" >> $COMMIT_HASHES_GO_FILEPATH
 
-echo -en "${commit_hash_constants}\n" >> $COMMIT_HASHES_GO_FILEPATH
+echo -en "${commit_hash_constants}" >> $COMMIT_HASHES_GO_FILEPATH
 
 exit 0
