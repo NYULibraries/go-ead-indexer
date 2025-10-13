@@ -70,6 +70,9 @@ nyuad/ad_mc_019.xml
 tamwag/tam_143.xml
 '
 
+COMMIT_HASHES_GO_FILENAME="commit-hashes.go"
+COMMIT_HASHES_GO_FILEPATH="${SCRIPT_ROOT}/${COMMIT_HASHES_GO_FILENAME}"
+
 # EAD files for various scenarios, committed in reverse alphabetical order
 ADD_DELETE_MODIFY_ADD_ONE_EAD='fales/mss_420.xml'
 ADD_AND_DELETE_ONE_EAD='fales/mss_460.xml'
@@ -81,6 +84,10 @@ ADD_THREE_EADS_NUM_03='akkasah/ad_mc_030.xml'
 
 # Non-EAD file
 README='README.md'
+
+# String variables for writing out the new commit-hashes.go file.
+commit_history_from_test_fixture_code_comment=''
+commit_hash_constants="// hashes from the git-repo fixture (in order of commits)\n"
 
 #------------------------------------------------------------------------------
 # FUNCTIONS
@@ -114,11 +121,25 @@ strip_commit_str_trailing_comma_space() {
     commit_str=$(echo "$commit_str" | sed -e 's/, $//')
 }
 
+update_commit_hash_go_file_variables() {
+    current_commit=$(git rev-parse HEAD)
+
+    commit_history_from_test_fixture_code_comment="\t$current_commit $commit_str\n$commit_history_from_test_fixture_code_comment"
+
+    if [ "$#" -gt 0 ]; then
+        commit_hash_constants="${commit_hash_constants}const ${1} = \"$current_commit\"\n"
+    fi
+}
+
 #------------------------------------------------------------------------------
 # MAIN
 #------------------------------------------------------------------------------
 if [[ -d "$REPO_ROOT" ]]; then
     err_exit "'$REPO_ROOT' directory already exists. Please remove it before running this script."
+fi
+
+if [[ -f "$COMMIT_HASHES_GO_FILEPATH" ]]; then
+    err_exit "'$COMMIT_HASHES_GO_FILEPATH' file already exists. Please remove it before running this script."
 fi
 
 if [[ ! -d "$EAD_FILE_ROOT" ]]; then
@@ -144,7 +165,7 @@ for f in $EAD_FILES; do
 done
 strip_commit_str_trailing_comma_space
 git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
-
+update_commit_hash_go_file_variables AddAllHash
 
 echo "------------------------------------------------------------------------------"
 echo "setting up 'delete all' commit"
@@ -155,6 +176,7 @@ for f in $EAD_FILES; do
 done
 strip_commit_str_trailing_comma_space
 git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
+update_commit_hash_go_file_variables DeleteAllHash
 
 
 echo "------------------------------------------------------------------------------"
@@ -165,11 +187,13 @@ cp_ead "$ADD_AND_DELETE_ONE_EAD"
 add_file "$ADD_AND_DELETE_ONE_EAD"
 strip_commit_str_trailing_comma_space
 git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
+update_commit_hash_go_file_variables AddOneHash
 
 commit_str=""
 rm_file "$ADD_AND_DELETE_ONE_EAD"
 strip_commit_str_trailing_comma_space
 git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
+update_commit_hash_go_file_variables DeleteOneHash
 
 
 echo "------------------------------------------------------------------------------"
@@ -181,6 +205,8 @@ cp_ead "$ADD_DELETE_MODIFY_ADD_ONE_EAD"
 add_file "$ADD_DELETE_MODIFY_ADD_ONE_EAD"
 strip_commit_str_trailing_comma_space
 git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
+# Note there is no `const` declaration for this commit.
+update_commit_hash_go_file_variables
 
 # git rm the file but do not commit yet
 commit_str=""
@@ -192,6 +218,7 @@ add_file "$ADD_DELETE_MODIFY_ADD_ONE_EAD"
 # commit the changes
 strip_commit_str_trailing_comma_space
 git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
+update_commit_hash_go_file_variables DeleteModifyAddHash
 
 
 echo "------------------------------------------------------------------------------"
@@ -205,6 +232,7 @@ done
 
 strip_commit_str_trailing_comma_space
 git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
+update_commit_hash_go_file_variables AddTwoHash
 
 
 echo "------------------------------------------------------------------------------"
@@ -227,6 +255,7 @@ add_file "$ADD_THREE_EADS_NUM_03"
 
 strip_commit_str_trailing_comma_space
 git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
+update_commit_hash_go_file_variables AddThreeDeleteTwoHash
 
 
 echo "------------------------------------------------------------------------------"
@@ -239,6 +268,7 @@ add_file "$README"
 
 strip_commit_str_trailing_comma_space
 git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
+update_commit_hash_go_file_variables NoEADFilesInCommitHash
 
 
 # Need to do this to prevent https://jira.nyu.edu/browse/DLFA-276 bug:
@@ -265,9 +295,27 @@ mv -nv "${REPO_ROOT}/.git" "${REPO_ROOT}/dot-git" &>/dev/null || err_exit "Faile
 
 echo "------------------------------------------------------------------------------"
 echo "NEXT STEPS:"
-echo "1. move ${REPO_NAME} to pkg/index/testdata/fixtures"
-echo "2. Update the git pkg test scenarios with the new commit hash values"
+echo "1. move ${REPO_NAME} to pkg/index/testdata/fixtures/"
+echo "2. move ${COMMIT_HASHES_GO_FILENAME} to pkg/index/testutils/"
 echo "3. Run the git pkg tests"
 echo "------------------------------------------------------------------------------"
+
+echo "------------------------------------------------------------------------------"
+echo "updating $commit_history_from_test_fixture_code_comment"
+echo "------------------------------------------------------------------------------"
+cat << EOF > $COMMIT_HASHES_GO_FILEPATH
+package testutils
+
+// ------------------------------------------------------------------------------
+// git repo fixture constants shared by cmd/index and pkg/index tests
+// ------------------------------------------------------------------------------
+
+/*
+	# Commit history from test fixture
+EOF
+
+echo -en "$commit_history_from_test_fixture_code_comment*/\n\n" >> $COMMIT_HASHES_GO_FILEPATH
+
+echo -en "${commit_hash_constants}\n" >> $COMMIT_HASHES_GO_FILEPATH
 
 exit 0
