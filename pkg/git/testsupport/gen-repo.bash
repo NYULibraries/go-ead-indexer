@@ -54,6 +54,10 @@ rm_file() {
     commit_str+="Deleting file ${1} EADID='${eadid}', "
 }
 
+strip_commit_str_trailing_comma_space() {
+    commit_str=$(echo "$commit_str" | sed -e 's/, $//')
+}
+
 update_commit_hash_go_file_variables() {
     current_commit=$(git rev-parse HEAD)
 
