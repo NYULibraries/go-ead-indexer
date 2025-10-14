@@ -29,11 +29,19 @@ SCRIPT_ROOT=$(dirname "$(realpath "$0")") || err_exit "Failed to get script root
 REPO_NAME="git-repo"
 REPO_ROOT="${SCRIPT_ROOT}/${REPO_NAME}"
 
+# String variables for writing out the new commit-hashes.go file.
+commit_history_from_test_fixture_code_comment=''
+commit_hash_constants="// hashes from the git-repo fixture (in order of commits)\n"
+
 #------------------------------------------------------------------------------
 # MAIN
 #------------------------------------------------------------------------------
 if [[ -d "$REPO_ROOT" ]]; then
     err_exit "'$REPO_ROOT' directory already exists. Please remove it before running this script."
+fi
+
+if [[ -f "$COMMIT_HASHES_GO_FILEPATH" ]]; then
+    err_exit "'$COMMIT_HASHES_GO_FILEPATH' file already exists. Please remove it before running this script."
 fi
 
 echo "------------------------------------------------------------------------------"
