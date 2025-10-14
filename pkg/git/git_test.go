@@ -64,38 +64,6 @@ func TestCheckoutMergeReset(t *testing.T) {
 		Hash         string
 		FileRelPaths []string
 	}{
-		// files present at each commit
-		// * f34cf26 .circleci/config.yml
-		//           README.md
-		//			 archives/cap_1.xml
-		// 			 archives/mc_1.xml
-		//           fales/mss_001.xml
-		// 			 fales/mss_003.xml
-		// 			 fales/mss_004.xml
-		//  		 fales/mss_005.xml
-		// 			 tamwag/aia_001.xml
-		// 			 tamwag/aia_002.xml
-		//
-		// * 2a5cc00 .circleci/config.yml
-		//		     README.md
-		//	     	 archives/cap_1.xml
-		// 			 fales/mss_001.xml
-		// 			 fales/mss_002.xml
-		// 			 fales/mss_003.xml
-		// 			 fales/mss_004.xml
-		// 			 tamwag/aia_001.xml
-		//
-		// * 80301c3 .circleci/config.yml
-		//		     README.md
-		//		     fales/mss_001.xml
-		//   		 fales/mss_002.xml
-		// 			 fales/mss_003.xml
-		//
-		// * 3c20e78 .circleci/config.yml
-		//			 README.md
-		//		     fales/mss_001.xml
-
-		// NOTE: arrange the expected files in alphabetical order
 		{Commit4Hash,
 			[]string{".circleci/config.yml",
 				"README.md",
