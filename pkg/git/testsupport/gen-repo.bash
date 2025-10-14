@@ -1,4 +1,5 @@
 #!/bin/bash
+set -uo pipefail
 
 # This script generates a git repo test fixture for use in the git package tests.
 # The script creates a directory named 'git-repo', then generates and commits various files.
@@ -20,42 +21,53 @@ err_exit() {
     exit 1
 }
 
-if [[ -d git-repo ]]; then
-    err_exit "'git-repo' directory already exists. Please remove it before running this script."
+
+#------------------------------------------------------------------------------
+# VARIABLES
+#------------------------------------------------------------------------------
+SCRIPT_ROOT=$(dirname "$(realpath "$0")") || err_exit "Failed to get script root"
+REPO_NAME="git-repo"
+REPO_ROOT="${SCRIPT_ROOT}/${REPO_NAME}"
+
+#------------------------------------------------------------------------------
+# MAIN
+#------------------------------------------------------------------------------
+if [[ -d "$REPO_ROOT" ]]; then
+    err_exit "'$REPO_ROOT' directory already exists. Please remove it before running this script."
 fi
 
 echo "------------------------------------------------------------------------------"
 echo "creating directory hierarchy and test files"
 echo "------------------------------------------------------------------------------"
-mkdir -p git-repo/.circleci git-repo/archives git-repo/fales git-repo/tamwag
+mkdir -p "$REPO_ROOT/.circleci" "$REPO_ROOT/archives" "$REPO_ROOT/fales" "$REPO_ROOT/tamwag"
 
-pushd git-repo &>/dev/null || err_exit "Failed to change directory to git-repo/archives"
+pushd "$REPO_ROOT" &>/dev/null || err_exit "Failed to change directory to ${REPO_ROOT}"
 echo 'README.md' > README.md
 popd &>/dev/null || err_exit "Failed to popd after creating README.md file"
 
-pushd git-repo/.circleci &>/dev/null || err_exit "Failed to change directory to git-repo/archives"
+pushd "$REPO_ROOT/.circleci" &>/dev/null || err_exit "Failed to change directory to ${REPO_ROOT}/.circleci"
 echo 'config.yml' > config.yml
 popd &>/dev/null || err_exit "Failed to popd after creating .circleci/config.yml file"
 
-pushd git-repo/archives &>/dev/null || err_exit "Failed to change directory to git-repo/archives"
+pushd "$REPO_ROOT/archives" &>/dev/null || err_exit "Failed to change directory to ${REPO_ROOT}/archives"
 for e in 'mc_1' 'cap_1' ; do
     echo "$e" > "${e}.xml"
 done
 popd &>/dev/null || err_exit "Failed to popd after creating archives files"
 
-pushd git-repo/fales &>/dev/null || err_exit "Failed to change directory to git-repo/fales"
+pushd "$REPO_ROOT/fales" &>/dev/null || err_exit "Failed to change directory to ${REPO_ROOT}/fales"
 for i in {1..5}; do
     echo "mss_00${i}" > "mss_00${i}.xml"
 done
 popd &>/dev/null || err_exit "Failed to popd after creating fales files"
 
-pushd git-repo/tamwag &>/dev/null || err_exit "Failed to change directory to git-repo/tamwag"
+pushd "$REPO_ROOT/tamwag" &>/dev/null || err_exit "Failed to change directory to ${REPO_ROOT}/tamwag"
 for i in {1..2}; do
     echo "aia_00${i}" > "aia_00${i}.xml"
 done
 popd &>/dev/null || err_exit "Failed to popd after creating tamwag files"
 
-pushd git-repo &>/dev/null || err_exit "Failed to change directory to git-repo"
+pushd "$REPO_ROOT" &>/dev/null || err_exit "Failed to change directory to ${REPO_ROOT}"
 
 echo "------------------------------------------------------------------------------"
 echo "setting up git repository"
@@ -127,11 +139,11 @@ echo "--------------------------------------------------------------------------
 echo "renaming .git to dot-git"
 echo "------------------------------------------------------------------------------"
 # NOTE: you MUST include the trailing /. or the .git directory will not be included in the tarball
-mv -nv git-repo/.git git-repo/dot-git &>/dev/null || err_exit "Failed to rename git-repo/.git to git-repo/dot-git"
+mv -nv "$REPO_ROOT/.git" "$REPO_ROOT/dot-git" &>/dev/null || err_exit "Failed to rename ${REPO_ROOT}/.git to ${REPO_ROOT}/dot-git"
 
 echo "------------------------------------------------------------------------------"
 echo "NEXT STEPS:"
-echo "1. move git-repo to pkg/git/testdata/fixtures"
+echo "1. move ${REPO_ROOT} to pkg/git/testdata/fixtures"
 echo "2. Update the git pkg test scenarios with the new commit hash values"
 echo "3. Run the git pkg tests"
 echo "------------------------------------------------------------------------------"
