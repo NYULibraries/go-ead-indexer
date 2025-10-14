@@ -96,7 +96,7 @@ func TestCheckoutMergeReset(t *testing.T) {
 		//		     fales/mss_001.xml
 
 		// NOTE: arrange the expected files in alphabetical order
-		{COMMIT_4_HASH,
+		{Commit4Hash,
 			[]string{".circleci/config.yml",
 				"README.md",
 				"archives/cap_1.xml",
@@ -108,7 +108,7 @@ func TestCheckoutMergeReset(t *testing.T) {
 				"tamwag/aia_001.xml",
 				"tamwag/aia_002.xml"},
 		},
-		{COMMIT_3_HASH,
+		{Commit3Hash,
 			[]string{".circleci/config.yml",
 				"README.md",
 				"archives/cap_1.xml",
@@ -118,14 +118,14 @@ func TestCheckoutMergeReset(t *testing.T) {
 				"fales/mss_004.xml",
 				"tamwag/aia_001.xml"},
 		},
-		{COMMIT_2_HASH,
+		{Commit2Hash,
 			[]string{".circleci/config.yml",
 				"README.md",
 				"fales/mss_001.xml",
 				"fales/mss_002.xml",
 				"fales/mss_003.xml"},
 		},
-		{COMMIT_1_HASH,
+		{Commit1Hash,
 			[]string{".circleci/config.yml",
 				"README.md",
 				"fales/mss_001.xml"},
@@ -282,13 +282,13 @@ func TestListEADFilesForCommit(t *testing.T) {
 		Hash       string
 		Operations map[string]IndexerOperation
 	}{
-		{COMMIT_7_HASH, map[string]IndexerOperation{"archives/mc_1.xml": Add}},
-		{COMMIT_6_HASH, map[string]IndexerOperation{}},
-		{COMMIT_5_HASH, map[string]IndexerOperation{"fales/mss_001.xml": Add}},
-		{COMMIT_4_HASH, map[string]IndexerOperation{"archives/mc_1.xml": Add, "fales/mss_002.xml": Delete, "fales/mss_005.xml": Add, "tamwag/aia_002.xml": Add}},
-		{COMMIT_3_HASH, map[string]IndexerOperation{"archives/cap_1.xml": Add, "fales/mss_004.xml": Add, "tamwag/aia_001.xml": Add}},
-		{COMMIT_2_HASH, map[string]IndexerOperation{"fales/mss_002.xml": Add, "fales/mss_003.xml": Add}},
-		{COMMIT_1_HASH, map[string]IndexerOperation{"fales/mss_001.xml": Add}},
+		{Commit7Hash, map[string]IndexerOperation{"archives/mc_1.xml": Add}},
+		{Commit6Hash, map[string]IndexerOperation{}},
+		{Commit5Hash, map[string]IndexerOperation{"fales/mss_001.xml": Add}},
+		{Commit4Hash, map[string]IndexerOperation{"archives/mc_1.xml": Add, "fales/mss_002.xml": Delete, "fales/mss_005.xml": Add, "tamwag/aia_002.xml": Add}},
+		{Commit3Hash, map[string]IndexerOperation{"archives/cap_1.xml": Add, "fales/mss_004.xml": Add, "tamwag/aia_001.xml": Add}},
+		{Commit2Hash, map[string]IndexerOperation{"fales/mss_002.xml": Add, "fales/mss_003.xml": Add}},
+		{Commit1Hash, map[string]IndexerOperation{"fales/mss_001.xml": Add}},
 	}
 
 	for _, scenario := range scenarios {
