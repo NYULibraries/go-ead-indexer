@@ -34,6 +34,24 @@ commit_history_from_test_fixture_code_comment=''
 commit_hash_constants="// hashes from the git-repo fixture (in order of commits)\n"
 
 #------------------------------------------------------------------------------
+# FUNCTIONS
+#------------------------------------------------------------------------------
+add_file() {
+    local file
+    file="$1"
+    git add "$file"  || err_exit "Failed to add '$file' to git repo"
+    commit_str+="Updating $file, "
+}
+
+rm_file() {
+    local file eadid
+    file="$1"
+    git rm "$file"  || err_exit "Failed to rm '$file' from git repo"
+    eadid=$(echo "$file" | cut -d/ -f2 | cut -d\. -f1)
+    commit_str+="Deleting file ${1} EADID='${eadid}', "
+}
+
+#------------------------------------------------------------------------------
 # MAIN
 #------------------------------------------------------------------------------
 if [[ -d "$REPO_ROOT" ]]; then
