@@ -8,20 +8,20 @@ package git
 
 /*
 	# Commit history from test fixture
-	d271a426f109a9be0c67b6f21b9ba64b0c5f3e94 [Do something special to] archives/mc_1.xml and add note about it to README.md
-	a7a678f5283c94701c5be62d4500231458d9745c Updating README.md with [whatever] and .circleci/config.yml with [whatever]
-	8862b2dc9466385fe54bc4923d9e08cef7e5cdbc Updating fales/mss_001.xml, 
-	bf28144165c9a93f8693f7fae16e5741ab321bd0 Updating archives/mc_1.xml, Deleting file fales/mss_002.xml EADID='mss_002', Updating fales/mss_005.xml, Updating tamwag/aia_002.xml, 
-	d411c0bc86022bd4d46877cd70291e0dc85994c9 Updating archives/cap_1.xml, Updating fales/mss_004.xml, Updating tamwag/aia_001.xml, 
-	61550e6bd102b80f6fe99740d92fd6834b76271e Updating fales/mss_002.xml, Updating fales/mss_003.xml, 
-	8e00f6b8210ce1b1886c49a0f8fe43db3c02e1df Initial commit of fales/mss_001.xml, README.md, and .circle/config.yml
+	c63c3d18de309c05d6ff30eff77d7c955170b02d [Do something special to] archives/mc_1.xml and add note about it to README.md
+	23fb7db2170abb8545d59145064a8677f61a979a Updating README.md with [whatever] and .circleci/config.yml with [whatever]
+	90e284b10183fb8bb92db10f8ad5533a3858bda6 Updating fales/mss_001.xml
+	13d9029ea12e041517fdace0fb5b5806d0b58ce4 Updating archives/mc_1.xml, Deleting file fales/mss_002.xml EADID='mss_002', Updating fales/mss_005.xml, Updating tamwag/aia_002.xml
+	c813e42c0359138404c9a748990cd3d4e86fcff9 Updating archives/cap_1.xml, Updating fales/mss_004.xml, Updating tamwag/aia_001.xml
+	498751b9c461cfbb9782946f4b59b1ad8a8b459b Updating fales/mss_002.xml, Updating fales/mss_003.xml
+	ae952b8ea915fa3bf1af4ddb7897938384a2b2b7 Initial commit of fales/mss_001.xml, README.md, and .circle/config.yml
 */
 
 // hashes from the git-repo fixture (in order of commits)
-const Commit1Hash = "8e00f6b8210ce1b1886c49a0f8fe43db3c02e1df"
-const Commit2Hash = "61550e6bd102b80f6fe99740d92fd6834b76271e"
-const Commit3Hash = "d411c0bc86022bd4d46877cd70291e0dc85994c9"
-const Commit4Hash = "bf28144165c9a93f8693f7fae16e5741ab321bd0"
-const Commit5Hash = "8862b2dc9466385fe54bc4923d9e08cef7e5cdbc"
-const Commit6Hash = "a7a678f5283c94701c5be62d4500231458d9745c"
-const Commit7Hash = "d271a426f109a9be0c67b6f21b9ba64b0c5f3e94"
+const Commit1Hash = "ae952b8ea915fa3bf1af4ddb7897938384a2b2b7"
+const Commit2Hash = "498751b9c461cfbb9782946f4b59b1ad8a8b459b"
+const Commit3Hash = "c813e42c0359138404c9a748990cd3d4e86fcff9"
+const Commit4Hash = "13d9029ea12e041517fdace0fb5b5806d0b58ce4"
+const Commit5Hash = "90e284b10183fb8bb92db10f8ad5533a3858bda6"
+const Commit6Hash = "23fb7db2170abb8545d59145064a8677f61a979a"
+const Commit7Hash = "c63c3d18de309c05d6ff30eff77d7c955170b02d"
