@@ -1,4 +1,5 @@
 #!/bin/bash
+set -uo pipefail
 
 # This script generates a git repo test fixture for use in the git package tests.
 # The script creates a directory named 'git-repo', then generates and commits various files.
@@ -20,42 +21,96 @@ err_exit() {
     exit 1
 }
 
-if [[ -d git-repo ]]; then
-    err_exit "'git-repo' directory already exists. Please remove it before running this script."
+
+#------------------------------------------------------------------------------
+# VARIABLES
+#------------------------------------------------------------------------------
+SCRIPT_ROOT=$(dirname "$(realpath "$0")") || err_exit "Failed to get script root"
+REPO_NAME="git-repo"
+REPO_ROOT="${SCRIPT_ROOT}/${REPO_NAME}"
+
+COMMIT_HASHES_GO_FILENAME="commit-hashes.go"
+COMMIT_HASHES_GO_FILEPATH="${SCRIPT_ROOT}/${COMMIT_HASHES_GO_FILENAME}"
+
+# String variables for writing out the new commit-hashes.go file.
+commit_history_from_test_fixture_code_comment=''
+commit_hash_constants="// hashes from the git-repo fixture (in order of commits)\n"
+
+#------------------------------------------------------------------------------
+# FUNCTIONS
+#------------------------------------------------------------------------------
+add_file() {
+    local file
+    file="$1"
+    git add "$file"  || err_exit "Failed to add '$file' to git repo"
+    commit_str+="Updating $file, "
+}
+
+rm_file() {
+    local file eadid
+    file="$1"
+    git rm "$file"  || err_exit "Failed to rm '$file' from git repo"
+    eadid=$(echo "$file" | cut -d/ -f2 | cut -d\. -f1)
+    commit_str+="Deleting file ${1} EADID='${eadid}', "
+}
+
+strip_commit_str_trailing_comma_space() {
+    commit_str=$(echo "$commit_str" | sed -e 's/, $//')
+}
+
+update_commit_hash_go_file_variables() {
+    current_commit=$(git rev-parse HEAD)
+
+    commit_history_from_test_fixture_code_comment="\t$current_commit $commit_str\n$commit_history_from_test_fixture_code_comment"
+
+    if [ "$#" -gt 0 ]; then
+        commit_hash_constants="${commit_hash_constants}const ${1} = \"$current_commit\"\n"
+    fi
+}
+
+#------------------------------------------------------------------------------
+# MAIN
+#------------------------------------------------------------------------------
+if [[ -d "$REPO_ROOT" ]]; then
+    err_exit "'$REPO_ROOT' directory already exists. Please remove it before running this script."
+fi
+
+if [[ -f "$COMMIT_HASHES_GO_FILEPATH" ]]; then
+    err_exit "'$COMMIT_HASHES_GO_FILEPATH' file already exists. Please remove it before running this script."
 fi
 
 echo "------------------------------------------------------------------------------"
 echo "creating directory hierarchy and test files"
 echo "------------------------------------------------------------------------------"
-mkdir -p git-repo/.circleci git-repo/archives git-repo/fales git-repo/tamwag
+mkdir -p "$REPO_ROOT/.circleci" "$REPO_ROOT/archives" "$REPO_ROOT/fales" "$REPO_ROOT/tamwag"
 
-pushd git-repo &>/dev/null || err_exit "Failed to change directory to git-repo/archives"
+pushd "$REPO_ROOT" &>/dev/null || err_exit "Failed to change directory to ${REPO_ROOT}"
 echo 'README.md' > README.md
 popd &>/dev/null || err_exit "Failed to popd after creating README.md file"
 
-pushd git-repo/.circleci &>/dev/null || err_exit "Failed to change directory to git-repo/archives"
+pushd "$REPO_ROOT/.circleci" &>/dev/null || err_exit "Failed to change directory to ${REPO_ROOT}/.circleci"
 echo 'config.yml' > config.yml
 popd &>/dev/null || err_exit "Failed to popd after creating .circleci/config.yml file"
 
-pushd git-repo/archives &>/dev/null || err_exit "Failed to change directory to git-repo/archives"
+pushd "$REPO_ROOT/archives" &>/dev/null || err_exit "Failed to change directory to ${REPO_ROOT}/archives"
 for e in 'mc_1' 'cap_1' ; do
     echo "$e" > "${e}.xml"
 done
 popd &>/dev/null || err_exit "Failed to popd after creating archives files"
 
-pushd git-repo/fales &>/dev/null || err_exit "Failed to change directory to git-repo/fales"
+pushd "$REPO_ROOT/fales" &>/dev/null || err_exit "Failed to change directory to ${REPO_ROOT}/fales"
 for i in {1..5}; do
     echo "mss_00${i}" > "mss_00${i}.xml"
 done
 popd &>/dev/null || err_exit "Failed to popd after creating fales files"
 
-pushd git-repo/tamwag &>/dev/null || err_exit "Failed to change directory to git-repo/tamwag"
+pushd "$REPO_ROOT/tamwag" &>/dev/null || err_exit "Failed to change directory to ${REPO_ROOT}/tamwag"
 for i in {1..2}; do
     echo "aia_00${i}" > "aia_00${i}.xml"
 done
 popd &>/dev/null || err_exit "Failed to popd after creating tamwag files"
 
-pushd git-repo &>/dev/null || err_exit "Failed to change directory to git-repo"
+pushd "$REPO_ROOT" &>/dev/null || err_exit "Failed to change directory to ${REPO_ROOT}"
 
 echo "------------------------------------------------------------------------------"
 echo "setting up git repository"
@@ -80,39 +135,71 @@ git init .
 # accordingly.  This condition must be maintained going forward.
 # For details, see this comment in the bug ticket:
 # https://nyu.atlassian.net/browse/DLFA-302?focusedCommentId=222897
-git add fales/mss_001.xml README.md .circleci/config.yml
-git commit -m "Initial commit of fales/mss_001.xml, README.md, and .circle/config.yml"
+for f in fales/mss_001.xml README.md .circleci/config.yml; do
+    add_file "$f"
+done
+# Override the `commit_str` processing done by `add_file`.
+commit_str='Initial commit of fales/mss_001.xml, README.md, and .circle/config.yml'
+git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
+update_commit_hash_go_file_variables Commit1Hash
 
-git add fales/mss_001.xml
-git commit -m "Updating file fales/mss_001.xml"
+commit_str=""
+for f in fales/mss_002.xml fales/mss_003.xml; do
+    add_file "$f"
+done
+strip_commit_str_trailing_comma_space
+git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
+update_commit_hash_go_file_variables Commit2Hash
 
-git add fales/mss_002.xml fales/mss_003.xml
-git commit -m "Updating file fales/mss_002.xml, Updating file fales/mss_003.xml"
+commit_str=""
+for f in archives/cap_1.xml fales/mss_004.xml tamwag/aia_001.xml; do
+    add_file "$f"
+done
+strip_commit_str_trailing_comma_space
+git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
+update_commit_hash_go_file_variables Commit3Hash
 
-git add archives/cap_1.xml fales/mss_004.xml tamwag/aia_001.xml
-git commit -m "Updating file archives/cap_1.xml, Updating file fales/mss_004.xml, Updating file tamwag/aia_001.xml"
+commit_str=""
+add_file archives/mc_1.xml
+rm_file fales/mss_002.xml
+add_file fales/mss_005.xml
+add_file tamwag/aia_002.xml
+strip_commit_str_trailing_comma_space
+git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
+update_commit_hash_go_file_variables Commit4Hash
 
-git add archives/mc_1.xml
-git rm fales/mss_002.xml
-git add fales/mss_005.xml
-git add tamwag/aia_002.xml
-git commit -m "Updating file archives/mc_1.xml, Deleting file fales/mss_002.xml EADID='mss_002', Updating file fales/mss_005.xml, Updating file tamwag/aia_002.xml"
-
+commit_str=""
 echo "mss_001 update" > fales/mss_001.xml
-git add fales/mss_001.xml
-git commit -m 'Updating file fales/mss_001.xml'
+add_file fales/mss_001.xml
+strip_commit_str_trailing_comma_space
+git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
+update_commit_hash_go_file_variables Commit5Hash
 
 echo 'README.md update' > README.md
 echo 'config.yml update' > .circleci/config.yml
-git add README.md
-git add .circleci/config.yml
-git commit -m 'Updating README.md with [whatever] and .circleci/config.yml with [whatever]'
+for f in README.md .circleci/config.yml; do
+    add_file "$f"
+done
+# Override the `commit_str` processing done by `add_file`.
+commit_str='Updating README.md with [whatever] and .circleci/config.yml with [whatever]'
+git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
+update_commit_hash_go_file_variables Commit6Hash
 
 echo 'README.md [had to do something special to archives/mc_1.xml' > README.md
-git add README.md
+add_file README.md
 echo 'Do something special to mc_1.xml' > archives/mc_1.xml
-git add archives/mc_1.xml
-git commit -m '[Do something special to] archives/mc_1.xml and add note about it to README.md'
+add_file archives/mc_1.xml
+# Override the `commit_str` processing done by `add_file`.
+commit_str='[Do something special to] archives/mc_1.xml and add note about it to README.md'
+git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
+update_commit_hash_go_file_variables Commit7Hash
+
+# Need to do this to prevent https://jira.nyu.edu/browse/DLFA-276 bug:
+# "`git\.CheckoutMergeReset` will silently check out a default commit if `commitHash` is not a valid commit hash string"
+echo "------------------------------------------------------------------------------"
+echo "setting branch name to 'master' (see https://jira.nyu.edu/browse/DLFA-276)"
+echo "------------------------------------------------------------------------------"
+git branch -m master || err_exit "problem renaming branch to master"
 
 # generate log information for the developer to use in updating tests:
 echo "------------------------------------------------------------------------------"
@@ -127,13 +214,33 @@ echo "--------------------------------------------------------------------------
 echo "renaming .git to dot-git"
 echo "------------------------------------------------------------------------------"
 # NOTE: you MUST include the trailing /. or the .git directory will not be included in the tarball
-mv -nv git-repo/.git git-repo/dot-git &>/dev/null || err_exit "Failed to rename git-repo/.git to git-repo/dot-git"
+mv -nv "$REPO_ROOT/.git" "$REPO_ROOT/dot-git" &>/dev/null || err_exit "Failed to rename ${REPO_ROOT}/.git to ${REPO_ROOT}/dot-git"
 
 echo "------------------------------------------------------------------------------"
 echo "NEXT STEPS:"
-echo "1. move git-repo to pkg/git/testdata/fixtures"
+echo "1. move ${REPO_ROOT} to pkg/git/testdata/fixtures"
 echo "2. Update the git pkg test scenarios with the new commit hash values"
 echo "3. Run the git pkg tests"
 echo "------------------------------------------------------------------------------"
+
+echo "------------------------------------------------------------------------------"
+echo "updating $commit_history_from_test_fixture_code_comment"
+echo "------------------------------------------------------------------------------"
+cat << EOF > $COMMIT_HASHES_GO_FILEPATH
+// Code generated by pkg/index/testsupport/gen-repo.bash. DO NOT EDIT.
+
+package git
+
+// ------------------------------------------------------------------------------
+// git repo fixture constants used by pkg/git tests
+// ------------------------------------------------------------------------------
+
+/*
+	# Commit history from test fixture
+EOF
+
+echo -en "$commit_history_from_test_fixture_code_comment*/\n\n" >> $COMMIT_HASHES_GO_FILEPATH
+
+echo -en "${commit_hash_constants}" >> $COMMIT_HASHES_GO_FILEPATH
 
 exit 0

@@ -1,19 +1,5 @@
 package git
 
-/*
-  PLEASE NOTE: if you regenerate the "simple-repo" via the
-               testsupport/gen-repo.bash script
-               THE COMMIT HASHES WILL CHANGE!
-			   Therefore, you will need to update the hash
-               values in the "scenarios" slice below.
-
-a5ca6cca30fc08cfc13e4f1492dbfbbf3ec7cf63 2025-02-13 14:16:29 -0500 | Updating file fales/mss_001.xml (HEAD -> main) [jgpawletko]
-33ac5f1415ac8fe611944bad4925528b62e845c8 2025-02-13 14:16:29 -0500 | Updating file archives/mc_1.xml, Deleting file fales/mss_002.xml EADID='mss_002', Updating file fales/mss_005.xml, Updating file tamwag/aia_002.xml [jgpawletko]
-382c67e2ac64323e328506c85f97e229070a46cc 2025-02-13 14:16:29 -0500 | Updating file archives/cap_1.xml, Updating file fales/mss_004.xml, Updating file tamwag/aia_001.xml [jgpawletko]
-2f531fc31b82cb128428c83e11d1e3f79b0da394 2025-02-13 14:16:29 -0500 | Updating file fales/mss_002.xml, Updating file fales/mss_003.xml [jgpawletko]
-7e65f35361c9a2d7fc48bece8f04856b358620bf 2025-02-13 14:16:29 -0500 | Updating file fales/mss_001.xml [jgpawletko]
-*/
-
 import (
 	"fmt"
 	"os"
@@ -78,39 +64,7 @@ func TestCheckoutMergeReset(t *testing.T) {
 		Hash         string
 		FileRelPaths []string
 	}{
-		// files present at each commit
-		// * f34cf26 .circleci/config.yml
-		//           README.md
-		//			 archives/cap_1.xml
-		// 			 archives/mc_1.xml
-		//           fales/mss_001.xml
-		// 			 fales/mss_003.xml
-		// 			 fales/mss_004.xml
-		//  		 fales/mss_005.xml
-		// 			 tamwag/aia_001.xml
-		// 			 tamwag/aia_002.xml
-		//
-		// * 2a5cc00 .circleci/config.yml
-		//		     README.md
-		//	     	 archives/cap_1.xml
-		// 			 fales/mss_001.xml
-		// 			 fales/mss_002.xml
-		// 			 fales/mss_003.xml
-		// 			 fales/mss_004.xml
-		// 			 tamwag/aia_001.xml
-		//
-		// * 80301c3 .circleci/config.yml
-		//		     README.md
-		//		     fales/mss_001.xml
-		//   		 fales/mss_002.xml
-		// 			 fales/mss_003.xml
-		//
-		// * 3c20e78 .circleci/config.yml
-		//			 README.md
-		//		     fales/mss_001.xml
-
-		// NOTE: arrange the expected files in alphabetical order
-		{"f34cf26e0a8c70511b7941921ee5016c4fcf3fce",
+		{Commit4Hash,
 			[]string{".circleci/config.yml",
 				"README.md",
 				"archives/cap_1.xml",
@@ -122,7 +76,7 @@ func TestCheckoutMergeReset(t *testing.T) {
 				"tamwag/aia_001.xml",
 				"tamwag/aia_002.xml"},
 		},
-		{"2a5cc008d17384ab183dba69190251e0503fa315",
+		{Commit3Hash,
 			[]string{".circleci/config.yml",
 				"README.md",
 				"archives/cap_1.xml",
@@ -132,14 +86,14 @@ func TestCheckoutMergeReset(t *testing.T) {
 				"fales/mss_004.xml",
 				"tamwag/aia_001.xml"},
 		},
-		{"80301c37ccc2998fd2a8b021a731296273d37467",
+		{Commit2Hash,
 			[]string{".circleci/config.yml",
 				"README.md",
 				"fales/mss_001.xml",
 				"fales/mss_002.xml",
 				"fales/mss_003.xml"},
 		},
-		{"3c20e78557fbf11e77b7fb9e551b7c1b2d508261",
+		{Commit1Hash,
 			[]string{".circleci/config.yml",
 				"README.md",
 				"fales/mss_001.xml"},
@@ -296,13 +250,13 @@ func TestListEADFilesForCommit(t *testing.T) {
 		Hash       string
 		Operations map[string]IndexerOperation
 	}{
-		{"8adb38c5f05fce5ef8ef9b97b4721b5a962057ea", map[string]IndexerOperation{"archives/mc_1.xml": Add}},
-		{"e6af7e810b8002761077a943689529405d558697", map[string]IndexerOperation{}},
-		{"df2bfddf4a599e4a24373320e91366df90dc708a", map[string]IndexerOperation{"fales/mss_001.xml": Add}},
-		{"f34cf26e0a8c70511b7941921ee5016c4fcf3fce", map[string]IndexerOperation{"archives/mc_1.xml": Add, "fales/mss_002.xml": Delete, "fales/mss_005.xml": Add, "tamwag/aia_002.xml": Add}},
-		{"2a5cc008d17384ab183dba69190251e0503fa315", map[string]IndexerOperation{"archives/cap_1.xml": Add, "fales/mss_004.xml": Add, "tamwag/aia_001.xml": Add}},
-		{"80301c37ccc2998fd2a8b021a731296273d37467", map[string]IndexerOperation{"fales/mss_002.xml": Add, "fales/mss_003.xml": Add}},
-		{"3c20e78557fbf11e77b7fb9e551b7c1b2d508261", map[string]IndexerOperation{"fales/mss_001.xml": Add}},
+		{Commit7Hash, map[string]IndexerOperation{"archives/mc_1.xml": Add}},
+		{Commit6Hash, map[string]IndexerOperation{}},
+		{Commit5Hash, map[string]IndexerOperation{"fales/mss_001.xml": Add}},
+		{Commit4Hash, map[string]IndexerOperation{"archives/mc_1.xml": Add, "fales/mss_002.xml": Delete, "fales/mss_005.xml": Add, "tamwag/aia_002.xml": Add}},
+		{Commit3Hash, map[string]IndexerOperation{"archives/cap_1.xml": Add, "fales/mss_004.xml": Add, "tamwag/aia_001.xml": Add}},
+		{Commit2Hash, map[string]IndexerOperation{"fales/mss_002.xml": Add, "fales/mss_003.xml": Add}},
+		{Commit1Hash, map[string]IndexerOperation{"fales/mss_001.xml": Add}},
 	}
 
 	for _, scenario := range scenarios {
