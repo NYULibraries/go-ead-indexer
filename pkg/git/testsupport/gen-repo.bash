@@ -195,7 +195,7 @@ git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
 update_commit_hash_go_file_variables Commit7Hash
 
 # Need to do this to prevent https://jira.nyu.edu/browse/DLFA-276 bug:
-# "`git\.CheckoutMergeReset` will silently check out a default commit if `commitHash` is not a valid commit hash string"
+# "`git.CheckoutMergeReset` will silently check out a default commit if `commitHash` is not a valid commit hash string"
 echo "------------------------------------------------------------------------------"
 echo "setting branch name to 'master' (see https://jira.nyu.edu/browse/DLFA-276)"
 echo "------------------------------------------------------------------------------"
