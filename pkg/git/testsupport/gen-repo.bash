@@ -7,15 +7,6 @@ set -uo pipefail
 # The git-repo directory can be moved into the pkg/git/testdata/fixtures directory
 # for use in git pkg tests.
 
-# Commit history replicated in repo
-# 8adb38c5f05fce5ef8ef9b97b4721b5a962057ea 2025-10-06 17:50:33 -0400 | [Do something special to] archives/mc_1.xml and add note about it to README.md (HEAD -> master)
-# e6af7e810b8002761077a943689529405d558697 2025-10-06 17:50:33 -0400 | Updating README.md with [whatever] and .circleci/config.yml with [whatever]
-# df2bfddf4a599e4a24373320e91366df90dc708a 2025-10-06 17:50:33 -0400 | Updating file fales/mss_001.xml
-# f34cf26e0a8c70511b7941921ee5016c4fcf3fce 2025-10-06 17:50:33 -0400 | Updating file archives/mc_1.xml, Deleting file fales/mss_002.xml EADID='mss_002', Updating file fales/mss_005.xml, Updating file tamwag/aia_002.xml
-# 2a5cc008d17384ab183dba69190251e0503fa315 2025-10-06 17:50:33 -0400 | Updating file archives/cap_1.xml, Updating file fales/mss_004.xml, Updating file tamwag/aia_001.xml
-# 80301c37ccc2998fd2a8b021a731296273d37467 2025-10-06 17:50:33 -0400 | Updating file fales/mss_002.xml, Updating file fales/mss_003.xml
-# 3c20e78557fbf11e77b7fb9e551b7c1b2d508261 2025-10-06 17:50:32 -0400 | Initial commit of fales/mss_001.xml, README.md, and .circle/config.yml
-
 err_exit() {
     echo "$@" 1>&2
     exit 1
