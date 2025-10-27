@@ -250,6 +250,18 @@ func TestListEADFilesForCommit(t *testing.T) {
 		Hash       string
 		Operations map[string]IndexerOperation
 	}{
+		{Commit10Hash, map[string]IndexerOperation{
+			"archives/cap_001.xml": Add,
+		}},
+		{Commit9Hash, map[string]IndexerOperation{
+			"archives/cap_001.xml": Delete,
+		}},
+		{Commit8Hash, map[string]IndexerOperation{
+			"archives/mc_1.xml":    Delete,
+			"archives/mc_001.xml":  Add,
+			"archives/cap_1.xml":   Delete,
+			"archives/cap_001.xml": Add,
+		}},
 		{Commit7Hash, map[string]IndexerOperation{"archives/mc_1.xml": Add}},
 		{Commit6Hash, map[string]IndexerOperation{}},
 		{Commit5Hash, map[string]IndexerOperation{"fales/mss_001.xml": Add}},
@@ -332,25 +344,21 @@ func TestListEADFilesForCommit_BadRepoPath(t *testing.T) {
 func Test_classifyFileChange(t *testing.T) {
 
 	scenarios := []struct {
-		From         diff.File
-		To           diff.File
-		ExpectedOp   IndexerOperation
-		ExpectedPath string
+		From       diff.File
+		To         diff.File
+		ExpectedOp IndexerOperation
 	}{
-		{nil, nil, "unknown", ""},
-		{nil, diffFileMock{ThisPath: "fales/mss_001.xml"}, "add", "fales/mss_001.xml"},
-		{diffFileMock{ThisPath: "fales/mss_001.xml"}, nil, "delete", "fales/mss_001.xml"},
-		{diffFileMock{ThisPath: "fales/mss_001.xml"}, diffFileMock{ThisPath: "fales/mss_001.xml"}, "add", "fales/mss_001.xml"},
-		{diffFileMock{ThisPath: "fales/mss_001.xml"}, diffFileMock{ThisPath: "fales/mss_002.xml"}, "unknown", ""},
+		{nil, nil, Unknown},
+		{nil, diffFileMock{ThisPath: "fales/mss_001.xml"}, Add},
+		{diffFileMock{ThisPath: "fales/mss_001.xml"}, nil, Delete},
+		{diffFileMock{ThisPath: "fales/mss_001.xml"}, diffFileMock{ThisPath: "fales/mss_001.xml"}, Add},
+		{diffFileMock{ThisPath: "fales/mss_001.xml"}, diffFileMock{ThisPath: "fales/mss_002.xml"}, Rename},
 	}
 
 	for _, scenario := range scenarios {
-		result, indexerOp := classifyFileChange(scenario.From, scenario.To)
+		indexerOp := classifyFileChange(scenario.From, scenario.To)
 		if indexerOp != scenario.ExpectedOp {
 			t.Errorf("expected operation '%s', got '%s'", scenario.ExpectedOp, indexerOp)
-		}
-		if result != scenario.ExpectedPath {
-			t.Errorf("expected path '%s', got '%s'", scenario.ExpectedPath, result)
 		}
 	}
 

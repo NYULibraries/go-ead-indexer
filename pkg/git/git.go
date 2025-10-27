@@ -14,6 +14,7 @@ type IndexerOperation string
 const (
 	Add     IndexerOperation = "add"
 	Delete  IndexerOperation = "delete"
+	Rename  IndexerOperation = "rename"
 	Unknown IndexerOperation = "unknown"
 )
 
@@ -167,26 +168,50 @@ func ListEADFilesForCommit(repoPath string,
 	var errs []error
 	for _, fileChange := range patch.FilePatches() {
 		from, to := fileChange.Files()
-		k, v := classifyFileChange(from, to)
+		fromPath := getPath(from)
+		toPath := getPath(to)
 
-		if !isValidFilepath(k) {
-			continue
-		}
+		indexerOp := classifyFileChange(from, to)
 
-		if v == Unknown {
+		if indexerOp == Add {
+			if isValidFilepath(toPath) {
+				operations[toPath] = indexerOp
+			}
+		} else if indexerOp == Delete {
+			if isValidFilepath(fromPath) {
+				operations[fromPath] = indexerOp
+			}
+		} else if indexerOp == Rename {
+			// If the "from" path is invalid and is renamed to a "to" path that
+			// is also invalid, there's nothing to do because the Solr index
+			// is not involved.
+			if !isValidFilepath(fromPath) && !isValidFilepath(toPath) {
+				// Do nothing
+			} else {
+				// If the "from" path is valid, the file needs to be deleted from the
+				// Solr index.
+				if isValidFilepath(fromPath) {
+					operations[fromPath] = Delete
+				}
+
+				// If the "to" path is valid, the file needs to be added to the Solr
+				// index.
+				if isValidFilepath(toPath) {
+					operations[toPath] = Add
+				}
+			}
+		} else if indexerOp == Unknown {
 			// unable to determine the type of change
 			errs = append(errs,
 				fmt.Errorf("unable to determine file transition: Commits: "+
 					"commit '%s', parent: '%s', Files: from '%s', to '%s'",
 					thisCommitHashString,
 					parentHash.String(),
-					getPath(from),
-					getPath(to)))
-			continue
+					fromPath,
+					toPath))
 		}
-
-		operations[k] = v
 	}
+
 	if len(errs) != 0 {
 		return nil, errors.Join(errs...)
 	}
@@ -201,7 +226,7 @@ func getPath(f gitdiff.File) string {
 	return f.Path()
 }
 
-func classifyFileChange(from, to gitdiff.File) (string, IndexerOperation) {
+func classifyFileChange(from, to gitdiff.File) IndexerOperation {
 	/*
 		add    --> from.Path() is nil &&
 				     to.Path() is not nil
@@ -210,18 +235,22 @@ func classifyFileChange(from, to gitdiff.File) (string, IndexerOperation) {
 
 		delete --> from.Path() is not nil &&
 				     to.Path() is nil
+
+		rename --> from.Path() != to.Path()
 	*/
 	switch {
 	case from == nil && to == nil:
 		// this shouldn't happen
-		return "", Unknown
+		return Unknown
 	case from == nil && to != nil:
-		return to.Path(), Add
+		return Add
 	case from != nil && to == nil:
-		return from.Path(), Delete
+		return Delete
 	case from.Path() == to.Path():
-		return to.Path(), Add
+		return Add
+	case from.Path() != to.Path():
+		return Rename
 	default:
-		return "", Unknown
+		return Unknown
 	}
 }
