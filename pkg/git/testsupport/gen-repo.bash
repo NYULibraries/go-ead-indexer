@@ -37,6 +37,14 @@ add_file() {
     commit_str+="Updating $file, "
 }
 
+rename_file() {
+    local filename1 filename2
+    filename1="$1"
+    filename2="$2"
+    git mv "$filename1" "$filename2"  || err_exit "Failed to rename '$filename1' to '$filename2'"
+    commit_str+="Renaming $filename1 -> $filename2, "
+}
+
 rm_file() {
     local file eadid
     file="$1"
@@ -184,6 +192,25 @@ add_file archives/mc_1.xml
 commit_str='[Do something special to] archives/mc_1.xml and add note about it to README.md'
 git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
 update_commit_hash_go_file_variables Commit7Hash
+
+commit_str=""
+rename_file archives/cap_1.xml archives/cap_001.xml
+rename_file archives/mc_1.xml archives/mc_001.xml
+git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
+update_commit_hash_go_file_variables Commit8Hash
+
+# Rename an EAD file with new suffix to prevent it from being recognized as an
+# EAD file that needs to be indexed.
+commit_str=""
+rename_file archives/cap_001.xml archives/cap_001.xml.temporarily-disabled
+git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
+update_commit_hash_go_file_variables Commit9Hash
+
+# Restore the original name of the temporarily disabled EAD file.
+commit_str=""
+rename_file archives/cap_001.xml.temporarily-disabled archives/cap_001.xml
+git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
+update_commit_hash_go_file_variables Commit10Hash
 
 # Need to do this to prevent https://jira.nyu.edu/browse/DLFA-276 bug:
 # "`git.CheckoutMergeReset` will silently check out a default commit if `commitHash` is not a valid commit hash string"
