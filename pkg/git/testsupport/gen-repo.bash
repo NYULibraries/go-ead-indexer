@@ -261,8 +261,15 @@ package git
 	# Commit history from test fixture
 EOF
 
-echo -en "$commit_history_from_test_fixture_code_comment*/\n\n" >> $COMMIT_HASHES_GO_FILEPATH
+if [ $? -ne 0 ]
+then
+    err_exit "Failed to write to ${COMMIT_HASHES_GO_FILEPATH}"
+fi
 
-echo -en "${commit_hash_constants}" >> $COMMIT_HASHES_GO_FILEPATH
+echo -en "$commit_history_from_test_fixture_code_comment*/\n\n" >> $COMMIT_HASHES_GO_FILEPATH || \
+    err_exit "Failed to write to ${COMMIT_HASHES_GO_FILEPATH}"
+
+echo -en "${commit_hash_constants}" >> $COMMIT_HASHES_GO_FILEPATH || \
+    err_exit "Failed to write to ${COMMIT_HASHES_GO_FILEPATH}"
 
 exit 0
