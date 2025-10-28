@@ -1,11 +1,15 @@
 #!/bin/bash
 set -uo pipefail
 
-# This script generates a git repo test fixture for use in the git package tests.
+# This script generates two artifacts:
+#
+# 1) A git repo test fixture for use in the git package tests.
 # The script creates a directory named 'git-repo', then generates and commits various files.
 # Finally, the script renames the 'git-repo/.git' directory to 'git-repo/dot-git'.
 # The git-repo directory can be moved into the pkg/git/testdata/fixtures directory
 # for use in git pkg tests.
+#
+# 2) A new `commit-hashes.go` file with named commit constants with updated values.
 
 err_exit() {
     echo "$@" 1>&2
