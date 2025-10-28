@@ -73,45 +73,6 @@ func CheckoutMergeReset(repoPath string, commitHash string) error {
 // See long comment before filter helper function definition.
 func ListEADFilesForCommit(repoPath string,
 	thisCommitHashString string) (map[string]IndexerOperation, error) {
-	// This is a helper function to prevent accidental inclusion of README.md and
-	// .circleci/config.yml files.  See https://nyu.atlassian.net/browse/DLFA-302.
-	//
-	// Ideally, we want to only include EAD files that we would like to
-	// index.  The rules for this might require some thought, as we've never
-	// strictly defined what constitutes a valid filepath.	For example, do we
-	// want to exclude:
-	//   * EAD files that are not in one of the repository code subdirectories?
-	//   * EAD files that are named correctly and are placed in the correct
-	//     repository code directories, but are not formed correctly?
-	//     E.g. empty or truncated?  If they were published in a proper directory
-	//     with a proper name by the publisher and GT, should the indexer be
-	//     second-guessing?  This is a question to consider because we might
-	//     for example think that doing a string test for an expected tag might
-	//     be a cheap way to test for inclusion.
-	//   * EAD files that don't have extension ".xml", like ".XML"?
-	//
-	// Keep in mind that if we let through files that are not valid EAD2002
-	// files it's not the end of the world, because they will never make it past
-	// the parsing step.  Likewise, files located in the wrong place or named
-	// with an unexpected extension could also have trouble making it through
-	// various processing steps.
-	//
-	// At the moment, we don't keep a list of valid repository codes, but if we
-	// did, we could filter by ensuring all included filepaths were of the form:
-	// `<valid repository code>/<valid EAD ID>.xml`.
-	//
-	// For now, we just test for ".xml" extension.  We currently have no XML
-	// files in the repo that are not actual EAD files.  We could conceivably
-	// have  some in the future though, for example if we switch to a new
-	// CI/CD solution which uses XML configuration files, and if that ever ends
-	// up being the case, we would need to enhance this function.
-	//
-	// Since this is a very context specific function, we are not putting it in
-	// the `util` package, for example as `util.IsEADFile()`, and for the same
-	// reason we don't even necessarily want it to have package level scope.
-	isValidFilepath := func(filepath string) bool {
-		return strings.HasSuffix(filepath, ".xml")
-	}
 
 	operations := make(map[string]IndexerOperation)
 
@@ -253,4 +214,44 @@ func classifyFileChange(from, to gitdiff.File) IndexerOperation {
 	default:
 		return Unknown
 	}
+}
+
+// This is a helper function to prevent accidental inclusion of README.md and
+// .circleci/config.yml files.  See https://nyu.atlassian.net/browse/DLFA-302.
+//
+// Ideally, we want to only include EAD files that we would like to
+// index.  The rules for this might require some thought, as we've never
+// strictly defined what constitutes a valid filepath.	For example, do we
+// want to exclude:
+//   - EAD files that are not in one of the repository code subdirectories?
+//   - EAD files that are named correctly and are placed in the correct
+//     repository code directories, but are not formed correctly?
+//     E.g. empty or truncated?  If they were published in a proper directory
+//     with a proper name by the publisher and GT, should the indexer be
+//     second-guessing?  This is a question to consider because we might
+//     for example think that doing a string test for an expected tag might
+//     be a cheap way to test for inclusion.
+//   - EAD files that don't have extension ".xml", like ".XML"?
+//
+// Keep in mind that if we let through files that are not valid EAD2002
+// files it's not the end of the world, because they will never make it past
+// the parsing step.  Likewise, files located in the wrong place or named
+// with an unexpected extension could also have trouble making it through
+// various processing steps.
+//
+// At the moment, we don't keep a list of valid repository codes, but if we
+// did, we could filter by ensuring all included filepaths were of the form:
+// `<valid repository code>/<valid EAD ID>.xml`.
+//
+// For now, we just test for ".xml" extension.  We currently have no XML
+// files in the repo that are not actual EAD files.  We could conceivably
+// have  some in the future though, for example if we switch to a new
+// CI/CD solution which uses XML configuration files, and if that ever ends
+// up being the case, we would need to enhance this function.
+//
+// Since this is a very context specific function, we are not putting it in
+// the `util` package, for example as `util.IsEADFile()`, and for the same
+// reason we don't export it.
+func isValidFilepath(filepath string) bool {
+	return strings.HasSuffix(filepath, ".xml")
 }
