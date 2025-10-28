@@ -128,48 +128,10 @@ func ListEADFilesForCommit(repoPath string,
 
 	var errs []error
 	for _, fileChange := range patch.FilePatches() {
-		from, to := fileChange.Files()
-		fromPath := getPath(from)
-		toPath := getPath(to)
-
-		indexerOp := classifyFileChange(from, to)
-
-		if indexerOp == Add {
-			if isValidFilepath(toPath) {
-				operations[toPath] = indexerOp
-			}
-		} else if indexerOp == Delete {
-			if isValidFilepath(fromPath) {
-				operations[fromPath] = indexerOp
-			}
-		} else if indexerOp == Rename {
-			// If the "from" path is invalid and is renamed to a "to" path that
-			// is also invalid, there's nothing to do because the Solr index
-			// is not involved.
-			if !isValidFilepath(fromPath) && !isValidFilepath(toPath) {
-				// Do nothing
-			} else {
-				// If the "from" path is valid, the file needs to be deleted from the
-				// Solr index.
-				if isValidFilepath(fromPath) {
-					operations[fromPath] = Delete
-				}
-
-				// If the "to" path is valid, the file needs to be added to the Solr
-				// index.
-				if isValidFilepath(toPath) {
-					operations[toPath] = Add
-				}
-			}
-		} else if indexerOp == Unknown {
-			// unable to determine the type of change
-			errs = append(errs,
-				fmt.Errorf("unable to determine file transition: Commits: "+
-					"commit '%s', parent: '%s', Files: from '%s', to '%s'",
-					thisCommitHashString,
-					parentHash.String(),
-					fromPath,
-					toPath))
+		getOperationsErrors := addToOperationsMap(operations, fileChange,
+			thisCommitHashString, parentHash.String())
+		if len(getOperationsErrors) != 0 {
+			errs = append(errs, getOperationsErrors...)
 		}
 	}
 
@@ -178,6 +140,57 @@ func ListEADFilesForCommit(repoPath string,
 	}
 
 	return operations, nil
+}
+
+func addToOperationsMap(operations map[string]IndexerOperation, fileChange gitdiff.FilePatch,
+	thisCommitHashString string, parentHash string) []error {
+	errs := []error{}
+
+	from, to := fileChange.Files()
+	fromPath := getPath(from)
+	toPath := getPath(to)
+
+	indexerOp := classifyFileChange(from, to)
+
+	if indexerOp == Add {
+		if isValidFilepath(toPath) {
+			operations[toPath] = indexerOp
+		}
+	} else if indexerOp == Delete {
+		if isValidFilepath(fromPath) {
+			operations[fromPath] = indexerOp
+		}
+	} else if indexerOp == Rename {
+		// If the "from" path is invalid and is renamed to a "to" path that
+		// is also invalid, there's nothing to do because the Solr index
+		// is not involved.
+		if !isValidFilepath(fromPath) && !isValidFilepath(toPath) {
+			// Do nothing
+		} else {
+			// If the "from" path is valid, the file needs to be deleted from the
+			// Solr index.
+			if isValidFilepath(fromPath) {
+				operations[fromPath] = Delete
+			}
+
+			// If the "to" path is valid, the file needs to be added to the Solr
+			// index.
+			if isValidFilepath(toPath) {
+				operations[toPath] = Add
+			}
+		}
+	} else if indexerOp == Unknown {
+		// unable to determine the type of change
+		errs = append(errs,
+			fmt.Errorf("unable to determine file transition: Commits: "+
+				"commit '%s', parent: '%s', Files: from '%s', to '%s'",
+				thisCommitHashString,
+				parentHash,
+				fromPath,
+				toPath))
+	}
+
+	return errs
 }
 
 func getPath(f gitdiff.File) string {
