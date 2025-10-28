@@ -1,12 +1,12 @@
-0000000000000000000000000000000000000000 ea158b88d0c10197519f90f45f95991d99cbb772 David <da70@nyu.edu> 1761580636 -0400	commit (initial): Initial commit of fales/mss_001.xml, README.md, and .circle/config.yml
-ea158b88d0c10197519f90f45f95991d99cbb772 32ba5ff8646d7554d19c8c0eb44707cd117dee7b David <da70@nyu.edu> 1761580636 -0400	commit: Updating fales/mss_002.xml, Updating fales/mss_003.xml
-32ba5ff8646d7554d19c8c0eb44707cd117dee7b c833106b13684755c967ad11d7cf178166784234 David <da70@nyu.edu> 1761580637 -0400	commit: Updating archives/cap_1.xml, Updating fales/mss_004.xml, Updating tamwag/aia_001.xml
-c833106b13684755c967ad11d7cf178166784234 cbe56b00a66d9e85cdb5b70f0df484ce2fc58fad David <da70@nyu.edu> 1761580637 -0400	commit: Updating archives/mc_1.xml, Deleting file fales/mss_002.xml EADID='mss_002', Updating fales/mss_005.xml, Updating tamwag/aia_002.xml
-cbe56b00a66d9e85cdb5b70f0df484ce2fc58fad 01fa5f1e8277d7ed14969513e57e7f157b7aec28 David <da70@nyu.edu> 1761580637 -0400	commit: Updating fales/mss_001.xml
-01fa5f1e8277d7ed14969513e57e7f157b7aec28 e9a47b2904079a882e2dce9e6ad2aa5d335ea828 David <da70@nyu.edu> 1761580637 -0400	commit: Updating README.md with [whatever] and .circleci/config.yml with [whatever]
-e9a47b2904079a882e2dce9e6ad2aa5d335ea828 91e5ad30ea94f175ad5f27b86192d5535f02998d David <da70@nyu.edu> 1761580637 -0400	commit: [Do something special to] archives/mc_1.xml and add note about it to README.md
-91e5ad30ea94f175ad5f27b86192d5535f02998d 10eea2ec839c605dfe33391d9767db961673e862 David <da70@nyu.edu> 1761580637 -0400	commit: Renaming archives/cap_1.xml -> archives/cap_001.xml, Renaming archives/mc_1.xml -> archives/mc_001.xml,
-10eea2ec839c605dfe33391d9767db961673e862 a4bf15973ca9eb050b53436cabaaeb5ce50eb289 David <da70@nyu.edu> 1761580637 -0400	commit: Renaming archives/cap_001.xml -> archives/cap_001.xml.temporarily-disabled,
-a4bf15973ca9eb050b53436cabaaeb5ce50eb289 c48b5beca512aaacab7915846f596368042eddcf David <da70@nyu.edu> 1761580638 -0400	commit: Renaming archives/cap_001.xml.temporarily-disabled -> archives/cap_001.xml,
-0000000000000000000000000000000000000000 0000000000000000000000000000000000000000 David <da70@nyu.edu> 1761580638 -0400	Branch: renamed refs/heads/master to refs/heads/master
-c48b5beca512aaacab7915846f596368042eddcf c48b5beca512aaacab7915846f596368042eddcf David <da70@nyu.edu> 1761580638 -0400	Branch: renamed refs/heads/master to refs/heads/master
+0000000000000000000000000000000000000000 2794c8480a1b3ce88383de5be0b20baf634072dd David <da70@nyu.edu> 1761673320 -0400	commit (initial): Initial commit of fales/mss_001.xml, README.md, and .circle/config.yml
+2794c8480a1b3ce88383de5be0b20baf634072dd 1878aa76c89390102a684a2f56767aca8bb85b58 David <da70@nyu.edu> 1761673320 -0400	commit: Updating fales/mss_002.xml, Updating fales/mss_003.xml
+1878aa76c89390102a684a2f56767aca8bb85b58 3210620d443be153f88fe2f2a5fe0192585ade8f David <da70@nyu.edu> 1761673320 -0400	commit: Updating archives/cap_1.xml, Updating fales/mss_004.xml, Updating tamwag/aia_001.xml
+3210620d443be153f88fe2f2a5fe0192585ade8f 76074d06442c6aa7161e9b10b6bc87abba6482df David <da70@nyu.edu> 1761673320 -0400	commit: Updating archives/mc_1.xml, Deleting file fales/mss_002.xml EADID='mss_002', Updating fales/mss_005.xml, Updating tamwag/aia_002.xml
+76074d06442c6aa7161e9b10b6bc87abba6482df a12d15f8d3c1a924165a27466808f1e4c85dfa65 David <da70@nyu.edu> 1761673320 -0400	commit: Updating fales/mss_001.xml
+a12d15f8d3c1a924165a27466808f1e4c85dfa65 6590cd9fc8ff46906e7c020fc306fccd513803bc David <da70@nyu.edu> 1761673321 -0400	commit: Updating README.md with [whatever] and .circleci/config.yml with [whatever]
+6590cd9fc8ff46906e7c020fc306fccd513803bc f612d74d3794a9c2a8a8b0752b4a088436217485 David <da70@nyu.edu> 1761673321 -0400	commit: [Do something special to] archives/mc_1.xml and add note about it to README.md
+f612d74d3794a9c2a8a8b0752b4a088436217485 27d15923046f70a888eedf708b1f9c3160b9bc57 David <da70@nyu.edu> 1761673321 -0400	commit: Renaming archives/cap_1.xml -> archives/cap_001.xml, Renaming archives/mc_1.xml -> archives/mc_001.xml,
+27d15923046f70a888eedf708b1f9c3160b9bc57 dadf0cbe5cbd35ca47641bc4013ab9e26225077f David <da70@nyu.edu> 1761673321 -0400	commit: Renaming archives/cap_001.xml -> archives/cap_001.xml.temporarily-disabled,
+dadf0cbe5cbd35ca47641bc4013ab9e26225077f db5a1242b7dae87726f7a722c5529b88955383a7 David <da70@nyu.edu> 1761673321 -0400	commit: Renaming archives/cap_001.xml.temporarily-disabled -> archives/cap_001.xml,
+0000000000000000000000000000000000000000 0000000000000000000000000000000000000000 David <da70@nyu.edu> 1761673321 -0400	Branch: renamed refs/heads/master to refs/heads/master
+db5a1242b7dae87726f7a722c5529b88955383a7 db5a1242b7dae87726f7a722c5529b88955383a7 David <da70@nyu.edu> 1761673321 -0400	Branch: renamed refs/heads/master to refs/heads/master
