@@ -1,3 +1,5 @@
+//go:generate testsupport/update-test-fixtures.bash
+
 package index
 
 import (
