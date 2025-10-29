@@ -200,6 +200,7 @@ update_commit_hash_go_file_variables Commit7Hash
 commit_str=""
 rename_file archives/cap_1.xml archives/cap_001.xml
 rename_file archives/mc_1.xml archives/mc_001.xml
+strip_commit_str_trailing_comma_space
 git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
 update_commit_hash_go_file_variables Commit8Hash
 
@@ -207,12 +208,14 @@ update_commit_hash_go_file_variables Commit8Hash
 # EAD file that needs to be indexed.
 commit_str=""
 rename_file archives/cap_001.xml archives/cap_001.xml.temporarily-disabled
+strip_commit_str_trailing_comma_space
 git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
 update_commit_hash_go_file_variables Commit9Hash
 
 # Restore the original name of the temporarily disabled EAD file.
 commit_str=""
 rename_file archives/cap_001.xml.temporarily-disabled archives/cap_001.xml
+strip_commit_str_trailing_comma_space
 git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
 update_commit_hash_go_file_variables Commit10Hash
 
