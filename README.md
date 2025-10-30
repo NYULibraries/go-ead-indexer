@@ -39,3 +39,10 @@ Flags:
   -h, --help                   help for delete
   -l, --logging-level string   Sets logging level: debug, info, error (default "info")
   ```
+
+# Additional documentation
+
+* [EAD Reference Information](EAD-REFERENCE-INFORMATION.md)
+* Package README files
+  * [git](pkg/git/README.md) 
+  * [index](pkg/index/README.md) 
