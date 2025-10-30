@@ -1,11 +1,38 @@
 services:
 
   cli:
-    image: eadindexer 
+    image: eadindexer
     build: .
 
   test:
-    image: eadindexer_test 
+    image: eadindexer_test
     build:
       context: .
       dockerfile: Dockerfile.test
+
+  update-git-package-test-fixtures:
+    image: eadindexer_test
+    build:
+      context: .
+      dockerfile:
+        Dockerfile.test
+    command: bash -c '
+      git config --global user.email "lib-appdev@nyu.edu" &&
+      git config --global user.name "Lib-appdev" &&
+      go generate pkg/git/git_test.go'
+    volumes:
+      - ./pkg/git/:/app/pkg/git/
+
+  update-index-package-test-fixtures:
+    image: eadindexer_test
+    build:
+      context: .
+      dockerfile:
+        Dockerfile.test
+    command: bash -c '
+      git config --global user.email "lib-appdev@nyu.edu" &&
+      git config --global user.name "Lib-appdev" &&
+      go generate pkg/index/index_test.go'
+    volumes:
+      - ./pkg/index/testutils/:/app/pkg/index/testutils/
+      - ./pkg/index/testdata/fixtures/:/app/pkg/index/testdata/fixtures/

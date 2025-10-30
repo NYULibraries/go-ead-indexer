@@ -8,20 +8,26 @@ package git
 
 /*
 	# Commit history from test fixture
-	c63c3d18de309c05d6ff30eff77d7c955170b02d [Do something special to] archives/mc_1.xml and add note about it to README.md
-	23fb7db2170abb8545d59145064a8677f61a979a Updating README.md with [whatever] and .circleci/config.yml with [whatever]
-	90e284b10183fb8bb92db10f8ad5533a3858bda6 Updating fales/mss_001.xml
-	13d9029ea12e041517fdace0fb5b5806d0b58ce4 Updating archives/mc_1.xml, Deleting file fales/mss_002.xml EADID='mss_002', Updating fales/mss_005.xml, Updating tamwag/aia_002.xml
-	c813e42c0359138404c9a748990cd3d4e86fcff9 Updating archives/cap_1.xml, Updating fales/mss_004.xml, Updating tamwag/aia_001.xml
-	498751b9c461cfbb9782946f4b59b1ad8a8b459b Updating fales/mss_002.xml, Updating fales/mss_003.xml
-	ae952b8ea915fa3bf1af4ddb7897938384a2b2b7 Initial commit of fales/mss_001.xml, README.md, and .circle/config.yml
+	fe29a602f1848b6655850856b23428351fea828c Renaming archives/cap_001.xml.temporarily-disabled -> archives/cap_001.xml
+	9a8ba58d6e6dc999b9dd0a8387aada50f7c50e61 Renaming archives/cap_001.xml -> archives/cap_001.xml.temporarily-disabled
+	fcc265da202ef5b3b1193703bfeac3129b88486a Renaming archives/cap_1.xml -> archives/cap_001.xml, Renaming archives/mc_1.xml -> archives/mc_001.xml
+	88a9b4790b572ea2a8c255c5dfbdbe39d7102a0f [Do something special to] archives/mc_1.xml and add note about it to README.md
+	8660e7c69da84ba32d0602232c4cb40f9505e6b9 Updating README.md with [whatever] and .circleci/config.yml with [whatever]
+	6ce01ffe1add0ccded5c2a02e369a54e31f1d0f4 Updating fales/mss_001.xml
+	de4e9248fd2f751d234a79c7d8c87a738ebc0216 Updating archives/mc_1.xml, Deleting file fales/mss_002.xml EADID='mss_002', Updating fales/mss_005.xml, Updating tamwag/aia_002.xml
+	d0af157031d8a116482096e458b4c7edb63f231e Updating archives/cap_1.xml, Updating fales/mss_004.xml, Updating tamwag/aia_001.xml
+	2b420f645c99635708459e8619bc6c8add1bff10 Updating fales/mss_002.xml, Updating fales/mss_003.xml
+	8564f09a3be9b6f67f4ed758f52a3d7eb494c533 Initial commit of fales/mss_001.xml, README.md, and .circle/config.yml
 */
 
 // hashes from the git-repo fixture (in order of commits)
-const Commit1Hash = "ae952b8ea915fa3bf1af4ddb7897938384a2b2b7"
-const Commit2Hash = "498751b9c461cfbb9782946f4b59b1ad8a8b459b"
-const Commit3Hash = "c813e42c0359138404c9a748990cd3d4e86fcff9"
-const Commit4Hash = "13d9029ea12e041517fdace0fb5b5806d0b58ce4"
-const Commit5Hash = "90e284b10183fb8bb92db10f8ad5533a3858bda6"
-const Commit6Hash = "23fb7db2170abb8545d59145064a8677f61a979a"
-const Commit7Hash = "c63c3d18de309c05d6ff30eff77d7c955170b02d"
+const Commit1Hash = "8564f09a3be9b6f67f4ed758f52a3d7eb494c533"
+const Commit2Hash = "2b420f645c99635708459e8619bc6c8add1bff10"
+const Commit3Hash = "d0af157031d8a116482096e458b4c7edb63f231e"
+const Commit4Hash = "de4e9248fd2f751d234a79c7d8c87a738ebc0216"
+const Commit5Hash = "6ce01ffe1add0ccded5c2a02e369a54e31f1d0f4"
+const Commit6Hash = "8660e7c69da84ba32d0602232c4cb40f9505e6b9"
+const Commit7Hash = "88a9b4790b572ea2a8c255c5dfbdbe39d7102a0f"
+const Commit8Hash = "fcc265da202ef5b3b1193703bfeac3129b88486a"
+const Commit9Hash = "9a8ba58d6e6dc999b9dd0a8387aada50f7c50e61"
+const Commit10Hash = "fe29a602f1848b6655850856b23428351fea828c"

@@ -14,6 +14,7 @@ type IndexerOperation string
 const (
 	Add     IndexerOperation = "add"
 	Delete  IndexerOperation = "delete"
+	Rename  IndexerOperation = "rename"
 	Unknown IndexerOperation = "unknown"
 )
 
@@ -72,45 +73,6 @@ func CheckoutMergeReset(repoPath string, commitHash string) error {
 // See long comment before filter helper function definition.
 func ListEADFilesForCommit(repoPath string,
 	thisCommitHashString string) (map[string]IndexerOperation, error) {
-	// This is a helper function to prevent accidental inclusion of README.md and
-	// .circleci/config.yml files.  See https://nyu.atlassian.net/browse/DLFA-302.
-	//
-	// Ideally, we want to only include EAD files that we would like to
-	// index.  The rules for this might require some thought, as we've never
-	// strictly defined what constitutes a valid filepath.	For example, do we
-	// want to exclude:
-	//   * EAD files that are not in one of the repository code subdirectories?
-	//   * EAD files that are named correctly and are placed in the correct
-	//     repository code directories, but are not formed correctly?
-	//     E.g. empty or truncated?  If they were published in a proper directory
-	//     with a proper name by the publisher and GT, should the indexer be
-	//     second-guessing?  This is a question to consider because we might
-	//     for example think that doing a string test for an expected tag might
-	//     be a cheap way to test for inclusion.
-	//   * EAD files that don't have extension ".xml", like ".XML"?
-	//
-	// Keep in mind that if we let through files that are not valid EAD2002
-	// files it's not the end of the world, because they will never make it past
-	// the parsing step.  Likewise, files located in the wrong place or named
-	// with an unexpected extension could also have trouble making it through
-	// various processing steps.
-	//
-	// At the moment, we don't keep a list of valid repository codes, but if we
-	// did, we could filter by ensuring all included filepaths were of the form:
-	// `<valid repository code>/<valid EAD ID>.xml`.
-	//
-	// For now, we just test for ".xml" extension.  We currently have no XML
-	// files in the repo that are not actual EAD files.  We could conceivably
-	// have  some in the future though, for example if we switch to a new
-	// CI/CD solution which uses XML configuration files, and if that ever ends
-	// up being the case, we would need to enhance this function.
-	//
-	// Since this is a very context specific function, we are not putting it in
-	// the `util` package, for example as `util.IsEADFile()`, and for the same
-	// reason we don't even necessarily want it to have package level scope.
-	isValidFilepath := func(filepath string) bool {
-		return strings.HasSuffix(filepath, ".xml")
-	}
 
 	operations := make(map[string]IndexerOperation)
 
@@ -166,32 +128,69 @@ func ListEADFilesForCommit(repoPath string,
 
 	var errs []error
 	for _, fileChange := range patch.FilePatches() {
-		from, to := fileChange.Files()
-		k, v := classifyFileChange(from, to)
-
-		if !isValidFilepath(k) {
-			continue
+		getOperationsErrors := addToOperationsMap(operations, fileChange,
+			thisCommitHashString, parentHash.String())
+		if len(getOperationsErrors) != 0 {
+			errs = append(errs, getOperationsErrors...)
 		}
-
-		if v == Unknown {
-			// unable to determine the type of change
-			errs = append(errs,
-				fmt.Errorf("unable to determine file transition: Commits: "+
-					"commit '%s', parent: '%s', Files: from '%s', to '%s'",
-					thisCommitHashString,
-					parentHash.String(),
-					getPath(from),
-					getPath(to)))
-			continue
-		}
-
-		operations[k] = v
 	}
+
 	if len(errs) != 0 {
 		return nil, errors.Join(errs...)
 	}
 
 	return operations, nil
+}
+
+func addToOperationsMap(operations map[string]IndexerOperation, fileChange gitdiff.FilePatch,
+	thisCommitHashString string, parentHash string) []error {
+	errs := []error{}
+
+	from, to := fileChange.Files()
+	fromPath := getPath(from)
+	toPath := getPath(to)
+
+	indexerOp := classifyFileChange(from, to)
+
+	if indexerOp == Add {
+		if isValidFilepath(toPath) {
+			operations[toPath] = indexerOp
+		}
+	} else if indexerOp == Delete {
+		if isValidFilepath(fromPath) {
+			operations[fromPath] = indexerOp
+		}
+	} else if indexerOp == Rename {
+		// If the "from" path is invalid and is renamed to a "to" path that
+		// is also invalid, there's nothing to do because the Solr index
+		// is not involved.
+		if !isValidFilepath(fromPath) && !isValidFilepath(toPath) {
+			// Do nothing
+		} else {
+			// If the "from" path is valid, the file needs to be deleted from the
+			// Solr index.
+			if isValidFilepath(fromPath) {
+				operations[fromPath] = Delete
+			}
+
+			// If the "to" path is valid, the file needs to be added to the Solr
+			// index.
+			if isValidFilepath(toPath) {
+				operations[toPath] = Add
+			}
+		}
+	} else if indexerOp == Unknown {
+		// unable to determine the type of change
+		errs = append(errs,
+			fmt.Errorf("unable to determine file transition: Commits: "+
+				"commit '%s', parent: '%s', Files: from '%s', to '%s'",
+				thisCommitHashString,
+				parentHash,
+				fromPath,
+				toPath))
+	}
+
+	return errs
 }
 
 func getPath(f gitdiff.File) string {
@@ -201,7 +200,7 @@ func getPath(f gitdiff.File) string {
 	return f.Path()
 }
 
-func classifyFileChange(from, to gitdiff.File) (string, IndexerOperation) {
+func classifyFileChange(from, to gitdiff.File) IndexerOperation {
 	/*
 		add    --> from.Path() is nil &&
 				     to.Path() is not nil
@@ -210,18 +209,62 @@ func classifyFileChange(from, to gitdiff.File) (string, IndexerOperation) {
 
 		delete --> from.Path() is not nil &&
 				     to.Path() is nil
+
+		rename --> from.Path() != to.Path()
 	*/
 	switch {
 	case from == nil && to == nil:
 		// this shouldn't happen
-		return "", Unknown
+		return Unknown
 	case from == nil && to != nil:
-		return to.Path(), Add
+		return Add
 	case from != nil && to == nil:
-		return from.Path(), Delete
+		return Delete
 	case from.Path() == to.Path():
-		return to.Path(), Add
+		return Add
+	case from.Path() != to.Path():
+		return Rename
 	default:
-		return "", Unknown
+		return Unknown
 	}
+}
+
+// This is a helper function to prevent accidental inclusion of README.md and
+// .circleci/config.yml files.  See https://nyu.atlassian.net/browse/DLFA-302.
+//
+// Ideally, we want to only include EAD files that we would like to
+// index.  The rules for this might require some thought, as we've never
+// strictly defined what constitutes a valid filepath.	For example, do we
+// want to exclude:
+//   - EAD files that are not in one of the repository code subdirectories?
+//   - EAD files that are named correctly and are placed in the correct
+//     repository code directories, but are not formed correctly?
+//     E.g. empty or truncated?  If they were published in a proper directory
+//     with a proper name by the publisher and GT, should the indexer be
+//     second-guessing?  This is a question to consider because we might
+//     for example think that doing a string test for an expected tag might
+//     be a cheap way to test for inclusion.
+//   - EAD files that don't have extension ".xml", like ".XML"?
+//
+// Keep in mind that if we let through files that are not valid EAD2002
+// files it's not the end of the world, because they will never make it past
+// the parsing step.  Likewise, files located in the wrong place or named
+// with an unexpected extension could also have trouble making it through
+// various processing steps.
+//
+// At the moment, we don't keep a list of valid repository codes, but if we
+// did, we could filter by ensuring all included filepaths were of the form:
+// `<valid repository code>/<valid EAD ID>.xml`.
+//
+// For now, we just test for ".xml" extension.  We currently have no XML
+// files in the repo that are not actual EAD files.  We could conceivably
+// have  some in the future though, for example if we switch to a new
+// CI/CD solution which uses XML configuration files, and if that ever ends
+// up being the case, we would need to enhance this function.
+//
+// Since this is a very context specific function, we are not putting it in
+// the `util` package, for example as `util.IsEADFile()`, and for the same
+// reason we don't export it.
+func isValidFilepath(filepath string) bool {
+	return strings.HasSuffix(filepath, ".xml")
 }

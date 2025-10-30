@@ -1,9 +1,12 @@
-0000000000000000000000000000000000000000 ae952b8ea915fa3bf1af4ddb7897938384a2b2b7 David <da70@nyu.edu> 1760473222 -0400	commit (initial): Initial commit of fales/mss_001.xml, README.md, and .circle/config.yml
-ae952b8ea915fa3bf1af4ddb7897938384a2b2b7 498751b9c461cfbb9782946f4b59b1ad8a8b459b David <da70@nyu.edu> 1760473222 -0400	commit: Updating fales/mss_002.xml, Updating fales/mss_003.xml
-498751b9c461cfbb9782946f4b59b1ad8a8b459b c813e42c0359138404c9a748990cd3d4e86fcff9 David <da70@nyu.edu> 1760473222 -0400	commit: Updating archives/cap_1.xml, Updating fales/mss_004.xml, Updating tamwag/aia_001.xml
-c813e42c0359138404c9a748990cd3d4e86fcff9 13d9029ea12e041517fdace0fb5b5806d0b58ce4 David <da70@nyu.edu> 1760473222 -0400	commit: Updating archives/mc_1.xml, Deleting file fales/mss_002.xml EADID='mss_002', Updating fales/mss_005.xml, Updating tamwag/aia_002.xml
-13d9029ea12e041517fdace0fb5b5806d0b58ce4 90e284b10183fb8bb92db10f8ad5533a3858bda6 David <da70@nyu.edu> 1760473222 -0400	commit: Updating fales/mss_001.xml
-90e284b10183fb8bb92db10f8ad5533a3858bda6 23fb7db2170abb8545d59145064a8677f61a979a David <da70@nyu.edu> 1760473222 -0400	commit: Updating README.md with [whatever] and .circleci/config.yml with [whatever]
-23fb7db2170abb8545d59145064a8677f61a979a c63c3d18de309c05d6ff30eff77d7c955170b02d David <da70@nyu.edu> 1760473223 -0400	commit: [Do something special to] archives/mc_1.xml and add note about it to README.md
-0000000000000000000000000000000000000000 0000000000000000000000000000000000000000 David <da70@nyu.edu> 1760473223 -0400	Branch: renamed refs/heads/master to refs/heads/master
-c63c3d18de309c05d6ff30eff77d7c955170b02d c63c3d18de309c05d6ff30eff77d7c955170b02d David <da70@nyu.edu> 1760473223 -0400	Branch: renamed refs/heads/master to refs/heads/master
+0000000000000000000000000000000000000000 8564f09a3be9b6f67f4ed758f52a3d7eb494c533 David <da70@nyu.edu> 1761756591 -0400	commit (initial): Initial commit of fales/mss_001.xml, README.md, and .circle/config.yml
+8564f09a3be9b6f67f4ed758f52a3d7eb494c533 2b420f645c99635708459e8619bc6c8add1bff10 David <da70@nyu.edu> 1761756591 -0400	commit: Updating fales/mss_002.xml, Updating fales/mss_003.xml
+2b420f645c99635708459e8619bc6c8add1bff10 d0af157031d8a116482096e458b4c7edb63f231e David <da70@nyu.edu> 1761756591 -0400	commit: Updating archives/cap_1.xml, Updating fales/mss_004.xml, Updating tamwag/aia_001.xml
+d0af157031d8a116482096e458b4c7edb63f231e de4e9248fd2f751d234a79c7d8c87a738ebc0216 David <da70@nyu.edu> 1761756591 -0400	commit: Updating archives/mc_1.xml, Deleting file fales/mss_002.xml EADID='mss_002', Updating fales/mss_005.xml, Updating tamwag/aia_002.xml
+de4e9248fd2f751d234a79c7d8c87a738ebc0216 6ce01ffe1add0ccded5c2a02e369a54e31f1d0f4 David <da70@nyu.edu> 1761756592 -0400	commit: Updating fales/mss_001.xml
+6ce01ffe1add0ccded5c2a02e369a54e31f1d0f4 8660e7c69da84ba32d0602232c4cb40f9505e6b9 David <da70@nyu.edu> 1761756592 -0400	commit: Updating README.md with [whatever] and .circleci/config.yml with [whatever]
+8660e7c69da84ba32d0602232c4cb40f9505e6b9 88a9b4790b572ea2a8c255c5dfbdbe39d7102a0f David <da70@nyu.edu> 1761756592 -0400	commit: [Do something special to] archives/mc_1.xml and add note about it to README.md
+88a9b4790b572ea2a8c255c5dfbdbe39d7102a0f fcc265da202ef5b3b1193703bfeac3129b88486a David <da70@nyu.edu> 1761756592 -0400	commit: Renaming archives/cap_1.xml -> archives/cap_001.xml, Renaming archives/mc_1.xml -> archives/mc_001.xml
+fcc265da202ef5b3b1193703bfeac3129b88486a 9a8ba58d6e6dc999b9dd0a8387aada50f7c50e61 David <da70@nyu.edu> 1761756592 -0400	commit: Renaming archives/cap_001.xml -> archives/cap_001.xml.temporarily-disabled
+9a8ba58d6e6dc999b9dd0a8387aada50f7c50e61 fe29a602f1848b6655850856b23428351fea828c David <da70@nyu.edu> 1761756592 -0400	commit: Renaming archives/cap_001.xml.temporarily-disabled -> archives/cap_001.xml
+0000000000000000000000000000000000000000 0000000000000000000000000000000000000000 David <da70@nyu.edu> 1761756592 -0400	Branch: renamed refs/heads/master to refs/heads/master
+fe29a602f1848b6655850856b23428351fea828c fe29a602f1848b6655850856b23428351fea828c David <da70@nyu.edu> 1761756592 -0400	Branch: renamed refs/heads/master to refs/heads/master

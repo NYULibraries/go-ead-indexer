@@ -1,20 +1,15 @@
 #!/bin/bash
 set -uo pipefail
 
-# This script generates a git repo test fixture for use in the git package tests.
+# This script generates two artifacts:
+#
+# 1) A git repo test fixture for use in the git package tests.
 # The script creates a directory named 'git-repo', then generates and commits various files.
 # Finally, the script renames the 'git-repo/.git' directory to 'git-repo/dot-git'.
 # The git-repo directory can be moved into the pkg/git/testdata/fixtures directory
 # for use in git pkg tests.
-
-# Commit history replicated in repo
-# 8adb38c5f05fce5ef8ef9b97b4721b5a962057ea 2025-10-06 17:50:33 -0400 | [Do something special to] archives/mc_1.xml and add note about it to README.md (HEAD -> master)
-# e6af7e810b8002761077a943689529405d558697 2025-10-06 17:50:33 -0400 | Updating README.md with [whatever] and .circleci/config.yml with [whatever]
-# df2bfddf4a599e4a24373320e91366df90dc708a 2025-10-06 17:50:33 -0400 | Updating file fales/mss_001.xml
-# f34cf26e0a8c70511b7941921ee5016c4fcf3fce 2025-10-06 17:50:33 -0400 | Updating file archives/mc_1.xml, Deleting file fales/mss_002.xml EADID='mss_002', Updating file fales/mss_005.xml, Updating file tamwag/aia_002.xml
-# 2a5cc008d17384ab183dba69190251e0503fa315 2025-10-06 17:50:33 -0400 | Updating file archives/cap_1.xml, Updating file fales/mss_004.xml, Updating file tamwag/aia_001.xml
-# 80301c37ccc2998fd2a8b021a731296273d37467 2025-10-06 17:50:33 -0400 | Updating file fales/mss_002.xml, Updating file fales/mss_003.xml
-# 3c20e78557fbf11e77b7fb9e551b7c1b2d508261 2025-10-06 17:50:32 -0400 | Initial commit of fales/mss_001.xml, README.md, and .circle/config.yml
+#
+# 2) A new `commit-hashes.go` file with named commit constants with updated values.
 
 err_exit() {
     echo "$@" 1>&2
@@ -44,6 +39,14 @@ add_file() {
     file="$1"
     git add "$file"  || err_exit "Failed to add '$file' to git repo"
     commit_str+="Updating $file, "
+}
+
+rename_file() {
+    local filename1 filename2
+    filename1="$1"
+    filename2="$2"
+    git mv "$filename1" "$filename2"  || err_exit "Failed to rename '$filename1' to '$filename2'"
+    commit_str+="Renaming $filename1 -> $filename2, "
 }
 
 rm_file() {
@@ -194,8 +197,30 @@ commit_str='[Do something special to] archives/mc_1.xml and add note about it to
 git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
 update_commit_hash_go_file_variables Commit7Hash
 
+commit_str=""
+rename_file archives/cap_1.xml archives/cap_001.xml
+rename_file archives/mc_1.xml archives/mc_001.xml
+strip_commit_str_trailing_comma_space
+git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
+update_commit_hash_go_file_variables Commit8Hash
+
+# Rename an EAD file with new suffix to prevent it from being recognized as an
+# EAD file that needs to be indexed.
+commit_str=""
+rename_file archives/cap_001.xml archives/cap_001.xml.temporarily-disabled
+strip_commit_str_trailing_comma_space
+git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
+update_commit_hash_go_file_variables Commit9Hash
+
+# Restore the original name of the temporarily disabled EAD file.
+commit_str=""
+rename_file archives/cap_001.xml.temporarily-disabled archives/cap_001.xml
+strip_commit_str_trailing_comma_space
+git commit -m "$commit_str" || err_exit "problem committing: $commit_str"
+update_commit_hash_go_file_variables Commit10Hash
+
 # Need to do this to prevent https://jira.nyu.edu/browse/DLFA-276 bug:
-# "`git\.CheckoutMergeReset` will silently check out a default commit if `commitHash` is not a valid commit hash string"
+# "`git.CheckoutMergeReset` will silently check out a default commit if `commitHash` is not a valid commit hash string"
 echo "------------------------------------------------------------------------------"
 echo "setting branch name to 'master' (see https://jira.nyu.edu/browse/DLFA-276)"
 echo "------------------------------------------------------------------------------"
@@ -239,8 +264,15 @@ package git
 	# Commit history from test fixture
 EOF
 
-echo -en "$commit_history_from_test_fixture_code_comment*/\n\n" >> $COMMIT_HASHES_GO_FILEPATH
+if [ $? -ne 0 ]
+then
+    err_exit "Failed to write to ${COMMIT_HASHES_GO_FILEPATH}"
+fi
 
-echo -en "${commit_hash_constants}" >> $COMMIT_HASHES_GO_FILEPATH
+echo -en "$commit_history_from_test_fixture_code_comment*/\n\n" >> $COMMIT_HASHES_GO_FILEPATH || \
+    err_exit "Failed to write to ${COMMIT_HASHES_GO_FILEPATH}"
+
+echo -en "${commit_hash_constants}" >> $COMMIT_HASHES_GO_FILEPATH || \
+    err_exit "Failed to write to ${COMMIT_HASHES_GO_FILEPATH}"
 
 exit 0
