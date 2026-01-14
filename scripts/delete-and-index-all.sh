@@ -39,11 +39,11 @@ echo "Target SOLR_CORE=$SOLR_CORE"
 echo "Preflight: Solr admin/info/system"
 curl -fsS "$SOLR_ORIGIN_WITH_PORT/solr/admin/info/system?wt=json" >/dev/null
 
-echo "Step 2: delete all docs (commit=true)"
-curl -fsS \
-  "$SOLR_ORIGIN_WITH_PORT/solr/$SOLR_CORE/update" \
-  --data-urlencode 'stream.body=<delete><query>*:*</query></delete>' \
-  --data-urlencode 'commit=true' \
+echo "Step 2: delete all docs (commit=true) via XML body (stream.body is disabled)"
+curl -fsS -X POST \
+  "$SOLR_ORIGIN_WITH_PORT/solr/$SOLR_CORE/update?commit=true&wt=json" \
+  -H 'Content-Type: text/xml' \
+  --data-binary '<delete><query>*:*</query></delete>' \
   >/dev/null
 
 echo "Step 3: wait until index is empty (numFound=0)"
