@@ -1,4 +1,6 @@
-#!/usr/bin/bash -euo pipefail
+#!/usr/bin/env bash
+
+set -euo pipefail
 
 # check required positional arg: path to the cloned EAD repo (must be a directory).
 # `${1:-}` safely handles the case where no argument is passed under `set -u`,
