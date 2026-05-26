@@ -227,7 +227,7 @@ func testNoMissingComponents(testEAD string, componentIDs []string, t *testing.T
 		})
 		failMessage := fmt.Sprintf("`EAD.Components` for testEAD %s is missing the following component IDs:\n%s",
 			testEAD, strings.Join(missingComponents, "\n"))
-		t.Errorf(failMessage)
+		t.Error(failMessage)
 	}
 }
 
