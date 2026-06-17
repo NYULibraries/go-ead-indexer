@@ -473,7 +473,7 @@ func (sc *SolrClientMock) checkForErrorEvent() error {
 	// looking for a matching event
 	for _, event := range sc.ErrorEvents {
 		if event.FuncName == callerName && event.CallCount == sc.CallCount {
-			return fmt.Errorf(event.ErrorMessage)
+			return errors.New(event.ErrorMessage)
 		}
 	}
 
