@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">Adnan Pachachi book collection</field>
+    <field name="collection_ssm">Adnan Pachachi book collection</field>
+    <field name="collection_teim">Adnan Pachachi book collection</field>
+    <field name="collection_unitid_ssm">AD.MC.085</field>
+    <field name="collection_unitid_teim">AD.MC.085</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_085</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Sousa, Ahmed. Fayaḍānāt Baghdād fī al-tārīkh: baḥth fī tārīkh fayaḍānāt anhur al-ʻIrāq wa-taʼthīruhā bi-al-nisbah li-madīnat Baghdād = The floods of Baghdad in history (Baghdād : Al-Adib Press, 1963-1965)</field>
+    <field name="id">ad_mc_085aspace_7c08435e2cb3e43cf8996005d571e2be</field>
+    <field name="language_sim">Arabic</field>
+    <field name="language_ssm">Arabic</field>
+    <field name="level_sim">item</field>
+    <field name="location_si">volume: 20</field>
+    <field name="location_ssm">volume: 20</field>
+    <field name="parent_ssi">aspace_2f9a774d8ccd8ddf242bdd2c0b1ecef1</field>
+    <field name="parent_ssm">aspace_2f9a774d8ccd8ddf242bdd2c0b1ecef1</field>
+    <field name="parent_unittitles_ssm">Iraq titles</field>
+    <field name="parent_unittitles_teim">Iraq titles</field>
+    <field name="ref_ssi">aspace_7c08435e2cb3e43cf8996005d571e2be</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Iraq titles &gt;&gt; Sousa, Ahmed. Fayaḍānāt Baghdād fī al-tārīkh: baḥth fī tārīkh fayaḍānāt anhur al-ʻIrāq wa-taʼthīruhā bi-al-nisbah li-madīnat Baghdād = The floods of Baghdad in history (Baghdād : Al-Adib Press, 1963-1965)</field>
+    <field name="series_sim">Iraq titles</field>
+    <field name="sort_ii">21</field>
+    <field name="unittitle_ssm">Sousa, Ahmed. Fayaḍānāt Baghdād fī al-tārīkh: baḥth fī tārīkh fayaḍānāt anhur al-ʻIrāq wa-taʼthīruhā bi-al-nisbah li-madīnat Baghdād = The floods of Baghdad in history (Baghdād : Al-Adib Press, 1963-1965)</field>
+    <field name="unittitle_teim">Sousa, Ahmed. Fayaḍānāt Baghdād fī al-tārīkh: baḥth fī tārīkh fayaḍānāt anhur al-ʻIrāq wa-taʼthīruhā bi-al-nisbah li-madīnat Baghdād = The floods of Baghdad in history (Baghdād : Al-Adib Press, 1963-1965)</field>
+  </doc>
+</add>

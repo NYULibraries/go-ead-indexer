@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">William J. Frazer photograph album of the H.M.S. St. George</field>
+    <field name="collection_ssm">William J. Frazer photograph album of the H.M.S. St. George</field>
+    <field name="collection_teim">William J. Frazer photograph album of the H.M.S. St. George</field>
+    <field name="collection_unitid_ssm">AD.MC.136</field>
+    <field name="collection_unitid_teim">AD.MC.136</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_136</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Section 7:  Benin punitive expedition (includes two hand-drawn maps)</field>
+    <field name="id">ad_mc_136aspace_81bc7611be0dcd19be1a1f9263120442</field>
+    <field name="level_sim">otherlevel</field>
+    <field name="location_si">page: [42-47]</field>
+    <field name="location_ssm">page: [42-47]</field>
+    <field name="ref_ssi">aspace_81bc7611be0dcd19be1a1f9263120442</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Section 7:  Benin punitive expedition (includes two hand-drawn maps)</field>
+    <field name="sort_ii">7</field>
+    <field name="unitdate_inclusive_teim">February 8 - 28, 1897</field>
+    <field name="unitdate_normal_sim">1897-02-08/1897-02-28</field>
+    <field name="unitdate_normal_ssm">1897-02-08/1897-02-28</field>
+    <field name="unitdate_normal_teim">1897-02-08/1897-02-28</field>
+    <field name="unitdate_ssm">Inclusive, February 8 - 28, 1897</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/33517</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/33517</field>
+    <field name="unittitle_ssm">Section 7:  Benin punitive expedition (includes two hand-drawn maps)</field>
+    <field name="unittitle_teim">Section 7:  Benin punitive expedition (includes two hand-drawn maps)</field>
+  </doc>
+</add>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Zoe Blecher-Cohen</field>
+    <field name="collection_sim">Poly Archives Memorabilia Collection</field>
+    <field name="collection_ssm">Poly Archives Memorabilia Collection</field>
+    <field name="collection_teim">Poly Archives Memorabilia Collection</field>
+    <field name="collection_unitid_ssm">RG.027</field>
+    <field name="collection_unitid_teim">RG.027</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">poly_rg_027</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Polytechnic University tie</field>
+    <field name="id">poly_rg_027aspace_fb0eaadcc24457f7b64923137b119892</field>
+    <field name="level_sim">item</field>
+    <field name="location_si">box: 21, object: 8</field>
+    <field name="location_ssm">box: 21, object: 8</field>
+    <field name="parent_ssi">aspace_c4f815432e4f0f9ca44353d2af11b60a</field>
+    <field name="parent_ssm">aspace_ref2_wei</field>
+    <field name="parent_ssm">aspace_c4f815432e4f0f9ca44353d2af11b60a</field>
+    <field name="parent_unittitles_ssm">Series V: Realia</field>
+    <field name="parent_unittitles_ssm">Subseries B: Polytechnic University Realia</field>
+    <field name="parent_unittitles_teim">Series V: Realia</field>
+    <field name="parent_unittitles_teim">Subseries B: Polytechnic University Realia</field>
+    <field name="ref_ssi">aspace_fb0eaadcc24457f7b64923137b119892</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="series_si">Series V: Realia &gt;&gt; Subseries B: Polytechnic University Realia &gt;&gt; Polytechnic University tie</field>
+    <field name="series_sim">Series V: Realia</field>
+    <field name="series_sim">Subseries B: Polytechnic University Realia</field>
+    <field name="sort_ii">120</field>
+    <field name="unitdate_ssm">undated</field>
+    <field name="unitdate_teim">undated</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/12653</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/12653</field>
+    <field name="unittitle_ssm">Polytechnic University tie</field>
+    <field name="unittitle_teim">Polytechnic University tie</field>
+  </doc>
+</add>

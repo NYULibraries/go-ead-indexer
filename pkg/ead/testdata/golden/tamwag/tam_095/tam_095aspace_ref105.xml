@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Peter Filardo</field>
+    <field name="collection_sim">Gil Green Papers</field>
+    <field name="collection_ssm">Gil Green Papers</field>
+    <field name="collection_teim">Gil Green Papers</field>
+    <field name="collection_unitid_ssm">TAM.095</field>
+    <field name="collection_unitid_teim">TAM.095</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">tam_095</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series IV: FBI and Prison Files</field>
+    <field name="id">tam_095aspace_ref105</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_ref105</field>
+    <field name="repository_sim">tamwag</field>
+    <field name="repository_ssi">tamwag</field>
+    <field name="repository_ssm">tamwag</field>
+    <field name="scopecontent_teim">This series makes up the bulk of the collection and contains all of the files sent to Gil Green from federal agencies between 1978 and 1991 in response to his numerous Freedom of Information Act requests. They consist of FBI reports, correspondence between bureau offices, transcripts of trial proceedings and testimony, surveillance logs, and copies of documents produced by individuals and organizations under FBI surveillance. A large portion of these files deal with the FBI&#39;s hunt for Green between 1951 and 1956. During these years, Green was a political fugitive seeking to escape federal charges for violating the Smith Act. The series also contains a number of FBI files obtained through the efforts of Gil Green&#39;s attorney, Edward Greer, and contain FBI files from various regional offices and files on individuals affiliated with Green or the CPUSA between the 1930s and 1970s. FBI files contained in Subseries IVB were grouped by Green in preparation for his 1984 memoir, Cold War Fugitive: A Personal Story of the McCarthy Years. These files are heavily annotated and reflect the various stages of the FBI&#39;s campaign against Green. They do not, however, correspond with chapters in his book.</field>
+    <field name="scopecontent_teim">Along with FBI files, Green received several hundred pages of documents from the Bureau of Prisons and Parole Board. These files contain copies of Green&#39;s personal notes and correspondence during his time in prison, as well as conduct reports, telephone logs, and parole board paperwork.</field>
+    <field name="scopecontent_teim">Also included among these materials is a small amount of correspondence between Green, his attorney Ed Greer, and various federal agencies regarding Green&#39;s FOIA requests between 1975 and 1981, held in Subseries IVA.</field>
+    <field name="series_si">Series IV: FBI and Prison Files</field>
+    <field name="sort_ii">92</field>
+    <field name="unitdate_end_si">1993</field>
+    <field name="unitdate_end_sim">1993</field>
+    <field name="unitdate_end_ssm">1993</field>
+    <field name="unitdate_inclusive_teim">1939-1993</field>
+    <field name="unitdate_normal_sim">1939/1993</field>
+    <field name="unitdate_normal_ssm">1939/1993</field>
+    <field name="unitdate_normal_teim">1939/1993</field>
+    <field name="unitdate_ssm">Inclusive, 1939-1993</field>
+    <field name="unitdate_start_si">1939</field>
+    <field name="unitdate_start_sim">1939</field>
+    <field name="unitdate_start_ssm">1939</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/244687</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/244687</field>
+    <field name="unittitle_ssm">Series IV: FBI and Prison Files</field>
+    <field name="unittitle_teim">Series IV: FBI and Prison Files</field>
+  </doc>
+</add>

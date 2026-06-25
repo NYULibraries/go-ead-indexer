@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Lauren Kata</field>
+    <field name="collection_sim">NYU Abu Dhabi Student Life Events: Photos, Music, and Videos</field>
+    <field name="collection_ssm">NYU Abu Dhabi Student Life Events: Photos, Music, and Videos</field>
+    <field name="collection_teim">NYU Abu Dhabi Student Life Events: Photos, Music, and Videos</field>
+    <field name="collection_unitid_ssm">AD.RG.009.3-2-1</field>
+    <field name="collection_unitid_teim">AD.RG.009.3-2-1</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="dao_sim">Online Access</field>
+    <field name="dao_ssm">Ma_a Salama</field>
+    <field name="dao_teim">Ma_a Salama</field>
+    <field name="date_range_sim">2001-2100</field>
+    <field name="ead_ssi">ad_rg_009_3_2_1</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Ma_a Salama</field>
+    <field name="id">ad_rg_009_3_2_1aspace_43f9eb29198f256b2243f0d6946e3e6d</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: Electronic Records, E-records: AD_RG_009_3_2_1-007</field>
+    <field name="location_ssm">box: Electronic Records, E-records: AD_RG_009_3_2_1-007</field>
+    <field name="parent_ssi">aspace_b69c8b62bcce7caf4bfb95af9930d05d</field>
+    <field name="parent_ssm">aspace_b69c8b62bcce7caf4bfb95af9930d05d</field>
+    <field name="parent_unittitles_ssm">Student Life Event Coordinator</field>
+    <field name="parent_unittitles_teim">Student Life Event Coordinator</field>
+    <field name="ref_ssi">aspace_43f9eb29198f256b2243f0d6946e3e6d</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Student Life Event Coordinator &gt;&gt; Ma_a Salama</field>
+    <field name="series_sim">Student Life Event Coordinator</field>
+    <field name="sort_ii">8</field>
+    <field name="unitdate_end_si">2015</field>
+    <field name="unitdate_end_sim">2015</field>
+    <field name="unitdate_end_ssm">2015</field>
+    <field name="unitdate_normal_sim">2015/2015</field>
+    <field name="unitdate_normal_ssm">2015/2015</field>
+    <field name="unitdate_normal_teim">2015/2015</field>
+    <field name="unitdate_ssm">2015</field>
+    <field name="unitdate_start_si">2015</field>
+    <field name="unitdate_start_sim">2015</field>
+    <field name="unitdate_start_ssm">2015</field>
+    <field name="unitdate_teim">2015</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/28284</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/28284</field>
+    <field name="unittitle_ssm">Ma_a Salama</field>
+    <field name="unittitle_teim">Ma_a Salama</field>
+  </doc>
+</add>

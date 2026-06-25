@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ala Younis, Ibrahim Mohamed Ali, Dina Taha, Anneka Lenssen, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art, NYUAD</field>
+    <field name="collection_sim">Rafa Nasiri and May Muzaffar Collection</field>
+    <field name="collection_ssm">Rafa Nasiri and May Muzaffar Collection</field>
+    <field name="collection_teim">Rafa Nasiri and May Muzaffar Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.092</field>
+    <field name="collection_unitid_teim">AD.MC.092</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_092</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">2. Homes in Baghdad, 1976-1989</field>
+    <field name="id">ad_mc_092aspace_8a7adb69dda758710e8791dc6e3d01c8</field>
+    <field name="level_sim">subgrp</field>
+    <field name="parent_ssi">aspace_aa7955423126007ec6f58c07aa356bae</field>
+    <field name="parent_ssm">aspace_948856d8965e436968a254254884cf94</field>
+    <field name="parent_ssm">aspace_aa7955423126007ec6f58c07aa356bae</field>
+    <field name="parent_unittitles_ssm">Series VI: Photographic Slides</field>
+    <field name="parent_unittitles_ssm">VI.A. Artworks, Exhibitions, Homes, Portraits</field>
+    <field name="parent_unittitles_teim">Series VI: Photographic Slides</field>
+    <field name="parent_unittitles_teim">VI.A. Artworks, Exhibitions, Homes, Portraits</field>
+    <field name="ref_ssi">aspace_8a7adb69dda758710e8791dc6e3d01c8</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="series_si">Series VI: Photographic Slides &gt;&gt; VI.A. Artworks, Exhibitions, Homes, Portraits &gt;&gt; 2. Homes in Baghdad, 1976-1989</field>
+    <field name="series_sim">Series VI: Photographic Slides</field>
+    <field name="series_sim">VI.A. Artworks, Exhibitions, Homes, Portraits</field>
+    <field name="sort_ii">120</field>
+    <field name="unitid_ssm">cuid846</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/32256</field>
+    <field name="unitid_teim">cuid846</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/32256</field>
+    <field name="unittitle_ssm">2. Homes in Baghdad, 1976-1989</field>
+    <field name="unittitle_teim">2. Homes in Baghdad, 1976-1989</field>
+  </doc>
+</add>

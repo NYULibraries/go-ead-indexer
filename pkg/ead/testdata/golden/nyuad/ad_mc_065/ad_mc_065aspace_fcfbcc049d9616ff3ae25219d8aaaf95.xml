@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">Aḥmad Zakī Abū Shādī Family Papers</field>
+    <field name="collection_ssm">Aḥmad Zakī Abū Shādī Family Papers</field>
+    <field name="collection_teim">Aḥmad Zakī Abū Shādī Family Papers</field>
+    <field name="collection_unitid_ssm">AD.MC.065</field>
+    <field name="collection_unitid_teim">AD.MC.065</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_065</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Business cards, in leatherette wallet:  primarily Arabic , including &#34;Safeya Ahmed Zaki (Abu Shadi),&#34; with and without notation &#34;Washington,&#34; and various other cards, including &#34;Hosni Nagib, Cairo&#34;</field>
+    <field name="id">ad_mc_065aspace_fcfbcc049d9616ff3ae25219d8aaaf95</field>
+    <field name="level_sim">item</field>
+    <field name="location_si">box: OS-1, object: 6</field>
+    <field name="location_ssm">box: OS-1, object: 6</field>
+    <field name="parent_ssi">aspace_71b080a8cb53e9db4d3fa8906dade1f0</field>
+    <field name="parent_ssm">aspace_9374360a335be5c0da8076d51a448605</field>
+    <field name="parent_ssm">aspace_71b080a8cb53e9db4d3fa8906dade1f0</field>
+    <field name="parent_unittitles_ssm">Artwork, ephemera, realia, and sound recordings</field>
+    <field name="parent_unittitles_ssm">Ephemera</field>
+    <field name="parent_unittitles_teim">Artwork, ephemera, realia, and sound recordings</field>
+    <field name="parent_unittitles_teim">Ephemera</field>
+    <field name="ref_ssi">aspace_fcfbcc049d9616ff3ae25219d8aaaf95</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Artwork, ephemera, realia, and sound recordings &gt;&gt; Ephemera &gt;&gt; Business cards, in leatherette wallet:  primarily Arabic , including &#34;Safeya Ahmed Zaki (Abu Shadi),&#34; with and without notation &#34;Washington,&#34; and various other cards, including &#34;Hosni Nagib, Cairo&#34;</field>
+    <field name="series_sim">Artwork, ephemera, realia, and sound recordings</field>
+    <field name="series_sim">Ephemera</field>
+    <field name="sort_ii">481</field>
+    <field name="unittitle_ssm">Business cards, in leatherette wallet:  primarily Arabic , including &#34;Safeya Ahmed Zaki (Abu Shadi),&#34; with and without notation &#34;Washington,&#34; and various other cards, including &#34;Hosni Nagib, Cairo&#34;</field>
+    <field name="unittitle_teim">Business cards, in leatherette wallet:  primarily Arabic , including &#34;Safeya Ahmed Zaki (Abu Shadi),&#34; with and without notation &#34;Washington,&#34; and various other cards, including &#34;Hosni Nagib, Cairo&#34;</field>
+  </doc>
+</add>

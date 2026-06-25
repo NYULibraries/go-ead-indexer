@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ibrahim Mohamed Ali, Anneka Lenssen, Dina Taha, Ala Younis, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art, NYUAD
+</field>
+    <field name="collection_sim">Mahmoud Hammad Collection</field>
+    <field name="collection_ssm">Mahmoud Hammad Collection</field>
+    <field name="collection_teim">Mahmoud Hammad Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.091</field>
+    <field name="collection_unitid_teim">AD.MC.091</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_091</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series I: Exhibition Materials, 1950s - 2001</field>
+    <field name="id">ad_mc_091aspace_5f417edd3f94baeedce7c69501ac1bb5</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_5f417edd3f94baeedce7c69501ac1bb5</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="scopecontent_teim">Series I comprises various exhibition materials, including catalogs, invitations, and brochures of solo and group exhibitions. A few catalogs of the Salon d&#39;Automne annual exhibition held in Damascus and date back to the 1960s are included. Other publications about art institutions and art activities in Syria are included as well.</field>
+    <field name="series_si">Series I: Exhibition Materials, 1950s - 2001</field>
+    <field name="sort_ii">1</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/30627</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/30627</field>
+    <field name="unittitle_ssm">Series I: Exhibition Materials, 1950s - 2001</field>
+    <field name="unittitle_teim">Series I: Exhibition Materials, 1950s - 2001</field>
+  </doc>
+</add>

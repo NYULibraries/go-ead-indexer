@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Mehri Khalil, Ibrahim Mohamed Ali, Anneka Lenssen, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art, NYUAD.</field>
+    <field name="collection_sim">Salah Taher Collection</field>
+    <field name="collection_ssm">Salah Taher Collection</field>
+    <field name="collection_teim">Salah Taher Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.107</field>
+    <field name="collection_unitid_teim">AD.MC.107</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_107</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">VI. Photographic Materials</field>
+    <field name="id">ad_mc_107aspace_e5eb85e5c063177404dd98152be67dd7</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_e5eb85e5c063177404dd98152be67dd7</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="scopecontent_teim">Series VI contains photographs, negatives and slides. The images pertain to Salah Taher as an artist, his family life, photographs with several prominent figures, as well as photographs of models, landscapes and people who inspired him. It also includes photographs of his works and exhibition openings, as well as conferences and other gatherings relating to the various positions he held. The photographic negatives and slides were arranged by the artist in individual boxes, and this arrangement has been maintained.</field>
+    <field name="series_si">VI. Photographic Materials</field>
+    <field name="sort_ii">71</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/33256</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/33256</field>
+    <field name="unittitle_ssm">VI. Photographic Materials</field>
+    <field name="unittitle_teim">VI. Photographic Materials</field>
+  </doc>
+</add>

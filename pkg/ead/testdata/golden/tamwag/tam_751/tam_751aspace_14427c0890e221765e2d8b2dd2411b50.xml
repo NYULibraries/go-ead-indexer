@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Heather Mulliner, Molly A. Cross, and Alexa Logush.</field>
+    <field name="collection_sim">Tamiment Library and Robert F. Wagner Labor Archives Collection of Women&#39;s Rights Serials</field>
+    <field name="collection_ssm">Tamiment Library and Robert F. Wagner Labor Archives Collection of Women&#39;s Rights Serials</field>
+    <field name="collection_teim">Tamiment Library and Robert F. Wagner Labor Archives Collection of Women&#39;s Rights Serials</field>
+    <field name="collection_unitid_ssm">TAM.751</field>
+    <field name="collection_unitid_teim">TAM.751</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">tam_751</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Women&#39;s Liberation: A Communist View: October League (Marxist-Leninist), Chicago, IL</field>
+    <field name="id">tam_751aspace_14427c0890e221765e2d8b2dd2411b50</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 9, Folder: 14</field>
+    <field name="location_ssm">Box: 9, Folder: 14</field>
+    <field name="ref_ssi">aspace_14427c0890e221765e2d8b2dd2411b50</field>
+    <field name="repository_sim">tamwag</field>
+    <field name="repository_ssi">tamwag</field>
+    <field name="repository_ssm">tamwag</field>
+    <field name="series_si">&lt;em&gt;Women&#39;s Liberation: A Communist View&lt;/em&gt;: October League (Marxist-Leninist), Chicago, IL</field>
+    <field name="sort_ii">313</field>
+    <field name="unitdate_end_si">1979</field>
+    <field name="unitdate_end_sim">1979</field>
+    <field name="unitdate_end_ssm">1979</field>
+    <field name="unitdate_inclusive_teim">circa 1970s</field>
+    <field name="unitdate_normal_sim">1970/1979</field>
+    <field name="unitdate_normal_ssm">1970/1979</field>
+    <field name="unitdate_normal_teim">1970/1979</field>
+    <field name="unitdate_ssm">Inclusive, circa 1970s</field>
+    <field name="unitdate_start_si">1970</field>
+    <field name="unitdate_start_sim">1970</field>
+    <field name="unitdate_start_ssm">1970</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/804772</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/804772</field>
+    <field name="unittitle_ssm">&lt;em&gt;Women&#39;s Liberation: A Communist View&lt;/em&gt;: October League (Marxist-Leninist), Chicago, IL</field>
+    <field name="unittitle_teim">Women&#39;s Liberation: A Communist View: October League (Marxist-Leninist), Chicago, IL</field>
+  </doc>
+</add>

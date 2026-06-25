@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Miranda Schwartz (2000s); Larry Weimer (2021)</field>
+    <field name="collection_sim">James Reuel Smith springs and wells photographs and papers</field>
+    <field name="collection_ssm">James Reuel Smith springs and wells photographs and papers</field>
+    <field name="collection_teim">James Reuel Smith springs and wells photographs and papers</field>
+    <field name="collection_unitid_ssm">PR 62</field>
+    <field name="collection_unitid_teim">PR 62</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">pr062_reuel_smith_springs_wells</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Subseries IV.A: Written Material and Notes</field>
+    <field name="id">pr062_reuel_smith_springs_wellsaspace_ref40_8dd</field>
+    <field name="level_sim">subseries</field>
+    <field name="parent_ssi">aspace_ref39_inw</field>
+    <field name="parent_ssm">aspace_ref39_inw</field>
+    <field name="parent_unittitles_ssm">Series IV: Springs and Wells Manuscript Material</field>
+    <field name="parent_unittitles_teim">Series IV: Springs and Wells Manuscript Material</field>
+    <field name="ref_ssi">aspace_ref40_8dd</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="scopecontent_teim">The subseries contains Smith&#39;s extensive key to the many printed iterations of the photographs he took for Springs and Wells. He called this document &#34;Analysis of Photograph Subjects (Vicinages of SPRINGS &amp; WELLS, Dates of Negatives Nos., &amp;c, &amp;c and List &#39;D&#39; of SPRINGS &amp; WELLS)&#34;. Utilizing a complex coding system of his own devising, this document provides information on exact locations and cameras used, as well as a key to the numbering, classification, and identification of the prints. Researchers interested in the Springs and Wells Collection would benefit from studying, decoding, and mastering this index thoroughly. </field>
+    <field name="scopecontent_teim">The subseries also includes two hand-bound manuscripts: &#34;Wells, Pumps, Cisterns&#34; and &#34;Springs, for revision.&#34; &#34;Wells, Pumps, Cisterns&#34; is a handwritten manuscript; it is subtitled Queens, Hoboken Spg, Minnesota Giant Spg, Bath, Eng., Spg, Venice Wells. &#34;Springs&#34; is mimeographed but has extensive handwritten notes by the author. It discusses New York City springs, which Smith investigated thoroughly, but its text does not seem to exactly overlap with the author&#39;s introduction to Springs and Wells. Perhaps it is a longer text from which the author adapted his shorter introduction.</field>
+    <field name="scopecontent_teim">The subseries also holds Smith&#39;s files of research notes, clippings, tearsheets, indexes, and other documents used for both Manhattan &amp; Bronx springs and wells and for his work on springs and wells in Greek and Roman literature. Original artifacts in the subseries include a set of four framed maps with push pins identifying locations and descriptive notes, and two of the original wood boxes that Smith used to hold his files.</field>
+    <field name="series_si">Series IV: Springs and Wells Manuscript Material &gt;&gt; Subseries IV.A: Written Material and Notes</field>
+    <field name="series_sim">Series IV: Springs and Wells Manuscript Material</field>
+    <field name="sort_ii">26</field>
+    <field name="unitdate_inclusive_teim">1890s-1930s</field>
+    <field name="unitdate_ssm">Inclusive, 1890s-1930s</field>
+    <field name="unittitle_ssm">Subseries IV.A: Written Material and Notes</field>
+    <field name="unittitle_teim">Subseries IV.A: Written Material and Notes</field>
+  </doc>
+</add>

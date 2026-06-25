@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Stacey Flatt and Rachel Searcy</field>
+    <field name="collection_sim">Lydia Lunch Papers</field>
+    <field name="collection_ssm">Lydia Lunch Papers</field>
+    <field name="collection_teim">Lydia Lunch Papers</field>
+    <field name="collection_unitid_ssm">MSS.590</field>
+    <field name="collection_unitid_teim">MSS.590</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="dao_sim">Online Access</field>
+    <field name="dao_ssm">Live Performance, Link Club, Bologna, Italy: 1997-11-14-</field>
+    <field name="dao_teim">Live Performance, Link Club, Bologna, Italy: 1997-11-14-</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">mss_590</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Live Performance, Link Club, Bologna, Italy</field>
+    <field name="id">mss_590aspace_cbc4f367e3e25c0ee63ebe48b7219ecf</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: Electronic Record, E-records: FA_MSS_590_ER_4</field>
+    <field name="location_ssm">Box: Electronic Record, E-records: FA_MSS_590_ER_4</field>
+    <field name="parent_ssi">aspace_8f033851dc2c0e62dbc1193914e0cb40</field>
+    <field name="parent_ssm">aspace_8f033851dc2c0e62dbc1193914e0cb40</field>
+    <field name="parent_unittitles_ssm">Series II. Performance and Studio Recordings</field>
+    <field name="parent_unittitles_teim">Series II. Performance and Studio Recordings</field>
+    <field name="ref_ssi">aspace_cbc4f367e3e25c0ee63ebe48b7219ecf</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="series_si">Series II. Performance and Studio Recordings &gt;&gt; Live Performance, Link Club, Bologna, Italy</field>
+    <field name="series_sim">Series II. Performance and Studio Recordings</field>
+    <field name="sort_ii">171</field>
+    <field name="unitdate_normal_sim">1997-11-14/1997-11-14</field>
+    <field name="unitdate_normal_ssm">1997-11-14/1997-11-14</field>
+    <field name="unitdate_normal_teim">1997-11-14/1997-11-14</field>
+    <field name="unitdate_ssm">1997-11-14</field>
+    <field name="unitdate_teim">1997-11-14</field>
+    <field name="unitid_ssm">cuid30285</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/927211</field>
+    <field name="unitid_teim">cuid30285</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/927211</field>
+    <field name="unittitle_ssm">Live Performance, Link Club, Bologna, Italy</field>
+    <field name="unittitle_teim">Live Performance, Link Club, Bologna, Italy</field>
+  </doc>
+</add>

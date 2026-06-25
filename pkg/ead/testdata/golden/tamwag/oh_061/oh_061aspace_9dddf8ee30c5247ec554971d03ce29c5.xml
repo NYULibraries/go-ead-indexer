@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Jenny Ambrose</field>
+    <field name="collection_sim">Professional Staff Congress/City University of New York Oral History Collection</field>
+    <field name="collection_ssm">Professional Staff Congress/City University of New York Oral History Collection</field>
+    <field name="collection_teim">Professional Staff Congress/City University of New York Oral History Collection</field>
+    <field name="collection_unitid_ssm">OH.061</field>
+    <field name="collection_unitid_teim">OH.061</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">oh_061</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Original Recording</field>
+    <field name="id">oh_061aspace_9dddf8ee30c5247ec554971d03ce29c5</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 2, CD: Yusef</field>
+    <field name="location_ssm">Box: 2, CD: Yusef</field>
+    <field name="parent_ssi">aspace_5be76a618810b44311415bf14c1d0ea8</field>
+    <field name="parent_ssm">aspace_5be76a618810b44311415bf14c1d0ea8</field>
+    <field name="parent_unittitles_ssm">Mohammed Yusef</field>
+    <field name="parent_unittitles_teim">Mohammed Yusef</field>
+    <field name="ref_ssi">aspace_9dddf8ee30c5247ec554971d03ce29c5</field>
+    <field name="repository_sim">tamwag</field>
+    <field name="repository_ssi">tamwag</field>
+    <field name="repository_ssm">tamwag</field>
+    <field name="series_si">Mohammed Yusef &gt;&gt; Original Recording</field>
+    <field name="series_sim">Mohammed Yusef</field>
+    <field name="sort_ii">37</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/1014705</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/1014705</field>
+    <field name="unittitle_ssm">Original Recording</field>
+    <field name="unittitle_teim">Original Recording</field>
+  </doc>
+</add>

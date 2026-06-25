@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Lindsay Anderberg</field>
+    <field name="collection_sim">Faculty Minutes</field>
+    <field name="collection_ssm">Faculty Minutes</field>
+    <field name="collection_teim">Faculty Minutes</field>
+    <field name="collection_unitid_ssm">RG.018</field>
+    <field name="collection_unitid_teim">RG.018</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">poly_rg_018</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">[Polytechnic Institute of New York] Faculty Minutes, 1974-1976</field>
+    <field name="id">poly_rg_018aspace_ref35_noy</field>
+    <field name="level_sim">item</field>
+    <field name="location_si">volume: Binder 13</field>
+    <field name="location_ssm">volume: Binder 13</field>
+    <field name="parent_ssi">aspace_ref21_5wr</field>
+    <field name="parent_ssm">aspace_ref21_5wr</field>
+    <field name="parent_unittitles_ssm">Series II: Binders</field>
+    <field name="parent_unittitles_teim">Series II: Binders</field>
+    <field name="ref_ssi">aspace_ref35_noy</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="series_si">Series II: Binders &gt;&gt; [Polytechnic Institute of New York] Faculty Minutes, 1974-1976</field>
+    <field name="series_sim">Series II: Binders</field>
+    <field name="sort_ii">34</field>
+    <field name="unitdate_ssm">1974 September - 1976 June</field>
+    <field name="unitdate_teim">1974 September - 1976 June</field>
+    <field name="unittitle_ssm">[Polytechnic Institute of New York] Faculty Minutes, 1974-1976</field>
+    <field name="unittitle_teim">[Polytechnic Institute of New York] Faculty Minutes, 1974-1976</field>
+  </doc>
+</add>

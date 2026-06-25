@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Zoe Blecher-Cohen</field>
+    <field name="collection_sim">Poly Archives Memorabilia Collection</field>
+    <field name="collection_ssm">Poly Archives Memorabilia Collection</field>
+    <field name="collection_teim">Poly Archives Memorabilia Collection</field>
+    <field name="collection_unitid_ssm">RG.027</field>
+    <field name="collection_unitid_teim">RG.027</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">poly_rg_027</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Engineering is NYU t-shirt, white</field>
+    <field name="id">poly_rg_027aspace_bc1c635ec51c5ece2e49b87e01c0e68a</field>
+    <field name="level_sim">item</field>
+    <field name="location_si">box: 15, object: 1</field>
+    <field name="location_ssm">box: 15, object: 1</field>
+    <field name="parent_ssi">aspace_fec62efe7f573cfead8bdfa2e8854904</field>
+    <field name="parent_ssm">aspace_8b065d7b2bcfc4c6de76f54b963c986c</field>
+    <field name="parent_ssm">aspace_fec62efe7f573cfead8bdfa2e8854904</field>
+    <field name="parent_unittitles_ssm">Series IV: T-Shirts</field>
+    <field name="parent_unittitles_ssm">Subseries D: New York University - Polytechnic School of Engineering T-Shirts</field>
+    <field name="parent_unittitles_teim">Series IV: T-Shirts</field>
+    <field name="parent_unittitles_teim">Subseries D: New York University - Polytechnic School of Engineering T-Shirts</field>
+    <field name="ref_ssi">aspace_bc1c635ec51c5ece2e49b87e01c0e68a</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="series_si">Series IV: T-Shirts &gt;&gt; Subseries D: New York University - Polytechnic School of Engineering T-Shirts &gt;&gt; Engineering is NYU t-shirt, white</field>
+    <field name="series_sim">Series IV: T-Shirts</field>
+    <field name="series_sim">Subseries D: New York University - Polytechnic School of Engineering T-Shirts</field>
+    <field name="sort_ii">81</field>
+    <field name="unitdate_ssm">undated</field>
+    <field name="unitdate_teim">undated</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/12626</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/12626</field>
+    <field name="unittitle_ssm">Engineering is NYU t-shirt, white</field>
+    <field name="unittitle_teim">Engineering is NYU t-shirt, white</field>
+  </doc>
+</add>

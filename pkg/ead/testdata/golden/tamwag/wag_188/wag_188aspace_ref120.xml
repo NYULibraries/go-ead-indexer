@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="appraisal_teim">Crawl was limited to domains, subdomains, and units of www.2110uaw.org in order to remain within the collection scope and data constraints.</field>
+    <field name="author_teim">Nicole Greenhouse</field>
+    <field name="collection_sim">United Automobile Workers of America, Local 2110 Records</field>
+    <field name="collection_ssm">United Automobile Workers of America, Local 2110 Records</field>
+    <field name="collection_teim">United Automobile Workers of America, Local 2110 Records</field>
+    <field name="collection_unitid_ssm">WAG.188</field>
+    <field name="collection_unitid_teim">WAG.188</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">wag_188</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series II: Archived Websites</field>
+    <field name="id">wag_188aspace_ref120</field>
+    <field name="level_sim">series</field>
+    <field name="phystech_teim">Due to technical or privacy issues, archived websites may not be exact copies of  the original website at the time of the web crawl. Certain file types will not be captured dependent on how they are embedded in the site. Other parts of websites that the crawler has difficulty capturing includes Javascript, streaming content, database-driven content, and highly interactive content. Full-Text searches of archived websites are available at https://archive-it.org/organizations/567.</field>
+    <field name="ref_ssi">aspace_ref120</field>
+    <field name="repository_sim">tamwag</field>
+    <field name="repository_ssi">tamwag</field>
+    <field name="repository_ssm">tamwag</field>
+    <field name="scopecontent_teim">This series contains the main website for the Technical, Office and Professional (TOP) Union, Local 2110 and its active units. The website includes a listing of affiliated workplaces and organizing committees, workshops and classes, and collective bargaining agreements. From 2009-2012, the website had more of a focus on action and organizing campaigns, such as the 2008 presidential election, TA &amp; RA Bargaining Rights Act, Tenement Museum Educators organizing, NYU graduate employees union recognition, UAW Gimme 5 program, Harper&#39;s Magazine organizing, Wisconsin workers solidarity, Occupy Wall Street solidarity, and contract negotiations at Columbia University, Teachers College, and Barnard College. </field>
+    <field name="scopecontent_teim">From 2012 onwards the website redesigned and mostly consisted of PDFs of contracts and memoranda of agreements for the Local&#39;s workplaces. Workplaces represented over time have included the American Civil Liberties Union, Ames &amp; Rollinson, AMSCO School Publications, Asian American Writers Workshop, Barnard College, Barnard Contingent Faculty, Bronx Museum of the Arts, Brooklyn Academy of Music, Brooklyn Friends School, Center for Reproductive Rights, Children&#39;s Museum of the Arts, Church World Service, Columbia University, DASNY: Dormitory Authority of the State of New York, GOLES: Good Old Lower East Side, HarperCollins Publishers, Harper&#39;s Magazine, Harriet Beecher Stowe Center, HFA: New York State Housing Finance Agency, ICCR: Interfaith Center on Corporate Responsibility, Mercy College, Monthly Review, Ms. Foundation for Women, Museum of Modern Art, New York, National Council of Churches, New Press, New York Civil Liberties Union, New York University &amp; NYU Poly Graduate Assistants (GSOC-UAW), New-York Historical Society, NYSHCR: New York State Homes and Community Renewal, Pearson Longman Publishers, Rabinowitz, Boudin, Standard, Krinsky &amp; Lieberman, P.C., Rosa Luxemburg Stiftung, Inc., SONYMA: State of New York Mortgage Agency, Stamford Advocate, State Bank of India, TCI: Technical Careers Institute, Teachers College, Tenement Museum, The New Museum of Contemporary Art, The Shed, Transportation Alternatives, Union Theological Seminary, the Village Voice, Film Forum, Brooklyn Museum, Guggenheum Museum, Studio in a School, Portland Museum of Art, Hispanic Society, Whitney Museum, MASS MoCA, Film at Lincoln Center, the Noguchi Museum, Abrams Books, the American Folk Art Museum, and the Metropolitan Museum of Art. </field>
+    <field name="scopecontent_teim">In 2023, the Facebook page was added to capture materials related to unit strikes and other news.</field>
+    <field name="scopecontent_teim">Websites of the union&#39;s units were also captured to document union formation and recognition, strike activities, and elections.</field>
+    <field name="series_si">Series II: Archived Websites</field>
+    <field name="sort_ii">112</field>
+    <field name="unitdate_normal_sim">2009-03-21/2009-03-21</field>
+    <field name="unitdate_normal_ssm">2009-03-21/2009-03-21</field>
+    <field name="unitdate_normal_teim">2009-03-21/2009-03-21</field>
+    <field name="unitdate_ssm">March 2009-ongoing</field>
+    <field name="unitdate_teim">March 2009-ongoing</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/345966</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/345966</field>
+    <field name="unittitle_ssm">Series II: Archived Websites</field>
+    <field name="unittitle_teim">Series II: Archived Websites</field>
+  </doc>
+</add>

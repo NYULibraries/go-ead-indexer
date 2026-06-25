@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Alison Dundy</field>
+    <field name="collection_sim">New York Caledonian Club records</field>
+    <field name="collection_ssm">New York Caledonian Club records</field>
+    <field name="collection_teim">New York Caledonian Club records</field>
+    <field name="collection_unitid_ssm">MS 2923</field>
+    <field name="collection_unitid_teim">MS 2923</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms2923_caledonian_club</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series IV: Financial Records</field>
+    <field name="id">ms2923_caledonian_clubaspace_ref22_nev</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_ref22_nev</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="scopecontent_teim">Bound ledgers, receipt books, and one spiral notebook record monthly receipts and disbursements for club activities and membership dues.</field>
+    <field name="series_si">Series IV: Financial Records</field>
+    <field name="sort_ii">47</field>
+    <field name="unitdate_ssm">1919-1994</field>
+    <field name="unitdate_teim">1919-1994</field>
+    <field name="unittitle_ssm">Series IV: Financial Records</field>
+    <field name="unittitle_teim">Series IV: Financial Records</field>
+  </doc>
+</add>

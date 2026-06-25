@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Alec Ferretti</field>
+    <field name="collection_sim">Army and Navy Club of New York records</field>
+    <field name="collection_ssm">Army and Navy Club of New York records</field>
+    <field name="collection_teim">Army and Navy Club of New York records</field>
+    <field name="collection_unitid_ssm">MS 3080</field>
+    <field name="collection_unitid_teim">MS 3080</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms3080_army_navy_club</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Resigned Members, A-K (9 folders)</field>
+    <field name="id">ms3080_army_navy_clubaspace_521aef9e03408c556625cc534c1a7d87</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Offsite-Box: 3, Folder: 1-9</field>
+    <field name="location_ssm">Offsite-Box: 3, Folder: 1-9</field>
+    <field name="parent_ssi">aspace_4396b0c1f4855c1bfc36a3c4a7088f77</field>
+    <field name="parent_ssm">aspace_4396b0c1f4855c1bfc36a3c4a7088f77</field>
+    <field name="parent_unittitles_ssm">Series II: Membership Records</field>
+    <field name="parent_unittitles_teim">Series II: Membership Records</field>
+    <field name="ref_ssi">aspace_521aef9e03408c556625cc534c1a7d87</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="series_si">Series II: Membership Records &gt;&gt; Resigned Members, A-K (9 folders)</field>
+    <field name="series_sim">Series II: Membership Records</field>
+    <field name="sort_ii">7</field>
+    <field name="unitdate_inclusive_teim">1935-1969</field>
+    <field name="unitdate_ssm">Inclusive, 1935-1969</field>
+    <field name="unittitle_ssm">Resigned Members, A-K (9 folders)</field>
+    <field name="unittitle_teim">Resigned Members, A-K (9 folders)</field>
+  </doc>
+</add>

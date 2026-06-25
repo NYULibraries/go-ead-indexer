@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Mehri Khalil, Ibrahim Mohamed Ali, Anneka Lenssen, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art, NYUAD.</field>
+    <field name="collection_sim">Salah Taher Collection</field>
+    <field name="collection_ssm">Salah Taher Collection</field>
+    <field name="collection_teim">Salah Taher Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.107</field>
+    <field name="collection_unitid_teim">AD.MC.107</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_107</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">II. Writings</field>
+    <field name="id">ad_mc_107aspace_eff05e1c3175e95a1ea6868905fe3de2</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_eff05e1c3175e95a1ea6868905fe3de2</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="scopecontent_teim">Series II comprises writings by Salah Taher and others. It includes the diaries of the artist, handwritten articles and notes, drafts of various articles, as well as scripts for his television show Min ʻĀlam al-Funūn [From the World of the Arts], presented by Sherwet Shafei (b. 1931), then director-general of cultural programs for the state-owned television in the 1970s. The series also includes writings by others about the artist.</field>
+    <field name="series_si">II. Writings</field>
+    <field name="sort_ii">5</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/33190</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/33190</field>
+    <field name="unittitle_ssm">II. Writings</field>
+    <field name="unittitle_teim">II. Writings</field>
+  </doc>
+</add>

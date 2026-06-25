@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Jillian Carrillo</field>
+    <field name="collection_sim">Bernard Berg Collection</field>
+    <field name="collection_ssm">Bernard Berg Collection</field>
+    <field name="collection_teim">Bernard Berg Collection</field>
+    <field name="collection_unitid_ssm">RG.065</field>
+    <field name="collection_unitid_teim">RG.065</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">poly_rg_065</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">AOH: Section 2/2.7, Subsystems Data</field>
+    <field name="id">poly_rg_065aspace_4abb53b873c6757f3f617567e5f86f48</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 1, folder: 8</field>
+    <field name="location_ssm">box: 1, folder: 8</field>
+    <field name="parent_ssi">aspace_79d8b79dc22b94245c08fb0133df281c</field>
+    <field name="parent_ssm">aspace_79d8b79dc22b94245c08fb0133df281c</field>
+    <field name="parent_unittitles_ssm">Series I: Apollo Operations Handbook</field>
+    <field name="parent_unittitles_teim">Series I: Apollo Operations Handbook</field>
+    <field name="ref_ssi">aspace_4abb53b873c6757f3f617567e5f86f48</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="series_si">Series I: Apollo Operations Handbook &gt;&gt; AOH: Section 2/2.7, Subsystems Data</field>
+    <field name="series_sim">Series I: Apollo Operations Handbook</field>
+    <field name="sort_ii">9</field>
+    <field name="unitdate_end_si">1968</field>
+    <field name="unitdate_end_sim">1968</field>
+    <field name="unitdate_end_ssm">1968</field>
+    <field name="unitdate_normal_sim">1968/1968</field>
+    <field name="unitdate_normal_ssm">1968/1968</field>
+    <field name="unitdate_normal_teim">1968/1968</field>
+    <field name="unitdate_ssm">1968</field>
+    <field name="unitdate_start_si">1968</field>
+    <field name="unitdate_start_sim">1968</field>
+    <field name="unitdate_start_ssm">1968</field>
+    <field name="unitdate_teim">1968</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/23125</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/23125</field>
+    <field name="unittitle_ssm">AOH: Section 2/2.7, Subsystems Data</field>
+    <field name="unittitle_teim">AOH: Section 2/2.7, Subsystems Data</field>
+  </doc>
+</add>

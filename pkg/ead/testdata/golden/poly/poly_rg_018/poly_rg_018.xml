@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="abstract_ssm">The Faculty Minutes contain meeting minutes and related documents to Polytechnic faculty meetings.  The minutes reflect the name changes of the institution from the Polytechnic Institute of Brooklyn (PIB) to the Polytechnic Institute of New York (PINY) to Polytechnic University, and, finally, to the Polytechnic Institute of New York University.</field>
+    <field name="abstract_teim">The Faculty Minutes contain meeting minutes and related documents to Polytechnic faculty meetings.  The minutes reflect the name changes of the institution from the Polytechnic Institute of Brooklyn (PIB) to the Polytechnic Institute of New York (PINY) to Polytechnic University, and, finally, to the Polytechnic Institute of New York University.</field>
+    <field name="acqinfo_teim">Materials found in collection; there is no documentation concerning the provenance of these materials.</field>
+    <field name="author_ssm">Lindsay Anderberg</field>
+    <field name="author_teim">Lindsay Anderberg</field>
+    <field name="bioghist_teim">The Faculty Minutes collection begins in 1896 in bound volumes.  Over the years, the minutes were no longer bound, but were placed in three ring binders.  The most recent faculty minutes and associated documents are foldered and boxed immediately after the meeting.  Faculty meeting minutes from 2003 to present are also available online, although they are password protected so that only faculty members may view them.  </field>
+    <field name="bioghist_teim">The minutes reflect changes in the institution over time, including faculty appointments, graduation lists, proposed and accepted courses, and other issues related to the operation of the university.</field>
+    <field name="collection_sim">Faculty Minutes</field>
+    <field name="collection_ssm">Faculty Minutes</field>
+    <field name="collection_teim">Faculty Minutes</field>
+    <field name="corpname_ssm">Poly Archives at the Bern Dibner Library of Science and Technology, NYU Libraries</field>
+    <field name="corpname_teim">Poly Archives at the Bern Dibner Library of Science and Technology, NYU Libraries</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">poly_rg_018</field>
+    <field name="format_ii">0</field>
+    <field name="format_sim">Archival Collection</field>
+    <field name="format_ssm">Archival Collection</field>
+    <field name="heading_ssm">Faculty Minutes</field>
+    <field name="id">poly_rg_018</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="scopecontent_teim">The Faculty Minutes contain both meeting minutes and other associated documents from faculty meetings.  The minutes span from 1896 to the present and are available as bound items, binders, and loose paper documents.</field>
+    <field name="unitdate_ssm">1896 - present</field>
+    <field name="unitdate_teim">1896 - present</field>
+    <field name="unitid_ssm">RG.018</field>
+    <field name="unitid_teim">RG.018</field>
+    <field name="unittitle_ssm">Faculty Minutes</field>
+    <field name="unittitle_teim">Faculty Minutes</field>
+  </doc>
+</add>

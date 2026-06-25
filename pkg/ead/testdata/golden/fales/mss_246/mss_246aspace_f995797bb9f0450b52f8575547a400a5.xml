@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Weatherly Stephan</field>
+    <field name="collection_sim">Jenny Holzer &#34;For the City&#34; Banners</field>
+    <field name="collection_ssm">Jenny Holzer &#34;For the City&#34; Banners</field>
+    <field name="collection_teim">Jenny Holzer &#34;For the City&#34; Banners</field>
+    <field name="collection_unitid_ssm">MSS.246</field>
+    <field name="collection_unitid_teim">MSS.246</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">mss_246</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Wish list 1/16</field>
+    <field name="id">mss_246aspace_f995797bb9f0450b52f8575547a400a5</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">roll-storage: 2</field>
+    <field name="location_ssm">roll-storage: 2</field>
+    <field name="ref_ssi">aspace_f995797bb9f0450b52f8575547a400a5</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="series_si">Wish list 1/16</field>
+    <field name="sort_ii">1</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/1044110</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/1044110</field>
+    <field name="unittitle_ssm">Wish list 1/16</field>
+    <field name="unittitle_teim">Wish list 1/16</field>
+  </doc>
+</add>

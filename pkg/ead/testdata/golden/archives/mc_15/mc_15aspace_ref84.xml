@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">University Archives Staff</field>
+    <field name="collection_sim">Henry Mitchell MacCracken Papers</field>
+    <field name="collection_ssm">Henry Mitchell MacCracken Papers</field>
+    <field name="collection_teim">Henry Mitchell MacCracken Papers</field>
+    <field name="collection_unitid_ssm">MC.15</field>
+    <field name="collection_unitid_teim">MC.15</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">1801-1900</field>
+    <field name="ead_ssi">mc_15</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">&#34;The Systematizing and Strengthening of Higher Education&#34; (print)</field>
+    <field name="id">mc_15aspace_ref84</field>
+    <field name="level_sim">otherlevel</field>
+    <field name="location_si">Box: 3, Folder: 14</field>
+    <field name="location_ssm">Box: 3, Folder: 14</field>
+    <field name="parent_ssi">aspace_ref75</field>
+    <field name="parent_ssm">aspace_ref39</field>
+    <field name="parent_ssm">aspace_ref75</field>
+    <field name="parent_unittitles_ssm">Series II: Writings (Published and Unpublished)</field>
+    <field name="parent_unittitles_ssm">Subseries C. Published Articles (1884-1909, undated)</field>
+    <field name="parent_unittitles_teim">Series II: Writings (Published and Unpublished)</field>
+    <field name="parent_unittitles_teim">Subseries C. Published Articles (1884-1909, undated)</field>
+    <field name="ref_ssi">aspace_ref84</field>
+    <field name="repository_sim">archives</field>
+    <field name="repository_ssi">archives</field>
+    <field name="repository_ssm">archives</field>
+    <field name="series_si">Series II: Writings (Published and Unpublished) &gt;&gt; Subseries C. Published Articles (1884-1909, undated) &gt;&gt; &#34;The Systematizing and Strengthening of Higher Education&#34; (print)</field>
+    <field name="series_sim">Series II: Writings (Published and Unpublished)</field>
+    <field name="series_sim">Subseries C. Published Articles (1884-1909, undated)</field>
+    <field name="sort_ii">67</field>
+    <field name="unitdate_end_si">1895</field>
+    <field name="unitdate_end_sim">1895</field>
+    <field name="unitdate_end_ssm">1895</field>
+    <field name="unitdate_inclusive_teim">1895</field>
+    <field name="unitdate_normal_sim">1895/1895</field>
+    <field name="unitdate_normal_ssm">1895/1895</field>
+    <field name="unitdate_normal_teim">1895/1895</field>
+    <field name="unitdate_ssm">Inclusive, 1895</field>
+    <field name="unitdate_start_si">1895</field>
+    <field name="unitdate_start_sim">1895</field>
+    <field name="unitdate_start_ssm">1895</field>
+    <field name="unittitle_ssm">&#34;The Systematizing and Strengthening of Higher Education&#34; (print)</field>
+    <field name="unittitle_teim">&#34;The Systematizing and Strengthening of Higher Education&#34; (print)</field>
+  </doc>
+</add>

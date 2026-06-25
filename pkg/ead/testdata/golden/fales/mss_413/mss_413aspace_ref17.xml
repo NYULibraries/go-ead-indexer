@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Erika Gottfried</field>
+    <field name="collection_sim">Maria Irene Fornés Papers</field>
+    <field name="collection_ssm">Maria Irene Fornés Papers</field>
+    <field name="collection_teim">Maria Irene Fornés Papers</field>
+    <field name="collection_unitid_ssm">MSS.413</field>
+    <field name="collection_unitid_teim">MSS.413</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">mss_413</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series II: Notes, Scenarios, and Writings in Process</field>
+    <field name="id">mss_413aspace_ref17</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_ref17</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="scopecontent_teim">This series contains diverse writings and drawings on paper recording Fornés&#39; internal artistic processes and ideas. It includes notes, scenarios, stories and character studies; dialogs, monologues and individual lines; ideas for plays, films and dances; journal and diary entries; fragments of narratives and numerous other types of writings in process; and a small amount of correspondence. Some of the writings are typed, and many are handwritten.  Formats range from notebooks to the backs of envelopes and smaller scraps. Almost none of the items are dated, with the exception of a few materials from the 1980s to the 1990s.  Most of the materials originally received in labeled folders retain their original folder titles (these are enclosed by quotation marks); the remaining materials have been placed in folders labeled &#34;miscellaneous short notes.&#34;</field>
+    <field name="series_si">Series II: Notes, Scenarios, and Writings in Process</field>
+    <field name="sort_ii">63</field>
+    <field name="unitdate_end_si">1999</field>
+    <field name="unitdate_end_sim">1999</field>
+    <field name="unitdate_end_ssm">1999</field>
+    <field name="unitdate_inclusive_teim">1960s-1990s, undated</field>
+    <field name="unitdate_normal_sim">1960/1999</field>
+    <field name="unitdate_normal_ssm">1960/1999</field>
+    <field name="unitdate_normal_teim">1960/1999</field>
+    <field name="unitdate_ssm">Inclusive, 1960s-1990s, undated</field>
+    <field name="unitdate_start_si">1960</field>
+    <field name="unitdate_start_sim">1960</field>
+    <field name="unitdate_start_ssm">1960</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/582403</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/582403</field>
+    <field name="unittitle_ssm">Series II: Notes, Scenarios, and Writings in Process</field>
+    <field name="unittitle_teim">Series II: Notes, Scenarios, and Writings in Process</field>
+  </doc>
+</add>

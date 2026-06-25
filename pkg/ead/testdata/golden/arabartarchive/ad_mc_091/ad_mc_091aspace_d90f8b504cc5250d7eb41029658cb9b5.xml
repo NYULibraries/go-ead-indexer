@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ibrahim Mohamed Ali, Anneka Lenssen, Dina Taha, Ala Younis, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art, NYUAD
+</field>
+    <field name="collection_sim">Mahmoud Hammad Collection</field>
+    <field name="collection_ssm">Mahmoud Hammad Collection</field>
+    <field name="collection_teim">Mahmoud Hammad Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.091</field>
+    <field name="collection_unitid_teim">AD.MC.091</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="dao_sim">Online Access</field>
+    <field name="dao_ssm">42. &#34;[Paintings by Hammad],&#34; Damascus, 1982</field>
+    <field name="dao_teim">42. &#34;[Paintings by Hammad],&#34; Damascus, 1982</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_091</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">42. &#34;[Paintings by Hammad],&#34; Damascus, 1982</field>
+    <field name="id">ad_mc_091aspace_d90f8b504cc5250d7eb41029658cb9b5</field>
+    <field name="level_sim">item</field>
+    <field name="parent_ssi">aspace_0a1fb9fb4f8eaa8386c740d4170aa17a</field>
+    <field name="parent_ssm">aspace_5f417edd3f94baeedce7c69501ac1bb5</field>
+    <field name="parent_ssm">aspace_0a1fb9fb4f8eaa8386c740d4170aa17a</field>
+    <field name="parent_unittitles_ssm">Series I: Exhibition Materials, 1950s - 2001</field>
+    <field name="parent_unittitles_ssm">I.A. Solo and Group Exhibitions Featuring Mahmoud Hammad</field>
+    <field name="parent_unittitles_teim">Series I: Exhibition Materials, 1950s - 2001</field>
+    <field name="parent_unittitles_teim">I.A. Solo and Group Exhibitions Featuring Mahmoud Hammad</field>
+    <field name="ref_ssi">aspace_d90f8b504cc5250d7eb41029658cb9b5</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="series_si">Series I: Exhibition Materials, 1950s - 2001 &gt;&gt; I.A. Solo and Group Exhibitions Featuring Mahmoud Hammad &gt;&gt; 42. &#34;[Paintings by Hammad],&#34; Damascus, 1982</field>
+    <field name="series_sim">Series I: Exhibition Materials, 1950s - 2001</field>
+    <field name="series_sim">I.A. Solo and Group Exhibitions Featuring Mahmoud Hammad</field>
+    <field name="sort_ii">44</field>
+    <field name="unitid_ssm">cuid237</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/30670</field>
+    <field name="unitid_teim">cuid237</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/30670</field>
+    <field name="unittitle_ssm">42. &#34;[Paintings by Hammad],&#34; Damascus, 1982</field>
+    <field name="unittitle_teim">42. &#34;[Paintings by Hammad],&#34; Damascus, 1982</field>
+  </doc>
+</add>

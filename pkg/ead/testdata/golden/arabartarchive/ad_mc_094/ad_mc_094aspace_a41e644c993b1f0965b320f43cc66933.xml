@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ala Younis, Ibrahim Mohamed Ali, Dina Taha, Anneka Lenssen, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art, NYUAD</field>
+    <field name="collection_sim">Ahmad Nawash Collection</field>
+    <field name="collection_ssm">Ahmad Nawash Collection</field>
+    <field name="collection_teim">Ahmad Nawash Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.094</field>
+    <field name="collection_unitid_teim">AD.MC.094</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="dao_sim">Online Access</field>
+    <field name="dao_ssm">IV.A. Exhibition Publications, 1972–2008</field>
+    <field name="dao_teim">IV.A. Exhibition Publications, 1972–2008</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_094</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">IV.A. Exhibition Publications, 1972–2008</field>
+    <field name="id">ad_mc_094aspace_a41e644c993b1f0965b320f43cc66933</field>
+    <field name="level_sim">subseries</field>
+    <field name="parent_ssi">aspace_46ee669dca927cb9b131bd77dc9af8ef</field>
+    <field name="parent_ssm">aspace_46ee669dca927cb9b131bd77dc9af8ef</field>
+    <field name="parent_unittitles_ssm">Series IV: Exhibition Materials</field>
+    <field name="parent_unittitles_teim">Series IV: Exhibition Materials</field>
+    <field name="ref_ssi">aspace_a41e644c993b1f0965b320f43cc66933</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="scopecontent_teim">Brochures, catalogs, and other printed material from exhibitions organized between 1972 and 2008. Venues include the French Cultural Center, American Cultural Center, University of Jordan, Darat al Funun, in Amman, as well as other institutions.</field>
+    <field name="series_si">Series IV: Exhibition Materials &gt;&gt; IV.A. Exhibition Publications, 1972–2008</field>
+    <field name="series_sim">Series IV: Exhibition Materials</field>
+    <field name="sort_ii">26</field>
+    <field name="unitid_ssm">cuid307</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/31217</field>
+    <field name="unitid_teim">cuid307</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/31217</field>
+    <field name="unittitle_ssm">IV.A. Exhibition Publications, 1972–2008</field>
+    <field name="unittitle_teim">IV.A. Exhibition Publications, 1972–2008</field>
+  </doc>
+</add>

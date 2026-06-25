@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Collection processed by Finding aid prepared by Alta Macadam</field>
+    <field name="collection_sim">The Acton Photograph Archive</field>
+    <field name="collection_ssm">The Acton Photograph Archive</field>
+    <field name="collection_teim">The Acton Photograph Archive</field>
+    <field name="collection_unitid_ssm">MSS.LaPietra.001</field>
+    <field name="collection_unitid_teim">MSS.LaPietra.001</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">mss_lapietra_001</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">6 unidentified</field>
+    <field name="id">mss_lapietra_001aspace_ref10826</field>
+    <field name="level_sim">otherlevel</field>
+    <field name="parent_ssi">aspace_ref10623</field>
+    <field name="parent_ssm">aspace_ref10385</field>
+    <field name="parent_ssm">aspace_ref10623</field>
+    <field name="parent_unittitles_ssm">Series V: Places</field>
+    <field name="parent_unittitles_ssm">Subseries B: Exteriors</field>
+    <field name="parent_unittitles_teim">Series V: Places</field>
+    <field name="parent_unittitles_teim">Subseries B: Exteriors</field>
+    <field name="ref_ssi">aspace_ref10826</field>
+    <field name="repository_sim">vlp</field>
+    <field name="repository_ssi">vlp</field>
+    <field name="repository_ssm">vlp</field>
+    <field name="series_si">Series V: Places &gt;&gt; Subseries B: Exteriors &gt;&gt; 6 unidentified</field>
+    <field name="series_sim">Series V: Places</field>
+    <field name="series_sim">Subseries B: Exteriors</field>
+    <field name="sort_ii">6316</field>
+    <field name="unittitle_ssm">6 unidentified</field>
+    <field name="unittitle_teim">6 unidentified</field>
+  </doc>
+</add>

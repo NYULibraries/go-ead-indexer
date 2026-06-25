@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Jasmine Soliman and Jonathan Burr and Emily Broad, with additional details added by Dr C. D. E. Morris, Honorary Secretary, Archivist &amp; Editor of the RAF Habbaniya Association.</field>
+    <field name="collection_sim">&#34;Impressions of Iraq&#34; compiled by L. Wells of RAF Hinaidi</field>
+    <field name="collection_ssm">&#34;Impressions of Iraq&#34; compiled by L. Wells of RAF Hinaidi</field>
+    <field name="collection_teim">&#34;Impressions of Iraq&#34; compiled by L. Wells of RAF Hinaidi</field>
+    <field name="collection_unitid_ssm">AD.MC.045</field>
+    <field name="collection_unitid_teim">AD.MC.045</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="creator_sim">Wells, Les, Active 1929 - 1939</field>
+    <field name="creator_ssm">Wells, Les, Active 1929 - 1939</field>
+    <field name="creator_teim">Wells, Les, Active 1929 - 1939</field>
+    <field name="dao_sim">Online Access</field>
+    <field name="dao_ssm">A list of names for the preceding group portrait of the RAF Hinaidi hospital staff (ref 040). : 1930</field>
+    <field name="dao_ssm">A list of names for the preceding group portrait of the RAF Hinaidi hospital staff (ref 040). : 1930</field>
+    <field name="dao_teim">A list of names for the preceding group portrait of the RAF Hinaidi hospital staff (ref 040). : 1930</field>
+    <field name="dao_teim">A list of names for the preceding group portrait of the RAF Hinaidi hospital staff (ref 040). : 1930</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_045</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">A list of names for the preceding group portrait of the RAF Hinaidi hospital staff (ref 040). </field>
+    <field name="id">ad_mc_045aspace_ffc2667ee129b8a90f0a05635221f305</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: AD_MC_045</field>
+    <field name="location_ssm">box: AD_MC_045</field>
+    <field name="name_sim">Wells, Les, Active 1929 - 1939</field>
+    <field name="name_teim">Wells, Les, Active 1929 - 1939</field>
+    <field name="persname_ssm">Wells, Les, Active 1929 - 1939</field>
+    <field name="persname_teim">Wells, Les, Active 1929 - 1939</field>
+    <field name="ref_ssi">aspace_ffc2667ee129b8a90f0a05635221f305</field>
+    <field name="repository_sim">akkasah</field>
+    <field name="repository_ssi">akkasah</field>
+    <field name="repository_ssm">akkasah</field>
+    <field name="series_si">A list of names for the preceding group portrait of the RAF Hinaidi hospital staff (ref 040). </field>
+    <field name="sort_ii">41</field>
+    <field name="subject_sim">English Writing</field>
+    <field name="subject_ssm">English Writing</field>
+    <field name="subject_teim">English Writing</field>
+    <field name="subject_teim">English Writing</field>
+    <field name="unitdate_ssm">1930</field>
+    <field name="unitdate_teim">1930</field>
+    <field name="unitid_ssm">AD_MC_045_ref41</field>
+    <field name="unitid_teim">AD_MC_045_ref41</field>
+    <field name="unittitle_ssm">A list of names for the preceding group portrait of the RAF Hinaidi hospital staff (ref 040). </field>
+    <field name="unittitle_teim">A list of names for the preceding group portrait of the RAF Hinaidi hospital staff (ref 040). </field>
+  </doc>
+</add>

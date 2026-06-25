@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="abstract_ssm">Artistic portraits of male sitters, mainly physicians and clergymen.</field>
+    <field name="abstract_teim">Artistic portraits of male sitters, mainly physicians and clergymen.</field>
+    <field name="author_ssm">Processed by Kate Fais</field>
+    <field name="author_teim">Processed by Kate Fais</field>
+    <field name="bioghist_teim">Theron Wendell Kilmer (1872-1946), a well-known New York pediatrician and police surgeon, pursued his photographic avocation by specializing in soft-focus head-and-shoulder portraits of men, most of whom were his friends and/or colleagues. Kilmer won many prizes for his photographs of character-filled faces. He also published more than a dozen portraits and technical articles in the American Annual of Photography and in Photo-Era, to which he contributed from ca. 1915 until his death. He was a member of the Royal Photographic Society and the Oval Table Society</field>
+    <field name="collection_sim">Theron Kilmer Photograph Collection</field>
+    <field name="collection_ssm">Theron Kilmer Photograph Collection</field>
+    <field name="collection_teim">Theron Kilmer Photograph Collection</field>
+    <field name="corpname_ssm">New-York Historical Society</field>
+    <field name="corpname_teim">New-York Historical Society</field>
+    <field name="custodhist_teim">Gift of Mrs. Wendell Kilmer, 1973.</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">pr030_theron_kilmer</field>
+    <field name="format_ii">0</field>
+    <field name="format_sim">Archival Collection</field>
+    <field name="format_ssm">Archival Collection</field>
+    <field name="genreform_ssm">Gum bichromate prints.</field>
+    <field name="genreform_ssm">Photographic prints.</field>
+    <field name="genreform_teim">Gum bichromate prints.</field>
+    <field name="genreform_teim">Photographic prints.</field>
+    <field name="heading_ssm">Theron Kilmer Photograph Collection</field>
+    <field name="id">pr030_theron_kilmer</field>
+    <field name="language_sim">English</field>
+    <field name="language_ssm">English</field>
+    <field name="material_type_sim">Gum bichromate prints.</field>
+    <field name="material_type_sim">Photographic prints.</field>
+    <field name="material_type_ssm">Gum bichromate prints.</field>
+    <field name="material_type_ssm">Photographic prints.</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="scopecontent_teim">The Theron W. Kilmer Portrait Photograph Collection spans the period from ca. 1920 to ca. 1942, and primarily contains silver gelatin and a few gum bichromate photographs of men. About half of the 66 portraits depict physicians, clergymen, and other men identified by name. The remaining portraits are studies of African-American men, men with beards, and such ethnic character types as &#34;The Sheik&#34; and &#34;The Hindu.&#34; Most of the prints are signed and bear stickers from camera club exhibitions throughout the United States.</field>
+    <field name="scopecontent_teim">Kilmer&#39;s writings on photography provide a window into his techniques, as well as his personal aesthetic. In the American Annual of Photography (1942) he explained that he enjoyed seeing the faces of his colleagues on his study walls. He also wrote there that he photographed men because &#34;Women usually want all the &#34;lines taken out&#34; - leaving the face a smooth globe, devoid of all character.&#34; Kilmer was particularly interested in facial lines as evidence of expression and character.</field>
+    <field name="scopecontent_teim">Photographs are arranged alphabetically by surname, with unidentified sitters filed at the end. In some cases, further information about the sitters has been included in the box and folder listing.</field>
+    <field name="subject_sim">Portrait photography.</field>
+    <field name="subject_sim">African American men -- Portraits.</field>
+    <field name="subject_sim">Men -- Portraits.</field>
+    <field name="subject_sim">Clergy -- Portraits.</field>
+    <field name="subject_sim">Physicians -- Portraits.</field>
+    <field name="subject_ssm">Portrait photography.</field>
+    <field name="subject_ssm">African American men -- Portraits.</field>
+    <field name="subject_ssm">Men -- Portraits.</field>
+    <field name="subject_ssm">Clergy -- Portraits.</field>
+    <field name="subject_ssm">Physicians -- Portraits.</field>
+    <field name="subject_teim">Portrait photography.</field>
+    <field name="subject_teim">African American men -- Portraits.</field>
+    <field name="subject_teim">Men -- Portraits.</field>
+    <field name="subject_teim">Clergy -- Portraits.</field>
+    <field name="subject_teim">Physicians -- Portraits.</field>
+    <field name="subject_teim">Portrait photography.</field>
+    <field name="subject_teim">African American men -- Portraits.</field>
+    <field name="subject_teim">Men -- Portraits.</field>
+    <field name="subject_teim">Clergy -- Portraits.</field>
+    <field name="subject_teim">Physicians -- Portraits.</field>
+    <field name="unitdate_inclusive_teim">ca. 1920-1942</field>
+    <field name="unitdate_ssm">Inclusive, ca. 1920-1942</field>
+    <field name="unitid_ssm">PR 30</field>
+    <field name="unitid_teim">PR 30</field>
+    <field name="unittitle_ssm">Theron Kilmer Photograph Collection</field>
+    <field name="unittitle_teim">Theron Kilmer Photograph Collection</field>
+  </doc>
+</add>

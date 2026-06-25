@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">Aḥmad Zakī Abū Shādī Family Papers</field>
+    <field name="collection_ssm">Aḥmad Zakī Abū Shādī Family Papers</field>
+    <field name="collection_teim">Aḥmad Zakī Abū Shādī Family Papers</field>
+    <field name="collection_unitid_ssm">AD.MC.065</field>
+    <field name="collection_unitid_teim">AD.MC.065</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">ad_mc_065</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Medical school:  notebooks</field>
+    <field name="id">ad_mc_065aspace_a07927ba7462288d6d2597d65eb95eb6</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 2, folder: 10</field>
+    <field name="location_ssm">box: 2, folder: 10</field>
+    <field name="parent_ssi">aspace_2ed43b2b95a71cca40aa4e7c9be6fd03</field>
+    <field name="parent_ssm">aspace_1ad47f6a0f6fea88edaba9cd183400c1</field>
+    <field name="parent_ssm">aspace_2ed43b2b95a71cca40aa4e7c9be6fd03</field>
+    <field name="parent_unittitles_ssm">Biographical</field>
+    <field name="parent_unittitles_ssm">Abu Shadi, Ahmed Zaki</field>
+    <field name="parent_unittitles_teim">Biographical</field>
+    <field name="parent_unittitles_teim">Abu Shadi, Ahmed Zaki</field>
+    <field name="ref_ssi">aspace_a07927ba7462288d6d2597d65eb95eb6</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Biographical &gt;&gt; Abu Shadi, Ahmed Zaki &gt;&gt; Medical school:  notebooks</field>
+    <field name="series_sim">Biographical</field>
+    <field name="series_sim">Abu Shadi, Ahmed Zaki</field>
+    <field name="sort_ii">24</field>
+    <field name="unitdate_end_si">1916</field>
+    <field name="unitdate_end_sim">1916</field>
+    <field name="unitdate_end_ssm">1916</field>
+    <field name="unitdate_inclusive_teim">undated, circa 1914-1916</field>
+    <field name="unitdate_normal_sim">1914/1916</field>
+    <field name="unitdate_normal_ssm">1914/1916</field>
+    <field name="unitdate_normal_teim">1914/1916</field>
+    <field name="unitdate_ssm">Inclusive, undated, circa 1914-1916</field>
+    <field name="unitdate_start_si">1914</field>
+    <field name="unitdate_start_sim">1914</field>
+    <field name="unitdate_start_ssm">1914</field>
+    <field name="unittitle_ssm">Medical school:  notebooks</field>
+    <field name="unittitle_teim">Medical school:  notebooks</field>
+  </doc>
+</add>

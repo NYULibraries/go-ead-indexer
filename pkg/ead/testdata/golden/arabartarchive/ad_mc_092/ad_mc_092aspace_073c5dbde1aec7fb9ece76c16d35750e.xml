@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ala Younis, Ibrahim Mohamed Ali, Dina Taha, Anneka Lenssen, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art, NYUAD</field>
+    <field name="collection_sim">Rafa Nasiri and May Muzaffar Collection</field>
+    <field name="collection_ssm">Rafa Nasiri and May Muzaffar Collection</field>
+    <field name="collection_teim">Rafa Nasiri and May Muzaffar Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.092</field>
+    <field name="collection_unitid_teim">AD.MC.092</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_092</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">III.C. May Muzzafar&#39;s Writings</field>
+    <field name="id">ad_mc_092aspace_073c5dbde1aec7fb9ece76c16d35750e</field>
+    <field name="level_sim">subseries</field>
+    <field name="parent_ssi">aspace_9b454da6db500378978e140620e129fb</field>
+    <field name="parent_ssm">aspace_9b454da6db500378978e140620e129fb</field>
+    <field name="parent_unittitles_ssm">Series III: Writings</field>
+    <field name="parent_unittitles_teim">Series III: Writings</field>
+    <field name="ref_ssi">aspace_073c5dbde1aec7fb9ece76c16d35750e</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="scopecontent_teim">Writings, reviews and notes by poet and critic May Muzaffar produced in Baghdad, Amman, and Manama starting from the 1970s. Printed materials related to May Muzaffar&#39;s participation in cultural events, including the Ninth Poetry Festival (Basra, 1965) and the International Symposium of Visual Poetics, Sharjah, 1997) are also included.</field>
+    <field name="series_si">Series III: Writings &gt;&gt; III.C. May Muzzafar&#39;s Writings</field>
+    <field name="series_sim">Series III: Writings</field>
+    <field name="sort_ii">31</field>
+    <field name="unitid_ssm">cuid771</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/32167</field>
+    <field name="unitid_teim">cuid771</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/32167</field>
+    <field name="unittitle_ssm">III.C. May Muzzafar&#39;s Writings</field>
+    <field name="unittitle_teim">III.C. May Muzzafar&#39;s Writings</field>
+  </doc>
+</add>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">Aḥmad Zakī Abū Shādī Family Papers</field>
+    <field name="collection_ssm">Aḥmad Zakī Abū Shādī Family Papers</field>
+    <field name="collection_teim">Aḥmad Zakī Abū Shādī Family Papers</field>
+    <field name="collection_unitid_ssm">AD.MC.065</field>
+    <field name="collection_unitid_teim">AD.MC.065</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">ad_mc_065</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm"> &#34;Post card album&#34; mostly Hoda, Ramzy, and other family members, Egypt. </field>
+    <field name="id">ad_mc_065aspace_36075fe57a01a3465797bce573e548d6</field>
+    <field name="level_sim">item</field>
+    <field name="location_si">box: OS-2, object: 12.4</field>
+    <field name="location_ssm">box: OS-2, object: 12.4</field>
+    <field name="parent_ssi">aspace_84c632e29bf79a9d5c4f5e5cc020cdc8</field>
+    <field name="parent_ssm">aspace_e1f7c074144fffc02b5280d23111eaa0</field>
+    <field name="parent_ssm">aspace_84c632e29bf79a9d5c4f5e5cc020cdc8</field>
+    <field name="parent_unittitles_ssm">Photographs</field>
+    <field name="parent_unittitles_ssm">Albums</field>
+    <field name="parent_unittitles_teim">Photographs</field>
+    <field name="parent_unittitles_teim">Albums</field>
+    <field name="ref_ssi">aspace_36075fe57a01a3465797bce573e548d6</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Photographs &gt;&gt; Albums &gt;&gt;  &#34;Post card album&#34; mostly Hoda, Ramzy, and other family members, Egypt. </field>
+    <field name="series_sim">Photographs</field>
+    <field name="series_sim">Albums</field>
+    <field name="sort_ii">336</field>
+    <field name="unitdate_end_si">1946</field>
+    <field name="unitdate_end_sim">1946</field>
+    <field name="unitdate_end_ssm">1946</field>
+    <field name="unitdate_inclusive_teim">undated, circa 1940-1946</field>
+    <field name="unitdate_normal_sim">1940/1946</field>
+    <field name="unitdate_normal_ssm">1940/1946</field>
+    <field name="unitdate_normal_teim">1940/1946</field>
+    <field name="unitdate_ssm">Inclusive, undated, circa 1940-1946</field>
+    <field name="unitdate_start_si">1940</field>
+    <field name="unitdate_start_sim">1940</field>
+    <field name="unitdate_start_ssm">1940</field>
+    <field name="unittitle_ssm"> &#34;Post card album&#34; mostly Hoda, Ramzy, and other family members, Egypt. </field>
+    <field name="unittitle_teim"> &#34;Post card album&#34; mostly Hoda, Ramzy, and other family members, Egypt. </field>
+  </doc>
+</add>

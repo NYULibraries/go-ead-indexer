@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Jenny Gotwals and Sandra Markham (2004); migrated to ArchivesSpace by Joseph Ditta (2020)</field>
+    <field name="collection_sim">Sidney Voice collection of cigar bands</field>
+    <field name="collection_ssm">Sidney Voice collection of cigar bands</field>
+    <field name="collection_teim">Sidney Voice collection of cigar bands</field>
+    <field name="collection_unitid_ssm">PR 241</field>
+    <field name="collection_unitid_teim">PR 241</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">pr241_voice</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Album</field>
+    <field name="id">pr241_voiceaspace_aa277d9e15fbf90bc79ef2b3db4c2f08</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 7, Folder: 13</field>
+    <field name="location_ssm">Box: 7, Folder: 13</field>
+    <field name="parent_ssi">aspace_32dd43c9df18b5d0bd1f7b461195f145</field>
+    <field name="parent_ssm">aspace_32dd43c9df18b5d0bd1f7b461195f145</field>
+    <field name="parent_unittitles_ssm">Cigar Edgings</field>
+    <field name="parent_unittitles_teim">Cigar Edgings</field>
+    <field name="ref_ssi">aspace_aa277d9e15fbf90bc79ef2b3db4c2f08</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="series_si">Cigar Edgings &gt;&gt; Album</field>
+    <field name="series_sim">Cigar Edgings</field>
+    <field name="sort_ii">29</field>
+    <field name="unittitle_ssm">Album</field>
+    <field name="unittitle_teim">Album</field>
+  </doc>
+</add>

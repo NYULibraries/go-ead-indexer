@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_ssm">Lauren Kata</field>
+    <field name="author_teim">Lauren Kata</field>
+    <field name="bioghist_teim">Programs of NYU Abu Dhabi Student Life, part of the Division of Student Affairs (previously Campus Life), include a variety of events and activities organized to cultivate engagement and inclusivity across the NYUAD campus. The Manager of Campus Facilities is part of a team of staff that advises on and arranges space and services to ensure events are successful. This includes photography and audiovisual arrangements. Historically, the Campus Facilities Managers have retained audiovisual content from events, especially in the institution&#39;s first decade.</field>
+    <field name="collection_sim">NYU Abu Dhabi Student Life Events: Photos, Music, and Videos</field>
+    <field name="collection_ssm">NYU Abu Dhabi Student Life Events: Photos, Music, and Videos</field>
+    <field name="collection_teim">NYU Abu Dhabi Student Life Events: Photos, Music, and Videos</field>
+    <field name="corpname_ssm">NYU Abu Dhabi, Archives and Special Collections</field>
+    <field name="corpname_teim">NYU Abu Dhabi, Archives and Special Collections</field>
+    <field name="dao_sim">Online Access</field>
+    <field name="date_range_sim">2001-2100</field>
+    <field name="ead_ssi">ad_rg_009_3_2_1</field>
+    <field name="format_ii">0</field>
+    <field name="format_sim">Archival Collection</field>
+    <field name="format_ssm">Archival Collection</field>
+    <field name="heading_ssm">NYU Abu Dhabi Student Life Events: Photos, Music, and Videos</field>
+    <field name="id">ad_rg_009_3_2_1</field>
+    <field name="language_sim">English</field>
+    <field name="language_ssm">English</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="scopecontent_teim">The NYU Abu Dhabi Student Life Events: Photos, Music, and Videos collection is a collection of digital images, as well as some music and video files, from a variety of student and campus events during Academic Years 2014 - 2020. The collection was maintained, organized and transferred to the University Archives by Student Affairs Facilities Manager, Declan Dowdall. Dowdall also transferred files he inherited from his predecessor, Alex Heald. Some administrative documents, such as brochures and event request forms, were included in the transfer and have been retained. </field>
+    <field name="scopecontent_teim">Events that are documented range from student field trips, to campus festivals, to other campus events such as Autism Awareness Week, Latino Night, Marhaba, Pakistani Mock Wedding, Staff Appreciation Day, and Defend the Nest, among others. Many of these events were, and some still are, understood as &#34;campus traditions&#34; during the institution&#39;s first decade. </field>
+    <field name="scopecontent_teim">See, for example, https://www.gonyuad.com/general/2017-18/releases/2018010837zguo </field>
+    <field name="unitdate_end_si">2020</field>
+    <field name="unitdate_end_sim">2020</field>
+    <field name="unitdate_end_ssm">2020</field>
+    <field name="unitdate_inclusive_teim">Fall 2013 - Spring 2020</field>
+    <field name="unitdate_normal_sim">2013/2020</field>
+    <field name="unitdate_normal_ssm">2013/2020</field>
+    <field name="unitdate_normal_teim">2013/2020</field>
+    <field name="unitdate_ssm">Inclusive, Fall 2013 - Spring 2020</field>
+    <field name="unitdate_start_si">2013</field>
+    <field name="unitdate_start_sim">2013</field>
+    <field name="unitdate_start_ssm">2013</field>
+    <field name="unitid_ssm">AD.RG.009.3-2-1</field>
+    <field name="unitid_teim">AD.RG.009.3-2-1</field>
+    <field name="unittitle_ssm">NYU Abu Dhabi Student Life Events: Photos, Music, and Videos</field>
+    <field name="unittitle_teim">NYU Abu Dhabi Student Life Events: Photos, Music, and Videos</field>
+  </doc>
+</add>

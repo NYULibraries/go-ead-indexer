@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Y. H. Nancy Ng Tam, 2009</field>
+    <field name="collection_sim">Roger Hargrave Scrapbooks</field>
+    <field name="collection_ssm">Roger Hargrave Scrapbooks</field>
+    <field name="collection_teim">Roger Hargrave Scrapbooks</field>
+    <field name="collection_unitid_ssm">ALBA.245</field>
+    <field name="collection_unitid_teim">ALBA.245</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">alba_245</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Typescripts: RH Curriculum Vitae; RH &#34;Speaking Engagements for 1944-1945&#34;; Transcript; RH MA thesis (1942); RH valedictory speech at National U.; RH statement to MN Pollution Control Agency (1967)</field>
+    <field name="id">alba_245aspace_ref26</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 2</field>
+    <field name="location_ssm">Box: 2</field>
+    <field name="parent_ssi">aspace_ref24</field>
+    <field name="parent_ssm">aspace_ref24</field>
+    <field name="parent_unittitles_ssm">Scrapbook 2</field>
+    <field name="parent_unittitles_teim">Scrapbook 2</field>
+    <field name="ref_ssi">aspace_ref26</field>
+    <field name="repository_sim">tamwag</field>
+    <field name="repository_ssi">tamwag</field>
+    <field name="repository_ssm">tamwag</field>
+    <field name="series_si">Scrapbook 2 &gt;&gt; Typescripts: RH Curriculum Vitae; RH &#34;Speaking Engagements for 1944-1945&#34;; Transcript; RH MA thesis (1942); RH valedictory speech at National U.; RH statement to MN Pollution Control Agency (1967)</field>
+    <field name="series_sim">Scrapbook 2</field>
+    <field name="sort_ii">9</field>
+    <field name="unitdate_end_si">1967</field>
+    <field name="unitdate_end_sim">1967</field>
+    <field name="unitdate_end_ssm">1967</field>
+    <field name="unitdate_inclusive_teim">1942-1967</field>
+    <field name="unitdate_normal_sim">1942/1967</field>
+    <field name="unitdate_normal_ssm">1942/1967</field>
+    <field name="unitdate_normal_teim">1942/1967</field>
+    <field name="unitdate_ssm">Inclusive, 1942-1967</field>
+    <field name="unitdate_start_si">1942</field>
+    <field name="unitdate_start_sim">1942</field>
+    <field name="unitdate_start_ssm">1942</field>
+    <field name="unittitle_ssm">Typescripts: RH Curriculum Vitae; RH &#34;Speaking Engagements for 1944-1945&#34;; Transcript; RH MA thesis (1942); RH valedictory speech at National U.; RH statement to MN Pollution Control Agency (1967)</field>
+    <field name="unittitle_teim">Typescripts: RH Curriculum Vitae; RH &#34;Speaking Engagements for 1944-1945&#34;; Transcript; RH MA thesis (1942); RH valedictory speech at National U.; RH statement to MN Pollution Control Agency (1967)</field>
+  </doc>
+</add>

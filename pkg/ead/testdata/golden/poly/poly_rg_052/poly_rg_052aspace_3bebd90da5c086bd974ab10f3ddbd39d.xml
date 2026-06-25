@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Aileen Thong and Megan Bardis</field>
+    <field name="collection_sim">Technology, Culture and Society Papers</field>
+    <field name="collection_ssm">Technology, Culture and Society Papers</field>
+    <field name="collection_teim">Technology, Culture and Society Papers</field>
+    <field name="collection_unitid_ssm">RG.052</field>
+    <field name="collection_unitid_teim">RG.052</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">poly_rg_052</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">From Serfdom to High Politics: The Guchkovs of Moscow in Imperial Russia</field>
+    <field name="id">poly_rg_052aspace_3bebd90da5c086bd974ab10f3ddbd39d</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 1, folder: 1</field>
+    <field name="location_ssm">box: 1, folder: 1</field>
+    <field name="parent_ssi">aspace_246ebd1e6593471c62c731a1e6a9dffe</field>
+    <field name="parent_ssm">aspace_4b3bc6680137e76278ae332ddd6a0c51</field>
+    <field name="parent_ssm">aspace_246ebd1e6593471c62c731a1e6a9dffe</field>
+    <field name="parent_unittitles_ssm">Series I: Louis Menashe</field>
+    <field name="parent_unittitles_ssm">Sub-series A: Drafts</field>
+    <field name="parent_unittitles_teim">Series I: Louis Menashe</field>
+    <field name="parent_unittitles_teim">Sub-series A: Drafts</field>
+    <field name="ref_ssi">aspace_3bebd90da5c086bd974ab10f3ddbd39d</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="series_si">Series I: Louis Menashe &gt;&gt; Sub-series A: Drafts &gt;&gt; From Serfdom to High Politics: The Guchkovs of Moscow in Imperial Russia</field>
+    <field name="series_sim">Series I: Louis Menashe</field>
+    <field name="series_sim">Sub-series A: Drafts</field>
+    <field name="sort_ii">3</field>
+    <field name="unitdate_ssm">undated</field>
+    <field name="unitdate_teim">undated</field>
+    <field name="unittitle_ssm">From Serfdom to High Politics: The Guchkovs of Moscow in Imperial Russia</field>
+    <field name="unittitle_teim">From Serfdom to High Politics: The Guchkovs of Moscow in Imperial Russia</field>
+  </doc>
+</add>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="abstract_ssm">A typed letter signed by Woodrow Wilson on White House letterhead, dated 5 January 1917, marked &#34;Personal&#34; to Rev. Dr. Roland Cotton Smith at St. John&#39;s Rectory in Washington, D.C. In the two paragraph letter, Wilson acknowledges Smith&#39;s letter of January 2, notes that they have an understanding of each other&#39;s position, and states &#34;I must frankly say in reply to your inquiry about Secretary Lane that I should personally prefer that no official member of the administration should appear upon the programme with the gentleman I have mentioned.&#34;  For more information and to request this item, see the catalog record, or write to manuscripts@nyhistory.org.</field>
+    <field name="abstract_teim">A typed letter signed by Woodrow Wilson on White House letterhead, dated 5 January 1917, marked &#34;Personal&#34; to Rev. Dr. Roland Cotton Smith at St. John&#39;s Rectory in Washington, D.C. In the two paragraph letter, Wilson acknowledges Smith&#39;s letter of January 2, notes that they have an understanding of each other&#39;s position, and states &#34;I must frankly say in reply to your inquiry about Secretary Lane that I should personally prefer that no official member of the administration should appear upon the programme with the gentleman I have mentioned.&#34;  For more information and to request this item, see the catalog record, or write to manuscripts@nyhistory.org.</field>
+    <field name="author_ssm">Larry Weimer</field>
+    <field name="author_teim">Larry Weimer</field>
+    <field name="collection_sim">Woodrow Wilson letter to Roland Cotton Smith</field>
+    <field name="collection_ssm">Woodrow Wilson letter to Roland Cotton Smith</field>
+    <field name="collection_teim">Woodrow Wilson letter to Roland Cotton Smith</field>
+    <field name="corpname_ssm">New-York Historical Society</field>
+    <field name="corpname_ssm">United States. President (1913-1921 : Wilson)</field>
+    <field name="corpname_teim">New-York Historical Society</field>
+    <field name="corpname_teim">United States. President (1913-1921 : Wilson)</field>
+    <field name="creator_sim">United States. President (1913-1921 : Wilson)</field>
+    <field name="creator_ssm">United States. President (1913-1921 : Wilson)</field>
+    <field name="creator_teim">United States. President (1913-1921 : Wilson)</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms2958_9808_woodrow_wilson_smith</field>
+    <field name="format_ii">0</field>
+    <field name="format_sim">Archival Collection</field>
+    <field name="format_ssm">Archival Collection</field>
+    <field name="heading_ssm">Woodrow Wilson letter to Roland Cotton Smith</field>
+    <field name="id">ms2958_9808_woodrow_wilson_smith</field>
+    <field name="language_sim">English</field>
+    <field name="language_ssm">English</field>
+    <field name="name_sim">United States. President (1913-1921 : Wilson)</field>
+    <field name="name_teim">United States. President (1913-1921 : Wilson)</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="unitdate_ssm">1917 January 5</field>
+    <field name="unitdate_teim">1917 January 5</field>
+    <field name="unitid_ssm">AHMC - Wilson, Woodrow - Smith</field>
+    <field name="unitid_teim">AHMC - Wilson, Woodrow - Smith</field>
+    <field name="unittitle_ssm">Woodrow Wilson letter to Roland Cotton Smith</field>
+    <field name="unittitle_teim">Woodrow Wilson letter to Roland Cotton Smith</field>
+  </doc>
+</add>

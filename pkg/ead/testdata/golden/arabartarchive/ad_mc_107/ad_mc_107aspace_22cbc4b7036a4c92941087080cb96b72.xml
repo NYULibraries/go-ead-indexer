@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Mehri Khalil, Ibrahim Mohamed Ali, Anneka Lenssen, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art, NYUAD.</field>
+    <field name="collection_sim">Salah Taher Collection</field>
+    <field name="collection_ssm">Salah Taher Collection</field>
+    <field name="collection_teim">Salah Taher Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.107</field>
+    <field name="collection_unitid_teim">AD.MC.107</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_107</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">I. Personal and Professional Papers</field>
+    <field name="id">ad_mc_107aspace_22cbc4b7036a4c92941087080cb96b72</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_22cbc4b7036a4c92941087080cb96b72</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="scopecontent_teim">Series I comprises some personal documents such as Salah Taher&#39;s birth and death certifications, a few of his passports and identity documents, along with two address books. It also includes assorted professional papers, such as his curriculum vita, minutes of meetings, reports, contracts, as well as other documents such as financial records and pay slips.</field>
+    <field name="series_si">I. Personal and Professional Papers</field>
+    <field name="sort_ii">1</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/33186</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/33186</field>
+    <field name="unittitle_ssm">I. Personal and Professional Papers</field>
+    <field name="unittitle_teim">I. Personal and Professional Papers</field>
+  </doc>
+</add>

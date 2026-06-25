@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">Aḥmad Zakī Abū Shādī Family Papers</field>
+    <field name="collection_ssm">Aḥmad Zakī Abū Shādī Family Papers</field>
+    <field name="collection_teim">Aḥmad Zakī Abū Shādī Family Papers</field>
+    <field name="collection_unitid_ssm">AD.MC.065</field>
+    <field name="collection_unitid_teim">AD.MC.065</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_065</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Voice of America [?]:  &#34;Nefertiti and the Sculpture,&#34; by Dr. A.Z. Abushady (one open-reel tape, one CD-R disk, running time: 19:59)</field>
+    <field name="id">ad_mc_065aspace_7962ff8c05223b45bb86effd1dcdd681</field>
+    <field name="level_sim">item</field>
+    <field name="location_si">box: OS-1</field>
+    <field name="location_ssm">box: OS-1</field>
+    <field name="parent_ssi">aspace_c5589fca356726238de6329e3a504609</field>
+    <field name="parent_ssm">aspace_9374360a335be5c0da8076d51a448605</field>
+    <field name="parent_ssm">aspace_c5589fca356726238de6329e3a504609</field>
+    <field name="parent_unittitles_ssm">Artwork, ephemera, realia, and sound recordings</field>
+    <field name="parent_unittitles_ssm">Sound recordings</field>
+    <field name="parent_unittitles_teim">Artwork, ephemera, realia, and sound recordings</field>
+    <field name="parent_unittitles_teim">Sound recordings</field>
+    <field name="ref_ssi">aspace_7962ff8c05223b45bb86effd1dcdd681</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Artwork, ephemera, realia, and sound recordings &gt;&gt; Sound recordings &gt;&gt; Voice of America [?]:  &#34;Nefertiti and the Sculpture,&#34; by Dr. A.Z. Abushady (one open-reel tape, one CD-R disk, running time: 19:59)</field>
+    <field name="series_sim">Artwork, ephemera, realia, and sound recordings</field>
+    <field name="series_sim">Sound recordings</field>
+    <field name="sort_ii">510</field>
+    <field name="unitdate_normal_sim">1952-07-14/1952-07-14</field>
+    <field name="unitdate_normal_ssm">1952-07-14/1952-07-14</field>
+    <field name="unitdate_normal_teim">1952-07-14/1952-07-14</field>
+    <field name="unitdate_ssm">July 14, 1952</field>
+    <field name="unitdate_teim">July 14, 1952</field>
+    <field name="unittitle_ssm">Voice of America [?]:  &#34;Nefertiti and the Sculpture,&#34; by Dr. A.Z. Abushady (one open-reel tape, one CD-R disk, running time: 19:59)</field>
+    <field name="unittitle_teim">Voice of America [?]:  &#34;Nefertiti and the Sculpture,&#34; by Dr. A.Z. Abushady (one open-reel tape, one CD-R disk, running time: 19:59)</field>
+  </doc>
+</add>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Collection processed by Finding aid prepared by Alta Macadam</field>
+    <field name="collection_sim">The Acton Photograph Archive</field>
+    <field name="collection_ssm">The Acton Photograph Archive</field>
+    <field name="collection_teim">The Acton Photograph Archive</field>
+    <field name="collection_unitid_ssm">MSS.LaPietra.001</field>
+    <field name="collection_unitid_teim">MSS.LaPietra.001</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">5</field>
+    <field name="date_range_sim">1801-1900</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">mss_lapietra_001</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Painting of the Adoration of the Child (a duplicate print in IV.A.1.1.38.-1.)</field>
+    <field name="id">mss_lapietra_001aspace_ref6507</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 27, Photo-Album: III., Page: 35</field>
+    <field name="location_ssm">Box: 27, Photo-Album: III., Page: 35</field>
+    <field name="parent_ssi">aspace_ref6441</field>
+    <field name="parent_ssm">aspace_ref2407</field>
+    <field name="parent_ssm">aspace_ref3776</field>
+    <field name="parent_ssm">aspace_ref5600</field>
+    <field name="parent_ssm">aspace_ref6441</field>
+    <field name="parent_unittitles_ssm">Series II: Villa La Pietra</field>
+    <field name="parent_unittitles_ssm">Subseries B: The Interior and the Collection</field>
+    <field name="parent_unittitles_ssm">5 Historic Albums mostly of the interior and works of art at present in the Collection or probably formerly once belonging to it.</field>
+    <field name="parent_unittitles_ssm">Folder 3. Album labelled &amp;#34;III.&amp;#34;</field>
+    <field name="parent_unittitles_teim">Series II: Villa La Pietra</field>
+    <field name="parent_unittitles_teim">Subseries B: The Interior and the Collection</field>
+    <field name="parent_unittitles_teim">5 Historic Albums mostly of the interior and works of art at present in the Collection or probably formerly once belonging to it.</field>
+    <field name="parent_unittitles_teim">Folder 3. Album labelled &amp;#34;III.&amp;#34;</field>
+    <field name="ref_ssi">aspace_ref6507</field>
+    <field name="repository_sim">vlp</field>
+    <field name="repository_ssi">vlp</field>
+    <field name="repository_ssm">vlp</field>
+    <field name="series_si">Series II: Villa La Pietra &gt;&gt; Subseries B: The Interior and the Collection &gt;&gt; 5 Historic Albums mostly of the interior and works of art at present in the Collection or probably formerly once belonging to it. &gt;&gt; Folder 3. Album labelled &#34;III.&#34; &gt;&gt; Painting of the Adoration of the Child (a duplicate print in IV.A.1.1.38.-1.)</field>
+    <field name="series_sim">Series II: Villa La Pietra</field>
+    <field name="series_sim">Subseries B: The Interior and the Collection</field>
+    <field name="series_sim">5 Historic Albums mostly of the interior and works of art at present in the Collection or probably formerly once belonging to it.</field>
+    <field name="series_sim">Folder 3. Album labelled &amp;#34;III.&amp;#34;</field>
+    <field name="sort_ii">3746</field>
+    <field name="unitdate_end_si">1994</field>
+    <field name="unitdate_end_sim">1994</field>
+    <field name="unitdate_end_ssm">1994</field>
+    <field name="unitdate_inclusive_teim">undated</field>
+    <field name="unitdate_normal_sim">1870/1994</field>
+    <field name="unitdate_normal_ssm">1870/1994</field>
+    <field name="unitdate_normal_teim">1870/1994</field>
+    <field name="unitdate_ssm">Inclusive, undated</field>
+    <field name="unitdate_start_si">1870</field>
+    <field name="unitdate_start_sim">1870</field>
+    <field name="unitdate_start_ssm">1870</field>
+    <field name="unitid_ssm">cuid5945</field>
+    <field name="unitid_teim">cuid5945</field>
+    <field name="unittitle_ssm">Painting of the Adoration of the Child (a duplicate print in IV.A.1.1.38.-1.)</field>
+    <field name="unittitle_teim">Painting of the Adoration of the Child (a duplicate print in IV.A.1.1.38.-1.)</field>
+  </doc>
+</add>

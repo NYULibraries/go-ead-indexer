@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer, with assistance from Muhammad Shehryar Hamid.</field>
+    <field name="collection_sim">P. Marcel Kurpershoek papers</field>
+    <field name="collection_ssm">P. Marcel Kurpershoek papers</field>
+    <field name="collection_teim">P. Marcel Kurpershoek papers</field>
+    <field name="collection_unitid_ssm">AD.MC.054</field>
+    <field name="collection_unitid_teim">AD.MC.054</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_054</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Arabian Romantic:  Poems on Bedouin Life and Love (ʿAbdallāh ibn Sbayyil): sources, copied text with handwritten annotations</field>
+    <field name="id">ad_mc_054aspace_69596adb5199aa2bd21a5937bbece03a</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 7, folder: 8</field>
+    <field name="location_ssm">box: 7, folder: 8</field>
+    <field name="parent_ssi">aspace_54e197dffb409408f33e6997b072469c</field>
+    <field name="parent_ssm">aspace_d679b2f80c80623448ee4b70a554adc5</field>
+    <field name="parent_ssm">aspace_54e197dffb409408f33e6997b072469c</field>
+    <field name="parent_unittitles_ssm">Publications</field>
+    <field name="parent_unittitles_ssm">Other writings:  Library of Arabic Literature (NYU Abu Dhabi)</field>
+    <field name="parent_unittitles_teim">Publications</field>
+    <field name="parent_unittitles_teim">Other writings:  Library of Arabic Literature (NYU Abu Dhabi)</field>
+    <field name="ref_ssi">aspace_69596adb5199aa2bd21a5937bbece03a</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Publications &gt;&gt; Other writings:  Library of Arabic Literature (NYU Abu Dhabi) &gt;&gt; Arabian Romantic:  Poems on Bedouin Life and Love (ʿAbdallāh ibn Sbayyil): sources, copied text with handwritten annotations</field>
+    <field name="series_sim">Publications</field>
+    <field name="series_sim">Other writings:  Library of Arabic Literature (NYU Abu Dhabi)</field>
+    <field name="sort_ii">104</field>
+    <field name="unittitle_ssm">Arabian Romantic:  Poems on Bedouin Life and Love (ʿAbdallāh ibn Sbayyil): sources, copied text with handwritten annotations</field>
+    <field name="unittitle_teim">Arabian Romantic:  Poems on Bedouin Life and Love (ʿAbdallāh ibn Sbayyil): sources, copied text with handwritten annotations</field>
+  </doc>
+</add>

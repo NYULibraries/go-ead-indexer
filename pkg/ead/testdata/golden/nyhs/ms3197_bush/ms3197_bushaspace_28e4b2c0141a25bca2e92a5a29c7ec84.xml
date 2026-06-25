@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Joseph Ditta</field>
+    <field name="collection_sim">Bush family papers</field>
+    <field name="collection_ssm">Bush family papers</field>
+    <field name="collection_teim">Bush family papers</field>
+    <field name="collection_unitid_ssm">MS 3197</field>
+    <field name="collection_unitid_teim">MS 3197</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms3197_bush</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Travel diary</field>
+    <field name="id">ms3197_bushaspace_28e4b2c0141a25bca2e92a5a29c7ec84</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 2, Folder: 4</field>
+    <field name="location_ssm">Box: 2, Folder: 4</field>
+    <field name="parent_ssi">aspace_fcde6d8df1e1d1fcaeae223acf7ab510</field>
+    <field name="parent_ssm">aspace_fcde6d8df1e1d1fcaeae223acf7ab510</field>
+    <field name="parent_unittitles_ssm">Series V. Frances Maude (Morris) Bush travel diaries</field>
+    <field name="parent_unittitles_teim">Series V. Frances Maude (Morris) Bush travel diaries</field>
+    <field name="ref_ssi">aspace_28e4b2c0141a25bca2e92a5a29c7ec84</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="scopecontent_teim">Embossed &#34;Mrs. William B. Bush.&#34; Record of visits to France, Italy, and Switzerland.</field>
+    <field name="series_si">Series V. Frances Maude (Morris) Bush travel diaries &gt;&gt; Travel diary</field>
+    <field name="series_sim">Series V. Frances Maude (Morris) Bush travel diaries</field>
+    <field name="sort_ii">22</field>
+    <field name="unitdate_inclusive_teim">[1928] October 25 – December 17</field>
+    <field name="unitdate_ssm">Inclusive, [1928] October 25 – December 17</field>
+    <field name="unittitle_ssm">Travel diary</field>
+    <field name="unittitle_teim">Travel diary</field>
+  </doc>
+</add>

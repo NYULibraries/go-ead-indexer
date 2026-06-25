@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Lauren Kata</field>
+    <field name="bioghist_teim">Georgia is 4.5 years old and drew herself wearing a mask.</field>
+    <field name="collection_sim">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_ssm">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_teim">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_unitid_ssm">AD.RG.030.2</field>
+    <field name="collection_unitid_teim">AD.RG.030.2</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_rg_030_2</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Harris, Georgia. Drawing</field>
+    <field name="id">ad_rg_030_2aspace_7a11cf6b3356e7a5a144caa31e7be10f</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 1, folder: 3</field>
+    <field name="location_ssm">box: 1, folder: 3</field>
+    <field name="parent_ssi">aspace_22c0701551380c23cd2a8df79917f096</field>
+    <field name="parent_ssm">aspace_165d7515034f6a815453d739527d9d02</field>
+    <field name="parent_ssm">aspace_22c0701551380c23cd2a8df79917f096</field>
+    <field name="parent_unittitles_ssm">NYUAD Community Participatory Covid Archive</field>
+    <field name="parent_unittitles_ssm">Physical Item Submissions</field>
+    <field name="parent_unittitles_teim">NYUAD Community Participatory Covid Archive</field>
+    <field name="parent_unittitles_teim">Physical Item Submissions</field>
+    <field name="ref_ssi">aspace_7a11cf6b3356e7a5a144caa31e7be10f</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="scopecontent_teim">Drawing [submitted by Georgia Harris, daughter of one faculty and one staff member].</field>
+    <field name="series_si">NYUAD Community Participatory Covid Archive &gt;&gt; Physical Item Submissions &gt;&gt; Harris, Georgia. Drawing</field>
+    <field name="series_sim">NYUAD Community Participatory Covid Archive</field>
+    <field name="series_sim">Physical Item Submissions</field>
+    <field name="sort_ii">42</field>
+    <field name="unitdate_normal_sim">2021-08-15/2021-08-15</field>
+    <field name="unitdate_normal_ssm">2021-08-15/2021-08-15</field>
+    <field name="unitdate_normal_teim">2021-08-15/2021-08-15</field>
+    <field name="unitdate_ssm">August, 2021</field>
+    <field name="unitdate_teim">August, 2021</field>
+    <field name="unitid_ssm">Submission 17</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/29411</field>
+    <field name="unitid_teim">Submission 17</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/29411</field>
+    <field name="unittitle_ssm">Harris, Georgia. Drawing</field>
+    <field name="unittitle_teim">Harris, Georgia. Drawing</field>
+  </doc>
+</add>

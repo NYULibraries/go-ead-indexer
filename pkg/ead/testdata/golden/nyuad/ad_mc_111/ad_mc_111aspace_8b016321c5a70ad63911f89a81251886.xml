@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">A.F. Ebeling photograph album</field>
+    <field name="collection_ssm">A.F. Ebeling photograph album</field>
+    <field name="collection_teim">A.F. Ebeling photograph album</field>
+    <field name="collection_unitid_ssm">AD.MC.111</field>
+    <field name="collection_unitid_teim">AD.MC.111</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_111</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Images (2) :  &#34;New Street, Baghdad&#34; and &#34;Baghdad from R. Tigris</field>
+    <field name="id">ad_mc_111aspace_8b016321c5a70ad63911f89a81251886</field>
+    <field name="level_sim">item</field>
+    <field name="location_si">volume: 1, page: 1</field>
+    <field name="location_ssm">volume: 1, page: 1</field>
+    <field name="ref_ssi">aspace_8b016321c5a70ad63911f89a81251886</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Images (2) :  &#34;New Street, Baghdad&#34; and &#34;Baghdad from R. Tigris</field>
+    <field name="sort_ii">1</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/36097</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/36097</field>
+    <field name="unittitle_ssm">Images (2) :  &#34;New Street, Baghdad&#34; and &#34;Baghdad from R. Tigris</field>
+    <field name="unittitle_teim">Images (2) :  &#34;New Street, Baghdad&#34; and &#34;Baghdad from R. Tigris</field>
+  </doc>
+</add>

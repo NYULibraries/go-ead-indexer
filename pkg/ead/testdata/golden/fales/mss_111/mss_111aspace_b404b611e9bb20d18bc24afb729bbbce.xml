@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Fales Staff</field>
+    <field name="collection_sim">Jack Waters Papers</field>
+    <field name="collection_ssm">Jack Waters Papers</field>
+    <field name="collection_teim">Jack Waters Papers</field>
+    <field name="collection_unitid_ssm">MSS.111</field>
+    <field name="collection_unitid_teim">MSS.111</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">mss_111</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Poz article - Correspondence and notes</field>
+    <field name="id">mss_111aspace_b404b611e9bb20d18bc24afb729bbbce</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 1, Folder: 16</field>
+    <field name="location_ssm">Box: 1, Folder: 16</field>
+    <field name="parent_ssi">aspace_21aa41aa942482f943eefe604c3262d8</field>
+    <field name="parent_ssm">aspace_a1a6edf0727a69b7a337dcfc085705fb</field>
+    <field name="parent_ssm">aspace_21aa41aa942482f943eefe604c3262d8</field>
+    <field name="parent_unittitles_ssm">Series I: Files</field>
+    <field name="parent_unittitles_ssm">Subseries C: Valerie Caris</field>
+    <field name="parent_unittitles_teim">Series I: Files</field>
+    <field name="parent_unittitles_teim">Subseries C: Valerie Caris</field>
+    <field name="ref_ssi">aspace_b404b611e9bb20d18bc24afb729bbbce</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="series_si">Series I: Files &gt;&gt; Subseries C: Valerie Caris &gt;&gt; Poz article - Correspondence and notes</field>
+    <field name="series_sim">Series I: Files</field>
+    <field name="series_sim">Subseries C: Valerie Caris</field>
+    <field name="sort_ii">20</field>
+    <field name="unitdate_ssm">2000</field>
+    <field name="unitdate_teim">2000</field>
+    <field name="unittitle_ssm">Poz article - Correspondence and notes</field>
+    <field name="unittitle_teim">Poz article - Correspondence and notes</field>
+  </doc>
+</add>

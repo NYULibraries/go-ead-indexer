@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Lauren Kata</field>
+    <field name="collection_sim">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_ssm">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_teim">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_unitid_ssm">AD.RG.030.2</field>
+    <field name="collection_unitid_teim">AD.RG.030.2</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_rg_030_2</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Anonymous. The world runs better on vaccines [screenshot]</field>
+    <field name="id">ad_rg_030_2aspace_e5f9d6365ce4b40adf6412c502de2b1e</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: E-records, folder: AD_RG_030_022</field>
+    <field name="location_ssm">box: E-records, folder: AD_RG_030_022</field>
+    <field name="parent_ssi">aspace_a51c1a157cedd2b137c3bae3d2628a3a</field>
+    <field name="parent_ssm">aspace_165d7515034f6a815453d739527d9d02</field>
+    <field name="parent_ssm">aspace_a51c1a157cedd2b137c3bae3d2628a3a</field>
+    <field name="parent_unittitles_ssm">NYUAD Community Participatory Covid Archive</field>
+    <field name="parent_unittitles_ssm">Digital Submissions</field>
+    <field name="parent_unittitles_teim">NYUAD Community Participatory Covid Archive</field>
+    <field name="parent_unittitles_teim">Digital Submissions</field>
+    <field name="ref_ssi">aspace_e5f9d6365ce4b40adf6412c502de2b1e</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="scopecontent_teim">A screenshot of the green pass used in the UAE to access public and private facilities, travel between Emirates, and to verify vaccination status. </field>
+    <field name="scopecontent_teim">To imagine a world in perpetual lockdown was not an option for me. I wanted people to have the option to connect other than the online space. The development of the various Covid vaccines provided some of the best options to work toward a healthier population. This vaccine trial was a step to getting things reopened. My biggest concern is that a worldwide pandemic will be forgotten in just a few years when there is so much more to be learned from it.</field>
+    <field name="series_si">NYUAD Community Participatory Covid Archive &gt;&gt; Digital Submissions &gt;&gt; Anonymous. The world runs better on vaccines [screenshot]</field>
+    <field name="series_sim">NYUAD Community Participatory Covid Archive</field>
+    <field name="series_sim">Digital Submissions</field>
+    <field name="sort_ii">58</field>
+    <field name="unitdate_normal_sim">2020-08/2020-08</field>
+    <field name="unitdate_normal_ssm">2020-08/2020-08</field>
+    <field name="unitdate_normal_teim">2020-08/2020-08</field>
+    <field name="unitdate_ssm">August, 2020</field>
+    <field name="unitdate_teim">August, 2020</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/30264</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/30264</field>
+    <field name="unittitle_ssm">Anonymous. The world runs better on vaccines [screenshot]</field>
+    <field name="unittitle_teim">Anonymous. The world runs better on vaccines [screenshot]</field>
+  </doc>
+</add>

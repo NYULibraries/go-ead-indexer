@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Jasmine Soliman and Jonathan Burr for Akkasah Photography Archive at NYUAD </field>
+    <field name="collection_sim">&#34;The Gift of the Centre for Iranian Democratic Youth to Youth Unity of All Burma&#34; - demonstrations during the Iran Oil Crisis (Abadan Crisis), 1951.</field>
+    <field name="collection_ssm">&#34;The Gift of the Centre for Iranian Democratic Youth to Youth Unity of All Burma&#34; - demonstrations during the Iran Oil Crisis (Abadan Crisis), 1951.</field>
+    <field name="collection_teim">&#34;The Gift of the Centre for Iranian Democratic Youth to Youth Unity of All Burma&#34; - demonstrations during the Iran Oil Crisis (Abadan Crisis), 1951.</field>
+    <field name="collection_unitid_ssm">AD.MC.049</field>
+    <field name="collection_unitid_teim">AD.MC.049</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="dao_sim">Online Access</field>
+    <field name="dao_ssm">Back inside cover of the album Demonstrations in Tehran during the Abadan Crisis, 1951, with handwritten Farsi text: &#34;Young people get united. March on for permanent peace. Long live the friendship between Burmese and Iranian youths.&#34;.: 1951</field>
+    <field name="dao_ssm">Back inside cover of the album Demonstrations in Tehran during the Abadan Crisis, 1951, with handwritten Farsi text: &#34;Young people get united. March on for permanent peace. Long live the friendship between Burmese and Iranian youths.&#34;.: 1951</field>
+    <field name="dao_teim">Back inside cover of the album Demonstrations in Tehran during the Abadan Crisis, 1951, with handwritten Farsi text: &#34;Young people get united. March on for permanent peace. Long live the friendship between Burmese and Iranian youths.&#34;.: 1951</field>
+    <field name="dao_teim">Back inside cover of the album Demonstrations in Tehran during the Abadan Crisis, 1951, with handwritten Farsi text: &#34;Young people get united. March on for permanent peace. Long live the friendship between Burmese and Iranian youths.&#34;.: 1951</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_049</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="geogname_ssm">Iran</field>
+    <field name="geogname_teim">Iran</field>
+    <field name="heading_ssm">Back inside cover of the album &#34;The Gift of the Centre for Iranian Democratic Youth to Youth Unity of All Burma&#34; - demonstrations during the Iran Oil Crisis (Abadan Crisis), 1951, with handwritten Farsi text: &#34;Young people, unite. March on for permanent peace. Long live the friendship between Burmese and Iranian youths.&#34;.</field>
+    <field name="id">ad_mc_049aspace_bd9e4922923438147c9bc9d1f25f5b23</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 049</field>
+    <field name="location_ssm">box: 049</field>
+    <field name="place_sim">Iran</field>
+    <field name="place_ssm">Iran</field>
+    <field name="ref_ssi">aspace_bd9e4922923438147c9bc9d1f25f5b23</field>
+    <field name="repository_sim">akkasah</field>
+    <field name="repository_ssi">akkasah</field>
+    <field name="repository_ssm">akkasah</field>
+    <field name="series_si">Back inside cover of the album &#34;The Gift of the Centre for Iranian Democratic Youth to Youth Unity of All Burma&#34; - demonstrations during the Iran Oil Crisis (Abadan Crisis), 1951, with handwritten Farsi text: &#34;Young people, unite. March on for permanent peace. Long live the friendship between Burmese and Iranian youths.&#34;.</field>
+    <field name="sort_ii">25</field>
+    <field name="subject_sim">Farsi Writing</field>
+    <field name="subject_ssm">Farsi Writing</field>
+    <field name="subject_teim">Farsi Writing</field>
+    <field name="subject_teim">Farsi Writing</field>
+    <field name="unitdate_ssm">1951</field>
+    <field name="unitdate_teim">1951</field>
+    <field name="unitid_ssm">AD_MC_049_ref45</field>
+    <field name="unitid_teim">AD_MC_049_ref45</field>
+    <field name="unittitle_ssm">Back inside cover of the album &#34;The Gift of the Centre for Iranian Democratic Youth to Youth Unity of All Burma&#34; - demonstrations during the Iran Oil Crisis (Abadan Crisis), 1951, with handwritten Farsi text: &#34;Young people, unite. March on for permanent peace. Long live the friendship between Burmese and Iranian youths.&#34;.</field>
+    <field name="unittitle_teim">Back inside cover of the album &#34;The Gift of the Centre for Iranian Democratic Youth to Youth Unity of All Burma&#34; - demonstrations during the Iran Oil Crisis (Abadan Crisis), 1951, with handwritten Farsi text: &#34;Young people, unite. March on for permanent peace. Long live the friendship between Burmese and Iranian youths.&#34;.</field>
+  </doc>
+</add>

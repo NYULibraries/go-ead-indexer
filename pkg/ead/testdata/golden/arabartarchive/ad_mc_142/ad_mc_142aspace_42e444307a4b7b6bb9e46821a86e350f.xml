@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Mehri Khalil, Ibrahim Mohamed Ali, Maysa Shaer, and Nada Shabout for al Mawrid Arab Center for the Study of Art at NYU Abu Dhabi.</field>
+    <field name="collection_sim">Menhat Helmy Collection</field>
+    <field name="collection_ssm">Menhat Helmy Collection</field>
+    <field name="collection_teim">Menhat Helmy Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.142</field>
+    <field name="collection_unitid_teim">AD.MC.142</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_142</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">2. 1973-74 Prospectus</field>
+    <field name="id">ad_mc_142aspace_42e444307a4b7b6bb9e46821a86e350f</field>
+    <field name="level_sim">subgrp</field>
+    <field name="parent_ssi">aspace_afdca9d1682b21743302203535e1b340</field>
+    <field name="parent_ssm">aspace_366e6c581fd267013716ed8c9758e756</field>
+    <field name="parent_ssm">aspace_afdca9d1682b21743302203535e1b340</field>
+    <field name="parent_unittitles_ssm">IV. Professional Papers</field>
+    <field name="parent_unittitles_ssm">IV.C. Slade School of Fine Art Prospectus</field>
+    <field name="parent_unittitles_teim">IV. Professional Papers</field>
+    <field name="parent_unittitles_teim">IV.C. Slade School of Fine Art Prospectus</field>
+    <field name="ref_ssi">aspace_42e444307a4b7b6bb9e46821a86e350f</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="series_si">IV. Professional Papers &gt;&gt; IV.C. Slade School of Fine Art Prospectus &gt;&gt; 2. 1973-74 Prospectus</field>
+    <field name="series_sim">IV. Professional Papers</field>
+    <field name="series_sim">IV.C. Slade School of Fine Art Prospectus</field>
+    <field name="sort_ii">83</field>
+    <field name="unitid_ssm">cuid1230</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/34384</field>
+    <field name="unitid_teim">cuid1230</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/34384</field>
+    <field name="unittitle_ssm">2. 1973-74 Prospectus</field>
+    <field name="unittitle_teim">2. 1973-74 Prospectus</field>
+  </doc>
+</add>

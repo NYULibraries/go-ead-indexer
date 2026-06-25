@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Joan Grant. Electronic version created by Salome Jeronimo.</field>
+    <field name="collection_sim">Records of the James Arthur Collection of Clocks and Watches</field>
+    <field name="collection_ssm">Records of the James Arthur Collection of Clocks and Watches</field>
+    <field name="collection_teim">Records of the James Arthur Collection of Clocks and Watches</field>
+    <field name="collection_unitid_ssm">RG.42.1</field>
+    <field name="collection_unitid_teim">RG.42.1</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">rg_42_1</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="genreform_ssm">Correspondence.</field>
+    <field name="genreform_teim">Correspondence.</field>
+    <field name="heading_ssm">Series I: Correspondence</field>
+    <field name="id">rg_42_1aspace_ref15</field>
+    <field name="language_sim">English</field>
+    <field name="language_ssm">English</field>
+    <field name="level_sim">series</field>
+    <field name="material_type_sim">Correspondence.</field>
+    <field name="material_type_ssm">Correspondence.</field>
+    <field name="name_sim">Arthur, James, 1842-1930</field>
+    <field name="name_teim">Arthur, James, 1842-1930</field>
+    <field name="persname_ssm">Arthur, James, 1842-1930</field>
+    <field name="persname_teim">Arthur, James, 1842-1930</field>
+    <field name="ref_ssi">aspace_ref15</field>
+    <field name="repository_sim">archives</field>
+    <field name="repository_ssi">archives</field>
+    <field name="repository_ssm">archives</field>
+    <field name="scopecontent_teim">This series contains an excerpt from James Arthur&#39;s will donating his collection to the University (see Box 1, Folder 2); correspondence and reports of the curators and University officers related to the administration of both the collection and the series of lectures on &#34;Time and its Mysteries;&#34; minutes of the faculty advisory committee; publicity materials for the collection and lectures; and newspaper clippings.</field>
+    <field name="scopecontent_teim">The lectures were held annually until the outbreak of World War II. There is a gap in the collection from 1942 until 1946. Thereafter, lectures were held at intervals from two to four years with the most recent one in 1978. New York University Press published the first twelve lectures in a three volume series entitled &#34;Time and Its Mysteries.&#34; Materials in the collection related to the lectures often include biographical information on the speakers, printed programs and the texts of the lectures.  A list of the lectures is included in the finding aid.  </field>
+    <field name="scopecontent_teim">Information on the clock and watch collection can be found in correspondence and reports of the curators. There is no complete inventory of the clocks, but in 1932 Daniel Webster Hering, the first curator, published &#34;The Lure of the Clock,&#34; which illustrated and described some items in the original collection. The problems of housing and administering the collection, which are evident throughout the correspondence, finally led to the transfer of the collection to the Smithsonian Institution in September 1963.  Although the collection contains correspondence with a Smithsonian official (see Box 2, Folder 19), the agreement is not in the collection. Box 2, Folder 31 contains a list of clocks that remain at the University.</field>
+    <field name="scopecontent_teim">Little information is available on the book collection save a listing of the books in Box 2, Folder 20.</field>
+    <field name="scopecontent_teim">A list of the curators is included in the finding aid.</field>
+    <field name="series_si">Series I: Correspondence</field>
+    <field name="sort_ii">1</field>
+    <field name="unitdate_end_si">1982</field>
+    <field name="unitdate_end_sim">1982</field>
+    <field name="unitdate_end_ssm">1982</field>
+    <field name="unitdate_inclusive_teim">1926-1982</field>
+    <field name="unitdate_normal_sim">1926/1982</field>
+    <field name="unitdate_normal_ssm">1926/1982</field>
+    <field name="unitdate_normal_teim">1926/1982</field>
+    <field name="unitdate_ssm">Inclusive, 1926-1982</field>
+    <field name="unitdate_start_si">1926</field>
+    <field name="unitdate_start_sim">1926</field>
+    <field name="unitdate_start_ssm">1926</field>
+    <field name="unitid_ssm">/repositories/6/archival_objects/680113</field>
+    <field name="unitid_teim">/repositories/6/archival_objects/680113</field>
+    <field name="unittitle_ssm">Series I: Correspondence</field>
+    <field name="unittitle_teim">Series I: Correspondence</field>
+  </doc>
+</add>

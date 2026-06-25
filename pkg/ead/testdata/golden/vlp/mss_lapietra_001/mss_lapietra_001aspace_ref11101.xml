@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Collection processed by Finding aid prepared by Alta Macadam</field>
+    <field name="collection_sim">The Acton Photograph Archive</field>
+    <field name="collection_ssm">The Acton Photograph Archive</field>
+    <field name="collection_teim">The Acton Photograph Archive</field>
+    <field name="collection_unitid_ssm">MSS.LaPietra.001</field>
+    <field name="collection_unitid_teim">MSS.LaPietra.001</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">4</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">mss_lapietra_001</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">1911 (July 6-September 15) France and Itay</field>
+    <field name="id">mss_lapietra_001aspace_ref11101</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 3, Folder: 4</field>
+    <field name="location_ssm">Box: 3, Folder: 4</field>
+    <field name="parent_ssi">aspace_ref11095</field>
+    <field name="parent_ssm">aspace_ref10865</field>
+    <field name="parent_ssm">aspace_ref11094</field>
+    <field name="parent_ssm">aspace_ref11095</field>
+    <field name="parent_unittitles_ssm">Series VI: Postcards</field>
+    <field name="parent_unittitles_ssm">Subseries D: Postcards documenting Travels</field>
+    <field name="parent_unittitles_ssm">1 Hortense Acton née Mitchell&amp;#39;s travels</field>
+    <field name="parent_unittitles_teim">Series VI: Postcards</field>
+    <field name="parent_unittitles_teim">Subseries D: Postcards documenting Travels</field>
+    <field name="parent_unittitles_teim">1 Hortense Acton née Mitchell&amp;#39;s travels</field>
+    <field name="ref_ssi">aspace_ref11101</field>
+    <field name="repository_sim">vlp</field>
+    <field name="repository_ssi">vlp</field>
+    <field name="repository_ssm">vlp</field>
+    <field name="series_si">Series VI: Postcards &gt;&gt; Subseries D: Postcards documenting Travels &gt;&gt; 1 Hortense Acton née Mitchell&#39;s travels &gt;&gt; 1911 (July 6-September 15) France and Itay</field>
+    <field name="series_sim">Series VI: Postcards</field>
+    <field name="series_sim">Subseries D: Postcards documenting Travels</field>
+    <field name="series_sim">1 Hortense Acton née Mitchell&amp;#39;s travels</field>
+    <field name="sort_ii">6567</field>
+    <field name="unitdate_end_si">1911</field>
+    <field name="unitdate_end_sim">1911</field>
+    <field name="unitdate_end_ssm">1911</field>
+    <field name="unitdate_inclusive_teim">1911</field>
+    <field name="unitdate_normal_sim">1911/1911</field>
+    <field name="unitdate_normal_ssm">1911/1911</field>
+    <field name="unitdate_normal_teim">1911/1911</field>
+    <field name="unitdate_ssm">Inclusive, 1911</field>
+    <field name="unitdate_start_si">1911</field>
+    <field name="unitdate_start_sim">1911</field>
+    <field name="unitdate_start_ssm">1911</field>
+    <field name="unitid_ssm">cuid4389</field>
+    <field name="unitid_teim">cuid4389</field>
+    <field name="unittitle_ssm">1911 (July 6-September 15) France and Itay</field>
+    <field name="unittitle_teim">1911 (July 6-September 15) France and Itay</field>
+  </doc>
+</add>

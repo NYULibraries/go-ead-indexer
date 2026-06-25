@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ibrahim Mohamed Ali, Maysa Shaer, Nada Shabout, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art at NYU Abu Dhabi 	</field>
+    <field name="collection_sim">Salwa Zeidan Collection</field>
+    <field name="collection_ssm">Salwa Zeidan Collection</field>
+    <field name="collection_teim">Salwa Zeidan Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.150</field>
+    <field name="collection_unitid_teim">AD.MC.150</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_150</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">6. &#34;Adonis,&#34; Abu Dhabi, 2009</field>
+    <field name="id">ad_mc_150aspace_fe57786747d7db07bd8d2cd0bbefdb84</field>
+    <field name="level_sim">item</field>
+    <field name="parent_ssi">aspace_f22b19f2f48b3a7ce3c8bc8f61d4f174</field>
+    <field name="parent_ssm">aspace_8b2ded0ffd31a87db6a347694f4f7507</field>
+    <field name="parent_ssm">aspace_f22b19f2f48b3a7ce3c8bc8f61d4f174</field>
+    <field name="parent_unittitles_ssm">Series I: Exhibition Materials</field>
+    <field name="parent_unittitles_ssm">I.C. Exhibitions Organized by Salwa Zeidan</field>
+    <field name="parent_unittitles_teim">Series I: Exhibition Materials</field>
+    <field name="parent_unittitles_teim">I.C. Exhibitions Organized by Salwa Zeidan</field>
+    <field name="ref_ssi">aspace_fe57786747d7db07bd8d2cd0bbefdb84</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="series_si">Series I: Exhibition Materials &gt;&gt; I.C. Exhibitions Organized by Salwa Zeidan &gt;&gt; 6. &#34;Adonis,&#34; Abu Dhabi, 2009</field>
+    <field name="series_sim">Series I: Exhibition Materials</field>
+    <field name="series_sim">I.C. Exhibitions Organized by Salwa Zeidan</field>
+    <field name="sort_ii">30</field>
+    <field name="unitid_ssm">cuid1322</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/35802</field>
+    <field name="unitid_teim">cuid1322</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/35802</field>
+    <field name="unittitle_ssm">6. &#34;Adonis,&#34; Abu Dhabi, 2009</field>
+    <field name="unittitle_teim">6. &#34;Adonis,&#34; Abu Dhabi, 2009</field>
+  </doc>
+</add>

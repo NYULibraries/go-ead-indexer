@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ala Younis, Ibrahim Mohamed Ali, Dina Taha, Anneka Lenssen, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art, NYUAD</field>
+    <field name="collection_sim">Rafa Nasiri and May Muzaffar Collection</field>
+    <field name="collection_ssm">Rafa Nasiri and May Muzaffar Collection</field>
+    <field name="collection_teim">Rafa Nasiri and May Muzaffar Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.092</field>
+    <field name="collection_unitid_teim">AD.MC.092</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="dao_sim">Online Access</field>
+    <field name="dao_ssm">1. &#34;Iraqi Artists&#39; Society, Eighth Annual Art Exhibition,&#34; Baghdad, 1965</field>
+    <field name="dao_teim">1. &#34;Iraqi Artists&#39; Society, Eighth Annual Art Exhibition,&#34; Baghdad, 1965</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_092</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">1. &#34;Iraqi Artists&#39; Society, Eighth Annual Art Exhibition,&#34; Baghdad, 1965</field>
+    <field name="id">ad_mc_092aspace_a67a1fc02242858d65e40b35cab4bd97</field>
+    <field name="level_sim">item</field>
+    <field name="parent_ssi">aspace_a1a008281440620373d0feaff9650f9c</field>
+    <field name="parent_ssm">aspace_3eb88e9c53905a71d0c1958dcbeace38</field>
+    <field name="parent_ssm">aspace_a1a008281440620373d0feaff9650f9c</field>
+    <field name="parent_unittitles_ssm">Series IV: Exhibition Materials</field>
+    <field name="parent_unittitles_ssm">IV.B. Rafa Nasiri&amp;#39;s Group Exhibitions</field>
+    <field name="parent_unittitles_teim">Series IV: Exhibition Materials</field>
+    <field name="parent_unittitles_teim">IV.B. Rafa Nasiri&amp;#39;s Group Exhibitions</field>
+    <field name="ref_ssi">aspace_a67a1fc02242858d65e40b35cab4bd97</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="series_si">Series IV: Exhibition Materials &gt;&gt; IV.B. Rafa Nasiri&#39;s Group Exhibitions &gt;&gt; 1. &#34;Iraqi Artists&#39; Society, Eighth Annual Art Exhibition,&#34; Baghdad, 1965</field>
+    <field name="series_sim">Series IV: Exhibition Materials</field>
+    <field name="series_sim">IV.B. Rafa Nasiri&amp;#39;s Group Exhibitions</field>
+    <field name="sort_ii">49</field>
+    <field name="unitid_ssm">cuid786</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/32185</field>
+    <field name="unitid_teim">cuid786</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/32185</field>
+    <field name="unittitle_ssm">1. &#34;Iraqi Artists&#39; Society, Eighth Annual Art Exhibition,&#34; Baghdad, 1965</field>
+    <field name="unittitle_teim">1. &#34;Iraqi Artists&#39; Society, Eighth Annual Art Exhibition,&#34; Baghdad, 1965</field>
+  </doc>
+</add>

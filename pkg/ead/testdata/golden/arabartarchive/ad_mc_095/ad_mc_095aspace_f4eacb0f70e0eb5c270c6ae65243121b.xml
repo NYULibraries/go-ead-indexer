@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ibrahim Mohamed Ali, Maysa Shaer, Saleem Al-Bahloly, Anneka Lenssen, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art, NYUAD</field>
+    <field name="collection_sim">Hanaa Malallah Collection</field>
+    <field name="collection_ssm">Hanaa Malallah Collection</field>
+    <field name="collection_teim">Hanaa Malallah Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.095</field>
+    <field name="collection_unitid_teim">AD.MC.095</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_095</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">III.A. Published in Newspapers and Magazines</field>
+    <field name="id">ad_mc_095aspace_f4eacb0f70e0eb5c270c6ae65243121b</field>
+    <field name="level_sim">subseries</field>
+    <field name="parent_ssi">aspace_14f2b537f847fb6b7c88b52a29e54a3e</field>
+    <field name="parent_ssm">aspace_14f2b537f847fb6b7c88b52a29e54a3e</field>
+    <field name="parent_unittitles_ssm">Series III: Illustrations and Preparatory Drawings</field>
+    <field name="parent_unittitles_teim">Series III: Illustrations and Preparatory Drawings</field>
+    <field name="ref_ssi">aspace_f4eacb0f70e0eb5c270c6ae65243121b</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="series_si">Series III: Illustrations and Preparatory Drawings &gt;&gt; III.A. Published in Newspapers and Magazines</field>
+    <field name="series_sim">Series III: Illustrations and Preparatory Drawings</field>
+    <field name="sort_ii">17</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/32723</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/32723</field>
+    <field name="unittitle_ssm">III.A. Published in Newspapers and Magazines</field>
+    <field name="unittitle_teim">III.A. Published in Newspapers and Magazines</field>
+  </doc>
+</add>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="abstract_ssm">A collection of photographs most likely taken by &#34;a British Representative&#34; of the Anglo-Iranian Oil Company (AIOC) at the Little Aden oil refinery. The photographs focus on group and individual portraits of workers and locals and the equipment and facilities connected to the construction of the oil refinery at Little Aden, which began operating in July 1954.</field>
+    <field name="abstract_teim">A collection of photographs most likely taken by &#34;a British Representative&#34; of the Anglo-Iranian Oil Company (AIOC) at the Little Aden oil refinery. The photographs focus on group and individual portraits of workers and locals and the equipment and facilities connected to the construction of the oil refinery at Little Aden, which began operating in July 1954.</field>
+    <field name="acqinfo_teim">Purchased from Voyager Press, Rare Books and Manuscripts in March 2020. bernie@voyager-press.com or bernhardlauser@gmail.com. Vancouver - Canada. Telephone: +1.604.922.2444 - Mobile + SMS +1.604.720.2000. Prior provenance unknown.</field>
+    <field name="author_ssm">Jasmine Soliman for Akkasah: Photography Archive at NYUAD</field>
+    <field name="author_teim">Jasmine Soliman for Akkasah: Photography Archive at NYUAD</field>
+    <field name="bioghist_teim">Besides the note that the photographer is a &#34;British representative&#34; of the Anglo-Iranian Oil Company (AIOC), there is no additional information about his position or background.
+It is noteworthy that AIOC was renamed to the &#34;British Petroleum Company&#34; at the end of the Abadan Crisis in 1954, the same year that the Little Aden oil refinery was opened.</field>
+    <field name="collection_sim">Little Aden Oil Refinery - Anglo-Iranian Oil Company (AIOC)</field>
+    <field name="collection_ssm">Little Aden Oil Refinery - Anglo-Iranian Oil Company (AIOC)</field>
+    <field name="collection_teim">Little Aden Oil Refinery - Anglo-Iranian Oil Company (AIOC)</field>
+    <field name="corpname_ssm">Akkasah: Photography Archive (NYU Abu Dhabi)</field>
+    <field name="corpname_ssm">Voyager Press. Rare Books and Manuscripts </field>
+    <field name="corpname_ssm">Voyager Press. Rare Books and Manuscripts </field>
+    <field name="corpname_teim">Akkasah: Photography Archive (NYU Abu Dhabi)</field>
+    <field name="corpname_teim">Voyager Press. Rare Books and Manuscripts </field>
+    <field name="corpname_teim">Voyager Press. Rare Books and Manuscripts </field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">ad_mc_067</field>
+    <field name="format_ii">0</field>
+    <field name="format_sim">Archival Collection</field>
+    <field name="format_ssm">Archival Collection</field>
+    <field name="genreform_ssm">Gelatin Silver Prints</field>
+    <field name="genreform_ssm">Photographic Prints</field>
+    <field name="genreform_teim">Gelatin Silver Prints</field>
+    <field name="genreform_teim">Photographic Prints</field>
+    <field name="geogname_ssm">Aden, Yemen</field>
+    <field name="geogname_teim">Aden, Yemen</field>
+    <field name="heading_ssm">Little Aden Oil Refinery - Anglo-Iranian Oil Company (AIOC)</field>
+    <field name="id">ad_mc_067</field>
+    <field name="language_sim">English</field>
+    <field name="language_ssm">English</field>
+    <field name="material_type_sim">Gelatin Silver Prints</field>
+    <field name="material_type_sim">Photographic Prints</field>
+    <field name="material_type_ssm">Gelatin Silver Prints</field>
+    <field name="material_type_ssm">Photographic Prints</field>
+    <field name="name_sim">Voyager Press. Rare Books and Manuscripts </field>
+    <field name="name_teim">Voyager Press. Rare Books and Manuscripts </field>
+    <field name="occupation_ssm">Workers</field>
+    <field name="occupation_teim">Workers</field>
+    <field name="place_sim">Aden, Yemen</field>
+    <field name="repository_sim">akkasah</field>
+    <field name="repository_ssi">akkasah</field>
+    <field name="repository_ssm">akkasah</field>
+    <field name="scopecontent_teim">A collection of photographs most likely taken by the person who appears on the first page, who identifies themselves as a &#34;a British Representative&#34; of the Anglo-Iranian Oil Company (AIOC) at the Little Aden oil refinery. The photographs focus on group and individual portraits of workers and locals and the equipment and facilities connected to the construction of the oil refinery at Little Aden, which began operating in July 1954. There are distressing photographs of a worker crushed by equipment and another suffering what appears to be exhaustion, as well as a truck crushed by a landslide.</field>
+    <field name="subject_sim">Petroleum industry and trade.</field>
+    <field name="subject_sim">Workers</field>
+    <field name="subject_ssm">Petroleum industry and trade.</field>
+    <field name="subject_teim">Petroleum industry and trade.</field>
+    <field name="subject_teim">Petroleum industry and trade.</field>
+    <field name="subject_teim">Workers</field>
+    <field name="unitdate_end_si">1954</field>
+    <field name="unitdate_end_sim">1954</field>
+    <field name="unitdate_end_ssm">1954</field>
+    <field name="unitdate_normal_sim">1954/1954</field>
+    <field name="unitdate_normal_ssm">1954/1954</field>
+    <field name="unitdate_normal_teim">1954/1954</field>
+    <field name="unitdate_ssm">Circa 1954</field>
+    <field name="unitdate_start_si">1954</field>
+    <field name="unitdate_start_sim">1954</field>
+    <field name="unitdate_start_ssm">1954</field>
+    <field name="unitdate_teim">Circa 1954</field>
+    <field name="unitid_ssm">AD.MC.067</field>
+    <field name="unitid_teim">AD.MC.067</field>
+    <field name="unittitle_ssm">Little Aden Oil Refinery - Anglo-Iranian Oil Company (AIOC)</field>
+    <field name="unittitle_teim">Little Aden Oil Refinery - Anglo-Iranian Oil Company (AIOC)</field>
+  </doc>
+</add>

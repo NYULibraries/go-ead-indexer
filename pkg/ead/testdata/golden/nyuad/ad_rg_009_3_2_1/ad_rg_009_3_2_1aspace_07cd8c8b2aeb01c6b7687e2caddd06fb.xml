@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Lauren Kata</field>
+    <field name="collection_sim">NYU Abu Dhabi Student Life Events: Photos, Music, and Videos</field>
+    <field name="collection_ssm">NYU Abu Dhabi Student Life Events: Photos, Music, and Videos</field>
+    <field name="collection_teim">NYU Abu Dhabi Student Life Events: Photos, Music, and Videos</field>
+    <field name="collection_unitid_ssm">AD.RG.009.3-2-1</field>
+    <field name="collection_unitid_teim">AD.RG.009.3-2-1</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="dao_sim">Online Access</field>
+    <field name="dao_ssm">Dubai Kashtah and Etihad Museum Images 2017</field>
+    <field name="dao_teim">Dubai Kashtah and Etihad Museum Images 2017</field>
+    <field name="date_range_sim">2001-2100</field>
+    <field name="ead_ssi">ad_rg_009_3_2_1</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Dubai Kashta and Etihad Museum Images </field>
+    <field name="id">ad_rg_009_3_2_1aspace_07cd8c8b2aeb01c6b7687e2caddd06fb</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: Electronic Records, E-records: AD_RG_009_3_2_1-062</field>
+    <field name="location_ssm">box: Electronic Records, E-records: AD_RG_009_3_2_1-062</field>
+    <field name="parent_ssi">aspace_a7962a26704f11e32c5e9f5adba2fcf9</field>
+    <field name="parent_ssm">aspace_a7962a26704f11e32c5e9f5adba2fcf9</field>
+    <field name="parent_unittitles_ssm">Student Life Events, 2016-2017</field>
+    <field name="parent_unittitles_teim">Student Life Events, 2016-2017</field>
+    <field name="ref_ssi">aspace_07cd8c8b2aeb01c6b7687e2caddd06fb</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Student Life Events, 2016-2017 &gt;&gt; Dubai Kashta and Etihad Museum Images </field>
+    <field name="series_sim">Student Life Events, 2016-2017</field>
+    <field name="sort_ii">67</field>
+    <field name="unitdate_end_si">2017</field>
+    <field name="unitdate_end_sim">2017</field>
+    <field name="unitdate_end_ssm">2017</field>
+    <field name="unitdate_normal_sim">2017/2017</field>
+    <field name="unitdate_normal_ssm">2017/2017</field>
+    <field name="unitdate_normal_teim">2017/2017</field>
+    <field name="unitdate_ssm">2017</field>
+    <field name="unitdate_start_si">2017</field>
+    <field name="unitdate_start_sim">2017</field>
+    <field name="unitdate_start_ssm">2017</field>
+    <field name="unitdate_teim">2017</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/30767</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/30767</field>
+    <field name="unittitle_ssm">Dubai Kashta and Etihad Museum Images </field>
+    <field name="unittitle_teim">Dubai Kashta and Etihad Museum Images </field>
+  </doc>
+</add>

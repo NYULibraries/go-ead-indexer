@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">Aḥmad Zakī Abū Shādī Family Papers</field>
+    <field name="collection_ssm">Aḥmad Zakī Abū Shādī Family Papers</field>
+    <field name="collection_teim">Aḥmad Zakī Abū Shādī Family Papers</field>
+    <field name="collection_unitid_ssm">AD.MC.065</field>
+    <field name="collection_unitid_teim">AD.MC.065</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_065</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Abu Shadi, Safeya:  Saudi Arabia Embassy (Washington):  reception for Ambassador to Venezuela, Muhammed Muhtasib (photograph with invitation)</field>
+    <field name="id">ad_mc_065aspace_dd6f5a46a27f414c07d72a6ab0c3a32e</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 16, folder: 6</field>
+    <field name="location_ssm">box: 16, folder: 6</field>
+    <field name="parent_ssi">aspace_c5ee91afdc8a48bea3e21655e427fb76</field>
+    <field name="parent_ssm">aspace_e1f7c074144fffc02b5280d23111eaa0</field>
+    <field name="parent_ssm">aspace_c5ee91afdc8a48bea3e21655e427fb76</field>
+    <field name="parent_unittitles_ssm">Photographs</field>
+    <field name="parent_unittitles_ssm">Abu Shadi family:  individuals</field>
+    <field name="parent_unittitles_teim">Photographs</field>
+    <field name="parent_unittitles_teim">Abu Shadi family:  individuals</field>
+    <field name="ref_ssi">aspace_dd6f5a46a27f414c07d72a6ab0c3a32e</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Photographs &gt;&gt; Abu Shadi family:  individuals &gt;&gt; Abu Shadi, Safeya:  Saudi Arabia Embassy (Washington):  reception for Ambassador to Venezuela, Muhammed Muhtasib (photograph with invitation)</field>
+    <field name="series_sim">Photographs</field>
+    <field name="series_sim">Abu Shadi family:  individuals</field>
+    <field name="sort_ii">292</field>
+    <field name="unitdate_normal_sim">1967-02/1967-02</field>
+    <field name="unitdate_normal_ssm">1967-02/1967-02</field>
+    <field name="unitdate_normal_teim">1967-02/1967-02</field>
+    <field name="unitdate_ssm">February 1967</field>
+    <field name="unitdate_teim">February 1967</field>
+    <field name="unittitle_ssm">Abu Shadi, Safeya:  Saudi Arabia Embassy (Washington):  reception for Ambassador to Venezuela, Muhammed Muhtasib (photograph with invitation)</field>
+    <field name="unittitle_teim">Abu Shadi, Safeya:  Saudi Arabia Embassy (Washington):  reception for Ambassador to Venezuela, Muhammed Muhtasib (photograph with invitation)</field>
+  </doc>
+</add>

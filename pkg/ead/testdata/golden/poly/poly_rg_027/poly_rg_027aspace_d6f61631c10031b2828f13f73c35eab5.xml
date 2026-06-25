@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Zoe Blecher-Cohen</field>
+    <field name="bioghist_teim">Poly alumnus Joseph Owades (July 9, 1919 – December 16, 2005) worked on the development of &#34;light&#34; beer. He worked for Fleischmann&#39;s Yeast, Schwarz Labs, and Rheingold Breweries in Brooklyn, where he became Vice President–Technical Director.  Rheingold introduced the first &#34;light beer,&#34; Gablinger&#39;s, using an enzyme which broke down chains of starch, allowing yeast to digest all of the starch. This created a beer with lower calories. Polytechnic Alumni President Anthony Concolino used this can of Gablinger&#39;s beer in his 2019 convocation speech, demonstrating the inventive spirit of Poly/Tandon engineers.  Concolino donated the beer can and two Polytechnic prom beer glasses to the Poly Archives in 2021.</field>
+    <field name="bioghist_teim">Owades source: Joseph Owades. (2023). Academic Dictionaries and Encyclopedias. Retrieved July 21, 2023, from https://en-academic.com/dic.nsf/enwiki/1665844</field>
+    <field name="collection_sim">Poly Archives Memorabilia Collection</field>
+    <field name="collection_ssm">Poly Archives Memorabilia Collection</field>
+    <field name="collection_teim">Poly Archives Memorabilia Collection</field>
+    <field name="collection_unitid_ssm">RG.027</field>
+    <field name="collection_unitid_teim">RG.027</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">poly_rg_027</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Gablinger&#39;s Beer can</field>
+    <field name="id">poly_rg_027aspace_d6f61631c10031b2828f13f73c35eab5</field>
+    <field name="level_sim">item</field>
+    <field name="location_si">box: 21, object: 55</field>
+    <field name="location_ssm">box: 21, object: 55</field>
+    <field name="parent_ssi">aspace_bec1c4b1f09154822e159039f0c68d5e</field>
+    <field name="parent_ssm">aspace_ref2_wei</field>
+    <field name="parent_ssm">aspace_bec1c4b1f09154822e159039f0c68d5e</field>
+    <field name="parent_unittitles_ssm">Series V: Realia</field>
+    <field name="parent_unittitles_ssm">Subseries E: Miscellaneous Realia</field>
+    <field name="parent_unittitles_teim">Series V: Realia</field>
+    <field name="parent_unittitles_teim">Subseries E: Miscellaneous Realia</field>
+    <field name="ref_ssi">aspace_d6f61631c10031b2828f13f73c35eab5</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="series_si">Series V: Realia &gt;&gt; Subseries E: Miscellaneous Realia &gt;&gt; Gablinger&#39;s Beer can</field>
+    <field name="series_sim">Series V: Realia</field>
+    <field name="series_sim">Subseries E: Miscellaneous Realia</field>
+    <field name="sort_ii">154</field>
+    <field name="unitdate_ssm">undated</field>
+    <field name="unitdate_teim">undated</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/19891</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/19891</field>
+    <field name="unittitle_ssm">Gablinger&#39;s Beer can</field>
+    <field name="unittitle_teim">Gablinger&#39;s Beer can</field>
+  </doc>
+</add>

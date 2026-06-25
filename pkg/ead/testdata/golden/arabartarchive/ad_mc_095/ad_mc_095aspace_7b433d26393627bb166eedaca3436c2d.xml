@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ibrahim Mohamed Ali, Maysa Shaer, Saleem Al-Bahloly, Anneka Lenssen, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art, NYUAD</field>
+    <field name="collection_sim">Hanaa Malallah Collection</field>
+    <field name="collection_ssm">Hanaa Malallah Collection</field>
+    <field name="collection_teim">Hanaa Malallah Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.095</field>
+    <field name="collection_unitid_teim">AD.MC.095</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_095</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">2. Other Writings</field>
+    <field name="id">ad_mc_095aspace_7b433d26393627bb166eedaca3436c2d</field>
+    <field name="level_sim">subgrp</field>
+    <field name="parent_ssi">aspace_74b1af088589c4fd0f29312c3d6d9c72</field>
+    <field name="parent_ssm">aspace_036767ca42239905202869b556a07ef9</field>
+    <field name="parent_ssm">aspace_74b1af088589c4fd0f29312c3d6d9c72</field>
+    <field name="parent_unittitles_ssm">Series V. Writings (Published and Unpublished)</field>
+    <field name="parent_unittitles_ssm">V.A. Writings by Hanaa Malallah</field>
+    <field name="parent_unittitles_teim">Series V. Writings (Published and Unpublished)</field>
+    <field name="parent_unittitles_teim">V.A. Writings by Hanaa Malallah</field>
+    <field name="ref_ssi">aspace_7b433d26393627bb166eedaca3436c2d</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="scopecontent_teim">This subseries comprises handwritten notes and drafts, including a draft of Malallah&#39;s PhD dissertation, and multiple copies of &#34;[Baghdad: Geography, People, Signs]&#34; published by the Saddam Art Center, Baghdad, on September 1, 1993.</field>
+    <field name="series_si">Series V. Writings (Published and Unpublished) &gt;&gt; V.A. Writings by Hanaa Malallah &gt;&gt; 2. Other Writings</field>
+    <field name="series_sim">Series V. Writings (Published and Unpublished)</field>
+    <field name="series_sim">V.A. Writings by Hanaa Malallah</field>
+    <field name="sort_ii">29</field>
+    <field name="unitid_ssm">cuid897</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/32735</field>
+    <field name="unitid_teim">cuid897</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/32735</field>
+    <field name="unittitle_ssm">2. Other Writings</field>
+    <field name="unittitle_teim">2. Other Writings</field>
+  </doc>
+</add>

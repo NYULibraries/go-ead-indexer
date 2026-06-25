@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Robin Preiss, with Nicholas Martin, 2013.</field>
+    <field name="collection_sim">Magie Dominic Off Off-Broadway Collection</field>
+    <field name="collection_ssm">Magie Dominic Off Off-Broadway Collection</field>
+    <field name="collection_teim">Magie Dominic Off Off-Broadway Collection</field>
+    <field name="collection_unitid_ssm">MSS.300</field>
+    <field name="collection_unitid_teim">MSS.300</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">mss_300</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Collage, inspired by Ken Burgess</field>
+    <field name="id">mss_300aspace_ref110</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 4, Folder: 8</field>
+    <field name="location_ssm">Box: 4, Folder: 8</field>
+    <field name="parent_ssi">aspace_ref66</field>
+    <field name="parent_ssm">aspace_ref66</field>
+    <field name="parent_unittitles_ssm">Oversize Series IV: Magie Dominic Art 1975-2011</field>
+    <field name="parent_unittitles_teim">Oversize Series IV: Magie Dominic Art 1975-2011</field>
+    <field name="ref_ssi">aspace_ref110</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="series_si">Oversize Series IV: Magie Dominic Art 1975-2011 &gt;&gt; Collage, inspired by Ken Burgess</field>
+    <field name="series_sim">Oversize Series IV: Magie Dominic Art 1975-2011</field>
+    <field name="sort_ii">89</field>
+    <field name="unitdate_ssm">1968</field>
+    <field name="unitdate_teim">1968</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/553908</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/553908</field>
+    <field name="unittitle_ssm">Collage, inspired by Ken Burgess</field>
+    <field name="unittitle_teim">Collage, inspired by Ken Burgess</field>
+  </doc>
+</add>

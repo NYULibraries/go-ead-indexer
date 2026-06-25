@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Maneesha Patel and Erika Gottfried, 2004-2007, with the assistance of Emily Brewer-Yarnell, Stephina Fisher, Bridget Hartzler, Mieke Duffly, Benjamin Hatch, and Shelley Lightburn.</field>
+    <field name="collection_sim">John Albok Negatives</field>
+    <field name="collection_ssm">John Albok Negatives</field>
+    <field name="collection_teim">John Albok Negatives</field>
+    <field name="collection_unitid_ssm">PHOTOS.063</field>
+    <field name="collection_unitid_teim">PHOTOS.063</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">photos_063</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">May Day: #1 &#34;Burke Avenue Progressive Union&#34;; #2 &#34;The Sister Act&#34;; #3 &#34;Collecting Money in Flag.&#34;; #4 &#34;Unite-- Free Tom Mooney. Patronize Union Restaurants Only&#34;; #5 &#34;Singing Internationale&#34;; #6 &#34;Free Thaelman and Tom Mooney&#34; [Workers Make NY a Union City]; #7 [Support the Frazier-Lundeen Bill]; #8 &#34;Grodzisker Br. 233&#34;; #9 &#34;The Little Red and Father&#34;; #10 &#34;[ACWA for] Farmers Labor Party&#34;; #11 [Painters DC 9 $9 for 7 Hours]; #12 &#34;Bagpiper&#34;; #13 &#34;Away with Fire Traps&#34;</field>
+    <field name="id">photos_063aspace_ref15</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 1, shoot: 273</field>
+    <field name="location_ssm">Box: 1, shoot: 273</field>
+    <field name="parent_ssi">aspace_ref13</field>
+    <field name="parent_ssm">aspace_ref13</field>
+    <field name="parent_unittitles_ssm">Series I: Demonstrations/Rallies/Parades</field>
+    <field name="parent_unittitles_teim">Series I: Demonstrations/Rallies/Parades</field>
+    <field name="ref_ssi">aspace_ref15</field>
+    <field name="repository_sim">tamwag</field>
+    <field name="repository_ssi">tamwag</field>
+    <field name="repository_ssm">tamwag</field>
+    <field name="series_si">Series I: Demonstrations/Rallies/Parades &gt;&gt; May Day: #1 &#34;Burke Avenue Progressive Union&#34;; #2 &#34;The Sister Act&#34;; #3 &#34;Collecting Money in Flag.&#34;; #4 &#34;Unite-- Free Tom Mooney. Patronize Union Restaurants Only&#34;; #5 &#34;Singing Internationale&#34;; #6 &#34;Free Thaelman and Tom Mooney&#34; [Workers Make NY a Union City]; #7 [Support the Frazier-Lundeen Bill]; #8 &#34;Grodzisker Br. 233&#34;; #9 &#34;The Little Red and Father&#34;; #10 &#34;[ACWA for] Farmers Labor Party&#34;; #11 [Painters DC 9 $9 for 7 Hours]; #12 &#34;Bagpiper&#34;; #13 &#34;Away with Fire Traps&#34;</field>
+    <field name="series_sim">Series I: Demonstrations/Rallies/Parades</field>
+    <field name="sort_ii">3</field>
+    <field name="unitdate_ssm">May 1, 1936</field>
+    <field name="unitdate_teim">May 1, 1936</field>
+    <field name="unittitle_ssm">May Day: #1 &#34;Burke Avenue Progressive Union&#34;; #2 &#34;The Sister Act&#34;; #3 &#34;Collecting Money in Flag.&#34;; #4 &#34;Unite-- Free Tom Mooney. Patronize Union Restaurants Only&#34;; #5 &#34;Singing Internationale&#34;; #6 &#34;Free Thaelman and Tom Mooney&#34; [Workers Make NY a Union City]; #7 [Support the Frazier-Lundeen Bill]; #8 &#34;Grodzisker Br. 233&#34;; #9 &#34;The Little Red and Father&#34;; #10 &#34;[ACWA for] Farmers Labor Party&#34;; #11 [Painters DC 9 $9 for 7 Hours]; #12 &#34;Bagpiper&#34;; #13 &#34;Away with Fire Traps&#34;</field>
+    <field name="unittitle_teim">May Day: #1 &#34;Burke Avenue Progressive Union&#34;; #2 &#34;The Sister Act&#34;; #3 &#34;Collecting Money in Flag.&#34;; #4 &#34;Unite-- Free Tom Mooney. Patronize Union Restaurants Only&#34;; #5 &#34;Singing Internationale&#34;; #6 &#34;Free Thaelman and Tom Mooney&#34; [Workers Make NY a Union City]; #7 [Support the Frazier-Lundeen Bill]; #8 &#34;Grodzisker Br. 233&#34;; #9 &#34;The Little Red and Father&#34;; #10 &#34;[ACWA for] Farmers Labor Party&#34;; #11 [Painters DC 9 $9 for 7 Hours]; #12 &#34;Bagpiper&#34;; #13 &#34;Away with Fire Traps&#34;</field>
+  </doc>
+</add>

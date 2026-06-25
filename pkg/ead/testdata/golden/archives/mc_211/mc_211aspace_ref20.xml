@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Clotilde Trouve and University Archives staff</field>
+    <field name="collection_sim">Irma Tuck-Weiss Papers</field>
+    <field name="collection_ssm">Irma Tuck-Weiss Papers</field>
+    <field name="collection_teim">Irma Tuck-Weiss Papers</field>
+    <field name="collection_unitid_ssm">MC.211</field>
+    <field name="collection_unitid_teim">MC.211</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">mc_211</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Photographs and images</field>
+    <field name="id">mc_211aspace_ref20</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 1, Folder: 9</field>
+    <field name="location_ssm">Box: 1, Folder: 9</field>
+    <field name="ref_ssi">aspace_ref20</field>
+    <field name="repository_sim">archives</field>
+    <field name="repository_ssi">archives</field>
+    <field name="repository_ssm">archives</field>
+    <field name="series_si">Photographs and images</field>
+    <field name="sort_ii">9</field>
+    <field name="unitdate_ssm">1954-1986</field>
+    <field name="unitdate_teim">1954-1986</field>
+    <field name="unittitle_ssm">Photographs and images</field>
+    <field name="unittitle_teim">Photographs and images</field>
+  </doc>
+</add>

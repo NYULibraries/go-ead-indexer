@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">Correspondence from the island of Réunion (Île de Bourbon), plus one letter from Emily Ruete (Princess Salme of Zanzibar)</field>
+    <field name="collection_ssm">Correspondence from the island of Réunion (Île de Bourbon), plus one letter from Emily Ruete (Princess Salme of Zanzibar)</field>
+    <field name="collection_teim">Correspondence from the island of Réunion (Île de Bourbon), plus one letter from Emily Ruete (Princess Salme of Zanzibar)</field>
+    <field name="collection_unitid_ssm">AD.MC.165</field>
+    <field name="collection_unitid_teim">AD.MC.165</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_165</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Chalvet de Souvill, Alexandre de (governor of Île de Bourbon) and Jean Charles Potier de Courcy:  document related to employment of a master carpenter on orders of naval commissioner (1 document)</field>
+    <field name="id">ad_mc_165aspace_c155e34dbf469941504e03880d31a764</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 1, folder: 2</field>
+    <field name="location_ssm">box: 1, folder: 2</field>
+    <field name="ref_ssi">aspace_c155e34dbf469941504e03880d31a764</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Chalvet de Souvill, Alexandre de (governor of Île de Bourbon) and Jean Charles Potier de Courcy:  document related to employment of a master carpenter on orders of naval commissioner (1 document)</field>
+    <field name="sort_ii">2</field>
+    <field name="unitdate_normal_sim">1782-07-07/1782-07-07</field>
+    <field name="unitdate_normal_ssm">1782-07-07/1782-07-07</field>
+    <field name="unitdate_normal_teim">1782-07-07/1782-07-07</field>
+    <field name="unitdate_ssm">7 July 1782</field>
+    <field name="unitdate_teim">7 July 1782</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/41252</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/41252</field>
+    <field name="unittitle_ssm">Chalvet de Souvill, Alexandre de (governor of Île de Bourbon) and Jean Charles Potier de Courcy:  document related to employment of a master carpenter on orders of naval commissioner (1 document)</field>
+    <field name="unittitle_teim">Chalvet de Souvill, Alexandre de (governor of Île de Bourbon) and Jean Charles Potier de Courcy:  document related to employment of a master carpenter on orders of naval commissioner (1 document)</field>
+  </doc>
+</add>

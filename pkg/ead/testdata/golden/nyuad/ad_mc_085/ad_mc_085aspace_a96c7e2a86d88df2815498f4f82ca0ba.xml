@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">Adnan Pachachi book collection</field>
+    <field name="collection_ssm">Adnan Pachachi book collection</field>
+    <field name="collection_teim">Adnan Pachachi book collection</field>
+    <field name="collection_unitid_ssm">AD.MC.085</field>
+    <field name="collection_unitid_teim">AD.MC.085</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_085</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Khalid bin Sultan, Prince, with Patrick Seale.  Desert warrior : a personal view of the Gulf War by the Joint Forces commander (New York:  HarperCollins Publishers, 1995).</field>
+    <field name="id">ad_mc_085aspace_a96c7e2a86d88df2815498f4f82ca0ba</field>
+    <field name="language_sim">English</field>
+    <field name="language_ssm">English</field>
+    <field name="level_sim">item</field>
+    <field name="location_si">volume: 44</field>
+    <field name="location_ssm">volume: 44</field>
+    <field name="parent_ssi">aspace_16e817f5af44741e95af06003d7784ca</field>
+    <field name="parent_ssm">aspace_16e817f5af44741e95af06003d7784ca</field>
+    <field name="parent_unittitles_ssm">General</field>
+    <field name="parent_unittitles_teim">General</field>
+    <field name="ref_ssi">aspace_a96c7e2a86d88df2815498f4f82ca0ba</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">General &gt;&gt; Khalid bin Sultan, Prince, with Patrick Seale.  Desert warrior : a personal view of the Gulf War by the Joint Forces commander (New York:  HarperCollins Publishers, 1995).</field>
+    <field name="series_sim">General</field>
+    <field name="sort_ii">47</field>
+    <field name="unittitle_ssm">Khalid bin Sultan, Prince, with Patrick Seale.  Desert warrior : a personal view of the Gulf War by the Joint Forces commander (New York:  HarperCollins Publishers, 1995).</field>
+    <field name="unittitle_teim">Khalid bin Sultan, Prince, with Patrick Seale.  Desert warrior : a personal view of the Gulf War by the Joint Forces commander (New York:  HarperCollins Publishers, 1995).</field>
+  </doc>
+</add>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer, with assistance from Muhammad Shehryar Hamid.</field>
+    <field name="collection_sim">P. Marcel Kurpershoek papers</field>
+    <field name="collection_ssm">P. Marcel Kurpershoek papers</field>
+    <field name="collection_teim">P. Marcel Kurpershoek papers</field>
+    <field name="collection_unitid_ssm">AD.MC.054</field>
+    <field name="collection_unitid_teim">AD.MC.054</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_054</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Writings:  Review of &#34;Politics in an Arabian Oasis:  the Rashidi Tribal Dynasty,&#34; by Madawi al Rasheed, in &#34;Bibliotheca Orientalis, Volume 51, No. 5/6</field>
+    <field name="id">ad_mc_054aspace_6072a8d91e1df9211f1d3658a2652e79</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 11, folder: 9</field>
+    <field name="location_ssm">box: 11, folder: 9</field>
+    <field name="parent_ssi">aspace_ab11b0c077d1aedf088661b6d79f42b3</field>
+    <field name="parent_ssm">aspace_ab11b0c077d1aedf088661b6d79f42b3</field>
+    <field name="parent_unittitles_ssm">Correspondence, speeches, and miscellaneous writings</field>
+    <field name="parent_unittitles_teim">Correspondence, speeches, and miscellaneous writings</field>
+    <field name="ref_ssi">aspace_6072a8d91e1df9211f1d3658a2652e79</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Correspondence, speeches, and miscellaneous writings &gt;&gt; Writings:  Review of &#34;Politics in an Arabian Oasis:  the Rashidi Tribal Dynasty,&#34; by Madawi al Rasheed, in &#34;Bibliotheca Orientalis, Volume 51, No. 5/6</field>
+    <field name="series_sim">Correspondence, speeches, and miscellaneous writings</field>
+    <field name="sort_ii">172</field>
+    <field name="unitdate_inclusive_teim">September-November 1994</field>
+    <field name="unitdate_normal_sim">1994-09/1994-11</field>
+    <field name="unitdate_normal_ssm">1994-09/1994-11</field>
+    <field name="unitdate_normal_teim">1994-09/1994-11</field>
+    <field name="unitdate_ssm">Inclusive, September-November 1994</field>
+    <field name="unittitle_ssm">Writings:  Review of &#34;Politics in an Arabian Oasis:  the Rashidi Tribal Dynasty,&#34; by Madawi al Rasheed, in &#34;Bibliotheca Orientalis, Volume 51, No. 5/6</field>
+    <field name="unittitle_teim">Writings:  Review of &#34;Politics in an Arabian Oasis:  the Rashidi Tribal Dynasty,&#34; by Madawi al Rasheed, in &#34;Bibliotheca Orientalis, Volume 51, No. 5/6</field>
+  </doc>
+</add>

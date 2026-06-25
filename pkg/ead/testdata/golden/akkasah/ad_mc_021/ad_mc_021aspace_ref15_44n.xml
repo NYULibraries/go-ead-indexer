@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Akkasah: Center for Photography NYUAD</field>
+    <field name="collection_sim">The Edge</field>
+    <field name="collection_ssm">The Edge</field>
+    <field name="collection_teim">The Edge</field>
+    <field name="collection_unitid_ssm">AD.MC.021</field>
+    <field name="collection_unitid_teim">AD.MC.021</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="dao_sim">Online Access</field>
+    <field name="dao_ssm">Resort, Sharjah: 2015</field>
+    <field name="dao_ssm">Resort, Sharjah: 2015</field>
+    <field name="dao_teim">Resort, Sharjah: 2015</field>
+    <field name="dao_teim">Resort, Sharjah: 2015</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_021</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="genreform_ssm">Digital Photographs</field>
+    <field name="genreform_teim">Digital Photographs</field>
+    <field name="heading_ssm">Resort, Sharjah</field>
+    <field name="id">ad_mc_021aspace_ref15_44n</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">object: AD-MC-021_ref15_m</field>
+    <field name="location_ssm">object: AD-MC-021_ref15_m</field>
+    <field name="material_type_sim">Digital Photographs</field>
+    <field name="material_type_ssm">Digital Photographs</field>
+    <field name="ref_ssi">aspace_ref15_44n</field>
+    <field name="repository_sim">akkasah</field>
+    <field name="repository_ssi">akkasah</field>
+    <field name="repository_ssm">akkasah</field>
+    <field name="series_si">Resort, Sharjah</field>
+    <field name="sort_ii">14</field>
+    <field name="subject_sim">Hotels</field>
+    <field name="subject_sim">Boats/Ships</field>
+    <field name="subject_sim">Palm Trees</field>
+    <field name="subject_sim">Swimming Pools</field>
+    <field name="subject_sim">Water</field>
+    <field name="subject_ssm">Hotels</field>
+    <field name="subject_ssm">Boats/Ships</field>
+    <field name="subject_ssm">Palm Trees</field>
+    <field name="subject_ssm">Swimming Pools</field>
+    <field name="subject_ssm">Water</field>
+    <field name="subject_teim">Hotels</field>
+    <field name="subject_teim">Boats/Ships</field>
+    <field name="subject_teim">Palm Trees</field>
+    <field name="subject_teim">Swimming Pools</field>
+    <field name="subject_teim">Water</field>
+    <field name="subject_teim">Hotels</field>
+    <field name="subject_teim">Boats/Ships</field>
+    <field name="subject_teim">Palm Trees</field>
+    <field name="subject_teim">Swimming Pools</field>
+    <field name="subject_teim">Water</field>
+    <field name="unitdate_ssm">2015</field>
+    <field name="unitdate_teim">2015</field>
+    <field name="unittitle_ssm">Resort, Sharjah</field>
+    <field name="unittitle_teim">Resort, Sharjah</field>
+  </doc>
+</add>

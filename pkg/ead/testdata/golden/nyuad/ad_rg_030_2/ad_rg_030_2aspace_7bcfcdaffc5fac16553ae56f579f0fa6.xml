@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Lauren Kata</field>
+    <field name="bioghist_teim">I am an Engineering student and serve as the President of the Student Interest Group Model Arab League at NYU Abu Dhabi. </field>
+    <field name="bioghist_teim">Battling varying timezones, the very different locations of all our SIG members and student leaders, regulations prohibiting more than 3 of us to sit in the same room, very low application numbers (thanks to Zoom fatigue), arriving at a virtual format for our Model Arab League conference was not an easy task. Organized by NYUAD students, for NYUAD students, we continued the legacy of the first Model Arab League conference in GCC in a fully remote format, with our E-board working across London and Abu Dhabi to put the event together. Despite over 10 hours spent on Zoom, and a fully remote format, our delegates remained engaged and we passed two resolutions (working papers outlining solutions proposed by the committee). The team won over 5 awards and moved on to participate in more remote conferences across the United States for the rest of the 2021 season!</field>
+    <field name="collection_sim">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_ssm">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_teim">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_unitid_ssm">AD.RG.030.2</field>
+    <field name="collection_unitid_teim">AD.RG.030.2</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_rg_030_2</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Chavele Dastamani, Sofia. Student Model Arab League Conference Moves to Zoom [Photos]</field>
+    <field name="id">ad_rg_030_2aspace_7bcfcdaffc5fac16553ae56f579f0fa6</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: E-records, folder: AD_RG_030_010</field>
+    <field name="location_ssm">box: E-records, folder: AD_RG_030_010</field>
+    <field name="parent_ssi">aspace_a51c1a157cedd2b137c3bae3d2628a3a</field>
+    <field name="parent_ssm">aspace_165d7515034f6a815453d739527d9d02</field>
+    <field name="parent_ssm">aspace_a51c1a157cedd2b137c3bae3d2628a3a</field>
+    <field name="parent_unittitles_ssm">NYUAD Community Participatory Covid Archive</field>
+    <field name="parent_unittitles_ssm">Digital Submissions</field>
+    <field name="parent_unittitles_teim">NYUAD Community Participatory Covid Archive</field>
+    <field name="parent_unittitles_teim">Digital Submissions</field>
+    <field name="ref_ssi">aspace_7bcfcdaffc5fac16553ae56f579f0fa6</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="scopecontent_teim">These are screenshots/group pictures of a session at the 3rd annual Fall internal Model Arab League Conference at NYU Abu Dhabi, held on November 20-21, for the very first time on Zoom. Poster advertising the remote event on social media. This conference is an opportunity for NYUAD students to gather together and discuss topics of regional and international importance, typically held on campus every Fall, was moved to Zoom during COVID-19, with delegates dialing in from the UK, Greece, Poland, Abu Dhabi, and beyond.</field>
+    <field name="series_si">NYUAD Community Participatory Covid Archive &gt;&gt; Digital Submissions &gt;&gt; Chavele Dastamani, Sofia. Student Model Arab League Conference Moves to Zoom [Photos]</field>
+    <field name="series_sim">NYUAD Community Participatory Covid Archive</field>
+    <field name="series_sim">Digital Submissions</field>
+    <field name="sort_ii">59</field>
+    <field name="unitdate_normal_sim">2020-11/2020-11</field>
+    <field name="unitdate_normal_ssm">2020-11/2020-11</field>
+    <field name="unitdate_normal_teim">2020-11/2020-11</field>
+    <field name="unitdate_ssm">November 2020</field>
+    <field name="unitdate_teim">November 2020</field>
+    <field name="unitid_ssm">Submission 10</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/29421</field>
+    <field name="unitid_teim">Submission 10</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/29421</field>
+    <field name="unittitle_ssm">Chavele Dastamani, Sofia. Student Model Arab League Conference Moves to Zoom [Photos]</field>
+    <field name="unittitle_teim">Chavele Dastamani, Sofia. Student Model Arab League Conference Moves to Zoom [Photos]</field>
+  </doc>
+</add>

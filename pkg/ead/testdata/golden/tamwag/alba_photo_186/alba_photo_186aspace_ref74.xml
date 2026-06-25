@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Evan Daniel and Julie Kessler, 2003-2004</field>
+    <field name="collection_sim">Marc Crawford and Abby London Crawford Photographs</field>
+    <field name="collection_ssm">Marc Crawford and Abby London Crawford Photographs</field>
+    <field name="collection_teim">Marc Crawford and Abby London Crawford Photographs</field>
+    <field name="collection_unitid_ssm">ALBA.PHOTO.186</field>
+    <field name="collection_unitid_teim">ALBA.PHOTO.186</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">alba_photo_186</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series II: Negatives</field>
+    <field name="id">alba_photo_186aspace_ref74</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_ref74</field>
+    <field name="repository_sim">tamwag</field>
+    <field name="repository_ssi">tamwag</field>
+    <field name="repository_ssm">tamwag</field>
+    <field name="series_si">Series II: Negatives</field>
+    <field name="sort_ii">62</field>
+    <field name="unittitle_ssm">Series II: Negatives</field>
+    <field name="unittitle_teim">Series II: Negatives</field>
+  </doc>
+</add>

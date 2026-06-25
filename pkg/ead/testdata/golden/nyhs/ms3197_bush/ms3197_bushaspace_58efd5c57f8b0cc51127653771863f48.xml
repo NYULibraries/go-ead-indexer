@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Joseph Ditta</field>
+    <field name="collection_sim">Bush family papers</field>
+    <field name="collection_ssm">Bush family papers</field>
+    <field name="collection_teim">Bush family papers</field>
+    <field name="collection_unitid_ssm">MS 3197</field>
+    <field name="collection_unitid_teim">MS 3197</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms3197_bush</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Address book (1)</field>
+    <field name="id">ms3197_bushaspace_58efd5c57f8b0cc51127653771863f48</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 1, Folder: 13</field>
+    <field name="location_ssm">Box: 1, Folder: 13</field>
+    <field name="parent_ssi">aspace_dc31a29dc68c11e54da4323805887975</field>
+    <field name="parent_ssm">aspace_dc31a29dc68c11e54da4323805887975</field>
+    <field name="parent_unittitles_ssm">Series III. Address books</field>
+    <field name="parent_unittitles_teim">Series III. Address books</field>
+    <field name="ref_ssi">aspace_58efd5c57f8b0cc51127653771863f48</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="series_si">Series III. Address books &gt;&gt; Address book (1)</field>
+    <field name="series_sim">Series III. Address books</field>
+    <field name="sort_ii">16</field>
+    <field name="unitdate_inclusive_teim">undated</field>
+    <field name="unitdate_ssm">Inclusive, undated</field>
+    <field name="unittitle_ssm">Address book (1)</field>
+    <field name="unittitle_teim">Address book (1)</field>
+  </doc>
+</add>

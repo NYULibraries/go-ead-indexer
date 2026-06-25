@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Mehri Khalil, Ibrahim Mohamed Ali, Maysa Shaer, and Nada Shabout for al Mawrid Arab Center for the Study of Art at NYU Abu Dhabi.</field>
+    <field name="collection_sim">Menhat Helmy Collection</field>
+    <field name="collection_ssm">Menhat Helmy Collection</field>
+    <field name="collection_teim">Menhat Helmy Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.142</field>
+    <field name="collection_unitid_teim">AD.MC.142</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_142</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">VI.B. Business Cards and Contact Information</field>
+    <field name="id">ad_mc_142aspace_102f09a66b424af2baeb0ee9745d4469</field>
+    <field name="level_sim">subseries</field>
+    <field name="parent_ssi">aspace_910a0db0380ef681ed6cf09384dfa817</field>
+    <field name="parent_ssm">aspace_910a0db0380ef681ed6cf09384dfa817</field>
+    <field name="parent_unittitles_ssm">VI. Personal Papers</field>
+    <field name="parent_unittitles_teim">VI. Personal Papers</field>
+    <field name="ref_ssi">aspace_102f09a66b424af2baeb0ee9745d4469</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="series_si">VI. Personal Papers &gt;&gt; VI.B. Business Cards and Contact Information</field>
+    <field name="series_sim">VI. Personal Papers</field>
+    <field name="sort_ii">103</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/34404</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/34404</field>
+    <field name="unittitle_ssm">VI.B. Business Cards and Contact Information</field>
+    <field name="unittitle_teim">VI.B. Business Cards and Contact Information</field>
+  </doc>
+</add>

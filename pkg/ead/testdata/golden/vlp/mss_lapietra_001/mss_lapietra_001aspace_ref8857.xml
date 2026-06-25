@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Collection processed by Finding aid prepared by Alta Macadam</field>
+    <field name="collection_sim">The Acton Photograph Archive</field>
+    <field name="collection_ssm">The Acton Photograph Archive</field>
+    <field name="collection_teim">The Acton Photograph Archive</field>
+    <field name="collection_unitid_ssm">MSS.LaPietra.001</field>
+    <field name="collection_unitid_teim">MSS.LaPietra.001</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">4</field>
+    <field name="date_range_sim">1801-1900</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">mss_lapietra_001</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Man</field>
+    <field name="id">mss_lapietra_001aspace_ref8857</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Album: 2, Image: 40</field>
+    <field name="location_ssm">Album: 2, Image: 40</field>
+    <field name="parent_ssi">aspace_ref8810</field>
+    <field name="parent_ssm">aspace_ref8772</field>
+    <field name="parent_ssm">aspace_ref8773</field>
+    <field name="parent_ssm">aspace_ref8810</field>
+    <field name="parent_unittitles_ssm">Series III: Family Albums and Scrapbooks</field>
+    <field name="parent_unittitles_ssm">Subseries A: Family Albums</field>
+    <field name="parent_unittitles_ssm">10 Arthur Acton&amp;#39;s family ancestors</field>
+    <field name="parent_unittitles_teim">Series III: Family Albums and Scrapbooks</field>
+    <field name="parent_unittitles_teim">Subseries A: Family Albums</field>
+    <field name="parent_unittitles_teim">10 Arthur Acton&amp;#39;s family ancestors</field>
+    <field name="ref_ssi">aspace_ref8857</field>
+    <field name="repository_sim">vlp</field>
+    <field name="repository_ssi">vlp</field>
+    <field name="repository_ssm">vlp</field>
+    <field name="series_si">Series III: Family Albums and Scrapbooks &gt;&gt; Subseries A: Family Albums &gt;&gt; 10 Arthur Acton&#39;s family ancestors &gt;&gt; Man</field>
+    <field name="series_sim">Series III: Family Albums and Scrapbooks</field>
+    <field name="series_sim">Subseries A: Family Albums</field>
+    <field name="series_sim">10 Arthur Acton&amp;#39;s family ancestors</field>
+    <field name="sort_ii">5225</field>
+    <field name="unitdate_end_si">1994</field>
+    <field name="unitdate_end_sim">1994</field>
+    <field name="unitdate_end_ssm">1994</field>
+    <field name="unitdate_inclusive_teim">undated</field>
+    <field name="unitdate_normal_sim">1870/1994</field>
+    <field name="unitdate_normal_ssm">1870/1994</field>
+    <field name="unitdate_normal_teim">1870/1994</field>
+    <field name="unitdate_ssm">Inclusive, undated</field>
+    <field name="unitdate_start_si">1870</field>
+    <field name="unitdate_start_sim">1870</field>
+    <field name="unitdate_start_ssm">1870</field>
+    <field name="unitid_ssm">cuid3143</field>
+    <field name="unitid_teim">cuid3143</field>
+    <field name="unittitle_ssm">Man</field>
+    <field name="unittitle_teim">Man</field>
+  </doc>
+</add>

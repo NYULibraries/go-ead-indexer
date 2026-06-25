@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Erika Gottfried</field>
+    <field name="collection_sim">Maria Irene Fornés Papers</field>
+    <field name="collection_ssm">Maria Irene Fornés Papers</field>
+    <field name="collection_teim">Maria Irene Fornés Papers</field>
+    <field name="collection_unitid_ssm">MSS.413</field>
+    <field name="collection_unitid_teim">MSS.413</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="date_range_sim">2001-2100</field>
+    <field name="ead_ssi">mss_413</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series I: Play Scripts and Production Records</field>
+    <field name="id">mss_413aspace_ref14</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_ref14</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="scopecontent_teim">This series includes original and revised scripts in both paper and electronic format for a little over half of Irene Fornés&#39; work, including some of her earliest plays and her last working play, Rue de Fleurus (concerning Gertrude Stein).  It also includes a script for Minuski, a previously-unknown work, and La Plaza Chica, Fornés&#39; translation and adaptation of her play Abingdon Square into Spanish. In addition, there are scores for some of her plays with songs; a libretto for an opera; and scripts and staging notes for Fornés&#39; directing, translating, and adapting of other writers&#39; plays or stories (such as Henrik Ibsen&#39;s Hedda Gabler and Anton Chekhov&#39;s Uncle Vanya and Drowning). There are numerous drafts or versions of Fornes&#39; scripts written, edited, or adapted for different productions of a play, or revised after the completion of a run of a particular production.   Many of the scripts are not complete, and most of them have Fornés&#39; handwritten--often extensive--annotations and revisions.  Production records for various stagings of her own plays and productions she directed of others&#39; works include memos, notes, set designs, cast lists, and calls for auditions.</field>
+    <field name="series_si">Series I: Play Scripts and Production Records</field>
+    <field name="sort_ii">1</field>
+    <field name="title_ssm">Rue de Fleurus</field>
+    <field name="title_ssm">Minuski</field>
+    <field name="title_ssm">La Plaza Chica</field>
+    <field name="title_ssm">Abingdon Square</field>
+    <field name="title_ssm">Hedda Gabler</field>
+    <field name="title_ssm">Uncle Vanya</field>
+    <field name="title_ssm">Drowning</field>
+    <field name="title_teim">Rue de Fleurus</field>
+    <field name="title_teim">Minuski</field>
+    <field name="title_teim">La Plaza Chica</field>
+    <field name="title_teim">Abingdon Square</field>
+    <field name="title_teim">Hedda Gabler</field>
+    <field name="title_teim">Uncle Vanya</field>
+    <field name="title_teim">Drowning</field>
+    <field name="unitdate_end_si">2001</field>
+    <field name="unitdate_end_sim">2001</field>
+    <field name="unitdate_end_ssm">2001</field>
+    <field name="unitdate_inclusive_teim">1961-2001</field>
+    <field name="unitdate_normal_sim">1961/2001</field>
+    <field name="unitdate_normal_ssm">1961/2001</field>
+    <field name="unitdate_normal_teim">1961/2001</field>
+    <field name="unitdate_ssm">Inclusive, 1961-2001</field>
+    <field name="unitdate_start_si">1961</field>
+    <field name="unitdate_start_sim">1961</field>
+    <field name="unitdate_start_ssm">1961</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/582341</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/582341</field>
+    <field name="unittitle_ssm">Series I: Play Scripts and Production Records</field>
+    <field name="unittitle_teim">Series I: Play Scripts and Production Records</field>
+  </doc>
+</add>

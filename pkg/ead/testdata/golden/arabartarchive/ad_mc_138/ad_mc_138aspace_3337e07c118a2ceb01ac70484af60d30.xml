@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ibrahim Mohamed Ali, Maysa Shaer, Anneka Lenssen, and Salwa Mikdadi, with assistance from Roudhah Al Mazrouei.</field>
+    <field name="collection_sim">Hussain Sharif Collection</field>
+    <field name="collection_ssm">Hussain Sharif Collection</field>
+    <field name="collection_teim">Hussain Sharif Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.138</field>
+    <field name="collection_unitid_teim">AD.MC.138</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_138</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">IV.C. A Brochure of a Documentary on Hassan Sharif</field>
+    <field name="id">ad_mc_138aspace_3337e07c118a2ceb01ac70484af60d30</field>
+    <field name="level_sim">subseries</field>
+    <field name="parent_ssi">aspace_ba10229cd16a695731aadc3d7f82d0ef</field>
+    <field name="parent_ssm">aspace_ba10229cd16a695731aadc3d7f82d0ef</field>
+    <field name="parent_unittitles_ssm">Series IV: Other Items </field>
+    <field name="parent_unittitles_teim">Series IV: Other Items </field>
+    <field name="ref_ssi">aspace_3337e07c118a2ceb01ac70484af60d30</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="scopecontent_teim">A brochure for a documentary project on Hassan Sharif, directed by Valsalan Kanara in 2006.</field>
+    <field name="series_si">Series IV: Other Items  &gt;&gt; IV.C. A Brochure of a Documentary on Hassan Sharif</field>
+    <field name="series_sim">Series IV: Other Items </field>
+    <field name="sort_ii">83</field>
+    <field name="unitid_ssm">cuid1024</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/33503</field>
+    <field name="unitid_teim">cuid1024</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/33503</field>
+    <field name="unittitle_ssm">IV.C. A Brochure of a Documentary on Hassan Sharif</field>
+    <field name="unittitle_teim">IV.C. A Brochure of a Documentary on Hassan Sharif</field>
+  </doc>
+</add>

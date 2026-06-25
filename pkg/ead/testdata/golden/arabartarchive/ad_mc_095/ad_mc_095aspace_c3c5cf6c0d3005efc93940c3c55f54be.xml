@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ibrahim Mohamed Ali, Maysa Shaer, Saleem Al-Bahloly, Anneka Lenssen, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art, NYUAD</field>
+    <field name="collection_sim">Hanaa Malallah Collection</field>
+    <field name="collection_ssm">Hanaa Malallah Collection</field>
+    <field name="collection_teim">Hanaa Malallah Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.095</field>
+    <field name="collection_unitid_teim">AD.MC.095</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_095</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">IV.A. Personal Papers</field>
+    <field name="id">ad_mc_095aspace_c3c5cf6c0d3005efc93940c3c55f54be</field>
+    <field name="level_sim">subseries</field>
+    <field name="parent_ssi">aspace_bda491ec239e89a0c6f8fcbf0d42fccf</field>
+    <field name="parent_ssm">aspace_bda491ec239e89a0c6f8fcbf0d42fccf</field>
+    <field name="parent_unittitles_ssm">Series IV: Personal Papers and Correspondence</field>
+    <field name="parent_unittitles_teim">Series IV: Personal Papers and Correspondence</field>
+    <field name="ref_ssi">aspace_c3c5cf6c0d3005efc93940c3c55f54be</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="scopecontent_teim">This subseries includes various types of personal papers, including contracts, receipts, and certificates.</field>
+    <field name="series_si">Series IV: Personal Papers and Correspondence &gt;&gt; IV.A. Personal Papers</field>
+    <field name="series_sim">Series IV: Personal Papers and Correspondence</field>
+    <field name="sort_ii">24</field>
+    <field name="unitid_ssm">cuid894</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/32730</field>
+    <field name="unitid_teim">cuid894</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/32730</field>
+    <field name="unittitle_ssm">IV.A. Personal Papers</field>
+    <field name="unittitle_teim">IV.A. Personal Papers</field>
+  </doc>
+</add>

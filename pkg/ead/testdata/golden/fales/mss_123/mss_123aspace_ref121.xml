@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Theresa Smalec</field>
+    <field name="collection_sim">Wendy Perron Papers</field>
+    <field name="collection_ssm">Wendy Perron Papers</field>
+    <field name="collection_teim">Wendy Perron Papers</field>
+    <field name="collection_unitid_ssm">MSS.123</field>
+    <field name="collection_unitid_teim">MSS.123</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">mss_123</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Articles, 1976</field>
+    <field name="id">mss_123aspace_ref121</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 1, Folder: 3</field>
+    <field name="location_ssm">Box: 1, Folder: 3</field>
+    <field name="parent_ssi">aspace_ref115</field>
+    <field name="parent_ssm">aspace_ref115</field>
+    <field name="parent_unittitles_ssm">Series I. &amp;#34;Concepts in Performance&amp;#34;</field>
+    <field name="parent_unittitles_teim">Series I. &amp;#34;Concepts in Performance&amp;#34;</field>
+    <field name="ref_ssi">aspace_ref121</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="scopecontent_teim">-Finding a Thread in a Haystack, reviews by Wendy Perron and others, January 22nd, 1976
+
+-Of Baggage, Short Stories, and Reflections, reviews by Wendy Perron and others, January 29th, 1976
+
+-Followable Dancing, review of Mary Overlie and David Gordon, by Wendy Perron, March 4th, 1976
+
+-Energy Sparks, review of Wendy Rogers, by Wendy Perron, March 11th, 1976
+
+-Performance Diary, by Peter Frank, April 1st, 1976 (incomplete article)
+
+-Unadorned, review of Suzanne Harris, by Wendy Perron, April 8th, 1976
+
+-People Improvisation, review of Grand Union, by Wendy Perron, May 6th, 1976
+
+-New Dimensions in Self-Consciousness, review of Michael McClard, by Wendy Perron, May 20th, 1976
+
+-Small Night Music in a Fog, Review of Yoshimasa Wada, by Peter Zummo, May 27th, 1976
+
+-Undiscovered: Bill Horowitz, review of Bill Horowitz, by Wendy Perron, May 27th, 1976
+
+-Keeping in Line, review of Philip Glass, Dickie Landry, Andy DeGroat, by Sally Banes, June 3rd, 1976
+
+-The Ceremony of Leonard Crow Dog, reviews of Leonard Crow Dog, June 10th, 1976
+
+-Unpremeditated Honesty, review by Wendy Perron, June 10th, 1976
+
+-Consuming Determination, review of Lucinda Childs, by Wendy Perron, June 17th, 1976
+
+-It All Depends on How You Define It, review of Wendy Perron, by Robert J. Pierce, June 17th, 1976
+
+-Death or Rebirth, review of Julie Hymen, by Mark Savitt, July 1st, 1976
+
+-Discovery, review of Tony Azito, by Wendy Perron, July 1st, 1976
+
+-Letters, response by John Malpede to Perron&#39;s June 10th review, July 1st, 1976
+
+-When Is a Recital Not? review of U.S. Terpsichore, by Robert J. Pierce, July 8th, 1976
+
+-Secret Life of Cities Surrealistic Baedekers, Review of Meredith Monk and Ping Chong, July 8th, 1976
+
+-Downtown Exiles, review of Tony Kushner, et al. by Stephanie Woodward, September 30th, 1976
+
+-Live and Non-Live; Motion and Stillness, review of Sylvia Whitman, by Wendy Perron, Nov. 25th, 1976
+
+-Three Angles on a Three Part Structure, review of Michael Kirby, by Wendy Perron, Dec. 2nd, 1976
+
+-Roots and Rituals, review of Geoff Hendricks, by Sally Banes, December 9th, 1976
+
+-Backworks, review of Barbara Moore and Jon Hendricks, by Wendy Perron, Dec. 9th, 1976
+
+-Older is Better, review of Merce Cunningham, by Wendy Perron, December 16th, 1976
+
+-Transmission From Space, Review of Earth, Moon, Mars, and Jupiter, by Peter Zummo, Dec. 23rd, 1976
+
+-Exporting SoHo, by Wendy Perron, December 30th, 1976</field>
+    <field name="series_si">Series I. &#34;Concepts in Performance&#34; &gt;&gt; Articles, 1976</field>
+    <field name="series_sim">Series I. &amp;#34;Concepts in Performance&amp;#34;</field>
+    <field name="sort_ii">4</field>
+    <field name="unitdate_end_si">1976</field>
+    <field name="unitdate_end_sim">1976</field>
+    <field name="unitdate_end_ssm">1976</field>
+    <field name="unitdate_inclusive_teim">1976</field>
+    <field name="unitdate_normal_sim">1976/1976</field>
+    <field name="unitdate_normal_ssm">1976/1976</field>
+    <field name="unitdate_normal_teim">1976/1976</field>
+    <field name="unitdate_ssm">Inclusive, 1976</field>
+    <field name="unitdate_start_si">1976</field>
+    <field name="unitdate_start_sim">1976</field>
+    <field name="unitdate_start_ssm">1976</field>
+    <field name="unittitle_ssm">Articles, 1976</field>
+    <field name="unittitle_teim">Articles, 1976</field>
+  </doc>
+</add>

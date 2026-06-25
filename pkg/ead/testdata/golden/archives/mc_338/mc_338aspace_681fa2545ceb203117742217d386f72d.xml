@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Jacqueline Rider</field>
+    <field name="collection_sim">Arthur Blum Student Lab  Book</field>
+    <field name="collection_ssm">Arthur Blum Student Lab  Book</field>
+    <field name="collection_teim">Arthur Blum Student Lab  Book</field>
+    <field name="collection_unitid_ssm">MC.338</field>
+    <field name="collection_unitid_teim">MC.338</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">mc_338</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Notebook and related publications</field>
+    <field name="id">mc_338aspace_681fa2545ceb203117742217d386f72d</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 1</field>
+    <field name="location_ssm">Box: 1</field>
+    <field name="ref_ssi">aspace_681fa2545ceb203117742217d386f72d</field>
+    <field name="repository_sim">archives</field>
+    <field name="repository_ssi">archives</field>
+    <field name="repository_ssm">archives</field>
+    <field name="series_si">Notebook and related publications</field>
+    <field name="sort_ii">1</field>
+    <field name="unitdate_end_si">1924</field>
+    <field name="unitdate_end_sim">1924</field>
+    <field name="unitdate_end_ssm">1924</field>
+    <field name="unitdate_inclusive_teim">1901-1924</field>
+    <field name="unitdate_normal_sim">1901/1924</field>
+    <field name="unitdate_normal_ssm">1901/1924</field>
+    <field name="unitdate_normal_teim">1901/1924</field>
+    <field name="unitdate_ssm">Inclusive, 1901-1924</field>
+    <field name="unitdate_start_si">1901</field>
+    <field name="unitdate_start_sim">1901</field>
+    <field name="unitdate_start_ssm">1901</field>
+    <field name="unittitle_ssm">Notebook and related publications</field>
+    <field name="unittitle_teim">Notebook and related publications</field>
+  </doc>
+</add>

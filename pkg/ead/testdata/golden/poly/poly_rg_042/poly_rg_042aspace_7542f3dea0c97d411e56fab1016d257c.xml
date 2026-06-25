@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Zoe Blecher-Cohen</field>
+    <field name="collection_sim">Polytechnic President&#39;s Office Records</field>
+    <field name="collection_ssm">Polytechnic President&#39;s Office Records</field>
+    <field name="collection_teim">Polytechnic President&#39;s Office Records</field>
+    <field name="collection_unitid_ssm">RG.042</field>
+    <field name="collection_unitid_teim">RG.042</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">2001-2100</field>
+    <field name="ead_ssi">poly_rg_042</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Branding</field>
+    <field name="id">poly_rg_042aspace_7542f3dea0c97d411e56fab1016d257c</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 1, folder: 1</field>
+    <field name="location_ssm">box: 1, folder: 1</field>
+    <field name="ref_ssi">aspace_7542f3dea0c97d411e56fab1016d257c</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="series_si">Branding</field>
+    <field name="sort_ii">1</field>
+    <field name="unitdate_end_si">2004</field>
+    <field name="unitdate_end_sim">2004</field>
+    <field name="unitdate_end_ssm">2004</field>
+    <field name="unitdate_normal_sim">2004/2004</field>
+    <field name="unitdate_normal_ssm">2004/2004</field>
+    <field name="unitdate_normal_teim">2004/2004</field>
+    <field name="unitdate_ssm">2004, undated</field>
+    <field name="unitdate_start_si">2004</field>
+    <field name="unitdate_start_sim">2004</field>
+    <field name="unitdate_start_ssm">2004</field>
+    <field name="unitdate_teim">2004, undated</field>
+    <field name="unittitle_ssm">Branding</field>
+    <field name="unittitle_teim">Branding</field>
+  </doc>
+</add>
