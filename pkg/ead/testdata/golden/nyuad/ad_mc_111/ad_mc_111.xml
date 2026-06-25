@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="acqinfo_teim">Acquired by purchase, 2022.</field>
+    <field name="author_ssm">Brad Bauer</field>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="bioghist_teim">A.F. (Anton Frederick) Ebeling (1896-1966) was a British soldier who served in the Machine Gun Corps, Motor Machine Gun Service, of the Royal Artillery during World War I.  Records about him are sparse, but a search of British military records and records in the geneaology site Ancestry pulled together enough data to provide a tentative biography.  Ebeling was born in Glasgow on 30 June 1896, the son of Christian Ledew Ebeling (1844-1911) and Lillian Walls (1862-1947).  </field>
+    <field name="bioghist_teim">He enlisted in Glasgow in 1915 and served initially in the Western European theatre (in France) during World War I, but was wounded and admitted to hospital in February 1916.  After his recovery, he was reassigned to the serve in the Mesopotamian Campaign, but after his arrival there in August 1917 he contracted malaria and was again hospitalized.  Upon his release, he joined the 15th Light Armoured Battery in Baghdad in September 1917.  The photographs in his album show him to have been in Baghdad, Najaf, and Tikrit, before his battery was assigned to the Dunsterforce in Persia, where his photos were primarily centered around Qazvin and Zinjan, although the last image in the album shows that they had reached Baku, in Azerbaijan (although photographs from Egypt show that he was there, either on his outbound or return journeys).</field>
+    <field name="bioghist_teim">While the album ends with the close of World War I in this region, further records show that he was discharged in August 1919, but likely stayed in the region, as further records show him in the Punjab region of India (now Pakistan) for several decades.  He married his first wife, Mabel Vernor-Taylor (1903-1943) in Rawalpindi in 1925, and they had two daughters.  After his wife&#39;s death in Punjab in 1943, he returned to England at some point and married Florence Moon in 1949.  Records from the Borough of Kensington and Chelsea show that someone with the same name, resident in Kensington in 1951, had served as an air raid warden during World War II.  Voting records from the early 1950s onward place him as living in and around Croydon (chiefly in Purley and Coulsdon) until his death on 14 October 1966. </field>
+    <field name="collection_sim">A.F. Ebeling photograph album</field>
+    <field name="collection_ssm">A.F. Ebeling photograph album</field>
+    <field name="collection_teim">A.F. Ebeling photograph album</field>
+    <field name="corpname_ssm">NYU Abu Dhabi, Archives and Special Collections</field>
+    <field name="corpname_teim">NYU Abu Dhabi, Archives and Special Collections</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">ad_mc_111</field>
+    <field name="format_ii">0</field>
+    <field name="format_sim">Archival Collection</field>
+    <field name="format_ssm">Archival Collection</field>
+    <field name="geogname_ssm">Iraq -- Description and travel</field>
+    <field name="geogname_ssm">Iran -- Description and travel</field>
+    <field name="geogname_ssm">Qazvin, Iran</field>
+    <field name="geogname_ssm">Hamadān (Iran : Province)</field>
+    <field name="geogname_ssm">Baghdad (Iraq)</field>
+    <field name="geogname_ssm">Najaf (Iraq).</field>
+    <field name="geogname_teim">Iraq -- Description and travel</field>
+    <field name="geogname_teim">Iran -- Description and travel</field>
+    <field name="geogname_teim">Qazvin, Iran</field>
+    <field name="geogname_teim">Hamadān (Iran : Province)</field>
+    <field name="geogname_teim">Baghdad (Iraq)</field>
+    <field name="geogname_teim">Najaf (Iraq).</field>
+    <field name="heading_ssm">A.F. Ebeling photograph album</field>
+    <field name="id">ad_mc_111</field>
+    <field name="language_sim">English</field>
+    <field name="language_ssm">English</field>
+    <field name="place_sim">Iraq -- Description and travel</field>
+    <field name="place_sim">Iran -- Description and travel</field>
+    <field name="place_sim">Qazvin, Iran</field>
+    <field name="place_sim">Hamadān (Iran : Province)</field>
+    <field name="place_sim">Baghdad (Iraq)</field>
+    <field name="place_sim">Najaf (Iraq).</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="scopecontent_teim">Photograph album of A.F. Ebeling, a member of the 15th Light Armoured Battery, of the British Army, during the Mesopotamia campaign, during World War I.  Contains 48 silver gelatin prints, mounted in an album and captioned depicting scenes in Mesopotamia (Iraq), Persia, Azerbaijan, and Egypt, pertaining to the Mesopotamia campaign in 1917-1918 and the Norperforce in Persia during fall 1918.</field>
+    <field name="scopecontent_teim">Images include a few depictions of scenes in Egypt, but majority are from Iraq or Iran during and after the Mesopotamian campaign, all undated save for one image from the battle for Tikrit in 1917.  The album is inscribed on the inner front cover &#34;A.F. Ebeling, 15th Light Armoured Batt&#39;y.&#34; Images include street scenes in Baghdad, but also images of military units and activity in and around the Diyala River, Najaf, and Hilla in Iraq, as well as images in the Hamadan pass, Zinjan, and Qazvin, in Iran, with the last image in the album depicting a scene in Baku, Azerbaijan.  Although the images do not appear to be in any sequential order, one can surmise that the photographer served with the 15th Light Armoured Battery in Mesopotamia, and then went with that unit when it was transferred to the Norperforce under the command of Maj. Gen. W.M. Thomson in September 1918.  As Thomson&#39;s forces reached Baku in November 1918, it is likely that the photographer joined them there shortly thereafter.  </field>
+    <field name="subject_sim">World War, 1914-1918 -- Campaigns -- Iraq</field>
+    <field name="subject_ssm">World War, 1914-1918 -- Campaigns -- Iraq</field>
+    <field name="subject_teim">World War, 1914-1918 -- Campaigns -- Iraq</field>
+    <field name="subject_teim">World War, 1914-1918 -- Campaigns -- Iraq</field>
+    <field name="unitdate_end_si">1919</field>
+    <field name="unitdate_end_sim">1919</field>
+    <field name="unitdate_end_ssm">1919</field>
+    <field name="unitdate_inclusive_teim">1917 and undated, circa 1917-1919</field>
+    <field name="unitdate_normal_sim">1917/1919</field>
+    <field name="unitdate_normal_ssm">1917/1919</field>
+    <field name="unitdate_normal_teim">1917/1919</field>
+    <field name="unitdate_ssm">Inclusive, 1917 and undated, circa 1917-1919</field>
+    <field name="unitdate_start_si">1917</field>
+    <field name="unitdate_start_sim">1917</field>
+    <field name="unitdate_start_ssm">1917</field>
+    <field name="unitid_ssm">AD.MC.111</field>
+    <field name="unitid_teim">AD.MC.111</field>
+    <field name="unittitle_ssm">A.F. Ebeling photograph album</field>
+    <field name="unittitle_teim">A.F. Ebeling photograph album</field>
+  </doc>
+</add>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ibrahim Mohamed Ali, Maysa Shaer, Saleem Al-Bahloly, Anneka Lenssen, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art, NYUAD</field>
+    <field name="collection_sim">Hanaa Malallah Collection</field>
+    <field name="collection_ssm">Hanaa Malallah Collection</field>
+    <field name="collection_teim">Hanaa Malallah Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.095</field>
+    <field name="collection_unitid_teim">AD.MC.095</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_095</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">V.B. Writings by Shakir Hassan Al Said</field>
+    <field name="id">ad_mc_095aspace_5272fd5fc5ddafcfc46192ebe526fcd5</field>
+    <field name="level_sim">subseries</field>
+    <field name="parent_ssi">aspace_036767ca42239905202869b556a07ef9</field>
+    <field name="parent_ssm">aspace_036767ca42239905202869b556a07ef9</field>
+    <field name="parent_unittitles_ssm">Series V. Writings (Published and Unpublished)</field>
+    <field name="parent_unittitles_teim">Series V. Writings (Published and Unpublished)</field>
+    <field name="ref_ssi">aspace_5272fd5fc5ddafcfc46192ebe526fcd5</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="scopecontent_teim">This subseries includes a published essay entitled &#34;[Figure of the Woman in 1001 Arabian Nights]&#34;, handwritten article drafts and writings about One Dimension group exhibitions, and conceptual studies.</field>
+    <field name="series_si">Series V. Writings (Published and Unpublished) &gt;&gt; V.B. Writings by Shakir Hassan Al Said</field>
+    <field name="series_sim">Series V. Writings (Published and Unpublished)</field>
+    <field name="sort_ii">30</field>
+    <field name="unitid_ssm">cuid898</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/32736</field>
+    <field name="unitid_teim">cuid898</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/32736</field>
+    <field name="unittitle_ssm">V.B. Writings by Shakir Hassan Al Said</field>
+    <field name="unittitle_teim">V.B. Writings by Shakir Hassan Al Said</field>
+  </doc>
+</add>

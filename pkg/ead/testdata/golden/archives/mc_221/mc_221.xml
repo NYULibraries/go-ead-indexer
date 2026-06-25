@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="abstract_ssm">Isaac Allen attended courses related to architecture at New York University (NYU) in the early to mid-twentieth century. Materials include four textbooks related to architecture and architectural drawing.</field>
+    <field name="abstract_teim">Isaac Allen attended courses related to architecture at New York University (NYU) in the early to mid-twentieth century. Materials include four textbooks related to architecture and architectural drawing.</field>
+    <field name="acqinfo_teim">Materials found in collection; provenance is unknown. The accession number related to this collection is 10.036.</field>
+    <field name="bioghist_teim">Isaac Allen attended courses related to architecture at New York University (NYU) in the early to mid-twentieth century.</field>
+    <field name="collection_sim">Isaac Allen Papers</field>
+    <field name="collection_ssm">Isaac Allen Papers</field>
+    <field name="collection_teim">Isaac Allen Papers</field>
+    <field name="corpname_ssm">New York University Archives</field>
+    <field name="corpname_teim">New York University Archives</field>
+    <field name="creator_sim">Allen, Isaac</field>
+    <field name="creator_ssm">Allen, Isaac</field>
+    <field name="creator_teim">Allen, Isaac</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">mc_221</field>
+    <field name="format_ii">0</field>
+    <field name="format_sim">Archival Collection</field>
+    <field name="format_ssm">Archival Collection</field>
+    <field name="heading_ssm">Isaac Allen Papers</field>
+    <field name="id">mc_221</field>
+    <field name="name_sim">Allen, Isaac</field>
+    <field name="name_teim">Allen, Isaac</field>
+    <field name="persname_ssm">Allen, Isaac</field>
+    <field name="persname_teim">Allen, Isaac</field>
+    <field name="repository_sim">archives</field>
+    <field name="repository_ssi">archives</field>
+    <field name="repository_ssm">archives</field>
+    <field name="scopecontent_teim">Materials include four textbooks related to architecture and architectural drawing that were used by Isaac Allen while studying architecture at New York University (NYU) in the early to mid-twentieth century. Allen inscribed his name in a few of the books.</field>
+    <field name="subject_sim">Architecture</field>
+    <field name="subject_ssm">Architecture</field>
+    <field name="subject_teim">Architecture</field>
+    <field name="subject_teim">Architecture</field>
+    <field name="unitdate_bulk_teim">1922-1927</field>
+    <field name="unitdate_end_si">1927</field>
+    <field name="unitdate_end_sim">1930</field>
+    <field name="unitdate_end_sim">1927</field>
+    <field name="unitdate_end_ssm">1930</field>
+    <field name="unitdate_end_ssm">1927</field>
+    <field name="unitdate_inclusive_teim">1922-1930</field>
+    <field name="unitdate_normal_sim">1922/1930</field>
+    <field name="unitdate_normal_sim">1922/1927</field>
+    <field name="unitdate_normal_ssm">1922/1930</field>
+    <field name="unitdate_normal_ssm">1922/1927</field>
+    <field name="unitdate_normal_teim">1922/1930</field>
+    <field name="unitdate_normal_teim">1922/1927</field>
+    <field name="unitdate_ssm">Inclusive, 1922-1930 ; 1922-1927</field>
+    <field name="unitdate_start_si">1922</field>
+    <field name="unitdate_start_sim">1922</field>
+    <field name="unitdate_start_ssm">1922</field>
+    <field name="unitid_ssm">MC.221</field>
+    <field name="unitid_teim">MC.221</field>
+    <field name="unittitle_ssm">Isaac Allen Papers</field>
+    <field name="unittitle_teim">Isaac Allen Papers</field>
+  </doc>
+</add>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Alison Dundy</field>
+    <field name="collection_sim">New York Caledonian Club records</field>
+    <field name="collection_ssm">New York Caledonian Club records</field>
+    <field name="collection_teim">New York Caledonian Club records</field>
+    <field name="collection_unitid_ssm">MS 2923</field>
+    <field name="collection_unitid_teim">MS 2923</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms2923_caledonian_club</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series III: Membership Records</field>
+    <field name="id">ms2923_caledonian_clubaspace_ref21_aml</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_ref21_aml</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="scopecontent_teim">The Membership Records, 1856-1947 are composed of seven bound volumes running from the New York Caledonian Club&#39;s founding in 1856 through 1947. Some volumes are organized alphabetically by indexed letter tabs. Others list rosters of members by calendar year. The volumes contain columned pages with entries for each individual member&#39;s name, address, profession, club admission date, club membership expiration date (if relevant), and notes.</field>
+    <field name="scopecontent_teim">Volume 20, the registry of members of the 79th New York Highland Regiment, founded by the New York Caledonian Club in 1861 in response to President Lincoln&#39;s call for Union Army volunteers, is of particular interest. Two loose letters are encased in the volume. The Regiment&#39;s Quartermaster, George Mitchell, is appointed in a Special Order dated June 28, 1865. The order is signed by Lieutenant Colonel Samuel M. Elliott (1811-1875), a Caledonian Club member who was later promoted to Brigadier General by President Abraham Lincoln. An October 31, 1881 letter by U.S. Secretary of State James Blaine expresses gratitude to the club for condolences expressed upon the assassination of President James Garfield.</field>
+    <field name="series_si">Series III: Membership Records</field>
+    <field name="sort_ii">39</field>
+    <field name="unitdate_ssm">1856-1947</field>
+    <field name="unitdate_teim">1856-1947</field>
+    <field name="unittitle_ssm">Series III: Membership Records</field>
+    <field name="unittitle_teim">Series III: Membership Records</field>
+  </doc>
+</add>

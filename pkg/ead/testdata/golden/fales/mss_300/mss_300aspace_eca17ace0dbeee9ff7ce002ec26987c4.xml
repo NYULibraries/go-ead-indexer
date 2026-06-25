@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Robin Preiss, with Nicholas Martin, 2013.</field>
+    <field name="collection_sim">Magie Dominic Off Off-Broadway Collection</field>
+    <field name="collection_ssm">Magie Dominic Off Off-Broadway Collection</field>
+    <field name="collection_teim">Magie Dominic Off Off-Broadway Collection</field>
+    <field name="collection_unitid_ssm">MSS.300</field>
+    <field name="collection_unitid_teim">MSS.300</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">2001-2100</field>
+    <field name="ead_ssi">mss_300</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Playbill</field>
+    <field name="id">mss_300aspace_eca17ace0dbeee9ff7ce002ec26987c4</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: Shared Fales 041, Folder: 18</field>
+    <field name="location_ssm">Box: Shared Fales 041, Folder: 18</field>
+    <field name="parent_ssi">aspace_ref1</field>
+    <field name="parent_ssm">aspace_ref1</field>
+    <field name="parent_unittitles_ssm">Series I: Caffe Cino</field>
+    <field name="parent_unittitles_teim">Series I: Caffe Cino</field>
+    <field name="ref_ssi">aspace_eca17ace0dbeee9ff7ce002ec26987c4</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="series_si">Series I: Caffe Cino &gt;&gt; Playbill</field>
+    <field name="series_sim">Series I: Caffe Cino</field>
+    <field name="sort_ii">6</field>
+    <field name="unitdate_end_si">2019</field>
+    <field name="unitdate_end_sim">2019</field>
+    <field name="unitdate_end_ssm">2019</field>
+    <field name="unitdate_normal_sim">2019/2019</field>
+    <field name="unitdate_normal_ssm">2019/2019</field>
+    <field name="unitdate_normal_teim">2019/2019</field>
+    <field name="unitdate_ssm">2019</field>
+    <field name="unitdate_start_si">2019</field>
+    <field name="unitdate_start_sim">2019</field>
+    <field name="unitdate_start_ssm">2019</field>
+    <field name="unitdate_teim">2019</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/965932</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/965932</field>
+    <field name="unittitle_ssm">Playbill</field>
+    <field name="unittitle_teim">Playbill</field>
+  </doc>
+</add>

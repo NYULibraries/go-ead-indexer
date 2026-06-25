@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Miranda Schwartz (2000s); Larry Weimer (2021)</field>
+    <field name="collection_sim">James Reuel Smith springs and wells photographs and papers</field>
+    <field name="collection_ssm">James Reuel Smith springs and wells photographs and papers</field>
+    <field name="collection_teim">James Reuel Smith springs and wells photographs and papers</field>
+    <field name="collection_unitid_ssm">PR 62</field>
+    <field name="collection_unitid_teim">PR 62</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">pr062_reuel_smith_springs_wells</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Prints</field>
+    <field name="id">pr062_reuel_smith_springs_wellsaspace_ref48_640</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Offsite-Box: 9, Folder: 28</field>
+    <field name="location_ssm">Offsite-Box: 9, Folder: 28</field>
+    <field name="parent_ssi">aspace_ref45_ovd</field>
+    <field name="parent_ssm">aspace_ref39_inw</field>
+    <field name="parent_ssm">aspace_ref45_ovd</field>
+    <field name="parent_unittitles_ssm">Series IV: Springs and Wells Manuscript Material</field>
+    <field name="parent_unittitles_ssm">Subseries IV.B: Visual Material</field>
+    <field name="parent_unittitles_teim">Series IV: Springs and Wells Manuscript Material</field>
+    <field name="parent_unittitles_teim">Subseries IV.B: Visual Material</field>
+    <field name="ref_ssi">aspace_ref48_640</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="series_si">Series IV: Springs and Wells Manuscript Material &gt;&gt; Subseries IV.B: Visual Material &gt;&gt; Prints</field>
+    <field name="series_sim">Series IV: Springs and Wells Manuscript Material</field>
+    <field name="series_sim">Subseries IV.B: Visual Material</field>
+    <field name="sort_ii">40</field>
+    <field name="unitdate_ssm">1897-1901</field>
+    <field name="unitdate_teim">1897-1901</field>
+    <field name="unittitle_ssm">Prints</field>
+    <field name="unittitle_teim">Prints</field>
+  </doc>
+</add>

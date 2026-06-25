@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Stacey Flatt and Rachel Searcy</field>
+    <field name="collection_sim">Lydia Lunch Papers</field>
+    <field name="collection_ssm">Lydia Lunch Papers</field>
+    <field name="collection_teim">Lydia Lunch Papers</field>
+    <field name="collection_unitid_ssm">MSS.590</field>
+    <field name="collection_unitid_teim">MSS.590</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">mss_590</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">MiMi Marseille (Plan Free or Plan Fix)</field>
+    <field name="id">mss_590aspace_7546c6ae4a9709ce025072fc8cd87c13</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 47, disc: 590.0087 -- 590.0088</field>
+    <field name="location_ssm">Box: 47, disc: 590.0087 -- 590.0088</field>
+    <field name="parent_ssi">aspace_8f033851dc2c0e62dbc1193914e0cb40</field>
+    <field name="parent_ssm">aspace_8f033851dc2c0e62dbc1193914e0cb40</field>
+    <field name="parent_unittitles_ssm">Series II. Performance and Studio Recordings</field>
+    <field name="parent_unittitles_teim">Series II. Performance and Studio Recordings</field>
+    <field name="ref_ssi">aspace_7546c6ae4a9709ce025072fc8cd87c13</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="series_si">Series II. Performance and Studio Recordings &gt;&gt; MiMi Marseille (Plan Free or Plan Fix)</field>
+    <field name="series_sim">Series II. Performance and Studio Recordings</field>
+    <field name="sort_ii">200</field>
+    <field name="unitdate_normal_sim">2009-07-17/2009-07-17</field>
+    <field name="unitdate_normal_ssm">2009-07-17/2009-07-17</field>
+    <field name="unitdate_normal_teim">2009-07-17/2009-07-17</field>
+    <field name="unitdate_ssm">2009-07-17</field>
+    <field name="unitdate_teim">2009-07-17</field>
+    <field name="unitid_ssm">cuid30234</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/927151</field>
+    <field name="unitid_teim">cuid30234</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/927151</field>
+    <field name="unittitle_ssm">MiMi Marseille (Plan Free or Plan Fix)</field>
+    <field name="unittitle_teim">MiMi Marseille (Plan Free or Plan Fix)</field>
+  </doc>
+</add>

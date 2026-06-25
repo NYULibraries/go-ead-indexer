@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Aki Snyder</field>
+    <field name="collection_sim">John Richards Collection of NYU Photographs and Negatives</field>
+    <field name="collection_ssm">John Richards Collection of NYU Photographs and Negatives</field>
+    <field name="collection_teim">John Richards Collection of NYU Photographs and Negatives</field>
+    <field name="collection_unitid_ssm">MC.399</field>
+    <field name="collection_unitid_teim">MC.399</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">mc_399</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Photographs of Original Washington Square Building Bought by John Richards/One by D.W. Hering, Old Dutch Reformed Church</field>
+    <field name="id">mc_399aspace_2b91f6b73f2a960f9fa5b7b962a9874f</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 2, Folder: 11</field>
+    <field name="location_ssm">Box: 2, Folder: 11</field>
+    <field name="ref_ssi">aspace_2b91f6b73f2a960f9fa5b7b962a9874f</field>
+    <field name="repository_sim">archives</field>
+    <field name="repository_ssi">archives</field>
+    <field name="repository_ssm">archives</field>
+    <field name="series_si">Photographs of Original Washington Square Building Bought by John Richards/One by D.W. Hering, Old Dutch Reformed Church</field>
+    <field name="sort_ii">6</field>
+    <field name="unitdate_ssm">undated</field>
+    <field name="unitdate_teim">undated</field>
+    <field name="unitid_ssm">/repositories/6/archival_objects/998112</field>
+    <field name="unitid_teim">/repositories/6/archival_objects/998112</field>
+    <field name="unittitle_ssm">Photographs of Original Washington Square Building Bought by John Richards/One by D.W. Hering, Old Dutch Reformed Church</field>
+    <field name="unittitle_teim">Photographs of Original Washington Square Building Bought by John Richards/One by D.W. Hering, Old Dutch Reformed Church</field>
+  </doc>
+</add>

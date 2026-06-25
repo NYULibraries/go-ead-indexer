@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ibrahim Mohamed Ali, Anneka Lenssen, Dina Taha, Ala Younis, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art, NYUAD
+</field>
+    <field name="collection_sim">Mahmoud Hammad Collection</field>
+    <field name="collection_ssm">Mahmoud Hammad Collection</field>
+    <field name="collection_teim">Mahmoud Hammad Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.091</field>
+    <field name="collection_unitid_teim">AD.MC.091</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_091</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">I.B. Exhibitions Not Featuring Mahmoud Hammad</field>
+    <field name="id">ad_mc_091aspace_5c885c2bf40c348e3799edfaf7c83c55</field>
+    <field name="level_sim">subseries</field>
+    <field name="parent_ssi">aspace_5f417edd3f94baeedce7c69501ac1bb5</field>
+    <field name="parent_ssm">aspace_5f417edd3f94baeedce7c69501ac1bb5</field>
+    <field name="parent_unittitles_ssm">Series I: Exhibition Materials, 1950s - 2001</field>
+    <field name="parent_unittitles_teim">Series I: Exhibition Materials, 1950s - 2001</field>
+    <field name="ref_ssi">aspace_5c885c2bf40c348e3799edfaf7c83c55</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="scopecontent_teim">The materials in this subseries include items collected in the course of Mahmoud Hammad&#39;s visits to and/or personal connection to other people&#39;s exhibitions. Durriya Hammad participated in the Exhibition of Women Artists from the Syrian Arab Country, 1975.</field>
+    <field name="series_si">Series I: Exhibition Materials, 1950s - 2001 &gt;&gt; I.B. Exhibitions Not Featuring Mahmoud Hammad</field>
+    <field name="series_sim">Series I: Exhibition Materials, 1950s - 2001</field>
+    <field name="sort_ii">65</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/30690</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/30690</field>
+    <field name="unittitle_ssm">I.B. Exhibitions Not Featuring Mahmoud Hammad</field>
+    <field name="unittitle_teim">I.B. Exhibitions Not Featuring Mahmoud Hammad</field>
+  </doc>
+</add>

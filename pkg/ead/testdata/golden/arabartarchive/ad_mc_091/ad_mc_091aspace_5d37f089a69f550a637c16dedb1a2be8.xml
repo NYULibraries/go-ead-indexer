@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ibrahim Mohamed Ali, Anneka Lenssen, Dina Taha, Ala Younis, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art, NYUAD
+</field>
+    <field name="collection_sim">Mahmoud Hammad Collection</field>
+    <field name="collection_ssm">Mahmoud Hammad Collection</field>
+    <field name="collection_teim">Mahmoud Hammad Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.091</field>
+    <field name="collection_unitid_teim">AD.MC.091</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_091</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">VI.B. Photographic Slides</field>
+    <field name="id">ad_mc_091aspace_5d37f089a69f550a637c16dedb1a2be8</field>
+    <field name="level_sim">subseries</field>
+    <field name="parent_ssi">aspace_7ebb530ce22acd762a8ec2e23bc4ccaa</field>
+    <field name="parent_ssm">aspace_7ebb530ce22acd762a8ec2e23bc4ccaa</field>
+    <field name="parent_unittitles_ssm">Series VI: Photographic Materials</field>
+    <field name="parent_unittitles_teim">Series VI: Photographic Materials</field>
+    <field name="ref_ssi">aspace_5d37f089a69f550a637c16dedb1a2be8</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="scopecontent_teim">This series includes images of artwork by Hammad, including images from the inauguration of the Martyr&#39;s Monument he designed for Najha Cemetery outside Damascus; artwork by others, including exhibition shots from ​​Foundation Vasarely Aix-en-Provence; source images of historical events and figures.</field>
+    <field name="series_si">Series VI: Photographic Materials &gt;&gt; VI.B. Photographic Slides</field>
+    <field name="series_sim">Series VI: Photographic Materials</field>
+    <field name="sort_ii">97</field>
+    <field name="unitid_ssm">cuid281</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/30720</field>
+    <field name="unitid_teim">cuid281</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/30720</field>
+    <field name="unittitle_ssm">VI.B. Photographic Slides</field>
+    <field name="unittitle_teim">VI.B. Photographic Slides</field>
+  </doc>
+</add>

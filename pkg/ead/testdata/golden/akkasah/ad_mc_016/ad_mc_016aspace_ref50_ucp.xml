@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Akkasah: Center for Photography NYUAD</field>
+    <field name="collection_sim">Komunidad: Filipinos in the UAE</field>
+    <field name="collection_ssm">Komunidad: Filipinos in the UAE</field>
+    <field name="collection_teim">Komunidad: Filipinos in the UAE</field>
+    <field name="collection_unitid_ssm">AD.MC.016</field>
+    <field name="collection_unitid_teim">AD.MC.016</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="dao_sim">Online Access</field>
+    <field name="dao_ssm">Filipino migrant workers leaving the country say goodbye to their families at the Manila airport.: January 2016</field>
+    <field name="dao_ssm">Filipino migrant workers leaving the country say goodbye to their families at the Manila airport.: January 2016</field>
+    <field name="dao_teim">Filipino migrant workers leaving the country say goodbye to their families at the Manila airport.: January 2016</field>
+    <field name="dao_teim">Filipino migrant workers leaving the country say goodbye to their families at the Manila airport.: January 2016</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_016</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="genreform_ssm">Digital Photographs</field>
+    <field name="genreform_teim">Digital Photographs</field>
+    <field name="geogname_ssm">Manila, Philippines</field>
+    <field name="geogname_ssm">Philippines</field>
+    <field name="geogname_teim">Manila, Philippines</field>
+    <field name="geogname_teim">Philippines</field>
+    <field name="heading_ssm">Filipino migrant workers leaving the country say goodbye to their families at the Manila airport.</field>
+    <field name="id">ad_mc_016aspace_ref50_ucp</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">object: AD-MC-016_ref50_m</field>
+    <field name="location_ssm">object: AD-MC-016_ref50_m</field>
+    <field name="material_type_sim">Digital Photographs</field>
+    <field name="material_type_ssm">Digital Photographs</field>
+    <field name="place_sim">Manila, Philippines</field>
+    <field name="place_sim">Philippines</field>
+    <field name="place_ssm">Manila, Philippines</field>
+    <field name="place_ssm">Philippines</field>
+    <field name="ref_ssi">aspace_ref50_ucp</field>
+    <field name="repository_sim">akkasah</field>
+    <field name="repository_ssi">akkasah</field>
+    <field name="repository_ssm">akkasah</field>
+    <field name="series_si">Filipino migrant workers leaving the country say goodbye to their families at the Manila airport.</field>
+    <field name="sort_ii">32</field>
+    <field name="subject_sim">Immigration</field>
+    <field name="subject_sim">Men</field>
+    <field name="subject_sim">Women</field>
+    <field name="subject_ssm">Immigration</field>
+    <field name="subject_ssm">Men</field>
+    <field name="subject_ssm">Women</field>
+    <field name="subject_teim">Immigration</field>
+    <field name="subject_teim">Men</field>
+    <field name="subject_teim">Women</field>
+    <field name="subject_teim">Immigration</field>
+    <field name="subject_teim">Men</field>
+    <field name="subject_teim">Women</field>
+    <field name="unitdate_ssm">January 2016</field>
+    <field name="unitdate_teim">January 2016</field>
+    <field name="unittitle_ssm">Filipino migrant workers leaving the country say goodbye to their families at the Manila airport.</field>
+    <field name="unittitle_teim">Filipino migrant workers leaving the country say goodbye to their families at the Manila airport.</field>
+  </doc>
+</add>

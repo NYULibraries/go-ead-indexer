@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Jasmine Soliman and Jonathan Burr for Akkasah: Photography Archive at NYUAD</field>
+    <field name="collection_sim">&#39;Egypt and Sudan Post Card Album&#39; compiled by Edith and William P. Lincoln - Hisham Khatib Collection</field>
+    <field name="collection_ssm">&#39;Egypt and Sudan Post Card Album&#39; compiled by Edith and William P. Lincoln - Hisham Khatib Collection</field>
+    <field name="collection_teim">&#39;Egypt and Sudan Post Card Album&#39; compiled by Edith and William P. Lincoln - Hisham Khatib Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.030_ref165</field>
+    <field name="collection_unitid_teim">AD.MC.030_ref165</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_030_ref165</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="genreform_ssm">Printed Materials</field>
+    <field name="genreform_teim">Printed Materials</field>
+    <field name="geogname_ssm">Memphis, Egypt</field>
+    <field name="geogname_ssm">Saqqara, Egypt</field>
+    <field name="geogname_teim">Memphis, Egypt</field>
+    <field name="geogname_teim">Saqqara, Egypt</field>
+    <field name="heading_ssm">A clipping of the Pyramid of Djoser in Saqqara, with the text &#34;Egypt Memphis and Sakkara.&#34;</field>
+    <field name="id">ad_mc_030_ref165aspace_df56b2fa9893652106e4930bbc41250e</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: Electronic Records</field>
+    <field name="location_ssm">box: Electronic Records</field>
+    <field name="material_type_sim">Printed Materials</field>
+    <field name="material_type_ssm">Printed Materials</field>
+    <field name="parent_ssi">aspace_e6d0b8b275ece37571ef8a061b539bb3</field>
+    <field name="parent_ssm">aspace_e6d0b8b275ece37571ef8a061b539bb3</field>
+    <field name="parent_unittitles_ssm"> &amp;#39;Egypt and Sudan Post Card Album&amp;#39; compiled by Edith and William P. Lincoln - Hisham Khatib Collection</field>
+    <field name="parent_unittitles_teim"> &amp;#39;Egypt and Sudan Post Card Album&amp;#39; compiled by Edith and William P. Lincoln - Hisham Khatib Collection</field>
+    <field name="place_sim">Memphis, Egypt</field>
+    <field name="place_sim">Saqqara, Egypt</field>
+    <field name="place_ssm">Memphis, Egypt</field>
+    <field name="place_ssm">Saqqara, Egypt</field>
+    <field name="ref_ssi">aspace_df56b2fa9893652106e4930bbc41250e</field>
+    <field name="repository_sim">akkasah</field>
+    <field name="repository_ssi">akkasah</field>
+    <field name="repository_ssm">akkasah</field>
+    <field name="series_si"> &#39;Egypt and Sudan Post Card Album&#39; compiled by Edith and William P. Lincoln - Hisham Khatib Collection &gt;&gt; A clipping of the Pyramid of Djoser in Saqqara, with the text &#34;Egypt Memphis and Sakkara.&#34;</field>
+    <field name="series_sim"> &amp;#39;Egypt and Sudan Post Card Album&amp;#39; compiled by Edith and William P. Lincoln - Hisham Khatib Collection</field>
+    <field name="sort_ii">33</field>
+    <field name="subject_sim">Pyramids</field>
+    <field name="subject_sim">Archaeological Sites/Artifacts</field>
+    <field name="subject_sim">Architecture</field>
+    <field name="subject_ssm">Pyramids</field>
+    <field name="subject_ssm">Archaeological Sites/Artifacts</field>
+    <field name="subject_ssm">Architecture</field>
+    <field name="subject_teim">Pyramids</field>
+    <field name="subject_teim">Archaeological Sites/Artifacts</field>
+    <field name="subject_teim">Architecture</field>
+    <field name="subject_teim">Pyramids</field>
+    <field name="subject_teim">Archaeological Sites/Artifacts</field>
+    <field name="subject_teim">Architecture</field>
+    <field name="unitdate_ssm">February 1929</field>
+    <field name="unitdate_teim">February 1929</field>
+    <field name="unitid_ssm">AD_MC_030_ref165_000021_000001</field>
+    <field name="unitid_teim">AD_MC_030_ref165_000021_000001</field>
+    <field name="unittitle_ssm">A clipping of the Pyramid of Djoser in Saqqara, with the text &#34;Egypt Memphis and Sakkara.&#34;</field>
+    <field name="unittitle_teim">A clipping of the Pyramid of Djoser in Saqqara, with the text &#34;Egypt Memphis and Sakkara.&#34;</field>
+  </doc>
+</add>

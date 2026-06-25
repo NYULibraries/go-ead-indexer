@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">John M. Sapp, Brent Phillips, Cristina Vignone</field>
+    <field name="collection_sim">Queer|Art|Film Collection</field>
+    <field name="collection_ssm">Queer|Art|Film Collection</field>
+    <field name="collection_teim">Queer|Art|Film Collection</field>
+    <field name="collection_unitid_ssm">MSS.327</field>
+    <field name="collection_unitid_teim">MSS.327</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">mss_327</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Queer|Art|Film Summer 2011 Posters </field>
+    <field name="id">mss_327aspace_ref63</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 1, Folder: 4</field>
+    <field name="location_ssm">Box: 1, Folder: 4</field>
+    <field name="parent_ssi">aspace_ref3</field>
+    <field name="parent_ssm">aspace_ref3</field>
+    <field name="parent_unittitles_ssm">Series I: Advertisements</field>
+    <field name="parent_unittitles_teim">Series I: Advertisements</field>
+    <field name="ref_ssi">aspace_ref63</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="series_si">Series I: Advertisements &gt;&gt; Queer|Art|Film Summer 2011 Posters </field>
+    <field name="series_sim">Series I: Advertisements</field>
+    <field name="sort_ii">5</field>
+    <field name="unitdate_ssm">Summer 2011</field>
+    <field name="unitdate_teim">Summer 2011</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/559124</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/559124</field>
+    <field name="unittitle_ssm">Queer|Art|Film Summer 2011 Posters </field>
+    <field name="unittitle_teim">Queer|Art|Film Summer 2011 Posters </field>
+  </doc>
+</add>

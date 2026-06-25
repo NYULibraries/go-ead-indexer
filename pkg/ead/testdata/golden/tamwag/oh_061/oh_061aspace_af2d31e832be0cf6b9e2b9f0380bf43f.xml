@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Jenny Ambrose</field>
+    <field name="collection_sim">Professional Staff Congress/City University of New York Oral History Collection</field>
+    <field name="collection_ssm">Professional Staff Congress/City University of New York Oral History Collection</field>
+    <field name="collection_teim">Professional Staff Congress/City University of New York Oral History Collection</field>
+    <field name="collection_unitid_ssm">OH.061</field>
+    <field name="collection_unitid_teim">OH.061</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="dao_sim">Online Access</field>
+    <field name="dao_ssm">Steve Leberstein</field>
+    <field name="dao_teim">Steve Leberstein</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">oh_061</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Steve Leberstein</field>
+    <field name="id">oh_061aspace_af2d31e832be0cf6b9e2b9f0380bf43f</field>
+    <field name="level_sim">file</field>
+    <field name="ref_ssi">aspace_af2d31e832be0cf6b9e2b9f0380bf43f</field>
+    <field name="repository_sim">tamwag</field>
+    <field name="repository_ssi">tamwag</field>
+    <field name="repository_ssm">tamwag</field>
+    <field name="series_si">Steve Leberstein</field>
+    <field name="sort_ii">15</field>
+    <field name="unitdate_normal_sim">2016-01-21/2016-01-21</field>
+    <field name="unitdate_normal_ssm">2016-01-21/2016-01-21</field>
+    <field name="unitdate_normal_teim">2016-01-21/2016-01-21</field>
+    <field name="unitdate_ssm">2016-01-21</field>
+    <field name="unitdate_teim">2016-01-21</field>
+    <field name="unitid_ssm">TW_OH_61_ER_4</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/860962</field>
+    <field name="unitid_teim">TW_OH_61_ER_4</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/860962</field>
+    <field name="unittitle_ssm">Steve Leberstein</field>
+    <field name="unittitle_teim">Steve Leberstein</field>
+  </doc>
+</add>

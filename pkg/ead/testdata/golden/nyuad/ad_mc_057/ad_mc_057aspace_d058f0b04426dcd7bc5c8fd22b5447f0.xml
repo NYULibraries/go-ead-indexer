@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">Emirates Bird Records Committee records</field>
+    <field name="collection_ssm">Emirates Bird Records Committee records</field>
+    <field name="collection_teim">Emirates Bird Records Committee records</field>
+    <field name="collection_unitid_ssm">AD.MC.057</field>
+    <field name="collection_unitid_teim">AD.MC.057</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_057</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">May - August</field>
+    <field name="id">ad_mc_057aspace_d058f0b04426dcd7bc5c8fd22b5447f0</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 7, folder: 12</field>
+    <field name="location_ssm">box: 7, folder: 12</field>
+    <field name="parent_ssi">aspace_3b071079ede702f2bc2125b0969927c5</field>
+    <field name="parent_ssm">aspace_c5e54e3ab965db0a3f43b545f41c2309</field>
+    <field name="parent_ssm">aspace_3b071079ede702f2bc2125b0969927c5</field>
+    <field name="parent_unittitles_ssm">Group bird record forms:  by year</field>
+    <field name="parent_unittitles_ssm">2001</field>
+    <field name="parent_unittitles_teim">Group bird record forms:  by year</field>
+    <field name="parent_unittitles_teim">2001</field>
+    <field name="ref_ssi">aspace_d058f0b04426dcd7bc5c8fd22b5447f0</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Group bird record forms:  by year &gt;&gt; 2001 &gt;&gt; May - August</field>
+    <field name="series_sim">Group bird record forms:  by year</field>
+    <field name="series_sim">2001</field>
+    <field name="sort_ii">195</field>
+    <field name="unittitle_ssm">May - August</field>
+    <field name="unittitle_teim">May - August</field>
+  </doc>
+</add>

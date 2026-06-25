@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Anne M. Gordon, with additional description by Rachel M. Oleaga.</field>
+    <field name="collection_sim">Nehemiah Denton papers</field>
+    <field name="collection_ssm">Nehemiah Denton papers</field>
+    <field name="collection_teim">Nehemiah Denton papers</field>
+    <field name="collection_unitid_ssm">1977.171</field>
+    <field name="collection_unitid_teim">1977.171</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">1801-1900</field>
+    <field name="ead_ssi">arms_1977_171_nehemiah_denton</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Bills and Receipts (1 of 2).</field>
+    <field name="id">arms_1977_171_nehemiah_dentonaspace_ref23_bkp</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 1, Folder: 4</field>
+    <field name="location_ssm">Box: 1, Folder: 4</field>
+    <field name="ref_ssi">aspace_ref23_bkp</field>
+    <field name="repository_sim">cbh</field>
+    <field name="repository_ssi">cbh</field>
+    <field name="repository_ssm">cbh</field>
+    <field name="series_si">Bills and Receipts (1 of 2).</field>
+    <field name="sort_ii">4</field>
+    <field name="unitdate_end_si">1844</field>
+    <field name="unitdate_end_sim">1844</field>
+    <field name="unitdate_end_ssm">1844</field>
+    <field name="unitdate_inclusive_teim">1824-1844</field>
+    <field name="unitdate_normal_sim">1824/1844</field>
+    <field name="unitdate_normal_ssm">1824/1844</field>
+    <field name="unitdate_normal_teim">1824/1844</field>
+    <field name="unitdate_ssm">Inclusive, 1824-1844</field>
+    <field name="unitdate_start_si">1824</field>
+    <field name="unitdate_start_sim">1824</field>
+    <field name="unitdate_start_ssm">1824</field>
+    <field name="unittitle_ssm">Bills and Receipts (1 of 2).</field>
+    <field name="unittitle_teim">Bills and Receipts (1 of 2).</field>
+  </doc>
+</add>

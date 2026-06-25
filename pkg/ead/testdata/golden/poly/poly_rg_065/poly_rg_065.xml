@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="abstract_ssm">This collection contains sections of the Apollo Operations Handbook, as well as Polytech alum, Bernard Berg&#39;s, computation notebook from his time as an electrical engineer at Grumman Aerospace Corporation. The handbook contains information on the spacecraft, subsystems data, controls, displays, and the index.</field>
+    <field name="abstract_teim">This collection contains sections of the Apollo Operations Handbook, as well as Polytech alum, Bernard Berg&#39;s, computation notebook from his time as an electrical engineer at Grumman Aerospace Corporation. The handbook contains information on the spacecraft, subsystems data, controls, displays, and the index.</field>
+    <field name="acqinfo_teim">Donated by Joel Berg, son of Bernard Berg, in 2025. The accession number associated with this gift is 2025-006.</field>
+    <field name="author_ssm">Jillian Carrillo</field>
+    <field name="author_teim">Jillian Carrillo</field>
+    <field name="bioghist_teim">Bernard Berg attended Brooklyn Polytechnic from 1950-1954, taking undergraduate courses in electrical engineering and graduate courses in chemistry. Following his studies, Berg worked for the Gruuman Aerospace Corporation in Bethpage, Long Island as an electrical engineer from June 1963 to August 1968. He was tasked with designing the test equipment for the radars of the Apollo Lunar Excursion Module (LEM).</field>
+    <field name="collection_sim">Bernard Berg Collection</field>
+    <field name="collection_ssm">Bernard Berg Collection</field>
+    <field name="collection_teim">Bernard Berg Collection</field>
+    <field name="corpname_ssm">Poly Archives at the Bern Dibner Library of Science and Technology, NYU Libraries</field>
+    <field name="corpname_teim">Poly Archives at the Bern Dibner Library of Science and Technology, NYU Libraries</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">poly_rg_065</field>
+    <field name="format_ii">0</field>
+    <field name="format_sim">Archival Collection</field>
+    <field name="format_ssm">Archival Collection</field>
+    <field name="heading_ssm">Bernard Berg Collection</field>
+    <field name="id">poly_rg_065</field>
+    <field name="language_sim">English</field>
+    <field name="language_ssm">English</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="scopecontent_teim">This collection contains sections of the Apollo Operations Handbook and one original lab notebook (computation notebook) from Polytech alum, Bernard Berg.</field>
+    <field name="subject_sim">Aerospace engineering</field>
+    <field name="subject_ssm">Aerospace engineering</field>
+    <field name="subject_teim">Aerospace engineering</field>
+    <field name="subject_teim">Aerospace engineering</field>
+    <field name="unitdate_end_si">1968</field>
+    <field name="unitdate_end_sim">1968</field>
+    <field name="unitdate_end_ssm">1968</field>
+    <field name="unitdate_inclusive_teim">1965-1968</field>
+    <field name="unitdate_normal_sim">1965/1968</field>
+    <field name="unitdate_normal_ssm">1965/1968</field>
+    <field name="unitdate_normal_teim">1965/1968</field>
+    <field name="unitdate_ssm">Inclusive, 1965-1968</field>
+    <field name="unitdate_start_si">1965</field>
+    <field name="unitdate_start_sim">1965</field>
+    <field name="unitdate_start_ssm">1965</field>
+    <field name="unitid_ssm">RG.065</field>
+    <field name="unitid_teim">RG.065</field>
+    <field name="unittitle_ssm">Bernard Berg Collection</field>
+    <field name="unittitle_teim">Bernard Berg Collection</field>
+  </doc>
+</add>

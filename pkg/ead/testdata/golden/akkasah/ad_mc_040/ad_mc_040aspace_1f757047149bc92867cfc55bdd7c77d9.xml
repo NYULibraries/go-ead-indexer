@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Jasmine Soliman and Emily Broad, with further additions by Jasmine Soliman in 2023.</field>
+    <field name="collection_sim">&#39;A trip in Algeria&#39; by H. E. Irving Taylor</field>
+    <field name="collection_ssm">&#39;A trip in Algeria&#39; by H. E. Irving Taylor</field>
+    <field name="collection_teim">&#39;A trip in Algeria&#39; by H. E. Irving Taylor</field>
+    <field name="collection_unitid_ssm">AD.MC.040</field>
+    <field name="collection_unitid_teim">AD.MC.040</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="creator_sim">Taylor, H.E. Irving</field>
+    <field name="creator_ssm">Taylor, H.E. Irving</field>
+    <field name="creator_teim">Taylor, H.E. Irving</field>
+    <field name="dao_sim">Online Access</field>
+    <field name="dao_ssm">The back cover of the album &#39;A Trip in Algeria&#39;.: Circa December 1901 – April 1902</field>
+    <field name="dao_ssm">The back cover of the album &#39;A Trip in Algeria&#39;.: Circa December 1901 – April 1902</field>
+    <field name="dao_teim">The back cover of the album &#39;A Trip in Algeria&#39;.: Circa December 1901 – April 1902</field>
+    <field name="dao_teim">The back cover of the album &#39;A Trip in Algeria&#39;.: Circa December 1901 – April 1902</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_040</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="geogname_ssm">Algeria</field>
+    <field name="geogname_teim">Algeria</field>
+    <field name="heading_ssm">The back cover of the album &#39;A Trip in Algeria&#39;.</field>
+    <field name="id">ad_mc_040aspace_1f757047149bc92867cfc55bdd7c77d9</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: AD_MC_040</field>
+    <field name="location_ssm">box: AD_MC_040</field>
+    <field name="name_sim">Taylor, H.E. Irving</field>
+    <field name="name_teim">Taylor, H.E. Irving</field>
+    <field name="persname_ssm">Taylor, H.E. Irving</field>
+    <field name="persname_teim">Taylor, H.E. Irving</field>
+    <field name="place_sim">Algeria</field>
+    <field name="place_ssm">Algeria</field>
+    <field name="ref_ssi">aspace_1f757047149bc92867cfc55bdd7c77d9</field>
+    <field name="repository_sim">akkasah</field>
+    <field name="repository_ssi">akkasah</field>
+    <field name="repository_ssm">akkasah</field>
+    <field name="series_si">The back cover of the album &#39;A Trip in Algeria&#39;.</field>
+    <field name="sort_ii">58</field>
+    <field name="unitdate_ssm">Circa December 1901 – April 1902</field>
+    <field name="unitdate_teim">Circa December 1901 – April 1902</field>
+    <field name="unitid_ssm">AD_MC_040_ref58</field>
+    <field name="unitid_teim">AD_MC_040_ref58</field>
+    <field name="unittitle_ssm">The back cover of the album &#39;A Trip in Algeria&#39;.</field>
+    <field name="unittitle_teim">The back cover of the album &#39;A Trip in Algeria&#39;.</field>
+  </doc>
+</add>

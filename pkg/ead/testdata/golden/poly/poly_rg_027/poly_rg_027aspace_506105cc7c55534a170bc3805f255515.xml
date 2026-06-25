@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Zoe Blecher-Cohen</field>
+    <field name="collection_sim">Poly Archives Memorabilia Collection</field>
+    <field name="collection_ssm">Poly Archives Memorabilia Collection</field>
+    <field name="collection_teim">Poly Archives Memorabilia Collection</field>
+    <field name="collection_unitid_ssm">RG.027</field>
+    <field name="collection_unitid_teim">RG.027</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">poly_rg_027</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Murad Cigarette College Series 26-50 card - PIB</field>
+    <field name="id">poly_rg_027aspace_506105cc7c55534a170bc3805f255515</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 1, folder: 13</field>
+    <field name="location_ssm">box: 1, folder: 13</field>
+    <field name="parent_ssi">aspace_abaaabb4243c60c3fd860a490a90e2eb</field>
+    <field name="parent_ssm">aspace_ref2_wei</field>
+    <field name="parent_ssm">aspace_abaaabb4243c60c3fd860a490a90e2eb</field>
+    <field name="parent_unittitles_ssm">Series V: Realia</field>
+    <field name="parent_unittitles_ssm">Subseries A: Polytechnic Institute of Brooklyn Realia</field>
+    <field name="parent_unittitles_teim">Series V: Realia</field>
+    <field name="parent_unittitles_teim">Subseries A: Polytechnic Institute of Brooklyn Realia</field>
+    <field name="ref_ssi">aspace_506105cc7c55534a170bc3805f255515</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="series_si">Series V: Realia &gt;&gt; Subseries A: Polytechnic Institute of Brooklyn Realia &gt;&gt; Murad Cigarette College Series 26-50 card - PIB</field>
+    <field name="series_sim">Series V: Realia</field>
+    <field name="series_sim">Subseries A: Polytechnic Institute of Brooklyn Realia</field>
+    <field name="sort_ii">91</field>
+    <field name="unitdate_ssm">undated</field>
+    <field name="unitdate_teim">undated</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/12683</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/12683</field>
+    <field name="unittitle_ssm">Murad Cigarette College Series 26-50 card - PIB</field>
+    <field name="unittitle_teim">Murad Cigarette College Series 26-50 card - PIB</field>
+  </doc>
+</add>

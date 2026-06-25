@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Lauren Kata</field>
+    <field name="collection_sim">NYU Abu Dhabi Student Life Events: Photos, Music, and Videos</field>
+    <field name="collection_ssm">NYU Abu Dhabi Student Life Events: Photos, Music, and Videos</field>
+    <field name="collection_teim">NYU Abu Dhabi Student Life Events: Photos, Music, and Videos</field>
+    <field name="collection_unitid_ssm">AD.RG.009.3-2-1</field>
+    <field name="collection_unitid_teim">AD.RG.009.3-2-1</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="dao_sim">Online Access</field>
+    <field name="dao_ssm">Marhaba 2017 D1 Images</field>
+    <field name="dao_teim">Marhaba 2017 D1 Images</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_rg_009_3_2_1</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Marhaba 2017 D1 Images</field>
+    <field name="id">ad_rg_009_3_2_1aspace_f2b322ed426f7e916503c772ad14de4b</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: Electronic Records, E-records: AD_RG_009_3_2_1-088</field>
+    <field name="location_ssm">box: Electronic Records, E-records: AD_RG_009_3_2_1-088</field>
+    <field name="parent_ssi">aspace_e5ed25aefcc3a1c62428a722985508fe</field>
+    <field name="parent_ssm">aspace_e5ed25aefcc3a1c62428a722985508fe</field>
+    <field name="parent_unittitles_ssm">Student Life Events, 2017-2018</field>
+    <field name="parent_unittitles_teim">Student Life Events, 2017-2018</field>
+    <field name="ref_ssi">aspace_f2b322ed426f7e916503c772ad14de4b</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Student Life Events, 2017-2018 &gt;&gt; Marhaba 2017 D1 Images</field>
+    <field name="series_sim">Student Life Events, 2017-2018</field>
+    <field name="sort_ii">93</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/30794</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/30794</field>
+    <field name="unittitle_ssm">Marhaba 2017 D1 Images</field>
+    <field name="unittitle_teim">Marhaba 2017 D1 Images</field>
+  </doc>
+</add>

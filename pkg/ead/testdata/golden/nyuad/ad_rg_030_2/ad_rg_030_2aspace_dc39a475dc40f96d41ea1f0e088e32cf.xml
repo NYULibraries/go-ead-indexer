@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Lauren Kata</field>
+    <field name="bioghist_teim">I am a member of the class of 2022. I was on a study away in London when the pandemic caused all NYUAD classes to move online. I have been relocated to my home city in Shanghai and taking online classes since, with a pause in between when I did a Go Local semester in Fall 2020.</field>
+    <field name="collection_sim">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_ssm">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_teim">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_unitid_ssm">AD.RG.030.2</field>
+    <field name="collection_unitid_teim">AD.RG.030.2</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_rg_030_2</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Li, Yihao (Rayna). Studying Away at Home </field>
+    <field name="id">ad_rg_030_2aspace_dc39a475dc40f96d41ea1f0e088e32cf</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: E-records, folder: AD_RG_030_006</field>
+    <field name="location_ssm">box: E-records, folder: AD_RG_030_006</field>
+    <field name="parent_ssi">aspace_a51c1a157cedd2b137c3bae3d2628a3a</field>
+    <field name="parent_ssm">aspace_165d7515034f6a815453d739527d9d02</field>
+    <field name="parent_ssm">aspace_a51c1a157cedd2b137c3bae3d2628a3a</field>
+    <field name="parent_unittitles_ssm">NYUAD Community Participatory Covid Archive</field>
+    <field name="parent_unittitles_ssm">Digital Submissions</field>
+    <field name="parent_unittitles_teim">NYUAD Community Participatory Covid Archive</field>
+    <field name="parent_unittitles_teim">Digital Submissions</field>
+    <field name="ref_ssi">aspace_dc39a475dc40f96d41ea1f0e088e32cf</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="scopecontent_teim">1 (photo): NYUAD campus, Jan 21, 2020, my J-term class &#39;Culture, Context, and Psychology&#39;. The episodic memory about being on campus without masks.</field>
+    <field name="scopecontent_teim">2 (photo): flight from Abu Dhabi to Shanghai, Jan 24, 2020, the most empty flight I had seen, mostly because people have cancelled travel plans to China amidst the outbreak. I slept very well on these empty seats. The cushion cover says &#39;Happy New Year&#39; in Chinese. I got a bag of oranges (traditional food for the new year) but I didn&#39;t eat them because I did not want to take off my mask. I felt bad for wasting food.</field>
+    <field name="scopecontent_teim">3 (photo): same as above. An airport staff using a handheld temperature camera to spot people with fevers.</field>
+    <field name="scopecontent_teim">4 (photo): last glimpse of the sunrise from my London dorm window, the day of departing London, March 12, 2021.</field>
+    <field name="scopecontent_teim">5 (photo): Ticket to Dear Evan Hansen on March 17. This is a musical that I have always wanted to see, but I had to give the ticket way since I was departing early.</field>
+    <field name="scopecontent_teim">6 (photo): 7-Hour Layover at Hong Kong International Airport, March 13, 2021. I tried to get some food without taking my mask off for an extended period of time. Photo was taken by my London roommate.</field>
+    <field name="scopecontent_teim">7 (photo): this is a photo sent by one of my classmates in London, who was also travelling to her home in China. She saw a fully protected individual (likely another Chinese student travelling home after the closure of campuses) at the airport and sent this photo to me.</field>
+    <field name="scopecontent_teim">8 (text, pasted in the box below): March 13-15. This is a journal I kept during my &#39;evacuation from London. It details all of the steps I took from leaving Heathrow to landing in China and being moved to a temporary quarantine station. </field>
+    <field name="scopecontent_teim"> After landing, most passengers (including my roommate) was allowed to travel freely to their homes, where they needed to perform 14 days of self-isolation. However, it was detected that I had a mild fever of 37.4 degrees celcius, so I was taken to a temporary quarantine place on an ambulance! This process was so tedious because it involved a lot of waiting in rooms with no AC, blood tests, travel history interviews, and CT scans. Everyone who was in this temporary station was treated as a suspect case unless we were officially cleared after an expert meeting -- the experts/doctors were working 24/7 and in full protective gears! My journal ends with item 18, which says I have been waiting for six hours in a temporary building waiting for my expert meeting results. I had not been eating or drinking or sleeping (I have decided not to do so because taking off my mask would be unwise), and the birds had come out singing. After that, I was cleared and taken to the in-patient department for isolation (for medical purposes), and I finally got to sleep and relax. Naturally, I had forgotten to make further updates to my journey because I knew I had arrived safely. </field>
+    <field name="scopecontent_teim">9 (video): https://www.youtube.com/watch?v=FhgpjCazYMs
+after deciding to do a go-local semester at NYUSH, Shanghai International Channel invited me to participate in a series of mini-documentaries about re-routed international students living under COVID. </field>
+    <field name="scopecontent_teim">10 (Chinese news article, published on Dec 26, 2020): https://web.shobserver.com/wxShare/html/325881.htm
+After my go-local semester, I was interviewed by Jiefang Daily on my experience with this programme.</field>
+    <field name="series_si">NYUAD Community Participatory Covid Archive &gt;&gt; Digital Submissions &gt;&gt; Li, Yihao (Rayna). Studying Away at Home </field>
+    <field name="series_sim">NYUAD Community Participatory Covid Archive</field>
+    <field name="series_sim">Digital Submissions</field>
+    <field name="sort_ii">53</field>
+    <field name="unitdate_normal_sim">2021-05-03/2021-05-03</field>
+    <field name="unitdate_normal_ssm">2021-05-03/2021-05-03</field>
+    <field name="unitdate_normal_teim">2021-05-03/2021-05-03</field>
+    <field name="unitdate_ssm">2020-2021</field>
+    <field name="unitdate_teim">2020-2021</field>
+    <field name="unitid_ssm">Submission 6</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/29417</field>
+    <field name="unitid_teim">Submission 6</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/29417</field>
+    <field name="unittitle_ssm">Li, Yihao (Rayna). Studying Away at Home </field>
+    <field name="unittitle_teim">Li, Yihao (Rayna). Studying Away at Home </field>
+  </doc>
+</add>

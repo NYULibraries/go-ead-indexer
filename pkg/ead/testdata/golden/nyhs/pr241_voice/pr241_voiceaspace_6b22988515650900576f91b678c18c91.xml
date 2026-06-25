@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Jenny Gotwals and Sandra Markham (2004); migrated to ArchivesSpace by Joseph Ditta (2020)</field>
+    <field name="collection_sim">Sidney Voice collection of cigar bands</field>
+    <field name="collection_ssm">Sidney Voice collection of cigar bands</field>
+    <field name="collection_teim">Sidney Voice collection of cigar bands</field>
+    <field name="collection_unitid_ssm">PR 241</field>
+    <field name="collection_unitid_teim">PR 241</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">pr241_voice</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Salesman&#39;s sample sheets</field>
+    <field name="id">pr241_voiceaspace_6b22988515650900576f91b678c18c91</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 7, Folder: 8</field>
+    <field name="location_ssm">Box: 7, Folder: 8</field>
+    <field name="parent_ssi">aspace_a82d44219f22074a6e090ec6be86773d</field>
+    <field name="parent_ssm">aspace_a82d44219f22074a6e090ec6be86773d</field>
+    <field name="parent_unittitles_ssm">Cigar Bands</field>
+    <field name="parent_unittitles_teim">Cigar Bands</field>
+    <field name="ref_ssi">aspace_6b22988515650900576f91b678c18c91</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="series_si">Cigar Bands &gt;&gt; Salesman&#39;s sample sheets</field>
+    <field name="series_sim">Cigar Bands</field>
+    <field name="sort_ii">22</field>
+    <field name="unittitle_ssm">Salesman&#39;s sample sheets</field>
+    <field name="unittitle_teim">Salesman&#39;s sample sheets</field>
+  </doc>
+</add>

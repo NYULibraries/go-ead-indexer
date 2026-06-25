@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Fales Staff</field>
+    <field name="collection_sim">Jack Waters Papers</field>
+    <field name="collection_ssm">Jack Waters Papers</field>
+    <field name="collection_teim">Jack Waters Papers</field>
+    <field name="collection_unitid_ssm">MSS.111</field>
+    <field name="collection_unitid_teim">MSS.111</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">mss_111</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Subseries B: Biographical Notes/Materials</field>
+    <field name="id">mss_111aspace_7a69fe70d8cf3f349b2c14d5247bcda9</field>
+    <field name="level_sim">subseries</field>
+    <field name="parent_ssi">aspace_a1a6edf0727a69b7a337dcfc085705fb</field>
+    <field name="parent_ssm">aspace_a1a6edf0727a69b7a337dcfc085705fb</field>
+    <field name="parent_unittitles_ssm">Series I: Files</field>
+    <field name="parent_unittitles_teim">Series I: Files</field>
+    <field name="ref_ssi">aspace_7a69fe70d8cf3f349b2c14d5247bcda9</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="scopecontent_teim">This subseries consists of notes and materials pertaining to Waters&#39; life and works, such as reviews of his works, teaching applications and resumes.</field>
+    <field name="series_si">Series I: Files &gt;&gt; Subseries B: Biographical Notes/Materials</field>
+    <field name="series_sim">Series I: Files</field>
+    <field name="sort_ii">10</field>
+    <field name="unitdate_end_si">1997</field>
+    <field name="unitdate_end_sim">1997</field>
+    <field name="unitdate_end_ssm">1997</field>
+    <field name="unitdate_inclusive_teim">1996-1997</field>
+    <field name="unitdate_normal_sim">1996/1997</field>
+    <field name="unitdate_normal_ssm">1996/1997</field>
+    <field name="unitdate_normal_teim">1996/1997</field>
+    <field name="unitdate_ssm">Inclusive, 1996-1997</field>
+    <field name="unitdate_start_si">1996</field>
+    <field name="unitdate_start_sim">1996</field>
+    <field name="unitdate_start_ssm">1996</field>
+    <field name="unittitle_ssm">Subseries B: Biographical Notes/Materials</field>
+    <field name="unittitle_teim">Subseries B: Biographical Notes/Materials</field>
+  </doc>
+</add>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="abstract_ssm">Correspondence, documents, and news clippings, chiefly from and about residents of the French colony of Île de Bourbon (modern-day Réunion), in the western Indian Ocean, sent to individuals in France in the late 18th and early 19th centuries, plus one letter from Emily Ruete (Princess Salme of Zanzibar), written in 1872 in Germany.</field>
+    <field name="abstract_teim">Correspondence, documents, and news clippings, chiefly from and about residents of the French colony of Île de Bourbon (modern-day Réunion), in the western Indian Ocean, sent to individuals in France in the late 18th and early 19th centuries, plus one letter from Emily Ruete (Princess Salme of Zanzibar), written in 1872 in Germany.</field>
+    <field name="acqinfo_teim">Acquired by purchase, April 2026.</field>
+    <field name="author_ssm">Brad Bauer</field>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="bioghist_teim">The island of Réunion was uninhabited until 1663, when the French Compagnie des Indes established a settlement there as a means of supporting plans to colonize parts of India.  The new settlement was named Île de Bourbon, and while the initial settlers practiced subsistence agriculture, by the early 1700s coffee trees had been introduced from Yemen.  Seeing the profitability of this new crop, many planters switched to coffee cultivation, with exports of coffee to France increasing from 3,400 pounds in 1724 to 3,500 tons a year by 1815.  The expansion in the cultivation and trade in coffee also led to an expansion in slave labor in the Île de Bourbon, with the population of enslaved people on the island numbering 311 in 1704, reaching 10,000 by the 1740s, and exceeding 60,000 by 1848, when slavery was abolished.  </field>
+    <field name="bioghist_teim">When the Compagnie des Indes went bankrupt in 1765, the island became a French colony, along with the neighboring island of Île de France (modern-day Mauritius), which the company had taken over in 1715.  In 1793, after the French Revolution, the Île de Bourbon was renamed Réunion, but it reverted back to its old name after 1810, as during that year, both islands were captured by a British expeditionary force during the Napoleonic Wars.  With the Treaty of Paris in 1814, the Île de Bourbon was returned to France, whereas the Île de France, because it had much better natural harbors, was kept by the British, and renamed Mauritius.</field>
+    <field name="bioghist_teim">During the early decades of the 19th century, a number of factors--some geopolitical, some related to climate and natural disasters, such as cyclones that struck Île de Bourbon in 1806 and 1807--led to the gradual decline of the coffee industry and its replacement with the cultivation of sugar cane, which became the dominant crop there, as it did in Mauritius. </field>
+    <field name="bioghist_teim">Emily Ruete (1844-1924) was born Sayyida Salme bint Sa&#39;id, the daughter of Sayyid Sa&#39;id, the Sultan of Zanzibar, and Djilfidan, a Circassian slave who lived in the royal household.  Salme was raised in the royal household, but after her father&#39;s death, and the accession of her brother Majid to the position of Sultan, she left the palace to live elsewhere in Zanzibar town.  Furthermore, as she was drawn into palace intrigue, having become involved in an initially unsuccessful plot on behalf of another brother, Barghash bin Sa&#39;id, she was further ostracized from the palace.  It was during this time she was befriended by a German neighbor, Heinrich Ruete, who worked for a German trading company in Zanzibar.  Their relationship evolved into a love for one another, and in 1866, once it became public knowledge, she was forced to flee Zanzibar for Aden, where they married and she gave birth to their first child, and then to Germany, where they settled in Hamburg.  She converted to Christianity, taking the named of Emily, and following her husband&#39;s death in an accident in 1870, she remained in Germany, seeking to raise her three children there, and found ways to support them as a teacher.  It was in this context that she wrote her memoir, titled &#34;Memoiren einer Arabischen Prinzessin,&#34; which was published in 1886.</field>
+    <field name="bioghist_teim">Sources:  </field>
+    <field name="bioghist_teim">Allen, Richard B.  &#34;Plantation Economy and Slavery in the Mascarene Islands (Indian Ocean),&#34; in Oxford Research Encylopedia of African History, https://doi.org/10.1093/acrefore/9780190277734.013.902, accessed April 2026.</field>
+    <field name="bioghist_teim">Sharma, Sunil, et.al. &#34;Sayyida Salamah Bint Said / Emily Ruete: A Lover&#39;s Flight from Zanzibar,&#34; in &#34;Three Centuries of Travel Writing by Muslim Women, 2022, p.403-412, https://doi.org/10.2307/j.ctv2nwq9jx.45, accessed April 2026.</field>
+    <field name="collection_sim">Correspondence from the island of Réunion (Île de Bourbon), plus one letter from Emily Ruete (Princess Salme of Zanzibar)</field>
+    <field name="collection_ssm">Correspondence from the island of Réunion (Île de Bourbon), plus one letter from Emily Ruete (Princess Salme of Zanzibar)</field>
+    <field name="collection_teim">Correspondence from the island of Réunion (Île de Bourbon), plus one letter from Emily Ruete (Princess Salme of Zanzibar)</field>
+    <field name="corpname_ssm">NYU Abu Dhabi, Archives and Special Collections</field>
+    <field name="corpname_teim">NYU Abu Dhabi, Archives and Special Collections</field>
+    <field name="custodhist_teim">The correspondence in this collection appears to have no common provenance other than having been acquired over the years by a collector or collectors interested in historical documents and autographs.  Two of the items in this collection show evidence of having been acquired by earlier collectors :  the letter from Emily Ruete and the letter from General Bouvet de Lozier.  The collection was auctioned as one lot by Oger-Blanchet auctioneers in Paris in November 2023, and then reappeared on the antiquarian market in 2025.</field>
+    <field name="date_range_sim">1701-1800</field>
+    <field name="date_range_sim">1801-1900</field>
+    <field name="ead_ssi">ad_mc_165</field>
+    <field name="format_ii">0</field>
+    <field name="format_sim">Archival Collection</field>
+    <field name="format_ssm">Archival Collection</field>
+    <field name="geogname_ssm">Réunion  -- History -- 1764-1946</field>
+    <field name="geogname_ssm">Réunion  -- Commerce -- France</field>
+    <field name="geogname_teim">Réunion  -- History -- 1764-1946</field>
+    <field name="geogname_teim">Réunion  -- Commerce -- France</field>
+    <field name="heading_ssm">Correspondence from the island of Réunion (Île de Bourbon), plus one letter from Emily Ruete (Princess Salme of Zanzibar)</field>
+    <field name="id">ad_mc_165</field>
+    <field name="language_sim">French</field>
+    <field name="language_ssm">French</field>
+    <field name="name_sim">Ruete, Emilie, 1844-1924</field>
+    <field name="name_teim">Ruete, Emilie, 1844-1924</field>
+    <field name="persname_ssm">Ruete, Emilie, 1844-1924</field>
+    <field name="persname_teim">Ruete, Emilie, 1844-1924</field>
+    <field name="place_sim">Réunion  -- History -- 1764-1946</field>
+    <field name="place_sim">Réunion  -- Commerce -- France</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="scopecontent_teim">The &#34;Collection of Correspondence from the island of Réunion&#34; contains letters, documents, and news clippings, chiefly from and about residents of the French colony of Île de Bourbon (modern-day Réunion), in the western Indian Ocean, sent to individuals in France in the late 18th and early 19th centuries, plus one letter from Emily Ruete (Princess Salme of Zanzibar), written in 1872 in Germany, with associated materials.</field>
+    <field name="scopecontent_teim">The correspondence, which cover a variety of topics and correspondents, appear to have been collected and maintained by autograph collectors over the years, and as a result have no clear provenance or connection between the documents, other than their relation to events in the western Indian Ocean region in the 18th and 19th centuries.  However, although they are fragmentary, they do reflect various aspects of life in this region and historic events in contemporary French history, from the period of Louis XVI to the French Revolution and Napoleonic era, and its aftermath.</field>
+    <field name="scopecontent_teim">The earliest documents, from 1771-1774, relate to the La Rivière Pennifort family, consisting of burial registers for two sisters, their will bequeathing their estate to their niece, who was married to the leader of the militia in Réunion, and her power-of-attorney delegating someone to manage her property in France.  Alexandre de Chalvet de Souvill, governor of the island, and Jean Charles Potier de Courcy signed a document in Saint-Denis in 1782, concerning the service of a master carpenter working under the orders of the naval commissioner in charge of logging and timber extraction.  A letter from 1788 from Pierre Pigneau de Béhaine, the Bishop of Adran in the Île de France (Mauritius), expresses his wish to accompany a planned expedition to India and Indochina.</field>
+    <field name="scopecontent_teim">The next period of documents reflects the French Revolution and the era of the Napoleonic Wars.  A 1793 printed document announces the renaming of Île de Bourbon, which was meant to repudiate the name that was connected with the former ruling family of France, and was now to be known as Réunion.  While that name was to be changed once again under the rule of Napoleon Bonaparte a decade later, most documents from that latter period reflect the changing geopolitics of the Indian Ocean region around 1810, including a letter from Claude-Georges Barrillon, describing how the inhabitants of Réunion fought prior to that island&#39;s fall to the British in 1810, while another copied letter to the French minister of the navy, Denis Decrès, discusses military personnel based on the island of Java, in the East Indies, as they prepared for a British attack that same year.  </field>
+    <field name="scopecontent_teim">The post-Napoleonic era is represented by a letter from Laurent de Montarby, a colonel in the French army in 1815, referencing his service in Réunion during the fight against the British; while a letter from Athanase de Bouvet de Lozier, the former governor of the colony, to the Duke of Angoulême, discusses a report on events in the island during the years 1815-1817 (although the report itself is not present).  A letter from a merchant, sent to a Madame Delmas in Bourdeaux in 1818, and an accompanying narrative text, describe how a ship from Réunion bound for Muscat in 1818 was attacked by Wahhabi pirates, and how Madame Delmas&#39;s son died from wounds he sustained while defending the ship, and his belongings were being sent back to France.  A further series of letters, from 1838 and 1873, all sent from people in Réunion to business owners in Nantes, France, relate to commerce between the two regions.  </field>
+    <field name="scopecontent_teim">The letter from Emily Ruete is a bit of an outlier in this group, but could have been included in these documents by a collector due to her association with another part of the western Indian Ocean, the island of Zanzibar.  The letter, written in German from Dresden in 1872, dates from the period when the former Princess Salme was widowed and seeking ways to support her children through teaching Arabic.  An accompanying document, from 1875, signed by Hildegard von Spitzenberg, describes two autograph letters, of which this was one, indicating that they were acquired for their autograph value by Spitzenberg.  Included are several clippings from German newspapers of this era, describing events connected with the history of Emily Ruete, including the visit of her brother Sultan Barghash, to Britain. </field>
+    <field name="unitdate_end_si">1875</field>
+    <field name="unitdate_end_sim">1875</field>
+    <field name="unitdate_end_ssm">1875</field>
+    <field name="unitdate_inclusive_teim">1771-1875, and undated</field>
+    <field name="unitdate_normal_sim">1771/1875</field>
+    <field name="unitdate_normal_ssm">1771/1875</field>
+    <field name="unitdate_normal_teim">1771/1875</field>
+    <field name="unitdate_ssm">Inclusive, 1771-1875, and undated</field>
+    <field name="unitdate_start_si">1771</field>
+    <field name="unitdate_start_sim">1771</field>
+    <field name="unitdate_start_ssm">1771</field>
+    <field name="unitid_ssm">AD.MC.165</field>
+    <field name="unitid_teim">AD.MC.165</field>
+    <field name="unittitle_ssm">Correspondence from the island of Réunion (Île de Bourbon), plus one letter from Emily Ruete (Princess Salme of Zanzibar)</field>
+    <field name="unittitle_teim">Correspondence from the island of Réunion (Île de Bourbon), plus one letter from Emily Ruete (Princess Salme of Zanzibar)</field>
+  </doc>
+</add>

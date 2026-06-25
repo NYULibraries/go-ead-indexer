@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">John M. Sapp, Brent Phillips, Cristina Vignone</field>
+    <field name="collection_sim">Queer|Art|Film Collection</field>
+    <field name="collection_ssm">Queer|Art|Film Collection</field>
+    <field name="collection_teim">Queer|Art|Film Collection</field>
+    <field name="collection_unitid_ssm">MSS.327</field>
+    <field name="collection_unitid_teim">MSS.327</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">2001-2100</field>
+    <field name="ead_ssi">mss_327</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Rose Troche presents &#34;Postcards from America,&#34; - Introduction and Q&amp;A</field>
+    <field name="id">mss_327aspace_ref124</field>
+    <field name="level_sim">item</field>
+    <field name="location_si">Box: 2, Media: ID: 327.0045</field>
+    <field name="location_ssm">Box: 2, Media: ID: 327.0045</field>
+    <field name="parent_ssi">aspace_ref6</field>
+    <field name="parent_ssm">aspace_ref4</field>
+    <field name="parent_ssm">aspace_ref6</field>
+    <field name="parent_unittitles_ssm">Series II: Video recordings</field>
+    <field name="parent_unittitles_ssm">Subseries A: Video recordings</field>
+    <field name="parent_unittitles_teim">Series II: Video recordings</field>
+    <field name="parent_unittitles_teim">Subseries A: Video recordings</field>
+    <field name="phystech_teim">Original format: DVD-R</field>
+    <field name="phystech_teim">Duration: unknown</field>
+    <field name="ref_ssi">aspace_ref124</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="scopecontent_teim">Featured: Ira Sachs, Adam Baran, Rose Troche (Presenter)</field>
+    <field name="scopecontent_teim">Videographer: Xavier Marrades</field>
+    <field name="scopecontent_teim">Program Content: Presented by filmmaker Rose Troche, who worked on &#34;Postcards from America&#34; while finishing her own queer groundbreaker, &#34;go fish.&#34; According to Troche, &#34;Postcards from America&#34; &#34;epitomized a moment when we began to believe in our voice...and represents the beginning of a community and collectivity that still exists.&#39;&#34; The film is a passionate, sad kaleidoscopic ride through New York gay life, the film highlights the intensely personal nature of Wojnarowicz&#39;s work, from his Jersey roots, to his years hustling on and off the West Village piers.</field>
+    <field name="series_si">Series II: Video recordings &gt;&gt; Subseries A: Video recordings &gt;&gt; Rose Troche presents &#34;Postcards from America,&#34; - Introduction and Q&amp;A</field>
+    <field name="series_sim">Series II: Video recordings</field>
+    <field name="series_sim">Subseries A: Video recordings</field>
+    <field name="sort_ii">28</field>
+    <field name="unitdate_end_si">2012</field>
+    <field name="unitdate_end_sim">2012</field>
+    <field name="unitdate_end_ssm">2012</field>
+    <field name="unitdate_inclusive_teim">March 19, 2012</field>
+    <field name="unitdate_normal_sim">2012/2012</field>
+    <field name="unitdate_normal_ssm">2012/2012</field>
+    <field name="unitdate_normal_teim">2012/2012</field>
+    <field name="unitdate_ssm">Inclusive, March 19, 2012</field>
+    <field name="unitdate_start_si">2012</field>
+    <field name="unitdate_start_sim">2012</field>
+    <field name="unitdate_start_ssm">2012</field>
+    <field name="unitid_ssm">ID: 327.0045</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/559147</field>
+    <field name="unitid_teim">ID: 327.0045</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/559147</field>
+    <field name="unittitle_ssm">Rose Troche presents &#34;Postcards from America,&#34; - Introduction and Q&amp;A</field>
+    <field name="unittitle_teim">Rose Troche presents &#34;Postcards from America,&#34; - Introduction and Q&amp;A</field>
+  </doc>
+</add>

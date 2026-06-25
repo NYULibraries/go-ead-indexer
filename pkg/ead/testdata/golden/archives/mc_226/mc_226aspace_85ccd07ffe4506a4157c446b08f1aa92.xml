@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Stacey Flatt</field>
+    <field name="collection_sim">New York University Archives Collection on Faculty and Alumni Memory Projects</field>
+    <field name="collection_ssm">New York University Archives Collection on Faculty and Alumni Memory Projects</field>
+    <field name="collection_teim">New York University Archives Collection on Faculty and Alumni Memory Projects</field>
+    <field name="collection_unitid_ssm">MC.226</field>
+    <field name="collection_unitid_teim">MC.226</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">mc_226</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Correspondence</field>
+    <field name="id">mc_226aspace_85ccd07ffe4506a4157c446b08f1aa92</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 5, Folder: 26</field>
+    <field name="location_ssm">Box: 5, Folder: 26</field>
+    <field name="parent_ssi">aspace_d561032a2cb8e18224d3af4e91a2c585</field>
+    <field name="parent_ssm">aspace_398365580fe79ff050de9b6f152fa577</field>
+    <field name="parent_ssm">aspace_d561032a2cb8e18224d3af4e91a2c585</field>
+    <field name="parent_unittitles_ssm">Series III. Brian Huggins Undergraduate Student Life in Washington Square Project</field>
+    <field name="parent_unittitles_ssm">O&amp;#39;Gara, James V.</field>
+    <field name="parent_unittitles_teim">Series III. Brian Huggins Undergraduate Student Life in Washington Square Project</field>
+    <field name="parent_unittitles_teim">O&amp;#39;Gara, James V.</field>
+    <field name="ref_ssi">aspace_85ccd07ffe4506a4157c446b08f1aa92</field>
+    <field name="repository_sim">archives</field>
+    <field name="repository_ssi">archives</field>
+    <field name="repository_ssm">archives</field>
+    <field name="series_si">Series III. Brian Huggins Undergraduate Student Life in Washington Square Project &gt;&gt; O&#39;Gara, James V. &gt;&gt; Correspondence</field>
+    <field name="series_sim">Series III. Brian Huggins Undergraduate Student Life in Washington Square Project</field>
+    <field name="series_sim">O&amp;#39;Gara, James V.</field>
+    <field name="sort_ii">241</field>
+    <field name="unitid_ssm">/repositories/6/archival_objects/1011815</field>
+    <field name="unitid_teim">/repositories/6/archival_objects/1011815</field>
+    <field name="unittitle_ssm">Correspondence</field>
+    <field name="unittitle_teim">Correspondence</field>
+  </doc>
+</add>

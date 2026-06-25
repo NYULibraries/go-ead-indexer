@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Alison Dundy</field>
+    <field name="collection_sim">New York Caledonian Club records</field>
+    <field name="collection_ssm">New York Caledonian Club records</field>
+    <field name="collection_teim">New York Caledonian Club records</field>
+    <field name="collection_unitid_ssm">MS 2923</field>
+    <field name="collection_unitid_teim">MS 2923</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms2923_caledonian_club</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Portraits
+</field>
+    <field name="id">ms2923_caledonian_clubaspace_ref31_t2f</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: OS Medium, Folder: New York Caledonian Club Records</field>
+    <field name="location_ssm">Box: OS Medium, Folder: New York Caledonian Club Records</field>
+    <field name="parent_ssi">aspace_ref20_yrz</field>
+    <field name="parent_ssm">aspace_ref20_yrz</field>
+    <field name="parent_unittitles_ssm">Series II: Photographs</field>
+    <field name="parent_unittitles_teim">Series II: Photographs</field>
+    <field name="ref_ssi">aspace_ref31_t2f</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="scopecontent_teim">There are seven oversize studio photographs (1866 - 1904) of New York Caledonian Club officers in individual and small group portraits. These include: William Clelland (1866); Alex Fraser (1857); Thomas Fyffe (1870); William G. Reid (1904); William Inglis, Thomas Barclay, and William Cunningham (undated); John Taylor, James West, John Young, William Manson, and Geo. Mitchell, Jr. (1880)
+C. Sanderson, D. Miller, W. Thomson, R. Cockburn, and K. Mackenzie (undated); and five unnamed officers (undated).</field>
+    <field name="series_si">Series II: Photographs &gt;&gt; Portraits
+</field>
+    <field name="series_sim">Series II: Photographs</field>
+    <field name="sort_ii">34</field>
+    <field name="unitdate_ssm">1866 - 1904</field>
+    <field name="unitdate_teim">1866 - 1904</field>
+    <field name="unittitle_ssm">Portraits
+</field>
+    <field name="unittitle_teim">Portraits
+</field>
+  </doc>
+</add>

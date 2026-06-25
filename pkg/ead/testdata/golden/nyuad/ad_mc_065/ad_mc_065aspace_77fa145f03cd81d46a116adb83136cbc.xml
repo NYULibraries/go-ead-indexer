@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">Aḥmad Zakī Abū Shādī Family Papers</field>
+    <field name="collection_ssm">Aḥmad Zakī Abū Shādī Family Papers</field>
+    <field name="collection_teim">Aḥmad Zakī Abū Shādī Family Papers</field>
+    <field name="collection_unitid_ssm">AD.MC.065</field>
+    <field name="collection_unitid_teim">AD.MC.065</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">ad_mc_065</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Manuscript text:  &#34;Chat with a Sacred Bee,&#34; (English)</field>
+    <field name="id">ad_mc_065aspace_77fa145f03cd81d46a116adb83136cbc</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 9, folder: 2</field>
+    <field name="location_ssm">box: 9, folder: 2</field>
+    <field name="parent_ssi">aspace_431485249f4419b0b4290eec462ee5e6</field>
+    <field name="parent_ssm">aspace_b93fd7ef75019e19e0e3a355488a0012</field>
+    <field name="parent_ssm">aspace_431485249f4419b0b4290eec462ee5e6</field>
+    <field name="parent_unittitles_ssm">Writings</field>
+    <field name="parent_unittitles_ssm">Abu Shadi, Ahmed Zaki</field>
+    <field name="parent_unittitles_teim">Writings</field>
+    <field name="parent_unittitles_teim">Abu Shadi, Ahmed Zaki</field>
+    <field name="ref_ssi">aspace_77fa145f03cd81d46a116adb83136cbc</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Writings &gt;&gt; Abu Shadi, Ahmed Zaki &gt;&gt; Manuscript text:  &#34;Chat with a Sacred Bee,&#34; (English)</field>
+    <field name="series_sim">Writings</field>
+    <field name="series_sim">Abu Shadi, Ahmed Zaki</field>
+    <field name="sort_ii">157</field>
+    <field name="unitdate_end_si">1946</field>
+    <field name="unitdate_end_sim">1946</field>
+    <field name="unitdate_end_ssm">1946</field>
+    <field name="unitdate_normal_sim">1946/1946</field>
+    <field name="unitdate_normal_ssm">1946/1946</field>
+    <field name="unitdate_normal_teim">1946/1946</field>
+    <field name="unitdate_ssm">undated, circa 1946</field>
+    <field name="unitdate_start_si">1946</field>
+    <field name="unitdate_start_sim">1946</field>
+    <field name="unitdate_start_ssm">1946</field>
+    <field name="unitdate_teim">undated, circa 1946</field>
+    <field name="unittitle_ssm">Manuscript text:  &#34;Chat with a Sacred Bee,&#34; (English)</field>
+    <field name="unittitle_teim">Manuscript text:  &#34;Chat with a Sacred Bee,&#34; (English)</field>
+  </doc>
+</add>

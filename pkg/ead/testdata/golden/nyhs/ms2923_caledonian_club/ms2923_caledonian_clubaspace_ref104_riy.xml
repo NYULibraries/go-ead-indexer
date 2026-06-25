@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Alison Dundy</field>
+    <field name="collection_sim">New York Caledonian Club records</field>
+    <field name="collection_ssm">New York Caledonian Club records</field>
+    <field name="collection_teim">New York Caledonian Club records</field>
+    <field name="collection_unitid_ssm">MS 2923</field>
+    <field name="collection_unitid_teim">MS 2923</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms2923_caledonian_club</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">McIan, R.R. (1848). Gaellic Gatherings; or, The Highlanders at Home, on the Heath, the River, and the Loch--A Series of Highly Interesting Plates Representing Picturesque Groups Engaged in their Social Employments, their Sports, and Pastimes.</field>
+    <field name="id">ms2923_caledonian_clubaspace_ref104_riy</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Offsite-Box: CA-7, Volume: 37</field>
+    <field name="location_ssm">Offsite-Box: CA-7, Volume: 37</field>
+    <field name="parent_ssi">aspace_ref28_wjd</field>
+    <field name="parent_ssm">aspace_ref28_wjd</field>
+    <field name="parent_unittitles_ssm">Series X: Monographs</field>
+    <field name="parent_unittitles_teim">Series X: Monographs</field>
+    <field name="ref_ssi">aspace_ref104_riy</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="series_si">Series X: Monographs &gt;&gt; McIan, R.R. (1848). &lt;em&gt;Gaellic Gatherings; or, The Highlanders at Home, on the Heath, the River, and the Loch--A Series of Highly Interesting Plates Representing Picturesque Groups Engaged in their Social Employments, their Sports, and Pastimes.&lt;/em&gt;</field>
+    <field name="series_sim">Series X: Monographs</field>
+    <field name="sort_ii">70</field>
+    <field name="unitdate_ssm">1848</field>
+    <field name="unitdate_teim">1848</field>
+    <field name="unittitle_ssm">McIan, R.R. (1848). &lt;em&gt;Gaellic Gatherings; or, The Highlanders at Home, on the Heath, the River, and the Loch--A Series of Highly Interesting Plates Representing Picturesque Groups Engaged in their Social Employments, their Sports, and Pastimes.&lt;/em&gt;</field>
+    <field name="unittitle_teim">McIan, R.R. (1848). Gaellic Gatherings; or, The Highlanders at Home, on the Heath, the River, and the Loch--A Series of Highly Interesting Plates Representing Picturesque Groups Engaged in their Social Employments, their Sports, and Pastimes.</field>
+  </doc>
+</add>

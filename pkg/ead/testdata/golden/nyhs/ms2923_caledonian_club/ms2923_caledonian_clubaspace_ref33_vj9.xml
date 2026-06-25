@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Alison Dundy</field>
+    <field name="collection_sim">New York Caledonian Club records</field>
+    <field name="collection_ssm">New York Caledonian Club records</field>
+    <field name="collection_teim">New York Caledonian Club records</field>
+    <field name="collection_unitid_ssm">MS 2923</field>
+    <field name="collection_unitid_teim">MS 2923</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms2923_caledonian_club</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Scotch Games and Parades</field>
+    <field name="id">ms2923_caledonian_clubaspace_ref33_vj9</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: OS Medium, Folder: New York Caledonian Club Records</field>
+    <field name="location_ssm">Box: OS Medium, Folder: New York Caledonian Club Records</field>
+    <field name="parent_ssi">aspace_ref20_yrz</field>
+    <field name="parent_ssm">aspace_ref20_yrz</field>
+    <field name="parent_unittitles_ssm">Series II: Photographs</field>
+    <field name="parent_unittitles_teim">Series II: Photographs</field>
+    <field name="ref_ssi">aspace_ref33_vj9</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="scopecontent_teim">Four oversize photographs show large assemblies of club members at the annual Scotch Games, held at Jones Wood in New York City.</field>
+    <field name="series_si">Series II: Photographs &gt;&gt; Scotch Games and Parades</field>
+    <field name="series_sim">Series II: Photographs</field>
+    <field name="sort_ii">36</field>
+    <field name="unitdate_ssm">1859 - 1915</field>
+    <field name="unitdate_teim">1859 - 1915</field>
+    <field name="unittitle_ssm">Scotch Games and Parades</field>
+    <field name="unittitle_teim">Scotch Games and Parades</field>
+  </doc>
+</add>

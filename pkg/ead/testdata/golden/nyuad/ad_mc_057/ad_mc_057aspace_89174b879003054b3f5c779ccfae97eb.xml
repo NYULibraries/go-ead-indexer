@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">Emirates Bird Records Committee records</field>
+    <field name="collection_ssm">Emirates Bird Records Committee records</field>
+    <field name="collection_teim">Emirates Bird Records Committee records</field>
+    <field name="collection_unitid_ssm">AD.MC.057</field>
+    <field name="collection_unitid_teim">AD.MC.057</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_057</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Oversize [to be processed]</field>
+    <field name="id">ad_mc_057aspace_89174b879003054b3f5c779ccfae97eb</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_89174b879003054b3f5c779ccfae97eb</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Oversize [to be processed]</field>
+    <field name="sort_ii">354</field>
+    <field name="unittitle_ssm">Oversize [to be processed]</field>
+    <field name="unittitle_teim">Oversize [to be processed]</field>
+  </doc>
+</add>

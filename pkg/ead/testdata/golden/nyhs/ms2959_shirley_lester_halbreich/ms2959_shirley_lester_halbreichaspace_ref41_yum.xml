@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Megan Dolan</field>
+    <field name="collection_sim">Halbreich Papers</field>
+    <field name="collection_ssm">Halbreich Papers</field>
+    <field name="collection_teim">Halbreich Papers</field>
+    <field name="collection_unitid_ssm">MS 2959</field>
+    <field name="collection_unitid_teim">MS 2959</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms2959_shirley_lester_halbreich</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Letters, August 1942</field>
+    <field name="id">ms2959_shirley_lester_halbreichaspace_ref41_yum</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 3, Folder: 11</field>
+    <field name="location_ssm">Box: 3, Folder: 11</field>
+    <field name="parent_ssi">aspace_ref72_o4g</field>
+    <field name="parent_ssm">aspace_ref72_o4g</field>
+    <field name="parent_unittitles_ssm">Series II: Letters from Shirley to Lester</field>
+    <field name="parent_unittitles_teim">Series II: Letters from Shirley to Lester</field>
+    <field name="ref_ssi">aspace_ref41_yum</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="series_si">Series II: Letters from Shirley to Lester &gt;&gt; Letters, August 1942</field>
+    <field name="series_sim">Series II: Letters from Shirley to Lester</field>
+    <field name="sort_ii">41</field>
+    <field name="unitdate_ssm">1942 August 28</field>
+    <field name="unitdate_teim">1942 August 28</field>
+    <field name="unittitle_ssm">Letters, August 1942</field>
+    <field name="unittitle_teim">Letters, August 1942</field>
+  </doc>
+</add>

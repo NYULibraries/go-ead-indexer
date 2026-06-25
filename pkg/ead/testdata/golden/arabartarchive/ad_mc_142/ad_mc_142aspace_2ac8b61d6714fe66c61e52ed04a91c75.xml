@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Mehri Khalil, Ibrahim Mohamed Ali, Maysa Shaer, and Nada Shabout for al Mawrid Arab Center for the Study of Art at NYU Abu Dhabi.</field>
+    <field name="collection_sim">Menhat Helmy Collection</field>
+    <field name="collection_ssm">Menhat Helmy Collection</field>
+    <field name="collection_teim">Menhat Helmy Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.142</field>
+    <field name="collection_unitid_teim">AD.MC.142</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_142</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">VII.D. Microfilm</field>
+    <field name="id">ad_mc_142aspace_2ac8b61d6714fe66c61e52ed04a91c75</field>
+    <field name="level_sim">subseries</field>
+    <field name="parent_ssi">aspace_265be81b97cbba253aa07cd093440bfa</field>
+    <field name="parent_ssm">aspace_265be81b97cbba253aa07cd093440bfa</field>
+    <field name="parent_unittitles_ssm">VII. Photographic Materials</field>
+    <field name="parent_unittitles_teim">VII. Photographic Materials</field>
+    <field name="ref_ssi">aspace_2ac8b61d6714fe66c61e52ed04a91c75</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="series_si">VII. Photographic Materials &gt;&gt; VII.D. Microfilm</field>
+    <field name="series_sim">VII. Photographic Materials</field>
+    <field name="sort_ii">119</field>
+    <field name="unitid_ssm">cuid1257</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/34420</field>
+    <field name="unitid_teim">cuid1257</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/34420</field>
+    <field name="unittitle_ssm">VII.D. Microfilm</field>
+    <field name="unittitle_teim">VII.D. Microfilm</field>
+  </doc>
+</add>

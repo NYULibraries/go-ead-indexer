@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Samuel Ball</field>
+    <field name="collection_sim">Abu Dhabi Film Festival Collection</field>
+    <field name="collection_ssm">Abu Dhabi Film Festival Collection</field>
+    <field name="collection_teim">Abu Dhabi Film Festival Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.006</field>
+    <field name="collection_unitid_teim">AD.MC.006</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_006</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">New Cinema from Turkey</field>
+    <field name="id">ad_mc_006aspace_ref40_rqt</field>
+    <field name="level_sim">subseries</field>
+    <field name="parent_ssi">aspace_ref7_52v</field>
+    <field name="parent_ssm">aspace_ref7_52v</field>
+    <field name="parent_unittitles_ssm">2009 Abu Dhabi Film Festival</field>
+    <field name="parent_unittitles_teim">2009 Abu Dhabi Film Festival</field>
+    <field name="ref_ssi">aspace_ref40_rqt</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">2009 Abu Dhabi Film Festival &gt;&gt; New Cinema from Turkey</field>
+    <field name="series_sim">2009 Abu Dhabi Film Festival</field>
+    <field name="sort_ii">8</field>
+    <field name="unittitle_ssm">New Cinema from Turkey</field>
+    <field name="unittitle_teim">New Cinema from Turkey</field>
+  </doc>
+</add>

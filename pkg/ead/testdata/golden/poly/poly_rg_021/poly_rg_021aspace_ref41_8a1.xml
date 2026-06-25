@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Lindsay Anderberg</field>
+    <field name="collection_sim">Polytechnic History and Milestones Collection</field>
+    <field name="collection_ssm">Polytechnic History and Milestones Collection</field>
+    <field name="collection_teim">Polytechnic History and Milestones Collection</field>
+    <field name="collection_unitid_ssm">RG.021</field>
+    <field name="collection_unitid_teim">RG.021</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">poly_rg_021</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series VI: Students</field>
+    <field name="id">poly_rg_021aspace_ref41_8a1</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_ref41_8a1</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="series_si">Series VI: Students</field>
+    <field name="sort_ii">86</field>
+    <field name="unittitle_ssm">Series VI: Students</field>
+    <field name="unittitle_teim">Series VI: Students</field>
+  </doc>
+</add>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Conor Snow and Anna Björnsson McCormick</field>
+    <field name="collection_sim">Ellen Aug Lytle Papers</field>
+    <field name="collection_ssm">Ellen Aug Lytle Papers</field>
+    <field name="collection_teim">Ellen Aug Lytle Papers</field>
+    <field name="collection_unitid_ssm">MSS.424</field>
+    <field name="collection_unitid_teim">MSS.424</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">mss_424</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Book launch party for VTC Players</field>
+    <field name="id">mss_424aspace_0782f1b3ffcdb925686bee1d00fcca75</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 9, Folder: 6</field>
+    <field name="location_ssm">Box: 9, Folder: 6</field>
+    <field name="ref_ssi">aspace_0782f1b3ffcdb925686bee1d00fcca75</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="series_si">Book launch party for &lt;em&gt;VTC Players&lt;/em&gt;</field>
+    <field name="sort_ii">9</field>
+    <field name="unitdate_normal_sim">1993-03-04/1993-03-04</field>
+    <field name="unitdate_normal_ssm">1993-03-04/1993-03-04</field>
+    <field name="unitdate_normal_teim">1993-03-04/1993-03-04</field>
+    <field name="unitdate_ssm">March 4th, 1993</field>
+    <field name="unitdate_teim">March 4th, 1993</field>
+    <field name="unittitle_ssm">Book launch party for &lt;em&gt;VTC Players&lt;/em&gt;</field>
+    <field name="unittitle_teim">Book launch party for VTC Players</field>
+  </doc>
+</add>

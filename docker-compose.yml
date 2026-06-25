@@ -36,3 +36,11 @@ services:
     volumes:
       - ./pkg/index/testutils/:/app/pkg/index/testutils/
       - ./pkg/index/testdata/fixtures/:/app/pkg/index/testdata/fixtures/
+
+  vet:
+    image: eadindexer_test
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    command: go vet
+

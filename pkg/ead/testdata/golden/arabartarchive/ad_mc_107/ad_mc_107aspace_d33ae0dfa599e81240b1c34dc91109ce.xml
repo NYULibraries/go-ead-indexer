@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Mehri Khalil, Ibrahim Mohamed Ali, Anneka Lenssen, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art, NYUAD.</field>
+    <field name="collection_sim">Salah Taher Collection</field>
+    <field name="collection_ssm">Salah Taher Collection</field>
+    <field name="collection_teim">Salah Taher Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.107</field>
+    <field name="collection_unitid_teim">AD.MC.107</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="dao_sim">Online Access</field>
+    <field name="dao_ssm">3. Press Clippings from the 1980s</field>
+    <field name="dao_teim">3. Press Clippings from the 1980s</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_107</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">3. Press Clippings from the 1980s</field>
+    <field name="id">ad_mc_107aspace_d33ae0dfa599e81240b1c34dc91109ce</field>
+    <field name="level_sim">subgrp</field>
+    <field name="parent_ssi">aspace_8812093f046e9b55bc6f7ab9fe350d7a</field>
+    <field name="parent_ssm">aspace_e804f057a438119946a1f2aaa6d3e3e2</field>
+    <field name="parent_ssm">aspace_8812093f046e9b55bc6f7ab9fe350d7a</field>
+    <field name="parent_unittitles_ssm">V. Press Clippings</field>
+    <field name="parent_unittitles_ssm">V. A. Press Clippings of Articles Written by Salah Taher</field>
+    <field name="parent_unittitles_teim">V. Press Clippings</field>
+    <field name="parent_unittitles_teim">V. A. Press Clippings of Articles Written by Salah Taher</field>
+    <field name="ref_ssi">aspace_d33ae0dfa599e81240b1c34dc91109ce</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="series_si">V. Press Clippings &gt;&gt; V. A. Press Clippings of Articles Written by Salah Taher &gt;&gt; 3. Press Clippings from the 1980s</field>
+    <field name="series_sim">V. Press Clippings</field>
+    <field name="series_sim">V. A. Press Clippings of Articles Written by Salah Taher</field>
+    <field name="sort_ii">62</field>
+    <field name="unitid_ssm">cuid958</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/33247</field>
+    <field name="unitid_teim">cuid958</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/33247</field>
+    <field name="unittitle_ssm">3. Press Clippings from the 1980s</field>
+    <field name="unittitle_teim">3. Press Clippings from the 1980s</field>
+  </doc>
+</add>

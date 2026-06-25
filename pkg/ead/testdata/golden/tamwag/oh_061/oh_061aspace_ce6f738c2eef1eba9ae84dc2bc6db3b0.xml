@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Jenny Ambrose</field>
+    <field name="collection_sim">Professional Staff Congress/City University of New York Oral History Collection</field>
+    <field name="collection_ssm">Professional Staff Congress/City University of New York Oral History Collection</field>
+    <field name="collection_teim">Professional Staff Congress/City University of New York Oral History Collection</field>
+    <field name="collection_unitid_ssm">OH.061</field>
+    <field name="collection_unitid_teim">OH.061</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="dao_sim">Online Access</field>
+    <field name="dao_ssm">John Hyland</field>
+    <field name="dao_teim">John Hyland</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">oh_061</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">John Hyland</field>
+    <field name="id">oh_061aspace_ce6f738c2eef1eba9ae84dc2bc6db3b0</field>
+    <field name="language_sim">English</field>
+    <field name="language_ssm">English</field>
+    <field name="level_sim">file</field>
+    <field name="ref_ssi">aspace_ce6f738c2eef1eba9ae84dc2bc6db3b0</field>
+    <field name="repository_sim">tamwag</field>
+    <field name="repository_ssi">tamwag</field>
+    <field name="repository_ssm">tamwag</field>
+    <field name="series_si">John Hyland</field>
+    <field name="sort_ii">12</field>
+    <field name="unitdate_normal_sim">2014-07-23/2014-07-23</field>
+    <field name="unitdate_normal_ssm">2014-07-23/2014-07-23</field>
+    <field name="unitdate_normal_teim">2014-07-23/2014-07-23</field>
+    <field name="unitdate_ssm">2014-07-23</field>
+    <field name="unitdate_teim">2014-07-23</field>
+    <field name="unitid_ssm">TW_OH_61_ER_3</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/860960</field>
+    <field name="unitid_teim">TW_OH_61_ER_3</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/860960</field>
+    <field name="unittitle_ssm">John Hyland</field>
+    <field name="unittitle_teim">John Hyland</field>
+  </doc>
+</add>

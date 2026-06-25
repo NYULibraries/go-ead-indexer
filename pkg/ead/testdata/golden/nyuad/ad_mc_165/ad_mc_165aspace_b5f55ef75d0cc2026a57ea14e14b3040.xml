@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">Correspondence from the island of Réunion (Île de Bourbon), plus one letter from Emily Ruete (Princess Salme of Zanzibar)</field>
+    <field name="collection_ssm">Correspondence from the island of Réunion (Île de Bourbon), plus one letter from Emily Ruete (Princess Salme of Zanzibar)</field>
+    <field name="collection_teim">Correspondence from the island of Réunion (Île de Bourbon), plus one letter from Emily Ruete (Princess Salme of Zanzibar)</field>
+    <field name="collection_unitid_ssm">AD.MC.165</field>
+    <field name="collection_unitid_teim">AD.MC.165</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_165</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Barrillon, Claude-Georges, La Rochelle :  letter written to cousin in Nyons, prior to departure for Île de France (Mauritius), describing current situation in Île de Bourbon (Réunion), under British attack (1 leaf, ALS)</field>
+    <field name="id">ad_mc_165aspace_b5f55ef75d0cc2026a57ea14e14b3040</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 1, folder: 5</field>
+    <field name="location_ssm">box: 1, folder: 5</field>
+    <field name="ref_ssi">aspace_b5f55ef75d0cc2026a57ea14e14b3040</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Barrillon, Claude-Georges, La Rochelle :  letter written to cousin in Nyons, prior to departure for Île de France (Mauritius), describing current situation in Île de Bourbon (Réunion), under British attack (1 leaf, ALS)</field>
+    <field name="sort_ii">5</field>
+    <field name="unitdate_normal_sim">1810-09-24/1810-09-24</field>
+    <field name="unitdate_normal_ssm">1810-09-24/1810-09-24</field>
+    <field name="unitdate_normal_teim">1810-09-24/1810-09-24</field>
+    <field name="unitdate_ssm">24 September 1810</field>
+    <field name="unitdate_teim">24 September 1810</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/41255</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/41255</field>
+    <field name="unittitle_ssm">Barrillon, Claude-Georges, La Rochelle :  letter written to cousin in Nyons, prior to departure for Île de France (Mauritius), describing current situation in Île de Bourbon (Réunion), under British attack (1 leaf, ALS)</field>
+    <field name="unittitle_teim">Barrillon, Claude-Georges, La Rochelle :  letter written to cousin in Nyons, prior to departure for Île de France (Mauritius), describing current situation in Île de Bourbon (Réunion), under British attack (1 leaf, ALS)</field>
+  </doc>
+</add>

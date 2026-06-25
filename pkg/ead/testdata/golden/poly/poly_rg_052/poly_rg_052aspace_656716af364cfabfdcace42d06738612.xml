@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Aileen Thong and Megan Bardis</field>
+    <field name="collection_sim">Technology, Culture and Society Papers</field>
+    <field name="collection_ssm">Technology, Culture and Society Papers</field>
+    <field name="collection_teim">Technology, Culture and Society Papers</field>
+    <field name="collection_unitid_ssm">RG.052</field>
+    <field name="collection_unitid_teim">RG.052</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="date_range_sim">2001-2100</field>
+    <field name="ead_ssi">poly_rg_052</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Polytechnic Tuition Rates</field>
+    <field name="id">poly_rg_052aspace_656716af364cfabfdcace42d06738612</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 4, folder: 4</field>
+    <field name="location_ssm">box: 4, folder: 4</field>
+    <field name="parent_ssi">aspace_0ecdcf26f9aa3061f0ff199d26404f84</field>
+    <field name="parent_ssm">aspace_b11f124afcf66ae936ca30a23ff9e5f8</field>
+    <field name="parent_ssm">aspace_0ecdcf26f9aa3061f0ff199d26404f84</field>
+    <field name="parent_unittitles_ssm">Series III: Brooklyn Poly</field>
+    <field name="parent_unittitles_ssm">Sub-series A: Administrative</field>
+    <field name="parent_unittitles_teim">Series III: Brooklyn Poly</field>
+    <field name="parent_unittitles_teim">Sub-series A: Administrative</field>
+    <field name="ref_ssi">aspace_656716af364cfabfdcace42d06738612</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="series_si">Series III: Brooklyn Poly &gt;&gt; Sub-series A: Administrative &gt;&gt; Polytechnic Tuition Rates</field>
+    <field name="series_sim">Series III: Brooklyn Poly</field>
+    <field name="series_sim">Sub-series A: Administrative</field>
+    <field name="sort_ii">101</field>
+    <field name="unitdate_end_si">2004</field>
+    <field name="unitdate_end_sim">2004</field>
+    <field name="unitdate_end_ssm">2004</field>
+    <field name="unitdate_inclusive_teim">1986-2004</field>
+    <field name="unitdate_normal_sim">1986/2004</field>
+    <field name="unitdate_normal_ssm">1986/2004</field>
+    <field name="unitdate_normal_teim">1986/2004</field>
+    <field name="unitdate_ssm">Inclusive, 1986-2004</field>
+    <field name="unitdate_start_si">1986</field>
+    <field name="unitdate_start_sim">1986</field>
+    <field name="unitdate_start_ssm">1986</field>
+    <field name="unittitle_ssm">Polytechnic Tuition Rates</field>
+    <field name="unittitle_teim">Polytechnic Tuition Rates</field>
+  </doc>
+</add>

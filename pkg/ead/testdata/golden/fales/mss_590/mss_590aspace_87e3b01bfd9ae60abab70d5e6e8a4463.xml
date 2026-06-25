@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Stacey Flatt and Rachel Searcy</field>
+    <field name="collection_sim">Lydia Lunch Papers</field>
+    <field name="collection_ssm">Lydia Lunch Papers</field>
+    <field name="collection_teim">Lydia Lunch Papers</field>
+    <field name="collection_unitid_ssm">MSS.590</field>
+    <field name="collection_unitid_teim">MSS.590</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="date_range_sim">2001-2100</field>
+    <field name="ead_ssi">mss_590</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series I. Photographs and Work Files</field>
+    <field name="id">mss_590aspace_87e3b01bfd9ae60abab70d5e6e8a4463</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_87e3b01bfd9ae60abab70d5e6e8a4463</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="scopecontent_teim">This series contains photographs of and by Lydia Lunch, press clippings, promotional material, writing files and books, spoken word scripts, and reference copies of her albums and movies. This series also contains a small amount of material on her friend Emilio Cubeiro, material from her company Widowspeak, tour contracts and royalty statements, and family ephemera. 
+
+ 
+
+
+Early Lunch family photographs date from the 1940s to 1960s and also include childhood ephemera. This series also contains files accumulated by Lunch after the death of friend, acting co-star, spoken word performer, and collaborator Emilio Cubeiro. These files include promotion fliers, photographs, and clippings related to Cubeiro&#39;s band Hot Lunch and his spoken word performances at CBGBs, the Knitting Club and other venues around New York in the 1970s and 1980s.
+
+ 
+
+
+A significant portion of this series is photographs of Lunch by various artists active during the 1970s to 2010s including Christina Birrer, David Arnoff, Beth B, Sheyla Baykal, Bart Frescura, Michael Levine, J K Potter, Annie Sprinkle, and Marc Viaplana. Most of the photographs are portraits of Lunch for publicity and album covers. Some images also include Lunch with her bands, Teenage Jesus and the Jerks and 8 Eyed Spy, as well as fellow artists and collaborators Henry Rollins, Exene Cervenka, Weasel Walter, Nick Cave, Rowland S. Howard, and JG Thirlwell. Lunch acted in a number of Richard Kern movies in the 1980s and photographs from the sets and film stills are in this series.
+Photographs created by Lunch dating from the 1990s to the 2000s make up the majority of files in this series. Her subject matter includes cemeteries, buildings, children, and images of friends and fellow artists including Emilio Cubeiro, Gene Gregorits, Debi Mazar, Ed and Kathy Joe Kramer, Hubert Selby Jr, Mark Hudson, Chris Hanley, Foetus, Jerry Stahl, Laura Gomel, and Terry Kopenhager. Her photographs are mostly portraits, addressing themes which include bondage, people holding and using weapons on others, sadomasochism, and self-mutilation. Lunch also photographed people and places during her performance tours in the United States and overseas, including Switzerland, Germany, London, Brussels, Paris, Barcelona, New York, and Prague. Lunch&#39;s documentation of her work as an actress on various film sets includes digital images from The Heart is Deceitful Above All Things in 2003. Both the photographs of Lunch and by Lunch often contain themes related to bondage, sadism, self-harming, sexuality, and rape.
+
+ 
+
+
+This series contains a sampling of Lunch&#39;s commercial video and audio recordings which have been retained for reference and not for viewing. These objects include record albums for Teenage Jesus and Jerks, Richard Kern movies, Lunch&#39;s albums, and other albums in which she collaborated or contributed to. Design proofs for CDs and DVDs from various projects are in this series, some relating to albums produced by her company, Widowspeak. This series also includes Widowspeak promotional brochures and announcements. A small number of performance contracts and royalty statements are also in this series.
+
+ 
+
+
+The press clippings date from the 1970s to 2010s and include Lunch appearance announcements, performance and book reviews, and profiles on Lunch and her work. Posters and promotional fliers and brochures for her spoken word performances, musical performances, movies, book tours, album releases, and other public appearances date from the 1980s to 2019.
+
+ 
+
+
+This series includes notebooks and handwritten notes for Lunch&#39;s lyric and book ideas, scrapbooks, manuscripts, drafts, and an address book with notes. Files also include plays and illustrated books written with Nick Cave and illustrator Mike Matthews; plays with Emilio Cubeiro; and also material related to her works Psychomenstruum, Paradoxia, Johnny Behind the Deuce, and Diaries of the Sexually Insane. This series also contains Lunch&#39;s spoken word performance scripts which included notated lyrics, notes, setlists, and stage directions, dating from the 1990s to 2010s. A small number of individual files throughout this series are on the planning of Lunch&#39;s performance touring in New Zealand, Australia, and Europe, including schedules, correspondence, and notes.</field>
+    <field name="series_si">Series I. Photographs and Work Files</field>
+    <field name="sort_ii">1</field>
+    <field name="unitdate_bulk_teim">1976-2000</field>
+    <field name="unitdate_end_si">2000</field>
+    <field name="unitdate_end_sim">2019</field>
+    <field name="unitdate_end_sim">2000</field>
+    <field name="unitdate_end_ssm">2019</field>
+    <field name="unitdate_end_ssm">2000</field>
+    <field name="unitdate_inclusive_teim">1947-2019</field>
+    <field name="unitdate_normal_sim">1947/2019</field>
+    <field name="unitdate_normal_sim">1976/2000</field>
+    <field name="unitdate_normal_ssm">1947/2019</field>
+    <field name="unitdate_normal_ssm">1976/2000</field>
+    <field name="unitdate_normal_teim">1947/2019</field>
+    <field name="unitdate_normal_teim">1976/2000</field>
+    <field name="unitdate_ssm">Inclusive, 1947-2019 ; 1976-2000</field>
+    <field name="unitdate_start_si">1976</field>
+    <field name="unitdate_start_sim">1947</field>
+    <field name="unitdate_start_sim">1976</field>
+    <field name="unitdate_start_ssm">1947</field>
+    <field name="unitdate_start_ssm">1976</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/927037</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/927037</field>
+    <field name="unittitle_ssm">Series I. Photographs and Work Files</field>
+    <field name="unittitle_teim">Series I. Photographs and Work Files</field>
+  </doc>
+</add>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Rachel Searcy</field>
+    <field name="collection_sim">Stephen Facey Collection on Theatre Genesis</field>
+    <field name="collection_ssm">Stephen Facey Collection on Theatre Genesis</field>
+    <field name="collection_teim">Stephen Facey Collection on Theatre Genesis</field>
+    <field name="collection_unitid_ssm">MSS.595</field>
+    <field name="collection_unitid_teim">MSS.595</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">mss_595</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Wheeling Reds, Written and Directed by Walter Hadler</field>
+    <field name="id">mss_595aspace_13367c4a6fb220ff48d09a7f8a62aeea</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 5, Folder: 7</field>
+    <field name="location_ssm">Box: 5, Folder: 7</field>
+    <field name="ref_ssi">aspace_13367c4a6fb220ff48d09a7f8a62aeea</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="series_si">&lt;em&gt;Wheeling Reds&lt;/em&gt;, Written and Directed by Walter Hadler</field>
+    <field name="sort_ii">56</field>
+    <field name="unitdate_inclusive_teim">1973-05</field>
+    <field name="unitdate_normal_sim">1973-05/1973-05</field>
+    <field name="unitdate_normal_ssm">1973-05/1973-05</field>
+    <field name="unitdate_normal_teim">1973-05/1973-05</field>
+    <field name="unitdate_ssm">Inclusive, 1973-05</field>
+    <field name="unittitle_ssm">&lt;em&gt;Wheeling Reds&lt;/em&gt;, Written and Directed by Walter Hadler</field>
+    <field name="unittitle_teim">Wheeling Reds, Written and Directed by Walter Hadler</field>
+  </doc>
+</add>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Stacey Flatt and Rachel Searcy</field>
+    <field name="collection_sim">Lydia Lunch Papers</field>
+    <field name="collection_ssm">Lydia Lunch Papers</field>
+    <field name="collection_teim">Lydia Lunch Papers</field>
+    <field name="collection_unitid_ssm">MSS.590</field>
+    <field name="collection_unitid_teim">MSS.590</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">mss_590</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Lydia Lunch at Rita Dean Gallery, San Diego</field>
+    <field name="id">mss_590aspace_a6f35867c0011f4f2e5aa6d49383c0c1</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 52, Video: 590.0026</field>
+    <field name="location_ssm">Box: 52, Video: 590.0026</field>
+    <field name="parent_ssi">aspace_8f033851dc2c0e62dbc1193914e0cb40</field>
+    <field name="parent_ssm">aspace_8f033851dc2c0e62dbc1193914e0cb40</field>
+    <field name="parent_unittitles_ssm">Series II. Performance and Studio Recordings</field>
+    <field name="parent_unittitles_teim">Series II. Performance and Studio Recordings</field>
+    <field name="ref_ssi">aspace_a6f35867c0011f4f2e5aa6d49383c0c1</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="series_si">Series II. Performance and Studio Recordings &gt;&gt; Lydia Lunch at Rita Dean Gallery, San Diego</field>
+    <field name="series_sim">Series II. Performance and Studio Recordings</field>
+    <field name="sort_ii">159</field>
+    <field name="unitdate_normal_sim">1995-10-01/1995-10-01</field>
+    <field name="unitdate_normal_ssm">1995-10-01/1995-10-01</field>
+    <field name="unitdate_normal_teim">1995-10-01/1995-10-01</field>
+    <field name="unitdate_ssm">1995-10-01</field>
+    <field name="unitdate_teim">1995-10-01</field>
+    <field name="unitid_ssm">cuid30194</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/927111</field>
+    <field name="unitid_teim">cuid30194</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/927111</field>
+    <field name="unittitle_ssm">Lydia Lunch at Rita Dean Gallery, San Diego</field>
+    <field name="unittitle_teim">Lydia Lunch at Rita Dean Gallery, San Diego</field>
+  </doc>
+</add>

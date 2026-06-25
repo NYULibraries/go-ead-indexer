@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ala Younis, Ibrahim Mohamed Ali, Dina Taha, Anneka Lenssen, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art, NYUAD</field>
+    <field name="collection_sim">Rafa Nasiri and May Muzaffar Collection</field>
+    <field name="collection_ssm">Rafa Nasiri and May Muzaffar Collection</field>
+    <field name="collection_teim">Rafa Nasiri and May Muzaffar Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.092</field>
+    <field name="collection_unitid_teim">AD.MC.092</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_092</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series VII: Designs by or Featuring Rafa Nasiri</field>
+    <field name="id">ad_mc_092aspace_c0c6dfe9ac49c31654cc5cdf8c6e74c2</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_c0c6dfe9ac49c31654cc5cdf8c6e74c2</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="scopecontent_teim">A collection of cards and pamphlets, either designed by Rafa Nasiri or published in a series with connection to him. Some cards were published by Nasiri Graphic Studio (aka Al Muhtaraf Nasiri) in the Al-Mansour neighborhood in Baghdad in the 1980s and 1990s, some reference the artist&#39;s Jordanian address in Amman and Irbid, and some were produced by the Iraqi Cultural Center in London in the 1970s, commissioned by the General Federation of Iraqi Women (c.1979), Iraq Reinsurance Company (n.d.), or the Ministry of Information in Baghdad.</field>
+    <field name="series_si">Series VII: Designs by or Featuring Rafa Nasiri</field>
+    <field name="sort_ii">147</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/32283</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/32283</field>
+    <field name="unittitle_ssm">Series VII: Designs by or Featuring Rafa Nasiri</field>
+    <field name="unittitle_teim">Series VII: Designs by or Featuring Rafa Nasiri</field>
+  </doc>
+</add>

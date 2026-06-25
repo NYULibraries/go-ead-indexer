@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Ted O&#39;Reilly</field>
+    <field name="collection_sim">New-York African Free-School records</field>
+    <field name="collection_ssm">New-York African Free-School records</field>
+    <field name="collection_teim">New-York African Free-School records</field>
+    <field name="collection_unitid_ssm">MS 747</field>
+    <field name="collection_unitid_teim">MS 747</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">1801-1900</field>
+    <field name="ead_ssi">ms747_african_free_school</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Volume 2, Reports of the Visiting Committee</field>
+    <field name="id">ms747_african_free_schoolaspace_ref14_dld</field>
+    <field name="language_sim">English</field>
+    <field name="language_ssm">English</field>
+    <field name="level_sim">item</field>
+    <field name="location_si">reel: 1</field>
+    <field name="location_ssm">reel: 1</field>
+    <field name="parent_ssi">aspace_64172da6e75bba404b32f64ceef62549</field>
+    <field name="parent_ssm">aspace_64172da6e75bba404b32f64ceef62549</field>
+    <field name="parent_unittitles_ssm">Volumes</field>
+    <field name="parent_unittitles_teim">Volumes</field>
+    <field name="ref_ssi">aspace_ref14_dld</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="series_si">Volumes &gt;&gt; Volume 2, Reports of the Visiting Committee</field>
+    <field name="series_sim">Volumes</field>
+    <field name="sort_ii">3</field>
+    <field name="unitdate_end_si">1831</field>
+    <field name="unitdate_end_sim">1831</field>
+    <field name="unitdate_end_ssm">1831</field>
+    <field name="unitdate_inclusive_teim">1820-1831</field>
+    <field name="unitdate_normal_sim">1820/1831</field>
+    <field name="unitdate_normal_ssm">1820/1831</field>
+    <field name="unitdate_normal_teim">1820/1831</field>
+    <field name="unitdate_ssm">Inclusive, 1820-1831</field>
+    <field name="unitdate_start_si">1820</field>
+    <field name="unitdate_start_sim">1820</field>
+    <field name="unitdate_start_ssm">1820</field>
+    <field name="unittitle_ssm">Volume 2, Reports of the Visiting Committee</field>
+    <field name="unittitle_teim">Volume 2, Reports of the Visiting Committee</field>
+  </doc>
+</add>

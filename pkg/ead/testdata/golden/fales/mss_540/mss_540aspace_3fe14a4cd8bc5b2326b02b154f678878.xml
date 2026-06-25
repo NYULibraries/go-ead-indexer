@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Samantha Rowe</field>
+    <field name="collection_sim">Caterina Borelli Papers</field>
+    <field name="collection_ssm">Caterina Borelli Papers</field>
+    <field name="collection_teim">Caterina Borelli Papers</field>
+    <field name="collection_unitid_ssm">MSS.540</field>
+    <field name="collection_unitid_teim">MSS.540</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">mss_540</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Arleen Schloss at Green Space </field>
+    <field name="id">mss_540aspace_3fe14a4cd8bc5b2326b02b154f678878</field>
+    <field name="level_sim">item</field>
+    <field name="location_si">Box: 1</field>
+    <field name="location_ssm">Box: 1</field>
+    <field name="phystech_teim">Master</field>
+    <field name="ref_ssi">aspace_3fe14a4cd8bc5b2326b02b154f678878</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="series_si">&lt;em&gt;Arleen Schloss at Green Space&lt;/em&gt; </field>
+    <field name="sort_ii">23</field>
+    <field name="unitdate_normal_sim">1981-05-08/1981-05-08</field>
+    <field name="unitdate_normal_ssm">1981-05-08/1981-05-08</field>
+    <field name="unitdate_normal_teim">1981-05-08/1981-05-08</field>
+    <field name="unitdate_ssm">1981-05-08</field>
+    <field name="unitdate_teim">1981-05-08</field>
+    <field name="unitid_ssm">cuid28642</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/788117</field>
+    <field name="unitid_teim">cuid28642</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/788117</field>
+    <field name="unittitle_ssm">&lt;em&gt;Arleen Schloss at Green Space&lt;/em&gt; </field>
+    <field name="unittitle_teim">Arleen Schloss at Green Space </field>
+  </doc>
+</add>

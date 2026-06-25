@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Rachel Searcy</field>
+    <field name="collection_sim">Stephen Facey Collection on Theatre Genesis</field>
+    <field name="collection_ssm">Stephen Facey Collection on Theatre Genesis</field>
+    <field name="collection_teim">Stephen Facey Collection on Theatre Genesis</field>
+    <field name="collection_unitid_ssm">MSS.595</field>
+    <field name="collection_unitid_teim">MSS.595</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">mss_595</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Free, Free, Free and There&#39;s a Wall Between Us, Darling, Written by Sally Ordway, Directed by Benjamin Hiatt</field>
+    <field name="id">mss_595aspace_ca5b9cc68c0ecff4b16684d5a3f3ef20</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 1, Folder: 9</field>
+    <field name="location_ssm">Box: 1, Folder: 9</field>
+    <field name="ref_ssi">aspace_ca5b9cc68c0ecff4b16684d5a3f3ef20</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="series_si">&lt;em&gt;Free, Free, Free&lt;/em&gt; and &lt;em&gt;There&#39;s a Wall Between Us, Darling&lt;/em&gt;, Written by Sally Ordway, Directed by Benjamin Hiatt</field>
+    <field name="sort_ii">9</field>
+    <field name="unitdate_inclusive_teim">1965-04</field>
+    <field name="unitdate_normal_sim">1965-04/1965-04</field>
+    <field name="unitdate_normal_ssm">1965-04/1965-04</field>
+    <field name="unitdate_normal_teim">1965-04/1965-04</field>
+    <field name="unitdate_ssm">Inclusive, 1965-04</field>
+    <field name="unittitle_ssm">&lt;em&gt;Free, Free, Free&lt;/em&gt; and &lt;em&gt;There&#39;s a Wall Between Us, Darling&lt;/em&gt;, Written by Sally Ordway, Directed by Benjamin Hiatt</field>
+    <field name="unittitle_teim">Free, Free, Free and There&#39;s a Wall Between Us, Darling, Written by Sally Ordway, Directed by Benjamin Hiatt</field>
+  </doc>
+</add>

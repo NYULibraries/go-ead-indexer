@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Michael Zimmer, June – July 2003</field>
+    <field name="collection_sim">Robert Hammond Papers</field>
+    <field name="collection_ssm">Robert Hammond Papers</field>
+    <field name="collection_teim">Robert Hammond Papers</field>
+    <field name="collection_unitid_ssm">MSS.164</field>
+    <field name="collection_unitid_teim">MSS.164</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">mss_164</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series I: Manuscripts: Play and film scripts</field>
+    <field name="id">mss_164aspace_ref13</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_ref13</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="series_si">Series I: Manuscripts: Play and film scripts</field>
+    <field name="sort_ii">1</field>
+    <field name="unittitle_ssm">Series I: Manuscripts: Play and film scripts</field>
+    <field name="unittitle_teim">Series I: Manuscripts: Play and film scripts</field>
+  </doc>
+</add>

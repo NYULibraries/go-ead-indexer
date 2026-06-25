@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Aileen Thong and Megan Bardis</field>
+    <field name="collection_sim">Technology, Culture and Society Papers</field>
+    <field name="collection_ssm">Technology, Culture and Society Papers</field>
+    <field name="collection_teim">Technology, Culture and Society Papers</field>
+    <field name="collection_unitid_ssm">RG.052</field>
+    <field name="collection_unitid_teim">RG.052</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">poly_rg_052</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Space Station Habitability Design Recommendations, Volume I</field>
+    <field name="id">poly_rg_052aspace_01e63f56994cdbd9cc291022435f58a8</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 4, item: 1</field>
+    <field name="location_ssm">box: 4, item: 1</field>
+    <field name="parent_ssi">aspace_b500828f40c900c357d78301338f573e</field>
+    <field name="parent_ssm">aspace_c8bf1a087570dadbc34fffa055882aee</field>
+    <field name="parent_ssm">aspace_b500828f40c900c357d78301338f573e</field>
+    <field name="parent_unittitles_ssm">Series II: Humanities/Social Sciences</field>
+    <field name="parent_unittitles_ssm">Sub-series G: Reviews and Reports</field>
+    <field name="parent_unittitles_teim">Series II: Humanities/Social Sciences</field>
+    <field name="parent_unittitles_teim">Sub-series G: Reviews and Reports</field>
+    <field name="ref_ssi">aspace_01e63f56994cdbd9cc291022435f58a8</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="series_si">Series II: Humanities/Social Sciences &gt;&gt; Sub-series G: Reviews and Reports &gt;&gt; Space Station Habitability Design Recommendations, Volume I</field>
+    <field name="series_sim">Series II: Humanities/Social Sciences</field>
+    <field name="series_sim">Sub-series G: Reviews and Reports</field>
+    <field name="sort_ii">93</field>
+    <field name="unitdate_normal_sim">1984-11-15/1984-11-15</field>
+    <field name="unitdate_normal_ssm">1984-11-15/1984-11-15</field>
+    <field name="unitdate_normal_teim">1984-11-15/1984-11-15</field>
+    <field name="unitdate_ssm">1984-11-15</field>
+    <field name="unitdate_teim">1984-11-15</field>
+    <field name="unittitle_ssm">Space Station Habitability Design Recommendations, Volume I</field>
+    <field name="unittitle_teim">Space Station Habitability Design Recommendations, Volume I</field>
+  </doc>
+</add>

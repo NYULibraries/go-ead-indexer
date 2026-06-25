@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Anne M. Gordon, with additional description by Rachel M. Oleaga.</field>
+    <field name="collection_sim">Nehemiah Denton papers</field>
+    <field name="collection_ssm">Nehemiah Denton papers</field>
+    <field name="collection_teim">Nehemiah Denton papers</field>
+    <field name="collection_unitid_ssm">1977.171</field>
+    <field name="collection_unitid_teim">1977.171</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">arms_1977_171_nehemiah_denton</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Oversize materials.</field>
+    <field name="id">arms_1977_171_nehemiah_dentonaspace_ref41_owe</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: OS-32, Folder: 1</field>
+    <field name="location_ssm">Box: OS-32, Folder: 1</field>
+    <field name="ref_ssi">aspace_ref41_owe</field>
+    <field name="repository_sim">cbh</field>
+    <field name="repository_ssi">cbh</field>
+    <field name="repository_ssm">cbh</field>
+    <field name="series_si">Oversize materials.</field>
+    <field name="sort_ii">10</field>
+    <field name="unittitle_ssm">Oversize materials.</field>
+    <field name="unittitle_teim">Oversize materials.</field>
+  </doc>
+</add>

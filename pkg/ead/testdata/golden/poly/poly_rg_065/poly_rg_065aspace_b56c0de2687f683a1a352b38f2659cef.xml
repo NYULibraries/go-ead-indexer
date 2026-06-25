@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Jillian Carrillo</field>
+    <field name="collection_sim">Bernard Berg Collection</field>
+    <field name="collection_ssm">Bernard Berg Collection</field>
+    <field name="collection_teim">Bernard Berg Collection</field>
+    <field name="collection_unitid_ssm">RG.065</field>
+    <field name="collection_unitid_teim">RG.065</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">poly_rg_065</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Computation Notebook</field>
+    <field name="id">poly_rg_065aspace_b56c0de2687f683a1a352b38f2659cef</field>
+    <field name="level_sim">item</field>
+    <field name="location_si">box: 1, item: 1</field>
+    <field name="location_ssm">box: 1, item: 1</field>
+    <field name="parent_ssi">aspace_7eea03ab5fa4efee571f169db7dba980</field>
+    <field name="parent_ssm">aspace_7eea03ab5fa4efee571f169db7dba980</field>
+    <field name="parent_unittitles_ssm">Series II: Computation Notebook</field>
+    <field name="parent_unittitles_teim">Series II: Computation Notebook</field>
+    <field name="ref_ssi">aspace_b56c0de2687f683a1a352b38f2659cef</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="series_si">Series II: Computation Notebook &gt;&gt; Computation Notebook</field>
+    <field name="series_sim">Series II: Computation Notebook</field>
+    <field name="sort_ii">17</field>
+    <field name="unitdate_end_si">1967</field>
+    <field name="unitdate_end_sim">1967</field>
+    <field name="unitdate_end_ssm">1967</field>
+    <field name="unitdate_inclusive_teim">1965-1967</field>
+    <field name="unitdate_normal_sim">1965/1967</field>
+    <field name="unitdate_normal_ssm">1965/1967</field>
+    <field name="unitdate_normal_teim">1965/1967</field>
+    <field name="unitdate_ssm">Inclusive, 1965-1967</field>
+    <field name="unitdate_start_si">1965</field>
+    <field name="unitdate_start_sim">1965</field>
+    <field name="unitdate_start_ssm">1965</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/23133</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/23133</field>
+    <field name="unittitle_ssm">Computation Notebook</field>
+    <field name="unittitle_teim">Computation Notebook</field>
+  </doc>
+</add>

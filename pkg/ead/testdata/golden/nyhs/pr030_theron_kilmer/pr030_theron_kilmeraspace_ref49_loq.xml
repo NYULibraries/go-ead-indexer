@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Processed by Kate Fais</field>
+    <field name="collection_sim">Theron Kilmer Photograph Collection</field>
+    <field name="collection_ssm">Theron Kilmer Photograph Collection</field>
+    <field name="collection_teim">Theron Kilmer Photograph Collection</field>
+    <field name="collection_unitid_ssm">PR 30</field>
+    <field name="collection_unitid_teim">PR 30</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">pr030_theron_kilmer</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Old Mose,&#34; &#34;Old Negro,&#34; and &#34;The Preacher&#34; (same sitter, 5 portraits)</field>
+    <field name="id">pr030_theron_kilmeraspace_ref49_loq</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Offsite-Box: 3, Folder: 36-37</field>
+    <field name="location_ssm">Offsite-Box: 3, Folder: 36-37</field>
+    <field name="ref_ssi">aspace_ref49_loq</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="series_si">Old Mose,&#34; &#34;Old Negro,&#34; and &#34;The Preacher&#34; (same sitter, 5 portraits)</field>
+    <field name="sort_ii">38</field>
+    <field name="unittitle_ssm">Old Mose,&#34; &#34;Old Negro,&#34; and &#34;The Preacher&#34; (same sitter, 5 portraits)</field>
+    <field name="unittitle_teim">Old Mose,&#34; &#34;Old Negro,&#34; and &#34;The Preacher&#34; (same sitter, 5 portraits)</field>
+  </doc>
+</add>

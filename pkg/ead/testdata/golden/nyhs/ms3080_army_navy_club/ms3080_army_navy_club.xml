@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="abstract_ssm">The Military-Naval Club, renamed in 1960 the Army and Navy Club of New York, was a social organization for veterans that existed in New York City for much of the mid 20th century.  This collection includes their administrative records, primarily their records of former members along with meeting minutes.</field>
+    <field name="abstract_teim">The Military-Naval Club, renamed in 1960 the Army and Navy Club of New York, was a social organization for veterans that existed in New York City for much of the mid 20th century.  This collection includes their administrative records, primarily their records of former members along with meeting minutes.</field>
+    <field name="acqinfo_teim">The materials were likely donated to New-York Historical Society by the Army and Navy Club of New York between 1973 and 1985.</field>
+    <field name="author_ssm">Alec Ferretti</field>
+    <field name="author_teim">Alec Ferretti</field>
+    <field name="bioghist_teim">The Army and Navy Club of New York was founded in 1933 under the name of the Military-Naval Club.  According to their Articles of Incorporation, their purpose was to &#34;promote social interaction of the commissioned officers, both active and retired, of the military and naval forces of the United States of America and foreign country and such other persons as may be qualified for membership hereunder, to establish a common meeting ground for such officers and other persons within the City of New York.&#34;  They originally used space belonging to the Columbia Club, and for many years were located at 4 East 43rd St.</field>
+    <field name="collection_sim">Army and Navy Club of New York records</field>
+    <field name="collection_ssm">Army and Navy Club of New York records</field>
+    <field name="collection_teim">Army and Navy Club of New York records</field>
+    <field name="corpname_ssm">New-York Historical Society</field>
+    <field name="corpname_ssm">United States. Army</field>
+    <field name="corpname_teim">New-York Historical Society</field>
+    <field name="corpname_teim">United States. Army</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms3080_army_navy_club</field>
+    <field name="format_ii">0</field>
+    <field name="format_sim">Archival Collection</field>
+    <field name="format_ssm">Archival Collection</field>
+    <field name="geogname_ssm">United States -- Armed Forces -- Military life.</field>
+    <field name="geogname_teim">United States -- Armed Forces -- Military life.</field>
+    <field name="heading_ssm">Army and Navy Club of New York records</field>
+    <field name="id">ms3080_army_navy_club</field>
+    <field name="language_sim">English</field>
+    <field name="language_ssm">English</field>
+    <field name="name_sim">United States. Army</field>
+    <field name="name_teim">United States. Army</field>
+    <field name="place_sim">United States -- Armed Forces -- Military life.</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="scopecontent_teim">These materials were created by the Military-Naval Club, which in 1960 renamed itself the Army and Navy Club of New York.  All of the records date from 1933 to 1973.  There are meeting minutes for that entire 40 year span, along with membership files for their non-active members as of 1973.  There is one folder of income tax information for one employee of the club.</field>
+    <field name="subject_sim">Veterans -- New York (State) </field>
+    <field name="subject_sim">Armed Forces. </field>
+    <field name="subject_sim">World War, 1914-1918.</field>
+    <field name="subject_sim">World War, 1939-1945.</field>
+    <field name="subject_sim">Korean War, 1950-1953. </field>
+    <field name="subject_sim">Patriotic societies -- United States.</field>
+    <field name="subject_ssm">Veterans -- New York (State) </field>
+    <field name="subject_ssm">Armed Forces. </field>
+    <field name="subject_ssm">World War, 1914-1918.</field>
+    <field name="subject_ssm">World War, 1939-1945.</field>
+    <field name="subject_ssm">Korean War, 1950-1953. </field>
+    <field name="subject_ssm">Patriotic societies -- United States.</field>
+    <field name="subject_teim">Veterans -- New York (State) </field>
+    <field name="subject_teim">Armed Forces. </field>
+    <field name="subject_teim">World War, 1914-1918.</field>
+    <field name="subject_teim">World War, 1939-1945.</field>
+    <field name="subject_teim">Korean War, 1950-1953. </field>
+    <field name="subject_teim">Patriotic societies -- United States.</field>
+    <field name="subject_teim">Veterans -- New York (State) </field>
+    <field name="subject_teim">Armed Forces. </field>
+    <field name="subject_teim">World War, 1914-1918.</field>
+    <field name="subject_teim">World War, 1939-1945.</field>
+    <field name="subject_teim">Korean War, 1950-1953. </field>
+    <field name="subject_teim">Patriotic societies -- United States.</field>
+    <field name="unitdate_inclusive_teim">1933-1973</field>
+    <field name="unitdate_ssm">Inclusive, 1933-1973</field>
+    <field name="unitid_ssm">MS 3080</field>
+    <field name="unitid_teim">MS 3080</field>
+    <field name="unittitle_ssm">Army and Navy Club of New York records</field>
+    <field name="unittitle_teim">Army and Navy Club of New York records</field>
+  </doc>
+</add>

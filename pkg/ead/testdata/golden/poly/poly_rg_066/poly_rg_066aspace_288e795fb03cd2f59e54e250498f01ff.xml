@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Jillian Carrillo</field>
+    <field name="collection_sim">Silver Connections Collection</field>
+    <field name="collection_ssm">Silver Connections Collection</field>
+    <field name="collection_teim">Silver Connections Collection</field>
+    <field name="collection_unitid_ssm">RG.066</field>
+    <field name="collection_unitid_teim">RG.066</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">poly_rg_066</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series 1: Silver Connections Monographs</field>
+    <field name="id">poly_rg_066aspace_288e795fb03cd2f59e54e250498f01ff</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_288e795fb03cd2f59e54e250498f01ff</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="series_si">Series 1: Silver Connections Monographs</field>
+    <field name="sort_ii">1</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/23134</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/23134</field>
+    <field name="unittitle_ssm">Series 1: Silver Connections Monographs</field>
+    <field name="unittitle_teim">Series 1: Silver Connections Monographs</field>
+  </doc>
+</add>

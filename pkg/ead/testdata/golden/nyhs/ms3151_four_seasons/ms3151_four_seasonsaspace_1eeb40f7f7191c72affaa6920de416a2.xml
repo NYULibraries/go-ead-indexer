@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Joseph Ditta</field>
+    <field name="collection_sim">Four Seasons Restaurant collection</field>
+    <field name="collection_ssm">Four Seasons Restaurant collection</field>
+    <field name="collection_teim">Four Seasons Restaurant collection</field>
+    <field name="collection_unitid_ssm">MS 3151</field>
+    <field name="collection_unitid_teim">MS 3151</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms3151_four_seasons</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Renovations: K</field>
+    <field name="id">ms3151_four_seasonsaspace_1eeb40f7f7191c72affaa6920de416a2</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Offsite-Box: 6, Folder: 11</field>
+    <field name="location_ssm">Offsite-Box: 6, Folder: 11</field>
+    <field name="parent_ssi">aspace_aa838985d2541bddd33062fd13d94ebb</field>
+    <field name="parent_ssm">aspace_aa838985d2541bddd33062fd13d94ebb</field>
+    <field name="parent_unittitles_ssm">Series IV. Renovations (original and new location)</field>
+    <field name="parent_unittitles_teim">Series IV. Renovations (original and new location)</field>
+    <field name="ref_ssi">aspace_1eeb40f7f7191c72affaa6920de416a2</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="scopecontent_teim">From hanging files labeled
+
+
+
+•	Kitchen: bills; contracts / agreements; correspondence &amp; reports
+
+•	Kitchen: equipment; estimates
+
+•	Kitchen Facilities Renovation</field>
+    <field name="series_si">Series IV. Renovations (original and new location) &gt;&gt; Renovations: K</field>
+    <field name="series_sim">Series IV. Renovations (original and new location)</field>
+    <field name="sort_ii">70</field>
+    <field name="unitdate_inclusive_teim">1995-1997</field>
+    <field name="unitdate_ssm">Inclusive, 1995-1997</field>
+    <field name="unittitle_ssm">Renovations: K</field>
+    <field name="unittitle_teim">Renovations: K</field>
+  </doc>
+</add>

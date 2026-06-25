@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ibrahim Mohamed Ali, Maysa Shaer, Nada Shabout, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art at NYU Abu Dhabi 	</field>
+    <field name="collection_sim">Salwa Zeidan Collection</field>
+    <field name="collection_ssm">Salwa Zeidan Collection</field>
+    <field name="collection_teim">Salwa Zeidan Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.150</field>
+    <field name="collection_unitid_teim">AD.MC.150</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_150</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">3. &#34;Turkish Silver and Russian Painting Exhibition,&#34; Abu Dhabi, 1994.</field>
+    <field name="id">ad_mc_150aspace_f8dcfb05a6fd95cfcea0f404aa3df806</field>
+    <field name="level_sim">subgrp</field>
+    <field name="parent_ssi">aspace_0b2b307b9a6ad3adab19c741fa986ddc</field>
+    <field name="parent_ssm">aspace_0d2a08c6f3af4a012e1004def24c17e5</field>
+    <field name="parent_ssm">aspace_0b2b307b9a6ad3adab19c741fa986ddc</field>
+    <field name="parent_unittitles_ssm">Series III: Photographic Materials</field>
+    <field name="parent_unittitles_ssm">III.B. Photographs of Exhibitions</field>
+    <field name="parent_unittitles_teim">Series III: Photographic Materials</field>
+    <field name="parent_unittitles_teim">III.B. Photographs of Exhibitions</field>
+    <field name="ref_ssi">aspace_f8dcfb05a6fd95cfcea0f404aa3df806</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="series_si">Series III: Photographic Materials &gt;&gt; III.B. Photographs of Exhibitions &gt;&gt; 3. &#34;Turkish Silver and Russian Painting Exhibition,&#34; Abu Dhabi, 1994.</field>
+    <field name="series_sim">Series III: Photographic Materials</field>
+    <field name="series_sim">III.B. Photographs of Exhibitions</field>
+    <field name="sort_ii">91</field>
+    <field name="unitid_ssm">cuid1375</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/35863</field>
+    <field name="unitid_teim">cuid1375</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/35863</field>
+    <field name="unittitle_ssm">3. &#34;Turkish Silver and Russian Painting Exhibition,&#34; Abu Dhabi, 1994.</field>
+    <field name="unittitle_teim">3. &#34;Turkish Silver and Russian Painting Exhibition,&#34; Abu Dhabi, 1994.</field>
+  </doc>
+</add>

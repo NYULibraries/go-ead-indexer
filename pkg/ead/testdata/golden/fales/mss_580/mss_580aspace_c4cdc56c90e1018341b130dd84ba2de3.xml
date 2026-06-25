@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Rachel Searcy</field>
+    <field name="collection_sim">Lee Kaplan Collection on Julius Hemphill</field>
+    <field name="collection_ssm">Lee Kaplan Collection on Julius Hemphill</field>
+    <field name="collection_teim">Lee Kaplan Collection on Julius Hemphill</field>
+    <field name="collection_unitid_ssm">MSS.580</field>
+    <field name="collection_unitid_teim">MSS.580</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="dao_sim">Online Access</field>
+    <field name="dao_ssm">The Janus Company Recordings</field>
+    <field name="dao_teim">The Janus Company Recordings</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">mss_580</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">The Janus Company Recordings</field>
+    <field name="id">mss_580aspace_c4cdc56c90e1018341b130dd84ba2de3</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: Electronic Records, E-records: FA_MSS_580_ER_1</field>
+    <field name="location_ssm">Box: Shared Fales 046, Sound_Disc--Vinyl: 580.0001</field>
+    <field name="location_ssm">Box: Electronic Records, E-records: FA_MSS_580_ER_1</field>
+    <field name="ref_ssi">aspace_c4cdc56c90e1018341b130dd84ba2de3</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="series_si">The Janus Company Recordings</field>
+    <field name="sort_ii">3</field>
+    <field name="unitdate_end_si">1979</field>
+    <field name="unitdate_end_sim">1979</field>
+    <field name="unitdate_end_ssm">1979</field>
+    <field name="unitdate_inclusive_teim">1977-1979</field>
+    <field name="unitdate_normal_sim">1977/1979</field>
+    <field name="unitdate_normal_ssm">1977/1979</field>
+    <field name="unitdate_normal_teim">1977/1979</field>
+    <field name="unitdate_ssm">Inclusive, 1977-1979</field>
+    <field name="unitdate_start_si">1977</field>
+    <field name="unitdate_start_sim">1977</field>
+    <field name="unitdate_start_ssm">1977</field>
+    <field name="unitid_ssm">cuid39225</field>
+    <field name="unitid_teim">cuid39225</field>
+    <field name="unittitle_ssm">The Janus Company Recordings</field>
+    <field name="unittitle_teim">The Janus Company Recordings</field>
+  </doc>
+</add>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="abstract_ssm">Documents, correspondence, reports, and bird-watching logs compiled by members of the Emirates Bird Records Committee (EBRC), from the 1980s to the early 2000s.  The EBRC, a group of predominantly expatriate volunteers living in the United Arab Emirates, sought to document and verify sightings of various bird species throughout the Emirates.</field>
+    <field name="abstract_teim">Documents, correspondence, reports, and bird-watching logs compiled by members of the Emirates Bird Records Committee (EBRC), from the 1980s to the early 2000s.  The EBRC, a group of predominantly expatriate volunteers living in the United Arab Emirates, sought to document and verify sightings of various bird species throughout the Emirates.</field>
+    <field name="acqinfo_teim">Donated by Peter Hellyer in July 2019, with accretions in July and August 2020, and June 2023.</field>
+    <field name="author_ssm">Brad Bauer</field>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="bioghist_teim">The Emirates Bird Records Committee (EBRC) was formed in the early 1990s by a group of British volunteer ornithologists resident in the United Arab Emirates.  In prior decades, efforts had been made to draw up a list of bird species that had been documented in the UAE, with one of the earliest lists being that compiled by a member of the British Army, on secondment to the Abu Dhabi Defence Force (ADDF), Lt. Col. J.D. Wellings, in 1973, with his survey of the birds of Abu Dhabi island.  </field>
+    <field name="bioghist_teim">
+In the following years, Mrs. F.E. Warr, of the Ornithological Society of the Middle East, compiled a more comprehensive list for the entire country, which by 1988 had listed several hundred bird species.  This included historical data from the early 1970s, but from around 1980, drew primarily upon records collated by members of the Emirates Natural History Group, in Abu Dhabi, and the allied Dubai Natural History Group.   In 1989, Colin Richardson, a British architect based in Dubai and Bird Recorder for the Dubai NHG, took over the maintenance of the list as well as the role of &#34;UAE Bird Recorder,&#34; coordinating the receipt of information submitted by observers throughout the country.  Shortly after assuming the role of UAE Bird Recorder, Richardson introduced a new standardized form that observers could use in the field to record the species that they observed.  Designed in a matrix format, it listed all of the documented bird species in the left margin, with locations across the UAE listed across the top of each sheet.   </field>
+    <field name="bioghist_teim">
+By this time, an informal network of observers was active in locations ranging from Fujairah in the east to the westernmost reaches of Abu Dhabi emirate, while some made bird observations while working on offshore oil exploration sites in the Gulf.  Many observers were resident expatriates who were members of the two natural history groups.  Richardson also received bird-logs submitted by observers who visited from Europe or the United Kingdom during extended trips to the region.  For several years, prior to his own departure from the Emirates, Richardson also ran commercial bird tours for overseas visitors.</field>
+    <field name="bioghist_teim">
+Desiring a more systematic approach to collecting, assessing, and preserving such records of bird sightings, the EBRC was formed in 1993, holding its first meeting at the home of its first chair, Erik Hirschfeld, in Abu Dhabi.  Four other members were chosen for the committee, including Richardson, and they met several times a year during the following years.  One of the main tasks of the committee was to assess records submitted to them, in particular the records of sightings of rare species, usually defined as species that had been observed fewer than 20 times.</field>
+    <field name="bioghist_teim">
+Periodically, members of the EBRC would publish updated lists of the birds of the UAE as well as newly documented rare species, often doing so in the publication Emirates Bird Records (EBR), compiled and edited by Richardson.  Following the emergence of the internet, EBRC members began to circulate records of assessments by e-mail, rather than at meetings.  A new Recorder, Tommy Pedersen, also established a website, http://www.uaebirding.com, in 2005, containing extensive data, including the results of EBRC assessments. From 2011, all data has been shared with the Cornell Lab of Ornithology in the United States, which maintains the eBird database (https://ebird.org/home), to which both scientists and the general public can upload data.  UAE data uploaded to eBird is then assessed by the EBRC Recorder.  Birdwatching as a pastime and the scientific study of UAE birdlife has expanded in recent years, attracting both native Emiratis and expatriates.  This has helped to refute, once and for all, the assertion which, according to Col. Wellings, used to greet new arrivals, namely, that &#34;there are no birds in Abu Dhabi!&#34;</field>
+    <field name="collection_sim">Emirates Bird Records Committee records</field>
+    <field name="collection_ssm">Emirates Bird Records Committee records</field>
+    <field name="collection_teim">Emirates Bird Records Committee records</field>
+    <field name="corpname_ssm">NYU Abu Dhabi, Archives and Special Collections</field>
+    <field name="corpname_ssm">Emirates Bird Records Committee</field>
+    <field name="corpname_teim">NYU Abu Dhabi, Archives and Special Collections</field>
+    <field name="corpname_teim">Emirates Bird Records Committee</field>
+    <field name="creator_sim">Emirates Bird Records Committee</field>
+    <field name="creator_ssm">Emirates Bird Records Committee</field>
+    <field name="creator_teim">Emirates Bird Records Committee</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="date_range_sim">2001-2100</field>
+    <field name="ead_ssi">ad_mc_057</field>
+    <field name="format_ii">0</field>
+    <field name="format_sim">Archival Collection</field>
+    <field name="format_ssm">Archival Collection</field>
+    <field name="heading_ssm">Emirates Bird Records Committee records</field>
+    <field name="id">ad_mc_057</field>
+    <field name="language_sim">English</field>
+    <field name="language_ssm">English</field>
+    <field name="name_sim">Emirates Bird Records Committee</field>
+    <field name="name_sim">Hellyer, Peter</field>
+    <field name="name_teim">Emirates Bird Records Committee</field>
+    <field name="name_teim">Hellyer, Peter</field>
+    <field name="persname_ssm">Hellyer, Peter</field>
+    <field name="persname_ssm">Hellyer, Peter</field>
+    <field name="persname_teim">Hellyer, Peter</field>
+    <field name="persname_teim">Hellyer, Peter</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="scopecontent_teim">The records of the Emirates Bird Records Committee (EBRC) contain a variety of reports, correspondence, notes, and documents related to bird-watching in the United Arab Emirates, but the predominant type of documentation are detailed bird-logs kept by volunteer observers and collected by members of the EBRC, chiefly Colin Richardson and Peter Hellyer, during the 1990s and early 2000s.  </field>
+    <field name="scopecontent_teim">The series titled &#34;Early Records&#34; consists of a small number of items collected and created prior to 1989, the date when Colin Richardson assumed the role of UAE Bird Recorder.  These include bird logs from a few of the most active observers, as well as earlier bird lists, including those compiled by Lt. Col. Wellings in 1973 and Mrs. F.E. Warr beginning in 1982, the latter of which became the foundation of the list maintained by Richardson and the EBRC.</field>
+    <field name="scopecontent_teim">The series &#34;Group Bird Records Forms and Reports-by year&#34; and &#34;Group Bird Records Forms--Individual&#34; are the most extensive part of this collection, and contain detailed bird logs kept by observers and submitted to Richardson and other members of the EBRC.  The logs were usually a standardized form, arranged as a matrix, with bird species printed on the left margin, and locations in the UAE printed along the top of the form.  Observers often kept these for a period of time, submitting them on a monthly, quarterly, or annual basis.  With granular data about sightings of individual species on specific dates and locations, this may be helpful in tracking changes in the population and extent of certain species in the region during the time period covered.  Additional documents in these series include reports from observers visiting the region, correspondence to Richardson, and other notes and documents related to sightings of specific bird species in the country.</field>
+    <field name="scopecontent_teim">The series &#34;Other records (analog)&#34; contains documents related to projects carried out by EBRC members, such as the inventory of rare birds in the UAE, or reprints and other reference materials collected by the group.  &#34;Other records (digital)&#34; contains minutes of meetings of the EBRC, beginning with the first meeting in 1993, as well as collected reports and publications in which the EBRC took part, including the last several issues of the &#34;Emirates Bird Report&#34; (ca. 1995-2000) and subsequent monthly and annual reports of the birds of the UAE (circa 2002-2010). </field>
+    <field name="scopecontent_teim">The last series, &#34;Oversize,&#34; consists of computer printouts from Peter Hellyer, that comprise the inventories of birds in the UAE, compiled by data from observers, primarily from years prior to the establishment of the EBRC. These are typically alphabetic lists of bird species, followed by a chronological list of sightings of a given specie, along with the dates and observers recording that sighting.  These could be useful for an overview of sightings for a specific bird specie, for the time period from the late 1970s to the late 1980s.</field>
+    <field name="subject_sim">Birds -- United Arab Emirates</field>
+    <field name="subject_ssm">Birds -- United Arab Emirates</field>
+    <field name="subject_teim">Birds -- United Arab Emirates</field>
+    <field name="subject_teim">Birds -- United Arab Emirates</field>
+    <field name="unitdate_end_si">2010</field>
+    <field name="unitdate_end_sim">2019</field>
+    <field name="unitdate_end_sim">2010</field>
+    <field name="unitdate_end_ssm">2019</field>
+    <field name="unitdate_end_ssm">2010</field>
+    <field name="unitdate_inclusive_teim">1973-2019</field>
+    <field name="unitdate_inclusive_teim">bulk, 1989-2010</field>
+    <field name="unitdate_normal_sim">1973/2019</field>
+    <field name="unitdate_normal_sim">1989/2010</field>
+    <field name="unitdate_normal_ssm">1973/2019</field>
+    <field name="unitdate_normal_ssm">1989/2010</field>
+    <field name="unitdate_normal_teim">1973/2019</field>
+    <field name="unitdate_normal_teim">1989/2010</field>
+    <field name="unitdate_ssm">Inclusive, 1973-2019 bulk, 1989-2010</field>
+    <field name="unitdate_start_si">1989</field>
+    <field name="unitdate_start_sim">1973</field>
+    <field name="unitdate_start_sim">1989</field>
+    <field name="unitdate_start_ssm">1973</field>
+    <field name="unitdate_start_ssm">1989</field>
+    <field name="unitid_ssm">AD.MC.057</field>
+    <field name="unitid_teim">AD.MC.057</field>
+    <field name="unittitle_ssm">Emirates Bird Records Committee records</field>
+    <field name="unittitle_teim">Emirates Bird Records Committee records</field>
+  </doc>
+</add>
