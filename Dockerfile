@@ -1,4 +1,4 @@
-FROM golang:1.25.10 as builder
+FROM golang:1.26.3 AS builder
 
 RUN update-ca-certificates
 
