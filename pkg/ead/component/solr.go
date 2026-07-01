@@ -2,10 +2,11 @@ package component
 
 import (
 	"fmt"
-	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
-	"github.com/nyulibraries/go-ead-indexer/pkg/util"
 	"strconv"
 	"strings"
+
+	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
+	"github.com/nyulibraries/go-ead-indexer/pkg/util"
 )
 
 // We are currently using `String()` and not marshaling, but for now we are

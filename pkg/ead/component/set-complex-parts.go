@@ -3,10 +3,12 @@ package component
 import (
 	"errors"
 	"fmt"
-	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
-	"github.com/nyulibraries/go-ead-indexer/pkg/util"
 	"regexp"
 	"strings"
+
+	"github.com/lestrrat-go/libxml2/xpath"
+	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
+	"github.com/nyulibraries/go-ead-indexer/pkg/util"
 )
 
 const ARCHIVAL_OBJECT_FORMAT = "Archival Object"

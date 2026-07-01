@@ -4,15 +4,16 @@ import (
 	"errors"
 	"flag"
 	"fmt"
-	"github.com/nyulibraries/go-ead-indexer/pkg/ead/collectiondoc"
-	"github.com/nyulibraries/go-ead-indexer/pkg/ead/component"
-	"github.com/nyulibraries/go-ead-indexer/pkg/ead/testutils"
-	"github.com/nyulibraries/go-ead-indexer/pkg/util"
 	"os"
 	"path/filepath"
 	"slices"
 	"strings"
 	"testing"
+
+	"github.com/nyulibraries/go-ead-indexer/pkg/ead/collectiondoc"
+	"github.com/nyulibraries/go-ead-indexer/pkg/ead/component"
+	"github.com/nyulibraries/go-ead-indexer/pkg/ead/testutils"
+	"github.com/nyulibraries/go-ead-indexer/pkg/util"
 )
 
 var tmpFilesDirPath = filepath.Join("testdata", "tmp", "actual")

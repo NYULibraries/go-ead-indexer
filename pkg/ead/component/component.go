@@ -3,6 +3,7 @@ package component
 import (
 	"errors"
 	"fmt"
+
 	"github.com/lestrrat-go/libxml2/types"
 	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
 )
