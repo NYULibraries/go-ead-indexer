@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Megan O&#39;Shea</field>
+    <field name="collection_sim">Megan O&#39;Shea&#39;s &#34;One Resource to 
+ Rule Them All&#34;</field>
+    <field name="collection_ssm">Megan O&#39;Shea&#39;s &#34;One Resource to 
+ Rule Them All&#34;</field>
+    <field name="collection_teim">Megan O&#39;Shea&#39;s &#34;One Resource to 
+ Rule Them All&#34;</field>
+    <field name="collection_unitid_ssm">MOS.2021</field>
+    <field name="collection_unitid_teim">MOS.2021</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="dao_sim">Electronic records, available by request, on site</field>
+    <field name="dao_ssm">&#34;The Dead Could Not Afford Heaven&#34; Part One
+                            </field>
+    <field name="dao_teim">&#34;The Dead Could Not Afford Heaven&#34; Part One
+                            </field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">mos_2024</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">&#34;The Dead Could Not Afford Heaven&#34; Part One
+                    </field>
+    <field name="id">mos_2024aspace_ref842</field>
+    <field name="level_sim">item</field>
+    <field name="location_si">Box: 20
+                    , Media: ID: 128.0395
+                    </field>
+    <field name="location_ssm">Box: 20
+                    , Media: ID: 128.0395
+                    </field>
+    <field name="parent_ssi">aspace_ref13</field>
+    <field name="parent_ssm">aspace_ref13</field>
+    <field name="parent_unittitles_ssm">Series V: Grassroots Poetry Videos</field>
+    <field name="parent_unittitles_teim">Series V: Grassroots Poetry Videos</field>
+    <field name="phystech_teim">Format: VHS, Duration: 28 min.</field>
+    <field name="ref_ssi">aspace_ref842</field>
+    <field name="repository_sim">edip</field>
+    <field name="repository_ssi">edip</field>
+    <field name="repository_ssm">edip</field>
+    <field name="series_si">Series V: Grassroots Poetry Videos &gt;&gt; &#34;The Dead Could Not Afford Heaven&#34; Part One
+                    </field>
+    <field name="series_sim">Series V: Grassroots Poetry Videos</field>
+    <field name="sort_ii">44</field>
+    <field name="unitdate_ssm">1991</field>
+    <field name="unitdate_teim">1991</field>
+    <field name="unitid_ssm">ID: 128.0395</field>
+    <field name="unitid_ssm">
+                        /repositories/3/archival_objects/451099
+                    </field>
+    <field name="unitid_teim">ID: 128.0395</field>
+    <field name="unitid_teim">
+                        /repositories/3/archival_objects/451099
+                    </field>
+    <field name="unittitle_ssm">&#34;The Dead Could Not Afford Heaven&#34; Part One
+                    </field>
+    <field name="unittitle_teim">&#34;The Dead Could Not Afford Heaven&#34; Part One
+                    </field>
+  </doc>
+</add>

@@ -145,7 +145,7 @@ func (component *Component) setSolrAddMessage() {
 	docElement.Creator_teim = append(docElement.Creator_teim,
 		component.Parts.Creator.Values...)
 
-	docElement.DAO_sim = component.Parts.DAO.Values
+	docElement.DAO_sim = component.Parts.OnlineAccess.Values
 	docElement.DAO_ssm = component.Parts.DAODescriptionParagraph.Values
 	docElement.DAO_teim = component.Parts.DAODescriptionParagraph.Values
 

@@ -24,7 +24,6 @@ func (collectionDoc *CollectionDoc) setComplexParts() []error {
 	}
 	collectionDoc.setMaterialType()
 	collectionDoc.setName()
-	collectionDoc.setOnlineAccess()
 	collectionDoc.setPlace()
 	collectionDoc.setSubjectForFacets()
 	collectionDoc.setUnitDateEnd()

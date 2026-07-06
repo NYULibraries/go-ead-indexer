@@ -38,7 +38,7 @@ type DocElement struct {
 	Creator_ssm            []string `xml:"creator_ssm"`
 	Creator_teim           []string `xml:"creator_teim"`
 	CustodHist_teim        []string `xml:"custodhist_teim"`
-	DAO_sim                string   `xml:"dao_sim"`
+	DAO_sim                []string `xml:"dao_sim"`
 	DateRange_sim          []string `xml:"date_range_sim"`
 	EAD_ssi                string   `xml:"ead_ssi"`
 	FamName_ssm            []string `xml:"famname_ssm"`
@@ -97,7 +97,7 @@ type DocElement struct {
 	UnitTitle_teim         []string `xml:"unittitle_teim"`
 }
 
-func (collectionDoc *CollectionDoc) setSolrAddMessage() {
+func (collectionDoc *CollectionDoc) SetSolrAddMessage() {
 	docElement := &collectionDoc.SolrAddMessage.Add.Doc
 
 	docElement.Abstract_ssm = append(docElement.Abstract_ssm, collectionDoc.Parts.Abstract.Values...)
@@ -129,9 +129,8 @@ func (collectionDoc *CollectionDoc) setSolrAddMessage() {
 
 	docElement.CustodHist_teim = append(docElement.CustodHist_teim, collectionDoc.Parts.CustodHist.Values...)
 
-	if len(collectionDoc.Parts.OnlineAccess.Values) > 0 {
-		docElement.DAO_sim = collectionDoc.Parts.OnlineAccess.Values[0]
-	}
+	docElement.DAO_sim = append(docElement.DAO_sim,
+		util.CompactStringSlicePreserveOrder(collectionDoc.Parts.OnlineAccess.Values)...)
 
 	docElement.DateRange_sim = append(docElement.DateRange_sim,
 		util.CompactStringSlicePreserveOrder(collectionDoc.Parts.DateRange.Values)...)

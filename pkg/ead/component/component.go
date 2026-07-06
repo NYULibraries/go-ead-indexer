@@ -11,6 +11,7 @@ import (
 type Component struct {
 	ID             string         `json:"id"`
 	IDAttribute    string         `json:"IDAttribute"`
+	Node           types.Node     `json:"-"`
 	Parts          ComponentParts `json:"parts"`
 	SolrAddMessage SolrAddMessage `json:"solr_add_message"`
 }
@@ -36,7 +37,6 @@ type ComponentCollectionDocParts struct {
 type ComponentComplexParts struct {
 	ChronListComplex ComponentPart `json:"chron_list_complex"`
 	CreatorComplex   ComponentPart `json:"creator_complex"`
-	DAO              ComponentPart `json:"dao"`
 	DateRange        ComponentPart `json:"date_range"`
 	Format           ComponentPart `json:"format"`
 	Heading          ComponentPart `json:"heading"`
@@ -44,6 +44,7 @@ type ComponentComplexParts struct {
 	Location         ComponentPart `json:"location"`
 	MaterialType     ComponentPart `json:"material_type"`
 	Name             ComponentPart `json:"name"`
+	OnlineAccess     ComponentPart `json:"online_access"`
 	Place            ComponentPart `json:"place"`
 	SubjectForFacets ComponentPart `json:"subject_for_facets"`
 	UnitDateDisplay  ComponentPart `json:"unit_date_display"`
@@ -165,6 +166,7 @@ func MakeComponents(collectionDocParts ComponentCollectionDocParts, node types.N
 func MakeComponent(collectionDocParts ComponentCollectionDocParts, sort int,
 	node types.Node) (Component, error) {
 	component := Component{
+		Node: node,
 		Parts: ComponentParts{
 			ComponentCollectionDocParts: collectionDocParts,
 			Sort:                        sort,

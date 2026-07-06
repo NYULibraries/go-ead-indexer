@@ -9,7 +9,6 @@
     <field name="collection_unitid_teim">MS 347</field>
     <field name="component_children_bsi">false</field>
     <field name="component_level_isim">2</field>
-    <field name="dao_sim">Online Access</field>
     <field name="dao_ssm">Click to view selected images</field>
     <field name="dao_teim">Click to view selected images</field>
     <field name="date_range_sim">undated &amp; other</field>

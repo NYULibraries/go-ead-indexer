@@ -3,12 +3,15 @@ package ead
 import (
 	"errors"
 	"fmt"
+	"maps"
+	"regexp"
+	"slices"
+
 	"github.com/lestrrat-go/libxml2/parser"
 	"github.com/lestrrat-go/libxml2/types"
 	"github.com/nyulibraries/go-ead-indexer/pkg/ead/collectiondoc"
 	"github.com/nyulibraries/go-ead-indexer/pkg/ead/component"
 	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
-	"regexp"
 )
 
 type EAD struct {
@@ -33,6 +36,39 @@ var namespaceRegexp = regexp.MustCompile(`<((?s)\s*)ead((?s).*)xmlns="(?U).*"`)
 // list of repository codes:
 // https://jira.nyu.edu/browse/FADESIGN-65
 var validRepositoryCodeRegex = regexp.MustCompile(`^[a-z]+$`)
+
+// Adds Online Access facet values if those values are present for any component.
+func (ead *EAD) setCollectionDocOnlineAccess() {
+	if ead.Components == nil {
+		return
+	}
+
+	// We get exact counts of all facet values not because we need them, but
+	// because there are a lot of ways we could implement `CollectionDoc` level
+	// Online Access and this seems just as good and performant as any other,
+	// and it provides us with good debug data.
+	collectionDocLevelOnlineAccessCounts := map[string]int{}
+	for facetValue := range maps.Values(eadutil.OnlineAccessRolesToFaceValues) {
+		collectionDocLevelOnlineAccessCounts[facetValue] = 0
+	}
+	for _, component := range *ead.Components {
+		componentOnlineAccessValues := component.Parts.OnlineAccess.Values
+		for _, onlineAccessValue := range componentOnlineAccessValues {
+			collectionDocLevelOnlineAccessCounts[onlineAccessValue]++
+		}
+	}
+	for facetValue := range maps.Keys(collectionDocLevelOnlineAccessCounts) {
+		if collectionDocLevelOnlineAccessCounts[facetValue] > 0 {
+			ead.CollectionDoc.Parts.OnlineAccess.Values = append(
+				ead.CollectionDoc.Parts.OnlineAccess.Values,
+				facetValue,
+			)
+		}
+	}
+	slices.Sort(ead.CollectionDoc.Parts.OnlineAccess.Values)
+
+	ead.CollectionDoc.SetSolrAddMessage()
+}
 
 // Note that the repository code historically is taken from the name of the
 // EAD file's parent directory, not from the anything in the contents of the file
@@ -108,6 +144,8 @@ func New(repositoryCode string, eadXML string) (EAD, error) {
 	if err != nil {
 		return ead, err
 	}
+
+	ead.setCollectionDocOnlineAccess()
 
 	return ead, nil
 }
