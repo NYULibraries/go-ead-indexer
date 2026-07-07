@@ -36,6 +36,10 @@ func init() {
 	goldenFilesDirPath = filepath.Join(testutilsPath, "..", "testdata", "golden")
 }
 
+func DeleteGoldenFile(testEAD string, fileID string) error {
+	return os.Remove(GoldenFilePath(testEAD, fileID))
+}
+
 func EadFixturePath(testEAD string) string {
 	return filepath.Join(eadFixturesDirPath, testEAD+".xml")
 }
