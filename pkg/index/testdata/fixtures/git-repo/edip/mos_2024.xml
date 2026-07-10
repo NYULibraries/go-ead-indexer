@@ -2172,14 +2172,131 @@
         </c>
       </c>
 
-      <!-- Test case for handling of a non-prettified component with a <unittitle>
-           that contains <lb/> tags.  We would not want pieces of text on either
-           side of these tags to be mashed together.  We also want to make sure
-           we are not inserting newlines such as v1 indexer does when it prettifies
-           the XML.
-           See https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506.
-           From archives/mc_110.xml
-      -->
+        <!-- Electronic records test case for:
+        FAB: revisit "digital content > available online" facet
+        https://nyu.atlassian.net/browse/DLFA-260
+
+        This series was taken from:
+        https://github.com/NYULibraries/findingaids_eads_v2/blob/d73746e5ef6e6b4ba5c0d6edfc2152714e4b9888/fales/mss_128.xmlfales/mss_128.xml
+        ...and massaged:
+        * All but the first <c> and the desired <c> with
+          <dao xlink:role="electronic-records-service"...> were removed.
+        * Formatted using `xmllint` (so whitespace was introduced that is not
+          in the original. -->
+        <c id="aspace_ref13" level="series">
+            <did>
+                <unittitle>Series V: Grassroots Poetry Videos</unittitle>
+                <unitid type="aspace_uri">
+                    /repositories/3/archival_objects/451050
+                </unitid>
+                <unitdate datechar="creation">1988-2001</unitdate>
+            </did>
+            <scopecontent id="aspace_7c15c65c9100becea7a92d5c048e6dbe">
+                <head>Scope and Contents</head>
+                <p>Series V: Grassroots Poetry Videos consists of Umatic and
+                    VHS
+                    videotapes dated between 1988 and 2001. The tapes, many
+                    of
+                    which are rare or one-of-a-kind, record both documentary
+                    footage and homemade productions. Most of these were
+                    filmed
+                    in a studio but live on-site recordings are present as
+                    well.
+                    Among the performances documented by the tapes are plays
+                    by
+                    Kenneth Koch, a group reading of Jack Kerouac's <emph
+                            render="italic">Mexico City Blues
+                    </emph> at The Kitchen, and poems by Lee Anne Brown,
+                    Reg. E.
+                    Gaines, Fanny Howe, and Anne Waldman along with
+                    performances
+                    by Bob Kaufman, Lord Buckley, Elizabet Streb, Dana
+                    Gioia,
+                    Ellyn Maybe, and Marc Smith at the Green Mill in
+                    Chicago.
+                </p>
+            </scopecontent>
+            <c id="aspace_ref766" level="item">
+                <did>
+                    <unittitle>"Cab"; R. Gaines</unittitle>
+                    <unitid>ID: 128.0357</unitid>
+                    <unitid type="aspace_uri">
+                        /repositories/3/archival_objects/451061
+                    </unitid>
+                    <unitdate datechar="creation">Undated</unitdate>
+                    <container altrender="Record carton"
+                               id="aspace_586d4ad5af355e4706b9113b66d8b5c8"
+                               label="Mixed Materials [31142063498433]"
+                               type="Box">19
+                    </container>
+                    <container id="aspace_96edfbe73c63b128d3cd1a533c05727b"
+                               parent="aspace_586d4ad5af355e4706b9113b66d8b5c8"
+                               type="Media">ID: 128.0357
+                    </container>
+                    <dao xlink:actuate="onLoad"
+                         xlink:href="https://hdl.handle.net/2333.1/material-request-placeholder"
+                         xlink:role="video-reading-room" xlink:show="new"
+                         xlink:title="&quot;Cab&quot;; R. Gaines"
+                         xlink:type="simple">
+                        <daodesc>
+                            <p>"Cab"; R. Gaines</p>
+                        </daodesc>
+                    </dao>
+                </did>
+                <phystech id="aspace_f698f540e91121e2d0dedd5d89155984">
+                    <head>Physical Characteristics and Technical
+                        Requirements
+                    </head>
+                    <p>Format: VHS, Duration: 2 min.</p>
+                </phystech>
+            </c>
+            <c id="aspace_ref842" level="item">
+                <did>
+                    <unittitle>"The Dead Could Not Afford Heaven" Part One
+                    </unittitle>
+                    <unitid>ID: 128.0395</unitid>
+                    <unitid type="aspace_uri">
+                        /repositories/3/archival_objects/451099
+                    </unitid>
+                    <unitdate datechar="creation">1991</unitdate>
+                    <container altrender="Record carton"
+                               id="aspace_e9a77bd44e6a413d337526df7ad8d53f"
+                               label="Mixed Materials [31142063498441]"
+                               type="Box">20
+                    </container>
+                    <container id="aspace_ae176ac747a0bc183c6362023a7d8a01"
+                               parent="aspace_e9a77bd44e6a413d337526df7ad8d53f"
+                               type="Media">ID: 128.0395
+                    </container>
+                    <dao xlink:actuate="onLoad"
+                         xlink:href="https://hdl.handle.net/2333.1/material-request-placeholder"
+                         xlink:role="electronic-records-service"
+                         xlink:show="new"
+                         xlink:title="&quot;The Dead Could Not Afford Heaven&quot; Part One"
+                         xlink:type="simple">
+                        <daodesc>
+                            <p>"The Dead Could Not Afford Heaven" Part One
+                            </p>
+                        </daodesc>
+                    </dao>
+                </did>
+                <phystech id="aspace_ed2f5c652a802105120a47615ade6cef">
+                    <head>Physical Characteristics and Technical
+                        Requirements
+                    </head>
+                    <p>Format: VHS, Duration: 28 min.</p>
+                </phystech>
+            </c>
+        </c>
+
+        <!-- Test case for handling of a non-prettified component with a <unittitle>
+             that contains <lb/> tags.  We would not want pieces of text on either
+             side of these tags to be mashed together.  We also want to make sure
+             we are not inserting newlines such as v1 indexer does when it prettifies
+             the XML.
+             See https://jira.nyu.edu/browse/DLFA-211?focusedCommentId=10849506&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-10849506.
+             From archives/mc_110.xml
+        -->
       <c id="aspace_ref782" level="file"><did><unittitle><title render="italic">Refractive Index of Sodium Vapor and Width of D1 in Absorptions: Apr. 1929</title><lb/><title render="italic">Dispersion and Absorption Line Width in the Alkali Vapors: Aug. 1929</title><lb/><title render="italic">A Sensitive Method for Determining Refractive Indices, SAK and J. Q. Stewart: Jun. 1930</title><lb/><title render="italic">Scattering of Light in Sodium Vapor: Jan. 1930</title><lb/><title render="italic">Distinction between Scattering and Absorption, SAK and John Q. Stewart: Jan. 1930</title></unittitle><unitdate datechar="creation" normal="1921/1930" type="inclusive">1921-1930</unitdate><container id="aspace_9e8963be1ccf11b413f53043140ddb57" label="Mixed Materials [31142042254139]" type="Box">7</container><container id="aspace_3f0d4dc6b48158ffd35337369e7b632a" parent="aspace_9e8963be1ccf11b413f53043140ddb57" type="Folder">14</container></did></c>
     </dsc>
   </archdesc>

@@ -8,23 +8,23 @@ package testutils
 
 /*
 	# Commit history from test fixture
-	3df29b08307d939ca2d78e88c7ff58c2303d3a58 Updating README.md
-	60fe0ab2ef487ef7e5fb7506882ed4a9f4bd5659 Updating nyuad/ad_mc_019.xml, Deleting file tamwag/tam_143.xml EADID='tam_143', Updating edip/mos_2024.xml, Deleting file cbh/arc_212_plymouth_beecher.xml EADID='arc_212_plymouth_beecher', Updating akkasah/ad_mc_030.xml
-	b6a37368c3d1ce52246b2e6b0266c504b978895a Updating tamwag/tam_143.xml, Updating cbh/arc_212_plymouth_beecher.xml
-	1b89d86ac94aea3ca0ceac45b20840edb2a4d575 Deleting file fales/mss_420.xml EADID='mss_420', Updating fales/mss_420.xml
-	2d541e347910489c2182c19f45501a35bca92d61 Updating fales/mss_420.xml
-	1d608596eedf1baf47b5f2dd21f8be59d2b72aef Deleting file fales/mss_460.xml EADID='mss_460'
-	92e62027df18e069c975f2d2e08bb3e0bf29a4a3 Updating fales/mss_460.xml
-	03b0fed905b62a916f10d3b8e3cd170e3bc71b5a Deleting file akkasah/ad_mc_030.xml EADID='ad_mc_030', Deleting file cbh/arc_212_plymouth_beecher.xml EADID='arc_212_plymouth_beecher', Deleting file edip/mos_2024.xml EADID='mos_2024', Deleting file fales/mss_420.xml EADID='mss_420', Deleting file fales/mss_460.xml EADID='mss_460', Deleting file nyhs/ms256_harmon_hendricks_goldstone.xml EADID='ms256_harmon_hendricks_goldstone', Deleting file nyhs/ms347_foundling_hospital.xml EADID='ms347_foundling_hospital', Deleting file nyuad/ad_mc_019.xml EADID='ad_mc_019', Deleting file tamwag/tam_143.xml EADID='tam_143'
-	4c96e78ae68001067397f15189a9f2e7db73ce0c Updating akkasah/ad_mc_030.xml, Updating cbh/arc_212_plymouth_beecher.xml, Updating edip/mos_2024.xml, Updating fales/mss_420.xml, Updating fales/mss_460.xml, Updating nyhs/ms256_harmon_hendricks_goldstone.xml, Updating nyhs/ms347_foundling_hospital.xml, Updating nyuad/ad_mc_019.xml, Updating tamwag/tam_143.xml
+	abcd91ab50862cc1dc59e7297ecded651883a1e1 Updating README.md
+	75dcc7b44219559f5794359627fb979c839ceea3 Updating nyuad/ad_mc_019.xml, Deleting file tamwag/tam_143.xml EADID='tam_143', Updating edip/mos_2024.xml, Deleting file cbh/arc_212_plymouth_beecher.xml EADID='arc_212_plymouth_beecher', Updating akkasah/ad_mc_030.xml
+	77c9c66337212fe86b235ebe089294c1d9f1e170 Updating tamwag/tam_143.xml, Updating cbh/arc_212_plymouth_beecher.xml
+	1556117167d78fbb0b7b9d0e09247a78a5cc3cd9 Deleting file fales/mss_420.xml EADID='mss_420', Updating fales/mss_420.xml
+	5b13f670d25fe053530ac18aeafc7339ce187034 Updating fales/mss_420.xml
+	24becf5d3ae251cb74a82ee19f1310e3cd0de2c8 Deleting file fales/mss_460.xml EADID='mss_460'
+	fa46edc88ce18e09da2be593417703346c6b0abc Updating fales/mss_460.xml
+	039d90e0bde64466379208e7461e7f2a19913472 Deleting file akkasah/ad_mc_030.xml EADID='ad_mc_030', Deleting file cbh/arc_212_plymouth_beecher.xml EADID='arc_212_plymouth_beecher', Deleting file edip/mos_2024.xml EADID='mos_2024', Deleting file fales/mss_420.xml EADID='mss_420', Deleting file fales/mss_460.xml EADID='mss_460', Deleting file nyhs/ms256_harmon_hendricks_goldstone.xml EADID='ms256_harmon_hendricks_goldstone', Deleting file nyhs/ms347_foundling_hospital.xml EADID='ms347_foundling_hospital', Deleting file nyuad/ad_mc_019.xml EADID='ad_mc_019', Deleting file tamwag/tam_143.xml EADID='tam_143'
+	a70140fab0efc8d2c865c1c586698deefe0ae375 Updating akkasah/ad_mc_030.xml, Updating cbh/arc_212_plymouth_beecher.xml, Updating edip/mos_2024.xml, Updating fales/mss_420.xml, Updating fales/mss_460.xml, Updating nyhs/ms256_harmon_hendricks_goldstone.xml, Updating nyhs/ms347_foundling_hospital.xml, Updating nyuad/ad_mc_019.xml, Updating tamwag/tam_143.xml
 */
 
 // hashes from the git-repo fixture (in order of commits)
-const AddAllHash = "4c96e78ae68001067397f15189a9f2e7db73ce0c"
-const DeleteAllHash = "03b0fed905b62a916f10d3b8e3cd170e3bc71b5a"
-const AddOneHash = "92e62027df18e069c975f2d2e08bb3e0bf29a4a3"
-const DeleteOneHash = "1d608596eedf1baf47b5f2dd21f8be59d2b72aef"
-const DeleteModifyAddHash = "1b89d86ac94aea3ca0ceac45b20840edb2a4d575"
-const AddTwoHash = "b6a37368c3d1ce52246b2e6b0266c504b978895a"
-const AddThreeDeleteTwoHash = "60fe0ab2ef487ef7e5fb7506882ed4a9f4bd5659"
-const NoEADFilesInCommitHash = "3df29b08307d939ca2d78e88c7ff58c2303d3a58"
+const AddAllHash = "a70140fab0efc8d2c865c1c586698deefe0ae375"
+const DeleteAllHash = "039d90e0bde64466379208e7461e7f2a19913472"
+const AddOneHash = "fa46edc88ce18e09da2be593417703346c6b0abc"
+const DeleteOneHash = "24becf5d3ae251cb74a82ee19f1310e3cd0de2c8"
+const DeleteModifyAddHash = "1556117167d78fbb0b7b9d0e09247a78a5cc3cd9"
+const AddTwoHash = "77c9c66337212fe86b235ebe089294c1d9f1e170"
+const AddThreeDeleteTwoHash = "75dcc7b44219559f5794359627fb979c839ceea3"
+const NoEADFilesInCommitHash = "abcd91ab50862cc1dc59e7297ecded651883a1e1"
