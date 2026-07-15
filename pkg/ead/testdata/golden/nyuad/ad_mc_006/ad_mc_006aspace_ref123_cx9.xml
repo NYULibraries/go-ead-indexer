@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Samuel Ball</field>
+    <field name="collection_sim">Abu Dhabi Film Festival Collection</field>
+    <field name="collection_ssm">Abu Dhabi Film Festival Collection</field>
+    <field name="collection_teim">Abu Dhabi Film Festival Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.006</field>
+    <field name="collection_unitid_teim">AD.MC.006</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">2001-2100</field>
+    <field name="ead_ssi">ad_mc_006</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">The Employment</field>
+    <field name="id">ad_mc_006aspace_ref123_cx9</field>
+    <field name="level_sim">item</field>
+    <field name="location_si">disk: ADFF 2009-17</field>
+    <field name="location_ssm">disk: ADFF 2009-17</field>
+    <field name="parent_ssi">aspace_ref10_1s8</field>
+    <field name="parent_ssm">aspace_ref7_52v</field>
+    <field name="parent_ssm">aspace_ref10_1s8</field>
+    <field name="parent_unittitles_ssm">2009 Abu Dhabi Film Festival</field>
+    <field name="parent_unittitles_ssm">Shorts Competition</field>
+    <field name="parent_unittitles_teim">2009 Abu Dhabi Film Festival</field>
+    <field name="parent_unittitles_teim">Shorts Competition</field>
+    <field name="phystech_teim">Original Format: 35mm
+Color
+Total Running Time: 00:06:00</field>
+    <field name="ref_ssi">aspace_ref123_cx9</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="scopecontent_teim">Director: Santiago &#39;Bou&#39; Grasso
+Original Title: El Empleo
+Catalog Record: Get It | The Employment
+More Information</field>
+    <field name="series_si">2009 Abu Dhabi Film Festival &gt;&gt; Shorts Competition &gt;&gt; The Employment</field>
+    <field name="series_sim">2009 Abu Dhabi Film Festival</field>
+    <field name="series_sim">Shorts Competition</field>
+    <field name="sort_ii">14</field>
+    <field name="unitdate_end_si">2008</field>
+    <field name="unitdate_end_sim">2008</field>
+    <field name="unitdate_end_ssm">2008</field>
+    <field name="unitdate_inclusive_teim">2008</field>
+    <field name="unitdate_normal_sim">2008/2008</field>
+    <field name="unitdate_normal_ssm">2008/2008</field>
+    <field name="unitdate_normal_teim">2008/2008</field>
+    <field name="unitdate_ssm">Inclusive, 2008</field>
+    <field name="unitdate_start_si">2008</field>
+    <field name="unitdate_start_sim">2008</field>
+    <field name="unitdate_start_ssm">2008</field>
+    <field name="unittitle_ssm">The Employment</field>
+    <field name="unittitle_teim">The Employment</field>
+  </doc>
+</add>

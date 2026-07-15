@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="abstract_ssm">One official document from 1850, written in Danish, granting Benjamin Brush the right to travel to Cuba from St. Thomas in the Virgin Islands.</field>
+    <field name="abstract_teim">One official document from 1850, written in Danish, granting Benjamin Brush the right to travel to Cuba from St. Thomas in the Virgin Islands.</field>
+    <field name="acqinfo_teim">Gift of Grace L. Brush, 1930.</field>
+    <field name="author_ssm">Nicholas Pavlik</field>
+    <field name="author_teim">Nicholas Pavlik</field>
+    <field name="bioghist_teim">Benjamin Harvey Brush (1820-1853), son of Joshua and Sarah (Ralph) Brush, was born in Smithtown, Long Island, N.Y.</field>
+    <field name="collection_sim">Benjamin Brush passport</field>
+    <field name="collection_ssm">Benjamin Brush passport</field>
+    <field name="collection_teim">Benjamin Brush passport</field>
+    <field name="corpname_ssm">Brooklyn Historical Society</field>
+    <field name="corpname_teim">Brooklyn Historical Society</field>
+    <field name="date_range_sim">1801-1900</field>
+    <field name="ead_ssi">arms_1974_257_brush</field>
+    <field name="format_ii">0</field>
+    <field name="format_sim">Archival Collection</field>
+    <field name="format_ssm">Archival Collection</field>
+    <field name="genreform_ssm">Passports</field>
+    <field name="genreform_teim">Passports</field>
+    <field name="geogname_ssm">Cuba</field>
+    <field name="geogname_ssm">Saint Thomas (V.I.)</field>
+    <field name="geogname_teim">Cuba</field>
+    <field name="geogname_teim">Saint Thomas (V.I.)</field>
+    <field name="heading_ssm">Benjamin Brush passport</field>
+    <field name="id">arms_1974_257_brush</field>
+    <field name="language_sim">Danish</field>
+    <field name="language_ssm">Danish</field>
+    <field name="material_type_sim">Passports</field>
+    <field name="material_type_ssm">Passports</field>
+    <field name="name_sim">Brush, Benjamin</field>
+    <field name="name_teim">Brush, Benjamin</field>
+    <field name="persname_ssm">Brush, Benjamin</field>
+    <field name="persname_teim">Brush, Benjamin</field>
+    <field name="place_sim">Cuba</field>
+    <field name="place_sim">Saint Thomas (V.I.)</field>
+    <field name="repository_sim">cbh</field>
+    <field name="repository_ssi">cbh</field>
+    <field name="repository_ssm">cbh</field>
+    <field name="scopecontent_teim">One official document, written in Danish, granting Benjamin Brush the right to travel to Cuba from St. Thomas in the Virgin Islands.  Stamped by the Danish government in St. Thomas.  Dated 1850.</field>
+    <field name="subject_sim">Passports -- Denmark</field>
+    <field name="subject_sim">Voyages and travels</field>
+    <field name="subject_ssm">Passports -- Denmark</field>
+    <field name="subject_ssm">Voyages and travels</field>
+    <field name="subject_teim">Passports -- Denmark</field>
+    <field name="subject_teim">Voyages and travels</field>
+    <field name="subject_teim">Passports -- Denmark</field>
+    <field name="subject_teim">Voyages and travels</field>
+    <field name="unitdate_end_si">1850</field>
+    <field name="unitdate_end_sim">1850</field>
+    <field name="unitdate_end_ssm">1850</field>
+    <field name="unitdate_normal_sim">1850/1850</field>
+    <field name="unitdate_normal_ssm">1850/1850</field>
+    <field name="unitdate_normal_teim">1850/1850</field>
+    <field name="unitdate_ssm">1850</field>
+    <field name="unitdate_start_si">1850</field>
+    <field name="unitdate_start_sim">1850</field>
+    <field name="unitdate_start_ssm">1850</field>
+    <field name="unitdate_teim">1850</field>
+    <field name="unitid_ssm">1974.257</field>
+    <field name="unitid_teim">1974.257</field>
+    <field name="unittitle_ssm">Benjamin Brush passport</field>
+    <field name="unittitle_teim">Benjamin Brush passport</field>
+  </doc>
+</add>

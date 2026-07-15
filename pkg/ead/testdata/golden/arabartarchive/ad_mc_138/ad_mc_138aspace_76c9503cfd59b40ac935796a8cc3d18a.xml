@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ibrahim Mohamed Ali, Maysa Shaer, Anneka Lenssen, and Salwa Mikdadi, with assistance from Roudhah Al Mazrouei.</field>
+    <field name="collection_sim">Hussain Sharif Collection</field>
+    <field name="collection_ssm">Hussain Sharif Collection</field>
+    <field name="collection_teim">Hussain Sharif Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.138</field>
+    <field name="collection_unitid_teim">AD.MC.138</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_138</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">1. &#34;Exhibition of the Dubai Art Association,&#34; British Council, Dubai, 1975</field>
+    <field name="id">ad_mc_138aspace_76c9503cfd59b40ac935796a8cc3d18a</field>
+    <field name="level_sim">subgrp</field>
+    <field name="parent_ssi">aspace_a7306d242f77a40fe666ffa55b1bcd95</field>
+    <field name="parent_ssm">aspace_d1c87bdc8746d2424836152191849b75</field>
+    <field name="parent_ssm">aspace_a7306d242f77a40fe666ffa55b1bcd95</field>
+    <field name="parent_unittitles_ssm">Series III: Photographic Materials</field>
+    <field name="parent_unittitles_ssm">III.D. Photographs of Exhibitions</field>
+    <field name="parent_unittitles_teim">Series III: Photographic Materials</field>
+    <field name="parent_unittitles_teim">III.D. Photographs of Exhibitions</field>
+    <field name="ref_ssi">aspace_76c9503cfd59b40ac935796a8cc3d18a</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="series_si">Series III: Photographic Materials &gt;&gt; III.D. Photographs of Exhibitions &gt;&gt; 1. &#34;Exhibition of the Dubai Art Association,&#34; British Council, Dubai, 1975</field>
+    <field name="series_sim">Series III: Photographic Materials</field>
+    <field name="series_sim">III.D. Photographs of Exhibitions</field>
+    <field name="sort_ii">34</field>
+    <field name="unitid_ssm">cuid1267</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/34596</field>
+    <field name="unitid_teim">cuid1267</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/34596</field>
+    <field name="unittitle_ssm">1. &#34;Exhibition of the Dubai Art Association,&#34; British Council, Dubai, 1975</field>
+    <field name="unittitle_teim">1. &#34;Exhibition of the Dubai Art Association,&#34; British Council, Dubai, 1975</field>
+  </doc>
+</add>

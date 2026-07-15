@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Rachel Searcy</field>
+    <field name="collection_sim">Stephen Facey Collection on Theatre Genesis</field>
+    <field name="collection_ssm">Stephen Facey Collection on Theatre Genesis</field>
+    <field name="collection_teim">Stephen Facey Collection on Theatre Genesis</field>
+    <field name="collection_unitid_ssm">MSS.595</field>
+    <field name="collection_unitid_teim">MSS.595</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">mss_595</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Why the Clown Never Speaks, Written by Tom Ohlson, Directed by Jack Milton; A Corner of the Morning, Written by Michael Locascio, Directed by Ken Linden; The Interrogation Room, Written by David Scott Milton, Directed by Jack Milton</field>
+    <field name="id">mss_595aspace_00f28c3985e1f36e78e634fbaef36d2e</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 1, Folder: 15</field>
+    <field name="location_ssm">Box: 1, Folder: 15</field>
+    <field name="ref_ssi">aspace_00f28c3985e1f36e78e634fbaef36d2e</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="series_si">&lt;em&gt;Why the Clown Never Speaks&lt;/em&gt;, Written by Tom Ohlson, Directed by Jack Milton; &lt;em&gt;A Corner of the Morning&lt;/em&gt;, Written by Michael Locascio, Directed by Ken Linden; &lt;em&gt;The Interrogation Room&lt;/em&gt;, Written by David Scott Milton, Directed by Jack Milton</field>
+    <field name="sort_ii">16</field>
+    <field name="unitdate_inclusive_teim">1966-02</field>
+    <field name="unitdate_normal_sim">1966-02/1966-02</field>
+    <field name="unitdate_normal_ssm">1966-02/1966-02</field>
+    <field name="unitdate_normal_teim">1966-02/1966-02</field>
+    <field name="unitdate_ssm">Inclusive, 1966-02</field>
+    <field name="unittitle_ssm">&lt;em&gt;Why the Clown Never Speaks&lt;/em&gt;, Written by Tom Ohlson, Directed by Jack Milton; &lt;em&gt;A Corner of the Morning&lt;/em&gt;, Written by Michael Locascio, Directed by Ken Linden; &lt;em&gt;The Interrogation Room&lt;/em&gt;, Written by David Scott Milton, Directed by Jack Milton</field>
+    <field name="unittitle_teim">Why the Clown Never Speaks, Written by Tom Ohlson, Directed by Jack Milton; A Corner of the Morning, Written by Michael Locascio, Directed by Ken Linden; The Interrogation Room, Written by David Scott Milton, Directed by Jack Milton</field>
+  </doc>
+</add>

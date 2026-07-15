@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Alison Dundy</field>
+    <field name="collection_sim">New York Caledonian Club records</field>
+    <field name="collection_ssm">New York Caledonian Club records</field>
+    <field name="collection_teim">New York Caledonian Club records</field>
+    <field name="collection_unitid_ssm">MS 2923</field>
+    <field name="collection_unitid_teim">MS 2923</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms2923_caledonian_club</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Membership Records</field>
+    <field name="id">ms2923_caledonian_clubaspace_ref83_cwr</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Offsite-Box: CA-5, Volume: 21</field>
+    <field name="location_ssm">Offsite-Box: CA-5, Volume: 21</field>
+    <field name="parent_ssi">aspace_ref21_aml</field>
+    <field name="parent_ssm">aspace_ref21_aml</field>
+    <field name="parent_unittitles_ssm">Series III: Membership Records</field>
+    <field name="parent_unittitles_teim">Series III: Membership Records</field>
+    <field name="ref_ssi">aspace_ref83_cwr</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="series_si">Series III: Membership Records &gt;&gt; Membership Records</field>
+    <field name="series_sim">Series III: Membership Records</field>
+    <field name="sort_ii">43</field>
+    <field name="unitdate_ssm">1900 - 1910</field>
+    <field name="unitdate_teim">1900 - 1910</field>
+    <field name="unittitle_ssm">Membership Records</field>
+    <field name="unittitle_teim">Membership Records</field>
+  </doc>
+</add>

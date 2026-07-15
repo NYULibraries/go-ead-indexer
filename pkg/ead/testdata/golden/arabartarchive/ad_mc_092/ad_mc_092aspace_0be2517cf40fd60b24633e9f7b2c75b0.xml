@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ala Younis, Ibrahim Mohamed Ali, Dina Taha, Anneka Lenssen, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art, NYUAD</field>
+    <field name="collection_sim">Rafa Nasiri and May Muzaffar Collection</field>
+    <field name="collection_ssm">Rafa Nasiri and May Muzaffar Collection</field>
+    <field name="collection_teim">Rafa Nasiri and May Muzaffar Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.092</field>
+    <field name="collection_unitid_teim">AD.MC.092</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_092</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series II: Correspondence</field>
+    <field name="id">ad_mc_092aspace_0be2517cf40fd60b24633e9f7b2c75b0</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_0be2517cf40fd60b24633e9f7b2c75b0</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="scopecontent_teim">This series features a large volume of professional correspondence directed to Rafa Nasiri at his Institute of Fine Arts address in Baghdad, as well as postcards and letters, exchanged with artists, writers, and family members, among them letters Nasiri sent to his father and brothers during his years in Beijing.</field>
+    <field name="series_si">Series II: Correspondence</field>
+    <field name="sort_ii">5</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/32141</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/32141</field>
+    <field name="unittitle_ssm">Series II: Correspondence</field>
+    <field name="unittitle_teim">Series II: Correspondence</field>
+  </doc>
+</add>

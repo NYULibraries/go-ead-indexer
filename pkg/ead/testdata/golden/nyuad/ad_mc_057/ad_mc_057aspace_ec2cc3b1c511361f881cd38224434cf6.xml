@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">Emirates Bird Records Committee records</field>
+    <field name="collection_ssm">Emirates Bird Records Committee records</field>
+    <field name="collection_teim">Emirates Bird Records Committee records</field>
+    <field name="collection_unitid_ssm">AD.MC.057</field>
+    <field name="collection_unitid_teim">AD.MC.057</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_057</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">1999</field>
+    <field name="id">ad_mc_057aspace_ec2cc3b1c511361f881cd38224434cf6</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 8, folder: 15</field>
+    <field name="location_ssm">box: 8, folder: 15</field>
+    <field name="parent_ssi">aspace_f4d0e3c8f02d8d4b39d3c23f3fee291f</field>
+    <field name="parent_ssm">aspace_df7090da5daaac0446a8be4bb67b5b3e</field>
+    <field name="parent_ssm">aspace_f4d0e3c8f02d8d4b39d3c23f3fee291f</field>
+    <field name="parent_unittitles_ssm">Group bird record forms:  by individuals</field>
+    <field name="parent_unittitles_ssm">Brett, Phil</field>
+    <field name="parent_unittitles_teim">Group bird record forms:  by individuals</field>
+    <field name="parent_unittitles_teim">Brett, Phil</field>
+    <field name="ref_ssi">aspace_ec2cc3b1c511361f881cd38224434cf6</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Group bird record forms:  by individuals &gt;&gt; Brett, Phil &gt;&gt; 1999</field>
+    <field name="series_sim">Group bird record forms:  by individuals</field>
+    <field name="series_sim">Brett, Phil</field>
+    <field name="sort_ii">234</field>
+    <field name="unittitle_ssm">1999</field>
+    <field name="unittitle_teim">1999</field>
+  </doc>
+</add>

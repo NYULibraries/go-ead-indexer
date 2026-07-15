@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer, with assistance from Muhammad Shehryar Hamid.</field>
+    <field name="collection_sim">P. Marcel Kurpershoek papers</field>
+    <field name="collection_ssm">P. Marcel Kurpershoek papers</field>
+    <field name="collection_teim">P. Marcel Kurpershoek papers</field>
+    <field name="collection_unitid_ssm">AD.MC.054</field>
+    <field name="collection_unitid_teim">AD.MC.054</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">ad_mc_054</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Writings:  &#34;Between ad-Dakhul and &#39;Afif:  Oral Traditions of the &#39;Utaybah Tribe in Central Najd,&#34; Zeitschrift für arabische Linguistik, vol. 26</field>
+    <field name="id">ad_mc_054aspace_4a7414b8f75fd924e6ff106c934f1e7c</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 11, folder: 7</field>
+    <field name="location_ssm">box: 11, folder: 7</field>
+    <field name="parent_ssi">aspace_ab11b0c077d1aedf088661b6d79f42b3</field>
+    <field name="parent_ssm">aspace_ab11b0c077d1aedf088661b6d79f42b3</field>
+    <field name="parent_unittitles_ssm">Correspondence, speeches, and miscellaneous writings</field>
+    <field name="parent_unittitles_teim">Correspondence, speeches, and miscellaneous writings</field>
+    <field name="ref_ssi">aspace_4a7414b8f75fd924e6ff106c934f1e7c</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Correspondence, speeches, and miscellaneous writings &gt;&gt; Writings:  &#34;Between ad-Dakhul and &#39;Afif:  Oral Traditions of the &#39;Utaybah Tribe in Central Najd,&#34; Zeitschrift für arabische Linguistik, vol. 26</field>
+    <field name="series_sim">Correspondence, speeches, and miscellaneous writings</field>
+    <field name="sort_ii">170</field>
+    <field name="unitdate_end_si">1993</field>
+    <field name="unitdate_end_sim">1993</field>
+    <field name="unitdate_end_ssm">1993</field>
+    <field name="unitdate_normal_sim">1993/1993</field>
+    <field name="unitdate_normal_ssm">1993/1993</field>
+    <field name="unitdate_normal_teim">1993/1993</field>
+    <field name="unitdate_ssm">1993</field>
+    <field name="unitdate_start_si">1993</field>
+    <field name="unitdate_start_sim">1993</field>
+    <field name="unitdate_start_ssm">1993</field>
+    <field name="unitdate_teim">1993</field>
+    <field name="unittitle_ssm">Writings:  &#34;Between ad-Dakhul and &#39;Afif:  Oral Traditions of the &#39;Utaybah Tribe in Central Najd,&#34; Zeitschrift für arabische Linguistik, vol. 26</field>
+    <field name="unittitle_teim">Writings:  &#34;Between ad-Dakhul and &#39;Afif:  Oral Traditions of the &#39;Utaybah Tribe in Central Najd,&#34; Zeitschrift für arabische Linguistik, vol. 26</field>
+  </doc>
+</add>

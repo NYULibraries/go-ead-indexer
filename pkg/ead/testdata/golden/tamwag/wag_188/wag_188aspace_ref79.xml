@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Nicole Greenhouse</field>
+    <field name="collection_sim">United Automobile Workers of America, Local 2110 Records</field>
+    <field name="collection_ssm">United Automobile Workers of America, Local 2110 Records</field>
+    <field name="collection_teim">United Automobile Workers of America, Local 2110 Records</field>
+    <field name="collection_unitid_ssm">WAG.188</field>
+    <field name="collection_unitid_teim">WAG.188</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">wag_188</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">CBTU Convention VHS</field>
+    <field name="id">wag_188aspace_ref79</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 4</field>
+    <field name="location_ssm">Box: 4</field>
+    <field name="parent_ssi">aspace_ref9</field>
+    <field name="parent_ssm">aspace_ref9</field>
+    <field name="parent_unittitles_ssm">Series I: Papers and Audiovisual Materials</field>
+    <field name="parent_unittitles_teim">Series I: Papers and Audiovisual Materials</field>
+    <field name="ref_ssi">aspace_ref79</field>
+    <field name="repository_sim">tamwag</field>
+    <field name="repository_ssi">tamwag</field>
+    <field name="repository_ssm">tamwag</field>
+    <field name="series_si">Series I: Papers and Audiovisual Materials &gt;&gt; CBTU Convention VHS</field>
+    <field name="series_sim">Series I: Papers and Audiovisual Materials</field>
+    <field name="sort_ii">71</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/345925</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/345925</field>
+    <field name="unittitle_ssm">CBTU Convention VHS</field>
+    <field name="unittitle_teim">CBTU Convention VHS</field>
+  </doc>
+</add>

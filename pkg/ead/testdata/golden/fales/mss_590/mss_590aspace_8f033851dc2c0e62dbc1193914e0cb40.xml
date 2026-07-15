@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Stacey Flatt and Rachel Searcy</field>
+    <field name="collection_sim">Lydia Lunch Papers</field>
+    <field name="collection_ssm">Lydia Lunch Papers</field>
+    <field name="collection_teim">Lydia Lunch Papers</field>
+    <field name="collection_unitid_ssm">MSS.590</field>
+    <field name="collection_unitid_teim">MSS.590</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="date_range_sim">2001-2100</field>
+    <field name="ead_ssi">mss_590</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series II. Performance and Studio Recordings</field>
+    <field name="id">mss_590aspace_8f033851dc2c0e62dbc1193914e0cb40</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_8f033851dc2c0e62dbc1193914e0cb40</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="scopecontent_teim">This series contains analog and digital recordings of mostly unreleased live performances and studio sessions of Lydia Lunch, most dating from the mid-1970s to the 2000s. Live performance recordings include shows with Lunch&#39;s band Teenage Jesus and the Jerks at CBGBs and Hurrah&#39;s, Eight Eyed Spy shows, and also Beirut Slump&#39;s first performance, played at the Millenium. This series also includes Lunch&#39;s spoken word performances at the Knitting Factory, Bogart&#39;s, G&#39;s Club, Apolo, and other American and international venues. Some performance recordings include Lunch performing with other artists including Exene Cervenka, Mark Cunningham, Rowland S Howard, Debi Mazar, Hubert Selby Jr., Jerry Stahl, Wanda Coleman, and Emilio Cubeiro. This series also contains recordings of spoken work performances with Emilio Cubeiro and with his band Hot Lunch, often at New York clubs including CBGBs and the Knitting Factory. The series also has a small number of studio recordings of Lunch&#39;s songs.</field>
+    <field name="series_si">Series II. Performance and Studio Recordings</field>
+    <field name="sort_ii">103</field>
+    <field name="unitdate_bulk_teim">1976-1999</field>
+    <field name="unitdate_end_si">1999</field>
+    <field name="unitdate_end_sim">2015</field>
+    <field name="unitdate_end_sim">1999</field>
+    <field name="unitdate_end_ssm">2015</field>
+    <field name="unitdate_end_ssm">1999</field>
+    <field name="unitdate_inclusive_teim">1962-2015</field>
+    <field name="unitdate_normal_sim">1962/2015</field>
+    <field name="unitdate_normal_sim">1976/1999</field>
+    <field name="unitdate_normal_ssm">1962/2015</field>
+    <field name="unitdate_normal_ssm">1976/1999</field>
+    <field name="unitdate_normal_teim">1962/2015</field>
+    <field name="unitdate_normal_teim">1976/1999</field>
+    <field name="unitdate_ssm">Inclusive, 1962-2015 ; 1976-1999</field>
+    <field name="unitdate_start_si">1976</field>
+    <field name="unitdate_start_sim">1962</field>
+    <field name="unitdate_start_sim">1976</field>
+    <field name="unitdate_start_ssm">1962</field>
+    <field name="unitdate_start_ssm">1976</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/927055</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/927055</field>
+    <field name="unittitle_ssm">Series II. Performance and Studio Recordings</field>
+    <field name="unittitle_teim">Series II. Performance and Studio Recordings</field>
+  </doc>
+</add>

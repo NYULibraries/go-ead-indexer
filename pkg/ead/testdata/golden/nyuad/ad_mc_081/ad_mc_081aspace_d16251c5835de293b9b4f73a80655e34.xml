@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">Diplomatic visits of rulers of Saudi Arabia, photograph collection</field>
+    <field name="collection_ssm">Diplomatic visits of rulers of Saudi Arabia, photograph collection</field>
+    <field name="collection_teim">Diplomatic visits of rulers of Saudi Arabia, photograph collection</field>
+    <field name="collection_unitid_ssm">AD.MC.081</field>
+    <field name="collection_unitid_teim">AD.MC.081</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_081</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">United States visit (10 images, including with President Eisenhower, Richard Nixon, Pat Nixon, John Foster Dulles)</field>
+    <field name="id">ad_mc_081aspace_d16251c5835de293b9b4f73a80655e34</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 1, folder: 4</field>
+    <field name="location_ssm">box: 1, folder: 4</field>
+    <field name="parent_ssi">aspace_99e15900b9ae31a00fb7ff770dccf53b</field>
+    <field name="parent_ssm">aspace_99e15900b9ae31a00fb7ff770dccf53b</field>
+    <field name="parent_unittitles_ssm">Saʿūd ibn ʿAbd al ʿAzīz Āl Saʿūd (as Crown Prince and King)</field>
+    <field name="parent_unittitles_teim">Saʿūd ibn ʿAbd al ʿAzīz Āl Saʿūd (as Crown Prince and King)</field>
+    <field name="ref_ssi">aspace_d16251c5835de293b9b4f73a80655e34</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Saʿūd ibn ʿAbd al ʿAzīz Āl Saʿūd (as Crown Prince and King) &gt;&gt; United States visit (10 images, including with President Eisenhower, Richard Nixon, Pat Nixon, John Foster Dulles)</field>
+    <field name="series_sim">Saʿūd ibn ʿAbd al ʿAzīz Āl Saʿūd (as Crown Prince and King)</field>
+    <field name="sort_ii">6</field>
+    <field name="unitdate_inclusive_teim">January - February 1957</field>
+    <field name="unitdate_normal_sim">1957-01/1957-02</field>
+    <field name="unitdate_normal_ssm">1957-01/1957-02</field>
+    <field name="unitdate_normal_teim">1957-01/1957-02</field>
+    <field name="unitdate_ssm">Inclusive, January - February 1957</field>
+    <field name="unittitle_ssm">United States visit (10 images, including with President Eisenhower, Richard Nixon, Pat Nixon, John Foster Dulles)</field>
+    <field name="unittitle_teim">United States visit (10 images, including with President Eisenhower, Richard Nixon, Pat Nixon, John Foster Dulles)</field>
+  </doc>
+</add>

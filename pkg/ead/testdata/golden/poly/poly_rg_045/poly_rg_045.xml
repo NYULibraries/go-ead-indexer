@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="acqinfo_teim">The collection was donated to the Polytechnic Institute of New York University Archives by Katepalli Sreenivasan in 2020.</field>
+    <field name="author_ssm">Mandy Abokhair and Aileen Thong</field>
+    <field name="author_teim">Mandy Abokhair and Aileen Thong</field>
+    <field name="bioghist_teim">The Katepalli Sreenivasan Papers span Sreenivasan&#39;s time as the last President of Brooklyn Poly (then called the Polytechnic Institute of New York University/NYU-Poly) and as the first dean of the NYU Tandon School of Engineering, where he served in this position from 2013-2018. This collection contains correspondence from 2011-2017.</field>
+    <field name="collection_sim">Katepalli Sreenivasan Papers</field>
+    <field name="collection_ssm">Katepalli Sreenivasan Papers</field>
+    <field name="collection_teim">Katepalli Sreenivasan Papers</field>
+    <field name="corpname_ssm">Poly Archives at the Bern Dibner Library of Science and Technology, NYU Libraries</field>
+    <field name="corpname_teim">Poly Archives at the Bern Dibner Library of Science and Technology, NYU Libraries</field>
+    <field name="date_range_sim">2001-2100</field>
+    <field name="ead_ssi">poly_rg_045</field>
+    <field name="format_ii">0</field>
+    <field name="format_sim">Archival Collection</field>
+    <field name="format_ssm">Archival Collection</field>
+    <field name="heading_ssm">Katepalli Sreenivasan Papers</field>
+    <field name="id">poly_rg_045</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="scopecontent_teim">The Katepalli Sreenivasan Papers contain documents from 2011-2017. This set of correspondence was collected by Sreenivasan during his time as President of Brooklyn Poly and layer as the first dean of the NYU Tandon School of Engineering. The collection is 2 linear feet, located on bay 26, shelf 2E.</field>
+    <field name="unitdate_end_si">2017</field>
+    <field name="unitdate_end_sim">2017</field>
+    <field name="unitdate_end_ssm">2017</field>
+    <field name="unitdate_inclusive_teim">2011-2017</field>
+    <field name="unitdate_normal_sim">2011/2017</field>
+    <field name="unitdate_normal_ssm">2011/2017</field>
+    <field name="unitdate_normal_teim">2011/2017</field>
+    <field name="unitdate_ssm">Inclusive, 2011-2017</field>
+    <field name="unitdate_start_si">2011</field>
+    <field name="unitdate_start_sim">2011</field>
+    <field name="unitdate_start_ssm">2011</field>
+    <field name="unitid_ssm">RG.045</field>
+    <field name="unitid_teim">RG.045</field>
+    <field name="unittitle_ssm">Katepalli Sreenivasan Papers</field>
+    <field name="unittitle_teim">Katepalli Sreenivasan Papers</field>
+  </doc>
+</add>

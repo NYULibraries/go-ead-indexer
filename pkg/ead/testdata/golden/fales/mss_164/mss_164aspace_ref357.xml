@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Michael Zimmer, June – July 2003</field>
+    <field name="collection_sim">Robert Hammond Papers</field>
+    <field name="collection_ssm">Robert Hammond Papers</field>
+    <field name="collection_teim">Robert Hammond Papers</field>
+    <field name="collection_unitid_ssm">MSS.164</field>
+    <field name="collection_unitid_teim">MSS.164</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">mss_164</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">French Film Scenarios (typed &amp; published galleries)</field>
+    <field name="id">mss_164aspace_ref357</field>
+    <field name="level_sim">otherlevel</field>
+    <field name="location_si">Box: 7, Folder: 12</field>
+    <field name="location_ssm">Box: 7, Folder: 12</field>
+    <field name="parent_ssi">aspace_ref345</field>
+    <field name="parent_ssm">aspace_ref344</field>
+    <field name="parent_ssm">aspace_ref345</field>
+    <field name="parent_unittitles_ssm">Series II: Manuscripts: Prose</field>
+    <field name="parent_unittitles_ssm">Subseries II.A: Robert Hammond</field>
+    <field name="parent_unittitles_teim">Series II: Manuscripts: Prose</field>
+    <field name="parent_unittitles_teim">Subseries II.A: Robert Hammond</field>
+    <field name="ref_ssi">aspace_ref357</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="series_si">Series II: Manuscripts: Prose &gt;&gt; Subseries II.A: Robert Hammond &gt;&gt; French Film Scenarios (typed &amp; published galleries)</field>
+    <field name="series_sim">Series II: Manuscripts: Prose</field>
+    <field name="series_sim">Subseries II.A: Robert Hammond</field>
+    <field name="sort_ii">180</field>
+    <field name="unitdate_ssm">Oct 1958</field>
+    <field name="unitdate_teim">Oct 1958</field>
+    <field name="unittitle_ssm">French Film Scenarios (typed &amp; published galleries)</field>
+    <field name="unittitle_teim">French Film Scenarios (typed &amp; published galleries)</field>
+  </doc>
+</add>

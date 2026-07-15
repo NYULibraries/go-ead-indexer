@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Zoe Blecher-Cohen</field>
+    <field name="collection_sim">Poly Archives Memorabilia Collection</field>
+    <field name="collection_ssm">Poly Archives Memorabilia Collection</field>
+    <field name="collection_teim">Poly Archives Memorabilia Collection</field>
+    <field name="collection_unitid_ssm">RG.027</field>
+    <field name="collection_unitid_teim">RG.027</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">poly_rg_027</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Polytechnic Board of Trustees commencement hood</field>
+    <field name="id">poly_rg_027aspace_d55c750dbe6d0b26b033eabf980ddb02</field>
+    <field name="level_sim">item</field>
+    <field name="location_si">box: 13, object: 2</field>
+    <field name="location_ssm">box: 13, object: 2</field>
+    <field name="parent_ssi">aspace_13ed9f66c09cb2a16fb159fec3a3c462</field>
+    <field name="parent_ssm">aspace_13ed9f66c09cb2a16fb159fec3a3c462</field>
+    <field name="parent_unittitles_ssm">Series III: Academic Regalia</field>
+    <field name="parent_unittitles_teim">Series III: Academic Regalia</field>
+    <field name="ref_ssi">aspace_d55c750dbe6d0b26b033eabf980ddb02</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="series_si">Series III: Academic Regalia &gt;&gt; Polytechnic Board of Trustees commencement hood</field>
+    <field name="series_sim">Series III: Academic Regalia</field>
+    <field name="sort_ii">46</field>
+    <field name="unitdate_ssm">undated</field>
+    <field name="unitdate_teim">undated</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/12672</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/12672</field>
+    <field name="unittitle_ssm">Polytechnic Board of Trustees commencement hood</field>
+    <field name="unittitle_teim">Polytechnic Board of Trustees commencement hood</field>
+  </doc>
+</add>

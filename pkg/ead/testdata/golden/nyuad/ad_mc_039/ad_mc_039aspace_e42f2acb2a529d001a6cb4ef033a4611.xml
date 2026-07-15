@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">Ali Akbar Bushiri collection</field>
+    <field name="collection_ssm">Ali Akbar Bushiri collection</field>
+    <field name="collection_teim">Ali Akbar Bushiri collection</field>
+    <field name="collection_unitid_ssm">AD.MC.039</field>
+    <field name="collection_unitid_teim">AD.MC.039</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_039</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Sharif, Mohammed Taher</field>
+    <field name="id">ad_mc_039aspace_e42f2acb2a529d001a6cb4ef033a4611</field>
+    <field name="level_sim">subseries</field>
+    <field name="parent_ssi">aspace_ad41935c818356acf0b79f3e802d2fbc</field>
+    <field name="parent_ssm">aspace_ad41935c818356acf0b79f3e802d2fbc</field>
+    <field name="parent_unittitles_ssm">Safar and Sharif families </field>
+    <field name="parent_unittitles_teim">Safar and Sharif families </field>
+    <field name="ref_ssi">aspace_e42f2acb2a529d001a6cb4ef033a4611</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Safar and Sharif families  &gt;&gt; Sharif, Mohammed Taher</field>
+    <field name="series_sim">Safar and Sharif families </field>
+    <field name="sort_ii">140</field>
+    <field name="unittitle_ssm">Sharif, Mohammed Taher</field>
+    <field name="unittitle_teim">Sharif, Mohammed Taher</field>
+  </doc>
+</add>

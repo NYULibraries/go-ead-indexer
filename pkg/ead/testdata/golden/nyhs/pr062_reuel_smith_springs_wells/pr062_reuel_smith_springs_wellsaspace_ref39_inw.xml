@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Miranda Schwartz (2000s); Larry Weimer (2021)</field>
+    <field name="collection_sim">James Reuel Smith springs and wells photographs and papers</field>
+    <field name="collection_ssm">James Reuel Smith springs and wells photographs and papers</field>
+    <field name="collection_teim">James Reuel Smith springs and wells photographs and papers</field>
+    <field name="collection_unitid_ssm">PR 62</field>
+    <field name="collection_unitid_teim">PR 62</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">pr062_reuel_smith_springs_wells</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series IV: Springs and Wells Manuscript Material</field>
+    <field name="id">pr062_reuel_smith_springs_wellsaspace_ref39_inw</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_ref39_inw</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="scopecontent_teim">The series primarily contains James Reuel Smith&#39;s draft texts, file of research notes, indexes, classifications, reference materials, and maps with push pins marking locations. These relate principally to his Springs and Wells of Manhattan and the Bronx, New York City, at the End of the Nineteenth Century, and also his book on springs and wells in Greek and Roman literature. The series also includes a small number of photographs of Smith and subjects other than springs and wells. Although Smith seems to have taken his photographs in 1897-1901, the date range of this series extends into the 1930s as it reflects the timing of subsequent research and writing by Smith and, to some uncertain extent, the use of the material by N-YHS in preparing/editing Smith&#39;s manuscripts for publication.</field>
+    <field name="series_si">Series IV: Springs and Wells Manuscript Material</field>
+    <field name="sort_ii">25</field>
+    <field name="title_ssm">Springs and Wells of Manhattan and the Bronx, New York City, at the End of the Nineteenth Century</field>
+    <field name="title_teim">Springs and Wells of Manhattan and the Bronx, New York City, at the End of the Nineteenth Century</field>
+    <field name="unitdate_inclusive_teim">1890s-1930s</field>
+    <field name="unitdate_ssm">Inclusive, 1890s-1930s</field>
+    <field name="unittitle_ssm">Series IV: Springs and Wells Manuscript Material</field>
+    <field name="unittitle_teim">Series IV: Springs and Wells Manuscript Material</field>
+  </doc>
+</add>

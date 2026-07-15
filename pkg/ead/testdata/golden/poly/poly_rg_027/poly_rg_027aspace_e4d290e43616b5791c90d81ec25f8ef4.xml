@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Zoe Blecher-Cohen</field>
+    <field name="collection_sim">Poly Archives Memorabilia Collection</field>
+    <field name="collection_ssm">Poly Archives Memorabilia Collection</field>
+    <field name="collection_teim">Poly Archives Memorabilia Collection</field>
+    <field name="collection_unitid_ssm">RG.027</field>
+    <field name="collection_unitid_teim">RG.027</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">poly_rg_027</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">NYU-Poly banner, purple</field>
+    <field name="id">poly_rg_027aspace_e4d290e43616b5791c90d81ec25f8ef4</field>
+    <field name="level_sim">item</field>
+    <field name="location_si">box: 25, object: 1</field>
+    <field name="location_ssm">box: 25, object: 1</field>
+    <field name="parent_ssi">aspace_1cd159adf6b0ec19714cc3a34e3daf11</field>
+    <field name="parent_ssm">aspace_3815c546a8e2b997c89240fb9e20e625</field>
+    <field name="parent_ssm">aspace_1cd159adf6b0ec19714cc3a34e3daf11</field>
+    <field name="parent_unittitles_ssm">Series II: Polytechnic Banners</field>
+    <field name="parent_unittitles_ssm">Subseries A: General University Banners</field>
+    <field name="parent_unittitles_teim">Series II: Polytechnic Banners</field>
+    <field name="parent_unittitles_teim">Subseries A: General University Banners</field>
+    <field name="ref_ssi">aspace_e4d290e43616b5791c90d81ec25f8ef4</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="series_si">Series II: Polytechnic Banners &gt;&gt; Subseries A: General University Banners &gt;&gt; NYU-Poly banner, purple</field>
+    <field name="series_sim">Series II: Polytechnic Banners</field>
+    <field name="series_sim">Subseries A: General University Banners</field>
+    <field name="sort_ii">24</field>
+    <field name="unitdate_ssm">undated</field>
+    <field name="unitdate_teim">undated</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/13247</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/13247</field>
+    <field name="unittitle_ssm">NYU-Poly banner, purple</field>
+    <field name="unittitle_teim">NYU-Poly banner, purple</field>
+  </doc>
+</add>

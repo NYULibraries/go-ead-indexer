@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">Correspondence from the island of Réunion (Île de Bourbon), plus one letter from Emily Ruete (Princess Salme of Zanzibar)</field>
+    <field name="collection_ssm">Correspondence from the island of Réunion (Île de Bourbon), plus one letter from Emily Ruete (Princess Salme of Zanzibar)</field>
+    <field name="collection_teim">Correspondence from the island of Réunion (Île de Bourbon), plus one letter from Emily Ruete (Princess Salme of Zanzibar)</field>
+    <field name="collection_unitid_ssm">AD.MC.165</field>
+    <field name="collection_unitid_teim">AD.MC.165</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_165</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Montarby, Col. Laurent de, Saint-Denis :  letter addressed to Auguste Forestier, Paris, describing promotion in rank due to service in Réunion during recent war (1 leaf, ALS, 2 pages)</field>
+    <field name="id">ad_mc_165aspace_b178128b747d1435583f7eee86023d1d</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 1, folder: 7</field>
+    <field name="location_ssm">box: 1, folder: 7</field>
+    <field name="ref_ssi">aspace_b178128b747d1435583f7eee86023d1d</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Montarby, Col. Laurent de, Saint-Denis :  letter addressed to Auguste Forestier, Paris, describing promotion in rank due to service in Réunion during recent war (1 leaf, ALS, 2 pages)</field>
+    <field name="sort_ii">7</field>
+    <field name="unitdate_normal_sim">1815-09-20/1815-09-20</field>
+    <field name="unitdate_normal_ssm">1815-09-20/1815-09-20</field>
+    <field name="unitdate_normal_teim">1815-09-20/1815-09-20</field>
+    <field name="unitdate_ssm">20 September 1815</field>
+    <field name="unitdate_teim">20 September 1815</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/41257</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/41257</field>
+    <field name="unittitle_ssm">Montarby, Col. Laurent de, Saint-Denis :  letter addressed to Auguste Forestier, Paris, describing promotion in rank due to service in Réunion during recent war (1 leaf, ALS, 2 pages)</field>
+    <field name="unittitle_teim">Montarby, Col. Laurent de, Saint-Denis :  letter addressed to Auguste Forestier, Paris, describing promotion in rank due to service in Réunion during recent war (1 leaf, ALS, 2 pages)</field>
+  </doc>
+</add>

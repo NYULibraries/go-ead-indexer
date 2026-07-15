@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Larry Weimer</field>
+    <field name="collection_sim">David N. Judelson papers on Gulf and Western Industries</field>
+    <field name="collection_ssm">David N. Judelson papers on Gulf and Western Industries</field>
+    <field name="collection_teim">David N. Judelson papers on Gulf and Western Industries</field>
+    <field name="collection_unitid_ssm">MS 3081</field>
+    <field name="collection_unitid_teim">MS 3081</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms3081_david_judelson</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Annual reports</field>
+    <field name="id">ms3081_david_judelsonaspace_5d5d29357abec11c9835b419c9eb082e</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Offsite-Box: 17</field>
+    <field name="location_ssm">Offsite-Box: 17</field>
+    <field name="ref_ssi">aspace_5d5d29357abec11c9835b419c9eb082e</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="scopecontent_teim">Holds published &#34;glossy&#34; annual reports for G+W for 1959 (likely the first annual report under the G+W name), 1968-1982 (those issued while Judelson was president), 1988, and for Paramount (G+W&#39;s new name) for 1989-1992.</field>
+    <field name="series_si">Annual reports</field>
+    <field name="sort_ii">24</field>
+    <field name="unitdate_inclusive_teim">1959, 1968-1992</field>
+    <field name="unitdate_ssm">Inclusive, 1959, 1968-1992</field>
+    <field name="unittitle_ssm">Annual reports</field>
+    <field name="unittitle_teim">Annual reports</field>
+  </doc>
+</add>

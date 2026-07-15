@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Jillian Carrillo</field>
+    <field name="collection_sim">Bernard Berg Collection</field>
+    <field name="collection_ssm">Bernard Berg Collection</field>
+    <field name="collection_teim">Bernard Berg Collection</field>
+    <field name="collection_unitid_ssm">RG.065</field>
+    <field name="collection_unitid_teim">RG.065</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">poly_rg_065</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series I: Apollo Operations Handbook</field>
+    <field name="id">poly_rg_065aspace_79d8b79dc22b94245c08fb0133df281c</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_79d8b79dc22b94245c08fb0133df281c</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="series_si">Series I: Apollo Operations Handbook</field>
+    <field name="sort_ii">1</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/23117</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/23117</field>
+    <field name="unittitle_ssm">Series I: Apollo Operations Handbook</field>
+    <field name="unittitle_teim">Series I: Apollo Operations Handbook</field>
+  </doc>
+</add>

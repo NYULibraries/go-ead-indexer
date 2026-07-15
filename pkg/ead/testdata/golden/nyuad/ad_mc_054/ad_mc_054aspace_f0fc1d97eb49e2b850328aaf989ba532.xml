@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer, with assistance from Muhammad Shehryar Hamid.</field>
+    <field name="collection_sim">P. Marcel Kurpershoek papers</field>
+    <field name="collection_ssm">P. Marcel Kurpershoek papers</field>
+    <field name="collection_teim">P. Marcel Kurpershoek papers</field>
+    <field name="collection_unitid_ssm">AD.MC.054</field>
+    <field name="collection_unitid_teim">AD.MC.054</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">ad_mc_054</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Offprints:  de Moor, Eduardus C.M., &#34;Un Oiseau en Cage:  le discours litteraire de Muḥammad Taymūr, 1892-1921&#34; (Amsterdam:  Editions Rodopi):  booklet issued on awarding of doctorate to E.C.M. de Moor, Catholic University of Nijmegen</field>
+    <field name="id">ad_mc_054aspace_f0fc1d97eb49e2b850328aaf989ba532</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 13, folder: 12</field>
+    <field name="location_ssm">box: 13, folder: 12</field>
+    <field name="parent_ssi">aspace_505e755720a4dd88e1e02f1c4bee00a6</field>
+    <field name="parent_ssm">aspace_505e755720a4dd88e1e02f1c4bee00a6</field>
+    <field name="parent_unittitles_ssm">Research notes and background materials</field>
+    <field name="parent_unittitles_teim">Research notes and background materials</field>
+    <field name="ref_ssi">aspace_f0fc1d97eb49e2b850328aaf989ba532</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Research notes and background materials &gt;&gt; Offprints:  de Moor, Eduardus C.M., &#34;Un Oiseau en Cage:  le discours litteraire de Muḥammad Taymūr, 1892-1921&#34; (Amsterdam:  Editions Rodopi):  booklet issued on awarding of doctorate to E.C.M. de Moor, Catholic University of Nijmegen</field>
+    <field name="series_sim">Research notes and background materials</field>
+    <field name="sort_ii">208</field>
+    <field name="unitdate_end_si">1991</field>
+    <field name="unitdate_end_sim">1991</field>
+    <field name="unitdate_end_ssm">1991</field>
+    <field name="unitdate_normal_sim">1991/1991</field>
+    <field name="unitdate_normal_ssm">1991/1991</field>
+    <field name="unitdate_normal_teim">1991/1991</field>
+    <field name="unitdate_ssm">1991</field>
+    <field name="unitdate_start_si">1991</field>
+    <field name="unitdate_start_sim">1991</field>
+    <field name="unitdate_start_ssm">1991</field>
+    <field name="unitdate_teim">1991</field>
+    <field name="unittitle_ssm">Offprints:  de Moor, Eduardus C.M., &#34;Un Oiseau en Cage:  le discours litteraire de Muḥammad Taymūr, 1892-1921&#34; (Amsterdam:  Editions Rodopi):  booklet issued on awarding of doctorate to E.C.M. de Moor, Catholic University of Nijmegen</field>
+    <field name="unittitle_teim">Offprints:  de Moor, Eduardus C.M., &#34;Un Oiseau en Cage:  le discours litteraire de Muḥammad Taymūr, 1892-1921&#34; (Amsterdam:  Editions Rodopi):  booklet issued on awarding of doctorate to E.C.M. de Moor, Catholic University of Nijmegen</field>
+  </doc>
+</add>

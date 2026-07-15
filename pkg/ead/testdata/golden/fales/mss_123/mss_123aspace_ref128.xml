@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Theresa Smalec</field>
+    <field name="collection_sim">Wendy Perron Papers</field>
+    <field name="collection_ssm">Wendy Perron Papers</field>
+    <field name="collection_teim">Wendy Perron Papers</field>
+    <field name="collection_unitid_ssm">MSS.123</field>
+    <field name="collection_unitid_teim">MSS.123</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">mss_123</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Articles, 1978</field>
+    <field name="id">mss_123aspace_ref128</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 1, Folder: 7</field>
+    <field name="location_ssm">Box: 1, Folder: 7</field>
+    <field name="parent_ssi">aspace_ref115</field>
+    <field name="parent_ssm">aspace_ref115</field>
+    <field name="parent_unittitles_ssm">Series I. &amp;#34;Concepts in Performance&amp;#34;</field>
+    <field name="parent_unittitles_teim">Series I. &amp;#34;Concepts in Performance&amp;#34;</field>
+    <field name="ref_ssi">aspace_ref128</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="scopecontent_teim">-45 Minutes, Spent With Friends, review of Wendy Perron and Susan Rethorst, by Robert J. Pierce, Jan. 19th, 1978
+
+-Within You/Without You, review of Robert Ashley, by Sally Banes, January 19th, 1978
+
+-Historical Immaterialism, review of Ann Wilson&#39;s Butler&#39;s Lives of the Saints, by Sally Banes, January 26th, 1978
+
+-Two-Track Mind, review of Amy Taubin, by Wendy Perron, January 26th, 1978
+
+-Failure: An Exhibition, review of Bill Lundberg, by Jane Dubose Jones, February 2nd, 1978
+
+-Gallery Humor, review of Michael Smith, by Noel Carroll, February 2nd, 1978
+
+-Austerity and Oppression, review of Worksong, by Wendy Perron, February 23rd, 1978
+
+-Poet in the Bathroom, review of Barbara Kruger, by Louise Steinman, February 23rd, 1978
+
+-Dummy Duality, review of Charles Ludlam&#39;s The Ventriloquist&#39;s Wife, by Eileen Blumenthal, Feb. 23rd, 1978
+
+-Engineering Images, review of Sylvia Whitman, by Sally Banes, March 16th, 1978
+
+-Spring Mumbo-Jumbo, review of Anna Halprin, by Sally Banes, March 23rd, 1978
+
+-Humor, Blood, and Guts, review of Lanny Harrison, by Wendy Perron, March 30th, 1978
+
+-Lovely Lifelessness, review of Love of Life Orchestra, by Wendy Perron, April 20th, 1978
+
+-Adored, review of The Children of Theatre Street, by Wendy Perron, May 1st, 1978 (incomplete article)
+
+-On the Rocks, review of Pooh Kaye, by Wendy Perron, May 4th, 1978
+
+-The End of the Trail, Review of Echo Ranch, by Noel Carroll, May 11th, 1978
+
+-Flu as Fashion and Art as Business, review of Richard Foreman&#39;s Fashion Show, by Sally Banes, May 18th, 1978
+
+-A Promising Journeyman, review of Hard Pore Corn, by Noel Carroll, May 18th, 1978
+
+-Dancing Working, review of Miner&#39;s Lamp Dance Group, by Wendy Perron, May 25th, 1978
+
+-Sweet, review of Short and Suite, by Sally R. Sommer and Erica Sommer, June 1st, 1978
+
+-Celebrating Survival, review by Sally Banes, June 15th, 1978
+
+-P.S. Afterthoughts, review of Patti Smith, by Wendy Perron, June 15th, 1978
+
+-N Structures, No Cages, review of Simone Forti and Peter Van Riper, by Wendy Perron, August 31st, 1978
+
+-Tout Sweet, review of Andy deGroat and Dancers, by Sally Banes, August 31st, 1978
+
+-Paxton Untitled, review of Steve Paxton, by Yvonne Rainer, November 16th, 1978</field>
+    <field name="series_si">Series I. &#34;Concepts in Performance&#34; &gt;&gt; Articles, 1978</field>
+    <field name="series_sim">Series I. &amp;#34;Concepts in Performance&amp;#34;</field>
+    <field name="sort_ii">8</field>
+    <field name="unitdate_end_si">1978</field>
+    <field name="unitdate_end_sim">1978</field>
+    <field name="unitdate_end_ssm">1978</field>
+    <field name="unitdate_inclusive_teim">1978</field>
+    <field name="unitdate_normal_sim">1978/1978</field>
+    <field name="unitdate_normal_ssm">1978/1978</field>
+    <field name="unitdate_normal_teim">1978/1978</field>
+    <field name="unitdate_ssm">Inclusive, 1978</field>
+    <field name="unitdate_start_si">1978</field>
+    <field name="unitdate_start_sim">1978</field>
+    <field name="unitdate_start_ssm">1978</field>
+    <field name="unittitle_ssm">Articles, 1978</field>
+    <field name="unittitle_teim">Articles, 1978</field>
+  </doc>
+</add>

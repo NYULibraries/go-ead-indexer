@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Lauren Kata</field>
+    <field name="bioghist_teim">I worked as a student assistant with Wayne from the Wellness Department on making the Journaling Project happen.</field>
+    <field name="collection_sim">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_ssm">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_teim">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_unitid_ssm">AD.RG.030.2</field>
+    <field name="collection_unitid_teim">AD.RG.030.2</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">2001-2100</field>
+    <field name="ead_ssi">ad_rg_030_2</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Lee, Ivory. &#39;Shared Stories&#39; Journaling Project </field>
+    <field name="id">ad_rg_030_2aspace_0853313fa882d447eb5c1b5fc8c077ee</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: E-records, folder: AD_RG_030_013</field>
+    <field name="location_ssm">box: E-records, folder: AD_RG_030_013</field>
+    <field name="parent_ssi">aspace_a51c1a157cedd2b137c3bae3d2628a3a</field>
+    <field name="parent_ssm">aspace_165d7515034f6a815453d739527d9d02</field>
+    <field name="parent_ssm">aspace_a51c1a157cedd2b137c3bae3d2628a3a</field>
+    <field name="parent_unittitles_ssm">NYUAD Community Participatory Covid Archive</field>
+    <field name="parent_unittitles_ssm">Digital Submissions</field>
+    <field name="parent_unittitles_teim">NYUAD Community Participatory Covid Archive</field>
+    <field name="parent_unittitles_teim">Digital Submissions</field>
+    <field name="ref_ssi">aspace_0853313fa882d447eb5c1b5fc8c077ee</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="scopecontent_teim">Every week for four weeks, five &#39;Shared Stories&#39; journals were scattered around campus. Each journal had a different prompt, making 20 prompts in total. In order to take part in the project, students and community members had to find the journal somewhere on campus, open it up, and scan the QR code in the journal. Each week, clues were given as to where the journals are. The QR code led to a Google Form detailing instructions and additional information about the project, as well as the prompt pertaining to that journal. Participants could then choose to submit a response anonymously or with their name. Once a response was submitted, we checked the response for safety and published it onto the Website on the corresponding page with the prompt. The Website allows for all to see all prompts that we have had and read all responses that have been approved. For each prompt, one response was chosen to win a prize. </field>
+    <field name="scopecontent_teim">Duration: 4 weeks; 1 week at a time</field>
+    <field name="scopecontent_teim">Project mission: In recent times, we have found it increasingly harder to connect with one another and to take time to reflect. With the &#39;Shared Stories&#39; project, we hope to bring the NYUAD community together by sharing some stories and experiences that have shaped us and made us who we are, individually and collectively, today. The project also served as an incentive to encourage community members to be more active and to search for the journals around campus.</field>
+    <field name="scopecontent_teim">Project website: https://sites.google.com/nyu.edu/wellness-journaling-project/home </field>
+    <field name="series_si">NYUAD Community Participatory Covid Archive &gt;&gt; Digital Submissions &gt;&gt; Lee, Ivory. &#39;Shared Stories&#39; Journaling Project </field>
+    <field name="series_sim">NYUAD Community Participatory Covid Archive</field>
+    <field name="series_sim">Digital Submissions</field>
+    <field name="sort_ii">60</field>
+    <field name="unitdate_end_si">2021</field>
+    <field name="unitdate_end_sim">2021</field>
+    <field name="unitdate_end_ssm">2021</field>
+    <field name="unitdate_normal_sim">2021/2021</field>
+    <field name="unitdate_normal_ssm">2021/2021</field>
+    <field name="unitdate_normal_teim">2021/2021</field>
+    <field name="unitdate_ssm">Spring 2021 </field>
+    <field name="unitdate_start_si">2021</field>
+    <field name="unitdate_start_sim">2021</field>
+    <field name="unitdate_start_ssm">2021</field>
+    <field name="unitdate_teim">Spring 2021 </field>
+    <field name="unitid_ssm">Submission 13</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/29423</field>
+    <field name="unitid_teim">Submission 13</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/29423</field>
+    <field name="unittitle_ssm">Lee, Ivory. &#39;Shared Stories&#39; Journaling Project </field>
+    <field name="unittitle_teim">Lee, Ivory. &#39;Shared Stories&#39; Journaling Project </field>
+  </doc>
+</add>

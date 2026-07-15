@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">Ali Akbar Bushiri collection</field>
+    <field name="collection_ssm">Ali Akbar Bushiri collection</field>
+    <field name="collection_teim">Ali Akbar Bushiri collection</field>
+    <field name="collection_unitid_ssm">AD.MC.039</field>
+    <field name="collection_unitid_teim">AD.MC.039</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_039</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Juz Qalal Malao 9, Surah Al Aaraf and Al Anfal</field>
+    <field name="id">ad_mc_039aspace_914914e839811a0c2edc3289622b8aa8</field>
+    <field name="level_sim">item</field>
+    <field name="location_si">box: 35, folder: 1</field>
+    <field name="location_ssm">box: 35, folder: 1</field>
+    <field name="parent_ssi">aspace_8d682e504812c2c070e039dc0c9b26c1</field>
+    <field name="parent_ssm">aspace_8d682e504812c2c070e039dc0c9b26c1</field>
+    <field name="parent_unittitles_ssm">Matam al &amp;#39;Ajam:  Qur&amp;#39;an segments</field>
+    <field name="parent_unittitles_teim">Matam al &amp;#39;Ajam:  Qur&amp;#39;an segments</field>
+    <field name="ref_ssi">aspace_914914e839811a0c2edc3289622b8aa8</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Matam al &#39;Ajam:  Qur&#39;an segments &gt;&gt; Juz Qalal Malao 9, Surah Al Aaraf and Al Anfal</field>
+    <field name="series_sim">Matam al &amp;#39;Ajam:  Qur&amp;#39;an segments</field>
+    <field name="sort_ii">249</field>
+    <field name="unitdate_ssm">12 Ramadhan 1286 AH</field>
+    <field name="unitdate_teim">12 Ramadhan 1286 AH</field>
+    <field name="unittitle_ssm">Juz Qalal Malao 9, Surah Al Aaraf and Al Anfal</field>
+    <field name="unittitle_teim">Juz Qalal Malao 9, Surah Al Aaraf and Al Anfal</field>
+  </doc>
+</add>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Collection processed by Finding aid prepared by Alta Macadam</field>
+    <field name="collection_sim">The Acton Photograph Archive</field>
+    <field name="collection_ssm">The Acton Photograph Archive</field>
+    <field name="collection_teim">The Acton Photograph Archive</field>
+    <field name="collection_unitid_ssm">MSS.LaPietra.001</field>
+    <field name="collection_unitid_teim">MSS.LaPietra.001</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">mss_lapietra_001</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Subseries F: Album of Photographs of The Peking Opera</field>
+    <field name="id">mss_lapietra_001aspace_ref11567</field>
+    <field name="level_sim">subseries</field>
+    <field name="parent_ssi">aspace_ref11216</field>
+    <field name="parent_ssm">aspace_ref11216</field>
+    <field name="parent_unittitles_ssm">Series VII: Harold Acton in China and the Far East</field>
+    <field name="parent_unittitles_teim">Series VII: Harold Acton in China and the Far East</field>
+    <field name="ref_ssi">aspace_ref11567</field>
+    <field name="repository_sim">vlp</field>
+    <field name="repository_ssi">vlp</field>
+    <field name="repository_ssm">vlp</field>
+    <field name="series_si">Series VII: Harold Acton in China and the Far East &gt;&gt; Subseries F: Album of Photographs of The Peking Opera</field>
+    <field name="series_sim">Series VII: Harold Acton in China and the Far East</field>
+    <field name="sort_ii">6863</field>
+    <field name="unittitle_ssm">Subseries F: Album of Photographs of The Peking Opera</field>
+    <field name="unittitle_teim">Subseries F: Album of Photographs of The Peking Opera</field>
+  </doc>
+</add>

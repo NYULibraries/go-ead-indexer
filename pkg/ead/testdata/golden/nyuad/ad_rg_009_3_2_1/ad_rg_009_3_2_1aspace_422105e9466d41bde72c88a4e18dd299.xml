@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Lauren Kata</field>
+    <field name="collection_sim">NYU Abu Dhabi Student Life Events: Photos, Music, and Videos</field>
+    <field name="collection_ssm">NYU Abu Dhabi Student Life Events: Photos, Music, and Videos</field>
+    <field name="collection_teim">NYU Abu Dhabi Student Life Events: Photos, Music, and Videos</field>
+    <field name="collection_unitid_ssm">AD.RG.009.3-2-1</field>
+    <field name="collection_unitid_teim">AD.RG.009.3-2-1</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="dao_sim">Online Access</field>
+    <field name="dao_ssm">John Sexton Talk October 2019</field>
+    <field name="dao_teim">John Sexton Talk October 2019</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_rg_009_3_2_1</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">John Sexton Talk October 2019</field>
+    <field name="id">ad_rg_009_3_2_1aspace_422105e9466d41bde72c88a4e18dd299</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: Electronic Records, E-records: AD_RG_009_3_2_1-111</field>
+    <field name="location_ssm">box: Electronic Records, E-records: AD_RG_009_3_2_1-111</field>
+    <field name="parent_ssi">aspace_9982270f21c78073911ac03eb9b0765d</field>
+    <field name="parent_ssm">aspace_9982270f21c78073911ac03eb9b0765d</field>
+    <field name="parent_unittitles_ssm">Student Life Events, 2019-2020</field>
+    <field name="parent_unittitles_teim">Student Life Events, 2019-2020</field>
+    <field name="ref_ssi">aspace_422105e9466d41bde72c88a4e18dd299</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Student Life Events, 2019-2020 &gt;&gt; John Sexton Talk October 2019</field>
+    <field name="series_sim">Student Life Events, 2019-2020</field>
+    <field name="sort_ii">118</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/30817</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/30817</field>
+    <field name="unittitle_ssm">John Sexton Talk October 2019</field>
+    <field name="unittitle_teim">John Sexton Talk October 2019</field>
+  </doc>
+</add>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">Colin Edwards collection on Palestine</field>
+    <field name="collection_ssm">Colin Edwards collection on Palestine</field>
+    <field name="collection_teim">Colin Edwards collection on Palestine</field>
+    <field name="collection_unitid_ssm">AD.MC.076</field>
+    <field name="collection_unitid_teim">AD.MC.076</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_076</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Vol. 2, No. 12</field>
+    <field name="id">ad_mc_076aspace_e55bbee2cd2d165469eb46da9395daa9</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 1, folder: 39</field>
+    <field name="location_ssm">box: 1, folder: 39</field>
+    <field name="parent_ssi">aspace_ca699dc3a50e197d165063446a744720</field>
+    <field name="parent_ssm">aspace_ca699dc3a50e197d165063446a744720</field>
+    <field name="parent_unittitles_ssm">Palestine Perspectives</field>
+    <field name="parent_unittitles_teim">Palestine Perspectives</field>
+    <field name="ref_ssi">aspace_e55bbee2cd2d165469eb46da9395daa9</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Palestine Perspectives &gt;&gt; Vol. 2, No. 12</field>
+    <field name="series_sim">Palestine Perspectives</field>
+    <field name="sort_ii">69</field>
+    <field name="unitdate_ssm">April 1980</field>
+    <field name="unitdate_teim">April 1980</field>
+    <field name="unittitle_ssm">Vol. 2, No. 12</field>
+    <field name="unittitle_teim">Vol. 2, No. 12</field>
+  </doc>
+</add>

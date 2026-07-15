@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Heather Mulliner, Molly A. Cross, and Alexa Logush.</field>
+    <field name="collection_sim">Tamiment Library and Robert F. Wagner Labor Archives Collection of Women&#39;s Rights Serials</field>
+    <field name="collection_ssm">Tamiment Library and Robert F. Wagner Labor Archives Collection of Women&#39;s Rights Serials</field>
+    <field name="collection_teim">Tamiment Library and Robert F. Wagner Labor Archives Collection of Women&#39;s Rights Serials</field>
+    <field name="collection_unitid_ssm">TAM.751</field>
+    <field name="collection_unitid_teim">TAM.751</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">tam_751</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Longest Revolution: Center for Women&#39;s Studies and Services / Collective of the Center for Women&#39;s Studies &amp; Services, San Diego, CA</field>
+    <field name="id">tam_751aspace_969daff592286119b9bf53d1ed6a45d7</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 4, Folder: 5</field>
+    <field name="location_ssm">Box: 4, Folder: 5</field>
+    <field name="ref_ssi">aspace_969daff592286119b9bf53d1ed6a45d7</field>
+    <field name="repository_sim">tamwag</field>
+    <field name="repository_ssi">tamwag</field>
+    <field name="repository_ssm">tamwag</field>
+    <field name="series_si">&lt;em&gt;Longest Revolution&lt;/em&gt;: Center for Women&#39;s Studies and Services / Collective of the Center for Women&#39;s Studies &amp; Services, San Diego, CA</field>
+    <field name="sort_ii">109</field>
+    <field name="unitdate_end_si">1983</field>
+    <field name="unitdate_end_sim">1983</field>
+    <field name="unitdate_end_ssm">1983</field>
+    <field name="unitdate_inclusive_teim">1983</field>
+    <field name="unitdate_normal_sim">1983/1983</field>
+    <field name="unitdate_normal_ssm">1983/1983</field>
+    <field name="unitdate_normal_teim">1983/1983</field>
+    <field name="unitdate_ssm">Inclusive, 1983</field>
+    <field name="unitdate_start_si">1983</field>
+    <field name="unitdate_start_sim">1983</field>
+    <field name="unitdate_start_ssm">1983</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/804587</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/804587</field>
+    <field name="unittitle_ssm">&lt;em&gt;Longest Revolution&lt;/em&gt;: Center for Women&#39;s Studies and Services / Collective of the Center for Women&#39;s Studies &amp; Services, San Diego, CA</field>
+    <field name="unittitle_teim">Longest Revolution: Center for Women&#39;s Studies and Services / Collective of the Center for Women&#39;s Studies &amp; Services, San Diego, CA</field>
+  </doc>
+</add>

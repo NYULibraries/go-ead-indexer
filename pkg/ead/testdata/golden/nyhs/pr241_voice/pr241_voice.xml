@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="abstract_ssm">Cigar bands and cigar box labels, most clearly marked with the brand and company of cigar, collected by Sidney P. Voice, vice-president of the Consolidated Lithographing Corporation in Brooklyn, which produced many of these items. The collection includes several salesman&#39;s sample books for New York lithographing companies.</field>
+    <field name="abstract_teim">Cigar bands and cigar box labels, most clearly marked with the brand and company of cigar, collected by Sidney P. Voice, vice-president of the Consolidated Lithographing Corporation in Brooklyn, which produced many of these items. The collection includes several salesman&#39;s sample books for New York lithographing companies.</field>
+    <field name="acqinfo_teim">Gift of Sidney P. Voice, 1973, 1977, and 1983.</field>
+    <field name="author_ssm">Jenny Gotwals and Sandra Markham (2004); migrated to ArchivesSpace by Joseph Ditta (2020)</field>
+    <field name="author_teim">Jenny Gotwals and Sandra Markham (2004); migrated to ArchivesSpace by Joseph Ditta (2020)</field>
+    <field name="bioghist_teim">Sidney Voice was the vice-president of Consolidated Lithographing Corporation in Brooklyn.</field>
+    <field name="collection_sim">Sidney Voice collection of cigar bands</field>
+    <field name="collection_ssm">Sidney Voice collection of cigar bands</field>
+    <field name="collection_teim">Sidney Voice collection of cigar bands</field>
+    <field name="corpname_ssm">New-York Historical Society</field>
+    <field name="corpname_ssm">Consolidated Lithographing Corp.</field>
+    <field name="corpname_teim">New-York Historical Society</field>
+    <field name="corpname_teim">Consolidated Lithographing Corp.</field>
+    <field name="creator_sim">Voice, Sidney P., 1906-1982</field>
+    <field name="creator_ssm">Voice, Sidney P., 1906-1982</field>
+    <field name="creator_teim">Voice, Sidney P., 1906-1982</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">pr241_voice</field>
+    <field name="format_ii">0</field>
+    <field name="format_sim">Archival Collection</field>
+    <field name="format_ssm">Archival Collection</field>
+    <field name="genreform_ssm">Cigar band</field>
+    <field name="genreform_ssm">Cigar box labels</field>
+    <field name="genreform_ssm">Lithographs.</field>
+    <field name="genreform_teim">Cigar band</field>
+    <field name="genreform_teim">Cigar box labels</field>
+    <field name="genreform_teim">Lithographs.</field>
+    <field name="heading_ssm">Sidney Voice collection of cigar bands</field>
+    <field name="id">pr241_voice</field>
+    <field name="material_type_sim">Cigar band</field>
+    <field name="material_type_sim">Cigar box labels</field>
+    <field name="material_type_sim">Lithographs.</field>
+    <field name="material_type_ssm">Cigar band</field>
+    <field name="material_type_ssm">Cigar box labels</field>
+    <field name="material_type_ssm">Lithographs.</field>
+    <field name="name_sim">Consolidated Lithographing Corp.</field>
+    <field name="name_sim">Voice, Sidney P., 1906-1982</field>
+    <field name="name_teim">Consolidated Lithographing Corp.</field>
+    <field name="name_teim">Voice, Sidney P., 1906-1982</field>
+    <field name="persname_ssm">Voice, Sidney P., 1906-1982</field>
+    <field name="persname_teim">Voice, Sidney P., 1906-1982</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="scopecontent_teim">The Sidney Voice Collection of Cigar Bands spans the period from circa 1890 to circa 1963 and contains cigar bands, cigar box labels, and salesman&#39;s sample books for New York and Brooklyn lithographers. A few registration certificates for cigar brand names are also included. Cigar bands are housed loose, pasted onto boards, and pasted into albums.</field>
+    <field name="subject_sim">Advertising -- Tobacco industry</field>
+    <field name="subject_sim">Cigar bands and labels</field>
+    <field name="subject_ssm">Advertising -- Tobacco industry</field>
+    <field name="subject_ssm">Cigar bands and labels</field>
+    <field name="subject_teim">Advertising -- Tobacco industry</field>
+    <field name="subject_teim">Cigar bands and labels</field>
+    <field name="subject_teim">Advertising -- Tobacco industry</field>
+    <field name="subject_teim">Cigar bands and labels</field>
+    <field name="unitdate_inclusive_teim">circa 1890-1963</field>
+    <field name="unitdate_ssm">Inclusive, circa 1890-1963</field>
+    <field name="unitid_ssm">PR 241</field>
+    <field name="unitid_teim">PR 241</field>
+    <field name="unittitle_ssm">Sidney Voice collection of cigar bands</field>
+    <field name="unittitle_teim">Sidney Voice collection of cigar bands</field>
+  </doc>
+</add>

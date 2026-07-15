@@ -222,12 +222,21 @@ func testNoMissingComponents(testEAD string, componentIDs []string, t *testing.T
 	}
 
 	if len(missingComponents) > 0 {
-		slices.SortStableFunc(missingComponents, func(a string, b string) int {
-			return strings.Compare(a, b)
-		})
-		failMessage := fmt.Sprintf("`EAD.Components` for testEAD %s is missing the following component IDs:\n%s",
-			testEAD, strings.Join(missingComponents, "\n"))
-		t.Error(failMessage)
+		if *updateGoldenFiles {
+			for _, missingComponent := range missingComponents {
+				err := testutils.DeleteGoldenFile(testEAD, missingComponent)
+				if err != nil {
+					t.Fatalf("Error deleting golden file: %s", err)
+				}
+			}
+		} else {
+			slices.SortStableFunc(missingComponents, func(a string, b string) int {
+				return strings.Compare(a, b)
+			})
+			failMessage := fmt.Sprintf("`EAD.Components` for testEAD %s is missing the following component IDs:\n%s",
+				testEAD, strings.Join(missingComponents, "\n"))
+			t.Error(failMessage)
+		}
 	}
 }
 

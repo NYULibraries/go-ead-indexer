@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Collection processed by Finding aid prepared by Alta Macadam</field>
+    <field name="collection_sim">The Acton Photograph Archive</field>
+    <field name="collection_ssm">The Acton Photograph Archive</field>
+    <field name="collection_teim">The Acton Photograph Archive</field>
+    <field name="collection_unitid_ssm">MSS.LaPietra.001</field>
+    <field name="collection_unitid_teim">MSS.LaPietra.001</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">5</field>
+    <field name="date_range_sim">1801-1900</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">mss_lapietra_001</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Garden vase</field>
+    <field name="id">mss_lapietra_001aspace_ref12021</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 2, Folder: 1</field>
+    <field name="location_ssm">Box: 2, Folder: 1</field>
+    <field name="parent_ssi">aspace_ref12020</field>
+    <field name="parent_ssm">aspace_ref11991</field>
+    <field name="parent_ssm">aspace_ref12018</field>
+    <field name="parent_ssm">aspace_ref12019</field>
+    <field name="parent_ssm">aspace_ref12020</field>
+    <field name="parent_unittitles_ssm">Series IX: Glass negatives (10 x 15 cm and over)</field>
+    <field name="parent_unittitles_ssm">Subseries B: Villa La Pietra</field>
+    <field name="parent_unittitles_ssm">1. the gardens</field>
+    <field name="parent_unittitles_ssm">i. the garden vases before their present installation in the gardens</field>
+    <field name="parent_unittitles_teim">Series IX: Glass negatives (10 x 15 cm and over)</field>
+    <field name="parent_unittitles_teim">Subseries B: Villa La Pietra</field>
+    <field name="parent_unittitles_teim">1. the gardens</field>
+    <field name="parent_unittitles_teim">i. the garden vases before their present installation in the gardens</field>
+    <field name="ref_ssi">aspace_ref12021</field>
+    <field name="repository_sim">vlp</field>
+    <field name="repository_ssi">vlp</field>
+    <field name="repository_ssm">vlp</field>
+    <field name="series_si">Series IX: Glass negatives (10 x 15 cm and over) &gt;&gt; Subseries B: Villa La Pietra &gt;&gt; 1. the gardens &gt;&gt; i. the garden vases before their present installation in the gardens &gt;&gt; Garden vase</field>
+    <field name="series_sim">Series IX: Glass negatives (10 x 15 cm and over)</field>
+    <field name="series_sim">Subseries B: Villa La Pietra</field>
+    <field name="series_sim">1. the gardens</field>
+    <field name="series_sim">i. the garden vases before their present installation in the gardens</field>
+    <field name="sort_ii">7115</field>
+    <field name="unitdate_end_si">1994</field>
+    <field name="unitdate_end_sim">1994</field>
+    <field name="unitdate_end_ssm">1994</field>
+    <field name="unitdate_inclusive_teim">undated</field>
+    <field name="unitdate_normal_sim">1870/1994</field>
+    <field name="unitdate_normal_ssm">1870/1994</field>
+    <field name="unitdate_normal_teim">1870/1994</field>
+    <field name="unitdate_ssm">Inclusive, undated</field>
+    <field name="unitdate_start_si">1870</field>
+    <field name="unitdate_start_sim">1870</field>
+    <field name="unitdate_start_ssm">1870</field>
+    <field name="unitid_ssm">cuid7064</field>
+    <field name="unitid_teim">cuid7064</field>
+    <field name="unittitle_ssm">Garden vase</field>
+    <field name="unittitle_teim">Garden vase</field>
+  </doc>
+</add>

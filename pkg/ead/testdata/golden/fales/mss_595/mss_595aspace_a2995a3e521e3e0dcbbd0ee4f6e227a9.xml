@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Rachel Searcy</field>
+    <field name="collection_sim">Stephen Facey Collection on Theatre Genesis</field>
+    <field name="collection_ssm">Stephen Facey Collection on Theatre Genesis</field>
+    <field name="collection_teim">Stephen Facey Collection on Theatre Genesis</field>
+    <field name="collection_unitid_ssm">MSS.595</field>
+    <field name="collection_unitid_teim">MSS.595</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">mss_595</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">The Mask of Zorro, Written by Murray Mednick, Directed by Ralph Cook</field>
+    <field name="id">mss_595aspace_a2995a3e521e3e0dcbbd0ee4f6e227a9</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 1, Folder: 18</field>
+    <field name="location_ssm">Box: 1, Folder: 18</field>
+    <field name="ref_ssi">aspace_a2995a3e521e3e0dcbbd0ee4f6e227a9</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="series_si">&lt;em&gt;The Mask of Zorro&lt;/em&gt;, Written by Murray Mednick, Directed by Ralph Cook</field>
+    <field name="sort_ii">19</field>
+    <field name="unitdate_inclusive_teim">1966-06</field>
+    <field name="unitdate_normal_sim">1966-06/1966-06</field>
+    <field name="unitdate_normal_ssm">1966-06/1966-06</field>
+    <field name="unitdate_normal_teim">1966-06/1966-06</field>
+    <field name="unitdate_ssm">Inclusive, 1966-06</field>
+    <field name="unittitle_ssm">&lt;em&gt;The Mask of Zorro&lt;/em&gt;, Written by Murray Mednick, Directed by Ralph Cook</field>
+    <field name="unittitle_teim">The Mask of Zorro, Written by Murray Mednick, Directed by Ralph Cook</field>
+  </doc>
+</add>

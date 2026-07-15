@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ala Younis, Ibrahim Mohamed Ali, Dina Taha, Anneka Lenssen, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art, NYUAD</field>
+    <field name="collection_sim">Rafa Nasiri and May Muzaffar Collection</field>
+    <field name="collection_ssm">Rafa Nasiri and May Muzaffar Collection</field>
+    <field name="collection_teim">Rafa Nasiri and May Muzaffar Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.092</field>
+    <field name="collection_unitid_teim">AD.MC.092</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_092</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">V.G. Travels, 1974–2013</field>
+    <field name="id">ad_mc_092aspace_a1473c1c7508e8f47aae5e5678ec5b84</field>
+    <field name="level_sim">subseries</field>
+    <field name="parent_ssi">aspace_f6628296958028d7a408d79e2c52c9e2</field>
+    <field name="parent_ssm">aspace_f6628296958028d7a408d79e2c52c9e2</field>
+    <field name="parent_unittitles_ssm">Series V: Photographic Prints</field>
+    <field name="parent_unittitles_teim">Series V: Photographic Prints</field>
+    <field name="ref_ssi">aspace_a1473c1c7508e8f47aae5e5678ec5b84</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="scopecontent_teim">Photographs compiled by the couple from their solo or joint travels for purposes of participating in exhibitions, symposiums, conferences, residencies, tourism, and other. The pictures also feature the couple&#39;s arrival at the moment of the announcement of an award for Nasiri at the Norwegian International Print Biennale, Fredrikstad, in 1978, encounters with Arab and international artists and intellectuals such as Mahmoud Darwish and Nizar Qabbani, and images of European and Arab cities they have visited.</field>
+    <field name="series_si">Series V: Photographic Prints &gt;&gt; V.G. Travels, 1974–2013</field>
+    <field name="series_sim">Series V: Photographic Prints</field>
+    <field name="sort_ii">90</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/32226</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/32226</field>
+    <field name="unittitle_ssm">V.G. Travels, 1974–2013</field>
+    <field name="unittitle_teim">V.G. Travels, 1974–2013</field>
+  </doc>
+</add>

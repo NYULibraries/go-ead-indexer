@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Aileen Thong and Mandy Abokhair</field>
+    <field name="collection_sim">Jonathan Soffer Papers</field>
+    <field name="collection_ssm">Jonathan Soffer Papers</field>
+    <field name="collection_teim">Jonathan Soffer Papers</field>
+    <field name="collection_unitid_ssm">RG.046</field>
+    <field name="collection_unitid_teim">RG.046</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">poly_rg_046</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Koch Manuscript</field>
+    <field name="id">poly_rg_046aspace_937e37b186cc8dd713434f44c4e61968</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 1, folder: 8</field>
+    <field name="location_ssm">box: 1, folder: 8</field>
+    <field name="parent_ssi">aspace_6ef0b439fcd64236f4bf436e0b7ccb7c</field>
+    <field name="parent_ssm">aspace_7ef12e82561a7bc0abefa3fba559bd03</field>
+    <field name="parent_ssm">aspace_6ef0b439fcd64236f4bf436e0b7ccb7c</field>
+    <field name="parent_unittitles_ssm">Series I: Koch Project</field>
+    <field name="parent_unittitles_ssm">Subseries C: Drafts</field>
+    <field name="parent_unittitles_teim">Series I: Koch Project</field>
+    <field name="parent_unittitles_teim">Subseries C: Drafts</field>
+    <field name="ref_ssi">aspace_937e37b186cc8dd713434f44c4e61968</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="series_si">Series I: Koch Project &gt;&gt; Subseries C: Drafts &gt;&gt; Koch Manuscript</field>
+    <field name="series_sim">Series I: Koch Project</field>
+    <field name="series_sim">Subseries C: Drafts</field>
+    <field name="sort_ii">12</field>
+    <field name="unitdate_normal_sim">2001-06-21/2001-06-21</field>
+    <field name="unitdate_normal_ssm">2001-06-21/2001-06-21</field>
+    <field name="unitdate_normal_teim">2001-06-21/2001-06-21</field>
+    <field name="unitdate_ssm">2001-06-21</field>
+    <field name="unitdate_teim">2001-06-21</field>
+    <field name="unittitle_ssm">Koch Manuscript</field>
+    <field name="unittitle_teim">Koch Manuscript</field>
+  </doc>
+</add>

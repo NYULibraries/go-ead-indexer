@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Lauren Kata</field>
+    <field name="collection_sim">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_ssm">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_teim">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_unitid_ssm">AD.RG.030.2</field>
+    <field name="collection_unitid_teim">AD.RG.030.2</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">2001-2100</field>
+    <field name="ead_ssi">ad_rg_030_2</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Facebook Post, NYUAD Dining</field>
+    <field name="id">ad_rg_030_2aspace_e30dd8fc00c74fcf9709634b41f44904</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: E-records, folder: AD_RG_030_NYUAD Dining_ADNH</field>
+    <field name="location_ssm">box: E-records, folder: AD_RG_030_NYUAD Dining_ADNH</field>
+    <field name="parent_ssi">aspace_eeef4c7ea13c4411b724cfbd1fbfe1b7</field>
+    <field name="parent_ssm">aspace_eeef4c7ea13c4411b724cfbd1fbfe1b7</field>
+    <field name="parent_unittitles_ssm">NYUAD Dining Staff_ADNH</field>
+    <field name="parent_unittitles_teim">NYUAD Dining Staff_ADNH</field>
+    <field name="ref_ssi">aspace_e30dd8fc00c74fcf9709634b41f44904</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">NYUAD Dining Staff_ADNH &gt;&gt; Facebook Post, NYUAD Dining</field>
+    <field name="series_sim">NYUAD Dining Staff_ADNH</field>
+    <field name="sort_ii">32</field>
+    <field name="unitdate_end_si">2020</field>
+    <field name="unitdate_end_sim">2020</field>
+    <field name="unitdate_end_ssm">2020</field>
+    <field name="unitdate_normal_sim">2020/2020</field>
+    <field name="unitdate_normal_ssm">2020/2020</field>
+    <field name="unitdate_normal_teim">2020/2020</field>
+    <field name="unitdate_ssm">September 2020</field>
+    <field name="unitdate_start_si">2020</field>
+    <field name="unitdate_start_sim">2020</field>
+    <field name="unitdate_start_ssm">2020</field>
+    <field name="unitdate_teim">September 2020</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/33404</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/33404</field>
+    <field name="unittitle_ssm">Facebook Post, NYUAD Dining</field>
+    <field name="unittitle_teim">Facebook Post, NYUAD Dining</field>
+  </doc>
+</add>

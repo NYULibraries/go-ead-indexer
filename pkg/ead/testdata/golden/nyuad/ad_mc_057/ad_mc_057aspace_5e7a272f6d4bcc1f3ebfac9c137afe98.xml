@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">Emirates Bird Records Committee records</field>
+    <field name="collection_ssm">Emirates Bird Records Committee records</field>
+    <field name="collection_teim">Emirates Bird Records Committee records</field>
+    <field name="collection_unitid_ssm">AD.MC.057</field>
+    <field name="collection_unitid_teim">AD.MC.057</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_057</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">2000</field>
+    <field name="id">ad_mc_057aspace_5e7a272f6d4bcc1f3ebfac9c137afe98</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 10, folder: 5</field>
+    <field name="location_ssm">box: 10, folder: 5</field>
+    <field name="parent_ssi">aspace_8475fe418cbe9c9e4c649741f406837e</field>
+    <field name="parent_ssm">aspace_df7090da5daaac0446a8be4bb67b5b3e</field>
+    <field name="parent_ssm">aspace_8475fe418cbe9c9e4c649741f406837e</field>
+    <field name="parent_unittitles_ssm">Group bird record forms:  by individuals</field>
+    <field name="parent_unittitles_ssm">Saunders, Clive</field>
+    <field name="parent_unittitles_teim">Group bird record forms:  by individuals</field>
+    <field name="parent_unittitles_teim">Saunders, Clive</field>
+    <field name="ref_ssi">aspace_5e7a272f6d4bcc1f3ebfac9c137afe98</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Group bird record forms:  by individuals &gt;&gt; Saunders, Clive &gt;&gt; 2000</field>
+    <field name="series_sim">Group bird record forms:  by individuals</field>
+    <field name="series_sim">Saunders, Clive</field>
+    <field name="sort_ii">263</field>
+    <field name="unittitle_ssm">2000</field>
+    <field name="unittitle_teim">2000</field>
+  </doc>
+</add>

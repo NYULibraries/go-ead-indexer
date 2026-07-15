@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Joan Grant. Electronic version created by Salome Jeronimo.</field>
+    <field name="collection_sim">Records of the James Arthur Collection of Clocks and Watches</field>
+    <field name="collection_ssm">Records of the James Arthur Collection of Clocks and Watches</field>
+    <field name="collection_teim">Records of the James Arthur Collection of Clocks and Watches</field>
+    <field name="collection_unitid_ssm">RG.42.1</field>
+    <field name="collection_unitid_teim">RG.42.1</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">1701-1800</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">rg_42_1</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Grandfather clock</field>
+    <field name="id">rg_42_1aspace_3c0207c738e7b3d438232f9630bbd324</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Item: RG.42.1.cuid462</field>
+    <field name="location_ssm">Item: RG.42.1.cuid462</field>
+    <field name="parent_ssi">aspace_9791ea6260dd9bbfec3662cb7db2edaa</field>
+    <field name="parent_ssm">aspace_9791ea6260dd9bbfec3662cb7db2edaa</field>
+    <field name="parent_unittitles_ssm">Series IV: Grandfather Clocks</field>
+    <field name="parent_unittitles_teim">Series IV: Grandfather Clocks</field>
+    <field name="ref_ssi">aspace_3c0207c738e7b3d438232f9630bbd324</field>
+    <field name="repository_sim">archives</field>
+    <field name="repository_ssi">archives</field>
+    <field name="repository_ssm">archives</field>
+    <field name="series_si">Series IV: Grandfather Clocks &gt;&gt; Grandfather clock</field>
+    <field name="series_sim">Series IV: Grandfather Clocks</field>
+    <field name="sort_ii">56</field>
+    <field name="subject_sim">Tall case clocks.</field>
+    <field name="subject_ssm">Tall case clocks.</field>
+    <field name="subject_teim">Tall case clocks.</field>
+    <field name="subject_teim">Tall case clocks.</field>
+    <field name="unitdate_end_si">1950</field>
+    <field name="unitdate_end_sim">1950</field>
+    <field name="unitdate_end_ssm">1950</field>
+    <field name="unitdate_inclusive_teim">Undated</field>
+    <field name="unitdate_normal_sim">1800/1950</field>
+    <field name="unitdate_normal_ssm">1800/1950</field>
+    <field name="unitdate_normal_teim">1800/1950</field>
+    <field name="unitdate_ssm">Inclusive, Undated</field>
+    <field name="unitdate_start_si">1800</field>
+    <field name="unitdate_start_sim">1800</field>
+    <field name="unitdate_start_ssm">1800</field>
+    <field name="unitid_ssm">cuid462</field>
+    <field name="unitid_ssm">/repositories/6/archival_objects/765006</field>
+    <field name="unitid_teim">cuid462</field>
+    <field name="unitid_teim">/repositories/6/archival_objects/765006</field>
+    <field name="unittitle_ssm">Grandfather clock</field>
+    <field name="unittitle_teim">Grandfather clock</field>
+  </doc>
+</add>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Stacey Flatt</field>
+    <field name="bioghist_teim">Brian Huggins, a former New York University student (class of 1978) and feature editor for the Washington Square News, organized a project from 1977 to 1978 to gather oral history interviews from alumni and write a book on the experience of the University&#39;s undergraduate students during the early part of the 20th century. Huggins had previously written well-received articles on the experiences of NYU students which inspired him to write a book. Huggins received a $1,000 grant from the Office of Student Affairs and obtained a recommendation from the University Archives Office, encouraging funders to support the project. The plan was to interview a large selection of University alumni, using the information to write the book and then and publish it during the University&#39;s sesquicentennial anniversary, but the project was never completed as originally conceived.</field>
+    <field name="collection_sim">New York University Archives Collection on Faculty and Alumni Memory Projects</field>
+    <field name="collection_ssm">New York University Archives Collection on Faculty and Alumni Memory Projects</field>
+    <field name="collection_teim">New York University Archives Collection on Faculty and Alumni Memory Projects</field>
+    <field name="collection_unitid_ssm">MC.226</field>
+    <field name="collection_unitid_teim">MC.226</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">mc_226</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series III. Brian Huggins Undergraduate Student Life in Washington Square Project</field>
+    <field name="id">mc_226aspace_398365580fe79ff050de9b6f152fa577</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_398365580fe79ff050de9b6f152fa577</field>
+    <field name="repository_sim">archives</field>
+    <field name="repository_ssi">archives</field>
+    <field name="repository_ssm">archives</field>
+    <field name="scopecontent_teim">This series contains audio recordings of alumni and faculty interviews conducted by Brian Huggins from 1977 to 1978. These interviews include stories about students&#39; fashion; fraternity life; experiences of female law students; students use of Washington Square Park; the influx of military veterans into classes after World War II; experiences of Jewish and Catholic students at the University Heights campus; and athletic team activities and events. The interviewee&#39;s memories are not only shared through the lens of a university student, but also their experience as New York City area residents during key events in United States history during the early to mid-20th century including Prohibition during the 1920s; the 1929 financial crash, followed by the Great Depression of the 1930s; exposure to music and theater; and also urban and youth cultural issues that marked the 1950s and 1960s. The series also contains Huggin&#39;s project proposal, correspondence, book chapter samples, interview summary notes, and a small number of interview transcripts from the audio recordings.</field>
+    <field name="series_si">Series III. Brian Huggins Undergraduate Student Life in Washington Square Project</field>
+    <field name="sort_ii">181</field>
+    <field name="unitdate_end_si">1979</field>
+    <field name="unitdate_end_sim">1979</field>
+    <field name="unitdate_end_ssm">1979</field>
+    <field name="unitdate_inclusive_teim">1977-1979</field>
+    <field name="unitdate_normal_sim">1977/1979</field>
+    <field name="unitdate_normal_ssm">1977/1979</field>
+    <field name="unitdate_normal_teim">1977/1979</field>
+    <field name="unitdate_ssm">Inclusive, 1977-1979</field>
+    <field name="unitdate_start_si">1977</field>
+    <field name="unitdate_start_sim">1977</field>
+    <field name="unitdate_start_ssm">1977</field>
+    <field name="unitid_ssm">/repositories/6/archival_objects/1011759</field>
+    <field name="unitid_teim">/repositories/6/archival_objects/1011759</field>
+    <field name="unittitle_ssm">Series III. Brian Huggins Undergraduate Student Life in Washington Square Project</field>
+    <field name="unittitle_teim">Series III. Brian Huggins Undergraduate Student Life in Washington Square Project</field>
+  </doc>
+</add>

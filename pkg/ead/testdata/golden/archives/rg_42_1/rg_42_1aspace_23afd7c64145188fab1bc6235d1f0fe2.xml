@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Joan Grant. Electronic version created by Salome Jeronimo.</field>
+    <field name="collection_sim">Records of the James Arthur Collection of Clocks and Watches</field>
+    <field name="collection_ssm">Records of the James Arthur Collection of Clocks and Watches</field>
+    <field name="collection_teim">Records of the James Arthur Collection of Clocks and Watches</field>
+    <field name="collection_unitid_ssm">RG.42.1</field>
+    <field name="collection_unitid_teim">RG.42.1</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">rg_42_1</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series V: Photographs</field>
+    <field name="id">rg_42_1aspace_23afd7c64145188fab1bc6235d1f0fe2</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_23afd7c64145188fab1bc6235d1f0fe2</field>
+    <field name="repository_sim">archives</field>
+    <field name="repository_ssi">archives</field>
+    <field name="repository_ssm">archives</field>
+    <field name="scopecontent_teim">The photographs in this series depict James Arthur&#39;s clock and watch collection.The clocks photographed include table top clocks, grandfather clocks, juke box clocks, decorative clocks of varying sizes, and pocket watches. This series features photographs of Assistant Dean W.R. Bryan of NYU&#39;s former College of Engineering; the Clock Museum located at NYU&#39;s former University Heights campus; and of the Clock Museum&#39;s curators Daniel Webster Hering, Carlos de Zafra, and Edward C. Smith.</field>
+    <field name="series_si">Series V: Photographs</field>
+    <field name="sort_ii">58</field>
+    <field name="unitdate_end_si">1956</field>
+    <field name="unitdate_end_sim">1956</field>
+    <field name="unitdate_end_ssm">1956</field>
+    <field name="unitdate_inclusive_teim">1926-1956</field>
+    <field name="unitdate_normal_sim">1926/1956</field>
+    <field name="unitdate_normal_ssm">1926/1956</field>
+    <field name="unitdate_normal_teim">1926/1956</field>
+    <field name="unitdate_ssm">Inclusive, 1926-1956</field>
+    <field name="unitdate_start_si">1926</field>
+    <field name="unitdate_start_sim">1926</field>
+    <field name="unitdate_start_ssm">1926</field>
+    <field name="unitid_ssm">/repositories/6/archival_objects/997833</field>
+    <field name="unitid_teim">/repositories/6/archival_objects/997833</field>
+    <field name="unittitle_ssm">Series V: Photographs</field>
+    <field name="unittitle_teim">Series V: Photographs</field>
+  </doc>
+</add>

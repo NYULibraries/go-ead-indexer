@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Theresa Smalec</field>
+    <field name="collection_sim">Wendy Perron Papers</field>
+    <field name="collection_ssm">Wendy Perron Papers</field>
+    <field name="collection_teim">Wendy Perron Papers</field>
+    <field name="collection_unitid_ssm">MSS.123</field>
+    <field name="collection_unitid_teim">MSS.123</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">mss_123</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Articles, 1977</field>
+    <field name="id">mss_123aspace_ref123</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 1, Folder: 5</field>
+    <field name="location_ssm">Box: 1, Folder: 5</field>
+    <field name="parent_ssi">aspace_ref115</field>
+    <field name="parent_ssm">aspace_ref115</field>
+    <field name="parent_unittitles_ssm">Series I. &amp;#34;Concepts in Performance&amp;#34;</field>
+    <field name="parent_unittitles_teim">Series I. &amp;#34;Concepts in Performance&amp;#34;</field>
+    <field name="ref_ssi">aspace_ref123</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="scopecontent_teim">-Improvisation Part I: The Man Who Gets Away With It, review by Wendy Perron, January 6th, 1977
+
+-Improvisation Part II: Acquaintanceship, review by Wendy Perron, January 13th, 1977
+
+-Knife&#39;s Edge, review of Beth Soll, by Wendy Perron, January 20th, 1977
+
+-Politics as Analysis, review of Lee Breuer, by Madeleine Burnside, January 20th, 1977
+
+-Going to Pieces, review by Stephanie Woodward, January 27th, 1977
+
+-Lost In Translation: The Americanization of Jewish Humor, by Wendy Perron, February 3rd, 1977
+
+-David Behrman, John Cage, Merce Cunningham, review by Peter Zummo, February 3rd, 1977
+
+-Bad Taste, review of Now I Know Why Cannibals Eat Their Enemies, by Sally Banes, Feb. 10th, 1977
+
+-Reading Writing, review of women writers, by Wendy Perron, February 17th, 1977
+
+-Haystack, review of performance art, by Wendy Perron, February 24th, 1977
+
+-Words That Work, review of Robert Barry, by Wendy Perron, March 3, 1977
+
+-When the Wind is High, review of Trisha Brown, by Stephanie Woodward, March 10th, 1977
+
+-Inner Vision Outer Space, review of Nancy Topf, by Stephanie Woodward, March 17th, 1977
+
+-Chosen Toil, review of Steve Paxton, by Stephanie Woodward, March 24th, 1977
+
+-Works With Words, review of Lawrence Kucharz, by Peter Zummo, March 31st, 1977
+
+-Looking the Other Way, review of James Barth, by Wendy Perron, April 7th, 1977
+
+-Half Hazard, by Wendy Perron, April 14th, 1977
+
+-Elemental Sounds, review of Alvin Lucier, by Peter Zummo, April 28th, 1977
+
+-Black Holes at Large, review of Star Station, by Wendy Perron, April 28th, 1977
+
+-Nursery Rhymes, review of Julia Heyward and Paula Longendyke, May 5th, 1977
+
+-New Mysteries, review of The Venue Caft Byrd Hoffman Studio, June 2nd, 1977
+
+-Kushner Bares All, review of Robert Kushner, by Wendy Perron, June 9th, 1977
+
+-Guesswork, review of Meredith Monk, by Wendy Perron, June 16th, 1977
+
+-A Rhythmical Guy, review of Dave Van Tieghem, by Stephanie Woodward, June 23rd, 1977
+
+-Only an Illusion, review of street performance, by Wendy Perron, July 14th, 1977
+
+-Cuba, New York, review of New Cuban Cinema, by Stephanie Woodward, July 21st, 1977
+
+-Direct to the Heart, review of the Big Apple Circus, by Stephanie Woodward, July 28th, 1977
+
+-Starting From Nothing, review of Michael Moschen, by Wendy Perron, September 22nd, 1977
+
+-That&#39;s Entertainment, review of Becky Arnold, by Sally Banes, October 13th, 1977
+
+-Fearless Squatters, review of Squat Theatre&#39;s Pig, Child, Fire, by Wendy Perron, October 20th, 1977
+
+-Poor White Tails, review of Tony Azito, by Wendy Perron, November 10th, 1977
+
+-New Morning, review of Tall Tree, by Wendy Perron, November 24th, 1977
+
+-Susan Sontag: On Writing, Art, Feminism, Life and Death, interview by Wendy Perron, December 1st, 1977
+
+-Voices of Many Voices, review of Julia Heyward and Pooh Kaye, by Wendy Perron, December 15th, 1977
+
+-Cage&#39;s Shell Game, review of John Cage, by Wendy Perron, December 29th, 1977</field>
+    <field name="series_si">Series I. &#34;Concepts in Performance&#34; &gt;&gt; Articles, 1977</field>
+    <field name="series_sim">Series I. &amp;#34;Concepts in Performance&amp;#34;</field>
+    <field name="sort_ii">6</field>
+    <field name="unitdate_end_si">1977</field>
+    <field name="unitdate_end_sim">1977</field>
+    <field name="unitdate_end_ssm">1977</field>
+    <field name="unitdate_inclusive_teim">1977</field>
+    <field name="unitdate_normal_sim">1977/1977</field>
+    <field name="unitdate_normal_ssm">1977/1977</field>
+    <field name="unitdate_normal_teim">1977/1977</field>
+    <field name="unitdate_ssm">Inclusive, 1977</field>
+    <field name="unitdate_start_si">1977</field>
+    <field name="unitdate_start_sim">1977</field>
+    <field name="unitdate_start_ssm">1977</field>
+    <field name="unittitle_ssm">Articles, 1977</field>
+    <field name="unittitle_teim">Articles, 1977</field>
+  </doc>
+</add>

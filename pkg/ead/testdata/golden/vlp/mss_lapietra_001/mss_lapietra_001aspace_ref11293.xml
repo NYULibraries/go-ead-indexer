@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Collection processed by Finding aid prepared by Alta Macadam</field>
+    <field name="collection_sim">The Acton Photograph Archive</field>
+    <field name="collection_ssm">The Acton Photograph Archive</field>
+    <field name="collection_teim">The Acton Photograph Archive</field>
+    <field name="collection_unitid_ssm">MSS.LaPietra.001</field>
+    <field name="collection_unitid_teim">MSS.LaPietra.001</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">4</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">mss_lapietra_001</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">[Chen Shi-Hsiang]</field>
+    <field name="id">mss_lapietra_001aspace_ref11293</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Photo-Album: 1, Image: 74-76.</field>
+    <field name="location_ssm">Photo-Album: 1, Image: 74-76.</field>
+    <field name="parent_ssi">aspace_ref11256</field>
+    <field name="parent_ssm">aspace_ref11216</field>
+    <field name="parent_ssm">aspace_ref11255</field>
+    <field name="parent_ssm">aspace_ref11256</field>
+    <field name="parent_unittitles_ssm">Series VII: Harold Acton in China and the Far East</field>
+    <field name="parent_unittitles_ssm">Subseries B: People</field>
+    <field name="parent_unittitles_ssm">1. Indentified</field>
+    <field name="parent_unittitles_teim">Series VII: Harold Acton in China and the Far East</field>
+    <field name="parent_unittitles_teim">Subseries B: People</field>
+    <field name="parent_unittitles_teim">1. Indentified</field>
+    <field name="ref_ssi">aspace_ref11293</field>
+    <field name="repository_sim">vlp</field>
+    <field name="repository_ssi">vlp</field>
+    <field name="repository_ssm">vlp</field>
+    <field name="series_si">Series VII: Harold Acton in China and the Far East &gt;&gt; Subseries B: People &gt;&gt; 1. Indentified &gt;&gt; [Chen Shi-Hsiang]</field>
+    <field name="series_sim">Series VII: Harold Acton in China and the Far East</field>
+    <field name="series_sim">Subseries B: People</field>
+    <field name="series_sim">1. Indentified</field>
+    <field name="sort_ii">6700</field>
+    <field name="unitdate_end_si">1936</field>
+    <field name="unitdate_end_sim">1936</field>
+    <field name="unitdate_end_ssm">1936</field>
+    <field name="unitdate_inclusive_teim">ca. 1936</field>
+    <field name="unitdate_normal_sim">1936/1936</field>
+    <field name="unitdate_normal_ssm">1936/1936</field>
+    <field name="unitdate_normal_teim">1936/1936</field>
+    <field name="unitdate_ssm">Inclusive, ca. 1936</field>
+    <field name="unitdate_start_si">1936</field>
+    <field name="unitdate_start_sim">1936</field>
+    <field name="unitdate_start_ssm">1936</field>
+    <field name="unitid_ssm">cuid4479</field>
+    <field name="unitid_teim">cuid4479</field>
+    <field name="unittitle_ssm">[Chen Shi-Hsiang]</field>
+    <field name="unittitle_teim">[Chen Shi-Hsiang]</field>
+  </doc>
+</add>

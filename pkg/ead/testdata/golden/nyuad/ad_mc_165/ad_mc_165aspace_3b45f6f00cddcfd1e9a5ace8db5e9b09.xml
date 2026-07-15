@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">Correspondence from the island of Réunion (Île de Bourbon), plus one letter from Emily Ruete (Princess Salme of Zanzibar)</field>
+    <field name="collection_ssm">Correspondence from the island of Réunion (Île de Bourbon), plus one letter from Emily Ruete (Princess Salme of Zanzibar)</field>
+    <field name="collection_teim">Correspondence from the island of Réunion (Île de Bourbon), plus one letter from Emily Ruete (Princess Salme of Zanzibar)</field>
+    <field name="collection_unitid_ssm">AD.MC.165</field>
+    <field name="collection_unitid_teim">AD.MC.165</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_165</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Decrès, Denis (Minister of the Navy) :  copy of a letter forwarded to him, the original of which was written and signed by Jan Willem Jannsens, governor-general of Java, aboard the frigate &#34;Méduse,&#34; raising complaints about the commander of French artillery on Java (1 leaf, ALS)</field>
+    <field name="id">ad_mc_165aspace_3b45f6f00cddcfd1e9a5ace8db5e9b09</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 1, folder: 6</field>
+    <field name="location_ssm">box: 1, folder: 6</field>
+    <field name="ref_ssi">aspace_3b45f6f00cddcfd1e9a5ace8db5e9b09</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Decrès, Denis (Minister of the Navy) :  copy of a letter forwarded to him, the original of which was written and signed by Jan Willem Jannsens, governor-general of Java, aboard the frigate &#34;Méduse,&#34; raising complaints about the commander of French artillery on Java (1 leaf, ALS)</field>
+    <field name="sort_ii">6</field>
+    <field name="unitdate_normal_sim">1810-12-27/1810-12-27</field>
+    <field name="unitdate_normal_ssm">1810-12-27/1810-12-27</field>
+    <field name="unitdate_normal_teim">1810-12-27/1810-12-27</field>
+    <field name="unitdate_ssm">27 December 1810</field>
+    <field name="unitdate_teim">27 December 1810</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/41256</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/41256</field>
+    <field name="unittitle_ssm">Decrès, Denis (Minister of the Navy) :  copy of a letter forwarded to him, the original of which was written and signed by Jan Willem Jannsens, governor-general of Java, aboard the frigate &#34;Méduse,&#34; raising complaints about the commander of French artillery on Java (1 leaf, ALS)</field>
+    <field name="unittitle_teim">Decrès, Denis (Minister of the Navy) :  copy of a letter forwarded to him, the original of which was written and signed by Jan Willem Jannsens, governor-general of Java, aboard the frigate &#34;Méduse,&#34; raising complaints about the commander of French artillery on Java (1 leaf, ALS)</field>
+  </doc>
+</add>

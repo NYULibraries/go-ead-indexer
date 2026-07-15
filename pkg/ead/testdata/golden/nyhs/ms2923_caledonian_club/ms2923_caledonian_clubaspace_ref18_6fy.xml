@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Alison Dundy</field>
+    <field name="collection_sim">New York Caledonian Club records</field>
+    <field name="collection_ssm">New York Caledonian Club records</field>
+    <field name="collection_teim">New York Caledonian Club records</field>
+    <field name="collection_unitid_ssm">MS 2923</field>
+    <field name="collection_unitid_teim">MS 2923</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms2923_caledonian_club</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series I: Minutes</field>
+    <field name="id">ms2923_caledonian_clubaspace_ref18_6fy</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_ref18_6fy</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="scopecontent_teim">Bound ledgers of handwritten minutes run from the New York Caledonian Club&#39;s founding in 1856 through 1950 and are arranged chronologically. Folders of typewritten minutes run from 1981 through 2002. There are no minutes from 1950-1982. The majority of the bound ledgers include minutes of Board of Trustees meetings as well as annual meetings, monthly meetings, and meetings of subcommittees. They include discussion of club business, from election of officers, to acceptance of members, adjudication of disputes between members, planning of annual events such as the Robert Burns dinner and Highland Games, as well as exceptional campaigns, such as financial aid to members and non-members during wars. Many volumes have key documents glued in to the ledgers. The New York Caledonian Club Constitution is glued to pages in volume 12. Other documents pertaining to the time-period encompassed in the ledger have been placed inside the back covers of ledgers. Typewritten minutes from 1981-2002 were kept together chronologically by the club secretary with flyers, program brochures, newsletters, clippings, and ephemera pertaining to the same time period.</field>
+    <field name="series_si">Series I: Minutes</field>
+    <field name="sort_ii">1</field>
+    <field name="unitdate_ssm">1856-2003</field>
+    <field name="unitdate_teim">1856-2003</field>
+    <field name="unittitle_ssm">Series I: Minutes</field>
+    <field name="unittitle_teim">Series I: Minutes</field>
+  </doc>
+</add>

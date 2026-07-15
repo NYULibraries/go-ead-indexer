@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Zoe Blecher-Cohen</field>
+    <field name="collection_sim">Poly Archives Memorabilia Collection</field>
+    <field name="collection_ssm">Poly Archives Memorabilia Collection</field>
+    <field name="collection_teim">Poly Archives Memorabilia Collection</field>
+    <field name="collection_unitid_ssm">RG.027</field>
+    <field name="collection_unitid_teim">RG.027</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">poly_rg_027</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">One Hundred and Eighteenth Annual Commencement Booklet</field>
+    <field name="id">poly_rg_027aspace_56bedb59251dc517d5dd67fa008c4f00</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 1, folder: 15</field>
+    <field name="location_ssm">box: 1, folder: 15</field>
+    <field name="parent_ssi">aspace_ref1_gj8</field>
+    <field name="parent_ssm">aspace_ref1_gj8</field>
+    <field name="parent_unittitles_ssm">Series I: Documents</field>
+    <field name="parent_unittitles_teim">Series I: Documents</field>
+    <field name="ref_ssi">aspace_56bedb59251dc517d5dd67fa008c4f00</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="series_si">Series I: Documents &gt;&gt; One Hundred and Eighteenth Annual Commencement Booklet</field>
+    <field name="series_sim">Series I: Documents</field>
+    <field name="sort_ii">10</field>
+    <field name="unitdate_normal_sim">1973-05-31/1973-05-31</field>
+    <field name="unitdate_normal_ssm">1973-05-31/1973-05-31</field>
+    <field name="unitdate_normal_teim">1973-05-31/1973-05-31</field>
+    <field name="unitdate_ssm">1973-05-31</field>
+    <field name="unitdate_teim">1973-05-31</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/15001</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/15001</field>
+    <field name="unittitle_ssm">One Hundred and Eighteenth Annual Commencement Booklet</field>
+    <field name="unittitle_teim">One Hundred and Eighteenth Annual Commencement Booklet</field>
+  </doc>
+</add>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Miranda Schwartz (2000s); Larry Weimer (2021)</field>
+    <field name="collection_sim">James Reuel Smith springs and wells photographs and papers</field>
+    <field name="collection_ssm">James Reuel Smith springs and wells photographs and papers</field>
+    <field name="collection_teim">James Reuel Smith springs and wells photographs and papers</field>
+    <field name="collection_unitid_ssm">PR 62</field>
+    <field name="collection_unitid_teim">PR 62</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">pr062_reuel_smith_springs_wells</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series V: Glass Negatives</field>
+    <field name="id">pr062_reuel_smith_springs_wellsaspace_ref52_iww</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_ref52_iww</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="scopecontent_teim">This series holds seven boxes of glass negatives of prints from Springs and Wells. Each negative is sleeved in its own envelope; a few negatives are broken (noted on the individual envelope). Specific locations and dates are noted on each envelope in Smith&#39;s handwriting, along with one of his unique identifying codes from the &#34;Analysis of Photograph Subjects (Vicinages of SPRINGS &amp; WELLS, Dates of Negatives Nos., &amp;c, &amp;c and List &#39;D&#39; of SPRINGS &amp; WELLS).&#34; The ranges of numbers are not inclusive. (See Series IV, Subseries 1.) During processing 38 acetate negatives were removed from among the glass negatives and grouped together at the end of Box 17.</field>
+    <field name="series_si">Series V: Glass Negatives</field>
+    <field name="sort_ii">43</field>
+    <field name="unitdate_inclusive_teim">1897-1901</field>
+    <field name="unitdate_ssm">Inclusive, 1897-1901</field>
+    <field name="unittitle_ssm">Series V: Glass Negatives</field>
+    <field name="unittitle_teim">Series V: Glass Negatives</field>
+  </doc>
+</add>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ibrahim Mohamed Ali, Maysa Shaer, Saleem Al-Bahloly, Anneka Lenssen, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art, NYUAD</field>
+    <field name="collection_sim">Hanaa Malallah Collection</field>
+    <field name="collection_ssm">Hanaa Malallah Collection</field>
+    <field name="collection_teim">Hanaa Malallah Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.095</field>
+    <field name="collection_unitid_teim">AD.MC.095</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_095</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series II. Press Clippings</field>
+    <field name="id">ad_mc_095aspace_e8adaba3fc25d30695116bc090b94906</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_e8adaba3fc25d30695116bc090b94906</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="scopecontent_teim">This series includes clippings or photocopies of articles from various newspapers and magazines, which feature press coverage about Hanaa Malallah and/or art exhibitions in which she participated. The clippings are mainly in Arabic, with some English and French. The series also includes a folder of photocopied articles from various French journals published in 2000, assembled by the artist.</field>
+    <field name="series_si">Series II. Press Clippings</field>
+    <field name="sort_ii">12</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/32718</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/32718</field>
+    <field name="unittitle_ssm">Series II. Press Clippings</field>
+    <field name="unittitle_teim">Series II. Press Clippings</field>
+  </doc>
+</add>

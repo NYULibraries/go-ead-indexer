@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Lindsay Anderberg</field>
+    <field name="collection_sim">Morris Jacobs Papers</field>
+    <field name="collection_ssm">Morris Jacobs Papers</field>
+    <field name="collection_teim">Morris Jacobs Papers</field>
+    <field name="collection_unitid_ssm">RG.035</field>
+    <field name="collection_unitid_teim">RG.035</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">poly_rg_035</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Biographical Information</field>
+    <field name="id">poly_rg_035aspace_ref3_tgv</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 1, folder: 1</field>
+    <field name="location_ssm">box: 1, folder: 1</field>
+    <field name="parent_ssi">aspace_ref1_b34</field>
+    <field name="parent_ssm">aspace_ref1_b34</field>
+    <field name="parent_unittitles_ssm">Series I: Biography and Writings</field>
+    <field name="parent_unittitles_teim">Series I: Biography and Writings</field>
+    <field name="ref_ssi">aspace_ref3_tgv</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="series_si">Series I: Biography and Writings &gt;&gt; Biographical Information</field>
+    <field name="series_sim">Series I: Biography and Writings</field>
+    <field name="sort_ii">2</field>
+    <field name="unitdate_ssm">undated</field>
+    <field name="unitdate_teim">undated</field>
+    <field name="unittitle_ssm">Biographical Information</field>
+    <field name="unittitle_teim">Biographical Information</field>
+  </doc>
+</add>

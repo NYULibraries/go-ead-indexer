@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Mehri Khalil, Ibrahim Mohamed Ali, Maysa Shaer, and Nada Shabout for al Mawrid Arab Center for the Study of Art at NYU Abu Dhabi.</field>
+    <field name="collection_sim">Menhat Helmy Collection</field>
+    <field name="collection_ssm">Menhat Helmy Collection</field>
+    <field name="collection_teim">Menhat Helmy Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.142</field>
+    <field name="collection_unitid_teim">AD.MC.142</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_142</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">IX. Other Items in Possession of the Artist</field>
+    <field name="id">ad_mc_142aspace_21261755a289922598b19b3df9110fc4</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_21261755a289922598b19b3df9110fc4</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="scopecontent_teim">Series IX includes the catalog of the University Austral in Chile, as well as three catalogs Helmy collected in New Delhi.</field>
+    <field name="series_si">IX. Other Items in Possession of the Artist</field>
+    <field name="sort_ii">123</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/34424</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/34424</field>
+    <field name="unittitle_ssm">IX. Other Items in Possession of the Artist</field>
+    <field name="unittitle_teim">IX. Other Items in Possession of the Artist</field>
+  </doc>
+</add>

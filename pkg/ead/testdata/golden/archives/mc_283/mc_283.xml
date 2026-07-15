@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="abstract_ssm">C. William Britcher was a student at New York University&#39;s School of Public Administration in the early 1950s. This collection consists of a single item, Britcher&#39;s 1952 thesis for his Master of Public Administration titled &#34;Quality Control of Small Lots.&#34;</field>
+    <field name="abstract_teim">C. William Britcher was a student at New York University&#39;s School of Public Administration in the early 1950s. This collection consists of a single item, Britcher&#39;s 1952 thesis for his Master of Public Administration titled &#34;Quality Control of Small Lots.&#34;</field>
+    <field name="acqinfo_teim">Donated by Mary Britcher, C. William Britcher&#39;s widow, in September 2017; the accession number associated with this gift is 2017.053.</field>
+    <field name="author_ssm">Rachel Searcy</field>
+    <field name="author_teim">Rachel Searcy</field>
+    <field name="bioghist_teim">C. William Britcher was a student at New York University&#39;s School of Public Administration in the early 1950s.</field>
+    <field name="collection_sim">C. William Britcher Thesis</field>
+    <field name="collection_ssm">C. William Britcher Thesis</field>
+    <field name="collection_teim">C. William Britcher Thesis</field>
+    <field name="corpname_ssm">New York University Archives</field>
+    <field name="corpname_teim">New York University Archives</field>
+    <field name="creator_sim">Britcher, C. William</field>
+    <field name="creator_ssm">Britcher, C. William</field>
+    <field name="creator_teim">Britcher, C. William</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">mc_283</field>
+    <field name="format_ii">0</field>
+    <field name="format_sim">Archival Collection</field>
+    <field name="format_ssm">Archival Collection</field>
+    <field name="genreform_ssm">Masters theses</field>
+    <field name="genreform_teim">Masters theses</field>
+    <field name="heading_ssm">C. William Britcher Thesis</field>
+    <field name="id">mc_283</field>
+    <field name="material_type_sim">Masters theses</field>
+    <field name="material_type_ssm">Masters theses</field>
+    <field name="name_sim">Britcher, C. William</field>
+    <field name="name_teim">Britcher, C. William</field>
+    <field name="persname_ssm">Britcher, C. William</field>
+    <field name="persname_teim">Britcher, C. William</field>
+    <field name="repository_sim">archives</field>
+    <field name="repository_ssi">archives</field>
+    <field name="repository_ssm">archives</field>
+    <field name="scopecontent_teim">This collection consists of a single item, C. William Britcher&#39;s 1952 thesis for his Master of Public Administration at New York University titled &#34;Quality Control of Small Lots.&#34;</field>
+    <field name="subject_sim">Quality control</field>
+    <field name="subject_sim">Industrial statistics</field>
+    <field name="subject_sim">Sampling (Statistics) -- Case studies</field>
+    <field name="subject_ssm">Quality control</field>
+    <field name="subject_ssm">Industrial statistics</field>
+    <field name="subject_ssm">Sampling (Statistics) -- Case studies</field>
+    <field name="subject_teim">Quality control</field>
+    <field name="subject_teim">Industrial statistics</field>
+    <field name="subject_teim">Sampling (Statistics) -- Case studies</field>
+    <field name="subject_teim">Quality control</field>
+    <field name="subject_teim">Industrial statistics</field>
+    <field name="subject_teim">Sampling (Statistics) -- Case studies</field>
+    <field name="unitdate_end_si">1952</field>
+    <field name="unitdate_end_sim">1952</field>
+    <field name="unitdate_end_ssm">1952</field>
+    <field name="unitdate_normal_sim">1952/1952</field>
+    <field name="unitdate_normal_ssm">1952/1952</field>
+    <field name="unitdate_normal_teim">1952/1952</field>
+    <field name="unitdate_ssm">1952</field>
+    <field name="unitdate_start_si">1952</field>
+    <field name="unitdate_start_sim">1952</field>
+    <field name="unitdate_start_ssm">1952</field>
+    <field name="unitdate_teim">1952</field>
+    <field name="unitid_ssm">MC.283</field>
+    <field name="unitid_teim">MC.283</field>
+    <field name="unittitle_ssm">C. William Britcher Thesis</field>
+    <field name="unittitle_teim">C. William Britcher Thesis</field>
+  </doc>
+</add>

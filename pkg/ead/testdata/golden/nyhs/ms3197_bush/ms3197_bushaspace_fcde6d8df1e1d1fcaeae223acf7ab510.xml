@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Joseph Ditta</field>
+    <field name="collection_sim">Bush family papers</field>
+    <field name="collection_ssm">Bush family papers</field>
+    <field name="collection_teim">Bush family papers</field>
+    <field name="collection_unitid_ssm">MS 3197</field>
+    <field name="collection_unitid_teim">MS 3197</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms3197_bush</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series V. Frances Maude (Morris) Bush travel diaries</field>
+    <field name="id">ms3197_bushaspace_fcde6d8df1e1d1fcaeae223acf7ab510</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_fcde6d8df1e1d1fcaeae223acf7ab510</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="series_si">Series V. Frances Maude (Morris) Bush travel diaries</field>
+    <field name="sort_ii">20</field>
+    <field name="unitdate_inclusive_teim">1928–1936</field>
+    <field name="unitdate_ssm">Inclusive, 1928–1936</field>
+    <field name="unittitle_ssm">Series V. Frances Maude (Morris) Bush travel diaries</field>
+    <field name="unittitle_teim">Series V. Frances Maude (Morris) Bush travel diaries</field>
+  </doc>
+</add>

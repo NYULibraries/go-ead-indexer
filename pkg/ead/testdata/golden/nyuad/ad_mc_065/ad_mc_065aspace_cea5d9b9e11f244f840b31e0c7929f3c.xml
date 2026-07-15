@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">Aḥmad Zakī Abū Shādī Family Papers</field>
+    <field name="collection_ssm">Aḥmad Zakī Abū Shādī Family Papers</field>
+    <field name="collection_teim">Aḥmad Zakī Abū Shādī Family Papers</field>
+    <field name="collection_unitid_ssm">AD.MC.065</field>
+    <field name="collection_unitid_teim">AD.MC.065</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_065</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Apūllū.  Bound volume 3, part 1, reprint of Vol. 3, Issues 1 to 3 (Bayrūt : Dār Ṣādir)</field>
+    <field name="id">ad_mc_065aspace_cea5d9b9e11f244f840b31e0c7929f3c</field>
+    <field name="level_sim">item</field>
+    <field name="location_si">volume: 11</field>
+    <field name="location_ssm">volume: 11</field>
+    <field name="parent_ssi">aspace_10692582b81e113ede20ed52b6d63c37</field>
+    <field name="parent_ssm">aspace_634728277770dbefb4fe78be2352e8e1</field>
+    <field name="parent_ssm">aspace_10692582b81e113ede20ed52b6d63c37</field>
+    <field name="parent_unittitles_ssm">Printed material</field>
+    <field name="parent_unittitles_ssm">Publications edited or published by Ahmed Zaki Abu Shadi</field>
+    <field name="parent_unittitles_teim">Printed material</field>
+    <field name="parent_unittitles_teim">Publications edited or published by Ahmed Zaki Abu Shadi</field>
+    <field name="ref_ssi">aspace_cea5d9b9e11f244f840b31e0c7929f3c</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Printed material &gt;&gt; Publications edited or published by Ahmed Zaki Abu Shadi &gt;&gt; Apūllū.  Bound volume 3, part 1, reprint of Vol. 3, Issues 1 to 3 (Bayrūt : Dār Ṣādir)</field>
+    <field name="series_sim">Printed material</field>
+    <field name="series_sim">Publications edited or published by Ahmed Zaki Abu Shadi</field>
+    <field name="sort_ii">411</field>
+    <field name="unitdate_inclusive_teim">[September - November 1934]</field>
+    <field name="unitdate_normal_sim">1934-09/1934-11</field>
+    <field name="unitdate_normal_ssm">1934-09/1934-11</field>
+    <field name="unitdate_normal_teim">1934-09/1934-11</field>
+    <field name="unitdate_ssm">Inclusive, [September - November 1934]</field>
+    <field name="unittitle_ssm">Apūllū.  Bound volume 3, part 1, reprint of Vol. 3, Issues 1 to 3 (Bayrūt : Dār Ṣādir)</field>
+    <field name="unittitle_teim">Apūllū.  Bound volume 3, part 1, reprint of Vol. 3, Issues 1 to 3 (Bayrūt : Dār Ṣādir)</field>
+  </doc>
+</add>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Akkasah: Center for Photography NYUAD</field>
+    <field name="collection_sim">The Edge</field>
+    <field name="collection_ssm">The Edge</field>
+    <field name="collection_teim">The Edge</field>
+    <field name="collection_unitid_ssm">AD.MC.021</field>
+    <field name="collection_unitid_teim">AD.MC.021</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="dao_sim">Online Access</field>
+    <field name="dao_ssm">Banquet, Khor Al Maqta: 2015</field>
+    <field name="dao_ssm">Banquet, Khor Al Maqta: 2015</field>
+    <field name="dao_teim">Banquet, Khor Al Maqta: 2015</field>
+    <field name="dao_teim">Banquet, Khor Al Maqta: 2015</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_021</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="genreform_ssm">Digital Photographs</field>
+    <field name="genreform_teim">Digital Photographs</field>
+    <field name="geogname_ssm">Abu Dhabi, United Arab Emirates</field>
+    <field name="geogname_teim">Abu Dhabi, United Arab Emirates</field>
+    <field name="heading_ssm">Banquet, Khor Al Maqta</field>
+    <field name="id">ad_mc_021aspace_ref18_5wr</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">object: AD-MC-021_ref18_m</field>
+    <field name="location_ssm">object: AD-MC-021_ref18_m</field>
+    <field name="material_type_sim">Digital Photographs</field>
+    <field name="material_type_ssm">Digital Photographs</field>
+    <field name="name_sim">Zayed bin Sultan Al Nahyan, Sheikh, 1918-2004</field>
+    <field name="name_teim">Zayed bin Sultan Al Nahyan, Sheikh, 1918-2004</field>
+    <field name="persname_ssm">Zayed bin Sultan Al Nahyan, Sheikh, 1918-2004</field>
+    <field name="persname_teim">Zayed bin Sultan Al Nahyan, Sheikh, 1918-2004</field>
+    <field name="place_sim">Abu Dhabi, United Arab Emirates</field>
+    <field name="place_ssm">Abu Dhabi, United Arab Emirates</field>
+    <field name="ref_ssi">aspace_ref18_5wr</field>
+    <field name="repository_sim">akkasah</field>
+    <field name="repository_ssi">akkasah</field>
+    <field name="repository_ssm">akkasah</field>
+    <field name="series_si">Banquet, Khor Al Maqta</field>
+    <field name="sort_ii">17</field>
+    <field name="subject_sim">Military/Soldiers</field>
+    <field name="subject_sim">Men</field>
+    <field name="subject_sim">Sheikh Zayed bin Sultan Al Nahyan</field>
+    <field name="subject_sim">Royalty</field>
+    <field name="subject_ssm">Military/Soldiers</field>
+    <field name="subject_ssm">Men</field>
+    <field name="subject_ssm">Sheikh Zayed bin Sultan Al Nahyan</field>
+    <field name="subject_ssm">Royalty</field>
+    <field name="subject_teim">Military/Soldiers</field>
+    <field name="subject_teim">Men</field>
+    <field name="subject_teim">Sheikh Zayed bin Sultan Al Nahyan</field>
+    <field name="subject_teim">Royalty</field>
+    <field name="subject_teim">Military/Soldiers</field>
+    <field name="subject_teim">Men</field>
+    <field name="subject_teim">Sheikh Zayed bin Sultan Al Nahyan</field>
+    <field name="subject_teim">Royalty</field>
+    <field name="unitdate_ssm">2015</field>
+    <field name="unitdate_teim">2015</field>
+    <field name="unittitle_ssm">Banquet, Khor Al Maqta</field>
+    <field name="unittitle_teim">Banquet, Khor Al Maqta</field>
+  </doc>
+</add>

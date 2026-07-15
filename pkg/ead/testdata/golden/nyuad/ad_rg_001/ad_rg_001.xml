@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="abstract_ssm">Planning documents, publications, ephemera, promotional and commemorative materials related to the establishment and early years of NYU Abu Dhabi. This is an artificial collection of documents that were found in the University Archives and kept together. Duplicate copies of these records may exist in other NYU Abu Dhabi and/or NYU University Archives collections.</field>
+    <field name="abstract_teim">Planning documents, publications, ephemera, promotional and commemorative materials related to the establishment and early years of NYU Abu Dhabi. This is an artificial collection of documents that were found in the University Archives and kept together. Duplicate copies of these records may exist in other NYU Abu Dhabi and/or NYU University Archives collections.</field>
+    <field name="acqinfo_teim">Items in this collection were donated by a variety of individuals over a period of years, to capture the early years of NYU Abu Dhabi. Records of these donations have not been retained.</field>
+    <field name="author_ssm">Lauren Kata</field>
+    <field name="author_teim">Lauren Kata</field>
+    <field name="bioghist_teim">Established in partnership with New York University and the Emirate of Abu Dhabi, United Arab Emirates, NYU Abu Dhabi is the first comprehensive liberal arts and science campus in the Middle East to be operated abroad by a major American research university. Founded upon &#34;a shared understanding of the essential roles and challenges of higher education in the 21st century,&#34; the project was announced in 2007, and in 2010 NYU Abu Dhabi welcomed its inaugural class. </field>
+    <field name="bioghist_teim">- &#34;NYUAD At A Glance.&#34; https://nyuad.nyu.edu/en/about/nyuad-at-a-glance/history.html </field>
+    <field name="collection_sim">NYU Abu Dhabi Early Materials Collection</field>
+    <field name="collection_ssm">NYU Abu Dhabi Early Materials Collection</field>
+    <field name="collection_teim">NYU Abu Dhabi Early Materials Collection</field>
+    <field name="corpname_ssm">NYU Abu Dhabi, Archives and Special Collections</field>
+    <field name="corpname_ssm">Rafael Viñoly Architects</field>
+    <field name="corpname_teim">NYU Abu Dhabi, Archives and Special Collections</field>
+    <field name="corpname_teim">Rafael Viñoly Architects</field>
+    <field name="date_range_sim">2001-2100</field>
+    <field name="ead_ssi">ad_rg_001</field>
+    <field name="format_ii">0</field>
+    <field name="format_sim">Archival Collection</field>
+    <field name="format_ssm">Archival Collection</field>
+    <field name="geogname_ssm">New York University Abu Dhabi</field>
+    <field name="geogname_teim">New York University Abu Dhabi</field>
+    <field name="heading_ssm">NYU Abu Dhabi Early Materials Collection</field>
+    <field name="id">ad_rg_001</field>
+    <field name="language_sim">English</field>
+    <field name="language_ssm">English</field>
+    <field name="name_sim">Rafael Viñoly Architects</field>
+    <field name="name_teim">Rafael Viñoly Architects</field>
+    <field name="place_sim">New York University Abu Dhabi</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="scopecontent_teim">Early planning documents, publications, ephemera,  and other promotional and commemorative materials produced and distributed on the occasion of the establishment of NYU Abu Dhabi, brought together into an artificial &#34;early collection&#34; by the archivist, as the provenance/donation information for these materials was not recorded. </field>
+    <field name="scopecontent_teim">This collection includes ephemeral items such as a copy of the first speech delivered to the Class of 2014 by then Dean of Students Jim Larrimore, early issues of the first iteration of an NYUAD student newspaper, &#34;The Fishbowl,&#34; and ephemera from Candidate weekend.  Also included is a small folder of architects&#39; annotated meeting notes and printed records, including oversize copies of draft floor plan designs from June, July and August 2010. Of note is a specially designed commemorative book (published summer 2008), produced on the occasion of the establishment of NYU Abu Dhabi. Two volumes are published together into one book: &#34;An Evolving Global Dynamic,&#34; and &#34;A Partnership for the Future.&#34;(two copies). </field>
+    <field name="scopecontent_teim">Over time, as additional records have been transferred to the University Archives from various offices of leadership, many of the records and publications in this collection are also available and preserved in other Record Group collections, including the Hilary Ballon Papers; Records of the Office of Dean of Students; Records of the Office of Student Life, NYU Abu Dhabi Publications and Ephemera, and others. </field>
+    <field name="scopecontent_teim">This collection may be added to in the future, but most subsequent collections will be organized as part of the donating office.  </field>
+    <field name="subject_sim">Architecture</field>
+    <field name="subject_ssm">Architecture</field>
+    <field name="subject_teim">Architecture</field>
+    <field name="subject_teim">Architecture</field>
+    <field name="unitdate_end_si">2010</field>
+    <field name="unitdate_end_sim">2010</field>
+    <field name="unitdate_end_ssm">2010</field>
+    <field name="unitdate_inclusive_teim">2008-2010</field>
+    <field name="unitdate_normal_sim">2008/2010</field>
+    <field name="unitdate_normal_ssm">2008/2010</field>
+    <field name="unitdate_normal_teim">2008/2010</field>
+    <field name="unitdate_ssm">Inclusive, 2008-2010</field>
+    <field name="unitdate_start_si">2008</field>
+    <field name="unitdate_start_sim">2008</field>
+    <field name="unitdate_start_ssm">2008</field>
+    <field name="unitid_ssm">AD.RG.001</field>
+    <field name="unitid_teim">AD.RG.001</field>
+    <field name="unittitle_ssm">NYU Abu Dhabi Early Materials Collection</field>
+    <field name="unittitle_teim">NYU Abu Dhabi Early Materials Collection</field>
+  </doc>
+</add>

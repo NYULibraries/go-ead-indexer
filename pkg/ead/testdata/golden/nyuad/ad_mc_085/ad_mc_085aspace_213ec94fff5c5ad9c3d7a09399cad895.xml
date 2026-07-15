@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">Adnan Pachachi book collection</field>
+    <field name="collection_ssm">Adnan Pachachi book collection</field>
+    <field name="collection_teim">Adnan Pachachi book collection</field>
+    <field name="collection_unitid_ssm">AD.MC.085</field>
+    <field name="collection_unitid_teim">AD.MC.085</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_085</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Aʻrajī, Ḥalīm Ḥasan ʻAbd ʻAlī.  al-Shaykh Khawwām, 1881-1967 : al-thāʼir-- al-insān : qiṣṣat taḥaddī al-tabʻīyah wa-al-taʻassuf fī ẓill ẓurūf al-qahr wa-al-takhalluf (Baghdad, 2002)</field>
+    <field name="id">ad_mc_085aspace_213ec94fff5c5ad9c3d7a09399cad895</field>
+    <field name="language_sim">Arabic</field>
+    <field name="language_ssm">Arabic</field>
+    <field name="level_sim">item</field>
+    <field name="location_si">volume: 5</field>
+    <field name="location_ssm">volume: 5</field>
+    <field name="parent_ssi">aspace_2f9a774d8ccd8ddf242bdd2c0b1ecef1</field>
+    <field name="parent_ssm">aspace_2f9a774d8ccd8ddf242bdd2c0b1ecef1</field>
+    <field name="parent_unittitles_ssm">Iraq titles</field>
+    <field name="parent_unittitles_teim">Iraq titles</field>
+    <field name="ref_ssi">aspace_213ec94fff5c5ad9c3d7a09399cad895</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Iraq titles &gt;&gt; Aʻrajī, Ḥalīm Ḥasan ʻAbd ʻAlī.  al-Shaykh Khawwām, 1881-1967 : al-thāʼir-- al-insān : qiṣṣat taḥaddī al-tabʻīyah wa-al-taʻassuf fī ẓill ẓurūf al-qahr wa-al-takhalluf (Baghdad, 2002)</field>
+    <field name="series_sim">Iraq titles</field>
+    <field name="sort_ii">6</field>
+    <field name="unittitle_ssm">Aʻrajī, Ḥalīm Ḥasan ʻAbd ʻAlī.  al-Shaykh Khawwām, 1881-1967 : al-thāʼir-- al-insān : qiṣṣat taḥaddī al-tabʻīyah wa-al-taʻassuf fī ẓill ẓurūf al-qahr wa-al-takhalluf (Baghdad, 2002)</field>
+    <field name="unittitle_teim">Aʻrajī, Ḥalīm Ḥasan ʻAbd ʻAlī.  al-Shaykh Khawwām, 1881-1967 : al-thāʼir-- al-insān : qiṣṣat taḥaddī al-tabʻīyah wa-al-taʻassuf fī ẓill ẓurūf al-qahr wa-al-takhalluf (Baghdad, 2002)</field>
+  </doc>
+</add>

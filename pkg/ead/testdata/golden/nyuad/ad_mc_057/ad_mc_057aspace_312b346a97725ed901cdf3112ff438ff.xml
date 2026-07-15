@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">Emirates Bird Records Committee records</field>
+    <field name="collection_ssm">Emirates Bird Records Committee records</field>
+    <field name="collection_teim">Emirates Bird Records Committee records</field>
+    <field name="collection_unitid_ssm">AD.MC.057</field>
+    <field name="collection_unitid_teim">AD.MC.057</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">2001-2100</field>
+    <field name="ead_ssi">ad_mc_057</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Campbell, Oscar.  &#34;An apparent hybrid collared pratincole...and the oriental pratincole problem.&#34;</field>
+    <field name="id">ad_mc_057aspace_312b346a97725ed901cdf3112ff438ff</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: Electronic records, E-records: AD_MC_057_002</field>
+    <field name="location_ssm">box: Electronic records, E-records: AD_MC_057_002</field>
+    <field name="parent_ssi">aspace_23306861cd9545a9c28c65a3a441577a</field>
+    <field name="parent_ssm">aspace_9889f3dc44dca3c79d6a0b7b5a8dac0c</field>
+    <field name="parent_ssm">aspace_23306861cd9545a9c28c65a3a441577a</field>
+    <field name="parent_unittitles_ssm">Other records (digital)</field>
+    <field name="parent_unittitles_ssm">Articles collected</field>
+    <field name="parent_unittitles_teim">Other records (digital)</field>
+    <field name="parent_unittitles_teim">Articles collected</field>
+    <field name="ref_ssi">aspace_312b346a97725ed901cdf3112ff438ff</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Other records (digital) &gt;&gt; Articles collected &gt;&gt; Campbell, Oscar.  &#34;An apparent hybrid collared pratincole...and the oriental pratincole problem.&#34;</field>
+    <field name="series_sim">Other records (digital)</field>
+    <field name="series_sim">Articles collected</field>
+    <field name="sort_ii">299</field>
+    <field name="unitdate_end_si">2009</field>
+    <field name="unitdate_end_sim">2009</field>
+    <field name="unitdate_end_ssm">2009</field>
+    <field name="unitdate_normal_sim">2009/2009</field>
+    <field name="unitdate_normal_ssm">2009/2009</field>
+    <field name="unitdate_normal_teim">2009/2009</field>
+    <field name="unitdate_ssm">2009</field>
+    <field name="unitdate_start_si">2009</field>
+    <field name="unitdate_start_sim">2009</field>
+    <field name="unitdate_start_ssm">2009</field>
+    <field name="unitdate_teim">2009</field>
+    <field name="unittitle_ssm">Campbell, Oscar.  &#34;An apparent hybrid collared pratincole...and the oriental pratincole problem.&#34;</field>
+    <field name="unittitle_teim">Campbell, Oscar.  &#34;An apparent hybrid collared pratincole...and the oriental pratincole problem.&#34;</field>
+  </doc>
+</add>

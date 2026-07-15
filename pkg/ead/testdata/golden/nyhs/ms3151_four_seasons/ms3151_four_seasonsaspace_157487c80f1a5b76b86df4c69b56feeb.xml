@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Joseph Ditta</field>
+    <field name="collection_sim">Four Seasons Restaurant collection</field>
+    <field name="collection_ssm">Four Seasons Restaurant collection</field>
+    <field name="collection_teim">Four Seasons Restaurant collection</field>
+    <field name="collection_unitid_ssm">MS 3151</field>
+    <field name="collection_unitid_teim">MS 3151</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms3151_four_seasons</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series III. Photographs, slides, transparencies</field>
+    <field name="id">ms3151_four_seasonsaspace_157487c80f1a5b76b86df4c69b56feeb</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_157487c80f1a5b76b86df4c69b56feeb</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="scopecontent_teim">Images of renovations to the Four Seasons kitchen in 1997, the restaurant&#39;s 40th anniversary celebration in 1999, and views of its spaces and staff at various events.</field>
+    <field name="series_si">Series III. Photographs, slides, transparencies</field>
+    <field name="sort_ii">51</field>
+    <field name="unitdate_inclusive_teim">circa 1970s-2015</field>
+    <field name="unitdate_ssm">Inclusive, circa 1970s-2015</field>
+    <field name="unittitle_ssm">Series III. Photographs, slides, transparencies</field>
+    <field name="unittitle_teim">Series III. Photographs, slides, transparencies</field>
+  </doc>
+</add>

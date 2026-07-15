@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Mehri Khalil, Ibrahim Mohamed Ali, Maysa Shaer, and Nada Shabout for al Mawrid Arab Center for the Study of Art at NYU Abu Dhabi.</field>
+    <field name="collection_sim">Menhat Helmy Collection</field>
+    <field name="collection_ssm">Menhat Helmy Collection</field>
+    <field name="collection_teim">Menhat Helmy Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.142</field>
+    <field name="collection_unitid_teim">AD.MC.142</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_142</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">2. Quill, volume 6, number 4-9, New Delhi, September 1979</field>
+    <field name="id">ad_mc_142aspace_6ec413eb9228b16c3c799922c0bc850c</field>
+    <field name="level_sim">item</field>
+    <field name="parent_ssi">aspace_21261755a289922598b19b3df9110fc4</field>
+    <field name="parent_ssm">aspace_21261755a289922598b19b3df9110fc4</field>
+    <field name="parent_unittitles_ssm">IX. Other Items in Possession of the Artist</field>
+    <field name="parent_unittitles_teim">IX. Other Items in Possession of the Artist</field>
+    <field name="ref_ssi">aspace_6ec413eb9228b16c3c799922c0bc850c</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="series_si">IX. Other Items in Possession of the Artist &gt;&gt; 2. Quill, volume 6, number 4-9, New Delhi, September 1979</field>
+    <field name="series_sim">IX. Other Items in Possession of the Artist</field>
+    <field name="sort_ii">125</field>
+    <field name="unitid_ssm">cuid1261</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/34426</field>
+    <field name="unitid_teim">cuid1261</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/34426</field>
+    <field name="unittitle_ssm">2. Quill, volume 6, number 4-9, New Delhi, September 1979</field>
+    <field name="unittitle_teim">2. Quill, volume 6, number 4-9, New Delhi, September 1979</field>
+  </doc>
+</add>

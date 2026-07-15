@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Alison Dundy</field>
+    <field name="collection_sim">New York Caledonian Club records</field>
+    <field name="collection_ssm">New York Caledonian Club records</field>
+    <field name="collection_teim">New York Caledonian Club records</field>
+    <field name="collection_unitid_ssm">MS 2923</field>
+    <field name="collection_unitid_teim">MS 2923</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms2923_caledonian_club</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Mintues</field>
+    <field name="id">ms2923_caledonian_clubaspace_ref53_vqp</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Offsite-Box: CA-4, Volume: 7</field>
+    <field name="location_ssm">Offsite-Box: CA-4, Volume: 7</field>
+    <field name="parent_ssi">aspace_ref18_6fy</field>
+    <field name="parent_ssm">aspace_ref18_6fy</field>
+    <field name="parent_unittitles_ssm">Series I: Minutes</field>
+    <field name="parent_unittitles_teim">Series I: Minutes</field>
+    <field name="ref_ssi">aspace_ref53_vqp</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="series_si">Series I: Minutes &gt;&gt; Mintues</field>
+    <field name="series_sim">Series I: Minutes</field>
+    <field name="sort_ii">8</field>
+    <field name="unitdate_ssm">1891 January 27 - 1897 December 28</field>
+    <field name="unitdate_teim">1891 January 27 - 1897 December 28</field>
+    <field name="unittitle_ssm">Mintues</field>
+    <field name="unittitle_teim">Mintues</field>
+  </doc>
+</add>

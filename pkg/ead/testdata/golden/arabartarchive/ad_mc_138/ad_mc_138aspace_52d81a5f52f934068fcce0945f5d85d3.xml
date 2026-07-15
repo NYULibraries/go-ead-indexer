@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ibrahim Mohamed Ali, Maysa Shaer, Anneka Lenssen, and Salwa Mikdadi, with assistance from Roudhah Al Mazrouei.</field>
+    <field name="collection_sim">Hussain Sharif Collection</field>
+    <field name="collection_ssm">Hussain Sharif Collection</field>
+    <field name="collection_teim">Hussain Sharif Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.138</field>
+    <field name="collection_unitid_teim">AD.MC.138</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_138</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series I: Exhibition Materials, (1980–2007)</field>
+    <field name="id">ad_mc_138aspace_52d81a5f52f934068fcce0945f5d85d3</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_52d81a5f52f934068fcce0945f5d85d3</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="scopecontent_teim">Series I comprises catalogs, invitations, and brochures of various exhibitions held in the United Arab Emirates from the 1980s to the 2000s. This series includes materials from the annual exhibition of the Emirates Fine Arts Society (EFAS), along with materials from other solo and group exhibitions.</field>
+    <field name="series_si">Series I: Exhibition Materials, (1980–2007)</field>
+    <field name="sort_ii">1</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/33456</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/33456</field>
+    <field name="unittitle_ssm">Series I: Exhibition Materials, (1980–2007)</field>
+    <field name="unittitle_teim">Series I: Exhibition Materials, (1980–2007)</field>
+  </doc>
+</add>

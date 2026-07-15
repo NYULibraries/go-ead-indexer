@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Mehri Khalil, Ibrahim Mohamed Ali, Anneka Lenssen, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art, NYUAD.</field>
+    <field name="collection_sim">Salah Taher Collection</field>
+    <field name="collection_ssm">Salah Taher Collection</field>
+    <field name="collection_teim">Salah Taher Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.107</field>
+    <field name="collection_unitid_teim">AD.MC.107</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_107</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">8. &#34;[Masterpieces of Greco-roman Art],&#34; January 28, 1965</field>
+    <field name="id">ad_mc_107aspace_07da54555b7ffb7f6125cd330469e960</field>
+    <field name="level_sim">item</field>
+    <field name="parent_ssi">aspace_0dc7f80ea253be36814084dd299aae6d</field>
+    <field name="parent_ssm">aspace_eff05e1c3175e95a1ea6868905fe3de2</field>
+    <field name="parent_ssm">aspace_0dc7f80ea253be36814084dd299aae6d</field>
+    <field name="parent_unittitles_ssm">II. Writings</field>
+    <field name="parent_unittitles_ssm">II. C. Scripts from Min ʻĀlam al-Funūn [From the World of the Arts]</field>
+    <field name="parent_unittitles_teim">II. Writings</field>
+    <field name="parent_unittitles_teim">II. C. Scripts from Min ʻĀlam al-Funūn [From the World of the Arts]</field>
+    <field name="ref_ssi">aspace_07da54555b7ffb7f6125cd330469e960</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="series_si">II. Writings &gt;&gt; II. C. Scripts from Min ʻĀlam al-Funūn [From the World of the Arts] &gt;&gt; 8. &#34;[Masterpieces of Greco-roman Art],&#34; January 28, 1965</field>
+    <field name="series_sim">II. Writings</field>
+    <field name="series_sim">II. C. Scripts from Min ʻĀlam al-Funūn [From the World of the Arts]</field>
+    <field name="sort_ii">16</field>
+    <field name="unitid_ssm">cuid917</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/33201</field>
+    <field name="unitid_teim">cuid917</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/33201</field>
+    <field name="unittitle_ssm">8. &#34;[Masterpieces of Greco-roman Art],&#34; January 28, 1965</field>
+    <field name="unittitle_teim">8. &#34;[Masterpieces of Greco-roman Art],&#34; January 28, 1965</field>
+  </doc>
+</add>

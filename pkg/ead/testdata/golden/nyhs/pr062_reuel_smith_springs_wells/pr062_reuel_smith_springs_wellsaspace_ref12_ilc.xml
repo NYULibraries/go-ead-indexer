@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Miranda Schwartz (2000s); Larry Weimer (2021)</field>
+    <field name="collection_sim">James Reuel Smith springs and wells photographs and papers</field>
+    <field name="collection_ssm">James Reuel Smith springs and wells photographs and papers</field>
+    <field name="collection_teim">James Reuel Smith springs and wells photographs and papers</field>
+    <field name="collection_unitid_ssm">PR 62</field>
+    <field name="collection_unitid_teim">PR 62</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">pr062_reuel_smith_springs_wells</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series I: Manhattan Photographs</field>
+    <field name="id">pr062_reuel_smith_springs_wellsaspace_ref12_ilc</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_ref12_ilc</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="scopecontent_teim">The Manhattan series has 13 folders and is the largest photographic series of the collection. Although Smith was mainly interested in northern Manhattan this series includes some photographs he took of springs and wells below 14th Street, as well as some in Midtown Manhattan and Central Park. The bulk of the photographs, though, were taken above 110th Street. Smith often asked neighborhood children to show him the local springs and wells and included them in a number of photographs.</field>
+    <field name="series_si">Series I: Manhattan Photographs</field>
+    <field name="sort_ii">1</field>
+    <field name="unitdate_inclusive_teim">1897-1901</field>
+    <field name="unitdate_ssm">Inclusive, 1897-1901</field>
+    <field name="unittitle_ssm">Series I: Manhattan Photographs</field>
+    <field name="unittitle_teim">Series I: Manhattan Photographs</field>
+  </doc>
+</add>

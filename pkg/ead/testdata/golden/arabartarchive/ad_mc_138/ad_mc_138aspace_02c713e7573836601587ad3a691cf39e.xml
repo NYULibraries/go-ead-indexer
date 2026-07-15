@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ibrahim Mohamed Ali, Maysa Shaer, Anneka Lenssen, and Salwa Mikdadi, with assistance from Roudhah Al Mazrouei.</field>
+    <field name="collection_sim">Hussain Sharif Collection</field>
+    <field name="collection_ssm">Hussain Sharif Collection</field>
+    <field name="collection_teim">Hussain Sharif Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.138</field>
+    <field name="collection_unitid_teim">AD.MC.138</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_138</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">I.B. Other Exhibitions in the United Arab Emirates (UAE)</field>
+    <field name="id">ad_mc_138aspace_02c713e7573836601587ad3a691cf39e</field>
+    <field name="level_sim">subseries</field>
+    <field name="parent_ssi">aspace_52d81a5f52f934068fcce0945f5d85d3</field>
+    <field name="parent_ssm">aspace_52d81a5f52f934068fcce0945f5d85d3</field>
+    <field name="parent_unittitles_ssm">Series I: Exhibition Materials, (1980–2007)</field>
+    <field name="parent_unittitles_teim">Series I: Exhibition Materials, (1980–2007)</field>
+    <field name="ref_ssi">aspace_02c713e7573836601587ad3a691cf39e</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="scopecontent_teim">This subseries includes materials from various solo and group exhibitions held in the United Arab Emirates (UAE) between the 1980s and 2000s. It features the brochure of Hassan Sharif&#39;s third solo exhibition, which took place in Sharjah in 1986, as well as the catalog from the exhibition of Hussain Sharif and Abdullah Al Saadi held in 1999. The Artists&#39; Guide of the Emirates Fine Arts Society is also included.</field>
+    <field name="series_si">Series I: Exhibition Materials, (1980–2007) &gt;&gt; I.B. Other Exhibitions in the United Arab Emirates (UAE)</field>
+    <field name="series_sim">Series I: Exhibition Materials, (1980–2007)</field>
+    <field name="sort_ii">11</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/33465</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/33465</field>
+    <field name="unittitle_ssm">I.B. Other Exhibitions in the United Arab Emirates (UAE)</field>
+    <field name="unittitle_teim">I.B. Other Exhibitions in the United Arab Emirates (UAE)</field>
+  </doc>
+</add>

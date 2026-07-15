@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">Aḥmad Zakī Abū Shādī Family Papers</field>
+    <field name="collection_ssm">Aḥmad Zakī Abū Shādī Family Papers</field>
+    <field name="collection_teim">Aḥmad Zakī Abū Shādī Family Papers</field>
+    <field name="collection_unitid_ssm">AD.MC.065</field>
+    <field name="collection_unitid_teim">AD.MC.065</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_065</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Ibrāhīm, Muḥammad ʻAbd al-Fattāḥ.  Aḥmad Zakī Abū Shādī : jawlah maʻa al-shāʻir al-nāthir ustādh al-jīl alladhī akhrajatahu Madrasat Abbūlū fī kitābātihi al-adabīyah (al-Qāhirah : Maktabāt al-Shaʻb)</field>
+    <field name="id">ad_mc_065aspace_8fc49cc38178a12e448b1ea40bbbf07d</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 18, folder: 8</field>
+    <field name="location_ssm">box: 18, folder: 8</field>
+    <field name="parent_ssi">aspace_5e1eec07c48db29e5216b507321f8f9f</field>
+    <field name="parent_ssm">aspace_634728277770dbefb4fe78be2352e8e1</field>
+    <field name="parent_ssm">aspace_5e1eec07c48db29e5216b507321f8f9f</field>
+    <field name="parent_unittitles_ssm">Printed material</field>
+    <field name="parent_unittitles_ssm">Publications about Ahmed Zaki Abu Shadi</field>
+    <field name="parent_unittitles_teim">Printed material</field>
+    <field name="parent_unittitles_teim">Publications about Ahmed Zaki Abu Shadi</field>
+    <field name="ref_ssi">aspace_8fc49cc38178a12e448b1ea40bbbf07d</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Printed material &gt;&gt; Publications about Ahmed Zaki Abu Shadi &gt;&gt; Ibrāhīm, Muḥammad ʻAbd al-Fattāḥ.  Aḥmad Zakī Abū Shādī : jawlah maʻa al-shāʻir al-nāthir ustādh al-jīl alladhī akhrajatahu Madrasat Abbūlū fī kitābātihi al-adabīyah (al-Qāhirah : Maktabāt al-Shaʻb)</field>
+    <field name="series_sim">Printed material</field>
+    <field name="series_sim">Publications about Ahmed Zaki Abu Shadi</field>
+    <field name="sort_ii">385</field>
+    <field name="unitdate_normal_sim">1955-05/1955-05</field>
+    <field name="unitdate_normal_ssm">1955-05/1955-05</field>
+    <field name="unitdate_normal_teim">1955-05/1955-05</field>
+    <field name="unitdate_ssm">May 1955</field>
+    <field name="unitdate_teim">May 1955</field>
+    <field name="unittitle_ssm">Ibrāhīm, Muḥammad ʻAbd al-Fattāḥ.  Aḥmad Zakī Abū Shādī : jawlah maʻa al-shāʻir al-nāthir ustādh al-jīl alladhī akhrajatahu Madrasat Abbūlū fī kitābātihi al-adabīyah (al-Qāhirah : Maktabāt al-Shaʻb)</field>
+    <field name="unittitle_teim">Ibrāhīm, Muḥammad ʻAbd al-Fattāḥ.  Aḥmad Zakī Abū Shādī : jawlah maʻa al-shāʻir al-nāthir ustādh al-jīl alladhī akhrajatahu Madrasat Abbūlū fī kitābātihi al-adabīyah (al-Qāhirah : Maktabāt al-Shaʻb)</field>
+  </doc>
+</add>

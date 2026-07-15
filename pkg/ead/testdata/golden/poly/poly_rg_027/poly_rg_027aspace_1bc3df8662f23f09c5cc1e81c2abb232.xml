@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Zoe Blecher-Cohen</field>
+    <field name="collection_sim">Poly Archives Memorabilia Collection</field>
+    <field name="collection_ssm">Poly Archives Memorabilia Collection</field>
+    <field name="collection_teim">Poly Archives Memorabilia Collection</field>
+    <field name="collection_unitid_ssm">RG.027</field>
+    <field name="collection_unitid_teim">RG.027</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">poly_rg_027</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Ticket to basketball game - Iona College vs. Brooklyn Poly</field>
+    <field name="id">poly_rg_027aspace_1bc3df8662f23f09c5cc1e81c2abb232</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 1, folder: 12</field>
+    <field name="location_ssm">box: 1, folder: 12</field>
+    <field name="parent_ssi">aspace_abaaabb4243c60c3fd860a490a90e2eb</field>
+    <field name="parent_ssm">aspace_ref2_wei</field>
+    <field name="parent_ssm">aspace_abaaabb4243c60c3fd860a490a90e2eb</field>
+    <field name="parent_unittitles_ssm">Series V: Realia</field>
+    <field name="parent_unittitles_ssm">Subseries A: Polytechnic Institute of Brooklyn Realia</field>
+    <field name="parent_unittitles_teim">Series V: Realia</field>
+    <field name="parent_unittitles_teim">Subseries A: Polytechnic Institute of Brooklyn Realia</field>
+    <field name="ref_ssi">aspace_1bc3df8662f23f09c5cc1e81c2abb232</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="series_si">Series V: Realia &gt;&gt; Subseries A: Polytechnic Institute of Brooklyn Realia &gt;&gt; Ticket to basketball game - Iona College vs. Brooklyn Poly</field>
+    <field name="series_sim">Series V: Realia</field>
+    <field name="series_sim">Subseries A: Polytechnic Institute of Brooklyn Realia</field>
+    <field name="sort_ii">90</field>
+    <field name="unitdate_normal_sim">1952-02-25/1952-02-25</field>
+    <field name="unitdate_normal_ssm">1952-02-25/1952-02-25</field>
+    <field name="unitdate_normal_teim">1952-02-25/1952-02-25</field>
+    <field name="unitdate_ssm">February 25, 1952</field>
+    <field name="unitdate_teim">February 25, 1952</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/12682</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/12682</field>
+    <field name="unittitle_ssm">Ticket to basketball game - Iona College vs. Brooklyn Poly</field>
+    <field name="unittitle_teim">Ticket to basketball game - Iona College vs. Brooklyn Poly</field>
+  </doc>
+</add>

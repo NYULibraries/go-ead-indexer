@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Processed by Megan Hahn Fraser</field>
+    <field name="collection_sim">Sarah Hoexter Blumenthal papers</field>
+    <field name="collection_ssm">Sarah Hoexter Blumenthal papers</field>
+    <field name="collection_teim">Sarah Hoexter Blumenthal papers</field>
+    <field name="collection_unitid_ssm">MS 963</field>
+    <field name="collection_unitid_teim">MS 963</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms963_sara_hoexter_blumenthal</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Tickets and Programs</field>
+    <field name="id">ms963_sara_hoexter_blumenthalaspace_ref70_el1</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 4, Folder: 3</field>
+    <field name="location_ssm">Box: 4, Folder: 3</field>
+    <field name="ref_ssi">aspace_ref70_el1</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="series_si">Tickets and Programs</field>
+    <field name="sort_ii">57</field>
+    <field name="unitdate_ssm">1912-1966</field>
+    <field name="unitdate_teim">1912-1966</field>
+    <field name="unittitle_ssm">Tickets and Programs</field>
+    <field name="unittitle_teim">Tickets and Programs</field>
+  </doc>
+</add>

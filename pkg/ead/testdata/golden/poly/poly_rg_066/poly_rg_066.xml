@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="abstract_ssm">This collection contains 5 Silver Connections monographs by Philip Ashforth Coppola: Volume I (books 1 and 2), Volume III, and Volume IV. The collection also contains correspondence from Coppola to Poly/Tandon Prof. Bruce Garetz, an index to Silver Connections Volume I, and a copy of &#34;One Track Mind,&#34; edited by Ezra Bookstein and Jeremy Workman with illustrations by Coppola (Princeton Architectural Press).</field>
+    <field name="abstract_teim">This collection contains 5 Silver Connections monographs by Philip Ashforth Coppola: Volume I (books 1 and 2), Volume III, and Volume IV. The collection also contains correspondence from Coppola to Poly/Tandon Prof. Bruce Garetz, an index to Silver Connections Volume I, and a copy of &#34;One Track Mind,&#34; edited by Ezra Bookstein and Jeremy Workman with illustrations by Coppola (Princeton Architectural Press).</field>
+    <field name="acqinfo_teim">Donated by Tandon professor Bruce Garetz in 2025. The accession number associated with this gift is 2025-004.</field>
+    <field name="author_ssm">Jillian Carrillo</field>
+    <field name="author_teim">Jillian Carrillo</field>
+    <field name="bioghist_teim">Philip Ashforth Coppola is an artist and writer living in New Jersey. His artwork has been featured in The New York Times, Hyperallergic, and other print media. Coppola&#39;s work is also part of the permanent collection of the National Arts Club, The Museum of Modern Art, and the S.I.B branch of the New York Public Library.</field>
+    <field name="bioghist_teim">Coppola began his research for Silver Connections in 1978. Originally intended to be an article about the New York subway stations, Coppola transformed Silver Connections into a multi-volume set with a limited print run. Print run by volume varies, but no volume has more than 300 copies. </field>
+    <field name="bioghist_teim">Sources: </field>
+    <field name="bioghist_teim">Project, SoHo Memory. &#34;Silver Connections Books.&#34; Philip Ashforth Coppola. </field>
+    <field name="collection_sim">Silver Connections Collection</field>
+    <field name="collection_ssm">Silver Connections Collection</field>
+    <field name="collection_teim">Silver Connections Collection</field>
+    <field name="corpname_ssm">Poly Archives at the Bern Dibner Library of Science and Technology, NYU Libraries</field>
+    <field name="corpname_teim">Poly Archives at the Bern Dibner Library of Science and Technology, NYU Libraries</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="date_range_sim">2001-2100</field>
+    <field name="ead_ssi">poly_rg_066</field>
+    <field name="format_ii">0</field>
+    <field name="format_sim">Archival Collection</field>
+    <field name="format_ssm">Archival Collection</field>
+    <field name="heading_ssm">Silver Connections Collection</field>
+    <field name="id">poly_rg_066</field>
+    <field name="language_sim">English</field>
+    <field name="language_ssm">English</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="scopecontent_teim">This collection contains 5 Silver Connections monographs by Philip Ashforth Coppola: Volume I (books 1 and 2), Volume III, and Volume IV. The collection also contains correspondence from Coppola to Poly/Tandon Prof. Bruce Garetz, an index to Silver Connections Volume I, and a copy of &#34;One Track Mind,&#34; edited by Ezra Bookstein and Jeremy Workman with illustrations by Coppola (Princeton Architectural Press).</field>
+    <field name="unitdate_end_si">2018</field>
+    <field name="unitdate_end_sim">2018</field>
+    <field name="unitdate_end_ssm">2018</field>
+    <field name="unitdate_inclusive_teim">1990-2018</field>
+    <field name="unitdate_normal_sim">1990/2018</field>
+    <field name="unitdate_normal_ssm">1990/2018</field>
+    <field name="unitdate_normal_teim">1990/2018</field>
+    <field name="unitdate_ssm">Inclusive, 1990-2018</field>
+    <field name="unitdate_start_si">1990</field>
+    <field name="unitdate_start_sim">1990</field>
+    <field name="unitdate_start_ssm">1990</field>
+    <field name="unitid_ssm">RG.066</field>
+    <field name="unitid_teim">RG.066</field>
+    <field name="unittitle_ssm">Silver Connections Collection</field>
+    <field name="unittitle_teim">Silver Connections Collection</field>
+  </doc>
+</add>

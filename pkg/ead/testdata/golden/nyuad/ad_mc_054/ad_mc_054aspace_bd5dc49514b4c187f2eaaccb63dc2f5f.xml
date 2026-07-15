@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer, with assistance from Muhammad Shehryar Hamid.</field>
+    <field name="collection_sim">P. Marcel Kurpershoek papers</field>
+    <field name="collection_ssm">P. Marcel Kurpershoek papers</field>
+    <field name="collection_teim">P. Marcel Kurpershoek papers</field>
+    <field name="collection_unitid_ssm">AD.MC.054</field>
+    <field name="collection_unitid_teim">AD.MC.054</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_054</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Poetry:  Bkheitan:  transcripts, manuscript (Latin script)</field>
+    <field name="id">ad_mc_054aspace_bd5dc49514b4c187f2eaaccb63dc2f5f</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 4, folder: 13</field>
+    <field name="location_ssm">box: 4, folder: 13</field>
+    <field name="parent_ssi">aspace_56388b72a326c08b2d85d79529f29a76</field>
+    <field name="parent_ssm">aspace_d679b2f80c80623448ee4b70a554adc5</field>
+    <field name="parent_ssm">aspace_56388b72a326c08b2d85d79529f29a76</field>
+    <field name="parent_unittitles_ssm">Publications</field>
+    <field name="parent_unittitles_ssm">Oral Poetry and Narratives from Central Arabia: Volume 4:. A Saudi Tribal History</field>
+    <field name="parent_unittitles_teim">Publications</field>
+    <field name="parent_unittitles_teim">Oral Poetry and Narratives from Central Arabia: Volume 4:. A Saudi Tribal History</field>
+    <field name="ref_ssi">aspace_bd5dc49514b4c187f2eaaccb63dc2f5f</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Publications &gt;&gt; Oral Poetry and Narratives from Central Arabia: Volume 4:. A Saudi Tribal History &gt;&gt; Poetry:  Bkheitan:  transcripts, manuscript (Latin script)</field>
+    <field name="series_sim">Publications</field>
+    <field name="series_sim">Oral Poetry and Narratives from Central Arabia: Volume 4:. A Saudi Tribal History</field>
+    <field name="sort_ii">58</field>
+    <field name="unitdate_normal_sim">1999-02/1999-02</field>
+    <field name="unitdate_normal_ssm">1999-02/1999-02</field>
+    <field name="unitdate_normal_teim">1999-02/1999-02</field>
+    <field name="unitdate_ssm">February 1999</field>
+    <field name="unitdate_teim">February 1999</field>
+    <field name="unittitle_ssm">Poetry:  Bkheitan:  transcripts, manuscript (Latin script)</field>
+    <field name="unittitle_teim">Poetry:  Bkheitan:  transcripts, manuscript (Latin script)</field>
+  </doc>
+</add>

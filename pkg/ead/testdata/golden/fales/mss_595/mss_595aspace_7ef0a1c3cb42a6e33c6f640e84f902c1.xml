@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Rachel Searcy</field>
+    <field name="collection_sim">Stephen Facey Collection on Theatre Genesis</field>
+    <field name="collection_ssm">Stephen Facey Collection on Theatre Genesis</field>
+    <field name="collection_teim">Stephen Facey Collection on Theatre Genesis</field>
+    <field name="collection_unitid_ssm">MSS.595</field>
+    <field name="collection_unitid_teim">MSS.595</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">mss_595</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Shango De Ima and Guess Who the Noisemakers Are?&#34;, Possibly Written by Jaheen Ishameli</field>
+    <field name="id">mss_595aspace_7ef0a1c3cb42a6e33c6f640e84f902c1</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 5, Folder: 9</field>
+    <field name="location_ssm">Box: 5, Folder: 9</field>
+    <field name="ref_ssi">aspace_7ef0a1c3cb42a6e33c6f640e84f902c1</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="series_si">&lt;em&gt;Shango De Ima&lt;/em&gt; and &lt;em&gt;Guess Who the Noisemakers Are?&#34;&lt;/em&gt;, Possibly Written by Jaheen Ishameli</field>
+    <field name="sort_ii">58</field>
+    <field name="unitdate_inclusive_teim">1973-05</field>
+    <field name="unitdate_normal_sim">1973-05/1973-05</field>
+    <field name="unitdate_normal_ssm">1973-05/1973-05</field>
+    <field name="unitdate_normal_teim">1973-05/1973-05</field>
+    <field name="unitdate_ssm">Inclusive, 1973-05</field>
+    <field name="unittitle_ssm">&lt;em&gt;Shango De Ima&lt;/em&gt; and &lt;em&gt;Guess Who the Noisemakers Are?&#34;&lt;/em&gt;, Possibly Written by Jaheen Ishameli</field>
+    <field name="unittitle_teim">Shango De Ima and Guess Who the Noisemakers Are?&#34;, Possibly Written by Jaheen Ishameli</field>
+  </doc>
+</add>

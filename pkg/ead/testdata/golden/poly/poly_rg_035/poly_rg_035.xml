@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="abstract_ssm">Morris Boris Jacobs (1905-1965), a chemical engineer, was an adjunct professor at the Polytechnic Institute of Brooklyn from 1946-1952. Jacobs left behind a legacy of  work in pollution research, toxicology, and public health in the form of 20 textbooks, 100 research papers, 200 technical journals, and multiple patents. The collection covers active years in Jacobs&#39;s career (1929-1963) with an emphasis on the years during his work at the Polytechnic Institute of Brooklyn.</field>
+    <field name="abstract_teim">Morris Boris Jacobs (1905-1965), a chemical engineer, was an adjunct professor at the Polytechnic Institute of Brooklyn from 1946-1952. Jacobs left behind a legacy of  work in pollution research, toxicology, and public health in the form of 20 textbooks, 100 research papers, 200 technical journals, and multiple patents. The collection covers active years in Jacobs&#39;s career (1929-1963) with an emphasis on the years during his work at the Polytechnic Institute of Brooklyn.</field>
+    <field name="acqinfo_teim">This collection was donated to the Poly Archives by Dr. Mark Gellis, the grandson of Dr. Morris Jacobs, in 2017.</field>
+    <field name="author_ssm">Lindsay Anderberg</field>
+    <field name="author_teim">Lindsay Anderberg</field>
+    <field name="bioghist_teim">Morris Boris Jacobs (1905-1965) was born in Ekaterinoslav, Ukraine and moved to the United States as a child.  He earned his BA from the college of the City of New York in 1926 and his MS and PhD from New York University in 1929 and 1931, respectively.  Dr. Jacobs worked as a chemist in the United States Food, Drug and Insecticide Administration and the New York City Department of Health.  During World War II, he was the director of Gas Reconnaissance and executive officer of the Gas Defense Service of the city&#39;s Civil Defense Corps.</field>
+    <field name="bioghist_teim">Following WWII, Dr. Jacobs was an adjunct professor of chemical engineering at the Polytechnic Institute of Brooklyn from 1946-1952.  In 1959, he became an associate professor of occupational medicine in the School of Public Health and Administrative Medicine at Columbia University.  The following year he was promoted to full professor and supervisor of the toxicology and hygiene laboratory. </field>
+    <field name="bioghist_teim">Dr. Jacobs died, suddenly, as the result of a massive cerebral hemorrhage at the age of 59.  Jacobs left behind a legacy of  work in pollution research, toxicology, and public health in the form of 20 textbooks, 100 research papers, 200 technical journals, and multiple patents.</field>
+    <field name="bioghist_teim">Sources: Morris B. Jacobs obituary (1965, July 14). The New York Times.
+Morris B. Jacobs, PhD 1905-1965 Obituary (Nov 1965). Archives of Environmental Health, Volume 11.</field>
+    <field name="collection_sim">Morris Jacobs Papers</field>
+    <field name="collection_ssm">Morris Jacobs Papers</field>
+    <field name="collection_teim">Morris Jacobs Papers</field>
+    <field name="corpname_ssm">Poly Archives at the Bern Dibner Library of Science and Technology, NYU Libraries</field>
+    <field name="corpname_teim">Poly Archives at the Bern Dibner Library of Science and Technology, NYU Libraries</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">poly_rg_035</field>
+    <field name="format_ii">0</field>
+    <field name="format_sim">Archival Collection</field>
+    <field name="format_ssm">Archival Collection</field>
+    <field name="genreform_ssm">Patents</field>
+    <field name="genreform_ssm">Correspondence</field>
+    <field name="genreform_ssm">Annual reports</field>
+    <field name="genreform_ssm">Articles</field>
+    <field name="genreform_teim">Patents</field>
+    <field name="genreform_teim">Correspondence</field>
+    <field name="genreform_teim">Annual reports</field>
+    <field name="genreform_teim">Articles</field>
+    <field name="heading_ssm">Morris Jacobs Papers</field>
+    <field name="id">poly_rg_035</field>
+    <field name="material_type_sim">Patents</field>
+    <field name="material_type_sim">Correspondence</field>
+    <field name="material_type_sim">Annual reports</field>
+    <field name="material_type_sim">Articles</field>
+    <field name="material_type_ssm">Patents</field>
+    <field name="material_type_ssm">Correspondence</field>
+    <field name="material_type_ssm">Annual reports</field>
+    <field name="material_type_ssm">Articles</field>
+    <field name="occupation_ssm">Chemical engineering</field>
+    <field name="occupation_teim">Chemical engineering</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="scopecontent_teim">This collection covers biographical information, including curriculum vitae, as well as bibliographies of scholarly output, articles, reports, patents, and correspondence related to publishing and patents.  The collection covers active years in Jacobs&#39;s career (1929-1963) with an emphasis on the years during his work at the Brooklyn Polytechnic Institute (1946-1952).</field>
+    <field name="subject_sim">Chemical engineering</field>
+    <field name="subject_teim">Chemical engineering</field>
+    <field name="unitdate_end_si">1963</field>
+    <field name="unitdate_end_sim">1963</field>
+    <field name="unitdate_end_ssm">1963</field>
+    <field name="unitdate_inclusive_teim">1929-1963</field>
+    <field name="unitdate_normal_sim">1929/1963</field>
+    <field name="unitdate_normal_ssm">1929/1963</field>
+    <field name="unitdate_normal_teim">1929/1963</field>
+    <field name="unitdate_ssm">Inclusive, 1929-1963</field>
+    <field name="unitdate_start_si">1929</field>
+    <field name="unitdate_start_sim">1929</field>
+    <field name="unitdate_start_ssm">1929</field>
+    <field name="unitid_ssm">RG.035</field>
+    <field name="unitid_teim">RG.035</field>
+    <field name="unittitle_ssm">Morris Jacobs Papers</field>
+    <field name="unittitle_teim">Morris Jacobs Papers</field>
+  </doc>
+</add>

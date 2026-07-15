@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Marybeth Kavanagh</field>
+    <field name="collection_sim">Thomas J. Burton Research Files on Manhattan Churches</field>
+    <field name="collection_ssm">Thomas J. Burton Research Files on Manhattan Churches</field>
+    <field name="collection_teim">Thomas J. Burton Research Files on Manhattan Churches</field>
+    <field name="collection_unitid_ssm">MS 3219</field>
+    <field name="collection_unitid_teim">MS 3219</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms3219_burton_churches</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Central Presbyterian Church</field>
+    <field name="id">ms3219_burton_churchesaspace_c56581c8cdcfb0a55abb0d761b193762</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Offsite-Box: 1, Folder: 13</field>
+    <field name="location_ssm">Offsite-Box: 1, Folder: 13</field>
+    <field name="ref_ssi">aspace_c56581c8cdcfb0a55abb0d761b193762</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="series_si">Central Presbyterian Church</field>
+    <field name="sort_ii">13</field>
+    <field name="unitdate_inclusive_teim">1902-1941</field>
+    <field name="unitdate_ssm">Inclusive, 1902-1941</field>
+    <field name="unittitle_ssm">Central Presbyterian Church</field>
+    <field name="unittitle_teim">Central Presbyterian Church</field>
+  </doc>
+</add>

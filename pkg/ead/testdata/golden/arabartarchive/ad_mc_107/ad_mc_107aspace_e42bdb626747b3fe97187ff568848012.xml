@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Mehri Khalil, Ibrahim Mohamed Ali, Anneka Lenssen, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art, NYUAD.</field>
+    <field name="collection_sim">Salah Taher Collection</field>
+    <field name="collection_ssm">Salah Taher Collection</field>
+    <field name="collection_teim">Salah Taher Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.107</field>
+    <field name="collection_unitid_teim">AD.MC.107</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="dao_sim">Online Access</field>
+    <field name="dao_ssm">1. Cultural Centre for Diplomats, Ministry of Culture and Information, Cairo, 1972.</field>
+    <field name="dao_teim">1. Cultural Centre for Diplomats, Ministry of Culture and Information, Cairo, 1972.</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_107</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">1. Cultural Centre for Diplomats, Ministry of Culture and Information, Cairo, 1972.</field>
+    <field name="id">ad_mc_107aspace_e42bdb626747b3fe97187ff568848012</field>
+    <field name="level_sim">item</field>
+    <field name="parent_ssi">aspace_67424f3acd40a2692302e2848d731beb</field>
+    <field name="parent_ssm">aspace_a9a950e38487d78a53b3bde214611028</field>
+    <field name="parent_ssm">aspace_67424f3acd40a2692302e2848d731beb</field>
+    <field name="parent_unittitles_ssm">IV. Exhibition Materials</field>
+    <field name="parent_unittitles_ssm">IV. B. Group Exhibitions</field>
+    <field name="parent_unittitles_teim">IV. Exhibition Materials</field>
+    <field name="parent_unittitles_teim">IV. B. Group Exhibitions</field>
+    <field name="ref_ssi">aspace_e42bdb626747b3fe97187ff568848012</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="series_si">IV. Exhibition Materials &gt;&gt; IV. B. Group Exhibitions &gt;&gt; 1. Cultural Centre for Diplomats, Ministry of Culture and Information, Cairo, 1972.</field>
+    <field name="series_sim">IV. Exhibition Materials</field>
+    <field name="series_sim">IV. B. Group Exhibitions</field>
+    <field name="sort_ii">51</field>
+    <field name="unitid_ssm">cuid949</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/33236</field>
+    <field name="unitid_teim">cuid949</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/33236</field>
+    <field name="unittitle_ssm">1. Cultural Centre for Diplomats, Ministry of Culture and Information, Cairo, 1972.</field>
+    <field name="unittitle_teim">1. Cultural Centre for Diplomats, Ministry of Culture and Information, Cairo, 1972.</field>
+  </doc>
+</add>

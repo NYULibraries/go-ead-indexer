@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Joseph Ditta</field>
+    <field name="collection_sim">Four Seasons Restaurant collection</field>
+    <field name="collection_ssm">Four Seasons Restaurant collection</field>
+    <field name="collection_teim">Four Seasons Restaurant collection</field>
+    <field name="collection_unitid_ssm">MS 3151</field>
+    <field name="collection_unitid_teim">MS 3151</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms3151_four_seasons</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">John Francini, ABC</field>
+    <field name="id">ms3151_four_seasonsaspace_35f3eb2748447ac1b84b824af4bf7aa2</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Offsite-Box: 11</field>
+    <field name="location_ssm">Offsite-Box: 11</field>
+    <field name="parent_ssi">aspace_fea4eca6f2fa06d32be48423d69d0f87</field>
+    <field name="parent_ssm">aspace_be8e3e23868ca89f1d682b446201f8d8</field>
+    <field name="parent_ssm">aspace_fea4eca6f2fa06d32be48423d69d0f87</field>
+    <field name="parent_unittitles_ssm">Series VI. Audiovisual</field>
+    <field name="parent_unittitles_ssm">Sub-series VI.A. VHS (31 cassettes)</field>
+    <field name="parent_unittitles_teim">Series VI. Audiovisual</field>
+    <field name="parent_unittitles_teim">Sub-series VI.A. VHS (31 cassettes)</field>
+    <field name="ref_ssi">aspace_35f3eb2748447ac1b84b824af4bf7aa2</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="series_si">Series VI. Audiovisual &gt;&gt; Sub-series VI.A. VHS (31 cassettes) &gt;&gt; John Francini, ABC</field>
+    <field name="series_sim">Series VI. Audiovisual</field>
+    <field name="series_sim">Sub-series VI.A. VHS (31 cassettes)</field>
+    <field name="sort_ii">117</field>
+    <field name="unitdate_inclusive_teim">1998</field>
+    <field name="unitdate_ssm">Inclusive, 1998</field>
+    <field name="unittitle_ssm">John Francini, ABC</field>
+    <field name="unittitle_teim">John Francini, ABC</field>
+  </doc>
+</add>

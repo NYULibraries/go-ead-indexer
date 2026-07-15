@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Nicole Lindberg Richard</field>
+    <field name="collection_sim">Samuel Ruben Papers</field>
+    <field name="collection_ssm">Samuel Ruben Papers</field>
+    <field name="collection_teim">Samuel Ruben Papers</field>
+    <field name="collection_unitid_ssm">RG.015</field>
+    <field name="collection_unitid_teim">RG.015</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">poly_rg_015</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">The Ruben Scholarships </field>
+    <field name="id">poly_rg_015aspace_ref215_e7i</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 3, folder: 11</field>
+    <field name="location_ssm">box: 3, folder: 11</field>
+    <field name="parent_ssi">aspace_ref214_nca</field>
+    <field name="parent_ssm">aspace_ref214_nca</field>
+    <field name="parent_unittitles_ssm">Series III: The Ruben Scholarships </field>
+    <field name="parent_unittitles_teim">Series III: The Ruben Scholarships </field>
+    <field name="ref_ssi">aspace_ref215_e7i</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="series_si">Series III: The Ruben Scholarships  &gt;&gt; The Ruben Scholarships </field>
+    <field name="series_sim">Series III: The Ruben Scholarships </field>
+    <field name="sort_ii">190</field>
+    <field name="unitdate_ssm">1967</field>
+    <field name="unitdate_teim">1967</field>
+    <field name="unittitle_ssm">The Ruben Scholarships </field>
+    <field name="unittitle_teim">The Ruben Scholarships </field>
+  </doc>
+</add>

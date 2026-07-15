@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Stacey Flatt</field>
+    <field name="collection_sim">New York University Archives Collection on Faculty and Alumni Memory Projects</field>
+    <field name="collection_ssm">New York University Archives Collection on Faculty and Alumni Memory Projects</field>
+    <field name="collection_teim">New York University Archives Collection on Faculty and Alumni Memory Projects</field>
+    <field name="collection_unitid_ssm">MC.226</field>
+    <field name="collection_unitid_teim">MC.226</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">mc_226</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Original Recording</field>
+    <field name="id">mc_226aspace_05845369175083ffd3a5d0204dda42b7</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 7, audiocassette: 226_0061</field>
+    <field name="location_ssm">Box: 7, audiocassette: 226_0061</field>
+    <field name="parent_ssi">aspace_d8fad2718e635c80ca001ed787e76306</field>
+    <field name="parent_ssm">aspace_398365580fe79ff050de9b6f152fa577</field>
+    <field name="parent_ssm">aspace_d8fad2718e635c80ca001ed787e76306</field>
+    <field name="parent_unittitles_ssm">Series III. Brian Huggins Undergraduate Student Life in Washington Square Project</field>
+    <field name="parent_unittitles_ssm">Lind, Ilse</field>
+    <field name="parent_unittitles_teim">Series III. Brian Huggins Undergraduate Student Life in Washington Square Project</field>
+    <field name="parent_unittitles_teim">Lind, Ilse</field>
+    <field name="ref_ssi">aspace_05845369175083ffd3a5d0204dda42b7</field>
+    <field name="repository_sim">archives</field>
+    <field name="repository_ssi">archives</field>
+    <field name="repository_ssm">archives</field>
+    <field name="series_si">Series III. Brian Huggins Undergraduate Student Life in Washington Square Project &gt;&gt; Lind, Ilse &gt;&gt; Original Recording</field>
+    <field name="series_sim">Series III. Brian Huggins Undergraduate Student Life in Washington Square Project</field>
+    <field name="series_sim">Lind, Ilse</field>
+    <field name="sort_ii">231</field>
+    <field name="unitid_ssm">/repositories/6/archival_objects/1011805</field>
+    <field name="unitid_teim">/repositories/6/archival_objects/1011805</field>
+    <field name="unittitle_ssm">Original Recording</field>
+    <field name="unittitle_teim">Original Recording</field>
+  </doc>
+</add>

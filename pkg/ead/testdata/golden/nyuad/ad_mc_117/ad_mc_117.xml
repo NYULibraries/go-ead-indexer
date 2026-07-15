@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="abstract_ssm">Correspondence, map, booklets, and other printed materials, from two expatriate employees of the Iranian Oil Exploration and Producing Company, who worked in Masjid-i-Sulaiman and Kharg Island, Iran, during the late 1950s and early 1960s.</field>
+    <field name="abstract_teim">Correspondence, map, booklets, and other printed materials, from two expatriate employees of the Iranian Oil Exploration and Producing Company, who worked in Masjid-i-Sulaiman and Kharg Island, Iran, during the late 1950s and early 1960s.</field>
+    <field name="acqinfo_teim">Acquired by purchase, November 2023.</field>
+    <field name="author_ssm">Brad Bauer</field>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="bioghist_teim">Nonnie (Arnolda) Cohen (1933-2020) was a Dutch-born educator who taught at schools for the children of expatriate oil company employees in Iran, and later in several Montessori schools in California.  She was born on 13 June 1933 in Utrecht, the Netherlands, and was one of three children of Abraham and Jansje (née Reumerman) Cohen.  Her parents divorced im 1936, and during the German occupation of the Netherlands during World War II, her father was sent to Germany as a forced laborer, where he perished, and her mother temporarily placed her and her siblings in an orphanage for their protection.  In 1956 she graduated with a degree in education from a university in The Hague, and in 1958 was hired by the National Iranian Oil Company, through its Western consortium&#39;s operating companies in London and The Hague, to work as a teacher, primarily at a school for the children of Dutch expatriates who worked for the oil company in Masjid-i-Sulaiman. After a year and a half, she appears to have transferred to Kharg Island, where an American employee who would eventually become her husband, Robert P. Utrecht, worked.</field>
+    <field name="bioghist_teim">Robert Packard Utrecht (1923-1989) was born on 14 June 1923 in Binghamton, New York to Frederick and Laura (née Packard) Utrecht.  Census data shows that the family variously lived in New York and Washington, DC, where Utrecht&#39;s father worked as a government clerk.  Utrecht served in the U.S. Army from 1942-1944, and married Betty Potts in 1945.  The 1950 census shows the Utrecht family, including son Robert, Jr. (1945-1974), living in Abilene, Texas, where Utrecht was employed as an accountant with an oil company.  The Utrechts and their three children moved to Iran at some point in the mid-1950s, when Robert accepted a position as an accountant with the National Iranian Oil Company, eventually being sent to work at the company&#39;s facilities on Kharg Island.  By 1958, Betty Utrecht decided to file for divorce from Robert and take the children back to Texas, and it was around this time that he met Nonnie Cohen, who he married in 1960.  </field>
+    <field name="bioghist_teim">Due to company policy, Nonnie was forced to give up her teaching job after marrying Robert, and she eventually returned to the Netherlands, where she gave birth to their two children, Paul and Claire.  In 1963, the Utrecht family moved to Burbank, California, but the Utrechts divorced in 1966, and while Robert remarried a year later, Nonnie, who had custody of the two children, remained in Burbank, and eventually returned to teaching, at Montessori schools around the Los Angeles area, before founding her own Montessori school in Burbank in 1971.  She both taught at and directed this school, and after moving it to the neighboring city of Glendale, managed its growth and operations until her retirement in 2016.  Nonnie Cohen Utrecht died on 19 February 2020.  Robert P. Utrecht&#39;s last known address was in Oakland, California, and he died on 19 October 1989.</field>
+    <field name="bioghist_teim">Sources:
+Obituary for Arnolda &#34;Nonnie&#34; Cohen Utrecht:  her obituary, in the San Francisco Chronicle, via Legacy.Com, https://www.legacy.com/us/obituaries/sfgate/name/arnolda-utrecht-obituary?id=2033022, accessed December 2023.</field>
+    <field name="bioghist_teim">Birth, death, and census records located in Ancestry Library Edition.  </field>
+    <field name="collection_sim">Nonnie Cohen and Robert Utrecht papers</field>
+    <field name="collection_ssm">Nonnie Cohen and Robert Utrecht papers</field>
+    <field name="collection_teim">Nonnie Cohen and Robert Utrecht papers</field>
+    <field name="corpname_ssm">NYU Abu Dhabi, Archives and Special Collections</field>
+    <field name="corpname_ssm">Shirkat-i Millī-i Naft-i Īrān</field>
+    <field name="corpname_teim">NYU Abu Dhabi, Archives and Special Collections</field>
+    <field name="corpname_teim">Shirkat-i Millī-i Naft-i Īrān</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">ad_mc_117</field>
+    <field name="format_ii">0</field>
+    <field name="format_sim">Archival Collection</field>
+    <field name="format_ssm">Archival Collection</field>
+    <field name="geogname_ssm">Khark Island (Iran)</field>
+    <field name="geogname_ssm">Masjid-i Sulaymān (Iran)</field>
+    <field name="geogname_teim">Khark Island (Iran)</field>
+    <field name="geogname_teim">Masjid-i Sulaymān (Iran)</field>
+    <field name="heading_ssm">Nonnie Cohen and Robert Utrecht papers</field>
+    <field name="id">ad_mc_117</field>
+    <field name="language_sim">English</field>
+    <field name="language_ssm">English</field>
+    <field name="name_sim">Shirkat-i Millī-i Naft-i Īrān</field>
+    <field name="name_teim">Shirkat-i Millī-i Naft-i Īrān</field>
+    <field name="place_sim">Khark Island (Iran)</field>
+    <field name="place_sim">Masjid-i Sulaymān (Iran)</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="scopecontent_teim">The Nonnie Cohen and Robert Utrecht papers consist of correspondence, documents, a map, booklets, and other printed materials, from two expatriate employees of the Iranian Oil Exploration and Producing Company, who worked in Masjid-i-Sulaiman and Kharg Island, Iran, during the late 1950s and early 1960s.  While the documents in the collection are somewhat fragmentary, they provide a partial glimpse of some of the issues encountered by Western expatriate workers for oil companies in the Middle East during this period. </field>
+    <field name="scopecontent_teim">The facilities where Cohen and Utrecht worked were managed by Western operating companies on behalf of the National Iranian Oil Company and the Western companies that were permitted to operate in Iran as part of the Consortium Agreement of 1954.  Judging from Cohen&#39;s employment correspondence, these companies included the London-based Iranian Oil Services, Ltd., and the Iraanse Aardolie Raffinage Maatschappij, based in The Hague.</field>
+    <field name="scopecontent_teim">The correspondence that belonged to Cohen documents her recruitment and employment in 1958 as a teacher, with letters from representatives in London and The Hague, documenting her initial job offer, discussions of where she would be posted (she preferred Abadan but was assigned to Masjid-i-Sulaiman), and the conditions of employment, including the housing, which she initially found to be unsatistactory.  Her personal correspondence, including letters received from friends and colleagues who were in the United States, Canada, or the Netherlands, shed some light on the activities of the expatriates who she worked and lived with, but say little about the day to day activities of working in Masjid-i-Sulaiman.  Correspondence dating from 1960 shows that once she announced her intention of marrying Robert Utrecht, she was no longer able to work, as the wife of another company employee, but was still permitted to complete her teaching duties for the current academic year in 1960. </field>
+    <field name="scopecontent_teim">The correspondence that belonged to Robert Utrecht contains primarily documents related to policies on leave and travel, as well as personal financial records, and some correspondence that point to some of the difficulties that he encountered working on Kharg Island, both of a personal and professional nature.  Included is correspondence related to his son&#39;s stay with him in 1959, and his dispute with the company over its initial refusal to reimburse Utrecht for his son&#39;s travel expenses.</field>
+    <field name="scopecontent_teim">The third category of materials are booklets and other printed materials, chiefly about the National Iranian Oil Company and its operations, including reports for the years 1959 and 1960, and guidebooks for newly-hired employees, meant to help introduce them to the geography and culture of Iran and its people, a map of Masjid-i-Sulaiman, and employee directories.</field>
+    <field name="subject_sim">Petroleum industry and trade -- Iran -- Employees</field>
+    <field name="subject_ssm">Petroleum industry and trade -- Iran -- Employees</field>
+    <field name="subject_teim">Petroleum industry and trade -- Iran -- Employees</field>
+    <field name="subject_teim">Petroleum industry and trade -- Iran -- Employees</field>
+    <field name="unitdate_end_si">1962</field>
+    <field name="unitdate_end_sim">1962</field>
+    <field name="unitdate_end_ssm">1962</field>
+    <field name="unitdate_inclusive_teim">1956-1962</field>
+    <field name="unitdate_normal_sim">1956/1962</field>
+    <field name="unitdate_normal_ssm">1956/1962</field>
+    <field name="unitdate_normal_teim">1956/1962</field>
+    <field name="unitdate_ssm">Inclusive, 1956-1962</field>
+    <field name="unitdate_start_si">1956</field>
+    <field name="unitdate_start_sim">1956</field>
+    <field name="unitdate_start_ssm">1956</field>
+    <field name="unitid_ssm">AD.MC.117</field>
+    <field name="unitid_teim">AD.MC.117</field>
+    <field name="unittitle_ssm">Nonnie Cohen and Robert Utrecht papers</field>
+    <field name="unittitle_teim">Nonnie Cohen and Robert Utrecht papers</field>
+  </doc>
+</add>

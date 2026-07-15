@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Alison Dundy</field>
+    <field name="collection_sim">New York Caledonian Club records</field>
+    <field name="collection_ssm">New York Caledonian Club records</field>
+    <field name="collection_teim">New York Caledonian Club records</field>
+    <field name="collection_unitid_ssm">MS 2923</field>
+    <field name="collection_unitid_teim">MS 2923</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms2923_caledonian_club</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">79th New York Highland Regiment</field>
+    <field name="id">ms2923_caledonian_clubaspace_ref36_47q</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Offsite-Box: 2, Folder: 7</field>
+    <field name="location_ssm">Offsite-Box: 2, Folder: 7</field>
+    <field name="parent_ssi">aspace_ref20_yrz</field>
+    <field name="parent_ssm">aspace_ref20_yrz</field>
+    <field name="parent_unittitles_ssm">Series II: Photographs</field>
+    <field name="parent_unittitles_teim">Series II: Photographs</field>
+    <field name="ref_ssi">aspace_ref36_47q</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="scopecontent_teim">This folder contains a group portrait of Robert Gair, Lawrence Beattie, and George Arnott in 1861, just before the 79th Regiment departed to defend the Washington, D.C. The photograph is mounted with reproductions of the 79th Regiment Medal from the Battle of Bull Run. There is also a photograph of the 50th Anniversary (1911) parade of Regiment veterans en route to the Second Presbyterian Church. There is a  photograph of the dedication of a monument to the 79th Regiment at Knoxville, Tennesee on September 28, 1918. Regiment veterans in the monument dedication photograph include Andrew D. Baird, Robert Gair, Robert Armour, Joseph Stewart, Frank M. Chamberlin, Henry Bloomfield, and John Muir.</field>
+    <field name="series_si">Series II: Photographs &gt;&gt; 79th New York Highland Regiment</field>
+    <field name="series_sim">Series II: Photographs</field>
+    <field name="sort_ii">37</field>
+    <field name="unitdate_ssm">1861-1918</field>
+    <field name="unitdate_teim">1861-1918</field>
+    <field name="unittitle_ssm">79th New York Highland Regiment</field>
+    <field name="unittitle_teim">79th New York Highland Regiment</field>
+  </doc>
+</add>

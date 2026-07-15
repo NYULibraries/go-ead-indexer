@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ala Younis, Ibrahim Mohamed Ali, Dina Taha, Anneka Lenssen, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art, NYUAD</field>
+    <field name="collection_sim">Ahmad Nawash Collection</field>
+    <field name="collection_ssm">Ahmad Nawash Collection</field>
+    <field name="collection_teim">Ahmad Nawash Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.094</field>
+    <field name="collection_unitid_teim">AD.MC.094</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_094</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series III: Academic Materials</field>
+    <field name="id">ad_mc_094aspace_4034190cbf48fa158d8a96d3994775d2</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_4034190cbf48fa158d8a96d3994775d2</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="scopecontent_teim">Sets of lectures and study materials circulated at Accademia di Belle Arti (Academy of Fine Arts) in Rome between 1963 and 1964, as well as certificates pertaining to the artist&#39;s training in Rome and Bordeaux. Sets of art and applied art courses taught in UNRWA schools in the Levant c.1970s. Some academic papers written by the artist&#39;s peers on the state of fine arts in Jordan in 2002. The artist kept a copy of a book on abstraction in art, authored by painter Dr Mahmoud Al Bassiouny in 1950.</field>
+    <field name="series_si">Series III: Academic Materials</field>
+    <field name="sort_ii">18</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/31209</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/31209</field>
+    <field name="unittitle_ssm">Series III: Academic Materials</field>
+    <field name="unittitle_teim">Series III: Academic Materials</field>
+  </doc>
+</add>

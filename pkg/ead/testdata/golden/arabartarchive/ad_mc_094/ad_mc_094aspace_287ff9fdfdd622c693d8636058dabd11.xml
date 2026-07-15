@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ala Younis, Ibrahim Mohamed Ali, Dina Taha, Anneka Lenssen, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art, NYUAD</field>
+    <field name="collection_sim">Ahmad Nawash Collection</field>
+    <field name="collection_ssm">Ahmad Nawash Collection</field>
+    <field name="collection_teim">Ahmad Nawash Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.094</field>
+    <field name="collection_unitid_teim">AD.MC.094</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="dao_sim">Online Access</field>
+    <field name="dao_ssm">VI.D. Press Clippings from the 1980s</field>
+    <field name="dao_teim">VI.D. Press Clippings from the 1980s</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_094</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">VI.D. Press Clippings from the 1980s</field>
+    <field name="id">ad_mc_094aspace_287ff9fdfdd622c693d8636058dabd11</field>
+    <field name="level_sim">subseries</field>
+    <field name="parent_ssi">aspace_a1c3e99d441aa570ce74d74bd32ed06a</field>
+    <field name="parent_ssm">aspace_a1c3e99d441aa570ce74d74bd32ed06a</field>
+    <field name="parent_unittitles_ssm">Series VI: Press Clippings</field>
+    <field name="parent_unittitles_teim">Series VI: Press Clippings</field>
+    <field name="ref_ssi">aspace_287ff9fdfdd622c693d8636058dabd11</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="scopecontent_teim">Press materials from the 1980s cover Nawash&#39;s solo exhibitions at Gallery Alia, French Cultural Center in Amman, Yarmouk University in 1986, and at Al Rasheed Hall in Baghdad organized by the Iraqi Ministry of Culture and Information in 1982. Materials also include profiles and biographies published in Iraqi newspapers such as Al Thawra, Addustour, Al Jumhouriya, and in Jordanian media such as Addustour, The Jordan Times, and The Jerusalem Star. They feature art correspondents such as Rabah Al Saghir, Meg Abu Hamdan, Abdul Raouf Shamoun, and Adnan Yahya.</field>
+    <field name="series_si">Series VI: Press Clippings &gt;&gt; VI.D. Press Clippings from the 1980s</field>
+    <field name="series_sim">Series VI: Press Clippings</field>
+    <field name="sort_ii">46</field>
+    <field name="unitid_ssm">cuid323</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/31237</field>
+    <field name="unitid_teim">cuid323</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/31237</field>
+    <field name="unittitle_ssm">VI.D. Press Clippings from the 1980s</field>
+    <field name="unittitle_teim">VI.D. Press Clippings from the 1980s</field>
+  </doc>
+</add>

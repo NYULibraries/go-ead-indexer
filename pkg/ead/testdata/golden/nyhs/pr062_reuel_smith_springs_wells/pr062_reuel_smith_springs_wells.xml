@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="abstract_ssm">The collection holds 23 boxes (seven of glass and acetate negatives) of visual and written material pertaining to James Reuel Smith&#39;s book Springs and Wells of Manhattan and the Bronx, New York City, at the End of the Nineteenth Century, published by the New-York Historical Society in 1938.
+
+
+ 
+The photographs are digitized and available in the Shelby White and Leon Levy Digital Library.</field>
+    <field name="abstract_teim">The collection holds 23 boxes (seven of glass and acetate negatives) of visual and written material pertaining to James Reuel Smith&#39;s book Springs and Wells of Manhattan and the Bronx, New York City, at the End of the Nineteenth Century, published by the New-York Historical Society in 1938.
+
+
+ 
+The photographs are digitized and available in the Shelby White and Leon Levy Digital Library.</field>
+    <field name="acqinfo_teim">Bequest of James Reuel Smith, 1937.</field>
+    <field name="author_ssm">Miranda Schwartz (2000s); Larry Weimer (2021)</field>
+    <field name="author_teim">Miranda Schwartz (2000s); Larry Weimer (2021)</field>
+    <field name="bioghist_teim">James Reuel Smith was born in 1852 in Skaneateles, New York. After the early death of his mother, his father having remarried, Smith went to live in the household of a cousin. In 1882 Smith married Elizabeth Thompson; they had no children. Family money enabled Smith to actively pursue his hobby of photographing and investigating springs and wells. This interest led him to travel around Europe, looking for springs and wells mentioned in literature. In 1922, he published Springs and Wells in Greek and Roman Literature, Their Legends and Locations.</field>
+    <field name="bioghist_teim">Smith&#39;s interest was also local: He spent much of the years 1897 to 1901 bicycling around northern Manhattan and the Bronx looking for and photographing springs and wells. Smith&#39;s enthusiasm for springs and wells was well-matched with his photographic eye and his meticulous note-taking on the locations and conditions of the springs and wells he saw. James Reuel Smith died in 1935. In his will he left a bequest to the New-York Historical Society to publish his manuscript notes and photographs of springs and wells of northern Manhattan and the Bronx. Librarian Dorothy Barck worked with Smith&#39;s research papers and notes, and edited his manuscript material, leading to N-YHS&#39;s publication of Springs and Wells of Manhattan and the Bronx, New York City, at the End of the Nineteenth Century, in 1938. In the introduction to the volume, Smith wrote: &#34;A city spring frequently possesses all the beautiful surroundings of a rural one, and besides exciting that pathetic interest aroused by something pleasureable which will shortly cease to exist, it is, for the meditative, a link which connects the thoughts with the past.&#34; </field>
+    <field name="collection_sim">James Reuel Smith springs and wells photographs and papers</field>
+    <field name="collection_ssm">James Reuel Smith springs and wells photographs and papers</field>
+    <field name="collection_teim">James Reuel Smith springs and wells photographs and papers</field>
+    <field name="corpname_ssm">New-York Historical Society</field>
+    <field name="corpname_teim">New-York Historical Society</field>
+    <field name="creator_sim">Smith, James Reuel, 1852-1935</field>
+    <field name="creator_ssm">Smith, James Reuel, 1852-1935</field>
+    <field name="creator_teim">Smith, James Reuel, 1852-1935</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">pr062_reuel_smith_springs_wells</field>
+    <field name="format_ii">0</field>
+    <field name="format_sim">Archival Collection</field>
+    <field name="format_ssm">Archival Collection</field>
+    <field name="genreform_ssm">Acetate negatives.</field>
+    <field name="genreform_ssm">Glass negatives.</field>
+    <field name="genreform_ssm">Manuscripts (documents)</field>
+    <field name="genreform_ssm">Photographic prints.</field>
+    <field name="genreform_teim">Acetate negatives.</field>
+    <field name="genreform_teim">Glass negatives.</field>
+    <field name="genreform_teim">Manuscripts (documents)</field>
+    <field name="genreform_teim">Photographic prints.</field>
+    <field name="geogname_ssm">Bronx (New York, N.Y.)</field>
+    <field name="geogname_ssm">Brooklyn (New York, N.Y.)</field>
+    <field name="geogname_ssm">Manhattan (New York, N.Y.)</field>
+    <field name="geogname_ssm">New York (N.Y.)</field>
+    <field name="geogname_teim">Bronx (New York, N.Y.)</field>
+    <field name="geogname_teim">Brooklyn (New York, N.Y.)</field>
+    <field name="geogname_teim">Manhattan (New York, N.Y.)</field>
+    <field name="geogname_teim">New York (N.Y.)</field>
+    <field name="heading_ssm">James Reuel Smith springs and wells photographs and papers</field>
+    <field name="id">pr062_reuel_smith_springs_wells</field>
+    <field name="material_type_sim">Acetate negatives.</field>
+    <field name="material_type_sim">Glass negatives.</field>
+    <field name="material_type_sim">Manuscripts (documents)</field>
+    <field name="material_type_sim">Photographic prints.</field>
+    <field name="material_type_ssm">Acetate negatives.</field>
+    <field name="material_type_ssm">Glass negatives.</field>
+    <field name="material_type_ssm">Manuscripts (documents)</field>
+    <field name="material_type_ssm">Photographic prints.</field>
+    <field name="name_sim">Smith, James Reuel, 1852-1935</field>
+    <field name="name_sim">Smith, James Reuel, 1852-1935 -- Portraits.</field>
+    <field name="name_teim">Smith, James Reuel, 1852-1935</field>
+    <field name="name_teim">Smith, James Reuel, 1852-1935 -- Portraits.</field>
+    <field name="persname_ssm">Smith, James Reuel, 1852-1935</field>
+    <field name="persname_ssm">Smith, James Reuel, 1852-1935 -- Portraits.</field>
+    <field name="persname_teim">Smith, James Reuel, 1852-1935</field>
+    <field name="persname_teim">Smith, James Reuel, 1852-1935 -- Portraits.</field>
+    <field name="place_sim">Bronx (New York, N.Y.)</field>
+    <field name="place_sim">Brooklyn (New York, N.Y.)</field>
+    <field name="place_sim">Manhattan (New York, N.Y.)</field>
+    <field name="place_sim">New York (N.Y.)</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="scopecontent_teim">The collection holds the original photographic prints and glass plate negatives; manuscript drafts; indexes, classifications, and other descriptions; and research files and notes underlying James Reuel Smith&#39;s Springs and Wells of Manhattan and the Bronx, New York City, at the End of the Nineteenth Century. </field>
+    <field name="scopecontent_teim">The photographs date from 1897-1901 and are primarily of springs and wells in Northern Manhattan and the Bronx. There are about 350 prints, organized into 10 boxes. In addition, 260 glass negatives (247 4x5s; 13 5x7s) and 38 acetate negatives are housed in 7 boxes. Though Smith did take photographs of pumps and cisterns, the natural springs he found during his travels seemed to pique his interest the most, and these views are what make up most of the photos. </field>
+    <field name="scopecontent_teim">Manuscript material in the collection relates to both New York springs and wells and to Smith&#39;s research for his book on springs and wells in Greek and Roman literature. This material extends into the 1930s, reflecting Smith&#39;s research and writing subsequent to his photographing, and to some uncertain degree, N-YHS&#39;s interventions during the editing and publication process.</field>
+    <field name="subject_sim">Children.</field>
+    <field name="subject_sim">Gardens.</field>
+    <field name="subject_sim">Hand pumps.</field>
+    <field name="subject_sim">Springs -- New York (State)  -- New York. </field>
+    <field name="subject_sim">Streets -- New York (State)  -- New York. </field>
+    <field name="subject_sim">Urban parks.</field>
+    <field name="subject_sim">Water, Underground -- New York (State)  -- New York. </field>
+    <field name="subject_sim">Wells -- New York (State)  -- New York. </field>
+    <field name="subject_ssm">Children.</field>
+    <field name="subject_ssm">Gardens.</field>
+    <field name="subject_ssm">Hand pumps.</field>
+    <field name="subject_ssm">Springs -- New York (State)  -- New York. </field>
+    <field name="subject_ssm">Streets -- New York (State)  -- New York. </field>
+    <field name="subject_ssm">Urban parks.</field>
+    <field name="subject_ssm">Water, Underground -- New York (State)  -- New York. </field>
+    <field name="subject_ssm">Wells -- New York (State)  -- New York. </field>
+    <field name="subject_teim">Children.</field>
+    <field name="subject_teim">Gardens.</field>
+    <field name="subject_teim">Hand pumps.</field>
+    <field name="subject_teim">Springs -- New York (State)  -- New York. </field>
+    <field name="subject_teim">Streets -- New York (State)  -- New York. </field>
+    <field name="subject_teim">Urban parks.</field>
+    <field name="subject_teim">Water, Underground -- New York (State)  -- New York. </field>
+    <field name="subject_teim">Wells -- New York (State)  -- New York. </field>
+    <field name="subject_teim">Children.</field>
+    <field name="subject_teim">Gardens.</field>
+    <field name="subject_teim">Hand pumps.</field>
+    <field name="subject_teim">Springs -- New York (State)  -- New York. </field>
+    <field name="subject_teim">Streets -- New York (State)  -- New York. </field>
+    <field name="subject_teim">Urban parks.</field>
+    <field name="subject_teim">Water, Underground -- New York (State)  -- New York. </field>
+    <field name="subject_teim">Wells -- New York (State)  -- New York. </field>
+    <field name="title_ssm">Springs and Wells of Manhattan and the Bronx, New York City, at the End of the Nineteenth Century,</field>
+    <field name="title_ssm">Springs and Wells in Greek and Roman Literature, Their Legends and Locations.</field>
+    <field name="title_ssm">Springs and Wells of Manhattan and the Bronx, New York City, at the End of the Nineteenth Century,</field>
+    <field name="title_ssm">Springs and Wells of Manhattan and the Bronx, New York City, at the End of the Nineteenth Century</field>
+    <field name="title_teim">Springs and Wells of Manhattan and the Bronx, New York City, at the End of the Nineteenth Century,</field>
+    <field name="title_teim">Springs and Wells in Greek and Roman Literature, Their Legends and Locations.</field>
+    <field name="title_teim">Springs and Wells of Manhattan and the Bronx, New York City, at the End of the Nineteenth Century,</field>
+    <field name="title_teim">Springs and Wells of Manhattan and the Bronx, New York City, at the End of the Nineteenth Century</field>
+    <field name="unitdate_inclusive_teim">1897-1930s</field>
+    <field name="unitdate_ssm">Inclusive, 1897-1930s</field>
+    <field name="unitid_ssm">PR 62</field>
+    <field name="unitid_teim">PR 62</field>
+    <field name="unittitle_ssm">James Reuel Smith springs and wells photographs and papers</field>
+    <field name="unittitle_teim">James Reuel Smith springs and wells photographs and papers</field>
+  </doc>
+</add>

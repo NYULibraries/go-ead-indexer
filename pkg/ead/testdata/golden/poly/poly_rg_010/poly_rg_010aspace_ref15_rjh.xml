@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Sophia Dahab</field>
+    <field name="collection_sim">Frank E. Canavaciol Papers</field>
+    <field name="collection_ssm">Frank E. Canavaciol Papers</field>
+    <field name="collection_teim">Frank E. Canavaciol Papers</field>
+    <field name="collection_unitid_ssm">RG.010</field>
+    <field name="collection_unitid_teim">RG.010</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">poly_rg_010</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Subseries O: EE 444</field>
+    <field name="id">poly_rg_010aspace_ref15_rjh</field>
+    <field name="level_sim">subseries</field>
+    <field name="parent_ssi">aspace_ref1_l52</field>
+    <field name="parent_ssm">aspace_ref1_l52</field>
+    <field name="parent_unittitles_ssm">Series I: Electrical Engineering Courses&amp;#xA;</field>
+    <field name="parent_unittitles_teim">Series I: Electrical Engineering Courses&amp;#xA;</field>
+    <field name="ref_ssi">aspace_ref15_rjh</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="series_si">Series I: Electrical Engineering Courses
+ &gt;&gt; Subseries O: EE 444</field>
+    <field name="series_sim">Series I: Electrical Engineering Courses&amp;#xA;</field>
+    <field name="sort_ii">56</field>
+    <field name="unitdate_ssm">undated</field>
+    <field name="unitdate_teim">undated</field>
+    <field name="unittitle_ssm">Subseries O: EE 444</field>
+    <field name="unittitle_teim">Subseries O: EE 444</field>
+  </doc>
+</add>

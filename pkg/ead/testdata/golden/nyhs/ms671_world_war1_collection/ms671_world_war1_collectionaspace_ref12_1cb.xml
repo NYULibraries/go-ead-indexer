@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Alison Dundy</field>
+    <field name="collection_sim">World War I collection</field>
+    <field name="collection_ssm">World War I collection</field>
+    <field name="collection_teim">World War I collection</field>
+    <field name="collection_unitid_ssm">MS 671</field>
+    <field name="collection_unitid_teim">MS 671</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms671_world_war1_collection</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Samuel Bendelson Correspondence</field>
+    <field name="id">ms671_world_war1_collectionaspace_ref12_1cb</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 1, Folder: 3</field>
+    <field name="location_ssm">Box: 1, Folder: 3</field>
+    <field name="ref_ssi">aspace_ref12_1cb</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="series_si">Samuel Bendelson Correspondence</field>
+    <field name="sort_ii">3</field>
+    <field name="unitdate_ssm">1917 October-December</field>
+    <field name="unitdate_teim">1917 October-December</field>
+    <field name="unittitle_ssm">Samuel Bendelson Correspondence</field>
+    <field name="unittitle_teim">Samuel Bendelson Correspondence</field>
+  </doc>
+</add>

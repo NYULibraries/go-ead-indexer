@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Alec Ferretti</field>
+    <field name="collection_sim">Army and Navy Club of New York records</field>
+    <field name="collection_ssm">Army and Navy Club of New York records</field>
+    <field name="collection_teim">Army and Navy Club of New York records</field>
+    <field name="collection_unitid_ssm">MS 3080</field>
+    <field name="collection_unitid_teim">MS 3080</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms3080_army_navy_club</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series I: Meeting Minutes</field>
+    <field name="id">ms3080_army_navy_clubaspace_de93b889cb24404d388027c96e08d761</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_de93b889cb24404d388027c96e08d761</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="scopecontent_teim">The Minutes of the Board of Directors Meetings consist of summaries of their monthly meetings.  Issues would be discussed such as the financial situation of the club, new member applications, and members who were being removed for lack of payment of dues.  There are monthly lists of the officers of the organization and balance sheets of their assets and liabilities.  </field>
+    <field name="scopecontent_teim">The minutes of the Annual Meetings contain similar information, summarized for the entire membership.  They discussed finances, election of new officers, and news about upcoming and past events.  </field>
+    <field name="scopecontent_teim">There is also one folder of tax filings for a deceased employee.</field>
+    <field name="series_si">Series I: Meeting Minutes</field>
+    <field name="sort_ii">1</field>
+    <field name="unitdate_inclusive_teim">1933-1973</field>
+    <field name="unitdate_ssm">Inclusive, 1933-1973</field>
+    <field name="unittitle_ssm">Series I: Meeting Minutes</field>
+    <field name="unittitle_teim">Series I: Meeting Minutes</field>
+  </doc>
+</add>

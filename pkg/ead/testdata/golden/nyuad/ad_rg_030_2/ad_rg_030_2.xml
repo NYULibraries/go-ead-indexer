@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="abstract_ssm">The NYU Abu Dhabi Covid-19 Archive includes records, artifacts, and stories that help document how the pandemic was experienced on this campus and by members of the community.</field>
+    <field name="abstract_teim">The NYU Abu Dhabi Covid-19 Archive includes records, artifacts, and stories that help document how the pandemic was experienced on this campus and by members of the community.</field>
+    <field name="acqinfo_teim">Digital materials in the Covid-19 Archive have been acquired by a variety of means: via direct submission to the Covid-19 website submission page, through solicitation by the Archivist, and via routine records transfers from NYUAD departments. Physical materials have been acquired through either individual donations or through donations to the &#34;Covid-19 Donations Bin,&#34; a collecting bin that was available to the community from May 2021 through September 2022.</field>
+    <field name="author_ssm">Lauren Kata</field>
+    <field name="author_teim">Lauren Kata</field>
+    <field name="bioghist_teim">The Covid-19 Archive is a collecting project of the NYUAD Library&#39;s Archives and Special Collections. It was an initiative that was launched in April 2020 on the heels of the announcement of a global pandemic; of a campus-wide pivot to remote teaching, learning, and non-essential operations; and a city-wide &#34;lockdown&#34; in Abu Dhabi and many cities around the world. The Covid-19 archival initiative began as a request from NYU Abu Dhabi Vice Chancellor Mariët Westermann to ensure the University was &#34;archiving this moment.&#34; In a meeting called and led by Westermann herself, the Library and its Archives and Special Collections team were asked to help ensure that the record of the University&#39;s decisions, and its community members&#39; experiences, would be preserved in real time.  </field>
+    <field name="bioghist_teim">While acknowledging that a record of how the University responded to and experienced the Covid-19 pandemic would largely emerge from the routine preservation of administrative, operational, academic planning, and other institutional records, the team began planning more targeted approaches to documentation through outreach to Communications and Facilities departments, development of a community archive donation opportunity, and a leadership oral history project. </field>
+    <field name="bioghist_teim">From spring 2020 through early 2021, similar efforts around the world were happening in tandem, including a &#34;Covid-19 Oral History Project&#34; led by media producers at NYU in New York (for which Westermann and some leaders at NYU Abu Dhabi were invited to participate).</field>
+    <field name="bioghist_teim">The Covid-19 Archive represents collecting efforts that began in April 2020 and has continued through 2022. </field>
+    <field name="collection_sim">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_ssm">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_teim">NYU Abu Dhabi Covid Archive</field>
+    <field name="corpname_ssm">NYU Abu Dhabi, Archives and Special Collections</field>
+    <field name="corpname_teim">NYU Abu Dhabi, Archives and Special Collections</field>
+    <field name="dao_sim">Online Access</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_rg_030_2</field>
+    <field name="format_ii">0</field>
+    <field name="format_sim">Archival Collection</field>
+    <field name="format_ssm">Archival Collection</field>
+    <field name="heading_ssm">NYU Abu Dhabi Covid Archive</field>
+    <field name="id">ad_rg_030_2</field>
+    <field name="language_sim">English</field>
+    <field name="language_ssm">English</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="scopecontent_teim">The NYU Abu Dhabi Covid-19 Archive includes records, artifacts, creative works, and other memorabilia donated by campus departments and individuals; from images of campus &#34;distancing&#34; signage, to remnants of a campus in &#34;lockdown.&#34; </field>
+    <field name="scopecontent_teim">Series that are open for research and browsing include materials solicited and acquired by the archivists from various departments, as well as materials contributed directly by community members. </field>
+    <field name="unitdate_inclusive_teim">2020-2022</field>
+    <field name="unitdate_ssm">Inclusive, 2020-2022</field>
+    <field name="unitid_ssm">AD.RG.030.2</field>
+    <field name="unitid_teim">AD.RG.030.2</field>
+    <field name="unittitle_ssm">NYU Abu Dhabi Covid Archive</field>
+    <field name="unittitle_teim">NYU Abu Dhabi Covid Archive</field>
+  </doc>
+</add>

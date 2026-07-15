@@ -36,6 +36,10 @@ func init() {
 	goldenFilesDirPath = filepath.Join(testutilsPath, "..", "testdata", "golden")
 }
 
+func DeleteGoldenFile(testEAD string, fileID string) error {
+	return os.Remove(GoldenFilePath(testEAD, fileID))
+}
+
 func EadFixturePath(testEAD string) string {
 	return filepath.Join(eadFixturesDirPath, testEAD+".xml")
 }
@@ -107,5 +111,15 @@ func ParseRepositoryCode(testEAD string) string {
 }
 
 func UpdateGoldenFile(testEAD string, fileID string, data string) error {
+	// If this is the initial creation of the file, we need to create the
+	// subdirectory.
+	goldenFilePath := GoldenFilePath(testEAD, fileID)
+	if _, err := os.Stat(goldenFilePath); os.IsNotExist(err) {
+		err = os.MkdirAll(filepath.Dir(goldenFilePath), 0700)
+		if err != nil {
+			return err
+		}
+	}
+
 	return os.WriteFile(GoldenFilePath(testEAD, fileID), []byte(data), 0644)
 }

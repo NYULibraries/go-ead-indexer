@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Nicole Lindberg Richard</field>
+    <field name="collection_sim">Samuel Ruben Papers</field>
+    <field name="collection_ssm">Samuel Ruben Papers</field>
+    <field name="collection_teim">Samuel Ruben Papers</field>
+    <field name="collection_unitid_ssm">RG.015</field>
+    <field name="collection_unitid_teim">RG.015</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">poly_rg_015</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Patent Number 1889380, Device and Method for Recording Sound Wave </field>
+    <field name="id">poly_rg_015aspace_ref147_hll</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 1, folder: 141</field>
+    <field name="location_ssm">box: 1, folder: 141</field>
+    <field name="parent_ssi">aspace_ref1_dbo</field>
+    <field name="parent_ssm">aspace_ref1_dbo</field>
+    <field name="parent_unittitles_ssm">Series I: Patents </field>
+    <field name="parent_unittitles_teim">Series I: Patents </field>
+    <field name="ref_ssi">aspace_ref147_hll</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="series_si">Series I: Patents  &gt;&gt; Patent Number 1889380, Device and Method for Recording Sound Wave </field>
+    <field name="series_sim">Series I: Patents </field>
+    <field name="sort_ii">142</field>
+    <field name="unitdate_ssm">1932 November 29</field>
+    <field name="unitdate_teim">1932 November 29</field>
+    <field name="unittitle_ssm">Patent Number 1889380, Device and Method for Recording Sound Wave </field>
+    <field name="unittitle_teim">Patent Number 1889380, Device and Method for Recording Sound Wave </field>
+  </doc>
+</add>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="acqinfo_teim">Materials were transferred from the President&#39;s Office in the Jacobs Administrative Building on 6/29/2017.</field>
+    <field name="author_ssm">Zoe Blecher-Cohen</field>
+    <field name="author_teim">Zoe Blecher-Cohen</field>
+    <field name="collection_sim">Polytechnic President&#39;s Office Records</field>
+    <field name="collection_ssm">Polytechnic President&#39;s Office Records</field>
+    <field name="collection_teim">Polytechnic President&#39;s Office Records</field>
+    <field name="corpname_ssm">Poly Archives at the Bern Dibner Library of Science and Technology, NYU Libraries</field>
+    <field name="corpname_teim">Poly Archives at the Bern Dibner Library of Science and Technology, NYU Libraries</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="date_range_sim">2001-2100</field>
+    <field name="ead_ssi">poly_rg_042</field>
+    <field name="format_ii">0</field>
+    <field name="format_sim">Archival Collection</field>
+    <field name="format_ssm">Archival Collection</field>
+    <field name="genreform_ssm">Floppy disks</field>
+    <field name="genreform_ssm">Brochures</field>
+    <field name="genreform_ssm">Publications</field>
+    <field name="genreform_ssm">Correspondence</field>
+    <field name="genreform_teim">Floppy disks</field>
+    <field name="genreform_teim">Brochures</field>
+    <field name="genreform_teim">Publications</field>
+    <field name="genreform_teim">Correspondence</field>
+    <field name="heading_ssm">Polytechnic President&#39;s Office Records</field>
+    <field name="id">poly_rg_042</field>
+    <field name="material_type_sim">Floppy disks</field>
+    <field name="material_type_sim">Brochures</field>
+    <field name="material_type_sim">Publications</field>
+    <field name="material_type_sim">Correspondence</field>
+    <field name="material_type_ssm">Floppy disks</field>
+    <field name="material_type_ssm">Brochures</field>
+    <field name="material_type_ssm">Publications</field>
+    <field name="material_type_ssm">Correspondence</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="scopecontent_teim">Materials are mostly media and design related including layouts for brochures and documents from the 1996-1997 Poly logo contest.</field>
+    <field name="unitdate_bulk_teim">1995-1997</field>
+    <field name="unitdate_end_si">1997</field>
+    <field name="unitdate_end_sim">2004</field>
+    <field name="unitdate_end_sim">1997</field>
+    <field name="unitdate_end_ssm">2004</field>
+    <field name="unitdate_end_ssm">1997</field>
+    <field name="unitdate_inclusive_teim">1988-2004</field>
+    <field name="unitdate_normal_sim">1988/2004</field>
+    <field name="unitdate_normal_sim">1995/1997</field>
+    <field name="unitdate_normal_ssm">1988/2004</field>
+    <field name="unitdate_normal_ssm">1995/1997</field>
+    <field name="unitdate_normal_teim">1988/2004</field>
+    <field name="unitdate_normal_teim">1995/1997</field>
+    <field name="unitdate_ssm">Inclusive, 1988-2004 ; 1995-1997</field>
+    <field name="unitdate_start_si">1995</field>
+    <field name="unitdate_start_sim">1988</field>
+    <field name="unitdate_start_sim">1995</field>
+    <field name="unitdate_start_ssm">1988</field>
+    <field name="unitdate_start_ssm">1995</field>
+    <field name="unitid_ssm">RG.042</field>
+    <field name="unitid_teim">RG.042</field>
+    <field name="unittitle_ssm">Polytechnic President&#39;s Office Records</field>
+    <field name="unittitle_teim">Polytechnic President&#39;s Office Records</field>
+  </doc>
+</add>

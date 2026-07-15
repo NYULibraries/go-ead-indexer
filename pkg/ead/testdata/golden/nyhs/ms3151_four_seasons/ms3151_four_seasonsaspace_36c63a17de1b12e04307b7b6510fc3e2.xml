@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Joseph Ditta</field>
+    <field name="collection_sim">Four Seasons Restaurant collection</field>
+    <field name="collection_ssm">Four Seasons Restaurant collection</field>
+    <field name="collection_teim">Four Seasons Restaurant collection</field>
+    <field name="collection_unitid_ssm">MS 3151</field>
+    <field name="collection_unitid_teim">MS 3151</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms3151_four_seasons</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Slides. 40th anniversary (Mary Hilliard)</field>
+    <field name="id">ms3151_four_seasonsaspace_36c63a17de1b12e04307b7b6510fc3e2</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Offsite-Box: 6, Folder: 1</field>
+    <field name="location_ssm">Offsite-Box: 6, Folder: 1</field>
+    <field name="parent_ssi">aspace_157487c80f1a5b76b86df4c69b56feeb</field>
+    <field name="parent_ssm">aspace_157487c80f1a5b76b86df4c69b56feeb</field>
+    <field name="parent_unittitles_ssm">Series III. Photographs, slides, transparencies</field>
+    <field name="parent_unittitles_teim">Series III. Photographs, slides, transparencies</field>
+    <field name="ref_ssi">aspace_36c63a17de1b12e04307b7b6510fc3e2</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="series_si">Series III. Photographs, slides, transparencies &gt;&gt; Slides. 40th anniversary (Mary Hilliard)</field>
+    <field name="series_sim">Series III. Photographs, slides, transparencies</field>
+    <field name="sort_ii">58</field>
+    <field name="unitdate_ssm">1999 June 24</field>
+    <field name="unitdate_teim">1999 June 24</field>
+    <field name="unittitle_ssm">Slides. 40th anniversary (Mary Hilliard)</field>
+    <field name="unittitle_teim">Slides. 40th anniversary (Mary Hilliard)</field>
+  </doc>
+</add>

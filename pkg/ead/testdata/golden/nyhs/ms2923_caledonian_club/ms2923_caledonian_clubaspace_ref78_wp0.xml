@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Alison Dundy</field>
+    <field name="collection_sim">New York Caledonian Club records</field>
+    <field name="collection_ssm">New York Caledonian Club records</field>
+    <field name="collection_teim">New York Caledonian Club records</field>
+    <field name="collection_unitid_ssm">MS 2923</field>
+    <field name="collection_unitid_teim">MS 2923</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms2923_caledonian_club</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Caledonian Club Building</field>
+    <field name="id">ms2923_caledonian_clubaspace_ref78_wp0</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: OS Medium, Folder: New york Caledonian Club Records</field>
+    <field name="location_ssm">Box: OS Medium, Folder: New york Caledonian Club Records</field>
+    <field name="parent_ssi">aspace_ref20_yrz</field>
+    <field name="parent_ssm">aspace_ref20_yrz</field>
+    <field name="parent_unittitles_ssm">Series II: Photographs</field>
+    <field name="parent_unittitles_teim">Series II: Photographs</field>
+    <field name="ref_ssi">aspace_ref78_wp0</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="scopecontent_teim">This is a photograph of the exterior of the New York Caledonian Club&#39;s marble mansion, located at 846 Seventh Avenue (54th Street). The club acquired the building in 1898.</field>
+    <field name="series_si">Series II: Photographs &gt;&gt; Caledonian Club Building</field>
+    <field name="series_sim">Series II: Photographs</field>
+    <field name="sort_ii">35</field>
+    <field name="unittitle_ssm">Caledonian Club Building</field>
+    <field name="unittitle_teim">Caledonian Club Building</field>
+  </doc>
+</add>

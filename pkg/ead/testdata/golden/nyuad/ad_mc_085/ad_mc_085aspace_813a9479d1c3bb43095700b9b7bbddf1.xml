@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">Adnan Pachachi book collection</field>
+    <field name="collection_ssm">Adnan Pachachi book collection</field>
+    <field name="collection_teim">Adnan Pachachi book collection</field>
+    <field name="collection_unitid_ssm">AD.MC.085</field>
+    <field name="collection_unitid_teim">AD.MC.085</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_085</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">ʻAbd Allāh, Muḥammad Mursī.  The United Arab Emirates : a modern history (London : Croom Helm, 1978)</field>
+    <field name="id">ad_mc_085aspace_813a9479d1c3bb43095700b9b7bbddf1</field>
+    <field name="language_sim">English</field>
+    <field name="language_ssm">English</field>
+    <field name="level_sim">item</field>
+    <field name="location_si">volume: 27</field>
+    <field name="location_ssm">volume: 27</field>
+    <field name="parent_ssi">aspace_f71809539898d8462cdc9b2f89231118</field>
+    <field name="parent_ssm">aspace_f71809539898d8462cdc9b2f89231118</field>
+    <field name="parent_unittitles_ssm">United Arab Emirates titles</field>
+    <field name="parent_unittitles_teim">United Arab Emirates titles</field>
+    <field name="ref_ssi">aspace_813a9479d1c3bb43095700b9b7bbddf1</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">United Arab Emirates titles &gt;&gt; ʻAbd Allāh, Muḥammad Mursī.  The United Arab Emirates : a modern history (London : Croom Helm, 1978)</field>
+    <field name="series_sim">United Arab Emirates titles</field>
+    <field name="sort_ii">29</field>
+    <field name="unittitle_ssm">ʻAbd Allāh, Muḥammad Mursī.  The United Arab Emirates : a modern history (London : Croom Helm, 1978)</field>
+    <field name="unittitle_teim">ʻAbd Allāh, Muḥammad Mursī.  The United Arab Emirates : a modern history (London : Croom Helm, 1978)</field>
+  </doc>
+</add>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Jasmine Soliman and Emily Broad, with further additions by Jasmine Soliman in 2023.</field>
+    <field name="collection_sim">&#39;A trip in Algeria&#39; by H. E. Irving Taylor</field>
+    <field name="collection_ssm">&#39;A trip in Algeria&#39; by H. E. Irving Taylor</field>
+    <field name="collection_teim">&#39;A trip in Algeria&#39; by H. E. Irving Taylor</field>
+    <field name="collection_unitid_ssm">AD.MC.040</field>
+    <field name="collection_unitid_teim">AD.MC.040</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="creator_sim">Taylor, H.E. Irving</field>
+    <field name="creator_ssm">Taylor, H.E. Irving</field>
+    <field name="creator_teim">Taylor, H.E. Irving</field>
+    <field name="dao_sim">Online Access</field>
+    <field name="dao_ssm">The inside back cover of the album &#39;A Trip in Algeria&#39; containing a company mark from M. W.  &amp; Co. Ltd. London.: Circa December 1901 – April 1902</field>
+    <field name="dao_ssm">The inside back cover of the album &#39;A Trip in Algeria&#39; containing a company mark from M. W.  &amp; Co. Ltd. London.: Circa December 1901 – April 1902</field>
+    <field name="dao_teim">The inside back cover of the album &#39;A Trip in Algeria&#39; containing a company mark from M. W.  &amp; Co. Ltd. London.: Circa December 1901 – April 1902</field>
+    <field name="dao_teim">The inside back cover of the album &#39;A Trip in Algeria&#39; containing a company mark from M. W.  &amp; Co. Ltd. London.: Circa December 1901 – April 1902</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_040</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="geogname_ssm">London, England, UK</field>
+    <field name="geogname_ssm">Algeria</field>
+    <field name="geogname_teim">London, England, UK</field>
+    <field name="geogname_teim">Algeria</field>
+    <field name="heading_ssm">The inside back cover of the album &#39;A Trip in Algeria&#39; containing a company mark from M. W.  &amp; Co. Ltd. London.</field>
+    <field name="id">ad_mc_040aspace_1dc277fb37ace7c3aa09a606ccf4c2e8</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: AD_MC_040</field>
+    <field name="location_ssm">box: AD_MC_040</field>
+    <field name="name_sim">Taylor, H.E. Irving</field>
+    <field name="name_teim">Taylor, H.E. Irving</field>
+    <field name="persname_ssm">Taylor, H.E. Irving</field>
+    <field name="persname_teim">Taylor, H.E. Irving</field>
+    <field name="place_sim">London, England, UK</field>
+    <field name="place_sim">Algeria</field>
+    <field name="place_ssm">London, England, UK</field>
+    <field name="place_ssm">Algeria</field>
+    <field name="ref_ssi">aspace_1dc277fb37ace7c3aa09a606ccf4c2e8</field>
+    <field name="repository_sim">akkasah</field>
+    <field name="repository_ssi">akkasah</field>
+    <field name="repository_ssm">akkasah</field>
+    <field name="series_si">The inside back cover of the album &#39;A Trip in Algeria&#39; containing a company mark from M. W.  &amp; Co. Ltd. London.</field>
+    <field name="sort_ii">57</field>
+    <field name="subject_sim">English Writing</field>
+    <field name="subject_sim">Advertisements</field>
+    <field name="subject_ssm">English Writing</field>
+    <field name="subject_ssm">Advertisements</field>
+    <field name="subject_teim">English Writing</field>
+    <field name="subject_teim">Advertisements</field>
+    <field name="subject_teim">English Writing</field>
+    <field name="subject_teim">Advertisements</field>
+    <field name="unitdate_ssm">Circa December 1901 – April 1902</field>
+    <field name="unitdate_teim">Circa December 1901 – April 1902</field>
+    <field name="unitid_ssm">AD_MC_040_ref57</field>
+    <field name="unitid_teim">AD_MC_040_ref57</field>
+    <field name="unittitle_ssm">The inside back cover of the album &#39;A Trip in Algeria&#39; containing a company mark from M. W.  &amp; Co. Ltd. London.</field>
+    <field name="unittitle_teim">The inside back cover of the album &#39;A Trip in Algeria&#39; containing a company mark from M. W.  &amp; Co. Ltd. London.</field>
+  </doc>
+</add>

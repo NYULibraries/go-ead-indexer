@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Lauren Kata</field>
+    <field name="collection_sim">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_ssm">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_teim">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_unitid_ssm">AD.RG.030.2</field>
+    <field name="collection_unitid_teim">AD.RG.030.2</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">2001-2100</field>
+    <field name="ead_ssi">ad_rg_030_2</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Kamil, Hamza. Three Items</field>
+    <field name="id">ad_rg_030_2aspace_aeac7646a59ead535a931929a9a2304d</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 1, folder: 2</field>
+    <field name="location_ssm">box: 1, folder: 2</field>
+    <field name="parent_ssi">aspace_22c0701551380c23cd2a8df79917f096</field>
+    <field name="parent_ssm">aspace_165d7515034f6a815453d739527d9d02</field>
+    <field name="parent_ssm">aspace_22c0701551380c23cd2a8df79917f096</field>
+    <field name="parent_unittitles_ssm">NYUAD Community Participatory Covid Archive</field>
+    <field name="parent_unittitles_ssm">Physical Item Submissions</field>
+    <field name="parent_unittitles_teim">NYUAD Community Participatory Covid Archive</field>
+    <field name="parent_unittitles_teim">Physical Item Submissions</field>
+    <field name="ref_ssi">aspace_aeac7646a59ead535a931929a9a2304d</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="scopecontent_teim">Three items:  </field>
+    <field name="scopecontent_teim">1- Ticket given while I was waiting to remove my tracker watch at the SEHA centre in Mina Zayed the 20 August 2021.</field>
+    <field name="scopecontent_teim">2- Five &#34;Encouragement&#34; cards given by the campus dining/restaurant to help me endure my quarantine between the 14th and 20th August 2021.</field>
+    <field name="scopecontent_teim">3- &#34;Encouragement&#34; card given by the Student Health Centre to help students and staff manage their stress before doing their COVID-19 PCR test. Date: between January and May 2021.</field>
+    <field name="series_si">NYUAD Community Participatory Covid Archive &gt;&gt; Physical Item Submissions &gt;&gt; Kamil, Hamza. Three Items</field>
+    <field name="series_sim">NYUAD Community Participatory Covid Archive</field>
+    <field name="series_sim">Physical Item Submissions</field>
+    <field name="sort_ii">41</field>
+    <field name="unitdate_end_si">2021</field>
+    <field name="unitdate_end_sim">2021</field>
+    <field name="unitdate_end_ssm">2021</field>
+    <field name="unitdate_normal_sim">2021/2021</field>
+    <field name="unitdate_normal_ssm">2021/2021</field>
+    <field name="unitdate_normal_teim">2021/2021</field>
+    <field name="unitdate_ssm">January, May, August 2021</field>
+    <field name="unitdate_start_si">2021</field>
+    <field name="unitdate_start_sim">2021</field>
+    <field name="unitdate_start_ssm">2021</field>
+    <field name="unitdate_teim">January, May, August 2021</field>
+    <field name="unitid_ssm">Submission 20</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/29410</field>
+    <field name="unitid_teim">Submission 20</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/29410</field>
+    <field name="unittitle_ssm">Kamil, Hamza. Three Items</field>
+    <field name="unittitle_teim">Kamil, Hamza. Three Items</field>
+  </doc>
+</add>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Zoe Blecher-Cohen</field>
+    <field name="collection_sim">Polytechnic President&#39;s Office Records</field>
+    <field name="collection_ssm">Polytechnic President&#39;s Office Records</field>
+    <field name="collection_teim">Polytechnic President&#39;s Office Records</field>
+    <field name="collection_unitid_ssm">RG.042</field>
+    <field name="collection_unitid_teim">RG.042</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">poly_rg_042</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Center for Finance &amp; Technology Course Booklet</field>
+    <field name="id">poly_rg_042aspace_ab58903ba9b2078ce8e802abce9c74e7</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 1, folder: 36</field>
+    <field name="location_ssm">box: 1, folder: 36</field>
+    <field name="ref_ssi">aspace_ab58903ba9b2078ce8e802abce9c74e7</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="series_si">Center for Finance &amp; Technology Course Booklet</field>
+    <field name="sort_ii">36</field>
+    <field name="unitdate_end_si">1996</field>
+    <field name="unitdate_end_sim">1996</field>
+    <field name="unitdate_end_ssm">1996</field>
+    <field name="unitdate_normal_sim">1996/1996</field>
+    <field name="unitdate_normal_ssm">1996/1996</field>
+    <field name="unitdate_normal_teim">1996/1996</field>
+    <field name="unitdate_ssm">1996, undated</field>
+    <field name="unitdate_start_si">1996</field>
+    <field name="unitdate_start_sim">1996</field>
+    <field name="unitdate_start_ssm">1996</field>
+    <field name="unitdate_teim">1996, undated</field>
+    <field name="unittitle_ssm">Center for Finance &amp; Technology Course Booklet</field>
+    <field name="unittitle_teim">Center for Finance &amp; Technology Course Booklet</field>
+  </doc>
+</add>

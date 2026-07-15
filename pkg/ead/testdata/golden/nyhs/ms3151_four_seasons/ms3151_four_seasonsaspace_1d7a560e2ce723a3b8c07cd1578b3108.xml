@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Joseph Ditta</field>
+    <field name="collection_sim">Four Seasons Restaurant collection</field>
+    <field name="collection_ssm">Four Seasons Restaurant collection</field>
+    <field name="collection_teim">Four Seasons Restaurant collection</field>
+    <field name="collection_unitid_ssm">MS 3151</field>
+    <field name="collection_unitid_teim">MS 3151</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms3151_four_seasons</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Zagat rating (3 versions)</field>
+    <field name="id">ms3151_four_seasonsaspace_1d7a560e2ce723a3b8c07cd1578b3108</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Offsite-Box: 12</field>
+    <field name="location_ssm">Offsite-Box: 12</field>
+    <field name="parent_ssi">aspace_90de0c2aa8c18fa67070875b413772b9</field>
+    <field name="parent_ssm">aspace_90de0c2aa8c18fa67070875b413772b9</field>
+    <field name="parent_unittitles_ssm">Series VII. Objects</field>
+    <field name="parent_unittitles_teim">Series VII. Objects</field>
+    <field name="ref_ssi">aspace_1d7a560e2ce723a3b8c07cd1578b3108</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="scopecontent_teim">Three Lucite plaques (2 large, 1 small) of the Four Seasons 2014 Zagat restaurant review rating, for which it received 27 (out of a possible 30) for food, 28 for decor, and 27 for service. Meals cost an average of $103 per person.</field>
+    <field name="series_si">Series VII. Objects &gt;&gt; Zagat rating (3 versions)</field>
+    <field name="series_sim">Series VII. Objects</field>
+    <field name="sort_ii">154</field>
+    <field name="unitdate_inclusive_teim">2014</field>
+    <field name="unitdate_ssm">Inclusive, 2014</field>
+    <field name="unittitle_ssm">Zagat rating (3 versions)</field>
+    <field name="unittitle_teim">Zagat rating (3 versions)</field>
+  </doc>
+</add>

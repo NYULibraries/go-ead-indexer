@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Collection processed by Finding aid prepared by Alta Macadam</field>
+    <field name="collection_sim">The Acton Photograph Archive</field>
+    <field name="collection_ssm">The Acton Photograph Archive</field>
+    <field name="collection_teim">The Acton Photograph Archive</field>
+    <field name="collection_unitid_ssm">MSS.LaPietra.001</field>
+    <field name="collection_unitid_teim">MSS.LaPietra.001</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">mss_lapietra_001</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">8 Officers in Italy in the First World War at Villa La Pietra and elsewhere in Tuscany</field>
+    <field name="id">mss_lapietra_001aspace_ref2391</field>
+    <field name="level_sim">otherlevel</field>
+    <field name="parent_ssi">aspace_ref2370</field>
+    <field name="parent_ssm">aspace_ref9</field>
+    <field name="parent_ssm">aspace_ref2370</field>
+    <field name="parent_unittitles_ssm">Series I: The Actons</field>
+    <field name="parent_unittitles_ssm">Subseries E: unidentified</field>
+    <field name="parent_unittitles_teim">Series I: The Actons</field>
+    <field name="parent_unittitles_teim">Subseries E: unidentified</field>
+    <field name="ref_ssi">aspace_ref2391</field>
+    <field name="repository_sim">vlp</field>
+    <field name="repository_ssi">vlp</field>
+    <field name="repository_ssm">vlp</field>
+    <field name="series_si">Series I: The Actons &gt;&gt; Subseries E: unidentified &gt;&gt; 8 Officers in Italy in the First World War at Villa La Pietra and elsewhere in Tuscany</field>
+    <field name="series_sim">Series I: The Actons</field>
+    <field name="series_sim">Subseries E: unidentified</field>
+    <field name="sort_ii">1376</field>
+    <field name="unittitle_ssm">8 Officers in Italy in the First World War at Villa La Pietra and elsewhere in Tuscany</field>
+    <field name="unittitle_teim">8 Officers in Italy in the First World War at Villa La Pietra and elsewhere in Tuscany</field>
+  </doc>
+</add>

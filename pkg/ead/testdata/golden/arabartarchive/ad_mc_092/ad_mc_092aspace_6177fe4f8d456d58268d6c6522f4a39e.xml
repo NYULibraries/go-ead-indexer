@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ala Younis, Ibrahim Mohamed Ali, Dina Taha, Anneka Lenssen, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art, NYUAD</field>
+    <field name="collection_sim">Rafa Nasiri and May Muzaffar Collection</field>
+    <field name="collection_ssm">Rafa Nasiri and May Muzaffar Collection</field>
+    <field name="collection_teim">Rafa Nasiri and May Muzaffar Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.092</field>
+    <field name="collection_unitid_teim">AD.MC.092</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="dao_sim">Online Access</field>
+    <field name="dao_ssm">VII.B. Other Cards and Designs</field>
+    <field name="dao_teim">VII.B. Other Cards and Designs</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_092</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">VII.B. Other Cards and Designs</field>
+    <field name="id">ad_mc_092aspace_6177fe4f8d456d58268d6c6522f4a39e</field>
+    <field name="level_sim">subseries</field>
+    <field name="parent_ssi">aspace_c0c6dfe9ac49c31654cc5cdf8c6e74c2</field>
+    <field name="parent_ssm">aspace_c0c6dfe9ac49c31654cc5cdf8c6e74c2</field>
+    <field name="parent_unittitles_ssm">Series VII: Designs by or Featuring Rafa Nasiri</field>
+    <field name="parent_unittitles_teim">Series VII: Designs by or Featuring Rafa Nasiri</field>
+    <field name="ref_ssi">aspace_6177fe4f8d456d58268d6c6522f4a39e</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="series_si">Series VII: Designs by or Featuring Rafa Nasiri &gt;&gt; VII.B. Other Cards and Designs</field>
+    <field name="series_sim">Series VII: Designs by or Featuring Rafa Nasiri</field>
+    <field name="sort_ii">149</field>
+    <field name="unitid_ssm">cuid873</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/32285</field>
+    <field name="unitid_teim">cuid873</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/32285</field>
+    <field name="unittitle_ssm">VII.B. Other Cards and Designs</field>
+    <field name="unittitle_teim">VII.B. Other Cards and Designs</field>
+  </doc>
+</add>

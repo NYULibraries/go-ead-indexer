@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Fales Staff</field>
+    <field name="collection_sim">Jack Waters Papers</field>
+    <field name="collection_ssm">Jack Waters Papers</field>
+    <field name="collection_teim">Jack Waters Papers</field>
+    <field name="collection_unitid_ssm">MSS.111</field>
+    <field name="collection_unitid_teim">MSS.111</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">mss_111</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Diotima - B Wind Optical Track</field>
+    <field name="id">mss_111aspace_2fd8fc606dd83a472478d80abe5eefa6</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 2, Folder: 111.0006</field>
+    <field name="location_ssm">Box: 2, Folder: 111.0006</field>
+    <field name="parent_ssi">aspace_716eff2d031f437aaf97d826b59c7ed3</field>
+    <field name="parent_ssm">aspace_68dd4d1797788bdaef09244b7c28061b</field>
+    <field name="parent_ssm">aspace_716eff2d031f437aaf97d826b59c7ed3</field>
+    <field name="parent_unittitles_ssm">Series II: Film and Audio</field>
+    <field name="parent_unittitles_ssm">Subseries B: Preservation Master Materials</field>
+    <field name="parent_unittitles_teim">Series II: Film and Audio</field>
+    <field name="parent_unittitles_teim">Subseries B: Preservation Master Materials</field>
+    <field name="phystech_teim">Credit info: Jack Waters</field>
+    <field name="phystech_teim"> Gauge: 16mm</field>
+    <field name="phystech_teim"> Footage count: 1056 feet</field>
+    <field name="phystech_teim"> Extent: 1/1</field>
+    <field name="ref_ssi">aspace_2fd8fc606dd83a472478d80abe5eefa6</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="series_si">Series II: Film and Audio &gt;&gt; Subseries B: Preservation Master Materials &gt;&gt; Diotima - B Wind Optical Track</field>
+    <field name="series_sim">Series II: Film and Audio</field>
+    <field name="series_sim">Subseries B: Preservation Master Materials</field>
+    <field name="sort_ii">72</field>
+    <field name="unitdate_normal_sim">2000-06-28/2000-06-28</field>
+    <field name="unitdate_normal_ssm">2000-06-28/2000-06-28</field>
+    <field name="unitdate_normal_teim">2000-06-28/2000-06-28</field>
+    <field name="unitdate_ssm">2000-06-28</field>
+    <field name="unitdate_teim">2000-06-28</field>
+    <field name="unittitle_ssm">Diotima - B Wind Optical Track</field>
+    <field name="unittitle_teim">Diotima - B Wind Optical Track</field>
+  </doc>
+</add>

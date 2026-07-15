@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Peter Filardo</field>
+    <field name="collection_sim">Gil Green Papers</field>
+    <field name="collection_ssm">Gil Green Papers</field>
+    <field name="collection_teim">Gil Green Papers</field>
+    <field name="collection_unitid_ssm">TAM.095</field>
+    <field name="collection_unitid_teim">TAM.095</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">tam_095</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Subseries IVC: Files by Topic</field>
+    <field name="id">tam_095aspace_ref123</field>
+    <field name="level_sim">subseries</field>
+    <field name="parent_ssi">aspace_ref105</field>
+    <field name="parent_ssm">aspace_ref105</field>
+    <field name="parent_unittitles_ssm">Series IV: FBI and Prison Files</field>
+    <field name="parent_unittitles_teim">Series IV: FBI and Prison Files</field>
+    <field name="ref_ssi">aspace_ref123</field>
+    <field name="repository_sim">tamwag</field>
+    <field name="repository_ssi">tamwag</field>
+    <field name="repository_ssm">tamwag</field>
+    <field name="scopecontent_teim">This subseries contains sets of documents sent to Gil Green from the FBI as a result of his FOIA requests. These files range in size from ten to several hundred pages, and have been retained largely as they were received from the FBI. In some instances, certain pages have been excluded by the FBI. Where these exclusions occurred, the FBI included &#34;FOIPA Deleted Information Sheets.&#34; Many sheets, however, were removed by Green to reduce bulk, and it may no longer be apparent where certain content has been omitted.</field>
+    <field name="scopecontent_teim">Files in this subseries were sent to Green from both national and regional FBI offices. They document a wide array of topics related to Green&#39;s political activities between the 1930s and 1970s, including: Smith Act trials against members of the Communist Party of the United States (CPUSA), the FBI&#39;s search for Green and other Smith Act fugitives, Green&#39;s surrender to the FBI, Green&#39;s five-year sentence at Leavenworth prison, and surveillance of Green after his release. The files contain a variety of documents including: FBI field reports, correspondence between bureau offices, Smith Act trial transcripts, surveillance logs, and copies of documents produced by individuals or organizations under FBI surveillance. Files from regional offices largely relate to CPUSA activities in New York and Chicago. A large portion of these regional files consist of memoranda from the Special Agents in Command (SAC), who managed the FBI regional offices, and contain records of the FBI&#39;s surveillance of Green. Other files focus on individuals or organizations associated with Green, but may not relate to him directly. These files touch on a wide array of topics. Titles for these files address the general subject to which they relate, but because some vary so widely, references to certain topics or individuals may be scattered throughout.</field>
+    <field name="series_si">Series IV: FBI and Prison Files &gt;&gt; Subseries IVC: Files by Topic</field>
+    <field name="series_sim">Series IV: FBI and Prison Files</field>
+    <field name="sort_ii">110</field>
+    <field name="unitdate_end_si">1980</field>
+    <field name="unitdate_end_sim">1980</field>
+    <field name="unitdate_end_ssm">1980</field>
+    <field name="unitdate_inclusive_teim">1925-1980</field>
+    <field name="unitdate_normal_sim">1925/1980</field>
+    <field name="unitdate_normal_ssm">1925/1980</field>
+    <field name="unitdate_normal_teim">1925/1980</field>
+    <field name="unitdate_ssm">Inclusive, 1925-1980</field>
+    <field name="unitdate_start_si">1925</field>
+    <field name="unitdate_start_sim">1925</field>
+    <field name="unitdate_start_ssm">1925</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/244705</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/244705</field>
+    <field name="unittitle_ssm">Subseries IVC: Files by Topic</field>
+    <field name="unittitle_teim">Subseries IVC: Files by Topic</field>
+  </doc>
+</add>

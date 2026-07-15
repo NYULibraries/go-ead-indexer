@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ibrahim Mohamed Ali, Maysa Shaer, Nada Shabout, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art at NYU Abu Dhabi 	</field>
+    <field name="collection_sim">Salwa Zeidan Collection</field>
+    <field name="collection_ssm">Salwa Zeidan Collection</field>
+    <field name="collection_teim">Salwa Zeidan Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.150</field>
+    <field name="collection_unitid_teim">AD.MC.150</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_150</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">2020s</field>
+    <field name="id">ad_mc_150aspace_c000ce9215389284e6675cec8a9217a1</field>
+    <field name="level_sim">subgrp</field>
+    <field name="parent_ssi">aspace_d9517afefe9e627b25b9e7f56e17beb8</field>
+    <field name="parent_ssm">aspace_b62193eadc82d032ac2f65ca10c91b21</field>
+    <field name="parent_ssm">aspace_d9517afefe9e627b25b9e7f56e17beb8</field>
+    <field name="parent_unittitles_ssm">Series II: Press Clippings</field>
+    <field name="parent_unittitles_ssm">II.A. Newspaper Clippings</field>
+    <field name="parent_unittitles_teim">Series II: Press Clippings</field>
+    <field name="parent_unittitles_teim">II.A. Newspaper Clippings</field>
+    <field name="ref_ssi">aspace_c000ce9215389284e6675cec8a9217a1</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="series_si">Series II: Press Clippings &gt;&gt; II.A. Newspaper Clippings &gt;&gt; 2020s</field>
+    <field name="series_sim">Series II: Press Clippings</field>
+    <field name="series_sim">II.A. Newspaper Clippings</field>
+    <field name="sort_ii">77</field>
+    <field name="unitid_ssm">cuid1364</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/35849</field>
+    <field name="unitid_teim">cuid1364</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/35849</field>
+    <field name="unittitle_ssm">2020s</field>
+    <field name="unittitle_teim">2020s</field>
+  </doc>
+</add>

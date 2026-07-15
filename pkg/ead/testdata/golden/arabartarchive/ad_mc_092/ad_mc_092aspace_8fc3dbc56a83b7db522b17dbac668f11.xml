@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ala Younis, Ibrahim Mohamed Ali, Dina Taha, Anneka Lenssen, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art, NYUAD</field>
+    <field name="collection_sim">Rafa Nasiri and May Muzaffar Collection</field>
+    <field name="collection_ssm">Rafa Nasiri and May Muzaffar Collection</field>
+    <field name="collection_teim">Rafa Nasiri and May Muzaffar Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.092</field>
+    <field name="collection_unitid_teim">AD.MC.092</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_092</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">I.C. Financial Records and Payslips</field>
+    <field name="id">ad_mc_092aspace_8fc3dbc56a83b7db522b17dbac668f11</field>
+    <field name="level_sim">subseries</field>
+    <field name="parent_ssi">aspace_c131cd84cd2581043741b8205477341d</field>
+    <field name="parent_ssm">aspace_c131cd84cd2581043741b8205477341d</field>
+    <field name="parent_unittitles_ssm">Series I&amp;#x9;: Personal Papers</field>
+    <field name="parent_unittitles_teim">Series I&amp;#x9;: Personal Papers</field>
+    <field name="ref_ssi">aspace_8fc3dbc56a83b7db522b17dbac668f11</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="scopecontent_teim">Documents related to payments that were issued or received by Rafa Nasriri while he was living in Baghdad.</field>
+    <field name="series_si">Series I	: Personal Papers &gt;&gt; I.C. Financial Records and Payslips</field>
+    <field name="series_sim">Series I&amp;#x9;: Personal Papers</field>
+    <field name="sort_ii">4</field>
+    <field name="unitid_ssm">cuid747</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/32140</field>
+    <field name="unitid_teim">cuid747</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/32140</field>
+    <field name="unittitle_ssm">I.C. Financial Records and Payslips</field>
+    <field name="unittitle_teim">I.C. Financial Records and Payslips</field>
+  </doc>
+</add>

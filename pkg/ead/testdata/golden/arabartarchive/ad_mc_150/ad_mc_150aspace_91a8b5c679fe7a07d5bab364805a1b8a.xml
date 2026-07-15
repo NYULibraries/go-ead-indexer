@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ibrahim Mohamed Ali, Maysa Shaer, Nada Shabout, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art at NYU Abu Dhabi 	</field>
+    <field name="collection_sim">Salwa Zeidan Collection</field>
+    <field name="collection_ssm">Salwa Zeidan Collection</field>
+    <field name="collection_teim">Salwa Zeidan Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.150</field>
+    <field name="collection_unitid_teim">AD.MC.150</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_150</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">2. &#34;Salwa Zeidan — Painting Exhibition,&#34; Abu Dhabi, 1995.</field>
+    <field name="id">ad_mc_150aspace_91a8b5c679fe7a07d5bab364805a1b8a</field>
+    <field name="level_sim">item</field>
+    <field name="parent_ssi">aspace_dbbb30af1aed40dfa8235dfaa8d1f596</field>
+    <field name="parent_ssm">aspace_8b2ded0ffd31a87db6a347694f4f7507</field>
+    <field name="parent_ssm">aspace_dbbb30af1aed40dfa8235dfaa8d1f596</field>
+    <field name="parent_unittitles_ssm">Series I: Exhibition Materials</field>
+    <field name="parent_unittitles_ssm">I.A. Salwa Zeidan Solo Exhibitions</field>
+    <field name="parent_unittitles_teim">Series I: Exhibition Materials</field>
+    <field name="parent_unittitles_teim">I.A. Salwa Zeidan Solo Exhibitions</field>
+    <field name="ref_ssi">aspace_91a8b5c679fe7a07d5bab364805a1b8a</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="series_si">Series I: Exhibition Materials &gt;&gt; I.A. Salwa Zeidan Solo Exhibitions &gt;&gt; 2. &#34;Salwa Zeidan — Painting Exhibition,&#34; Abu Dhabi, 1995.</field>
+    <field name="series_sim">Series I: Exhibition Materials</field>
+    <field name="series_sim">I.A. Salwa Zeidan Solo Exhibitions</field>
+    <field name="sort_ii">4</field>
+    <field name="unitid_ssm">cuid1298</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/35776</field>
+    <field name="unitid_teim">cuid1298</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/35776</field>
+    <field name="unittitle_ssm">2. &#34;Salwa Zeidan — Painting Exhibition,&#34; Abu Dhabi, 1995.</field>
+    <field name="unittitle_teim">2. &#34;Salwa Zeidan — Painting Exhibition,&#34; Abu Dhabi, 1995.</field>
+  </doc>
+</add>

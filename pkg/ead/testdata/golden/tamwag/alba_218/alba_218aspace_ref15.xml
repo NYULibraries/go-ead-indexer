@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Jessica Weglein, January 2005.</field>
+    <field name="collection_sim">Martin Friedman Papers</field>
+    <field name="collection_ssm">Martin Friedman Papers</field>
+    <field name="collection_teim">Martin Friedman Papers</field>
+    <field name="collection_unitid_ssm">ALBA.218</field>
+    <field name="collection_unitid_teim">ALBA.218</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">alba_218</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series I: Correspondence, 1936-1966 [Bulk, 1936-1939]</field>
+    <field name="id">alba_218aspace_ref15</field>
+    <field name="language_sim">English</field>
+    <field name="language_ssm">English</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_ref15</field>
+    <field name="repository_sim">tamwag</field>
+    <field name="repository_ssi">tamwag</field>
+    <field name="repository_ssm">tamwag</field>
+    <field name="series_si">Series I: Correspondence, 1936-1966 [Bulk, 1936-1939]</field>
+    <field name="sort_ii">1</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/26801</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/26801</field>
+    <field name="unittitle_ssm">Series I: Correspondence, 1936-1966 [Bulk, 1936-1939]</field>
+    <field name="unittitle_teim">Series I: Correspondence, 1936-1966 [Bulk, 1936-1939]</field>
+  </doc>
+</add>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ala Younis, Ibrahim Mohamed Ali, Dina Taha, Anneka Lenssen, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art, NYUAD</field>
+    <field name="collection_sim">Rafa Nasiri and May Muzaffar Collection</field>
+    <field name="collection_ssm">Rafa Nasiri and May Muzaffar Collection</field>
+    <field name="collection_teim">Rafa Nasiri and May Muzaffar Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.092</field>
+    <field name="collection_unitid_teim">AD.MC.092</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="dao_sim">Online Access</field>
+    <field name="dao_ssm">9. &#34;[For Shaker Hassan Al Said],&#34; Paris, 2005 </field>
+    <field name="dao_teim">9. &#34;[For Shaker Hassan Al Said],&#34; Paris, 2005 </field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_092</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">9. &#34;[For Shaker Hassan Al Said],&#34; Paris, 2005 </field>
+    <field name="id">ad_mc_092aspace_53be7c026bb728a10958f1659c4d725e</field>
+    <field name="level_sim">item</field>
+    <field name="parent_ssi">aspace_c8154c0c526bdacea0f6100b78074a5d</field>
+    <field name="parent_ssm">aspace_3eb88e9c53905a71d0c1958dcbeace38</field>
+    <field name="parent_ssm">aspace_c8154c0c526bdacea0f6100b78074a5d</field>
+    <field name="parent_unittitles_ssm">Series IV: Exhibition Materials</field>
+    <field name="parent_unittitles_ssm">IV.C.&amp;#x9;Exhibitions by Other Artists</field>
+    <field name="parent_unittitles_teim">Series IV: Exhibition Materials</field>
+    <field name="parent_unittitles_teim">IV.C.&amp;#x9;Exhibitions by Other Artists</field>
+    <field name="ref_ssi">aspace_53be7c026bb728a10958f1659c4d725e</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="series_si">Series IV: Exhibition Materials &gt;&gt; IV.C.	Exhibitions by Other Artists &gt;&gt; 9. &#34;[For Shaker Hassan Al Said],&#34; Paris, 2005 </field>
+    <field name="series_sim">Series IV: Exhibition Materials</field>
+    <field name="series_sim">IV.C.&amp;#x9;Exhibitions by Other Artists</field>
+    <field name="sort_ii">70</field>
+    <field name="unitid_ssm">cuid806</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/32206</field>
+    <field name="unitid_teim">cuid806</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/32206</field>
+    <field name="unittitle_ssm">9. &#34;[For Shaker Hassan Al Said],&#34; Paris, 2005 </field>
+    <field name="unittitle_teim">9. &#34;[For Shaker Hassan Al Said],&#34; Paris, 2005 </field>
+  </doc>
+</add>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Erika Gottfried</field>
+    <field name="collection_sim">Maria Irene Fornés Papers</field>
+    <field name="collection_ssm">Maria Irene Fornés Papers</field>
+    <field name="collection_teim">Maria Irene Fornés Papers</field>
+    <field name="collection_unitid_ssm">MSS.413</field>
+    <field name="collection_unitid_teim">MSS.413</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="date_range_sim">2001-2100</field>
+    <field name="ead_ssi">mss_413</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series VII: Teaching Materials and Students&#39; Work</field>
+    <field name="id">mss_413aspace_ref22</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_ref22</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="scopecontent_teim">This series consists of students&#39; handwritten, typewritten, or mimeographed scenarios; scripts for plays and playlets; stories; and poems. In addition, the series includes flyers, correspondence, exercise instructions, participant lists, play notes, and drawings that pertain to, or that arose from, Irene Fornés&#39; teaching and playwriting workshops. She briefly taught elementary school students, but the bulk of her students were college students and adults who were emerging playwrights.  Because Fornés&#39; method for teaching plays included close collaboration, a number of these scripts were co-written by several different students as well as with Fornés herself (Meche is one clear example). In addition to those who received formal instruction from Fornés through workshops, lectures or classes, the series also includes materials from informal &#34;students&#34; of hers who may never have been enrolled in any of the courses she taught--aspiring playwrights whom she seems to have mentored or for whose work she seems to have provided criticism.</field>
+    <field name="series_si">Series VII: Teaching Materials and Students&#39; Work</field>
+    <field name="sort_ii">165</field>
+    <field name="title_ssm">Meche</field>
+    <field name="title_teim">Meche</field>
+    <field name="unitdate_end_si">2005</field>
+    <field name="unitdate_end_sim">2005</field>
+    <field name="unitdate_end_ssm">2005</field>
+    <field name="unitdate_inclusive_teim">1971-2005</field>
+    <field name="unitdate_normal_sim">1971/2005</field>
+    <field name="unitdate_normal_ssm">1971/2005</field>
+    <field name="unitdate_normal_teim">1971/2005</field>
+    <field name="unitdate_ssm">Inclusive, 1971-2005</field>
+    <field name="unitdate_start_si">1971</field>
+    <field name="unitdate_start_sim">1971</field>
+    <field name="unitdate_start_ssm">1971</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/582505</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/582505</field>
+    <field name="unittitle_ssm">Series VII: Teaching Materials and Students&#39; Work</field>
+    <field name="unittitle_teim">Series VII: Teaching Materials and Students&#39; Work</field>
+  </doc>
+</add>

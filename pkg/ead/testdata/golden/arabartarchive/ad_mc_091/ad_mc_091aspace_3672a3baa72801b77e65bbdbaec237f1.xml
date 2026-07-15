@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ibrahim Mohamed Ali, Anneka Lenssen, Dina Taha, Ala Younis, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art, NYUAD
+</field>
+    <field name="collection_sim">Mahmoud Hammad Collection</field>
+    <field name="collection_ssm">Mahmoud Hammad Collection</field>
+    <field name="collection_teim">Mahmoud Hammad Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.091</field>
+    <field name="collection_unitid_teim">AD.MC.091</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_091</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series IV: Design Work</field>
+    <field name="id">ad_mc_091aspace_3672a3baa72801b77e65bbdbaec237f1</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_3672a3baa72801b77e65bbdbaec237f1</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="scopecontent_teim">Materials include designs and original drawings executed by Hammad, in ink and/or gouache, for use as book covers, illustrations in magazines, advertising (such as Walpamur paint company), and other clients and purposes.</field>
+    <field name="series_si">Series IV: Design Work</field>
+    <field name="sort_ii">87</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/30710</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/30710</field>
+    <field name="unittitle_ssm">Series IV: Design Work</field>
+    <field name="unittitle_teim">Series IV: Design Work</field>
+  </doc>
+</add>

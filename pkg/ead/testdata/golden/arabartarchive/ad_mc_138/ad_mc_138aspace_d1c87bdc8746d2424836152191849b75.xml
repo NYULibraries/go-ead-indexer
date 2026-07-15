@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ibrahim Mohamed Ali, Maysa Shaer, Anneka Lenssen, and Salwa Mikdadi, with assistance from Roudhah Al Mazrouei.</field>
+    <field name="collection_sim">Hussain Sharif Collection</field>
+    <field name="collection_ssm">Hussain Sharif Collection</field>
+    <field name="collection_teim">Hussain Sharif Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.138</field>
+    <field name="collection_unitid_teim">AD.MC.138</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_138</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series III: Photographic Materials</field>
+    <field name="id">ad_mc_138aspace_d1c87bdc8746d2424836152191849b75</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_d1c87bdc8746d2424836152191849b75</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="scopecontent_teim">Series III comprises several sets of photographic prints, 35 mm slides, and a few strips of 35 mm negatives. The majority of the photographic materials were taken by Hussain Sharif and feature his artworks and exhibitions. Additionally, there are a few prints from Hussain Sharif&#39;s travels to London, Berlin, and Moscow, along with slides taken by Hussain Sharif during his travel to India in 1980-1981. This series also includes slides showcasing gatherings and group portraits in both indoor and outdoor settings. </field>
+    <field name="scopecontent_teim">The series includes photographic prints of Al Khor in Dubai, also taken by Hussain Sharif in the 1980s and 1990s. These images were captured by the artist as inspirational scenes and as part of his exploration of the space and environment in which he lived. </field>
+    <field name="scopecontent_teim">The arrangement of the photographic prints and slides followed the original order established by the artist. Several prints were mounted on white paper and placed inside plastic folders. The slides were housed in small plastic boxes, which the artist labeled with handwritten titles or annotations, primarily in Arabic. The titles given to the slide groups in subseries III.D. reflect the artist&#39;s handwritten annotations. In cases where slide boxes lacked handwritten notes, descriptive titles were assigned based on the subjects featured in the slides.</field>
+    <field name="series_si">Series III: Photographic Materials</field>
+    <field name="sort_ii">25</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/33479</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/33479</field>
+    <field name="unittitle_ssm">Series III: Photographic Materials</field>
+    <field name="unittitle_teim">Series III: Photographic Materials</field>
+  </doc>
+</add>

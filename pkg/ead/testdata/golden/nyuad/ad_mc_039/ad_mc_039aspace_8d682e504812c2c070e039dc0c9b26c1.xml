@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">Ali Akbar Bushiri collection</field>
+    <field name="collection_ssm">Ali Akbar Bushiri collection</field>
+    <field name="collection_teim">Ali Akbar Bushiri collection</field>
+    <field name="collection_unitid_ssm">AD.MC.039</field>
+    <field name="collection_unitid_teim">AD.MC.039</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_039</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Matam al &#39;Ajam:  Qur&#39;an segments</field>
+    <field name="id">ad_mc_039aspace_8d682e504812c2c070e039dc0c9b26c1</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_8d682e504812c2c070e039dc0c9b26c1</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Matam al &#39;Ajam:  Qur&#39;an segments</field>
+    <field name="sort_ii">248</field>
+    <field name="unittitle_ssm">Matam al &#39;Ajam:  Qur&#39;an segments</field>
+    <field name="unittitle_teim">Matam al &#39;Ajam:  Qur&#39;an segments</field>
+  </doc>
+</add>

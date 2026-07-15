@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="acqinfo_teim">The collection was donated to the Polytechnic Institute of New York University Archives by Jonathan Soffer in 2021.</field>
+    <field name="author_ssm">Aileen Thong and Mandy Abokhair</field>
+    <field name="author_teim">Aileen Thong and Mandy Abokhair</field>
+    <field name="bioghist_teim">Jonathan Soffer is a professor at NYU Tandon School of Engineering in the Technology, Culture, and Society Department. His work is primarily on Ed Koch and Matthew Ridgway.</field>
+    <field name="collection_sim">Jonathan Soffer Papers</field>
+    <field name="collection_ssm">Jonathan Soffer Papers</field>
+    <field name="collection_teim">Jonathan Soffer Papers</field>
+    <field name="corpname_ssm">Poly Archives at the Bern Dibner Library of Science and Technology, NYU Libraries</field>
+    <field name="corpname_teim">Poly Archives at the Bern Dibner Library of Science and Technology, NYU Libraries</field>
+    <field name="creator_sim">Soffer, Jonathan M., 1956-</field>
+    <field name="creator_ssm">Soffer, Jonathan M., 1956-</field>
+    <field name="creator_teim">Soffer, Jonathan M., 1956-</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="date_range_sim">2001-2100</field>
+    <field name="ead_ssi">poly_rg_046</field>
+    <field name="format_ii">0</field>
+    <field name="format_sim">Archival Collection</field>
+    <field name="format_ssm">Archival Collection</field>
+    <field name="geogname_ssm">Polytechnic Institute of NYU</field>
+    <field name="geogname_teim">Polytechnic Institute of NYU</field>
+    <field name="heading_ssm">Jonathan Soffer Papers</field>
+    <field name="id">poly_rg_046</field>
+    <field name="name_sim">Soffer, Jonathan M., 1956-</field>
+    <field name="name_teim">Soffer, Jonathan M., 1956-</field>
+    <field name="persname_ssm">Soffer, Jonathan M., 1956-</field>
+    <field name="persname_teim">Soffer, Jonathan M., 1956-</field>
+    <field name="place_sim">Polytechnic Institute of NYU</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="scopecontent_teim">The Jonathan Soffer Papers contain research documents from 1989 to 2007. These documents were assembled by Soffer during his time researching for books on Ed Koch and Matthew Ridgway. The documents are primarily archival and scholarly research regarding New York politics. Papers contain interview, newspaper clippings, academic article, drafts, and archival research. The collection is 10 linear feet, located on bay 26, shelves 4E, 5E, 6E, 7E, and 7F.</field>
+    <field name="unitdate_bulk_teim">1989-2007</field>
+    <field name="unitdate_end_si">2007</field>
+    <field name="unitdate_end_sim">2007</field>
+    <field name="unitdate_end_ssm">2007</field>
+    <field name="unitdate_normal_sim">1989/2007</field>
+    <field name="unitdate_normal_ssm">1989/2007</field>
+    <field name="unitdate_normal_teim">1989/2007</field>
+    <field name="unitdate_ssm">Inclusive, ; 1989-2007</field>
+    <field name="unitdate_start_si">1989</field>
+    <field name="unitdate_start_sim">1989</field>
+    <field name="unitdate_start_ssm">1989</field>
+    <field name="unitid_ssm">RG.046</field>
+    <field name="unitid_teim">RG.046</field>
+    <field name="unittitle_ssm">Jonathan Soffer Papers</field>
+    <field name="unittitle_teim">Jonathan Soffer Papers</field>
+  </doc>
+</add>

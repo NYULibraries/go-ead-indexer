@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Stacey Flatt and Rachel Searcy</field>
+    <field name="collection_sim">Lydia Lunch Papers</field>
+    <field name="collection_ssm">Lydia Lunch Papers</field>
+    <field name="collection_teim">Lydia Lunch Papers</field>
+    <field name="collection_unitid_ssm">MSS.590</field>
+    <field name="collection_unitid_teim">MSS.590</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">mss_590</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Sugar Factory -- Cameras 1, 2, and Encore</field>
+    <field name="id">mss_590aspace_422a175b09814e1ecfd09bfd033b876a</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">Box: 47, disc: 590.0077 -- 590.0079</field>
+    <field name="location_ssm">Box: 47, disc: 590.0077 -- 590.0079</field>
+    <field name="parent_ssi">aspace_8f033851dc2c0e62dbc1193914e0cb40</field>
+    <field name="parent_ssm">aspace_8f033851dc2c0e62dbc1193914e0cb40</field>
+    <field name="parent_unittitles_ssm">Series II. Performance and Studio Recordings</field>
+    <field name="parent_unittitles_teim">Series II. Performance and Studio Recordings</field>
+    <field name="ref_ssi">aspace_422a175b09814e1ecfd09bfd033b876a</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="series_si">Series II. Performance and Studio Recordings &gt;&gt; Sugar Factory -- Cameras 1, 2, and Encore</field>
+    <field name="series_sim">Series II. Performance and Studio Recordings</field>
+    <field name="sort_ii">191</field>
+    <field name="unitdate_normal_sim">2005-09-24/2005-09-24</field>
+    <field name="unitdate_normal_ssm">2005-09-24/2005-09-24</field>
+    <field name="unitdate_normal_teim">2005-09-24/2005-09-24</field>
+    <field name="unitdate_ssm">2005-09-24</field>
+    <field name="unitdate_teim">2005-09-24</field>
+    <field name="unitid_ssm">cuid30225</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/927142</field>
+    <field name="unitid_teim">cuid30225</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/927142</field>
+    <field name="unittitle_ssm">Sugar Factory -- Cameras 1, 2, and Encore</field>
+    <field name="unittitle_teim">Sugar Factory -- Cameras 1, 2, and Encore</field>
+  </doc>
+</add>

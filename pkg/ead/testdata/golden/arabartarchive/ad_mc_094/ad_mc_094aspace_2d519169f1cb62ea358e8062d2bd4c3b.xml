@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ala Younis, Ibrahim Mohamed Ali, Dina Taha, Anneka Lenssen, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art, NYUAD</field>
+    <field name="collection_sim">Ahmad Nawash Collection</field>
+    <field name="collection_ssm">Ahmad Nawash Collection</field>
+    <field name="collection_teim">Ahmad Nawash Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.094</field>
+    <field name="collection_unitid_teim">AD.MC.094</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_094</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">VII.D. Photo Envelopes</field>
+    <field name="id">ad_mc_094aspace_2d519169f1cb62ea358e8062d2bd4c3b</field>
+    <field name="level_sim">subseries</field>
+    <field name="parent_ssi">aspace_eb03500b7a432834c2342e1e6bd70096</field>
+    <field name="parent_ssm">aspace_eb03500b7a432834c2342e1e6bd70096</field>
+    <field name="parent_unittitles_ssm">Series VII: Photographs</field>
+    <field name="parent_unittitles_teim">Series VII: Photographs</field>
+    <field name="ref_ssi">aspace_2d519169f1cb62ea358e8062d2bd4c3b</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="scopecontent_teim">Plastic and paper envelopes in which Nawsh kept his photographs and noted some information related to the content.</field>
+    <field name="series_si">Series VII: Photographs &gt;&gt; VII.D. Photo Envelopes</field>
+    <field name="series_sim">Series VII: Photographs</field>
+    <field name="sort_ii">70</field>
+    <field name="unitid_ssm">cuid345</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/31261</field>
+    <field name="unitid_teim">cuid345</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/31261</field>
+    <field name="unittitle_ssm">VII.D. Photo Envelopes</field>
+    <field name="unittitle_teim">VII.D. Photo Envelopes</field>
+  </doc>
+</add>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Nicole Lindberg Richard</field>
+    <field name="collection_sim">Samuel Ruben Papers</field>
+    <field name="collection_ssm">Samuel Ruben Papers</field>
+    <field name="collection_teim">Samuel Ruben Papers</field>
+    <field name="collection_unitid_ssm">RG.015</field>
+    <field name="collection_unitid_teim">RG.015</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">poly_rg_015</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Subseries A: Supporting Documents</field>
+    <field name="id">poly_rg_015aspace_ref183_gv4</field>
+    <field name="level_sim">subseries</field>
+    <field name="parent_ssi">aspace_ref170_dj0</field>
+    <field name="parent_ssm">aspace_ref170_dj0</field>
+    <field name="parent_unittitles_ssm">Series II: Exhibition</field>
+    <field name="parent_unittitles_teim">Series II: Exhibition</field>
+    <field name="ref_ssi">aspace_ref183_gv4</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="series_si">Series II: Exhibition &gt;&gt; Subseries A: Supporting Documents</field>
+    <field name="series_sim">Series II: Exhibition</field>
+    <field name="sort_ii">165</field>
+    <field name="unitdate_end_si">1979</field>
+    <field name="unitdate_end_sim">1979</field>
+    <field name="unitdate_end_ssm">1979</field>
+    <field name="unitdate_inclusive_teim">1975-1979</field>
+    <field name="unitdate_normal_sim">1975/1979</field>
+    <field name="unitdate_normal_ssm">1975/1979</field>
+    <field name="unitdate_normal_teim">1975/1979</field>
+    <field name="unitdate_ssm">Inclusive, 1975-1979</field>
+    <field name="unitdate_start_si">1975</field>
+    <field name="unitdate_start_sim">1975</field>
+    <field name="unitdate_start_ssm">1975</field>
+    <field name="unittitle_ssm">Subseries A: Supporting Documents</field>
+    <field name="unittitle_teim">Subseries A: Supporting Documents</field>
+  </doc>
+</add>

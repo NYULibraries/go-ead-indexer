@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Alison Dundy</field>
+    <field name="collection_sim">New York Caledonian Club records</field>
+    <field name="collection_ssm">New York Caledonian Club records</field>
+    <field name="collection_teim">New York Caledonian Club records</field>
+    <field name="collection_unitid_ssm">MS 2923</field>
+    <field name="collection_unitid_teim">MS 2923</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms2923_caledonian_club</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series VII: Library Records</field>
+    <field name="id">ms2923_caledonian_clubaspace_ref25_i5x</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_ref25_i5x</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="scopecontent_teim">The Library Records, 1888 - 1942 are composed of two bound volumes. Volume 25 records the club member&#39;s name, the title of the book loaned from the New York Caledonian Club library, the book&#39;s shelf number, the date the book was borrowed, and the date the book was returned. Page one of Volume 25 states: &#34;The above copied over from previous book.&#34; There is no prior library logbook in this collection, however. Volume 26 is blank.</field>
+    <field name="series_si">Series VII: Library Records</field>
+    <field name="sort_ii">60</field>
+    <field name="unitdate_ssm">1888-1942</field>
+    <field name="unitdate_teim">1888-1942</field>
+    <field name="unittitle_ssm">Series VII: Library Records</field>
+    <field name="unittitle_teim">Series VII: Library Records</field>
+  </doc>
+</add>

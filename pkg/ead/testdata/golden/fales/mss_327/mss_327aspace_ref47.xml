@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">John M. Sapp, Brent Phillips, Cristina Vignone</field>
+    <field name="collection_sim">Queer|Art|Film Collection</field>
+    <field name="collection_ssm">Queer|Art|Film Collection</field>
+    <field name="collection_teim">Queer|Art|Film Collection</field>
+    <field name="collection_unitid_ssm">MSS.327</field>
+    <field name="collection_unitid_teim">MSS.327</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">2001-2100</field>
+    <field name="ead_ssi">mss_327</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">1. Jack Ferver presents &#34;The Bitter Tears of Petra von Kant,&#34; Introduction and Q&amp;A, 2. Andrew Haigh presents &#34;Saturday Night, Sunday Morning,&#34; Introduction and Q&amp;A</field>
+    <field name="id">mss_327aspace_ref47</field>
+    <field name="level_sim">item</field>
+    <field name="location_si">Box: Shared Fales 133, DVD: 327.0012</field>
+    <field name="location_ssm">Box: 2, Media: ID: 327.0012</field>
+    <field name="location_ssm">Box: Shared Fales 133, DVD: 327.0012</field>
+    <field name="parent_ssi">aspace_ref6</field>
+    <field name="parent_ssm">aspace_ref4</field>
+    <field name="parent_ssm">aspace_ref6</field>
+    <field name="parent_unittitles_ssm">Series II: Video recordings</field>
+    <field name="parent_unittitles_ssm">Subseries A: Video recordings</field>
+    <field name="parent_unittitles_teim">Series II: Video recordings</field>
+    <field name="parent_unittitles_teim">Subseries A: Video recordings</field>
+    <field name="phystech_teim">Original format: HDV</field>
+    <field name="phystech_teim">Duration: 57 minutes</field>
+    <field name="phystech_teim">Color, Sound</field>
+    <field name="ref_ssi">aspace_ref47</field>
+    <field name="repository_sim">fales</field>
+    <field name="repository_ssi">fales</field>
+    <field name="repository_ssm">fales</field>
+    <field name="scopecontent_teim">[1] The Bitter Tears of Petra von Kant</field>
+    <field name="scopecontent_teim">Featured: Adam Baran and Ira Sachs (Queer/Art/Film Curators), Jack Ferver (Presenter)</field>
+    <field name="scopecontent_teim">Videographer: Ryan Colletti</field>
+    <field name="scopecontent_teim">Program Contents:  Choreographer Jack Ferverhe presents the film &#34;The Bitter Tears of Petra von Kant,&#34; which features Margit Carstensen as a lesbian fashion designer who manipulates her assistant, daughter, mother, and lover. Ferver calls the film a &#34;wickedly funny, sexy, and gorgeous film about how insane we can all be.&#34; </field>
+    <field name="scopecontent_teim">[2] Saturday Night, Sunday Morning</field>
+    <field name="scopecontent_teim">Featured: Adam Baran and Ira Sachs (Queer/Art/Film Curators), Andrew Haigh (Presenter)
+Videographer: Ryan Colletti</field>
+    <field name="scopecontent_teim">Program Contents: British filmmmaker Andrew Haigh presents Karel Reisz&#39;s film, &#34;Saturday Night and Sunday Morning,&#34; which stars Albert Finney in his debut role as a rebellious factory worker juggling relationships with both a girlfriend and a married woman. The film&#39;s raw subject matter and style had a influence on Haigh, who writes: &#34;Its exploration of the &#39;outsider&#39; battling the mainstream is a theme essential to both the queer experience and to the kind of stories I want to tell.&#34;</field>
+    <field name="series_si">Series II: Video recordings &gt;&gt; Subseries A: Video recordings &gt;&gt; 1. Jack Ferver presents &#34;The Bitter Tears of Petra von Kant,&#34; Introduction and Q&amp;A, 2. Andrew Haigh presents &#34;Saturday Night, Sunday Morning,&#34; Introduction and Q&amp;A</field>
+    <field name="series_sim">Series II: Video recordings</field>
+    <field name="series_sim">Subseries A: Video recordings</field>
+    <field name="sort_ii">22</field>
+    <field name="unitdate_end_si">2011</field>
+    <field name="unitdate_end_sim">2011</field>
+    <field name="unitdate_end_ssm">2011</field>
+    <field name="unitdate_inclusive_teim">August 22, 2011; September 26, 2011</field>
+    <field name="unitdate_normal_sim">2011/2011</field>
+    <field name="unitdate_normal_ssm">2011/2011</field>
+    <field name="unitdate_normal_teim">2011/2011</field>
+    <field name="unitdate_ssm">Inclusive, August 22, 2011; September 26, 2011</field>
+    <field name="unitdate_start_si">2011</field>
+    <field name="unitdate_start_sim">2011</field>
+    <field name="unitdate_start_ssm">2011</field>
+    <field name="unitid_ssm">ID: 327.0012</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/559141</field>
+    <field name="unitid_teim">ID: 327.0012</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/559141</field>
+    <field name="unittitle_ssm">1. Jack Ferver presents &#34;The Bitter Tears of Petra von Kant,&#34; Introduction and Q&amp;A, 2. Andrew Haigh presents &#34;Saturday Night, Sunday Morning,&#34; Introduction and Q&amp;A</field>
+    <field name="unittitle_teim">1. Jack Ferver presents &#34;The Bitter Tears of Petra von Kant,&#34; Introduction and Q&amp;A, 2. Andrew Haigh presents &#34;Saturday Night, Sunday Morning,&#34; Introduction and Q&amp;A</field>
+  </doc>
+</add>

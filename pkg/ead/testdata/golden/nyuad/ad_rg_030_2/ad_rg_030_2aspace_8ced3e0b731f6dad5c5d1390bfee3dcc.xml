@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Lauren Kata</field>
+    <field name="collection_sim">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_ssm">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_teim">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_unitid_ssm">AD.RG.030.2</field>
+    <field name="collection_unitid_teim">AD.RG.030.2</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_rg_030_2</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Physical-distancing-decals-03 [tabletop decal]</field>
+    <field name="id">ad_rg_030_2aspace_8ced3e0b731f6dad5c5d1390bfee3dcc</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: E-records, folder: AD_RG_030_Photos of Covid Signage</field>
+    <field name="location_ssm">box: E-records, folder: AD_RG_030_Photos of Covid Signage</field>
+    <field name="parent_ssi">aspace_efff7a28c7b966a54e6499ff9871bc1a</field>
+    <field name="parent_ssm">aspace_701a87efa0a0c9708a62b0b5d50f63f9</field>
+    <field name="parent_ssm">aspace_efff7a28c7b966a54e6499ff9871bc1a</field>
+    <field name="parent_unittitles_ssm">Campus Facilities Covid Signage (with examples) </field>
+    <field name="parent_unittitles_ssm">Photos of Covid Signage</field>
+    <field name="parent_unittitles_teim">Campus Facilities Covid Signage (with examples) </field>
+    <field name="parent_unittitles_teim">Photos of Covid Signage</field>
+    <field name="ref_ssi">aspace_8ced3e0b731f6dad5c5d1390bfee3dcc</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Campus Facilities Covid Signage (with examples)  &gt;&gt; Photos of Covid Signage &gt;&gt; Physical-distancing-decals-03 [tabletop decal]</field>
+    <field name="series_sim">Campus Facilities Covid Signage (with examples) </field>
+    <field name="series_sim">Photos of Covid Signage</field>
+    <field name="sort_ii">24</field>
+    <field name="unitdate_normal_sim">2020-04-12/2020-04-12</field>
+    <field name="unitdate_normal_ssm">2020-04-12/2020-04-12</field>
+    <field name="unitdate_normal_teim">2020-04-12/2020-04-12</field>
+    <field name="unitdate_ssm">April 2020</field>
+    <field name="unitdate_teim">April 2020</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/33426</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/33426</field>
+    <field name="unittitle_ssm">Physical-distancing-decals-03 [tabletop decal]</field>
+    <field name="unittitle_teim">Physical-distancing-decals-03 [tabletop decal]</field>
+  </doc>
+</add>

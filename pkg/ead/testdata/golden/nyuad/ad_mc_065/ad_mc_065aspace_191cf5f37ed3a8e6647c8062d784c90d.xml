@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">Aḥmad Zakī Abū Shādī Family Papers</field>
+    <field name="collection_ssm">Aḥmad Zakī Abū Shādī Family Papers</field>
+    <field name="collection_teim">Aḥmad Zakī Abū Shādī Family Papers</field>
+    <field name="collection_unitid_ssm">AD.MC.065</field>
+    <field name="collection_unitid_teim">AD.MC.065</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">ad_mc_065</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Naguib, Soleiman</field>
+    <field name="id">ad_mc_065aspace_191cf5f37ed3a8e6647c8062d784c90d</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 8, folder: 2</field>
+    <field name="location_ssm">box: 8, folder: 2</field>
+    <field name="parent_ssi">aspace_df230440396f7b6644d72b0cd27977e3</field>
+    <field name="parent_ssm">aspace_73c038c012307b72531879233e7960a7</field>
+    <field name="parent_ssm">aspace_df230440396f7b6644d72b0cd27977e3</field>
+    <field name="parent_unittitles_ssm">Correspondence</field>
+    <field name="parent_unittitles_ssm">Abu Shadi, Safeya</field>
+    <field name="parent_unittitles_teim">Correspondence</field>
+    <field name="parent_unittitles_teim">Abu Shadi, Safeya</field>
+    <field name="ref_ssi">aspace_191cf5f37ed3a8e6647c8062d784c90d</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Correspondence &gt;&gt; Abu Shadi, Safeya &gt;&gt; Naguib, Soleiman</field>
+    <field name="series_sim">Correspondence</field>
+    <field name="series_sim">Abu Shadi, Safeya</field>
+    <field name="sort_ii">138</field>
+    <field name="unitdate_end_si">1952</field>
+    <field name="unitdate_end_sim">1952</field>
+    <field name="unitdate_end_ssm">1952</field>
+    <field name="unitdate_inclusive_teim">1947-1952</field>
+    <field name="unitdate_normal_sim">1947/1952</field>
+    <field name="unitdate_normal_ssm">1947/1952</field>
+    <field name="unitdate_normal_teim">1947/1952</field>
+    <field name="unitdate_ssm">Inclusive, 1947-1952</field>
+    <field name="unitdate_start_si">1947</field>
+    <field name="unitdate_start_sim">1947</field>
+    <field name="unitdate_start_ssm">1947</field>
+    <field name="unittitle_ssm">Naguib, Soleiman</field>
+    <field name="unittitle_teim">Naguib, Soleiman</field>
+  </doc>
+</add>

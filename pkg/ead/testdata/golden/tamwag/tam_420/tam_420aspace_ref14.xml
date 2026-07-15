@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Peter Meyer Filardo</field>
+    <field name="collection_sim">William Morris Letters</field>
+    <field name="collection_ssm">William Morris Letters</field>
+    <field name="collection_teim">William Morris Letters</field>
+    <field name="collection_unitid_ssm">TAM.420</field>
+    <field name="collection_unitid_teim">TAM.420</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">tam_420</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">William Morris to: Howell, [Charles Augustus] Contents: &#34;I return Rossetti letter…&#34;</field>
+    <field name="id">tam_420aspace_ref14</field>
+    <field name="level_sim">otherlevel</field>
+    <field name="location_si">Box: 1, Folder: 1</field>
+    <field name="location_ssm">Box: 1, Folder: 1</field>
+    <field name="parent_ssi">aspace_ref13</field>
+    <field name="parent_ssm">aspace_ref13</field>
+    <field name="parent_unittitles_ssm">Letters</field>
+    <field name="parent_unittitles_teim">Letters</field>
+    <field name="ref_ssi">aspace_ref14</field>
+    <field name="repository_sim">tamwag</field>
+    <field name="repository_ssi">tamwag</field>
+    <field name="repository_ssm">tamwag</field>
+    <field name="series_si">Letters &gt;&gt; William Morris to: Howell, [Charles Augustus] Contents: &#34;I return Rossetti letter…&#34;</field>
+    <field name="series_sim">Letters</field>
+    <field name="sort_ii">2</field>
+    <field name="unitdate_ssm">Mar 5, 1866</field>
+    <field name="unitdate_teim">Mar 5, 1866</field>
+    <field name="unittitle_ssm">William Morris to: Howell, [Charles Augustus] Contents: &#34;I return Rossetti letter…&#34;</field>
+    <field name="unittitle_teim">William Morris to: Howell, [Charles Augustus] Contents: &#34;I return Rossetti letter…&#34;</field>
+  </doc>
+</add>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Lauren Kata</field>
+    <field name="bioghist_teim">I am a sophomore student majoring in Psychology and Art History.</field>
+    <field name="collection_sim">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_ssm">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_teim">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_unitid_ssm">AD.RG.030.2</field>
+    <field name="collection_unitid_teim">AD.RG.030.2</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_rg_030_2</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Marcano, Victoria. Distanced [Photos]</field>
+    <field name="id">ad_rg_030_2aspace_60314ea2666e0b15ff71d7041f26ed2f</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: E-records, folder: AD_RG_030_005</field>
+    <field name="location_ssm">box: E-records, folder: AD_RG_030_005</field>
+    <field name="parent_ssi">aspace_a51c1a157cedd2b137c3bae3d2628a3a</field>
+    <field name="parent_ssm">aspace_165d7515034f6a815453d739527d9d02</field>
+    <field name="parent_ssm">aspace_a51c1a157cedd2b137c3bae3d2628a3a</field>
+    <field name="parent_unittitles_ssm">NYUAD Community Participatory Covid Archive</field>
+    <field name="parent_unittitles_ssm">Digital Submissions</field>
+    <field name="parent_unittitles_teim">NYUAD Community Participatory Covid Archive</field>
+    <field name="parent_unittitles_teim">Digital Submissions</field>
+    <field name="ref_ssi">aspace_60314ea2666e0b15ff71d7041f26ed2f</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="scopecontent_teim">D i s t a n c e d</field>
+    <field name="scopecontent_teim">The prolonged social distancing measures have transformed people&#39;s routines and relationships. Today we are distanced from our loved ones, from normality, from coherence. Depicting activities characteristic of this period of confinement, my work explores how these activities and social relationships have changed, adapting to the current conditions. My images show the passing of time during the long-lasting quarantine, and the human seek for connectedness and companion, now exacerbated by social distancing.</field>
+    <field name="scopecontent_teim">Most relationships have become long-distance as a consequence of the imposed distancing, and my goal is to represent them as anchors facing uncertainty. This series is a reminder of the social nature of humans and of the importance of relationships as sources of support, because no matter how different our days are or how far apart we are, we are all going through this tough period in our own ways and feel the need for human contact. Distanced is a meditation on how technology shortens distances, allowing for a &#34;company&#34; that is the only source of constancy and normality in a world that changes at the minute.</field>
+    <field name="scopecontent_teim">In this series I capture scenes of virtual conversations taking place during quarantine, emphasizing on the interlocutor&#39;s activities while they make each other &#34;company&#34;. Very dissonant activities coexist in one same moment, a video call, reflecting how, despite our different ways to cope with isolation, we hold on to relationships as sources of normality in a convoluted world. I explore the themes of isolation, routine, monotony, and relationships, while attempting to make a universal statement of their importance in this prolonged isolation period.
+The passing of time is also represented in these portraits through the accumulation of objects in space. This alludes to the duration of the separation and adds to the importance of the virtual company. My images put different lifestyles and activities into conversation, highlighting the sense of irony in how their natures contrast and in where and how they take place. What looks like a fancy dinner consists of canned food, studying happens in bed, one person shaves while the other exercises. Daily routines lost coherence and consistency, but company remains as the motivation to keep moving forward.</field>
+    <field name="scopecontent_teim">The cropping of the images removes identity from the subjects, bringing focus to the depicted activities and the contrast between them. My intention is for the viewer to picture themselves in the situation, what is more easily achieved when faces and hence identities are excluded. The cropping and the expressionless lips combine to transmit a sense of monotony, routine, and boredom of this long-lasting isolation.
+Distanced is particularly dear to me as I used my boyfriend and myself as the models, therefore it is truly based on my feelings during this quarantine. I recreated our interactions to represent how the need for human contact defies social distancing. My purpose is to look back at these images one day to remember how my life was like during the pandemic and what was it that kept me afloat.</field>
+    <field name="series_si">NYUAD Community Participatory Covid Archive &gt;&gt; Digital Submissions &gt;&gt; Marcano, Victoria. Distanced [Photos]</field>
+    <field name="series_sim">NYUAD Community Participatory Covid Archive</field>
+    <field name="series_sim">Digital Submissions</field>
+    <field name="sort_ii">52</field>
+    <field name="unitdate_normal_sim">2021-05-03/2021-05-03</field>
+    <field name="unitdate_normal_ssm">2021-05-03/2021-05-03</field>
+    <field name="unitdate_normal_teim">2021-05-03/2021-05-03</field>
+    <field name="unitdate_ssm">May 2021</field>
+    <field name="unitdate_teim">May 2021</field>
+    <field name="unitid_ssm">Submission 5</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/29416</field>
+    <field name="unitid_teim">Submission 5</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/29416</field>
+    <field name="unittitle_ssm">Marcano, Victoria. Distanced [Photos]</field>
+    <field name="unittitle_teim">Marcano, Victoria. Distanced [Photos]</field>
+  </doc>
+</add>

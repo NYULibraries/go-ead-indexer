@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Lauren Kata</field>
+    <field name="collection_sim">NYU Abu Dhabi Early Materials Collection</field>
+    <field name="collection_ssm">NYU Abu Dhabi Early Materials Collection</field>
+    <field name="collection_teim">NYU Abu Dhabi Early Materials Collection</field>
+    <field name="collection_unitid_ssm">AD.RG.001</field>
+    <field name="collection_unitid_teim">AD.RG.001</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_rg_001</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Space Planning, 2009-2010</field>
+    <field name="id">ad_rg_001aspace_099779896b02316d08d8dc69f6f560cc</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 1</field>
+    <field name="location_ssm">box: 1</field>
+    <field name="ref_ssi">aspace_099779896b02316d08d8dc69f6f560cc</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Space Planning, 2009-2010</field>
+    <field name="sort_ii">21</field>
+    <field name="unittitle_ssm">Space Planning, 2009-2010</field>
+    <field name="unittitle_teim">Space Planning, 2009-2010</field>
+  </doc>
+</add>

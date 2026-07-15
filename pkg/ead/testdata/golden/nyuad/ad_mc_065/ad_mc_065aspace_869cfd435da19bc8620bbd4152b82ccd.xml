@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">Aḥmad Zakī Abū Shādī Family Papers</field>
+    <field name="collection_ssm">Aḥmad Zakī Abū Shādī Family Papers</field>
+    <field name="collection_teim">Aḥmad Zakī Abū Shādī Family Papers</field>
+    <field name="collection_unitid_ssm">AD.MC.065</field>
+    <field name="collection_unitid_teim">AD.MC.065</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">ad_mc_065</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Group portrait, unidentified (Port Said?), with A.Z. Abu Shadi seated, front row, left</field>
+    <field name="id">ad_mc_065aspace_869cfd435da19bc8620bbd4152b82ccd</field>
+    <field name="level_sim">item</field>
+    <field name="location_si">box: OS-5, folder: 9</field>
+    <field name="location_ssm">box: OS-5, folder: 9</field>
+    <field name="parent_ssi">aspace_01d56a4cfe1f31ed7bd152d887aafba6</field>
+    <field name="parent_ssm">aspace_e1f7c074144fffc02b5280d23111eaa0</field>
+    <field name="parent_ssm">aspace_01d56a4cfe1f31ed7bd152d887aafba6</field>
+    <field name="parent_unittitles_ssm">Photographs</field>
+    <field name="parent_unittitles_ssm">Oversized prints</field>
+    <field name="parent_unittitles_teim">Photographs</field>
+    <field name="parent_unittitles_teim">Oversized prints</field>
+    <field name="ref_ssi">aspace_869cfd435da19bc8620bbd4152b82ccd</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Photographs &gt;&gt; Oversized prints &gt;&gt; Group portrait, unidentified (Port Said?), with A.Z. Abu Shadi seated, front row, left</field>
+    <field name="series_sim">Photographs</field>
+    <field name="series_sim">Oversized prints</field>
+    <field name="sort_ii">348</field>
+    <field name="unitdate_end_si">1925</field>
+    <field name="unitdate_end_sim">1925</field>
+    <field name="unitdate_end_ssm">1925</field>
+    <field name="unitdate_normal_sim">1925/1925</field>
+    <field name="unitdate_normal_ssm">1925/1925</field>
+    <field name="unitdate_normal_teim">1925/1925</field>
+    <field name="unitdate_ssm">1925</field>
+    <field name="unitdate_start_si">1925</field>
+    <field name="unitdate_start_sim">1925</field>
+    <field name="unitdate_start_ssm">1925</field>
+    <field name="unitdate_teim">1925</field>
+    <field name="unittitle_ssm">Group portrait, unidentified (Port Said?), with A.Z. Abu Shadi seated, front row, left</field>
+    <field name="unittitle_teim">Group portrait, unidentified (Port Said?), with A.Z. Abu Shadi seated, front row, left</field>
+  </doc>
+</add>

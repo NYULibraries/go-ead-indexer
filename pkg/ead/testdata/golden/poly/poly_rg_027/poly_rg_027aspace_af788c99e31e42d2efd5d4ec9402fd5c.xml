@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Zoe Blecher-Cohen</field>
+    <field name="collection_sim">Poly Archives Memorabilia Collection</field>
+    <field name="collection_ssm">Poly Archives Memorabilia Collection</field>
+    <field name="collection_teim">Poly Archives Memorabilia Collection</field>
+    <field name="collection_unitid_ssm">RG.027</field>
+    <field name="collection_unitid_teim">RG.027</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">poly_rg_027</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Programming Advisory Board Chocolate Week t-shirt, brown</field>
+    <field name="id">poly_rg_027aspace_af788c99e31e42d2efd5d4ec9402fd5c</field>
+    <field name="level_sim">item</field>
+    <field name="location_si">box: 14, object: 12</field>
+    <field name="location_ssm">box: 14, object: 12</field>
+    <field name="parent_ssi">aspace_684fa3d5063461655c26f35850df6c71</field>
+    <field name="parent_ssm">aspace_8b065d7b2bcfc4c6de76f54b963c986c</field>
+    <field name="parent_ssm">aspace_684fa3d5063461655c26f35850df6c71</field>
+    <field name="parent_unittitles_ssm">Series IV: T-Shirts</field>
+    <field name="parent_unittitles_ssm">Subseries E: Miscellaneous T-Shirts</field>
+    <field name="parent_unittitles_teim">Series IV: T-Shirts</field>
+    <field name="parent_unittitles_teim">Subseries E: Miscellaneous T-Shirts</field>
+    <field name="ref_ssi">aspace_af788c99e31e42d2efd5d4ec9402fd5c</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="series_si">Series IV: T-Shirts &gt;&gt; Subseries E: Miscellaneous T-Shirts &gt;&gt; Programming Advisory Board Chocolate Week t-shirt, brown</field>
+    <field name="series_sim">Series IV: T-Shirts</field>
+    <field name="series_sim">Subseries E: Miscellaneous T-Shirts</field>
+    <field name="sort_ii">85</field>
+    <field name="unitdate_ssm">undated</field>
+    <field name="unitdate_teim">undated</field>
+    <field name="unitid_ssm">/repositories/3/archival_objects/12629</field>
+    <field name="unitid_teim">/repositories/3/archival_objects/12629</field>
+    <field name="unittitle_ssm">Programming Advisory Board Chocolate Week t-shirt, brown</field>
+    <field name="unittitle_teim">Programming Advisory Board Chocolate Week t-shirt, brown</field>
+  </doc>
+</add>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">Emirates Bird Records Committee records</field>
+    <field name="collection_ssm">Emirates Bird Records Committee records</field>
+    <field name="collection_teim">Emirates Bird Records Committee records</field>
+    <field name="collection_unitid_ssm">AD.MC.057</field>
+    <field name="collection_unitid_teim">AD.MC.057</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_057</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">A List of Birds of the United Arab Emirates, by Mrs. F.E. Warr, update of 1982 list</field>
+    <field name="id">ad_mc_057aspace_f1e2e0f0f9d83e1db7705481e6e0897b</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 1, folder: 2</field>
+    <field name="location_ssm">box: 1, folder: 2</field>
+    <field name="parent_ssi">aspace_5ff2deb97e2e12c51f422d57386c7514</field>
+    <field name="parent_ssm">aspace_5ff2deb97e2e12c51f422d57386c7514</field>
+    <field name="parent_unittitles_ssm">Early records</field>
+    <field name="parent_unittitles_teim">Early records</field>
+    <field name="ref_ssi">aspace_f1e2e0f0f9d83e1db7705481e6e0897b</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Early records &gt;&gt; A List of Birds of the United Arab Emirates, by Mrs. F.E. Warr, update of 1982 list</field>
+    <field name="series_sim">Early records</field>
+    <field name="sort_ii">3</field>
+    <field name="unitdate_normal_sim">1987-12/1987-12</field>
+    <field name="unitdate_normal_ssm">1987-12/1987-12</field>
+    <field name="unitdate_normal_teim">1987-12/1987-12</field>
+    <field name="unitdate_ssm">December 1987</field>
+    <field name="unitdate_teim">December 1987</field>
+    <field name="unittitle_ssm">A List of Birds of the United Arab Emirates, by Mrs. F.E. Warr, update of 1982 list</field>
+    <field name="unittitle_teim">A List of Birds of the United Arab Emirates, by Mrs. F.E. Warr, update of 1982 list</field>
+  </doc>
+</add>

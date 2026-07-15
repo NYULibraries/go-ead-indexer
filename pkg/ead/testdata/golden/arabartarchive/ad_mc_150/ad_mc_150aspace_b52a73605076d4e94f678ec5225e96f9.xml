@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ibrahim Mohamed Ali, Maysa Shaer, Nada Shabout, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art at NYU Abu Dhabi 	</field>
+    <field name="collection_sim">Salwa Zeidan Collection</field>
+    <field name="collection_ssm">Salwa Zeidan Collection</field>
+    <field name="collection_teim">Salwa Zeidan Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.150</field>
+    <field name="collection_unitid_teim">AD.MC.150</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">1</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_150</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Series V: Personal Papers</field>
+    <field name="id">ad_mc_150aspace_b52a73605076d4e94f678ec5225e96f9</field>
+    <field name="level_sim">series</field>
+    <field name="ref_ssi">aspace_b52a73605076d4e94f678ec5225e96f9</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="scopecontent_teim">Material includes Salwa Zeidan&#39;s CVs, contracts, and invoices, among others.</field>
+    <field name="series_si">Series V: Personal Papers</field>
+    <field name="sort_ii">105</field>
+    <field name="unitid_ssm">cuid1388</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/35877</field>
+    <field name="unitid_teim">cuid1388</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/35877</field>
+    <field name="unittitle_ssm">Series V: Personal Papers</field>
+    <field name="unittitle_teim">Series V: Personal Papers</field>
+  </doc>
+</add>

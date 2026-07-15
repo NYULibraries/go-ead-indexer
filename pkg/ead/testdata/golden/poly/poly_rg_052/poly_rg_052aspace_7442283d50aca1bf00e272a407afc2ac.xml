@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Aileen Thong and Megan Bardis</field>
+    <field name="collection_sim">Technology, Culture and Society Papers</field>
+    <field name="collection_ssm">Technology, Culture and Society Papers</field>
+    <field name="collection_teim">Technology, Culture and Society Papers</field>
+    <field name="collection_unitid_ssm">RG.052</field>
+    <field name="collection_unitid_teim">RG.052</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">poly_rg_052</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Engraved Ornament</field>
+    <field name="id">poly_rg_052aspace_7442283d50aca1bf00e272a407afc2ac</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 5, item: 2</field>
+    <field name="location_ssm">box: 5, item: 2</field>
+    <field name="parent_ssi">aspace_b500fc25f6a79453d427ac428548ad4c</field>
+    <field name="parent_ssm">aspace_c8bf1a087570dadbc34fffa055882aee</field>
+    <field name="parent_ssm">aspace_b500fc25f6a79453d427ac428548ad4c</field>
+    <field name="parent_unittitles_ssm">Series II: Humanities/Social Sciences</field>
+    <field name="parent_unittitles_ssm">Sub-series H: Sylvia Marks</field>
+    <field name="parent_unittitles_teim">Series II: Humanities/Social Sciences</field>
+    <field name="parent_unittitles_teim">Sub-series H: Sylvia Marks</field>
+    <field name="ref_ssi">aspace_7442283d50aca1bf00e272a407afc2ac</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="series_si">Series II: Humanities/Social Sciences &gt;&gt; Sub-series H: Sylvia Marks &gt;&gt; Engraved Ornament</field>
+    <field name="series_sim">Series II: Humanities/Social Sciences</field>
+    <field name="series_sim">Sub-series H: Sylvia Marks</field>
+    <field name="sort_ii">98</field>
+    <field name="unitdate_ssm">undated</field>
+    <field name="unitdate_teim">undated</field>
+    <field name="unittitle_ssm">Engraved Ornament</field>
+    <field name="unittitle_teim">Engraved Ornament</field>
+  </doc>
+</add>

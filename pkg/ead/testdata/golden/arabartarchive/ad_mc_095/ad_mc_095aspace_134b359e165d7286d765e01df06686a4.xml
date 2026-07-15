@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">The finding aid was prepared by Ibrahim Mohamed Ali, Maysa Shaer, Saleem Al-Bahloly, Anneka Lenssen, and Salwa Mikdadi for al Mawrid Arab Center for the Study of Art, NYUAD</field>
+    <field name="collection_sim">Hanaa Malallah Collection</field>
+    <field name="collection_ssm">Hanaa Malallah Collection</field>
+    <field name="collection_teim">Hanaa Malallah Collection</field>
+    <field name="collection_unitid_ssm">AD.MC.095</field>
+    <field name="collection_unitid_teim">AD.MC.095</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="dao_sim">Online Access</field>
+    <field name="dao_ssm">1. Iraq 1980s</field>
+    <field name="dao_teim">1. Iraq 1980s</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_095</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">1. Iraq 1980s</field>
+    <field name="id">ad_mc_095aspace_134b359e165d7286d765e01df06686a4</field>
+    <field name="level_sim">subgrp</field>
+    <field name="parent_ssi">aspace_ebb6528858a467467c8967213072bd2e</field>
+    <field name="parent_ssm">aspace_94d98f7a3f00aa97f3c43ceebba43cdc</field>
+    <field name="parent_ssm">aspace_ebb6528858a467467c8967213072bd2e</field>
+    <field name="parent_unittitles_ssm">Series I: Exhibition Materials</field>
+    <field name="parent_unittitles_ssm">I.B. Solo and Group Exhibitions Not Featuring Hanaa Malallah</field>
+    <field name="parent_unittitles_teim">Series I: Exhibition Materials</field>
+    <field name="parent_unittitles_teim">I.B. Solo and Group Exhibitions Not Featuring Hanaa Malallah</field>
+    <field name="ref_ssi">aspace_134b359e165d7286d765e01df06686a4</field>
+    <field name="repository_sim">arabartarchive</field>
+    <field name="repository_ssi">arabartarchive</field>
+    <field name="repository_ssm">arabartarchive</field>
+    <field name="series_si">Series I: Exhibition Materials &gt;&gt; I.B. Solo and Group Exhibitions Not Featuring Hanaa Malallah &gt;&gt; 1. Iraq 1980s</field>
+    <field name="series_sim">Series I: Exhibition Materials</field>
+    <field name="series_sim">I.B. Solo and Group Exhibitions Not Featuring Hanaa Malallah</field>
+    <field name="sort_ii">4</field>
+    <field name="unitid_ssm">cuid878</field>
+    <field name="unitid_ssm">/repositories/4/archival_objects/32710</field>
+    <field name="unitid_teim">cuid878</field>
+    <field name="unitid_teim">/repositories/4/archival_objects/32710</field>
+    <field name="unittitle_ssm">1. Iraq 1980s</field>
+    <field name="unittitle_teim">1. Iraq 1980s</field>
+  </doc>
+</add>

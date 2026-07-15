@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Lauren Kata</field>
+    <field name="bioghist_teim">I have been working at NYUAD since 2014, I started as a Logistics Supervisor and In-charge of the Mailroom and after 2017 I was moved to ERB Lab Operations Dept Headed by Dr. Michael Davis as Research Store Supervisor. I consider myself as o frontliner because even during pandemic we are working daily to accommodate and assist the Researchers. I am happy to work with ERB and will always be grateful and proud to be a part of the NYUAD community.</field>
+    <field name="bioghist_teim">This pandemic has taught me to appreciate more every little thing in life, such as simple joys, saying thank you, offering a smile, saying hello or I love you, and a lot more. I realize that tomorrow is really not guaranteed so whatever you can do or accomplish today to inspire or to touch lives even in the smallest way do it now and do not hesitate, coz you don&#39;t realize that it touches people&#39;s lives one way or another.
+And I am so so blessed that I am a part of an institution that doesn&#39;t just concerned with growth for business but more so, a place and a company where you will always feel safe and accepted because you are &#34;VALUED.&#34;</field>
+    <field name="collection_sim">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_ssm">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_teim">NYU Abu Dhabi Covid Archive</field>
+    <field name="collection_unitid_ssm">AD.RG.030.2</field>
+    <field name="collection_unitid_teim">AD.RG.030.2</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">3</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_rg_030_2</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Hernandez, Donabelle. MyNYUAD [Poetry, Photos]</field>
+    <field name="id">ad_rg_030_2aspace_130d3073e6df0211a74b75e114a8625e</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: E-records, folder: AD_RG_030_008</field>
+    <field name="location_ssm">box: E-records, folder: AD_RG_030_008</field>
+    <field name="parent_ssi">aspace_a51c1a157cedd2b137c3bae3d2628a3a</field>
+    <field name="parent_ssm">aspace_165d7515034f6a815453d739527d9d02</field>
+    <field name="parent_ssm">aspace_a51c1a157cedd2b137c3bae3d2628a3a</field>
+    <field name="parent_unittitles_ssm">NYUAD Community Participatory Covid Archive</field>
+    <field name="parent_unittitles_ssm">Digital Submissions</field>
+    <field name="parent_unittitles_teim">NYUAD Community Participatory Covid Archive</field>
+    <field name="parent_unittitles_teim">Digital Submissions</field>
+    <field name="ref_ssi">aspace_130d3073e6df0211a74b75e114a8625e</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="scopecontent_teim">[poetry and digital photos]</field>
+    <field name="scopecontent_teim">Capturing NYUAD
+A Poem about NYUAD
+A Poem about HOPE, I was able to make it during March of 2020 when we were all in lockdown
+A Poem about Kindness and living for the moment</field>
+    <field name="scopecontent_teim">*My Poems are extra special because the background images of each poem are also photos I took...</field>
+    <field name="series_si">NYUAD Community Participatory Covid Archive &gt;&gt; Digital Submissions &gt;&gt; Hernandez, Donabelle. MyNYUAD [Poetry, Photos]</field>
+    <field name="series_sim">NYUAD Community Participatory Covid Archive</field>
+    <field name="series_sim">Digital Submissions</field>
+    <field name="sort_ii">55</field>
+    <field name="unitdate_normal_sim">2020-03/2020-03</field>
+    <field name="unitdate_normal_ssm">2020-03/2020-03</field>
+    <field name="unitdate_normal_teim">2020-03/2020-03</field>
+    <field name="unitdate_ssm">March 2020</field>
+    <field name="unitdate_teim">March 2020</field>
+    <field name="unitid_ssm">Submission 8</field>
+    <field name="unitid_ssm">/repositories/2/archival_objects/29419</field>
+    <field name="unitid_teim">Submission 8</field>
+    <field name="unitid_teim">/repositories/2/archival_objects/29419</field>
+    <field name="unittitle_ssm">Hernandez, Donabelle. MyNYUAD [Poetry, Photos]</field>
+    <field name="unittitle_teim">Hernandez, Donabelle. MyNYUAD [Poetry, Photos]</field>
+  </doc>
+</add>

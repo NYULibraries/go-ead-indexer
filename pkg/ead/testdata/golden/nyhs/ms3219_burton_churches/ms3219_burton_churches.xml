@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="abstract_ssm">This collection consists mainly of letters, clippings, bulletins, printed programs, sermons, and other ephemera related to church congregations in Manhattan. The material was collected by undertaker and historian Thomas J. Burton (1858-1920) for his book project &#34;History of the Churches of New York, Illustrated,&#34; which was apparently never published. Related material collected by others, including E.B. Child (1846-1946), was added to the collection after it was accessioned by the New-York Historical Society.</field>
+    <field name="abstract_teim">This collection consists mainly of letters, clippings, bulletins, printed programs, sermons, and other ephemera related to church congregations in Manhattan. The material was collected by undertaker and historian Thomas J. Burton (1858-1920) for his book project &#34;History of the Churches of New York, Illustrated,&#34; which was apparently never published. Related material collected by others, including E.B. Child (1846-1946), was added to the collection after it was accessioned by the New-York Historical Society.</field>
+    <field name="acqinfo_teim">Donor information is lacking for this collection. It is likely the Burton material was received between 1920 and 1938. Material from other sources was added later by staff.</field>
+    <field name="author_ssm">Marybeth Kavanagh</field>
+    <field name="author_teim">Marybeth Kavanagh</field>
+    <field name="bioghist_teim">Thomas J. Burton was born in New York City on October 22, 1858 to Thomas and Sarah Burton. His father was an undertaker, and Burton eventually took over the family business. He was also a member of the executive committee of the New-York Historical Society, and occasionally gave lectures at N-YHS, including illustrated talks about Greenwich Village and Washington Square.</field>
+    <field name="bioghist_teim">Around 1900, Burton began work on a comprehensive &#34;History of the Churches of New York, Illustrated,&#34; which was apparently never published.  Writing on the letterhead of the Church History Publishing Company (which shared Burton&#39;s home address of 44 East 10th Street),  he contacted individual churches and ministers asking for information about the history of their congregations. In 1904, Burton published a pamphlet (available in the N-YHS library) called  A Few Old New York Churches and Pastors, which he hoped would &#34;interest any who may have material in their possession...to aid in this collection&#34; &#34;for the purpose of illustrating a contemplated history of New York churches.&#34;  The replies and materials he received to his entreaties form the bulk of this collection. </field>
+    <field name="bioghist_teim">Burton died on July 31, 1920 and is buried in Green-Wood Cemetery.</field>
+    <field name="collection_sim">Thomas J. Burton Research Files on Manhattan Churches</field>
+    <field name="collection_ssm">Thomas J. Burton Research Files on Manhattan Churches</field>
+    <field name="collection_teim">Thomas J. Burton Research Files on Manhattan Churches</field>
+    <field name="corpname_ssm">New-York Historical Society</field>
+    <field name="corpname_teim">New-York Historical Society</field>
+    <field name="creator_sim">Burton, Thomas J. (Thomas John), 1858-</field>
+    <field name="creator_ssm">Burton, Thomas J. (Thomas John), 1858-</field>
+    <field name="creator_teim">Burton, Thomas J. (Thomas John), 1858-</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ms3219_burton_churches</field>
+    <field name="format_ii">0</field>
+    <field name="format_sim">Archival Collection</field>
+    <field name="format_ssm">Archival Collection</field>
+    <field name="genreform_ssm">Correspondence.</field>
+    <field name="genreform_ssm">Newspaper clippings.</field>
+    <field name="genreform_ssm">Printed ephemera.</field>
+    <field name="genreform_teim">Correspondence.</field>
+    <field name="genreform_teim">Newspaper clippings.</field>
+    <field name="genreform_teim">Printed ephemera.</field>
+    <field name="geogname_ssm">New York (N.Y.) -- Church history.</field>
+    <field name="geogname_teim">New York (N.Y.) -- Church history.</field>
+    <field name="heading_ssm">Thomas J. Burton Research Files on Manhattan Churches</field>
+    <field name="id">ms3219_burton_churches</field>
+    <field name="material_type_sim">Correspondence.</field>
+    <field name="material_type_sim">Newspaper clippings.</field>
+    <field name="material_type_sim">Printed ephemera.</field>
+    <field name="material_type_ssm">Correspondence.</field>
+    <field name="material_type_ssm">Newspaper clippings.</field>
+    <field name="material_type_ssm">Printed ephemera.</field>
+    <field name="name_sim">Burton, Thomas J. (Thomas John), 1858-</field>
+    <field name="name_sim">Child, Edmund Bramhall, 1846-1946</field>
+    <field name="name_teim">Burton, Thomas J. (Thomas John), 1858-</field>
+    <field name="name_teim">Child, Edmund Bramhall, 1846-1946</field>
+    <field name="persname_ssm">Burton, Thomas J. (Thomas John), 1858-</field>
+    <field name="persname_ssm">Child, Edmund Bramhall, 1846-1946</field>
+    <field name="persname_teim">Burton, Thomas J. (Thomas John), 1858-</field>
+    <field name="persname_teim">Child, Edmund Bramhall, 1846-1946</field>
+    <field name="place_sim">New York (N.Y.) -- Church history.</field>
+    <field name="repository_sim">nyhs</field>
+    <field name="repository_ssi">nyhs</field>
+    <field name="repository_ssm">nyhs</field>
+    <field name="scopecontent_teim">This collection consists mainly of letters, clippings, bulletins, printed programs, sermons and other ephemera related to church congregations in Manhattan. The material was collected by undertaker and historian Thomas J. Burton (1858-1920) for his book project &#34;History of the Churches of New York, Illustrated,&#34; which was apparently never published. Related material collected by others, including E.B. Child (1846-1946), was added to the collection after it was accessioned by the New-York Historical Society.</field>
+    <field name="scopecontent_teim">The type and amount of material available for individual churches varies widely, from a single item to multiple folders of ephemera. Burton was primarily interested in the history and evolution of the church congregations, rather than the physical church structures, and the collection reflects that. There is information about the ministers and leaders of churches, as well as the mergers of various congregations.  Although Burton&#39;s original collection included images, these were removed by staff sometime before 1950 and added to existing graphic files, mainly the Geographic Collection and the Portrait Collection. </field>
+    <field name="scopecontent_teim">For a preview of Burton&#39;s intended project, researchers can consult Burton&#39;s 1904 pamphlet (available in the N-YHS library) called  A Few Old New York Churches and Pastors, which he hoped would &#34;interest any who may have material in their possession...to aid in this collection&#34; &#34;for the purpose of illustrating a contemplated history of New York churches.&#34;  </field>
+    <field name="scopecontent_teim">
+See also Burton&#39;s scrapbooks in  N-YHS Collection of Scrapbooks. From the finiding aid:&#34;These 3 volumes relate to Burton&#39;s work: one volume is a &#39;catalogue of cuts and illustrations&#39; of churches and ministers; a second volume is mostly notes on the chronology and ministers of various Protestant sects, with various clippings throughout; and the third volume holds clippings with pictures of contemporary (circa 1870-90s) buildings.&#34;</field>
+    <field name="subject_sim">Churches -- New York (State)  -- New York. </field>
+    <field name="subject_ssm">Churches -- New York (State)  -- New York. </field>
+    <field name="subject_teim">Churches -- New York (State)  -- New York. </field>
+    <field name="subject_teim">Churches -- New York (State)  -- New York. </field>
+    <field name="unitdate_inclusive_teim">1822-1982</field>
+    <field name="unitdate_ssm">Inclusive, 1822-1982</field>
+    <field name="unitid_ssm">MS 3219</field>
+    <field name="unitid_teim">MS 3219</field>
+    <field name="unittitle_ssm">Thomas J. Burton Research Files on Manhattan Churches</field>
+    <field name="unittitle_teim">Thomas J. Burton Research Files on Manhattan Churches</field>
+  </doc>
+</add>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="abstract_ssm">A handwritten index to the book, &#34;Social History of Flatbush&#34; by Gertrude Lefferts Vanderbilt, published in 1882. The index was created by Frances Bergen Cropsey in 1959. The Brooklyn Historical Society&#39;s Othmer Library also holds a typewritten copy of the index in its main collection.</field>
+    <field name="abstract_teim">A handwritten index to the book, &#34;Social History of Flatbush&#34; by Gertrude Lefferts Vanderbilt, published in 1882. The index was created by Frances Bergen Cropsey in 1959. The Brooklyn Historical Society&#39;s Othmer Library also holds a typewritten copy of the index in its main collection.</field>
+    <field name="acqinfo_teim">Source and date of acquisition unknown. The item was formally accessioned in 1995.</field>
+    <field name="author_ssm">Matthew Gorham</field>
+    <field name="author_teim">Matthew Gorham</field>
+    <field name="collection_sim">Index to A Social History of Flatbush</field>
+    <field name="collection_ssm">Index to A Social History of Flatbush</field>
+    <field name="collection_teim">Index to A Social History of Flatbush</field>
+    <field name="corpname_ssm">Brooklyn Historical Society</field>
+    <field name="corpname_teim">Brooklyn Historical Society</field>
+    <field name="creator_sim">Bergen, Frances Cropsey</field>
+    <field name="creator_ssm">Bergen, Frances Cropsey</field>
+    <field name="creator_teim">Bergen, Frances Cropsey</field>
+    <field name="date_range_sim">1901-2000</field>
+    <field name="ead_ssi">arms_1995_007_social_history_flatbush</field>
+    <field name="format_ii">0</field>
+    <field name="format_sim">Archival Collection</field>
+    <field name="format_ssm">Archival Collection</field>
+    <field name="genreform_ssm">Indexes (reference sources)</field>
+    <field name="genreform_teim">Indexes (reference sources)</field>
+    <field name="geogname_ssm">Brooklyn (New York, N.Y.)</field>
+    <field name="geogname_ssm">Flatbush (New York, N.Y.) |x History</field>
+    <field name="geogname_teim">Brooklyn (New York, N.Y.)</field>
+    <field name="geogname_teim">Flatbush (New York, N.Y.) |x History</field>
+    <field name="heading_ssm">Index to A Social History of Flatbush</field>
+    <field name="id">arms_1995_007_social_history_flatbush</field>
+    <field name="language_sim">English</field>
+    <field name="language_ssm">English</field>
+    <field name="material_type_sim">Indexes (reference sources)</field>
+    <field name="material_type_ssm">Indexes (reference sources)</field>
+    <field name="name_sim">Bergen, Frances Cropsey</field>
+    <field name="name_teim">Bergen, Frances Cropsey</field>
+    <field name="persname_ssm">Bergen, Frances Cropsey</field>
+    <field name="persname_ssm">Bergen, Frances Cropsey</field>
+    <field name="persname_teim">Bergen, Frances Cropsey</field>
+    <field name="persname_teim">Bergen, Frances Cropsey</field>
+    <field name="place_sim">Brooklyn (New York, N.Y.)</field>
+    <field name="place_sim">Flatbush (New York, N.Y.) -- History</field>
+    <field name="repository_sim">cbh</field>
+    <field name="repository_ssi">cbh</field>
+    <field name="repository_ssm">cbh</field>
+    <field name="unitdate_end_si">1959</field>
+    <field name="unitdate_end_sim">1959</field>
+    <field name="unitdate_end_ssm">1959</field>
+    <field name="unitdate_inclusive_teim">1959</field>
+    <field name="unitdate_normal_sim">1959/1959</field>
+    <field name="unitdate_normal_ssm">1959/1959</field>
+    <field name="unitdate_normal_teim">1959/1959</field>
+    <field name="unitdate_ssm">Inclusive, 1959</field>
+    <field name="unitdate_start_si">1959</field>
+    <field name="unitdate_start_sim">1959</field>
+    <field name="unitdate_start_ssm">1959</field>
+    <field name="unitid_ssm">1995.007</field>
+    <field name="unitid_teim">1995.007</field>
+    <field name="unittitle_ssm">Index to &lt;em&gt;A Social History of Flatbush&lt;/em&gt;</field>
+    <field name="unittitle_teim">Index to A Social History of Flatbush</field>
+  </doc>
+</add>

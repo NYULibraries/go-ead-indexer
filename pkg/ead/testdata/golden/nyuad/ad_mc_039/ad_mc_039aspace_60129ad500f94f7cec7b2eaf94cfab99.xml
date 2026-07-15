@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Brad Bauer</field>
+    <field name="collection_sim">Ali Akbar Bushiri collection</field>
+    <field name="collection_ssm">Ali Akbar Bushiri collection</field>
+    <field name="collection_teim">Ali Akbar Bushiri collection</field>
+    <field name="collection_unitid_ssm">AD.MC.039</field>
+    <field name="collection_unitid_teim">AD.MC.039</field>
+    <field name="component_children_bsi">false</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">ad_mc_039</field>
+    <field name="format_sim">Archival Object</field>
+    <field name="format_ssm">Archival Object</field>
+    <field name="heading_ssm">Vendors and agents:  Taylor and Company, Liverpool</field>
+    <field name="id">ad_mc_039aspace_60129ad500f94f7cec7b2eaf94cfab99</field>
+    <field name="level_sim">file</field>
+    <field name="location_si">box: 3, folder: 4</field>
+    <field name="location_ssm">box: 3, folder: 4</field>
+    <field name="parent_ssi">aspace_dcef0f0be2df62c24dea263f4db43f51</field>
+    <field name="parent_ssm">aspace_dcef0f0be2df62c24dea263f4db43f51</field>
+    <field name="parent_unittitles_ssm">Bushiri family:  business</field>
+    <field name="parent_unittitles_teim">Bushiri family:  business</field>
+    <field name="ref_ssi">aspace_60129ad500f94f7cec7b2eaf94cfab99</field>
+    <field name="repository_sim">nyuad</field>
+    <field name="repository_ssi">nyuad</field>
+    <field name="repository_ssm">nyuad</field>
+    <field name="series_si">Bushiri family:  business &gt;&gt; Vendors and agents:  Taylor and Company, Liverpool</field>
+    <field name="series_sim">Bushiri family:  business</field>
+    <field name="sort_ii">49</field>
+    <field name="unitdate_normal_sim">1931-12/1931-12</field>
+    <field name="unitdate_normal_ssm">1931-12/1931-12</field>
+    <field name="unitdate_normal_teim">1931-12/1931-12</field>
+    <field name="unitdate_ssm">1931, December</field>
+    <field name="unitdate_teim">1931, December</field>
+    <field name="unittitle_ssm">Vendors and agents:  Taylor and Company, Liverpool</field>
+    <field name="unittitle_teim">Vendors and agents:  Taylor and Company, Liverpool</field>
+  </doc>
+</add>

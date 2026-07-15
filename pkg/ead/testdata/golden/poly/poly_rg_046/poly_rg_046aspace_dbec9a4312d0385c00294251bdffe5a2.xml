@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="author_teim">Aileen Thong and Mandy Abokhair</field>
+    <field name="collection_sim">Jonathan Soffer Papers</field>
+    <field name="collection_ssm">Jonathan Soffer Papers</field>
+    <field name="collection_teim">Jonathan Soffer Papers</field>
+    <field name="collection_unitid_ssm">RG.046</field>
+    <field name="collection_unitid_teim">RG.046</field>
+    <field name="component_children_bsi">true</field>
+    <field name="component_level_isim">2</field>
+    <field name="date_range_sim">undated &amp; other</field>
+    <field name="ead_ssi">poly_rg_046</field>
+    <field name="format_sim">Archival Series</field>
+    <field name="format_ssm">Archival Series</field>
+    <field name="heading_ssm">Subseries A: Archival Manuscript Research</field>
+    <field name="id">poly_rg_046aspace_dbec9a4312d0385c00294251bdffe5a2</field>
+    <field name="level_sim">subseries</field>
+    <field name="parent_ssi">aspace_7ef12e82561a7bc0abefa3fba559bd03</field>
+    <field name="parent_ssm">aspace_7ef12e82561a7bc0abefa3fba559bd03</field>
+    <field name="parent_unittitles_ssm">Series I: Koch Project</field>
+    <field name="parent_unittitles_teim">Series I: Koch Project</field>
+    <field name="ref_ssi">aspace_dbec9a4312d0385c00294251bdffe5a2</field>
+    <field name="repository_sim">poly</field>
+    <field name="repository_ssi">poly</field>
+    <field name="repository_ssm">poly</field>
+    <field name="series_si">Series I: Koch Project &gt;&gt; Subseries A: Archival Manuscript Research</field>
+    <field name="series_sim">Series I: Koch Project</field>
+    <field name="sort_ii">2</field>
+    <field name="unitdate_ssm">undated</field>
+    <field name="unitdate_teim">undated</field>
+    <field name="unittitle_ssm">Subseries A: Archival Manuscript Research</field>
+    <field name="unittitle_teim">Subseries A: Archival Manuscript Research</field>
+  </doc>
+</add>
