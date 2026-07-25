@@ -26,7 +26,6 @@ var archivalSeriesRegExp = regexp.MustCompile(`\Aseries|subseries`)
 func (component *Component) setComplexParts() error {
 	component.setChronListComplex()
 	component.setCreatorComplex()
-	component.setOnlineAccess()
 	component.setDateRange()
 	component.setFormat()
 	component.setHeading()
@@ -37,6 +36,10 @@ func (component *Component) setComplexParts() error {
 	}
 	component.setMaterialType()
 	component.setName()
+	err = component.setOnlineAccess()
+	if err != nil {
+		return err
+	}
 	component.setPlace()
 	component.setSubjectForFacets()
 	err = component.setUnitTitleHTML()
