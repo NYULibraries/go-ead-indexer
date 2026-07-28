@@ -4,10 +4,8 @@ import (
 	"errors"
 	"fmt"
 	"regexp"
-	"slices"
 	"strings"
 
-	"github.com/lestrrat-go/libxml2/types"
 	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
 	"github.com/nyulibraries/go-ead-indexer/pkg/util"
 )
@@ -36,10 +34,6 @@ func (component *Component) setComplexParts() error {
 	}
 	component.setMaterialType()
 	component.setName()
-	err = component.setOnlineAccess()
-	if err != nil {
-		return err
-	}
 	component.setPlace()
 	component.setSubjectForFacets()
 	err = component.setUnitTitleHTML()
@@ -205,45 +199,6 @@ func (component *Component) setName() {
 	nameValues = eadutil.ConvertToFacetSlice(nameValues)
 
 	parts.Name.Values = nameValues
-}
-
-func (component *Component) setOnlineAccess() error {
-	parts := &component.Parts
-
-	xpathResult, err := component.Node.Find(".//dao")
-	if err != nil {
-		return err
-	}
-	defer xpathResult.Free()
-
-	daoNodes := xpathResult.NodeList()
-	if len(daoNodes) == 0 {
-		return nil
-	}
-
-	onlineAccessValues := []string{}
-
-	for _, resultNode := range daoNodes {
-		roleAttribute, err := resultNode.(types.Element).GetAttribute("xlink:role")
-		if err != nil {
-			if err.Error() == "attribute not found" {
-				continue
-			} else {
-				return err
-			}
-		}
-
-		role := roleAttribute.Value()
-		roleValue, ok := eadutil.OnlineAccessRolesToFaceValues[role]
-		if ok {
-			onlineAccessValues = append(onlineAccessValues, roleValue)
-		}
-	}
-	// Sort and deduplicate values
-	slices.Sort(onlineAccessValues)
-	parts.OnlineAccess.Values = slices.Compact(onlineAccessValues)
-
-	return nil
 }
 
 func (component *Component) setPlace() {
