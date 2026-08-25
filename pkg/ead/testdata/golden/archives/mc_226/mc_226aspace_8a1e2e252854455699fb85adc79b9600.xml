@@ -9,7 +9,6 @@
     <field name="collection_unitid_teim">MC.226</field>
     <field name="component_children_bsi">false</field>
     <field name="component_level_isim">3</field>
-    <field name="dao_sim">Online Access</field>
     <field name="dao_ssm">Original Recording</field>
     <field name="dao_teim">Original Recording</field>
     <field name="date_range_sim">undated &amp; other</field>

@@ -18,7 +18,6 @@
     <field name="creator_sim">Camicia, Jimmy</field>
     <field name="creator_ssm">Camicia, Jimmy</field>
     <field name="creator_teim">Camicia, Jimmy</field>
-    <field name="dao_sim">Online Access</field>
     <field name="date_range_sim">1901-2000</field>
     <field name="date_range_sim">2001-2100</field>
     <field name="ead_ssi">mss_420</field>

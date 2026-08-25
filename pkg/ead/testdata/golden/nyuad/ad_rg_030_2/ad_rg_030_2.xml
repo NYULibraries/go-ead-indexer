@@ -15,7 +15,6 @@
     <field name="collection_teim">NYU Abu Dhabi Covid Archive</field>
     <field name="corpname_ssm">NYU Abu Dhabi, Archives and Special Collections</field>
     <field name="corpname_teim">NYU Abu Dhabi, Archives and Special Collections</field>
-    <field name="dao_sim">Online Access</field>
     <field name="date_range_sim">undated &amp; other</field>
     <field name="ead_ssi">ad_rg_030_2</field>
     <field name="format_ii">0</field>

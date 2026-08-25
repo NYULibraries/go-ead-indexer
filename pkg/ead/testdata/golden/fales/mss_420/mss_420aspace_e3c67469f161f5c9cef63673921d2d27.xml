@@ -9,7 +9,6 @@
     <field name="collection_unitid_teim">MSS.420</field>
     <field name="component_children_bsi">false</field>
     <field name="component_level_isim">2</field>
-    <field name="dao_sim">Online Access</field>
     <field name="dao_ssm">Hot Peaches Website Files: July, September, November 2008 and May 2009</field>
     <field name="dao_teim">Hot Peaches Website Files: July, September, November 2008 and May 2009</field>
     <field name="date_range_sim">2001-2100</field>

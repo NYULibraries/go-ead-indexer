@@ -10,6 +10,7 @@
     <field name="collection_unitid_teim">MSS.460</field>
     <field name="component_children_bsi">true</field>
     <field name="component_level_isim">2</field>
+    <field name="dao_sim">Video available online</field>
     <field name="date_range_sim">2001-2100</field>
     <field name="ead_ssi">mss_460</field>
     <field name="format_sim">Archival Object</field>

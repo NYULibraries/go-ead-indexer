@@ -3,10 +3,11 @@ package component
 import (
 	"errors"
 	"fmt"
-	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
-	"github.com/nyulibraries/go-ead-indexer/pkg/util"
 	"regexp"
 	"strings"
+
+	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
+	"github.com/nyulibraries/go-ead-indexer/pkg/util"
 )
 
 const ARCHIVAL_OBJECT_FORMAT = "Archival Object"
@@ -23,7 +24,6 @@ var archivalSeriesRegExp = regexp.MustCompile(`\Aseries|subseries`)
 func (component *Component) setComplexParts() error {
 	component.setChronListComplex()
 	component.setCreatorComplex()
-	component.setDAO()
 	component.setDateRange()
 	component.setFormat()
 	component.setHeading()
@@ -105,16 +105,6 @@ func (component *Component) setCreatorComplex() {
 	creatorComplexValues = append(creatorComplexValues, parts.CreatorFamName.Values...)
 	creatorComplexValues = append(creatorComplexValues, parts.CreatorPersName.Values...)
 	parts.CreatorComplex.Values = creatorComplexValues
-}
-
-func (component *Component) setDAO() {
-	parts := &component.Parts
-
-	if len(parts.DAODescriptionParagraph.Values) > 0 {
-		parts.DAO.Values = []string{"Online Access"}
-	} else {
-		// No value
-	}
 }
 
 func (component *Component) setDateRange() {

@@ -44,7 +44,8 @@
                   family</field>
     <field name="creator_teim">Yonge, Charlotte Mary,
                     1823-1901</field>
-    <field name="dao_sim">Online Access</field>
+    <field name="dao_sim">Audio available online</field>
+    <field name="dao_sim">Images available online</field>
     <field name="dao_ssm">This is a digital object</field>
     <field name="dao_teim">This is a digital object</field>
     <field name="date_range_sim">2001-2100</field>

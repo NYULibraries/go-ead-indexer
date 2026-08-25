@@ -9,7 +9,6 @@
     <field name="collection_unitid_teim">OH.061</field>
     <field name="component_children_bsi">false</field>
     <field name="component_level_isim">1</field>
-    <field name="dao_sim">Online Access</field>
     <field name="dao_ssm">Cecelia McCall</field>
     <field name="dao_teim">Cecelia McCall</field>
     <field name="date_range_sim">undated &amp; other</field>

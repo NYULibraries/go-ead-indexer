@@ -115,7 +115,6 @@
     <field name="creator_teim">Belfrage family</field>
     <field name="creator_teim"> Weatherly Stephan</field>
     <field name="custodhist_teim">This is the Custodial History note.</field>
-    <field name="dao_sim">Online Access</field>
     <field name="date_range_sim">2001-2100</field>
     <field name="ead_ssi">mos_2024</field>
     <field name="famname_ssm">Belfrage family</field>

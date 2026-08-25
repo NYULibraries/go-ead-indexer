@@ -9,6 +9,7 @@
     <field name="collection_unitid_teim">MSS.460</field>
     <field name="component_children_bsi">true</field>
     <field name="component_level_isim">1</field>
+    <field name="dao_sim">Video available online</field>
     <field name="date_range_sim">undated &amp; other</field>
     <field name="ead_ssi">mss_460</field>
     <field name="format_sim">Archival Series</field>

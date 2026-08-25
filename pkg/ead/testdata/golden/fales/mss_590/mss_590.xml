@@ -24,7 +24,6 @@
     <field name="creator_sim">Lunch, Lydia</field>
     <field name="creator_ssm">Lunch, Lydia</field>
     <field name="creator_teim">Lunch, Lydia</field>
-    <field name="dao_sim">Online Access</field>
     <field name="date_range_sim">1901-2000</field>
     <field name="date_range_sim">2001-2100</field>
     <field name="ead_ssi">mss_590</field>

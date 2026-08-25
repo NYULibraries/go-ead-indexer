@@ -2,10 +2,11 @@ package component
 
 import (
 	"fmt"
-	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
-	"github.com/nyulibraries/go-ead-indexer/pkg/util"
 	"strconv"
 	"strings"
+
+	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
+	"github.com/nyulibraries/go-ead-indexer/pkg/util"
 )
 
 // We are currently using `String()` and not marshaling, but for now we are
@@ -144,7 +145,7 @@ func (component *Component) setSolrAddMessage() {
 	docElement.Creator_teim = append(docElement.Creator_teim,
 		component.Parts.Creator.Values...)
 
-	docElement.DAO_sim = component.Parts.DAO.Values
+	docElement.DAO_sim = component.Parts.OnlineAccess.Values
 	docElement.DAO_ssm = component.Parts.DAODescriptionParagraph.Values
 	docElement.DAO_teim = component.Parts.DAODescriptionParagraph.Values
 

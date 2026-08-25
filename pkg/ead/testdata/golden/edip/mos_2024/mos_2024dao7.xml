@@ -12,7 +12,6 @@
     <field name="collection_unitid_teim">MOS.2021</field>
     <field name="component_children_bsi">false</field>
     <field name="component_level_isim">2</field>
-    <field name="dao_sim">Online Access</field>
     <field name="dao_ssm">Digital Duets Langland La MaMa: 2012-</field>
     <field name="dao_teim">Digital Duets Langland La MaMa: 2012-</field>
     <field name="date_range_sim">undated &amp; other</field>

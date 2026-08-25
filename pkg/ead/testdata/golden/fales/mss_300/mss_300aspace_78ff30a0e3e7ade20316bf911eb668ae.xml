@@ -9,7 +9,6 @@
     <field name="collection_unitid_teim">MSS.300</field>
     <field name="component_children_bsi">false</field>
     <field name="component_level_isim">2</field>
-    <field name="dao_sim">Online Access</field>
     <field name="dao_ssm">Game Show Footage</field>
     <field name="dao_teim">Game Show Footage</field>
     <field name="date_range_sim">1901-2000</field>

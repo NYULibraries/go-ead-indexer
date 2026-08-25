@@ -3,6 +3,9 @@ package component
 import (
 	"errors"
 	"fmt"
+	"maps"
+	"slices"
+
 	"github.com/lestrrat-go/libxml2/types"
 	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
 )
@@ -10,6 +13,7 @@ import (
 type Component struct {
 	ID             string         `json:"id"`
 	IDAttribute    string         `json:"IDAttribute"`
+	Node           types.Node     `json:"-"`
 	Parts          ComponentParts `json:"parts"`
 	SolrAddMessage SolrAddMessage `json:"solr_add_message"`
 }
@@ -19,6 +23,7 @@ type ComponentParts struct {
 	ComponentCollectionDocParts
 	ComponentComplexParts
 	ComponentHierarchyParts
+	ComponentOnlineAccessParts
 	ComponentXPathParts
 	Containers []Container `json:"containers"`
 
@@ -35,7 +40,6 @@ type ComponentCollectionDocParts struct {
 type ComponentComplexParts struct {
 	ChronListComplex ComponentPart `json:"chron_list_complex"`
 	CreatorComplex   ComponentPart `json:"creator_complex"`
-	DAO              ComponentPart `json:"dao"`
 	DateRange        ComponentPart `json:"date_range"`
 	Format           ComponentPart `json:"format"`
 	Heading          ComponentPart `json:"heading"`
@@ -58,6 +62,11 @@ type ComponentHierarchyParts struct {
 	ParentForDisplay      ComponentPart `json:"parent_for_display"`
 	ParentForSort         string        `json:"parent_for_sort"`
 	SeriesForSort         string        `json:"series_for_sort"`
+}
+
+type ComponentOnlineAccessParts struct {
+	OnlineAccess       ComponentPart `json:"online_access"`
+	OnlineAccessDirect ComponentPart `json:"online_access_direct"`
 }
 
 type ComponentXPathParts struct {
@@ -152,10 +161,30 @@ func MakeComponents(collectionDocParts ComponentCollectionDocParts, node types.N
 			}
 		}
 
-		// This depends on `newComponent.Parts.AncestorUnitTitleList`
-		newComponent.setSolrAddMessage()
-
 		components = append(components, newComponent)
+	}
+
+	// NOTE: This step depends on the processing done in the `MakeComponent` loop
+	// above, which set the Parts.OnlineAccessDirectPart values lists, containing
+	// the lists/tallies of direct online access stuff for each node. The
+	// discovery portal's Digital Content facet uses rolled up counts, however,
+	// so for the Solr request we also need to calculate for all non-leaf nodes
+	// the indirect totals as well -- i.e. the rolled up counts from all child
+	// nodes direct online access stuff.
+	// Note that we don't actually use the counts in the Solr request, just the
+	// keys which become the facet item labels.  Since there's no extra cost in
+	// making those calculations in the process of determining simple
+	// presence/absence for indirect qualification, we retain them in the return
+	// value as it can help with analysis and debugging.
+	onlineAccessMap := makeOnlineAccessCountsMap(components)
+	for i := range components {
+		component := &components[i]
+		component.Parts.ComponentOnlineAccessParts.OnlineAccess.Values =
+			slices.Sorted(maps.Keys(onlineAccessMap[component.IDAttribute]))
+
+		// Everything is completed for this component.  We can construct the
+		// Solr add message now.
+		component.setSolrAddMessage()
 	}
 
 	return &components, nil
@@ -164,6 +193,7 @@ func MakeComponents(collectionDocParts ComponentCollectionDocParts, node types.N
 func MakeComponent(collectionDocParts ComponentCollectionDocParts, sort int,
 	node types.Node) (Component, error) {
 	component := Component{
+		Node: node,
 		Parts: ComponentParts{
 			ComponentCollectionDocParts: collectionDocParts,
 			Sort:                        sort,
@@ -219,6 +249,11 @@ func (component *Component) setParts(node types.Node) error {
 	}
 
 	err = component.setContainersPart(nodeCopyWithChildCNodesRemoved)
+	if err != nil {
+		return err
+	}
+
+	err = component.setOnlineAccessDirectPart(nodeCopyWithChildCNodesRemoved)
 	if err != nil {
 		return err
 	}

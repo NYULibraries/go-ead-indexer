@@ -9,7 +9,7 @@
     <field name="collection_unitid_teim">AD.MC.095</field>
     <field name="component_children_bsi">false</field>
     <field name="component_level_isim">2</field>
-    <field name="dao_sim">Online Access</field>
+    <field name="dao_sim">Images available online</field>
     <field name="dao_ssm">II.C. 2000s</field>
     <field name="dao_teim">II.C. 2000s</field>
     <field name="date_range_sim">undated &amp; other</field>

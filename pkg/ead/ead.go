@@ -3,12 +3,13 @@ package ead
 import (
 	"errors"
 	"fmt"
+	"regexp"
+
 	"github.com/lestrrat-go/libxml2/parser"
 	"github.com/lestrrat-go/libxml2/types"
 	"github.com/nyulibraries/go-ead-indexer/pkg/ead/collectiondoc"
 	"github.com/nyulibraries/go-ead-indexer/pkg/ead/component"
 	"github.com/nyulibraries/go-ead-indexer/pkg/ead/eadutil"
-	"regexp"
 )
 
 type EAD struct {

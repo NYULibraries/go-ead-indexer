@@ -9,7 +9,6 @@
     <field name="collection_teim">NYU Abu Dhabi Student Life Events: Photos, Music, and Videos</field>
     <field name="corpname_ssm">NYU Abu Dhabi, Archives and Special Collections</field>
     <field name="corpname_teim">NYU Abu Dhabi, Archives and Special Collections</field>
-    <field name="dao_sim">Online Access</field>
     <field name="date_range_sim">2001-2100</field>
     <field name="ead_ssi">ad_rg_009_3_2_1</field>
     <field name="format_ii">0</field>

@@ -12,6 +12,9 @@
     <field name="collection_unitid_teim">MOS.2021</field>
     <field name="component_children_bsi">true</field>
     <field name="component_level_isim">1</field>
+    <field name="dao_sim">Audio available online</field>
+    <field name="dao_sim">Images available online</field>
+    <field name="dao_sim">Video available online</field>
     <field name="date_range_sim">undated &amp; other</field>
     <field name="ead_ssi">mos_2024</field>
     <field name="format_sim">Archival Series</field>

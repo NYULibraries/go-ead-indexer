@@ -37,6 +37,13 @@ type DocElementField struct {
 	Field     reflect.Value
 }
 
+var OnlineAccessRolesToFaceValues = map[string]string{
+	"audio-service":              "Audio available online",
+	"electronic-records-service": "Electronic records, available by request, on site",
+	"image-service":              "Images available online",
+	"video-service":              "Video available online",
+}
+
 const eadLineBreakTag = "<lb/>"
 
 const undated = "undated & other"
